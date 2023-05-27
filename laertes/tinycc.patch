@@ -1,0 +1,98 @@
+Common subdirectories: tinycc-raw/target and mu-playground/tinycc/target
+diff -p tinycc-raw/tccasm.rs mu-playground/tinycc/tccasm.rs
+*** tinycc-raw/tccasm.rs	Wed Apr 14 20:50:43 2021
+--- mu-playground/tinycc/tccasm.rs	Wed Apr 14 20:52:13 2021
+*************** pub struct C2RustUnnamed_4 {
+*** 319,348 ****
+  // #[derive(Copy, Clone)]
+  
+  pub use crate::i386_asm::SValue;
+! #[derive(Copy, Clone)]
+! #[repr(C)]
+! pub union C2RustUnnamed_5 {
+!     pub c2rust_unnamed: C2RustUnnamed_6,
+!     pub sym: *mut Sym,
+! }
+! #[derive(Copy, Clone)]
+! #[repr(C)]
+! pub struct C2RustUnnamed_6 {
+!     pub cmp_op: std::os::raw::c_ushort,
+!     pub cmp_r: std::os::raw::c_ushort,
+! }
+! #[derive(Copy, Clone)]
+! #[repr(C)]
+! pub union C2RustUnnamed_7 {
+!     pub c2rust_unnamed: C2RustUnnamed_8,
+!     pub c: CValue,
+! }
+! #[derive(Copy, Clone)]
+! #[repr(C)]
+! pub struct C2RustUnnamed_8 {
+!     pub jtrue: std::os::raw::c_int,
+!     pub jfalse: std::os::raw::c_int,
+! }
+  // #[derive(Copy, Clone)]
+  
+  pub use crate::i386_asm::ExprValue;
+--- 319,328 ----
+  // #[derive(Copy, Clone)]
+  
+  pub use crate::i386_asm::SValue;
+! pub use crate::i386_asm::C2RustUnnamed_6;
+! pub use crate::i386_asm::C2RustUnnamed_7;
+! pub use crate::i386_asm::C2RustUnnamed_8;
+! pub use crate::i386_asm::C2RustUnnamed_9;
+  // #[derive(Copy, Clone)]
+  
+  pub use crate::i386_asm::ExprValue;
+*************** unsafe extern "C" fn subst_asm_operands(
+*** 2821,2834 ****
+          },
+          r: 0,
+          r2: 0,
+!         c2rust_unnamed: C2RustUnnamed_7 {
+!             c2rust_unnamed: C2RustUnnamed_8 {
+                  jtrue: 0,
+                  jfalse: 0,
+              },
+          },
+!         c2rust_unnamed_0: C2RustUnnamed_5 {
+!             c2rust_unnamed: C2RustUnnamed_6 {
+                  cmp_op: 0,
+                  cmp_r: 0,
+              },
+--- 2801,2814 ----
+          },
+          r: 0,
+          r2: 0,
+!         c2rust_unnamed: C2RustUnnamed_8 {
+!             c2rust_unnamed: C2RustUnnamed_9 {
+                  jtrue: 0,
+                  jfalse: 0,
+              },
+          },
+!         c2rust_unnamed_0: C2RustUnnamed_6 {
+!             c2rust_unnamed: C2RustUnnamed_7 {
+                  cmp_op: 0,
+                  cmp_r: 0,
+              },
+diff -p tinycc-raw/tccgen.rs mu-playground/tinycc/tccgen.rs
+*** tinycc-raw/tccgen.rs	Wed Apr 14 20:50:43 2021
+--- mu-playground/tinycc/tccgen.rs	Wed Apr 14 20:52:48 2021
+*************** unsafe extern "C" fn PUT_R_RET(mut sv: *
+*** 2162,2168 ****
+      (*sv).r2 = R2_RET(t) as std::os::raw::c_ushort;
+  }
+  /* returns function return register class for type t */
+!  extern "C" fn RC_RET(mut t: std::os::raw::c_int) -> std::os::raw::c_int {
+      return reg_classes[R_RET(t) as usize]
+          & !(0x2 as std::os::raw::c_int | 0x1 as std::os::raw::c_int);
+  }
+--- 2162,2168 ----
+      (*sv).r2 = R2_RET(t) as std::os::raw::c_ushort;
+  }
+  /* returns function return register class for type t */
+! unsafe extern "C" fn RC_RET(mut t: std::os::raw::c_int) -> std::os::raw::c_int {
+      return reg_classes[R_RET(t) as usize]
+          & !(0x2 as std::os::raw::c_int | 0x1 as std::os::raw::c_int);
+  }

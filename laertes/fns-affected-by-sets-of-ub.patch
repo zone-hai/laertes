@@ -1,0 +1,31 @@
+*** src/bin/unsafe-counter-old.rs	2021-07-12 16:38:16.000000000 -0700
+--- src/bin/unsafe-counter.rs	2021-08-08 21:35:40.018291433 -0700
+*************** impl<'tcx> LateLintPass<'tcx> for Unsafe
+*** 676,681 ****
+--- 676,701 ----
+                  )
+                  .count()
+          );
++         print!("Benchmark,Statistic");
++         for ub in powerset(&ALL_UNSAFE_BEHAVIOR) {
++             print!(",\"{:?}\"", ub)
++         }
++         print!("\n{},UnsafeFns", benchmark_name);
++         for ub in powerset(&ALL_UNSAFE_BEHAVIOR) {
++             let ub_set = ub.into_iter().collect::<BTreeSet<UnsafeBehavior>>();
++             print!(
++                 ",{}",
++                 call_graph
++                     .unsafe_behavior()
++                     .iter()
++                     .filter(
++                         |(name, ubs)| self.fn_infos.get(*name).map_or(false, |f| f.is_unsafe)
++                             && ubs.is_subset(&ub_set)
++                     )
++                     .count()
++             );
++         }
++         println!("");
+      }
+  }
+  

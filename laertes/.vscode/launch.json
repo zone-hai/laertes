@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug libxml2",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceRoot}/target/debug/resolve-lifetimes",
+            "args": ["/root/lab-2.0/lab/laertes/rewrite-workspace/libxml2_rust/lib.rs", "-L", "/root/lab-2.0/lab/laertes/rewrite-workspace/libxml2_rust/target/debug/deps"],
+            "env": {
+                "LD_LIBRARY_PATH": "/root/.rustup/toolchains/nightly-2021-11-22-x86_64-unknown-linux-gnu/lib", 
+            },
+            "cwd": "${workspaceRoot}",
+        },
+
+        {
+            "name": "Debug curl",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceRoot}/target/debug/resolve-lifetimes",
+            "args": ["/root/lab-2.0/lab/laertes/rewrite-workspace/curl-rust/lib.rs", "-L", "/root/lab-2.0/lab/laertes/rewrite-workspace/curl-rust/target/debug/deps"],
+            "env": {
+                "LD_LIBRARY_PATH": "/root/.rustup/toolchains/nightly-2021-11-22-x86_64-unknown-linux-gnu/lib", 
+            },
+            "cwd": "${workspaceRoot}",
+        }
+    ]
+}

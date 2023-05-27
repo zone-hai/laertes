@@ -1,0 +1,16 @@
+[package]
+name = "c2rust-bitfields"
+authors = ["C2Rust"]
+version = "0.3.0"
+publish = false
+edition = "2018"
+autobins = false
+
+[dependencies]
+c2rust-bitfields-derive = { version = "0.17.0", path = "../c2rust-bitfields-derive" }
+
+[dev-dependencies]
+libc = "0.2"
+
+[features]
+no_std = []

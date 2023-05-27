@@ -1,0 +1,134 @@
+diff -pr mu-playground/optipng-pre/src/zlib/deflate.rs mu-playground/optipng/src/zlib/deflate.rs
+*** mu-playground/optipng-pre/src/zlib/deflate.rs	2021-07-12 18:54:57.596012074 -0700
+--- mu-playground/optipng/src/zlib/deflate.rs	2021-07-09 04:01:26.112541062 -0700
+*************** pub unsafe extern "C" fn deflateSetDicti
+*** 710,716 ****
+      }
+      /* insert dictionary into window and hash */
+      avail = (*strm).avail_in;
+!     next = (*strm).next_in;
+      (*strm).avail_in = dictLength;
+      (*strm).next_in = dictionary as *mut Bytef;
+      fill_window(s);
+--- 710,716 ----
+      }
+      /* insert dictionary into window and hash */
+      avail = (*strm).avail_in;
+!     next = (*strm).next_in as *mut u8;
+      (*strm).avail_in = dictLength;
+      (*strm).next_in = dictionary as *mut Bytef;
+      fill_window(s);
+diff -pr mu-playground/optipng-pre/src/zlib/gzread.rs mu-playground/optipng/src/zlib/gzread.rs
+*** mu-playground/optipng-pre/src/zlib/gzread.rs	2021-07-12 18:54:57.600011999 -0700
+--- mu-playground/optipng/src/zlib/gzread.rs	2021-07-09 04:01:26.104541210 -0700
+*************** unsafe extern "C" fn gz_avail(mut state:
+*** 118,124 ****
+          if (*strm).avail_in != 0 {
+              /* copy what's there to the start */
+              let mut p: *mut std::os::raw::c_uchar = (*state).in_0;
+!             let mut q: *const std::os::raw::c_uchar = (*strm).next_in;
+              let mut n: std::os::raw::c_uint = (*strm).avail_in;
+              loop  {
+                  let fresh0 = q;
+--- 118,124 ----
+          if (*strm).avail_in != 0 {
+              /* copy what's there to the start */
+              let mut p: *mut std::os::raw::c_uchar = (*state).in_0;
+!             let mut q: *const std::os::raw::c_uchar = (*strm).next_in as *mut u8;
+              let mut n: std::os::raw::c_uint = (*strm).avail_in;
+              loop  {
+                  let fresh0 = q;
+diff -pr mu-playground/optipng-pre/src/zlib/infback.rs mu-playground/optipng/src/zlib/infback.rs
+*** mu-playground/optipng-pre/src/zlib/infback.rs	2021-07-12 18:54:57.604011923 -0700
+--- mu-playground/optipng/src/zlib/infback.rs	2021-07-09 04:01:26.112541062 -0700
+*************** pub unsafe extern "C" fn inflateBack(mut
+*** 4123,4129 ****
+      (*state).mode = TYPE;
+      (*state).last = 0 as std::os::raw::c_int;
+      (*state).whave = 0 as std::os::raw::c_int as std::os::raw::c_uint;
+!     next = (*strm).next_in;
+      have =
+          if !next.is_null() {
+              (*strm).avail_in
+--- 4123,4129 ----
+      (*state).mode = TYPE;
+      (*state).last = 0 as std::os::raw::c_int;
+      (*state).whave = 0 as std::os::raw::c_int as std::os::raw::c_uint;
+!     next = (*strm).next_in as *mut u8;
+      have =
+          if !next.is_null() {
+              (*strm).avail_in
+*************** pub unsafe extern "C" fn inflateBack(mut
+*** 4841,4847 ****
+                  inflate_fast(strm, (*state).wsize);
+                  put = (*strm).next_out;
+                  left = (*strm).avail_out;
+!                 next = (*strm).next_in;
+                  have = (*strm).avail_in;
+                  hold = (*state).hold;
+                  bits = (*state).bits
+--- 4841,4847 ----
+                  inflate_fast(strm, (*state).wsize);
+                  put = (*strm).next_out;
+                  left = (*strm).avail_out;
+!                 next = (*strm).next_in as *mut u8;
+                  have = (*strm).avail_in;
+                  hold = (*state).hold;
+                  bits = (*state).bits
+diff -pr mu-playground/optipng-pre/src/zlib/inffast.rs mu-playground/optipng/src/zlib/inffast.rs
+*** mu-playground/optipng-pre/src/zlib/inffast.rs	2021-07-12 18:54:57.596012074 -0700
+--- mu-playground/optipng/src/zlib/inffast.rs	2021-07-09 04:01:26.112541062 -0700
+*************** pub unsafe extern "C" fn inflate_fast(mu
+*** 141,147 ****
+      let mut from: *mut std::os::raw::c_uchar = 0 as *mut std::os::raw::c_uchar;
+      /* copy state to local variables */
+      state = (*strm).state as *mut inflate_state;
+!     in_0 = (*strm).next_in;
+      last =
+          in_0.offset((*strm).avail_in.wrapping_sub(5 as std::os::raw::c_int as
+                                                        std::os::raw::c_uint) as isize);
+--- 141,147 ----
+      let mut from: *mut std::os::raw::c_uchar = 0 as *mut std::os::raw::c_uchar;
+      /* copy state to local variables */
+      state = (*strm).state as *mut inflate_state;
+!     in_0 = (*strm).next_in as *mut u8;
+      last =
+          in_0.offset((*strm).avail_in.wrapping_sub(5 as std::os::raw::c_int as
+                                                        std::os::raw::c_uint) as isize);
+diff -pr mu-playground/optipng-pre/src/zlib/inflate.rs mu-playground/optipng/src/zlib/inflate.rs
+*** mu-playground/optipng-pre/src/zlib/inflate.rs	2021-07-12 18:54:57.596012074 -0700
+--- mu-playground/optipng/src/zlib/inflate.rs	2021-07-09 04:01:26.108541136 -0700
+*************** pub unsafe extern "C" fn inflate(mut str
+*** 4391,4397 ****
+      }
+      put = (*strm).next_out;
+      left = (*strm).avail_out;
+!     next = (*strm).next_in;
+      have = (*strm).avail_in;
+      hold = (*state).hold;
+      bits = (*state).bits;
+--- 4391,4397 ----
+      }
+      put = (*strm).next_out;
+      left = (*strm).avail_out;
+!     next = (*strm).next_in as *mut u8;
+      have = (*strm).avail_in;
+      hold = (*state).hold;
+      bits = (*state).bits;
+*************** pub unsafe extern "C" fn inflate(mut str
+*** 5264,5270 ****
+                          inflate_fast(strm, out);
+                          put = (*strm).next_out;
+                          left = (*strm).avail_out;
+!                         next = (*strm).next_in;
+                          have = (*strm).avail_in;
+                          hold = (*state).hold;
+                          bits = (*state).bits;
+--- 5264,5270 ----
+                          inflate_fast(strm, out);
+                          put = (*strm).next_out;
+                          left = (*strm).avail_out;
+!                         next = (*strm).next_in as *mut u8;
+                          have = (*strm).avail_in;
+                          hold = (*state).hold;
+                          bits = (*state).bits;

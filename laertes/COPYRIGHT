@@ -1,0 +1,9 @@
+Copyright 2021 - Mehmet Emre and Ryan Schroeder
+
+Laertes is dual-licensed under Apache-2.0 and MIT licenses. See
+LICENSE-APACHE and LICENSE-MIT for the license terms.
+
+The test inputs under the ~/lab/laertes/test-inputs/ directory are
+licensed under different terms by different projects. Please refer to
+the license or readme files under each test program's directory for
+its license terms.
