@@ -1271,7 +1271,8 @@ pub unsafe extern "C" fn xmlStrchr(
     mut val: xmlChar,
 ) -> *const xmlChar {
     if str.is_null() {
-        return 0 as *const xmlChar;
+        // type
+        return 0 as *const libc::c_void as *const xmlChar;
     }
     while *str as libc::c_int != 0 as libc::c_int {
         if *str as libc::c_int == val as libc::c_int {
@@ -1843,7 +1844,8 @@ pub unsafe extern "C" fn xmlUTF8Strpos(
 ) -> *const xmlChar {
     let mut ch: libc::c_int = 0;
     if utf.is_null() {
-        return 0 as *const xmlChar;
+        // type
+        return 0 as *const libc::c_void as *const xmlChar;
     }
     if pos < 0 as libc::c_int {
         return 0 as *const xmlChar;

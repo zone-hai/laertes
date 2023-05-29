@@ -1,1 +1,1 @@
-/home/xial/lab-v2.0/lab/laertes/rewrite-workspace/curl-rust/lib.rs -L all=/home/xial/lab-v2.0/lab/laertes/rewrite-workspace/curl-rust/target/debug/deps
+/home/xial/laertes/laertes/rewrite-workspace/curl-rust/lib.rs -L all=/home/xial/laertes/laertes/rewrite-workspace/curl-rust/target/debug/deps

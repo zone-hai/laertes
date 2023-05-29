@@ -32,12 +32,6 @@ def main():
     replace_text(work_dir, 'libc::c_schar', 'i8')
     replace_text(work_dir, 'libc::c_double', 'f64')
 
-    # with open('src/refslice.rs', 'r') as f:
-    #     content = f.read()
-
-    # with open(work_dir + '/lib.rs', 'a') as f:
-    #     f.write(content)
-
 
 if __name__ == "__main__":
     main()

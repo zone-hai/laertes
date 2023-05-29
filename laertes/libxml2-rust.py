@@ -3,8 +3,6 @@ import re
 
 pattern_1 = r"let\s+ref\s+mut\s+(\w+)\s*=\s*([\s\S]*?);"
 pattern_2 = r"let\s+ref\s+(\w+)\s*=\s*(.*);"
-pattern_3 = r"\s+0\s+as\s+\*mut"
-pattern_4 = r"(\s+\d\s+as\s+\*const\s+\[.*?\])"
 
 def replace_text(dir_path, old_text, new_text):
     for root, dirs, files in os.walk(dir_path):
@@ -13,9 +11,9 @@ def replace_text(dir_path, old_text, new_text):
                 file_path = os.path.join(root, file)
                 with open(file_path, 'r') as f:
                     content = f.read()
-                result_1 = re.sub(old_text, new_text, content)
+                result = re.sub(old_text, new_text, content)
                 with open(file_path, 'w') as f:
-                    f.write(result_1)
+                    f.write(result)
 
 def replace_pattern_1(dir_path):
     for root, dirs, files in os.walk(dir_path):
@@ -24,9 +22,9 @@ def replace_pattern_1(dir_path):
                 file_path = os.path.join(root, file)
                 with open(file_path, 'r') as f:
                     content = f.read()
-                result_2 = re.sub(pattern_1, r"let \1 = &mut (\2);", content)
+                result = re.sub(pattern_1, r"let \1 = &mut (\2);", content)
                 with open(file_path, 'w') as f:
-                    f.write(result_2)
+                    f.write(result)
 
 def replace_pattern_2(dir_path):
     for root, dirs, files in os.walk(dir_path):
@@ -35,9 +33,9 @@ def replace_pattern_2(dir_path):
                 file_path = os.path.join(root, file)
                 with open(file_path, 'r') as f:
                     content = f.read()
-                result_3 = re.sub(pattern_2, r"let \1 = &(\2);", content)
+                result = re.sub(pattern_2, r"let \1 = &(\2);", content)
                 with open(file_path, 'w') as f:
-                    f.write(result_3)
+                    f.write(result)
 
 def replace_pattern_3(dir_path):
     for root, dirs, files in os.walk(dir_path):
@@ -46,14 +44,11 @@ def replace_pattern_3(dir_path):
                 file_path = os.path.join(root, file)
                 with open(file_path, 'r') as f:
                     content = f.read()
-                # pattern = r'0\s+as\s+\*mut\s+(\w+)'
-                # replace = r'0 as *mut libc::c_void as *mut \1'
-                # pattern = r'0\s+as\s+\*mut\s+((?<!libc::c_void )\w+)'
                 pattern = r'(?<!&)\b0\s+as\s+\*mut\s+((?:(?!libc::c_void|\*mut|\*const|i8|u8|i16|u16|i32|u32|i64|u64|f32|f64)[a-zA-Z0-9_])+)'
                 replace = r'0 as *mut libc::c_void as *mut \1'
-                result_3 = re.sub(pattern, replace, content)
+                result = re.sub(pattern, replace, content)
                 with open(file_path, 'w') as f:
-                    f.write(result_3)
+                    f.write(result)
 
 def replace_pattern_4(dir_path):
     for root, dirs, files in os.walk(dir_path):
@@ -64,9 +59,9 @@ def replace_pattern_4(dir_path):
                     content = f.read()
                 pattern = r'(?<!&)\b0\s+as\s+\*const\s+((?:(?!libc::c_void|\*mut|\*const|i8|u8|i16|u16|i32|u32|i64|u64|f32|f64)[a-zA-Z0-9_])+)'
                 replace = r'0 as *const libc::c_void as *const \1'
-                result_4 = re.sub(pattern, replace, content)
+                result = re.sub(pattern, replace, content)
                 with open(file_path, 'w') as f:
-                    f.write(result_4)
+                    f.write(result)
 
 
 def main():
