@@ -21,7 +21,7 @@ use laertes::{
     rustc_span::Span,
     solver::{SimpleTerm::LV, Term},
     types::Type,
-    util,
+    util::{self, powerset},
     util::{HashMap, HashSet},
     Name,
 };
@@ -42,7 +42,7 @@ struct Flags {
 impl Flags {
     fn new() -> Self {
         Flags {
-            print_per_fn_stats: false,
+            print_per_fn_stats: true,
             count_indirect: false,
             non_limit: false,
             benchmark_name: "(unknown)".to_string(),
@@ -671,8 +671,8 @@ impl<'tcx> LateLintPass<'tcx> for UnsafeCounter {
             print!(",{}", self.deref_counts.get(set).cloned().unwrap_or(0));
         }
 
-        //print!("\n{},NonUniqueFns", benchmark_name);
-        //for set in &ptr_use_sets {
+        // print!("\n{},NonUniqueFns", benchmark_name);
+        // for set in &ptr_use_sets {
         //    print!(
         //        ",{}",
         //        self.fn_infos
@@ -686,10 +686,10 @@ impl<'tcx> LateLintPass<'tcx> for UnsafeCounter {
         //            })
         //            .count()
         //    );
-        //}
+        // }
 
-        //print!("\n{},FnsExact", benchmark_name);
-        //for set in &ptr_use_sets {
+        // print!("\n{},FnsExact", benchmark_name);
+        // for set in &ptr_use_sets {
         //    print!(
         //        ",{}",
         //        self.fn_infos
@@ -702,7 +702,7 @@ impl<'tcx> LateLintPass<'tcx> for UnsafeCounter {
         //            })
         //            .count()
         //    );
-        //}
+        // }
         println!();
 
         // println!("{}", "unsafe behavior CSV".bold().blue());
@@ -719,37 +719,37 @@ impl<'tcx> LateLintPass<'tcx> for UnsafeCounter {
         //             .sum::<usize>()
         //     );
         // }
-        // print!("\n{},ExactUnsafeFns", benchmark_name);
-        // for ub in powerset(&ALL_UNSAFE_BEHAVIOR) {
-        //     let ub_set = ub.into_iter().collect::<BTreeSet<UnsafeBehavior>>();
-        //     print!(
-        //         ",{}",
-        //         call_graph
-        //             .unsafe_behavior()
-        //             .iter()
-        //             .filter(
-        //                 |(name, ubs)| self.fn_infos.get(*name).map_or(false, |f| f.is_unsafe)
-        //                     && **ubs == ub_set
-        //             )
-        //             .count()
-        //     );
-        // }
-        // print!("\n{},UnsafeFns", benchmark_name);
-        // for ub in powerset(&ALL_UNSAFE_BEHAVIOR) {
-        //     let ub_set = ub.into_iter().collect::<BTreeSet<UnsafeBehavior>>();
-        //     print!(
-        //         ",{}",
-        //         call_graph
-        //             .unsafe_behavior()
-        //             .iter()
-        //             .filter(
-        //                 |(name, ubs)| self.fn_infos.get(*name).map_or(false, |f| f.is_unsafe)
-        //                     && ubs.is_subset(&ub_set)
-        //             )
-        //             .count()
-        //     );
-        // }
-        // println!("");
+        print!("\n{},ExactUnsafeFns", benchmark_name);
+        for ub in powerset(&ALL_UNSAFE_BEHAVIOR) {
+            let ub_set = ub.into_iter().collect::<BTreeSet<UnsafeBehavior>>();
+            print!(
+                ",{}",
+                call_graph
+                    .unsafe_behavior()
+                    .iter()
+                    .filter(
+                        |(name, ubs)| self.fn_infos.get(*name).map_or(false, |f| f.is_unsafe)
+                            && **ubs == ub_set
+                    )
+                    .count()
+            );
+        }
+        print!("\n{},UnsafeFns", benchmark_name);
+        for ub in powerset(&ALL_UNSAFE_BEHAVIOR) {
+            let ub_set = ub.into_iter().collect::<BTreeSet<UnsafeBehavior>>();
+            print!(
+                ",{}",
+                call_graph
+                    .unsafe_behavior()
+                    .iter()
+                    .filter(
+                        |(name, ubs)| self.fn_infos.get(*name).map_or(false, |f| f.is_unsafe)
+                            && ubs.is_subset(&ub_set)
+                    )
+                    .count()
+            );
+        }
+        println!("");
 
         // save pointer variable names
         PTR_VARS.write().unwrap().extend(self.ptr_vars.drain());
@@ -886,7 +886,7 @@ pub fn main() {
         "there are {} non-empty eq classes",
         sizes.iter().filter(|x| **x > 0).count()
     );
-    // println!("total number of pointers: {}", sizes.into_iter().filter(|x| *x > 0).sum::<usize>());
+    println!("total number of pointers: {}", sizes.into_iter().filter(|x| *x > 0).sum::<usize>());
 
     util::report_profiling_results();
 }

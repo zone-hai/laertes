@@ -86,8 +86,8 @@ def main():
     replace_text(work_dir, 'libc::c_float', 'f32')
 
 
-    # replace_pattern_1(work_dir)
-    # replace_pattern_2(work_dir)
+    replace_pattern_1(work_dir)
+    replace_pattern_2(work_dir)
     # replace_pattern_3(work_dir)
     # replace_pattern_4(work_dir)
 
