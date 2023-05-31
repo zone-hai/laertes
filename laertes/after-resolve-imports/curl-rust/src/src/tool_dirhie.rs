@@ -16,20 +16,20 @@ extern "C" {
 }
 pub use crate::src::lib::mprintf::curl_mfprintf;
 pub use crate::src::lib::mprintf::curl_msnprintf;
-pub use crate::src::lib::mqtt::_IO_codecvt;
-pub use crate::src::src::tool_cb_rea::_IO_wide_data;
-pub use crate::src::src::tool_msgs::_IO_marker;
+pub use crate::src::lib::imap::_IO_marker;
+pub use crate::src::lib::speedcheck::_IO_codecvt;
+pub use crate::src::lib::vtls::vtls::_IO_wide_data;
 pub type __mode_t = crate::src::lib::file::__mode_t;
-pub type __off_t = crate::src::lib::http2::__off_t;
-pub type __off64_t = crate::src::lib::http2::__off64_t;
+pub type __off_t = crate::src::lib::altsvc::__off_t;
+pub type __off64_t = crate::src::lib::altsvc::__off64_t;
 pub type mode_t = __mode_t;
-pub type size_t = crate::src::lib::http2::size_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
 // #[derive(Copy, Clone)]
 
-pub type _IO_FILE = crate::src::lib::http2::_IO_FILE;
-pub type _IO_lock_t = crate::src::lib::http2::_IO_lock_t;
-pub type FILE = crate::src::lib::http2::FILE;
-pub type CURLcode = crate::src::lib::http2::CURLcode;
+pub type _IO_FILE = crate::src::lib::altsvc::_IO_FILE;
+pub type _IO_lock_t = crate::src::lib::altsvc::_IO_lock_t;
+pub type FILE = crate::src::lib::altsvc::FILE;
+pub type CURLcode = crate::src::lib::altsvc::CURLcode;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
 pub const CURLE_PROXY: CURLcode = 97;

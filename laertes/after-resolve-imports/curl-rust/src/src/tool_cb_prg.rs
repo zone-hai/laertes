@@ -39,31 +39,31 @@ pub use crate::src::lib::mprintf::curl_mfprintf;
 pub use crate::src::lib::mprintf::curl_msnprintf;
 pub use crate::src::src::tool_util::tvdiff;
 pub use crate::src::src::tool_util::tvnow;
-pub use crate::src::lib::http2::Curl_easy;
-pub use crate::src::lib::http2::curl_mime;
-pub use crate::src::lib::mqtt::_IO_codecvt;
-pub use crate::src::src::tool_cb_rea::_IO_wide_data;
-pub use crate::src::src::tool_msgs::_IO_marker;
-pub type __off_t = crate::src::lib::http2::__off_t;
-pub type __off64_t = crate::src::lib::http2::__off64_t;
-pub type __time_t = crate::src::lib::http2::__time_t;
+pub use crate::src::lib::altsvc::Curl_easy;
+pub use crate::src::lib::altsvc::curl_mime;
+pub use crate::src::lib::imap::_IO_marker;
+pub use crate::src::lib::speedcheck::_IO_codecvt;
+pub use crate::src::lib::vtls::vtls::_IO_wide_data;
+pub type __off_t = crate::src::lib::altsvc::__off_t;
+pub type __off64_t = crate::src::lib::altsvc::__off64_t;
+pub type __time_t = crate::src::lib::altsvc::__time_t;
 pub type __suseconds_t = crate::src::lib::openldap::__suseconds_t;
-pub type time_t = crate::src::lib::http2::time_t;
-pub type size_t = crate::src::lib::http2::size_t;
+pub type time_t = crate::src::lib::altsvc::time_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
 // #[derive(Copy, Clone)]
 
 pub type timeval = crate::src::lib::openldap::timeval;
-pub type curl_off_t = crate::src::lib::http2::curl_off_t;
+pub type curl_off_t = crate::src::lib::altsvc::curl_off_t;
 // #[derive(Copy, Clone)]
 
-pub type _IO_FILE = crate::src::lib::http2::_IO_FILE;
-pub type _IO_lock_t = crate::src::lib::http2::_IO_lock_t;
-pub type FILE = crate::src::lib::http2::FILE;
-pub type CURL = crate::src::lib::http2::CURL;
+pub type _IO_FILE = crate::src::lib::altsvc::_IO_FILE;
+pub type _IO_lock_t = crate::src::lib::altsvc::_IO_lock_t;
+pub type FILE = crate::src::lib::altsvc::FILE;
+pub type CURL = crate::src::lib::altsvc::CURL;
 // #[derive(Copy, Clone)]
 
-pub type curl_slist = crate::src::lib::http2::curl_slist;
-pub type CURLcode = crate::src::lib::http2::CURLcode;
+pub type curl_slist = crate::src::lib::altsvc::curl_slist;
+pub type CURLcode = crate::src::lib::altsvc::CURLcode;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
 pub const CURLE_PROXY: CURLcode = 97;
@@ -164,7 +164,7 @@ pub const CURLE_URL_MALFORMAT: CURLcode = 3;
 pub const CURLE_FAILED_INIT: CURLcode = 2;
 pub const CURLE_UNSUPPORTED_PROTOCOL: CURLcode = 1;
 pub const CURLE_OK: CURLcode = 0;
-pub type curl_TimeCond = crate::src::lib::http2::curl_TimeCond;
+pub type curl_TimeCond = crate::src::lib::altsvc::curl_TimeCond;
 pub const CURL_TIMECOND_LAST: curl_TimeCond = 4;
 pub const CURL_TIMECOND_LASTMOD: curl_TimeCond = 3;
 pub const CURL_TIMECOND_IFUNMODSINCE: curl_TimeCond = 2;
@@ -492,10 +492,10 @@ unsafe extern "C" fn fly(mut bar: *mut ProgressData, mut moved: bool) {
         .wrapping_div((1000000 as i32 / check) as u32) as i32;
     buf[pos as usize] = '#' as i32 as i8;
     fputs(buf.as_mut_ptr(), (*bar).out);
-    let ref mut fresh0 = (*bar).tick;
+    let fresh0 = &mut ((*bar).tick);
     *fresh0 = (*fresh0).wrapping_add(2 as i32 as u32);
     if (*bar).tick >= 200 as i32 as u32 {
-        let ref mut fresh1 = (*bar).tick;
+        let fresh1 = &mut ((*bar).tick);
         *fresh1 = (*fresh1).wrapping_sub(200 as i32 as u32);
     }
     (*bar).bar
@@ -552,7 +552,7 @@ pub unsafe extern "C" fn tool_progress_cb(
             fly(bar, point != (*bar).prev);
         }
     }
-    let ref mut fresh2 = (*bar).calls;
+    let fresh2 = &mut ((*bar).calls);
     *fresh2 += 1;
     if total > 0 as i32 as i64 && point != (*bar).prev {
         let mut line: [i8; 257] = [0; 257];
@@ -641,7 +641,7 @@ pub unsafe extern "C" fn progressbarinit(
     } else if (*bar).width > 256 as i32 {
         (*bar).width = 256 as i32;
     }
-    let ref mut fresh3 = (*bar).out;
+    let fresh3 = &mut ((*bar).out);
     *fresh3 = (*(*config).global).errors;
     (*bar).tick = 150 as i32 as u32;
     (*bar).barmove = 1 as i32;

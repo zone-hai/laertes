@@ -10,8 +10,8 @@ extern "C" {
 }
 pub use crate::src::lib::escape::curl_free;
 pub use crate::src::lib::easy::Curl_cmalloc;
-pub type size_t = crate::src::lib::http2::size_t;
-pub type CURLcode = crate::src::lib::http2::CURLcode;
+pub type size_t = crate::src::lib::altsvc::size_t;
+pub type CURLcode = crate::src::lib::altsvc::CURLcode;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
 pub const CURLE_PROXY: CURLcode = 97;
@@ -112,7 +112,7 @@ pub const CURLE_URL_MALFORMAT: CURLcode = 3;
 pub const CURLE_FAILED_INIT: CURLcode = 2;
 pub const CURLE_UNSUPPORTED_PROTOCOL: CURLcode = 1;
 pub const CURLE_OK: CURLcode = 0;
-pub type curl_malloc_callback = crate::src::lib::http2::curl_malloc_callback;
+pub type curl_malloc_callback = crate::src::lib::altsvc::curl_malloc_callback;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct bufref {
@@ -122,9 +122,9 @@ pub struct bufref {
 }
 #[no_mangle]
 pub unsafe extern "C" fn Curl_bufref_init(mut br: *mut bufref) {
-    let ref mut fresh0 = (*br).dtor;
+    let fresh0 = &mut ((*br).dtor);
     *fresh0 = None;
-    let ref mut fresh1 = (*br).ptr;
+    let fresh1 = &mut ((*br).ptr);
     *fresh1 = 0 as *const u8;
     (*br).len = 0 as i32 as size_t;
 }
@@ -133,9 +133,9 @@ pub unsafe extern "C" fn Curl_bufref_free(mut br: *mut bufref) {
     if !((*br).ptr).is_null() && ((*br).dtor).is_some() {
         ((*br).dtor).expect("non-null function pointer")((*br).ptr as *mut libc::c_void);
     }
-    let ref mut fresh2 = (*br).dtor;
+    let fresh2 = &mut ((*br).dtor);
     *fresh2 = None;
-    let ref mut fresh3 = (*br).ptr;
+    let fresh3 = &mut ((*br).ptr);
     *fresh3 = 0 as *const u8;
     (*br).len = 0 as i32 as size_t;
 }
@@ -147,10 +147,10 @@ pub unsafe extern "C" fn Curl_bufref_set(
     mut dtor: Option::<unsafe extern "C" fn(*mut libc::c_void) -> ()>,
 ) {
     Curl_bufref_free(br);
-    let ref mut fresh4 = (*br).ptr;
+    let fresh4 = &mut ((*br).ptr);
     *fresh4 = ptr as *const u8;
     (*br).len = len;
-    let ref mut fresh5 = (*br).dtor;
+    let fresh5 = &mut ((*br).dtor);
     *fresh5 = dtor;
 }
 #[no_mangle]

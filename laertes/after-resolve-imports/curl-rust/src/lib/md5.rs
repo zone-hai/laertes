@@ -14,10 +14,10 @@ extern "C" {
 pub use crate::src::lib::warnless::curlx_uztoui;
 pub use crate::src::lib::easy::Curl_cfree;
 pub use crate::src::lib::easy::Curl_cmalloc;
-pub type size_t = crate::src::lib::http2::size_t;
-pub type curl_malloc_callback = crate::src::lib::http2::curl_malloc_callback;
-pub type curl_free_callback = crate::src::lib::http2::curl_free_callback;
-pub type CURLcode = crate::src::lib::http2::CURLcode;
+pub type size_t = crate::src::lib::altsvc::size_t;
+pub type curl_malloc_callback = crate::src::lib::altsvc::curl_malloc_callback;
+pub type curl_free_callback = crate::src::lib::altsvc::curl_free_callback;
+pub type CURLcode = crate::src::lib::altsvc::CURLcode;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
 pub const CURLE_PROXY: CURLcode = 97;
@@ -336,14 +336,14 @@ pub unsafe extern "C" fn Curl_MD5_init(
     if ctxt.is_null() {
         return ctxt;
     }
-    let ref mut fresh0 = (*ctxt).md5_hashctx;
+    let fresh0 = &mut ((*ctxt).md5_hashctx);
     *fresh0 = Curl_cmalloc
         .expect("non-null function pointer")((*md5params).md5_ctxtsize as size_t);
     if ((*ctxt).md5_hashctx).is_null() {
         Curl_cfree.expect("non-null function pointer")(ctxt as *mut libc::c_void);
         return 0 as *mut MD5_context;
     }
-    let ref mut fresh1 = (*ctxt).md5_hash;
+    let fresh1 = &mut ((*ctxt).md5_hash);
     *fresh1 = md5params;
     (Some(((*md5params).md5_init_func).expect("non-null function pointer")))
         .expect("non-null function pointer")((*ctxt).md5_hashctx);

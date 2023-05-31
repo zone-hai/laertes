@@ -250,22 +250,22 @@ pub use crate::src::lib::urlapi::curl_url;
 pub use crate::src::lib::urlapi::curl_url_cleanup;
 pub use crate::src::lib::urlapi::curl_url_get;
 pub use crate::src::lib::urlapi::curl_url_set;
-pub use crate::src::lib::conncache::Gsasl_session;
-pub use crate::src::lib::easy::Curl_ccalloc;
-pub use crate::src::lib::easy::Curl_cfree;
-pub use crate::src::lib::easy::Curl_cmalloc;
-pub use crate::src::lib::escape::Gsasl;
-pub use crate::src::lib::mqtt::_IO_codecvt;
-pub use crate::src::lib::speedcheck::nghttp2_session;
-pub use crate::src::lib::urlapi::psl_ctx_st;
-pub use crate::src::src::tool_cb_rea::_IO_wide_data;
-pub use crate::src::src::tool_msgs::_IO_marker;
 pub use crate::src::lib::altsvc::altsvcinfo;
 pub use crate::src::lib::asyn_thread::Curl_share;
 pub use crate::src::lib::asyn_thread::thread_data;
 pub use crate::src::lib::content_encoding::contenc_writer;
 pub use crate::src::lib::easy::hsts;
 pub use crate::src::lib::ftp::http_connect_state;
+pub use crate::src::lib::altsvc::Gsasl;
+pub use crate::src::lib::easy::Curl_ccalloc;
+pub use crate::src::lib::easy::Curl_cfree;
+pub use crate::src::lib::easy::Curl_cmalloc;
+pub use crate::src::lib::hostip6::psl_ctx_st;
+pub use crate::src::lib::imap::_IO_marker;
+pub use crate::src::lib::speedcheck::_IO_codecvt;
+pub use crate::src::lib::urlapi::Gsasl_session;
+pub use crate::src::lib::version::nghttp2_session;
+pub use crate::src::lib::vtls::vtls::_IO_wide_data;
 pub use crate::src::lib::openldap::ldapconninfo;
 pub use crate::src::lib::openldap::ldapreqinfo;
 pub use crate::src::lib::smb::smb_request;
@@ -273,103 +273,39 @@ pub use crate::src::lib::telnet::TELNET;
 pub use crate::src::lib::tftp::tftp_state_data;
 pub use crate::src::lib::urlapi::Curl_URL;
 pub use crate::src::lib::vtls::openssl::ssl_backend_data;
-pub type __uint8_t = u8;
-pub type __int32_t = i32;
-pub type __uint32_t = u32;
-pub type __off_t = i64;
-pub type __off64_t = i64;
-pub type __pid_t = i32;
-pub type __time_t = i64;
-pub type __ssize_t = i64;
-pub type __socklen_t = u32;
-pub type pid_t = __pid_t;
-pub type ssize_t = __ssize_t;
-pub type time_t = __time_t;
-pub type size_t = u64;
-pub type int32_t = __int32_t;
-pub type socklen_t = __socklen_t;
-pub type sa_family_t = u16;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct sockaddr {
-    pub sa_family: sa_family_t,
-    pub sa_data: [i8; 14],
-}
-pub type curl_socklen_t = socklen_t;
-pub type curl_off_t = i64;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct _IO_FILE {
-    pub _flags: i32,
-    pub _IO_read_ptr: *mut i8,
-    pub _IO_read_end: *mut i8,
-    pub _IO_read_base: *mut i8,
-    pub _IO_write_base: *mut i8,
-    pub _IO_write_ptr: *mut i8,
-    pub _IO_write_end: *mut i8,
-    pub _IO_buf_base: *mut i8,
-    pub _IO_buf_end: *mut i8,
-    pub _IO_save_base: *mut i8,
-    pub _IO_backup_base: *mut i8,
-    pub _IO_save_end: *mut i8,
-    pub _markers: *mut _IO_marker,
-    pub _chain: *mut _IO_FILE,
-    pub _fileno: i32,
-    pub _flags2: i32,
-    pub _old_offset: __off_t,
-    pub _cur_column: u16,
-    pub _vtable_offset: i8,
-    pub _shortbuf: [i8; 1],
-    pub _lock: *mut libc::c_void,
-    pub _offset: __off64_t,
-    pub _codecvt: *mut _IO_codecvt,
-    pub _wide_data: *mut _IO_wide_data,
-    pub _freeres_list: *mut _IO_FILE,
-    pub _freeres_buf: *mut libc::c_void,
-    pub __pad5: size_t,
-    pub _mode: i32,
-    pub _unused2: [i8; 20],
-}
-pub type _IO_lock_t = ();
-pub type FILE = _IO_FILE;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct Curl_easy {
-    pub magic: u32,
-    pub next: *mut Curl_easy,
-    pub prev: *mut Curl_easy,
-    pub conn: *mut connectdata,
-    pub connect_queue: Curl_llist_element,
-    pub conn_queue: Curl_llist_element,
-    pub mstate: CURLMstate,
-    pub result: CURLcode,
-    pub msg: Curl_message,
-    pub sockets: [curl_socket_t; 5],
-    pub actions: [u8; 5],
-    pub numsocks: i32,
-    pub dns: Names,
-    pub multi: *mut Curl_multi,
-    pub multi_easy: *mut Curl_multi,
-    pub share: *mut Curl_share,
-    pub psl: *mut PslCache,
-    pub req: SingleRequest,
-    pub set: UserDefined,
-    pub cookies: *mut CookieInfo,
-    pub hsts: *mut hsts,
-    pub asi: *mut altsvcinfo,
-    pub progress: Progress,
-    pub state: UrlState,
-    pub wildcard: WildcardData,
-    pub info: PureInfo,
-    pub tsi: curl_tlssessioninfo,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct curl_tlssessioninfo {
-    pub backend: curl_sslbackend,
-    pub internals: *mut libc::c_void,
-}
-pub type curl_sslbackend = u32;
+pub type __uint8_t = crate::src::lib::altsvc::__uint8_t;
+pub type __int32_t = crate::src::lib::altsvc::__int32_t;
+pub type __uint32_t = crate::src::lib::altsvc::__uint32_t;
+pub type __off_t = crate::src::lib::altsvc::__off_t;
+pub type __off64_t = crate::src::lib::altsvc::__off64_t;
+pub type __pid_t = crate::src::lib::altsvc::__pid_t;
+pub type __time_t = crate::src::lib::altsvc::__time_t;
+pub type __ssize_t = crate::src::lib::altsvc::__ssize_t;
+pub type __socklen_t = crate::src::lib::altsvc::__socklen_t;
+pub type pid_t = crate::src::lib::altsvc::pid_t;
+pub type ssize_t = crate::src::lib::altsvc::ssize_t;
+pub type time_t = crate::src::lib::altsvc::time_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
+pub type int32_t = crate::src::lib::altsvc::int32_t;
+pub type socklen_t = crate::src::lib::altsvc::socklen_t;
+pub type sa_family_t = crate::src::lib::altsvc::sa_family_t;
+// #[derive(Copy, Clone)]
+
+pub type sockaddr = crate::src::lib::altsvc::sockaddr;
+pub type curl_socklen_t = crate::src::lib::altsvc::curl_socklen_t;
+pub type curl_off_t = crate::src::lib::altsvc::curl_off_t;
+// #[derive(Copy, Clone)]
+
+pub type _IO_FILE = crate::src::lib::altsvc::_IO_FILE;
+pub type _IO_lock_t = crate::src::lib::altsvc::_IO_lock_t;
+pub type FILE = crate::src::lib::altsvc::FILE;
+// #[derive(Copy, Clone)]
+
+pub type Curl_easy = crate::src::lib::altsvc::Curl_easy;
+// #[derive(Copy, Clone)]
+
+pub type curl_tlssessioninfo = crate::src::lib::altsvc::curl_tlssessioninfo;
+pub type curl_sslbackend = crate::src::lib::altsvc::curl_sslbackend;
 pub const CURLSSLBACKEND_RUSTLS: curl_sslbackend = 14;
 pub const CURLSSLBACKEND_BEARSSL: curl_sslbackend = 13;
 pub const CURLSSLBACKEND_MESALINK: curl_sslbackend = 12;
@@ -386,53 +322,10 @@ pub const CURLSSLBACKEND_GNUTLS: curl_sslbackend = 2;
 pub const CURLSSLBACKEND_OPENSSL: curl_sslbackend = 1;
 pub const CURLSSLBACKEND_NONE: curl_sslbackend = 0;
 // #[derive(Copy, Clone, BitfieldStruct)]
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct PureInfo {
-    pub httpcode: i32,
-    pub httpproxycode: i32,
-    pub httpversion: i32,
-    pub filetime: time_t,
-    pub header_size: curl_off_t,
-    pub request_size: curl_off_t,
-    pub proxyauthavail: u64,
-    pub httpauthavail: u64,
-    pub numconnects: i64,
-    pub contenttype: *mut i8,
-    pub wouldredirect: *mut i8,
-    pub retry_after: curl_off_t,
-    pub conn_primary_ip: [i8; 46],
-    pub conn_primary_port: i32,
-    pub conn_local_ip: [i8; 46],
-    pub conn_local_port: i32,
-    pub conn_scheme: *const i8,
-    pub conn_protocol: u32,
-    pub certs: curl_certinfo,
-    pub pxcode: CURLproxycode,
-    // #[bitfield(name = "timecond", ty = "bit", bits = "0..=0")]
-    pub timecond: [u8; 1],
-    // #[bitfield(padding)]
-    pub c2rust_padding: [u8; 3],
-}
-impl PureInfo {
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_timecond(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self.timecond;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn timecond(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self.timecond;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-}
-pub type bit = u32;
-pub type CURLproxycode = u32;
+
+pub type PureInfo = crate::src::lib::altsvc::PureInfo;
+pub type bit = crate::src::lib::altsvc::bit;
+pub type CURLproxycode = crate::src::lib::altsvc::CURLproxycode;
 pub const CURLPX_LAST: CURLproxycode = 34;
 pub const CURLPX_USER_REJECTED: CURLproxycode = 33;
 pub const CURLPX_UNKNOWN_MODE: CURLproxycode = 32;
@@ -468,49 +361,24 @@ pub const CURLPX_CLOSED: CURLproxycode = 3;
 pub const CURLPX_BAD_VERSION: CURLproxycode = 2;
 pub const CURLPX_BAD_ADDRESS_TYPE: CURLproxycode = 1;
 pub const CURLPX_OK: CURLproxycode = 0;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct curl_certinfo {
-    pub num_of_certs: i32,
-    pub certinfo: *mut *mut curl_slist,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct curl_slist {
-    pub data: *mut i8,
-    pub next: *mut curl_slist,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct WildcardData {
-    pub state: wildcard_states,
-    pub path: *mut i8,
-    pub pattern: *mut i8,
-    pub filelist: Curl_llist,
-    pub protdata: *mut libc::c_void,
-    pub dtor: wildcard_dtor,
-    pub customptr: *mut libc::c_void,
-}
-pub type wildcard_dtor = Option::<unsafe extern "C" fn(*mut libc::c_void) -> ()>;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct Curl_llist {
-    pub head: *mut Curl_llist_element,
-    pub tail: *mut Curl_llist_element,
-    pub dtor: Curl_llist_dtor,
-    pub size: size_t,
-}
-pub type Curl_llist_dtor = Option::<
-    unsafe extern "C" fn(*mut libc::c_void, *mut libc::c_void) -> (),
->;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct Curl_llist_element {
-    pub ptr: *mut libc::c_void,
-    pub prev: *mut Curl_llist_element,
-    pub next: *mut Curl_llist_element,
-}
-pub type wildcard_states = u32;
+// #[derive(Copy, Clone)]
+
+pub type curl_certinfo = crate::src::lib::altsvc::curl_certinfo;
+// #[derive(Copy, Clone)]
+
+pub type curl_slist = crate::src::lib::altsvc::curl_slist;
+// #[derive(Copy, Clone)]
+
+pub type WildcardData = crate::src::lib::altsvc::WildcardData;
+pub type wildcard_dtor = crate::src::lib::altsvc::wildcard_dtor;
+// #[derive(Copy, Clone)]
+
+pub type Curl_llist = crate::src::lib::altsvc::Curl_llist;
+pub type Curl_llist_dtor = crate::src::lib::altsvc::Curl_llist_dtor;
+// #[derive(Copy, Clone)]
+
+pub type Curl_llist_element = crate::src::lib::altsvc::Curl_llist_element;
+pub type wildcard_states = crate::src::lib::altsvc::wildcard_states;
 pub const CURLWC_DONE: wildcard_states = 7;
 pub const CURLWC_ERROR: wildcard_states = 6;
 pub const CURLWC_SKIP: wildcard_states = 5;
@@ -520,529 +388,35 @@ pub const CURLWC_MATCHING: wildcard_states = 2;
 pub const CURLWC_INIT: wildcard_states = 1;
 pub const CURLWC_CLEAR: wildcard_states = 0;
 // #[derive(Copy, Clone, BitfieldStruct)]
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct UrlState {
-    pub conn_cache: *mut conncache,
-    pub keeps_speed: curltime,
-    pub lastconnect_id: i64,
-    pub headerb: dynbuf,
-    pub buffer: *mut i8,
-    pub ulbuf: *mut i8,
-    pub current_speed: curl_off_t,
-    pub first_host: *mut i8,
-    pub retrycount: i32,
-    pub first_remote_port: i32,
-    pub session: *mut Curl_ssl_session,
-    pub sessionage: i64,
-    pub tempwrite: [tempbuf; 3],
-    pub tempcount: u32,
-    pub os_errno: i32,
-    pub scratch: *mut i8,
-    pub followlocation: i64,
-    pub prev_signal: Option::<unsafe extern "C" fn(i32) -> ()>,
-    pub digest: digestdata,
-    pub proxydigest: digestdata,
-    pub authhost: auth,
-    pub authproxy: auth,
-    pub async_0: Curl_async,
-    pub engine: *mut libc::c_void,
-    pub expiretime: curltime,
-    pub timenode: Curl_tree,
-    pub timeoutlist: Curl_llist,
-    pub expires: [time_node; 13],
-    pub most_recent_ftp_entrypath: *mut i8,
-    pub httpwant: u8,
-    pub httpversion: u8,
-    // #[bitfield(name = "prev_block_had_trailing_cr", ty = "bit", bits = "0..=0")]
-    pub prev_block_had_trailing_cr: [u8; 1],
-    // #[bitfield(padding)]
-    pub c2rust_padding: [u8; 5],
-    pub crlf_conversions: curl_off_t,
-    pub range: *mut i8,
-    pub resume_from: curl_off_t,
-    pub rtsp_next_client_CSeq: i64,
-    pub rtsp_next_server_CSeq: i64,
-    pub rtsp_CSeq_recv: i64,
-    pub infilesize: curl_off_t,
-    pub drain: size_t,
-    pub fread_func: curl_read_callback,
-    pub in_0: *mut libc::c_void,
-    pub stream_depends_on: *mut Curl_easy,
-    pub stream_weight: i32,
-    pub uh: *mut CURLU,
-    pub up: urlpieces,
-    pub httpreq: Curl_HttpReq,
-    pub url: *mut i8,
-    pub referer: *mut i8,
-    pub cookielist: *mut curl_slist,
-    pub resolve: *mut curl_slist,
-    pub trailers_bytes_sent: size_t,
-    pub trailers_buf: dynbuf,
-    pub trailers_state: trailers_state,
-    pub aptr: dynamically_allocated_data,
-    // #[bitfield(name = "multi_owned_by_easy", ty = "bit", bits = "0..=0")]
-    // #[bitfield(name = "this_is_a_follow", ty = "bit", bits = "1..=1")]
-    // #[bitfield(name = "refused_stream", ty = "bit", bits = "2..=2")]
-    // #[bitfield(name = "errorbuf", ty = "bit", bits = "3..=3")]
-    // #[bitfield(name = "allow_port", ty = "bit", bits = "4..=4")]
-    // #[bitfield(name = "authproblem", ty = "bit", bits = "5..=5")]
-    // #[bitfield(name = "ftp_trying_alternative", ty = "bit", bits = "6..=6")]
-    // #[bitfield(name = "wildcardmatch", ty = "bit", bits = "7..=7")]
-    // #[bitfield(name = "expect100header", ty = "bit", bits = "8..=8")]
-    // #[bitfield(name = "disableexpect", ty = "bit", bits = "9..=9")]
-    // #[bitfield(name = "use_range", ty = "bit", bits = "10..=10")]
-    // #[bitfield(name = "rangestringalloc", ty = "bit", bits = "11..=11")]
-    // #[bitfield(name = "done", ty = "bit", bits = "12..=12")]
-    // #[bitfield(name = "stream_depends_e", ty = "bit", bits = "13..=13")]
-    // #[bitfield(name = "previouslypending", ty = "bit", bits = "14..=14")]
-    // #[bitfield(name = "cookie_engine", ty = "bit", bits = "15..=15")]
-    // #[bitfield(name = "prefer_ascii", ty = "bit", bits = "16..=16")]
-    // #[bitfield(name = "list_only", ty = "bit", bits = "17..=17")]
-    // #[bitfield(name = "url_alloc", ty = "bit", bits = "18..=18")]
-    // #[bitfield(name = "referer_alloc", ty = "bit", bits = "19..=19")]
-    // #[bitfield(name = "wildcard_resolve", ty = "bit", bits = "20..=20")]
-    pub multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve: [u8; 3],
-    // #[bitfield(padding)]
-    pub c2rust_padding_0: [u8; 5],
-}
-impl UrlState {
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_prev_block_had_trailing_cr(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self.prev_block_had_trailing_cr;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn prev_block_had_trailing_cr(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self.prev_block_had_trailing_cr;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_multi_owned_by_easy(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn multi_owned_by_easy(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_this_is_a_follow(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (1usize, 1usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn this_is_a_follow(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (1usize, 1usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_refused_stream(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (2usize, 2usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn refused_stream(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (2usize, 2usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_errorbuf(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (3usize, 3usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn errorbuf(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (3usize, 3usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_allow_port(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (4usize, 4usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn allow_port(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (4usize, 4usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_authproblem(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (5usize, 5usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn authproblem(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (5usize, 5usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_ftp_trying_alternative(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (6usize, 6usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn ftp_trying_alternative(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (6usize, 6usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_wildcardmatch(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (7usize, 7usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn wildcardmatch(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (7usize, 7usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_expect100header(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (8usize, 8usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn expect100header(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (8usize, 8usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_disableexpect(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (9usize, 9usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn disableexpect(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (9usize, 9usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_use_range(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (10usize, 10usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn use_range(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (10usize, 10usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_rangestringalloc(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (11usize, 11usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn rangestringalloc(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (11usize, 11usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_done(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (12usize, 12usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn done(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (12usize, 12usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_stream_depends_e(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (13usize, 13usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn stream_depends_e(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (13usize, 13usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_previouslypending(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (14usize, 14usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn previouslypending(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (14usize, 14usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_cookie_engine(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (15usize, 15usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn cookie_engine(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (15usize, 15usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_prefer_ascii(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (16usize, 16usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn prefer_ascii(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (16usize, 16usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_list_only(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (17usize, 17usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn list_only(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (17usize, 17usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_url_alloc(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (18usize, 18usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn url_alloc(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (18usize, 18usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_referer_alloc(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (19usize, 19usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn referer_alloc(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (19usize, 19usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_wildcard_resolve(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (20usize, 20usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn wildcard_resolve(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .multi_owned_by_easy_this_is_a_follow_refused_stream_errorbuf_allow_port_authproblem_ftp_trying_alternative_wildcardmatch_expect100header_disableexpect_use_range_rangestringalloc_done_stream_depends_e_previouslypending_cookie_engine_prefer_ascii_list_only_url_alloc_referer_alloc_wildcard_resolve;
-        let (lhs_bit, rhs_bit) = (20usize, 20usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-}
 
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct dynamically_allocated_data {
-    pub proxyuserpwd: *mut i8,
-    pub uagent: *mut i8,
-    pub accept_encoding: *mut i8,
-    pub userpwd: *mut i8,
-    pub rangeline: *mut i8,
-    pub ref_0: *mut i8,
-    pub host: *mut i8,
-    pub cookiehost: *mut i8,
-    pub rtsp_transport: *mut i8,
-    pub te: *mut i8,
-    pub user: *mut i8,
-    pub passwd: *mut i8,
-    pub proxyuser: *mut i8,
-    pub proxypasswd: *mut i8,
-}
-pub type trailers_state = u32;
+pub type UrlState = crate::src::lib::altsvc::UrlState;
+// #[derive(Copy, Clone)]
+
+pub type dynamically_allocated_data = crate::src::lib::altsvc::dynamically_allocated_data;
+pub type trailers_state = crate::src::lib::altsvc::trailers_state;
 pub const TRAILERS_DONE: trailers_state = 3;
 pub const TRAILERS_SENDING: trailers_state = 2;
 pub const TRAILERS_INITIALIZED: trailers_state = 1;
 pub const TRAILERS_NONE: trailers_state = 0;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct dynbuf {
-    pub bufr: *mut i8,
-    pub leng: size_t,
-    pub allc: size_t,
-    pub toobig: size_t,
-}
-pub type Curl_HttpReq = u32;
+// #[derive(Copy, Clone)]
+
+pub type dynbuf = crate::src::lib::altsvc::dynbuf;
+pub type Curl_HttpReq = crate::src::lib::altsvc::Curl_HttpReq;
 pub const HTTPREQ_HEAD: Curl_HttpReq = 5;
 pub const HTTPREQ_PUT: Curl_HttpReq = 4;
 pub const HTTPREQ_POST_MIME: Curl_HttpReq = 3;
 pub const HTTPREQ_POST_FORM: Curl_HttpReq = 2;
 pub const HTTPREQ_POST: Curl_HttpReq = 1;
 pub const HTTPREQ_GET: Curl_HttpReq = 0;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct urlpieces {
-    pub scheme: *mut i8,
-    pub hostname: *mut i8,
-    pub port: *mut i8,
-    pub user: *mut i8,
-    pub password: *mut i8,
-    pub options: *mut i8,
-    pub path: *mut i8,
-    pub query: *mut i8,
-}
-pub type CURLU = Curl_URL;
-pub type curl_read_callback = Option::<
-    unsafe extern "C" fn(*mut i8, size_t, size_t, *mut libc::c_void) -> size_t,
->;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct time_node {
-    pub list: Curl_llist_element,
-    pub time: curltime,
-    pub eid: expire_id,
-}
-pub type expire_id = u32;
+// #[derive(Copy, Clone)]
+
+pub type urlpieces = crate::src::lib::altsvc::urlpieces;
+pub type CURLU = crate::src::lib::altsvc::CURLU;
+pub type curl_read_callback = crate::src::lib::altsvc::curl_read_callback;
+// #[derive(Copy, Clone)]
+
+pub type time_node = crate::src::lib::altsvc::time_node;
+pub type expire_id = crate::src::lib::altsvc::expire_id;
 pub const EXPIRE_LAST: expire_id = 13;
 pub const EXPIRE_QUIC: expire_id = 12;
 pub const EXPIRE_TOOFAST: expire_id = 11;
@@ -1057,1681 +431,64 @@ pub const EXPIRE_DNS_PER_NAME: expire_id = 3;
 pub const EXPIRE_CONNECTTIMEOUT: expire_id = 2;
 pub const EXPIRE_ASYNC_NAME: expire_id = 1;
 pub const EXPIRE_100_TIMEOUT: expire_id = 0;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct curltime {
-    pub tv_sec: time_t,
-    pub tv_usec: i32,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct Curl_tree {
-    pub smaller: *mut Curl_tree,
-    pub larger: *mut Curl_tree,
-    pub samen: *mut Curl_tree,
-    pub samep: *mut Curl_tree,
-    pub key: curltime,
-    pub payload: *mut libc::c_void,
-}
+// #[derive(Copy, Clone)]
+
+pub type curltime = crate::src::lib::altsvc::curltime;
+// #[derive(Copy, Clone)]
+
+pub type Curl_tree = crate::src::lib::altsvc::Curl_tree;
 // #[derive(Copy, Clone, BitfieldStruct)]
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct Curl_async {
-    pub hostname: *mut i8,
-    pub dns: *mut Curl_dns_entry,
-    pub tdata: *mut thread_data,
-    pub resolver: *mut libc::c_void,
-    pub port: i32,
-    pub status: i32,
-    // #[bitfield(name = "done", ty = "bit", bits = "0..=0")]
-    pub done: [u8; 1],
-    // #[bitfield(padding)]
-    pub c2rust_padding: [u8; 7],
-}
-impl Curl_async {
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_done(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self.done;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn done(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self.done;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct Curl_dns_entry {
-    pub addr: *mut Curl_addrinfo,
-    pub timestamp: time_t,
-    pub inuse: i64,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct Curl_addrinfo {
-    pub ai_flags: i32,
-    pub ai_family: i32,
-    pub ai_socktype: i32,
-    pub ai_protocol: i32,
-    pub ai_addrlen: curl_socklen_t,
-    pub ai_canonname: *mut i8,
-    pub ai_addr: *mut sockaddr,
-    pub ai_next: *mut Curl_addrinfo,
-}
+
+pub type Curl_async = crate::src::lib::altsvc::Curl_async;
+// #[derive(Copy, Clone)]
+
+pub type Curl_dns_entry = crate::src::lib::altsvc::Curl_dns_entry;
+// #[derive(Copy, Clone)]
+
+pub type Curl_addrinfo = crate::src::lib::altsvc::Curl_addrinfo;
 // #[derive(Copy, Clone, BitfieldStruct)]
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct auth {
-    pub want: u64,
-    pub picked: u64,
-    pub avail: u64,
-    // #[bitfield(name = "done", ty = "bit", bits = "0..=0")]
-    // #[bitfield(name = "multipass", ty = "bit", bits = "1..=1")]
-    // #[bitfield(name = "iestyle", ty = "bit", bits = "2..=2")]
-    pub done_multipass_iestyle: [u8; 1],
-    // #[bitfield(padding)]
-    pub c2rust_padding: [u8; 7],
-}
-impl auth {
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_done(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self.done_multipass_iestyle;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn done(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self.done_multipass_iestyle;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_multipass(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self.done_multipass_iestyle;
-        let (lhs_bit, rhs_bit) = (1usize, 1usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn multipass(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self.done_multipass_iestyle;
-        let (lhs_bit, rhs_bit) = (1usize, 1usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_iestyle(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self.done_multipass_iestyle;
-        let (lhs_bit, rhs_bit) = (2usize, 2usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn iestyle(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self.done_multipass_iestyle;
-        let (lhs_bit, rhs_bit) = (2usize, 2usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-}
+
+pub type auth = crate::src::lib::altsvc::auth;
 // #[derive(Copy, Clone, BitfieldStruct)]
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct digestdata {
-    pub nonce: *mut i8,
-    pub cnonce: *mut i8,
-    pub realm: *mut i8,
-    pub algo: i32,
-    pub opaque: *mut i8,
-    pub qop: *mut i8,
-    pub algorithm: *mut i8,
-    pub nc: i32,
-    // #[bitfield(name = "stale", ty = "bit", bits = "0..=0")]
-    // #[bitfield(name = "userhash", ty = "bit", bits = "1..=1")]
-    pub stale_userhash: [u8; 1],
-    // #[bitfield(padding)]
-    pub c2rust_padding: [u8; 3],
-}
-impl digestdata {
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_stale(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self.stale_userhash;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn stale(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self.stale_userhash;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_userhash(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self.stale_userhash;
-        let (lhs_bit, rhs_bit) = (1usize, 1usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn userhash(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self.stale_userhash;
-        let (lhs_bit, rhs_bit) = (1usize, 1usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct tempbuf {
-    pub b: dynbuf,
-    pub type_0: i32,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct Curl_ssl_session {
-    pub name: *mut i8,
-    pub conn_to_host: *mut i8,
-    pub scheme: *const i8,
-    pub sessionid: *mut libc::c_void,
-    pub idsize: size_t,
-    pub age: i64,
-    pub remote_port: i32,
-    pub conn_to_port: i32,
-    pub ssl_config: ssl_primary_config,
-}
+
+pub type digestdata = crate::src::lib::altsvc::digestdata;
+// #[derive(Copy, Clone)]
+
+pub type tempbuf = crate::src::lib::altsvc::tempbuf;
+// #[derive(Copy, Clone)]
+
+pub type Curl_ssl_session = crate::src::lib::altsvc::Curl_ssl_session;
 // #[derive(Copy, Clone, BitfieldStruct)]
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct ssl_primary_config {
-    pub version: i64,
-    pub version_max: i64,
-    pub CApath: *mut i8,
-    pub CAfile: *mut i8,
-    pub issuercert: *mut i8,
-    pub clientcert: *mut i8,
-    pub random_file: *mut i8,
-    pub egdsocket: *mut i8,
-    pub cipher_list: *mut i8,
-    pub cipher_list13: *mut i8,
-    pub pinned_key: *mut i8,
-    pub cert_blob: *mut curl_blob,
-    pub ca_info_blob: *mut curl_blob,
-    pub issuercert_blob: *mut curl_blob,
-    pub curves: *mut i8,
-    // #[bitfield(name = "verifypeer", ty = "bit", bits = "0..=0")]
-    // #[bitfield(name = "verifyhost", ty = "bit", bits = "1..=1")]
-    // #[bitfield(name = "verifystatus", ty = "bit", bits = "2..=2")]
-    // #[bitfield(name = "sessionid", ty = "bit", bits = "3..=3")]
-    pub verifypeer_verifyhost_verifystatus_sessionid: [u8; 1],
-    // #[bitfield(padding)]
-    pub c2rust_padding: [u8; 7],
-}
-impl ssl_primary_config {
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_verifypeer(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self.verifypeer_verifyhost_verifystatus_sessionid;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn verifypeer(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self.verifypeer_verifyhost_verifystatus_sessionid;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_verifyhost(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self.verifypeer_verifyhost_verifystatus_sessionid;
-        let (lhs_bit, rhs_bit) = (1usize, 1usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn verifyhost(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self.verifypeer_verifyhost_verifystatus_sessionid;
-        let (lhs_bit, rhs_bit) = (1usize, 1usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_verifystatus(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self.verifypeer_verifyhost_verifystatus_sessionid;
-        let (lhs_bit, rhs_bit) = (2usize, 2usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn verifystatus(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self.verifypeer_verifyhost_verifystatus_sessionid;
-        let (lhs_bit, rhs_bit) = (2usize, 2usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_sessionid(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self.verifypeer_verifyhost_verifystatus_sessionid;
-        let (lhs_bit, rhs_bit) = (3usize, 3usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn sessionid(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self.verifypeer_verifyhost_verifystatus_sessionid;
-        let (lhs_bit, rhs_bit) = (3usize, 3usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct curl_blob {
-    pub data: *mut libc::c_void,
-    pub len: size_t,
-    pub flags: u32,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct conncache {
-    pub hash: Curl_hash,
-    pub num_conn: size_t,
-    pub next_connection_id: i64,
-    pub last_cleanup: curltime,
-    pub closure_handle: *mut Curl_easy,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct Curl_hash {
-    pub table: *mut Curl_llist,
-    pub hash_func: hash_function,
-    pub comp_func: comp_function,
-    pub dtor: Curl_hash_dtor,
-    pub slots: i32,
-    pub size: size_t,
-}
-pub type Curl_hash_dtor = Option::<unsafe extern "C" fn(*mut libc::c_void) -> ()>;
-pub type comp_function = Option::<
-    unsafe extern "C" fn(*mut libc::c_void, size_t, *mut libc::c_void, size_t) -> size_t,
->;
-pub type hash_function = Option::<
-    unsafe extern "C" fn(*mut libc::c_void, size_t, size_t) -> size_t,
->;
+
+pub type ssl_primary_config = crate::src::lib::altsvc::ssl_primary_config;
+// #[derive(Copy, Clone)]
+
+pub type curl_blob = crate::src::lib::altsvc::curl_blob;
+// #[derive(Copy, Clone)]
+
+pub type conncache = crate::src::lib::altsvc::conncache;
+// #[derive(Copy, Clone)]
+
+pub type Curl_hash = crate::src::lib::altsvc::Curl_hash;
+pub type Curl_hash_dtor = crate::src::lib::altsvc::Curl_hash_dtor;
+pub type comp_function = crate::src::lib::altsvc::comp_function;
+pub type hash_function = crate::src::lib::altsvc::hash_function;
 // #[derive(Copy, Clone, BitfieldStruct)]
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct Progress {
-    pub lastshow: time_t,
-    pub size_dl: curl_off_t,
-    pub size_ul: curl_off_t,
-    pub downloaded: curl_off_t,
-    pub uploaded: curl_off_t,
-    pub current_speed: curl_off_t,
-    pub width: i32,
-    pub flags: i32,
-    pub timespent: timediff_t,
-    pub dlspeed: curl_off_t,
-    pub ulspeed: curl_off_t,
-    pub t_nslookup: timediff_t,
-    pub t_connect: timediff_t,
-    pub t_appconnect: timediff_t,
-    pub t_pretransfer: timediff_t,
-    pub t_starttransfer: timediff_t,
-    pub t_redirect: timediff_t,
-    pub start: curltime,
-    pub t_startsingle: curltime,
-    pub t_startop: curltime,
-    pub t_acceptdata: curltime,
-    pub ul_limit_start: curltime,
-    pub ul_limit_size: curl_off_t,
-    pub dl_limit_start: curltime,
-    pub dl_limit_size: curl_off_t,
-    pub speeder: [curl_off_t; 6],
-    pub speeder_time: [curltime; 6],
-    pub speeder_c: i32,
-    // #[bitfield(name = "callback", ty = "bit", bits = "0..=0")]
-    // #[bitfield(name = "is_t_startransfer_set", ty = "bit", bits = "1..=1")]
-    pub callback_is_t_startransfer_set: [u8; 1],
-    // #[bitfield(padding)]
-    pub c2rust_padding: [u8; 3],
-}
-impl Progress {
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_callback(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self.callback_is_t_startransfer_set;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn callback(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self.callback_is_t_startransfer_set;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_is_t_startransfer_set(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self.callback_is_t_startransfer_set;
-        let (lhs_bit, rhs_bit) = (1usize, 1usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn is_t_startransfer_set(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self.callback_is_t_startransfer_set;
-        let (lhs_bit, rhs_bit) = (1usize, 1usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-}
-pub type timediff_t = curl_off_t;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct CookieInfo {
-    pub cookies: [*mut Cookie; 256],
-    pub filename: *mut i8,
-    pub numcookies: i64,
-    pub running: bool,
-    pub newsession: bool,
-    pub lastct: i32,
-    pub next_expiration: curl_off_t,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct Cookie {
-    pub next: *mut Cookie,
-    pub name: *mut i8,
-    pub value: *mut i8,
-    pub path: *mut i8,
-    pub spath: *mut i8,
-    pub domain: *mut i8,
-    pub expires: curl_off_t,
-    pub expirestr: *mut i8,
-    pub version: *mut i8,
-    pub maxage: *mut i8,
-    pub tailmatch: bool,
-    pub secure: bool,
-    pub livecookie: bool,
-    pub httponly: bool,
-    pub creationtime: i32,
-    pub prefix: u8,
-}
+
+pub type Progress = crate::src::lib::altsvc::Progress;
+pub type timediff_t = crate::src::lib::altsvc::timediff_t;
+// #[derive(Copy, Clone)]
+
+pub type CookieInfo = crate::src::lib::altsvc::CookieInfo;
+// #[derive(Copy, Clone)]
+
+pub type Cookie = crate::src::lib::altsvc::Cookie;
 // #[derive(Copy, Clone, BitfieldStruct)]
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct UserDefined {
-    pub err: *mut FILE,
-    pub debugdata: *mut libc::c_void,
-    pub errorbuffer: *mut i8,
-    pub proxyport: i64,
-    pub out: *mut libc::c_void,
-    pub in_set: *mut libc::c_void,
-    pub writeheader: *mut libc::c_void,
-    pub rtp_out: *mut libc::c_void,
-    pub use_port: i64,
-    pub httpauth: u64,
-    pub proxyauth: u64,
-    pub socks5auth: u64,
-    pub maxredirs: i64,
-    pub keep_post: i32,
-    pub postfields: *mut libc::c_void,
-    pub seek_func: curl_seek_callback,
-    pub postfieldsize: curl_off_t,
-    pub localport: u16,
-    pub localportrange: i32,
-    pub fwrite_func: curl_write_callback,
-    pub fwrite_header: curl_write_callback,
-    pub fwrite_rtp: curl_write_callback,
-    pub fread_func_set: curl_read_callback,
-    pub fprogress: curl_progress_callback,
-    pub fxferinfo: curl_xferinfo_callback,
-    pub fdebug: curl_debug_callback,
-    pub ioctl_func: curl_ioctl_callback,
-    pub fsockopt: curl_sockopt_callback,
-    pub sockopt_client: *mut libc::c_void,
-    pub fopensocket: curl_opensocket_callback,
-    pub opensocket_client: *mut libc::c_void,
-    pub fclosesocket: curl_closesocket_callback,
-    pub closesocket_client: *mut libc::c_void,
-    pub seek_client: *mut libc::c_void,
-    pub convfromnetwork: curl_conv_callback,
-    pub convtonetwork: curl_conv_callback,
-    pub convfromutf8: curl_conv_callback,
-    pub hsts_read: curl_hstsread_callback,
-    pub hsts_read_userp: *mut libc::c_void,
-    pub hsts_write: curl_hstswrite_callback,
-    pub hsts_write_userp: *mut libc::c_void,
-    pub progress_client: *mut libc::c_void,
-    pub ioctl_client: *mut libc::c_void,
-    pub timeout: i64,
-    pub connecttimeout: i64,
-    pub accepttimeout: i64,
-    pub happy_eyeballs_timeout: i64,
-    pub server_response_timeout: i64,
-    pub maxage_conn: i64,
-    pub tftp_blksize: i64,
-    pub filesize: curl_off_t,
-    pub low_speed_limit: i64,
-    pub low_speed_time: i64,
-    pub max_send_speed: curl_off_t,
-    pub max_recv_speed: curl_off_t,
-    pub set_resume_from: curl_off_t,
-    pub headers: *mut curl_slist,
-    pub proxyheaders: *mut curl_slist,
-    pub httppost: *mut curl_httppost,
-    pub mimepost: curl_mimepart,
-    pub quote: *mut curl_slist,
-    pub postquote: *mut curl_slist,
-    pub prequote: *mut curl_slist,
-    pub source_quote: *mut curl_slist,
-    pub source_prequote: *mut curl_slist,
-    pub source_postquote: *mut curl_slist,
-    pub telnet_options: *mut curl_slist,
-    pub resolve: *mut curl_slist,
-    pub connect_to: *mut curl_slist,
-    pub timecondition: curl_TimeCond,
-    pub proxytype: curl_proxytype,
-    pub timevalue: time_t,
-    pub method: Curl_HttpReq,
-    pub httpwant: u8,
-    pub ssl: ssl_config_data,
-    pub proxy_ssl: ssl_config_data,
-    pub general_ssl: ssl_general_config,
-    pub dns_cache_timeout: i64,
-    pub buffer_size: i64,
-    pub upload_buffer_size: u32,
-    pub private_data: *mut libc::c_void,
-    pub http200aliases: *mut curl_slist,
-    pub ipver: u8,
-    pub max_filesize: curl_off_t,
-    pub ftp_filemethod: curl_ftpfile,
-    pub ftpsslauth: curl_ftpauth,
-    pub ftp_ccc: curl_ftpccc,
-    pub ftp_create_missing_dirs: i32,
-    pub ssh_keyfunc: curl_sshkeycallback,
-    pub ssh_keyfunc_userp: *mut libc::c_void,
-    pub use_netrc: CURL_NETRC_OPTION,
-    pub use_ssl: curl_usessl,
-    pub new_file_perms: i64,
-    pub new_directory_perms: i64,
-    pub ssh_auth_types: i64,
-    pub str_0: [*mut i8; 80],
-    pub blobs: [*mut curl_blob; 8],
-    pub scope_id: u32,
-    pub allowed_protocols: i64,
-    pub redir_protocols: i64,
-    pub mail_rcpt: *mut curl_slist,
-    pub rtspreq: Curl_RtspReq,
-    pub rtspversion: i64,
-    pub chunk_bgn: curl_chunk_bgn_callback,
-    pub chunk_end: curl_chunk_end_callback,
-    pub fnmatch: curl_fnmatch_callback,
-    pub fnmatch_data: *mut libc::c_void,
-    pub gssapi_delegation: i64,
-    pub tcp_keepidle: i64,
-    pub tcp_keepintvl: i64,
-    pub maxconnects: size_t,
-    pub expect_100_timeout: i64,
-    pub stream_depends_on: *mut Curl_easy,
-    pub stream_weight: i32,
-    pub stream_dependents: *mut Curl_http2_dep,
-    pub resolver_start: curl_resolver_start_callback,
-    pub resolver_start_client: *mut libc::c_void,
-    pub upkeep_interval_ms: i64,
-    pub fmultidone: multidone_func,
-    pub dohfor: *mut Curl_easy,
-    pub uh: *mut CURLU,
-    pub trailer_data: *mut libc::c_void,
-    pub trailer_callback: curl_trailer_callback,
-    // #[bitfield(name = "is_fread_set", ty = "bit", bits = "0..=0")]
-    // #[bitfield(name = "is_fwrite_set", ty = "bit", bits = "1..=1")]
-    // #[bitfield(name = "free_referer", ty = "bit", bits = "2..=2")]
-    // #[bitfield(name = "tftp_no_options", ty = "bit", bits = "3..=3")]
-    // #[bitfield(name = "sep_headers", ty = "bit", bits = "4..=4")]
-    // #[bitfield(name = "cookiesession", ty = "bit", bits = "5..=5")]
-    // #[bitfield(name = "crlf", ty = "bit", bits = "6..=6")]
-    // #[bitfield(name = "strip_path_slash", ty = "bit", bits = "7..=7")]
-    // #[bitfield(name = "ssh_compression", ty = "bit", bits = "8..=8")]
-    // #[bitfield(name = "get_filetime", ty = "bit", bits = "9..=9")]
-    // #[bitfield(name = "tunnel_thru_httpproxy", ty = "bit", bits = "10..=10")]
-    // #[bitfield(name = "prefer_ascii", ty = "bit", bits = "11..=11")]
-    // #[bitfield(name = "remote_append", ty = "bit", bits = "12..=12")]
-    // #[bitfield(name = "list_only", ty = "bit", bits = "13..=13")]
-    // #[bitfield(name = "ftp_use_port", ty = "bit", bits = "14..=14")]
-    // #[bitfield(name = "ftp_use_epsv", ty = "bit", bits = "15..=15")]
-    // #[bitfield(name = "ftp_use_eprt", ty = "bit", bits = "16..=16")]
-    // #[bitfield(name = "ftp_use_pret", ty = "bit", bits = "17..=17")]
-    // #[bitfield(name = "ftp_skip_ip", ty = "bit", bits = "18..=18")]
-    // #[bitfield(name = "hide_progress", ty = "bit", bits = "19..=19")]
-    // #[bitfield(name = "http_fail_on_error", ty = "bit", bits = "20..=20")]
-    // #[bitfield(name = "http_keep_sending_on_error", ty = "bit", bits = "21..=21")]
-    // #[bitfield(name = "http_follow_location", ty = "bit", bits = "22..=22")]
-    // #[bitfield(name = "http_transfer_encoding", ty = "bit", bits = "23..=23")]
-    // #[bitfield(name = "allow_auth_to_other_hosts", ty = "bit", bits = "24..=24")]
-    // #[bitfield(name = "include_header", ty = "bit", bits = "25..=25")]
-    // #[bitfield(name = "http_set_referer", ty = "bit", bits = "26..=26")]
-    // #[bitfield(name = "http_auto_referer", ty = "bit", bits = "27..=27")]
-    // #[bitfield(name = "opt_no_body", ty = "bit", bits = "28..=28")]
-    // #[bitfield(name = "upload", ty = "bit", bits = "29..=29")]
-    // #[bitfield(name = "verbose", ty = "bit", bits = "30..=30")]
-    // #[bitfield(name = "krb", ty = "bit", bits = "31..=31")]
-    // #[bitfield(name = "reuse_forbid", ty = "bit", bits = "32..=32")]
-    // #[bitfield(name = "reuse_fresh", ty = "bit", bits = "33..=33")]
-    // #[bitfield(name = "no_signal", ty = "bit", bits = "34..=34")]
-    // #[bitfield(name = "tcp_nodelay", ty = "bit", bits = "35..=35")]
-    // #[bitfield(name = "ignorecl", ty = "bit", bits = "36..=36")]
-    // #[bitfield(name = "connect_only", ty = "bit", bits = "37..=37")]
-    // #[bitfield(name = "http_te_skip", ty = "bit", bits = "38..=38")]
-    // #[bitfield(name = "http_ce_skip", ty = "bit", bits = "39..=39")]
-    // #[bitfield(name = "proxy_transfer_mode", ty = "bit", bits = "40..=40")]
-    // #[bitfield(name = "sasl_ir", ty = "bit", bits = "41..=41")]
-    // #[bitfield(name = "wildcard_enabled", ty = "bit", bits = "42..=42")]
-    // #[bitfield(name = "tcp_keepalive", ty = "bit", bits = "43..=43")]
-    // #[bitfield(name = "tcp_fastopen", ty = "bit", bits = "44..=44")]
-    // #[bitfield(name = "ssl_enable_npn", ty = "bit", bits = "45..=45")]
-    // #[bitfield(name = "ssl_enable_alpn", ty = "bit", bits = "46..=46")]
-    // #[bitfield(name = "path_as_is", ty = "bit", bits = "47..=47")]
-    // #[bitfield(name = "pipewait", ty = "bit", bits = "48..=48")]
-    // #[bitfield(name = "suppress_connect_headers", ty = "bit", bits = "49..=49")]
-    // #[bitfield(name = "dns_shuffle_addresses", ty = "bit", bits = "50..=50")]
-    // #[bitfield(name = "stream_depends_e", ty = "bit", bits = "51..=51")]
-    // #[bitfield(name = "haproxyprotocol", ty = "bit", bits = "52..=52")]
-    // #[bitfield(name = "abstract_unix_socket", ty = "bit", bits = "53..=53")]
-    // #[bitfield(name = "disallow_username_in_url", ty = "bit", bits = "54..=54")]
-    // #[bitfield(name = "doh", ty = "bit", bits = "55..=55")]
-    // #[bitfield(name = "doh_get", ty = "bit", bits = "56..=56")]
-    // #[bitfield(name = "doh_verifypeer", ty = "bit", bits = "57..=57")]
-    // #[bitfield(name = "doh_verifyhost", ty = "bit", bits = "58..=58")]
-    // #[bitfield(name = "doh_verifystatus", ty = "bit", bits = "59..=59")]
-    // #[bitfield(name = "http09_allowed", ty = "bit", bits = "60..=60")]
-    // #[bitfield(name = "mail_rcpt_allowfails", ty = "bit", bits = "61..=61")]
-    pub is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails: [u8; 8],
-}
-impl UserDefined {
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_is_fread_set(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn is_fread_set(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_is_fwrite_set(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (1usize, 1usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn is_fwrite_set(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (1usize, 1usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_free_referer(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (2usize, 2usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn free_referer(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (2usize, 2usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_tftp_no_options(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (3usize, 3usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn tftp_no_options(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (3usize, 3usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_sep_headers(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (4usize, 4usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn sep_headers(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (4usize, 4usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_cookiesession(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (5usize, 5usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn cookiesession(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (5usize, 5usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_crlf(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (6usize, 6usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn crlf(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (6usize, 6usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_strip_path_slash(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (7usize, 7usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn strip_path_slash(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (7usize, 7usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_ssh_compression(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (8usize, 8usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn ssh_compression(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (8usize, 8usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_get_filetime(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (9usize, 9usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn get_filetime(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (9usize, 9usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_tunnel_thru_httpproxy(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (10usize, 10usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn tunnel_thru_httpproxy(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (10usize, 10usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_prefer_ascii(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (11usize, 11usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn prefer_ascii(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (11usize, 11usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_remote_append(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (12usize, 12usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn remote_append(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (12usize, 12usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_list_only(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (13usize, 13usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn list_only(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (13usize, 13usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_ftp_use_port(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (14usize, 14usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn ftp_use_port(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (14usize, 14usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_ftp_use_epsv(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (15usize, 15usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn ftp_use_epsv(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (15usize, 15usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_ftp_use_eprt(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (16usize, 16usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn ftp_use_eprt(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (16usize, 16usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_ftp_use_pret(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (17usize, 17usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn ftp_use_pret(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (17usize, 17usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_ftp_skip_ip(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (18usize, 18usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn ftp_skip_ip(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (18usize, 18usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_hide_progress(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (19usize, 19usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn hide_progress(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (19usize, 19usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_http_fail_on_error(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (20usize, 20usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn http_fail_on_error(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (20usize, 20usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_http_keep_sending_on_error(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (21usize, 21usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn http_keep_sending_on_error(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (21usize, 21usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_http_follow_location(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (22usize, 22usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn http_follow_location(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (22usize, 22usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_http_transfer_encoding(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (23usize, 23usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn http_transfer_encoding(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (23usize, 23usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_allow_auth_to_other_hosts(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (24usize, 24usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn allow_auth_to_other_hosts(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (24usize, 24usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_include_header(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (25usize, 25usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn include_header(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (25usize, 25usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_http_set_referer(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (26usize, 26usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn http_set_referer(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (26usize, 26usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_http_auto_referer(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (27usize, 27usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn http_auto_referer(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (27usize, 27usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_opt_no_body(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (28usize, 28usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn opt_no_body(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (28usize, 28usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_upload(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (29usize, 29usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn upload(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (29usize, 29usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_verbose(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (30usize, 30usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn verbose(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (30usize, 30usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_krb(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (31usize, 31usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn krb(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (31usize, 31usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_reuse_forbid(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (32usize, 32usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn reuse_forbid(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (32usize, 32usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_reuse_fresh(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (33usize, 33usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn reuse_fresh(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (33usize, 33usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_no_signal(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (34usize, 34usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn no_signal(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (34usize, 34usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_tcp_nodelay(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (35usize, 35usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn tcp_nodelay(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (35usize, 35usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_ignorecl(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (36usize, 36usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn ignorecl(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (36usize, 36usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_connect_only(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (37usize, 37usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn connect_only(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (37usize, 37usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_http_te_skip(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (38usize, 38usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn http_te_skip(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (38usize, 38usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_http_ce_skip(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (39usize, 39usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn http_ce_skip(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (39usize, 39usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_proxy_transfer_mode(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (40usize, 40usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn proxy_transfer_mode(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (40usize, 40usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_sasl_ir(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (41usize, 41usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn sasl_ir(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (41usize, 41usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_wildcard_enabled(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (42usize, 42usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn wildcard_enabled(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (42usize, 42usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_tcp_keepalive(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (43usize, 43usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn tcp_keepalive(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (43usize, 43usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_tcp_fastopen(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (44usize, 44usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn tcp_fastopen(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (44usize, 44usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_ssl_enable_npn(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (45usize, 45usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn ssl_enable_npn(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (45usize, 45usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_ssl_enable_alpn(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (46usize, 46usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn ssl_enable_alpn(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (46usize, 46usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_path_as_is(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (47usize, 47usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn path_as_is(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (47usize, 47usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_pipewait(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (48usize, 48usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn pipewait(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (48usize, 48usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_suppress_connect_headers(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (49usize, 49usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn suppress_connect_headers(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (49usize, 49usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_dns_shuffle_addresses(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (50usize, 50usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn dns_shuffle_addresses(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (50usize, 50usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_stream_depends_e(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (51usize, 51usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn stream_depends_e(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (51usize, 51usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_haproxyprotocol(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (52usize, 52usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn haproxyprotocol(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (52usize, 52usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_abstract_unix_socket(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (53usize, 53usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn abstract_unix_socket(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (53usize, 53usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_disallow_username_in_url(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (54usize, 54usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn disallow_username_in_url(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (54usize, 54usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_doh(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (55usize, 55usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn doh(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (55usize, 55usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_doh_get(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (56usize, 56usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn doh_get(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (56usize, 56usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_doh_verifypeer(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (57usize, 57usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn doh_verifypeer(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (57usize, 57usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_doh_verifyhost(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (58usize, 58usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn doh_verifyhost(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (58usize, 58usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_doh_verifystatus(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (59usize, 59usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn doh_verifystatus(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (59usize, 59usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_http09_allowed(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (60usize, 60usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn http09_allowed(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (60usize, 60usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_mail_rcpt_allowfails(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (61usize, 61usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn mail_rcpt_allowfails(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .is_fread_set_is_fwrite_set_free_referer_tftp_no_options_sep_headers_cookiesession_crlf_strip_path_slash_ssh_compression_get_filetime_tunnel_thru_httpproxy_prefer_ascii_remote_append_list_only_ftp_use_port_ftp_use_epsv_ftp_use_eprt_ftp_use_pret_ftp_skip_ip_hide_progress_http_fail_on_error_http_keep_sending_on_error_http_follow_location_http_transfer_encoding_allow_auth_to_other_hosts_include_header_http_set_referer_http_auto_referer_opt_no_body_upload_verbose_krb_reuse_forbid_reuse_fresh_no_signal_tcp_nodelay_ignorecl_connect_only_http_te_skip_http_ce_skip_proxy_transfer_mode_sasl_ir_wildcard_enabled_tcp_keepalive_tcp_fastopen_ssl_enable_npn_ssl_enable_alpn_path_as_is_pipewait_suppress_connect_headers_dns_shuffle_addresses_stream_depends_e_haproxyprotocol_abstract_unix_socket_disallow_username_in_url_doh_doh_get_doh_verifypeer_doh_verifyhost_doh_verifystatus_http09_allowed_mail_rcpt_allowfails;
-        let (lhs_bit, rhs_bit) = (61usize, 61usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-}
-pub type curl_trailer_callback = Option::<
-    unsafe extern "C" fn(*mut *mut curl_slist, *mut libc::c_void) -> i32,
->;
-pub type multidone_func = Option::<
-    unsafe extern "C" fn(*mut Curl_easy, CURLcode) -> i32,
->;
-pub type CURLcode = u32;
+
+pub type UserDefined = crate::src::lib::altsvc::UserDefined;
+pub type curl_trailer_callback = crate::src::lib::altsvc::curl_trailer_callback;
+pub type multidone_func = crate::src::lib::altsvc::multidone_func;
+pub type CURLcode = crate::src::lib::altsvc::CURLcode;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
 pub const CURLE_PROXY: CURLcode = 97;
@@ -2832,37 +589,14 @@ pub const CURLE_URL_MALFORMAT: CURLcode = 3;
 pub const CURLE_FAILED_INIT: CURLcode = 2;
 pub const CURLE_UNSUPPORTED_PROTOCOL: CURLcode = 1;
 pub const CURLE_OK: CURLcode = 0;
-pub type curl_resolver_start_callback = Option::<
-    unsafe extern "C" fn(
-        *mut libc::c_void,
-        *mut libc::c_void,
-        *mut libc::c_void,
-    ) -> i32,
->;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct Curl_http2_dep {
-    pub next: *mut Curl_http2_dep,
-    pub data: *mut Curl_easy,
-}
-pub type curl_fnmatch_callback = Option::<
-    unsafe extern "C" fn(
-        *mut libc::c_void,
-        *const i8,
-        *const i8,
-    ) -> i32,
->;
-pub type curl_chunk_end_callback = Option::<
-    unsafe extern "C" fn(*mut libc::c_void) -> i64,
->;
-pub type curl_chunk_bgn_callback = Option::<
-    unsafe extern "C" fn(
-        *const libc::c_void,
-        *mut libc::c_void,
-        i32,
-    ) -> i64,
->;
-pub type Curl_RtspReq = u32;
+pub type curl_resolver_start_callback = crate::src::lib::altsvc::curl_resolver_start_callback;
+// #[derive(Copy, Clone)]
+
+pub type Curl_http2_dep = crate::src::lib::altsvc::Curl_http2_dep;
+pub type curl_fnmatch_callback = crate::src::lib::altsvc::curl_fnmatch_callback;
+pub type curl_chunk_end_callback = crate::src::lib::altsvc::curl_chunk_end_callback;
+pub type curl_chunk_bgn_callback = crate::src::lib::altsvc::curl_chunk_bgn_callback;
+pub type Curl_RtspReq = crate::src::lib::altsvc::Curl_RtspReq;
 pub const RTSPREQ_LAST: Curl_RtspReq = 12;
 pub const RTSPREQ_RECEIVE: Curl_RtspReq = 11;
 pub const RTSPREQ_RECORD: Curl_RtspReq = 10;
@@ -2876,240 +610,60 @@ pub const RTSPREQ_ANNOUNCE: Curl_RtspReq = 3;
 pub const RTSPREQ_DESCRIBE: Curl_RtspReq = 2;
 pub const RTSPREQ_OPTIONS: Curl_RtspReq = 1;
 pub const RTSPREQ_NONE: Curl_RtspReq = 0;
-pub type curl_usessl = u32;
+pub type curl_usessl = crate::src::lib::altsvc::curl_usessl;
 pub const CURLUSESSL_LAST: curl_usessl = 4;
 pub const CURLUSESSL_ALL: curl_usessl = 3;
 pub const CURLUSESSL_CONTROL: curl_usessl = 2;
 pub const CURLUSESSL_TRY: curl_usessl = 1;
 pub const CURLUSESSL_NONE: curl_usessl = 0;
-pub type CURL_NETRC_OPTION = u32;
+pub type CURL_NETRC_OPTION = crate::src::lib::altsvc::CURL_NETRC_OPTION;
 pub const CURL_NETRC_LAST: CURL_NETRC_OPTION = 3;
 pub const CURL_NETRC_REQUIRED: CURL_NETRC_OPTION = 2;
 pub const CURL_NETRC_OPTIONAL: CURL_NETRC_OPTION = 1;
 pub const CURL_NETRC_IGNORED: CURL_NETRC_OPTION = 0;
-pub type curl_sshkeycallback = Option::<
-    unsafe extern "C" fn(
-        *mut CURL,
-        *const curl_khkey,
-        *const curl_khkey,
-        curl_khmatch,
-        *mut libc::c_void,
-    ) -> i32,
->;
-pub type curl_khmatch = u32;
+pub type curl_sshkeycallback = crate::src::lib::altsvc::curl_sshkeycallback;
+pub type curl_khmatch = crate::src::lib::altsvc::curl_khmatch;
 pub const CURLKHMATCH_LAST: curl_khmatch = 3;
 pub const CURLKHMATCH_MISSING: curl_khmatch = 2;
 pub const CURLKHMATCH_MISMATCH: curl_khmatch = 1;
 pub const CURLKHMATCH_OK: curl_khmatch = 0;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct curl_khkey {
-    pub key: *const i8,
-    pub len: size_t,
-    pub keytype: curl_khtype,
-}
-pub type curl_khtype = u32;
+// #[derive(Copy, Clone)]
+
+pub type curl_khkey = crate::src::lib::altsvc::curl_khkey;
+pub type curl_khtype = crate::src::lib::altsvc::curl_khtype;
 pub const CURLKHTYPE_ED25519: curl_khtype = 5;
 pub const CURLKHTYPE_ECDSA: curl_khtype = 4;
 pub const CURLKHTYPE_DSS: curl_khtype = 3;
 pub const CURLKHTYPE_RSA: curl_khtype = 2;
 pub const CURLKHTYPE_RSA1: curl_khtype = 1;
 pub const CURLKHTYPE_UNKNOWN: curl_khtype = 0;
-pub type CURL = Curl_easy;
-pub type curl_ftpccc = u32;
+pub type CURL = crate::src::lib::altsvc::CURL;
+pub type curl_ftpccc = crate::src::lib::altsvc::curl_ftpccc;
 pub const CURLFTPSSL_CCC_LAST: curl_ftpccc = 3;
 pub const CURLFTPSSL_CCC_ACTIVE: curl_ftpccc = 2;
 pub const CURLFTPSSL_CCC_PASSIVE: curl_ftpccc = 1;
 pub const CURLFTPSSL_CCC_NONE: curl_ftpccc = 0;
-pub type curl_ftpauth = u32;
+pub type curl_ftpauth = crate::src::lib::altsvc::curl_ftpauth;
 pub const CURLFTPAUTH_LAST: curl_ftpauth = 3;
 pub const CURLFTPAUTH_TLS: curl_ftpauth = 2;
 pub const CURLFTPAUTH_SSL: curl_ftpauth = 1;
 pub const CURLFTPAUTH_DEFAULT: curl_ftpauth = 0;
-pub type curl_ftpfile = u32;
+pub type curl_ftpfile = crate::src::lib::altsvc::curl_ftpfile;
 pub const FTPFILE_SINGLECWD: curl_ftpfile = 3;
 pub const FTPFILE_NOCWD: curl_ftpfile = 2;
 pub const FTPFILE_MULTICWD: curl_ftpfile = 1;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct ssl_general_config {
-    pub max_ssl_sessions: size_t,
-}
+// #[derive(Copy, Clone)]
+
+pub type ssl_general_config = crate::src::lib::altsvc::ssl_general_config;
 // #[derive(Copy, Clone, BitfieldStruct)]
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct ssl_config_data {
-    pub primary: ssl_primary_config,
-    pub certverifyresult: i64,
-    pub CRLfile: *mut i8,
-    pub fsslctx: curl_ssl_ctx_callback,
-    pub fsslctxp: *mut libc::c_void,
-    pub cert_type: *mut i8,
-    pub key: *mut i8,
-    pub key_blob: *mut curl_blob,
-    pub key_type: *mut i8,
-    pub key_passwd: *mut i8,
-    pub username: *mut i8,
-    pub password: *mut i8,
-    pub authtype: CURL_TLSAUTH,
-    // #[bitfield(name = "certinfo", ty = "bit", bits = "0..=0")]
-    // #[bitfield(name = "falsestart", ty = "bit", bits = "1..=1")]
-    // #[bitfield(name = "enable_beast", ty = "bit", bits = "2..=2")]
-    // #[bitfield(name = "no_revoke", ty = "bit", bits = "3..=3")]
-    // #[bitfield(name = "no_partialchain", ty = "bit", bits = "4..=4")]
-    // #[bitfield(name = "revoke_best_effort", ty = "bit", bits = "5..=5")]
-    // #[bitfield(name = "native_ca_store", ty = "bit", bits = "6..=6")]
-    // #[bitfield(name = "auto_client_cert", ty = "bit", bits = "7..=7")]
-    pub certinfo_falsestart_enable_beast_no_revoke_no_partialchain_revoke_best_effort_native_ca_store_auto_client_cert: [u8; 1],
-    // #[bitfield(padding)]
-    pub c2rust_padding: [u8; 3],
-}
-impl ssl_config_data {
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_certinfo(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .certinfo_falsestart_enable_beast_no_revoke_no_partialchain_revoke_best_effort_native_ca_store_auto_client_cert;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn certinfo(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .certinfo_falsestart_enable_beast_no_revoke_no_partialchain_revoke_best_effort_native_ca_store_auto_client_cert;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_falsestart(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .certinfo_falsestart_enable_beast_no_revoke_no_partialchain_revoke_best_effort_native_ca_store_auto_client_cert;
-        let (lhs_bit, rhs_bit) = (1usize, 1usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn falsestart(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .certinfo_falsestart_enable_beast_no_revoke_no_partialchain_revoke_best_effort_native_ca_store_auto_client_cert;
-        let (lhs_bit, rhs_bit) = (1usize, 1usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_enable_beast(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .certinfo_falsestart_enable_beast_no_revoke_no_partialchain_revoke_best_effort_native_ca_store_auto_client_cert;
-        let (lhs_bit, rhs_bit) = (2usize, 2usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn enable_beast(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .certinfo_falsestart_enable_beast_no_revoke_no_partialchain_revoke_best_effort_native_ca_store_auto_client_cert;
-        let (lhs_bit, rhs_bit) = (2usize, 2usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_no_revoke(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .certinfo_falsestart_enable_beast_no_revoke_no_partialchain_revoke_best_effort_native_ca_store_auto_client_cert;
-        let (lhs_bit, rhs_bit) = (3usize, 3usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn no_revoke(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .certinfo_falsestart_enable_beast_no_revoke_no_partialchain_revoke_best_effort_native_ca_store_auto_client_cert;
-        let (lhs_bit, rhs_bit) = (3usize, 3usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_no_partialchain(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .certinfo_falsestart_enable_beast_no_revoke_no_partialchain_revoke_best_effort_native_ca_store_auto_client_cert;
-        let (lhs_bit, rhs_bit) = (4usize, 4usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn no_partialchain(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .certinfo_falsestart_enable_beast_no_revoke_no_partialchain_revoke_best_effort_native_ca_store_auto_client_cert;
-        let (lhs_bit, rhs_bit) = (4usize, 4usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_revoke_best_effort(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .certinfo_falsestart_enable_beast_no_revoke_no_partialchain_revoke_best_effort_native_ca_store_auto_client_cert;
-        let (lhs_bit, rhs_bit) = (5usize, 5usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn revoke_best_effort(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .certinfo_falsestart_enable_beast_no_revoke_no_partialchain_revoke_best_effort_native_ca_store_auto_client_cert;
-        let (lhs_bit, rhs_bit) = (5usize, 5usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_native_ca_store(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .certinfo_falsestart_enable_beast_no_revoke_no_partialchain_revoke_best_effort_native_ca_store_auto_client_cert;
-        let (lhs_bit, rhs_bit) = (6usize, 6usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn native_ca_store(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .certinfo_falsestart_enable_beast_no_revoke_no_partialchain_revoke_best_effort_native_ca_store_auto_client_cert;
-        let (lhs_bit, rhs_bit) = (6usize, 6usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_auto_client_cert(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .certinfo_falsestart_enable_beast_no_revoke_no_partialchain_revoke_best_effort_native_ca_store_auto_client_cert;
-        let (lhs_bit, rhs_bit) = (7usize, 7usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn auto_client_cert(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .certinfo_falsestart_enable_beast_no_revoke_no_partialchain_revoke_best_effort_native_ca_store_auto_client_cert;
-        let (lhs_bit, rhs_bit) = (7usize, 7usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-}
-pub type CURL_TLSAUTH = u32;
+
+pub type ssl_config_data = crate::src::lib::altsvc::ssl_config_data;
+pub type CURL_TLSAUTH = crate::src::lib::altsvc::CURL_TLSAUTH;
 pub const CURL_TLSAUTH_LAST: CURL_TLSAUTH = 2;
 pub const CURL_TLSAUTH_SRP: CURL_TLSAUTH = 1;
 pub const CURL_TLSAUTH_NONE: CURL_TLSAUTH = 0;
-pub type curl_ssl_ctx_callback = Option::<
-    unsafe extern "C" fn(*mut CURL, *mut libc::c_void, *mut libc::c_void) -> CURLcode,
->;
-pub type curl_proxytype = u32;
+pub type curl_ssl_ctx_callback = crate::src::lib::altsvc::curl_ssl_ctx_callback;
+pub type curl_proxytype = crate::src::lib::altsvc::curl_proxytype;
 pub const CURLPROXY_SOCKS5_HOSTNAME: curl_proxytype = 7;
 pub const CURLPROXY_SOCKS4A: curl_proxytype = 6;
 pub const CURLPROXY_SOCKS5: curl_proxytype = 5;
@@ -3117,67 +671,25 @@ pub const CURLPROXY_SOCKS4: curl_proxytype = 4;
 pub const CURLPROXY_HTTPS: curl_proxytype = 2;
 pub const CURLPROXY_HTTP_1_0: curl_proxytype = 1;
 pub const CURLPROXY_HTTP: curl_proxytype = 0;
-pub type curl_TimeCond = u32;
+pub type curl_TimeCond = crate::src::lib::altsvc::curl_TimeCond;
 pub const CURL_TIMECOND_LAST: curl_TimeCond = 4;
 pub const CURL_TIMECOND_LASTMOD: curl_TimeCond = 3;
 pub const CURL_TIMECOND_IFUNMODSINCE: curl_TimeCond = 2;
 pub const CURL_TIMECOND_IFMODSINCE: curl_TimeCond = 1;
 pub const CURL_TIMECOND_NONE: curl_TimeCond = 0;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct curl_mimepart {
-    pub easy: *mut Curl_easy,
-    pub parent: *mut curl_mime,
-    pub nextpart: *mut curl_mimepart,
-    pub kind: mimekind,
-    pub flags: u32,
-    pub data: *mut i8,
-    pub readfunc: curl_read_callback,
-    pub seekfunc: curl_seek_callback,
-    pub freefunc: curl_free_callback,
-    pub arg: *mut libc::c_void,
-    pub fp: *mut FILE,
-    pub curlheaders: *mut curl_slist,
-    pub userheaders: *mut curl_slist,
-    pub mimetype: *mut i8,
-    pub filename: *mut i8,
-    pub name: *mut i8,
-    pub datasize: curl_off_t,
-    pub state: mime_state,
-    pub encoder: *const mime_encoder,
-    pub encstate: mime_encoder_state,
-    pub lastreadstatus: size_t,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct mime_encoder_state {
-    pub pos: size_t,
-    pub bufbeg: size_t,
-    pub bufend: size_t,
-    pub buf: [i8; 256],
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct mime_encoder {
-    pub name: *const i8,
-    pub encodefunc: Option::<
-        unsafe extern "C" fn(
-            *mut i8,
-            size_t,
-            bool,
-            *mut curl_mimepart,
-        ) -> size_t,
-    >,
-    pub sizefunc: Option::<unsafe extern "C" fn(*mut curl_mimepart) -> curl_off_t>,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct mime_state {
-    pub state: mimestate,
-    pub ptr: *mut libc::c_void,
-    pub offset: curl_off_t,
-}
-pub type mimestate = u32;
+// #[derive(Copy, Clone)]
+
+pub type curl_mimepart = crate::src::lib::altsvc::curl_mimepart;
+// #[derive(Copy, Clone)]
+
+pub type mime_encoder_state = crate::src::lib::altsvc::mime_encoder_state;
+// #[derive(Copy, Clone)]
+
+pub type mime_encoder = crate::src::lib::altsvc::mime_encoder;
+// #[derive(Copy, Clone)]
+
+pub type mime_state = crate::src::lib::altsvc::mime_state;
+pub type mimestate = crate::src::lib::altsvc::mimestate;
 pub const MIMESTATE_LAST: mimestate = 9;
 pub const MIMESTATE_END: mimestate = 8;
 pub const MIMESTATE_CONTENT: mimestate = 7;
@@ -3188,145 +700,53 @@ pub const MIMESTATE_EOH: mimestate = 3;
 pub const MIMESTATE_USERHEADERS: mimestate = 2;
 pub const MIMESTATE_CURLHEADERS: mimestate = 1;
 pub const MIMESTATE_BEGIN: mimestate = 0;
-pub type curl_free_callback = Option::<unsafe extern "C" fn(*mut libc::c_void) -> ()>;
-pub type curl_seek_callback = Option::<
-    unsafe extern "C" fn(*mut libc::c_void, curl_off_t, i32) -> i32,
->;
-pub type mimekind = u32;
+pub type curl_free_callback = crate::src::lib::altsvc::curl_free_callback;
+pub type curl_seek_callback = crate::src::lib::altsvc::curl_seek_callback;
+pub type mimekind = crate::src::lib::altsvc::mimekind;
 pub const MIMEKIND_LAST: mimekind = 5;
 pub const MIMEKIND_MULTIPART: mimekind = 4;
 pub const MIMEKIND_CALLBACK: mimekind = 3;
 pub const MIMEKIND_FILE: mimekind = 2;
 pub const MIMEKIND_DATA: mimekind = 1;
 pub const MIMEKIND_NONE: mimekind = 0;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct curl_mime {
-    pub easy: *mut Curl_easy,
-    pub parent: *mut curl_mimepart,
-    pub firstpart: *mut curl_mimepart,
-    pub lastpart: *mut curl_mimepart,
-    pub boundary: [i8; 41],
-    pub state: mime_state,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct curl_httppost {
-    pub next: *mut curl_httppost,
-    pub name: *mut i8,
-    pub namelength: i64,
-    pub contents: *mut i8,
-    pub contentslength: i64,
-    pub buffer: *mut i8,
-    pub bufferlength: i64,
-    pub contenttype: *mut i8,
-    pub contentheader: *mut curl_slist,
-    pub more: *mut curl_httppost,
-    pub flags: i64,
-    pub showfilename: *mut i8,
-    pub userp: *mut libc::c_void,
-    pub contentlen: curl_off_t,
-}
-pub type curl_hstswrite_callback = Option::<
-    unsafe extern "C" fn(
-        *mut CURL,
-        *mut curl_hstsentry,
-        *mut curl_index,
-        *mut libc::c_void,
-    ) -> CURLSTScode,
->;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct curl_index {
-    pub index: size_t,
-    pub total: size_t,
-}
+// #[derive(Copy, Clone)]
+
+pub type curl_mime = crate::src::lib::altsvc::curl_mime;
+// #[derive(Copy, Clone)]
+
+pub type curl_httppost = crate::src::lib::altsvc::curl_httppost;
+pub type curl_hstswrite_callback = crate::src::lib::altsvc::curl_hstswrite_callback;
+// #[derive(Copy, Clone)]
+
+pub type curl_index = crate::src::lib::altsvc::curl_index;
 // #[derive(Copy, Clone, BitfieldStruct)]
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct curl_hstsentry {
-    pub name: *mut i8,
-    pub namelen: size_t,
-    // #[bitfield(name = "includeSubDomains", ty = "u32", bits = "0..=0")]
-    pub includeSubDomains: [u8; 1],
-    pub expire: [i8; 18],
-}
-impl curl_hstsentry {
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_includeSubDomains(&mut self, int: u32) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self.includeSubDomains;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn includeSubDomains(&self) -> u32 {
-        use c2rust_bitfields::FieldType;
-        type IntType = u32;
-        let field = &self.includeSubDomains;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-}
-pub type CURLSTScode = u32;
+
+pub type curl_hstsentry = crate::src::lib::altsvc::curl_hstsentry;
+pub type CURLSTScode = crate::src::lib::altsvc::CURLSTScode;
 pub const CURLSTS_FAIL: CURLSTScode = 2;
 pub const CURLSTS_DONE: CURLSTScode = 1;
 pub const CURLSTS_OK: CURLSTScode = 0;
-pub type curl_hstsread_callback = Option::<
-    unsafe extern "C" fn(
-        *mut CURL,
-        *mut curl_hstsentry,
-        *mut libc::c_void,
-    ) -> CURLSTScode,
->;
-pub type curl_conv_callback = Option::<
-    unsafe extern "C" fn(*mut i8, size_t) -> CURLcode,
->;
-pub type curl_closesocket_callback = Option::<
-    unsafe extern "C" fn(*mut libc::c_void, curl_socket_t) -> i32,
->;
-pub type curl_socket_t = i32;
-pub type curl_opensocket_callback = Option::<
-    unsafe extern "C" fn(
-        *mut libc::c_void,
-        curlsocktype,
-        *mut curl_sockaddr,
-    ) -> curl_socket_t,
->;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct curl_sockaddr {
-    pub family: i32,
-    pub socktype: i32,
-    pub protocol: i32,
-    pub addrlen: u32,
-    pub addr: sockaddr,
-}
-pub type curlsocktype = u32;
+pub type curl_hstsread_callback = crate::src::lib::altsvc::curl_hstsread_callback;
+pub type curl_conv_callback = crate::src::lib::altsvc::curl_conv_callback;
+pub type curl_closesocket_callback = crate::src::lib::altsvc::curl_closesocket_callback;
+pub type curl_socket_t = crate::src::lib::altsvc::curl_socket_t;
+pub type curl_opensocket_callback = crate::src::lib::altsvc::curl_opensocket_callback;
+// #[derive(Copy, Clone)]
+
+pub type curl_sockaddr = crate::src::lib::altsvc::curl_sockaddr;
+pub type curlsocktype = crate::src::lib::altsvc::curlsocktype;
 pub const CURLSOCKTYPE_LAST: curlsocktype = 2;
 pub const CURLSOCKTYPE_ACCEPT: curlsocktype = 1;
 pub const CURLSOCKTYPE_IPCXN: curlsocktype = 0;
-pub type curl_sockopt_callback = Option::<
-    unsafe extern "C" fn(*mut libc::c_void, curl_socket_t, curlsocktype) -> i32,
->;
-pub type curl_ioctl_callback = Option::<
-    unsafe extern "C" fn(*mut CURL, i32, *mut libc::c_void) -> curlioerr,
->;
-pub type curlioerr = u32;
+pub type curl_sockopt_callback = crate::src::lib::altsvc::curl_sockopt_callback;
+pub type curl_ioctl_callback = crate::src::lib::altsvc::curl_ioctl_callback;
+pub type curlioerr = crate::src::lib::altsvc::curlioerr;
 pub const CURLIOE_LAST: curlioerr = 3;
 pub const CURLIOE_FAILRESTART: curlioerr = 2;
 pub const CURLIOE_UNKNOWNCMD: curlioerr = 1;
 pub const CURLIOE_OK: curlioerr = 0;
-pub type curl_debug_callback = Option::<
-    unsafe extern "C" fn(
-        *mut CURL,
-        curl_infotype,
-        *mut i8,
-        size_t,
-        *mut libc::c_void,
-    ) -> i32,
->;
-pub type curl_infotype = u32;
+pub type curl_debug_callback = crate::src::lib::altsvc::curl_debug_callback;
+pub type curl_infotype = crate::src::lib::altsvc::curl_infotype;
 pub const CURLINFO_END: curl_infotype = 7;
 pub const CURLINFO_SSL_DATA_OUT: curl_infotype = 6;
 pub const CURLINFO_SSL_DATA_IN: curl_infotype = 5;
@@ -3335,402 +755,67 @@ pub const CURLINFO_DATA_IN: curl_infotype = 3;
 pub const CURLINFO_HEADER_OUT: curl_infotype = 2;
 pub const CURLINFO_HEADER_IN: curl_infotype = 1;
 pub const CURLINFO_TEXT: curl_infotype = 0;
-pub type curl_xferinfo_callback = Option::<
-    unsafe extern "C" fn(
-        *mut libc::c_void,
-        curl_off_t,
-        curl_off_t,
-        curl_off_t,
-        curl_off_t,
-    ) -> i32,
->;
-pub type curl_progress_callback = Option::<
-    unsafe extern "C" fn(
-        *mut libc::c_void,
-        f64,
-        f64,
-        f64,
-        f64,
-    ) -> i32,
->;
-pub type curl_write_callback = Option::<
-    unsafe extern "C" fn(*mut i8, size_t, size_t, *mut libc::c_void) -> size_t,
->;
+pub type curl_xferinfo_callback = crate::src::lib::altsvc::curl_xferinfo_callback;
+pub type curl_progress_callback = crate::src::lib::altsvc::curl_progress_callback;
+pub type curl_write_callback = crate::src::lib::altsvc::curl_write_callback;
 // #[derive(Copy, Clone, BitfieldStruct)]
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct SingleRequest {
-    pub size: curl_off_t,
-    pub maxdownload: curl_off_t,
-    pub bytecount: curl_off_t,
-    pub writebytecount: curl_off_t,
-    pub headerbytecount: curl_off_t,
-    pub deductheadercount: curl_off_t,
-    pub pendingheader: curl_off_t,
-    pub start: curltime,
-    pub now: curltime,
-    pub badheader: C2RustUnnamed_1,
-    pub headerline: i32,
-    pub str_0: *mut i8,
-    pub offset: curl_off_t,
-    pub httpcode: i32,
-    pub keepon: i32,
-    pub start100: curltime,
-    pub exp100: expect100,
-    pub upgr101: upgrade101,
-    pub writer_stack: *mut contenc_writer,
-    pub timeofdoc: time_t,
-    pub bodywrites: i64,
-    pub location: *mut i8,
-    pub newurl: *mut i8,
-    pub upload_present: ssize_t,
-    pub upload_fromhere: *mut i8,
-    pub p: C2RustUnnamed,
-    pub doh: *mut dohdata,
-    // #[bitfield(name = "header", ty = "bit", bits = "0..=0")]
-    // #[bitfield(name = "content_range", ty = "bit", bits = "1..=1")]
-    // #[bitfield(name = "upload_done", ty = "bit", bits = "2..=2")]
-    // #[bitfield(name = "ignorebody", ty = "bit", bits = "3..=3")]
-    // #[bitfield(name = "http_bodyless", ty = "bit", bits = "4..=4")]
-    // #[bitfield(name = "chunk", ty = "bit", bits = "5..=5")]
-    // #[bitfield(name = "ignore_cl", ty = "bit", bits = "6..=6")]
-    // #[bitfield(name = "upload_chunky", ty = "bit", bits = "7..=7")]
-    // #[bitfield(name = "getheader", ty = "bit", bits = "8..=8")]
-    // #[bitfield(name = "forbidchunk", ty = "bit", bits = "9..=9")]
-    pub header_content_range_upload_done_ignorebody_http_bodyless_chunk_ignore_cl_upload_chunky_getheader_forbidchunk: [u8; 2],
-    // #[bitfield(padding)]
-    pub c2rust_padding: [u8; 6],
-}
-impl SingleRequest {
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_header(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .header_content_range_upload_done_ignorebody_http_bodyless_chunk_ignore_cl_upload_chunky_getheader_forbidchunk;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn header(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .header_content_range_upload_done_ignorebody_http_bodyless_chunk_ignore_cl_upload_chunky_getheader_forbidchunk;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_content_range(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .header_content_range_upload_done_ignorebody_http_bodyless_chunk_ignore_cl_upload_chunky_getheader_forbidchunk;
-        let (lhs_bit, rhs_bit) = (1usize, 1usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn content_range(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .header_content_range_upload_done_ignorebody_http_bodyless_chunk_ignore_cl_upload_chunky_getheader_forbidchunk;
-        let (lhs_bit, rhs_bit) = (1usize, 1usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_upload_done(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .header_content_range_upload_done_ignorebody_http_bodyless_chunk_ignore_cl_upload_chunky_getheader_forbidchunk;
-        let (lhs_bit, rhs_bit) = (2usize, 2usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn upload_done(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .header_content_range_upload_done_ignorebody_http_bodyless_chunk_ignore_cl_upload_chunky_getheader_forbidchunk;
-        let (lhs_bit, rhs_bit) = (2usize, 2usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_ignorebody(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .header_content_range_upload_done_ignorebody_http_bodyless_chunk_ignore_cl_upload_chunky_getheader_forbidchunk;
-        let (lhs_bit, rhs_bit) = (3usize, 3usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn ignorebody(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .header_content_range_upload_done_ignorebody_http_bodyless_chunk_ignore_cl_upload_chunky_getheader_forbidchunk;
-        let (lhs_bit, rhs_bit) = (3usize, 3usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_http_bodyless(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .header_content_range_upload_done_ignorebody_http_bodyless_chunk_ignore_cl_upload_chunky_getheader_forbidchunk;
-        let (lhs_bit, rhs_bit) = (4usize, 4usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn http_bodyless(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .header_content_range_upload_done_ignorebody_http_bodyless_chunk_ignore_cl_upload_chunky_getheader_forbidchunk;
-        let (lhs_bit, rhs_bit) = (4usize, 4usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_chunk(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .header_content_range_upload_done_ignorebody_http_bodyless_chunk_ignore_cl_upload_chunky_getheader_forbidchunk;
-        let (lhs_bit, rhs_bit) = (5usize, 5usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn chunk(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .header_content_range_upload_done_ignorebody_http_bodyless_chunk_ignore_cl_upload_chunky_getheader_forbidchunk;
-        let (lhs_bit, rhs_bit) = (5usize, 5usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_ignore_cl(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .header_content_range_upload_done_ignorebody_http_bodyless_chunk_ignore_cl_upload_chunky_getheader_forbidchunk;
-        let (lhs_bit, rhs_bit) = (6usize, 6usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn ignore_cl(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .header_content_range_upload_done_ignorebody_http_bodyless_chunk_ignore_cl_upload_chunky_getheader_forbidchunk;
-        let (lhs_bit, rhs_bit) = (6usize, 6usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_upload_chunky(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .header_content_range_upload_done_ignorebody_http_bodyless_chunk_ignore_cl_upload_chunky_getheader_forbidchunk;
-        let (lhs_bit, rhs_bit) = (7usize, 7usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn upload_chunky(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .header_content_range_upload_done_ignorebody_http_bodyless_chunk_ignore_cl_upload_chunky_getheader_forbidchunk;
-        let (lhs_bit, rhs_bit) = (7usize, 7usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_getheader(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .header_content_range_upload_done_ignorebody_http_bodyless_chunk_ignore_cl_upload_chunky_getheader_forbidchunk;
-        let (lhs_bit, rhs_bit) = (8usize, 8usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn getheader(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .header_content_range_upload_done_ignorebody_http_bodyless_chunk_ignore_cl_upload_chunky_getheader_forbidchunk;
-        let (lhs_bit, rhs_bit) = (8usize, 8usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_forbidchunk(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .header_content_range_upload_done_ignorebody_http_bodyless_chunk_ignore_cl_upload_chunky_getheader_forbidchunk;
-        let (lhs_bit, rhs_bit) = (9usize, 9usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn forbidchunk(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .header_content_range_upload_done_ignorebody_http_bodyless_chunk_ignore_cl_upload_chunky_getheader_forbidchunk;
-        let (lhs_bit, rhs_bit) = (9usize, 9usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct dohdata {
-    pub headers: *mut curl_slist,
-    pub probe: [dnsprobe; 2],
-    pub pending: u32,
-    pub port: i32,
-    pub host: *const i8,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct dnsprobe {
-    pub easy: *mut CURL,
-    pub dnstype: i32,
-    pub dohbuffer: [u8; 512],
-    pub dohlen: size_t,
-    pub serverdoh: dynbuf,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub union C2RustUnnamed {
-    pub file: *mut FILEPROTO,
-    pub ftp: *mut FTP,
-    pub http: *mut HTTP,
-    pub imap: *mut IMAP,
-    pub ldap: *mut ldapreqinfo,
-    pub mqtt: *mut MQTT,
-    pub pop3: *mut POP3,
-    pub rtsp: *mut RTSP,
-    pub smb: *mut smb_request,
-    pub smtp: *mut SMTP,
-    pub ssh: *mut SSHPROTO,
-    pub telnet: *mut TELNET,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct SSHPROTO {
-    pub path: *mut i8,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct SMTP {
-    pub transfer: curl_pp_transfer,
-    pub custom: *mut i8,
-    pub rcpt: *mut curl_slist,
-    pub rcpt_had_ok: bool,
-    pub trailing_crlf: bool,
-    pub rcpt_last_error: i32,
-    pub eob: size_t,
-}
-pub type curl_pp_transfer = u32;
+
+pub type SingleRequest = crate::src::lib::altsvc::SingleRequest;
+// #[derive(Copy, Clone)]
+
+pub type dohdata = crate::src::lib::altsvc::dohdata;
+// #[derive(Copy, Clone)]
+
+pub type dnsprobe = crate::src::lib::altsvc::dnsprobe;
+// #[derive(Copy, Clone)]
+
+pub type C2RustUnnamed = crate::src::lib::altsvc::C2RustUnnamed;
+// #[derive(Copy, Clone)]
+
+pub type SSHPROTO = crate::src::lib::altsvc::SSHPROTO;
+// #[derive(Copy, Clone)]
+
+pub type SMTP = crate::src::lib::altsvc::SMTP;
+pub type curl_pp_transfer = crate::src::lib::altsvc::curl_pp_transfer;
 pub const PPTRANSFER_NONE: curl_pp_transfer = 2;
 pub const PPTRANSFER_INFO: curl_pp_transfer = 1;
 pub const PPTRANSFER_BODY: curl_pp_transfer = 0;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct RTSP {
-    pub http_wrapper: HTTP,
-    pub CSeq_sent: i64,
-    pub CSeq_recv: i64,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct HTTP {
-    pub sendit: *mut curl_mimepart,
-    pub postsize: curl_off_t,
-    pub postdata: *const i8,
-    pub p_pragma: *const i8,
-    pub form: curl_mimepart,
-    pub backup: back,
-    pub sending: C2RustUnnamed_0,
-    pub send_buffer: dynbuf,
-    pub stream_id: int32_t,
-    pub bodystarted: bool,
-    pub header_recvbuf: dynbuf,
-    pub nread_header_recvbuf: size_t,
-    pub trailer_recvbuf: dynbuf,
-    pub status_code: i32,
-    pub pausedata: *const uint8_t,
-    pub pauselen: size_t,
-    pub close_handled: bool,
-    pub push_headers: *mut *mut i8,
-    pub push_headers_used: size_t,
-    pub push_headers_alloc: size_t,
-    pub error: uint32_t,
-    pub closed: bool,
-    pub mem: *mut i8,
-    pub len: size_t,
-    pub memlen: size_t,
-    pub upload_mem: *const uint8_t,
-    pub upload_len: size_t,
-    pub upload_left: curl_off_t,
-}
-pub type uint8_t = __uint8_t;
-pub type uint32_t = __uint32_t;
+// #[derive(Copy, Clone)]
+
+pub type RTSP = crate::src::lib::altsvc::RTSP;
+// #[derive(Copy, Clone)]
+
+pub type HTTP = crate::src::lib::altsvc::HTTP;
+pub type uint8_t = crate::src::lib::altsvc::uint8_t;
+pub type uint32_t = crate::src::lib::altsvc::uint32_t;
 pub type C2RustUnnamed_0 = u32;
 pub const HTTPSEND_BODY: C2RustUnnamed_0 = 2;
 pub const HTTPSEND_REQUEST: C2RustUnnamed_0 = 1;
 pub const HTTPSEND_NADA: C2RustUnnamed_0 = 0;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct back {
-    pub fread_func: curl_read_callback,
-    pub fread_in: *mut libc::c_void,
-    pub postdata: *const i8,
-    pub postsize: curl_off_t,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct POP3 {
-    pub transfer: curl_pp_transfer,
-    pub id: *mut i8,
-    pub custom: *mut i8,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct MQTT {
-    pub sendleftovers: *mut i8,
-    pub nsend: size_t,
-    pub npacket: size_t,
-    pub firstbyte: u8,
-    pub remaining_length: size_t,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct IMAP {
-    pub transfer: curl_pp_transfer,
-    pub mailbox: *mut i8,
-    pub uidvalidity: *mut i8,
-    pub uid: *mut i8,
-    pub mindex: *mut i8,
-    pub section: *mut i8,
-    pub partial: *mut i8,
-    pub query: *mut i8,
-    pub custom: *mut i8,
-    pub custom_params: *mut i8,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct FTP {
-    pub path: *mut i8,
-    pub pathalloc: *mut i8,
-    pub transfer: curl_pp_transfer,
-    pub downloadsize: curl_off_t,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct FILEPROTO {
-    pub path: *mut i8,
-    pub freepath: *mut i8,
-    pub fd: i32,
-}
-pub type upgrade101 = u32;
+// #[derive(Copy, Clone)]
+
+pub type back = crate::src::lib::altsvc::back;
+// #[derive(Copy, Clone)]
+
+pub type POP3 = crate::src::lib::altsvc::POP3;
+// #[derive(Copy, Clone)]
+
+pub type MQTT = crate::src::lib::altsvc::MQTT;
+// #[derive(Copy, Clone)]
+
+pub type IMAP = crate::src::lib::altsvc::IMAP;
+// #[derive(Copy, Clone)]
+
+pub type FTP = crate::src::lib::altsvc::FTP;
+// #[derive(Copy, Clone)]
+
+pub type FILEPROTO = crate::src::lib::altsvc::FILEPROTO;
+pub type upgrade101 = crate::src::lib::altsvc::upgrade101;
 pub const UPGR101_WORKING: upgrade101 = 3;
 pub const UPGR101_RECEIVED: upgrade101 = 2;
 pub const UPGR101_REQUESTED: upgrade101 = 1;
 pub const UPGR101_INIT: upgrade101 = 0;
-pub type expect100 = u32;
+pub type expect100 = crate::src::lib::altsvc::expect100;
 pub const EXP100_FAILED: expect100 = 3;
 pub const EXP100_SENDING_REQUEST: expect100 = 2;
 pub const EXP100_AWAITING_CONTINUE: expect100 = 1;
@@ -3739,60 +824,16 @@ pub type C2RustUnnamed_1 = u32;
 pub const HEADER_ALLBAD: C2RustUnnamed_1 = 2;
 pub const HEADER_PARTHEADER: C2RustUnnamed_1 = 1;
 pub const HEADER_NORMAL: C2RustUnnamed_1 = 0;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct PslCache {
-    pub psl: *const psl_ctx_t,
-    pub expires: time_t,
-    pub dynamic: bool,
-}
-pub type psl_ctx_t = psl_ctx_st;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct Curl_multi {
-    pub magic: u32,
-    pub easyp: *mut Curl_easy,
-    pub easylp: *mut Curl_easy,
-    pub num_easy: i32,
-    pub num_alive: i32,
-    pub msglist: Curl_llist,
-    pub pending: Curl_llist,
-    pub socket_cb: curl_socket_callback,
-    pub socket_userp: *mut libc::c_void,
-    pub push_cb: curl_push_callback,
-    pub push_userp: *mut libc::c_void,
-    pub hostcache: Curl_hash,
-    pub psl: PslCache,
-    pub timetree: *mut Curl_tree,
-    pub sockhash: Curl_hash,
-    pub conn_cache: conncache,
-    pub maxconnects: i64,
-    pub max_host_connections: i64,
-    pub max_total_connections: i64,
-    pub timer_cb: curl_multi_timer_callback,
-    pub timer_userp: *mut libc::c_void,
-    pub timer_lastcall: curltime,
-    pub max_concurrent_streams: u32,
-    pub wakeup_pair: [curl_socket_t; 2],
-    pub multiplexing: bool,
-    pub recheckstate: bool,
-    pub in_callback: bool,
-    pub ipv6_works: bool,
-    pub ssl_seeded: bool,
-}
-pub type curl_multi_timer_callback = Option::<
-    unsafe extern "C" fn(*mut CURLM, i64, *mut libc::c_void) -> i32,
->;
-pub type CURLM = Curl_multi;
-pub type curl_push_callback = Option::<
-    unsafe extern "C" fn(
-        *mut CURL,
-        *mut CURL,
-        size_t,
-        *mut curl_pushheaders,
-        *mut libc::c_void,
-    ) -> i32,
->;
+// #[derive(Copy, Clone)]
+
+pub type PslCache = crate::src::lib::altsvc::PslCache;
+pub type psl_ctx_t = crate::src::lib::altsvc::psl_ctx_t;
+// #[derive(Copy, Clone)]
+
+pub type Curl_multi = crate::src::lib::altsvc::Curl_multi;
+pub type curl_multi_timer_callback = crate::src::lib::altsvc::curl_multi_timer_callback;
+pub type CURLM = crate::src::lib::altsvc::CURLM;
+pub type curl_push_callback = crate::src::lib::altsvc::curl_push_callback;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct curl_pushheaders {
@@ -3827,49 +868,28 @@ pub struct nghttp2_frame_hd {
     pub flags: uint8_t,
     pub reserved: uint8_t,
 }
-pub type curl_socket_callback = Option::<
-    unsafe extern "C" fn(
-        *mut CURL,
-        curl_socket_t,
-        i32,
-        *mut libc::c_void,
-        *mut libc::c_void,
-    ) -> i32,
->;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct Names {
-    pub hostcache: *mut Curl_hash,
-    pub hostcachetype: C2RustUnnamed_2,
-}
+pub type curl_socket_callback = crate::src::lib::altsvc::curl_socket_callback;
+// #[derive(Copy, Clone)]
+
+pub type Names = crate::src::lib::altsvc::Names;
 pub type C2RustUnnamed_2 = u32;
 pub const HCACHE_SHARED: C2RustUnnamed_2 = 2;
 pub const HCACHE_MULTI: C2RustUnnamed_2 = 1;
 pub const HCACHE_NONE: C2RustUnnamed_2 = 0;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct Curl_message {
-    pub list: Curl_llist_element,
-    pub extmsg: CURLMsg,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct CURLMsg {
-    pub msg: CURLMSG,
-    pub easy_handle: *mut CURL,
-    pub data: C2RustUnnamed_3,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub union C2RustUnnamed_3 {
-    pub whatever: *mut libc::c_void,
-    pub result: CURLcode,
-}
-pub type CURLMSG = u32;
+// #[derive(Copy, Clone)]
+
+pub type Curl_message = crate::src::lib::altsvc::Curl_message;
+// #[derive(Copy, Clone)]
+
+pub type CURLMsg = crate::src::lib::altsvc::CURLMsg;
+// #[derive(Copy, Clone)]
+
+pub type C2RustUnnamed_3 = crate::src::lib::altsvc::C2RustUnnamed_3;
+pub type CURLMSG = crate::src::lib::altsvc::CURLMSG;
 pub const CURLMSG_LAST: CURLMSG = 2;
 pub const CURLMSG_DONE: CURLMSG = 1;
 pub const CURLMSG_NONE: CURLMSG = 0;
-pub type CURLMstate = u32;
+pub type CURLMstate = crate::src::lib::altsvc::CURLMstate;
 pub const MSTATE_LAST: CURLMstate = 17;
 pub const MSTATE_MSGSENT: CURLMstate = 16;
 pub const MSTATE_COMPLETED: CURLMstate = 15;
@@ -3888,110 +908,19 @@ pub const MSTATE_RESOLVING: CURLMstate = 3;
 pub const MSTATE_CONNECT: CURLMstate = 2;
 pub const MSTATE_PENDING: CURLMstate = 1;
 pub const MSTATE_INIT: CURLMstate = 0;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct connectdata {
-    pub cnnct: connstate,
-    pub bundle_node: Curl_llist_element,
-    pub chunk: Curl_chunker,
-    pub fclosesocket: curl_closesocket_callback,
-    pub closesocket_client: *mut libc::c_void,
-    pub connection_id: i64,
-    pub dns_entry: *mut Curl_dns_entry,
-    pub ip_addr: *mut Curl_addrinfo,
-    pub tempaddr: [*mut Curl_addrinfo; 2],
-    pub scope_id: u32,
-    pub transport: C2RustUnnamed_5,
-    pub host: hostname,
-    pub hostname_resolve: *mut i8,
-    pub secondaryhostname: *mut i8,
-    pub conn_to_host: hostname,
-    pub socks_proxy: proxy_info,
-    pub http_proxy: proxy_info,
-    pub port: i32,
-    pub remote_port: i32,
-    pub conn_to_port: i32,
-    pub secondary_port: u16,
-    pub primary_ip: [i8; 46],
-    pub ip_version: u8,
-    pub user: *mut i8,
-    pub passwd: *mut i8,
-    pub options: *mut i8,
-    pub sasl_authzid: *mut i8,
-    pub httpversion: u8,
-    pub now: curltime,
-    pub created: curltime,
-    pub lastused: curltime,
-    pub sock: [curl_socket_t; 2],
-    pub tempsock: [curl_socket_t; 2],
-    pub tempfamily: [i32; 2],
-    pub recv: [Option::<Curl_recv>; 2],
-    pub send: [Option::<Curl_send>; 2],
-    pub ssl: [ssl_connect_data; 2],
-    pub proxy_ssl: [ssl_connect_data; 2],
-    pub ssl_extra: *mut libc::c_void,
-    pub ssl_config: ssl_primary_config,
-    pub proxy_ssl_config: ssl_primary_config,
-    pub bits: ConnectBits,
-    pub num_addr: i32,
-    pub connecttime: curltime,
-    pub timeoutms_per_addr: [timediff_t; 2],
-    pub handler: *const Curl_handler,
-    pub given: *const Curl_handler,
-    pub keepalive: curltime,
-    pub sockfd: curl_socket_t,
-    pub writesockfd: curl_socket_t,
-    pub easyq: Curl_llist,
-    pub seek_func: curl_seek_callback,
-    pub seek_client: *mut libc::c_void,
-    pub gsasl: gsasldata,
-    pub http_ntlm_state: curlntlm,
-    pub proxy_ntlm_state: curlntlm,
-    pub ntlm: ntlmdata,
-    pub proxyntlm: ntlmdata,
-    pub trailer: dynbuf,
-    pub proto: C2RustUnnamed_4,
-    pub connect_state: *mut http_connect_state,
-    pub bundle: *mut connectbundle,
-    pub unix_domain_socket: *mut i8,
-    pub localdev: *mut i8,
-    pub localportrange: i32,
-    pub cselect_bits: i32,
-    pub waitfor: i32,
-    pub negnpn: i32,
-    pub localport: u16,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct connectbundle {
-    pub multiuse: i32,
-    pub num_connections: size_t,
-    pub conn_list: Curl_llist,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub union C2RustUnnamed_4 {
-    pub ftpc: ftp_conn,
-    pub httpc: http_conn,
-    pub sshc: ssh_conn,
-    pub tftpc: *mut tftp_state_data,
-    pub imapc: imap_conn,
-    pub pop3c: pop3_conn,
-    pub smtpc: smtp_conn,
-    pub rtspc: rtsp_conn,
-    pub smbc: smb_conn,
-    pub rtmp: *mut libc::c_void,
-    pub ldapc: *mut ldapconninfo,
-    pub mqtt: mqtt_conn,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct mqtt_conn {
-    pub state: mqttstate,
-    pub nextstate: mqttstate,
-    pub packetid: u32,
-}
-pub type mqttstate = u32;
+// #[derive(Copy, Clone)]
+
+pub type connectdata = crate::src::lib::altsvc::connectdata;
+// #[derive(Copy, Clone)]
+
+pub type connectbundle = crate::src::lib::altsvc::connectbundle;
+// #[derive(Copy, Clone)]
+
+pub type C2RustUnnamed_4 = crate::src::lib::altsvc::C2RustUnnamed_4;
+// #[derive(Copy, Clone)]
+
+pub type mqtt_conn = crate::src::lib::altsvc::mqtt_conn;
+pub type mqttstate = crate::src::lib::altsvc::mqttstate;
 pub const MQTT_NOSTATE: mqttstate = 7;
 pub const MQTT_PUB_REMAIN: mqttstate = 6;
 pub const MQTT_PUBWAIT: mqttstate = 5;
@@ -4000,61 +929,25 @@ pub const MQTT_SUBACK: mqttstate = 3;
 pub const MQTT_CONNACK: mqttstate = 2;
 pub const MQTT_REMAINING_LENGTH: mqttstate = 1;
 pub const MQTT_FIRST: mqttstate = 0;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct smb_conn {
-    pub state: smb_conn_state,
-    pub user: *mut i8,
-    pub domain: *mut i8,
-    pub share: *mut i8,
-    pub challenge: [u8; 8],
-    pub session_key: u32,
-    pub uid: u16,
-    pub recv_buf: *mut i8,
-    pub upload_size: size_t,
-    pub send_size: size_t,
-    pub sent: size_t,
-    pub got: size_t,
-}
-pub type smb_conn_state = u32;
+// #[derive(Copy, Clone)]
+
+pub type smb_conn = crate::src::lib::altsvc::smb_conn;
+pub type smb_conn_state = crate::src::lib::altsvc::smb_conn_state;
 pub const SMB_CONNECTED: smb_conn_state = 4;
 pub const SMB_SETUP: smb_conn_state = 3;
 pub const SMB_NEGOTIATE: smb_conn_state = 2;
 pub const SMB_CONNECTING: smb_conn_state = 1;
 pub const SMB_NOT_CONNECTED: smb_conn_state = 0;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct rtsp_conn {
-    pub rtp_buf: *mut i8,
-    pub rtp_bufsize: ssize_t,
-    pub rtp_channel: i32,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct smtp_conn {
-    pub pp: pingpong,
-    pub state: smtpstate,
-    pub ssldone: bool,
-    pub domain: *mut i8,
-    pub sasl: SASL,
-    pub tls_supported: bool,
-    pub size_supported: bool,
-    pub utf8_supported: bool,
-    pub auth_supported: bool,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct SASL {
-    pub params: *const SASLproto,
-    pub state: saslstate,
-    pub authmechs: u16,
-    pub prefmech: u16,
-    pub authused: u16,
-    pub resetprefs: bool,
-    pub mutual_auth: bool,
-    pub force_ir: bool,
-}
-pub type saslstate = u32;
+// #[derive(Copy, Clone)]
+
+pub type rtsp_conn = crate::src::lib::altsvc::rtsp_conn;
+// #[derive(Copy, Clone)]
+
+pub type smtp_conn = crate::src::lib::altsvc::smtp_conn;
+// #[derive(Copy, Clone)]
+
+pub type SASL = crate::src::lib::altsvc::SASL;
+pub type saslstate = crate::src::lib::altsvc::saslstate;
 pub const SASL_FINAL: saslstate = 17;
 pub const SASL_CANCEL: saslstate = 16;
 pub const SASL_GSASL: saslstate = 15;
@@ -4073,33 +966,10 @@ pub const SASL_LOGIN_PASSWD: saslstate = 3;
 pub const SASL_LOGIN: saslstate = 2;
 pub const SASL_PLAIN: saslstate = 1;
 pub const SASL_STOP: saslstate = 0;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct SASLproto {
-    pub service: *const i8,
-    pub contcode: i32,
-    pub finalcode: i32,
-    pub maxirlen: size_t,
-    pub sendauth: Option::<
-        unsafe extern "C" fn(
-            *mut Curl_easy,
-            *mut connectdata,
-            *const i8,
-            *const i8,
-        ) -> CURLcode,
-    >,
-    pub sendcont: Option::<
-        unsafe extern "C" fn(
-            *mut Curl_easy,
-            *mut connectdata,
-            *const i8,
-        ) -> CURLcode,
-    >,
-    pub getmessage: Option::<
-        unsafe extern "C" fn(*mut i8, *mut *mut i8) -> (),
-    >,
-}
-pub type smtpstate = u32;
+// #[derive(Copy, Clone)]
+
+pub type SASLproto = crate::src::lib::altsvc::SASLproto;
+pub type smtpstate = crate::src::lib::altsvc::smtpstate;
 pub const SMTP_LAST: smtpstate = 13;
 pub const SMTP_QUIT: smtpstate = 12;
 pub const SMTP_POSTDATA: smtpstate = 11;
@@ -4114,48 +984,13 @@ pub const SMTP_HELO: smtpstate = 3;
 pub const SMTP_EHLO: smtpstate = 2;
 pub const SMTP_SERVERGREET: smtpstate = 1;
 pub const SMTP_STOP: smtpstate = 0;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct pingpong {
-    pub cache: *mut i8,
-    pub cache_size: size_t,
-    pub nread_resp: size_t,
-    pub linestart_resp: *mut i8,
-    pub pending_resp: bool,
-    pub sendthis: *mut i8,
-    pub sendleft: size_t,
-    pub sendsize: size_t,
-    pub response: curltime,
-    pub response_time: timediff_t,
-    pub sendbuf: dynbuf,
-    pub statemachine: Option::<
-        unsafe extern "C" fn(*mut Curl_easy, *mut connectdata) -> CURLcode,
-    >,
-    pub endofresp: Option::<
-        unsafe extern "C" fn(
-            *mut Curl_easy,
-            *mut connectdata,
-            *mut i8,
-            size_t,
-            *mut i32,
-        ) -> bool,
-    >,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct pop3_conn {
-    pub pp: pingpong,
-    pub state: pop3state,
-    pub ssldone: bool,
-    pub tls_supported: bool,
-    pub eob: size_t,
-    pub strip: size_t,
-    pub sasl: SASL,
-    pub authtypes: u32,
-    pub preftype: u32,
-    pub apoptimestamp: *mut i8,
-}
-pub type pop3state = u32;
+// #[derive(Copy, Clone)]
+
+pub type pingpong = crate::src::lib::altsvc::pingpong;
+// #[derive(Copy, Clone)]
+
+pub type pop3_conn = crate::src::lib::altsvc::pop3_conn;
+pub type pop3state = crate::src::lib::altsvc::pop3state;
 pub const POP3_LAST: pop3state = 11;
 pub const POP3_QUIT: pop3state = 10;
 pub const POP3_COMMAND: pop3state = 9;
@@ -4168,25 +1003,10 @@ pub const POP3_STARTTLS: pop3state = 3;
 pub const POP3_CAPA: pop3state = 2;
 pub const POP3_SERVERGREET: pop3state = 1;
 pub const POP3_STOP: pop3state = 0;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct imap_conn {
-    pub pp: pingpong,
-    pub state: imapstate,
-    pub ssldone: bool,
-    pub preauth: bool,
-    pub sasl: SASL,
-    pub preftype: u32,
-    pub cmdid: u32,
-    pub resptag: [i8; 5],
-    pub tls_supported: bool,
-    pub login_disabled: bool,
-    pub ir_supported: bool,
-    pub mailbox: *mut i8,
-    pub mailbox_uidvalidity: *mut i8,
-    pub dyn_0: dynbuf,
-}
-pub type imapstate = u32;
+// #[derive(Copy, Clone)]
+
+pub type imap_conn = crate::src::lib::altsvc::imap_conn;
+pub type imapstate = crate::src::lib::altsvc::imapstate;
 pub const IMAP_LAST: imapstate = 15;
 pub const IMAP_LOGOUT: imapstate = 14;
 pub const IMAP_SEARCH: imapstate = 13;
@@ -4203,28 +1023,10 @@ pub const IMAP_STARTTLS: imapstate = 3;
 pub const IMAP_CAPABILITY: imapstate = 2;
 pub const IMAP_SERVERGREET: imapstate = 1;
 pub const IMAP_STOP: imapstate = 0;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct ssh_conn {
-    pub authlist: *const i8,
-    pub passphrase: *const i8,
-    pub rsa_pub: *mut i8,
-    pub rsa: *mut i8,
-    pub authed: bool,
-    pub acceptfail: bool,
-    pub state: sshstate,
-    pub nextstate: sshstate,
-    pub actualcode: CURLcode,
-    pub quote_item: *mut curl_slist,
-    pub quote_path1: *mut i8,
-    pub quote_path2: *mut i8,
-    pub homedir: *mut i8,
-    pub readdir_line: *mut i8,
-    pub secondCreateDirs: i32,
-    pub orig_waitfor: i32,
-    pub slash_pos: *mut i8,
-}
-pub type sshstate = i32;
+// #[derive(Copy, Clone)]
+
+pub type ssh_conn = crate::src::lib::altsvc::ssh_conn;
+pub type sshstate = crate::src::lib::altsvc::sshstate;
 pub const SSH_LAST: sshstate = 60;
 pub const SSH_QUIT: sshstate = 59;
 pub const SSH_SESSION_FREE: sshstate = 58;
@@ -4287,78 +1089,21 @@ pub const SSH_S_STARTUP: sshstate = 2;
 pub const SSH_INIT: sshstate = 1;
 pub const SSH_STOP: sshstate = 0;
 pub const SSH_NO_STATE: sshstate = -1;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct http_conn {
-    pub binsettings: [uint8_t; 80],
-    pub binlen: size_t,
-    pub trnsfr: *mut Curl_easy,
-    pub h2: *mut nghttp2_session,
-    pub send_underlying: Option::<Curl_send>,
-    pub recv_underlying: Option::<Curl_recv>,
-    pub inbuf: *mut i8,
-    pub inbuflen: size_t,
-    pub nread_inbuf: size_t,
-    pub pause_stream_id: int32_t,
-    pub drain_total: size_t,
-    pub settings: h2settings,
-    pub local_settings: [nghttp2_settings_entry; 3],
-    pub local_settings_num: size_t,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct nghttp2_settings_entry {
-    pub settings_id: int32_t,
-    pub value: uint32_t,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct h2settings {
-    pub max_concurrent_streams: uint32_t,
-    pub enable_push: bool,
-}
-pub type Curl_recv = unsafe extern "C" fn(
-    *mut Curl_easy,
-    i32,
-    *mut i8,
-    size_t,
-    *mut CURLcode,
-) -> ssize_t;
-pub type Curl_send = unsafe extern "C" fn(
-    *mut Curl_easy,
-    i32,
-    *const libc::c_void,
-    size_t,
-    *mut CURLcode,
-) -> ssize_t;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct ftp_conn {
-    pub pp: pingpong,
-    pub entrypath: *mut i8,
-    pub file: *mut i8,
-    pub dirs: *mut *mut i8,
-    pub dirdepth: i32,
-    pub dont_check: bool,
-    pub ctl_valid: bool,
-    pub cwddone: bool,
-    pub cwdcount: i32,
-    pub cwdfail: bool,
-    pub wait_data_conn: bool,
-    pub newport: u16,
-    pub newhost: *mut i8,
-    pub prevpath: *mut i8,
-    pub transfertype: i8,
-    pub count1: i32,
-    pub count2: i32,
-    pub count3: i32,
-    pub state: ftpstate,
-    pub state_saved: ftpstate,
-    pub retr_size_saved: curl_off_t,
-    pub server_os: *mut i8,
-    pub known_filesize: curl_off_t,
-}
-pub type ftpstate = u32;
+// #[derive(Copy, Clone)]
+
+pub type http_conn = crate::src::lib::altsvc::http_conn;
+// #[derive(Copy, Clone)]
+
+pub type nghttp2_settings_entry = crate::src::lib::altsvc::nghttp2_settings_entry;
+// #[derive(Copy, Clone)]
+
+pub type h2settings = crate::src::lib::altsvc::h2settings;
+pub type Curl_recv = crate::src::lib::altsvc::Curl_recv;
+pub type Curl_send = crate::src::lib::altsvc::Curl_send;
+// #[derive(Copy, Clone)]
+
+pub type ftp_conn = crate::src::lib::altsvc::ftp_conn;
+pub type ftpstate = crate::src::lib::altsvc::ftpstate;
 pub const FTP_LAST: ftpstate = 35;
 pub const FTP_QUIT: ftpstate = 34;
 pub const FTP_STOR: ftpstate = 33;
@@ -4395,814 +1140,52 @@ pub const FTP_USER: ftpstate = 3;
 pub const FTP_AUTH: ftpstate = 2;
 pub const FTP_WAIT220: ftpstate = 1;
 pub const FTP_STOP: ftpstate = 0;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct ntlmdata {
-    pub flags: u32,
-    pub nonce: [u8; 8],
-    pub target_info_len: u32,
-    pub target_info: *mut libc::c_void,
-    pub ntlm_auth_hlpr_socket: curl_socket_t,
-    pub ntlm_auth_hlpr_pid: pid_t,
-    pub challenge: *mut i8,
-    pub response: *mut i8,
-}
-pub type curlntlm = u32;
+// #[derive(Copy, Clone)]
+
+pub type ntlmdata = crate::src::lib::altsvc::ntlmdata;
+pub type curlntlm = crate::src::lib::altsvc::curlntlm;
 pub const NTLMSTATE_LAST: curlntlm = 4;
 pub const NTLMSTATE_TYPE3: curlntlm = 3;
 pub const NTLMSTATE_TYPE2: curlntlm = 2;
 pub const NTLMSTATE_TYPE1: curlntlm = 1;
 pub const NTLMSTATE_NONE: curlntlm = 0;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct gsasldata {
-    pub ctx: *mut Gsasl,
-    pub client: *mut Gsasl_session,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct Curl_handler {
-    pub scheme: *const i8,
-    pub setup_connection: Option::<
-        unsafe extern "C" fn(*mut Curl_easy, *mut connectdata) -> CURLcode,
-    >,
-    pub do_it: Option::<unsafe extern "C" fn(*mut Curl_easy, *mut bool) -> CURLcode>,
-    pub done: Option::<unsafe extern "C" fn(*mut Curl_easy, CURLcode, bool) -> CURLcode>,
-    pub do_more: Option::<
-        unsafe extern "C" fn(*mut Curl_easy, *mut i32) -> CURLcode,
-    >,
-    pub connect_it: Option::<
-        unsafe extern "C" fn(*mut Curl_easy, *mut bool) -> CURLcode,
-    >,
-    pub connecting: Option::<
-        unsafe extern "C" fn(*mut Curl_easy, *mut bool) -> CURLcode,
-    >,
-    pub doing: Option::<unsafe extern "C" fn(*mut Curl_easy, *mut bool) -> CURLcode>,
-    pub proto_getsock: Option::<
-        unsafe extern "C" fn(
-            *mut Curl_easy,
-            *mut connectdata,
-            *mut curl_socket_t,
-        ) -> i32,
-    >,
-    pub doing_getsock: Option::<
-        unsafe extern "C" fn(
-            *mut Curl_easy,
-            *mut connectdata,
-            *mut curl_socket_t,
-        ) -> i32,
-    >,
-    pub domore_getsock: Option::<
-        unsafe extern "C" fn(
-            *mut Curl_easy,
-            *mut connectdata,
-            *mut curl_socket_t,
-        ) -> i32,
-    >,
-    pub perform_getsock: Option::<
-        unsafe extern "C" fn(
-            *mut Curl_easy,
-            *mut connectdata,
-            *mut curl_socket_t,
-        ) -> i32,
-    >,
-    pub disconnect: Option::<
-        unsafe extern "C" fn(*mut Curl_easy, *mut connectdata, bool) -> CURLcode,
-    >,
-    pub readwrite: Option::<
-        unsafe extern "C" fn(
-            *mut Curl_easy,
-            *mut connectdata,
-            *mut ssize_t,
-            *mut bool,
-        ) -> CURLcode,
-    >,
-    pub connection_check: Option::<
-        unsafe extern "C" fn(
-            *mut Curl_easy,
-            *mut connectdata,
-            u32,
-        ) -> u32,
-    >,
-    pub attach: Option::<unsafe extern "C" fn(*mut Curl_easy, *mut connectdata) -> ()>,
-    pub defport: i32,
-    pub protocol: u32,
-    pub family: u32,
-    pub flags: u32,
-}
-// #[derive(Copy, Clone, BitfieldStruct)]
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct ConnectBits {
-    pub tcpconnect: [bool; 2],
-    pub proxy_ssl_connected: [bool; 2],
-    // #[bitfield(name = "httpproxy", ty = "bit", bits = "0..=0")]
-    // #[bitfield(name = "socksproxy", ty = "bit", bits = "1..=1")]
-    // #[bitfield(name = "proxy_user_passwd", ty = "bit", bits = "2..=2")]
-    // #[bitfield(name = "tunnel_proxy", ty = "bit", bits = "3..=3")]
-    // #[bitfield(name = "proxy_connect_closed", ty = "bit", bits = "4..=4")]
-    // #[bitfield(name = "close", ty = "bit", bits = "5..=5")]
-    // #[bitfield(name = "reuse", ty = "bit", bits = "6..=6")]
-    // #[bitfield(name = "altused", ty = "bit", bits = "7..=7")]
-    // #[bitfield(name = "conn_to_host", ty = "bit", bits = "8..=8")]
-    // #[bitfield(name = "conn_to_port", ty = "bit", bits = "9..=9")]
-    // #[bitfield(name = "proxy", ty = "bit", bits = "10..=10")]
-    // #[bitfield(name = "user_passwd", ty = "bit", bits = "11..=11")]
-    // #[bitfield(name = "ipv6_ip", ty = "bit", bits = "12..=12")]
-    // #[bitfield(name = "ipv6", ty = "bit", bits = "13..=13")]
-    // #[bitfield(name = "do_more", ty = "bit", bits = "14..=14")]
-    // #[bitfield(name = "protoconnstart", ty = "bit", bits = "15..=15")]
-    // #[bitfield(name = "retry", ty = "bit", bits = "16..=16")]
-    // #[bitfield(name = "authneg", ty = "bit", bits = "17..=17")]
-    // #[bitfield(name = "rewindaftersend", ty = "bit", bits = "18..=18")]
-    // #[bitfield(name = "ftp_use_epsv", ty = "bit", bits = "19..=19")]
-    // #[bitfield(name = "ftp_use_eprt", ty = "bit", bits = "20..=20")]
-    // #[bitfield(name = "ftp_use_data_ssl", ty = "bit", bits = "21..=21")]
-    // #[bitfield(name = "ftp_use_control_ssl", ty = "bit", bits = "22..=22")]
-    // #[bitfield(name = "netrc", ty = "bit", bits = "23..=23")]
-    // #[bitfield(name = "bound", ty = "bit", bits = "24..=24")]
-    // #[bitfield(name = "multiplex", ty = "bit", bits = "25..=25")]
-    // #[bitfield(name = "tcp_fastopen", ty = "bit", bits = "26..=26")]
-    // #[bitfield(name = "tls_enable_npn", ty = "bit", bits = "27..=27")]
-    // #[bitfield(name = "tls_enable_alpn", ty = "bit", bits = "28..=28")]
-    // #[bitfield(name = "connect_only", ty = "bit", bits = "29..=29")]
-    // #[bitfield(name = "doh", ty = "bit", bits = "30..=30")]
-    // #[bitfield(name = "abstract_unix_socket", ty = "bit", bits = "31..=31")]
-    // #[bitfield(name = "tls_upgraded", ty = "bit", bits = "32..=32")]
-    // #[bitfield(name = "sock_accepted", ty = "bit", bits = "33..=33")]
-    // #[bitfield(name = "parallel_connect", ty = "bit", bits = "34..=34")]
-    pub httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect: [u8; 5],
-    // #[bitfield(padding)]
-    pub c2rust_padding: [u8; 3],
-}
-impl ConnectBits {
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_httpproxy(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn httpproxy(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_socksproxy(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (1usize, 1usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn socksproxy(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (1usize, 1usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_proxy_user_passwd(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (2usize, 2usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn proxy_user_passwd(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (2usize, 2usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_tunnel_proxy(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (3usize, 3usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn tunnel_proxy(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (3usize, 3usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_proxy_connect_closed(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (4usize, 4usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn proxy_connect_closed(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (4usize, 4usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_close(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (5usize, 5usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn close(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (5usize, 5usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_reuse(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (6usize, 6usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn reuse(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (6usize, 6usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_altused(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (7usize, 7usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn altused(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (7usize, 7usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_conn_to_host(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (8usize, 8usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn conn_to_host(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (8usize, 8usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_conn_to_port(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (9usize, 9usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn conn_to_port(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (9usize, 9usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_proxy(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (10usize, 10usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn proxy(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (10usize, 10usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_user_passwd(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (11usize, 11usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn user_passwd(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (11usize, 11usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_ipv6_ip(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (12usize, 12usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn ipv6_ip(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (12usize, 12usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_ipv6(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (13usize, 13usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn ipv6(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (13usize, 13usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_do_more(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (14usize, 14usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn do_more(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (14usize, 14usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_protoconnstart(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (15usize, 15usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn protoconnstart(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (15usize, 15usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_retry(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (16usize, 16usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn retry(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (16usize, 16usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_authneg(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (17usize, 17usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn authneg(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (17usize, 17usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_rewindaftersend(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (18usize, 18usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn rewindaftersend(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (18usize, 18usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_ftp_use_epsv(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (19usize, 19usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn ftp_use_epsv(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (19usize, 19usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_ftp_use_eprt(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (20usize, 20usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn ftp_use_eprt(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (20usize, 20usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_ftp_use_data_ssl(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (21usize, 21usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn ftp_use_data_ssl(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (21usize, 21usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_ftp_use_control_ssl(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (22usize, 22usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn ftp_use_control_ssl(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (22usize, 22usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_netrc(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (23usize, 23usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn netrc(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (23usize, 23usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_bound(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (24usize, 24usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn bound(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (24usize, 24usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_multiplex(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (25usize, 25usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn multiplex(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (25usize, 25usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_tcp_fastopen(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (26usize, 26usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn tcp_fastopen(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (26usize, 26usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_tls_enable_npn(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (27usize, 27usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn tls_enable_npn(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (27usize, 27usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_tls_enable_alpn(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (28usize, 28usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn tls_enable_alpn(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (28usize, 28usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_connect_only(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (29usize, 29usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn connect_only(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (29usize, 29usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_doh(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (30usize, 30usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn doh(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (30usize, 30usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_abstract_unix_socket(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (31usize, 31usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn abstract_unix_socket(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (31usize, 31usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_tls_upgraded(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (32usize, 32usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn tls_upgraded(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (32usize, 32usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_sock_accepted(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (33usize, 33usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn sock_accepted(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (33usize, 33usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_parallel_connect(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (34usize, 34usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn parallel_connect(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self
-            .httpproxy_socksproxy_proxy_user_passwd_tunnel_proxy_proxy_connect_closed_close_reuse_altused_conn_to_host_conn_to_port_proxy_user_passwd_ipv6_ip_ipv6_do_more_protoconnstart_retry_authneg_rewindaftersend_ftp_use_epsv_ftp_use_eprt_ftp_use_data_ssl_ftp_use_control_ssl_netrc_bound_multiplex_tcp_fastopen_tls_enable_npn_tls_enable_alpn_connect_only_doh_abstract_unix_socket_tls_upgraded_sock_accepted_parallel_connect;
-        let (lhs_bit, rhs_bit) = (34usize, 34usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-}
+// #[derive(Copy, Clone)]
 
+pub type gsasldata = crate::src::lib::altsvc::gsasldata;
+// #[derive(Copy, Clone)]
+
+pub type Curl_handler = crate::src::lib::altsvc::Curl_handler;
 // #[derive(Copy, Clone, BitfieldStruct)]
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct ssl_connect_data {
-    pub state: ssl_connection_state,
-    pub connecting_state: ssl_connect_state,
-    pub backend: *mut ssl_backend_data,
-    // #[bitfield(name = "use_0", ty = "bit", bits = "0..=0")]
-    pub use_0: [u8; 1],
-    // #[bitfield(padding)]
-    pub c2rust_padding: [u8; 7],
-}
-impl ssl_connect_data {
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_use_0(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self.use_0;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn use_0(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self.use_0;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-}
-pub type ssl_connect_state = u32;
+
+pub type ConnectBits = crate::src::lib::altsvc::ConnectBits;
+// #[derive(Copy, Clone, BitfieldStruct)]
+
+pub type ssl_connect_data = crate::src::lib::altsvc::ssl_connect_data;
+pub type ssl_connect_state = crate::src::lib::altsvc::ssl_connect_state;
 pub const ssl_connect_done: ssl_connect_state = 5;
 pub const ssl_connect_3: ssl_connect_state = 4;
 pub const ssl_connect_2_writing: ssl_connect_state = 3;
 pub const ssl_connect_2_reading: ssl_connect_state = 2;
 pub const ssl_connect_2: ssl_connect_state = 1;
 pub const ssl_connect_1: ssl_connect_state = 0;
-pub type ssl_connection_state = u32;
+pub type ssl_connection_state = crate::src::lib::altsvc::ssl_connection_state;
 pub const ssl_connection_complete: ssl_connection_state = 2;
 pub const ssl_connection_negotiating: ssl_connection_state = 1;
 pub const ssl_connection_none: ssl_connection_state = 0;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct proxy_info {
-    pub host: hostname,
-    pub port: i64,
-    pub proxytype: curl_proxytype,
-    pub user: *mut i8,
-    pub passwd: *mut i8,
-}
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct hostname {
-    pub rawalloc: *mut i8,
-    pub encalloc: *mut i8,
-    pub name: *mut i8,
-    pub dispname: *const i8,
-}
+// #[derive(Copy, Clone)]
+
+pub type proxy_info = crate::src::lib::altsvc::proxy_info;
+// #[derive(Copy, Clone)]
+
+pub type hostname = crate::src::lib::altsvc::hostname;
 pub type C2RustUnnamed_5 = u32;
 pub const TRNSPRT_QUIC: C2RustUnnamed_5 = 5;
 pub const TRNSPRT_UDP: C2RustUnnamed_5 = 4;
 pub const TRNSPRT_TCP: C2RustUnnamed_5 = 3;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct Curl_chunker {
-    pub datasize: curl_off_t,
-    pub state: ChunkyState,
-    pub hexindex: u8,
-    pub hexbuffer: [i8; 17],
-}
-pub type ChunkyState = u32;
+// #[derive(Copy, Clone)]
+
+pub type Curl_chunker = crate::src::lib::altsvc::Curl_chunker;
+pub type ChunkyState = crate::src::lib::altsvc::ChunkyState;
 pub const CHUNK_TRAILER_POSTCR: ChunkyState = 7;
 pub const CHUNK_TRAILER_CR: ChunkyState = 6;
 pub const CHUNK_TRAILER: ChunkyState = 5;
@@ -5211,14 +1194,10 @@ pub const CHUNK_POSTLF: ChunkyState = 3;
 pub const CHUNK_DATA: ChunkyState = 2;
 pub const CHUNK_LF: ChunkyState = 1;
 pub const CHUNK_HEX: ChunkyState = 0;
-#[derive(Copy, Clone)]
-#[repr(C)]
-pub struct connstate {
-    pub state: connect_t,
-    pub outstanding: ssize_t,
-    pub outp: *mut u8,
-}
-pub type connect_t = u32;
+// #[derive(Copy, Clone)]
+
+pub type connstate = crate::src::lib::altsvc::connstate;
+pub type connect_t = crate::src::lib::altsvc::connect_t;
 pub const CONNECT_DONE: connect_t = 17;
 pub const CONNECT_REQ_READ_MORE: connect_t = 16;
 pub const CONNECT_REQ_READ: connect_t = 15;
@@ -5237,13 +1216,9 @@ pub const CONNECT_SOCKS_READ_INIT: connect_t = 3;
 pub const CONNECT_SOCKS_SEND: connect_t = 2;
 pub const CONNECT_SOCKS_INIT: connect_t = 1;
 pub const CONNECT_INIT: connect_t = 0;
-pub type curl_malloc_callback = Option::<
-    unsafe extern "C" fn(size_t) -> *mut libc::c_void,
->;
-pub type curl_calloc_callback = Option::<
-    unsafe extern "C" fn(size_t, size_t) -> *mut libc::c_void,
->;
-pub type CURLMcode = i32;
+pub type curl_malloc_callback = crate::src::lib::altsvc::curl_malloc_callback;
+pub type curl_calloc_callback = crate::src::lib::altsvc::curl_calloc_callback;
+pub type CURLMcode = crate::src::lib::doh::CURLMcode;
 pub const CURLM_LAST: CURLMcode = 11;
 pub const CURLM_BAD_FUNCTION_ARGUMENT: CURLMcode = 10;
 pub const CURLM_WAKEUP_FAILURE: CURLMcode = 9;
@@ -5257,7 +1232,7 @@ pub const CURLM_BAD_EASY_HANDLE: CURLMcode = 2;
 pub const CURLM_BAD_HANDLE: CURLMcode = 1;
 pub const CURLM_OK: CURLMcode = 0;
 pub const CURLM_CALL_MULTI_PERFORM: CURLMcode = -1;
-pub type CURLUcode = u32;
+pub type CURLUcode = crate::src::lib::http::CURLUcode;
 pub const CURLUE_NO_FRAGMENT: CURLUcode = 17;
 pub const CURLUE_NO_QUERY: CURLUcode = 16;
 pub const CURLUE_NO_PORT: CURLUcode = 15;
@@ -5276,7 +1251,7 @@ pub const CURLUE_MALFORMED_INPUT: CURLUcode = 3;
 pub const CURLUE_BAD_PARTPOINTER: CURLUcode = 2;
 pub const CURLUE_BAD_HANDLE: CURLUcode = 1;
 pub const CURLUE_OK: CURLUcode = 0;
-pub type CURLUPart = u32;
+pub type CURLUPart = crate::src::lib::http::CURLUPart;
 pub const CURLUPART_ZONEID: CURLUPart = 10;
 pub const CURLUPART_FRAGMENT: CURLUPart = 9;
 pub const CURLUPART_QUERY: CURLUPart = 8;
@@ -5616,14 +1591,14 @@ unsafe extern "C" fn http2_stream_free(mut http: *mut HTTP) {
                             .wrapping_sub(1 as i32 as u64) as isize,
                     ) as *mut libc::c_void,
             );
-            let ref mut fresh0 = (*http).push_headers_used;
+            let fresh0 = &mut ((*http).push_headers_used);
             *fresh0 = (*fresh0).wrapping_sub(1);
         }
         Curl_cfree
             .expect(
                 "non-null function pointer",
             )((*http).push_headers as *mut libc::c_void);
-        let ref mut fresh1 = (*http).push_headers;
+        let fresh1 = &mut ((*http).push_headers);
         *fresh1 = 0 as *mut *mut i8;
     }
 }
@@ -5635,7 +1610,7 @@ unsafe extern "C" fn http2_disconnect(
     let mut c: *mut http_conn = &mut (*conn).proto.httpc;
     nghttp2_session_del((*c).h2);
     Curl_cfree.expect("non-null function pointer")((*c).inbuf as *mut libc::c_void);
-    let ref mut fresh2 = (*c).inbuf;
+    let fresh2 = &mut ((*c).inbuf);
     *fresh2 = 0 as *mut i8;
     return CURLE_OK;
 }
@@ -5697,7 +1672,7 @@ unsafe extern "C" fn http2_connisdead(
     return dead;
 }
 unsafe extern "C" fn set_transfer(mut c: *mut http_conn, mut data: *mut Curl_easy) {
-    let ref mut fresh3 = (*c).trnsfr;
+    let fresh3 = &mut ((*c).trnsfr);
     *fresh3 = data;
 }
 unsafe extern "C" fn get_transfer(mut c: *mut http_conn) -> *mut Curl_easy {
@@ -5762,12 +1737,12 @@ pub unsafe extern "C" fn Curl_http2_setup_req(mut data: *mut Curl_easy) {
     let mut http: *mut HTTP = (*data).req.p.http;
     (*http).bodystarted = 0 as i32 != 0;
     (*http).status_code = -(1 as i32);
-    let ref mut fresh4 = (*http).pausedata;
+    let fresh4 = &mut ((*http).pausedata);
     *fresh4 = 0 as *const uint8_t;
     (*http).pauselen = 0 as i32 as size_t;
     (*http).closed = 0 as i32 != 0;
     (*http).close_handled = 0 as i32 != 0;
-    let ref mut fresh5 = (*http).mem;
+    let fresh5 = &mut ((*http).mem);
     *fresh5 = 0 as *mut i8;
     (*http).len = 0 as i32 as size_t;
     (*http).memlen = 0 as i32 as size_t;
@@ -6010,15 +1985,15 @@ unsafe extern "C" fn drained_transfer(
     mut data: *mut Curl_easy,
     mut httpc: *mut http_conn,
 ) {
-    let ref mut fresh6 = (*httpc).drain_total;
+    let fresh6 = &mut ((*httpc).drain_total);
     *fresh6 = (*fresh6 as u64).wrapping_sub((*data).state.drain) as size_t
         as size_t;
     (*data).state.drain = 0 as i32 as size_t;
 }
 unsafe extern "C" fn drain_this(mut data: *mut Curl_easy, mut httpc: *mut http_conn) {
-    let ref mut fresh7 = (*data).state.drain;
+    let fresh7 = &mut ((*data).state.drain);
     *fresh7 = (*fresh7).wrapping_add(1);
-    let ref mut fresh8 = (*httpc).drain_total;
+    let fresh8 = &mut ((*httpc).drain_total);
     *fresh8 = (*fresh8).wrapping_add(1);
 }
 unsafe extern "C" fn duphandle(mut data: *mut Curl_easy) -> *mut Curl_easy {
@@ -6032,7 +2007,7 @@ unsafe extern "C" fn duphandle(mut data: *mut Curl_easy) -> *mut Curl_easy {
         if http.is_null() {
             Curl_close(&mut second);
         } else {
-            let ref mut fresh9 = (*second).req.p.http;
+            let fresh9 = &mut ((*second).req.p.http);
             *fresh9 = http;
             Curl_dyn_init(
                 &mut (*http).header_recvbuf,
@@ -6138,9 +2113,9 @@ unsafe extern "C" fn set_transfer_url(
         Curl_cfree
             .expect("non-null function pointer")((*data).state.url as *mut libc::c_void);
     }
-    let ref mut fresh10 = (*data).state;
+    let fresh10 = &mut ((*data).state);
     (*fresh10).set_url_alloc(1 as i32 as bit);
-    let ref mut fresh11 = (*data).state.url;
+    let fresh11 = &mut ((*data).state.url);
     *fresh11 = url;
     return 0 as i32;
 }
@@ -6211,12 +2186,12 @@ unsafe extern "C" fn push_promise(
                         .expect(
                             "non-null function pointer",
                         )((*stream).push_headers as *mut libc::c_void);
-                    let ref mut fresh12 = (*stream).push_headers;
+                    let fresh12 = &mut ((*stream).push_headers);
                     *fresh12 = 0 as *mut *mut i8;
                     (*stream).push_headers_used = 0 as i32 as size_t;
                     if rv != 0 {
                         http2_stream_free((*newhandle).req.p.http);
-                        let ref mut fresh13 = (*newhandle).req.p.http;
+                        let fresh13 = &mut ((*newhandle).req.p.http);
                         *fresh13 = 0 as *mut HTTP;
                         Curl_close(&mut newhandle);
                     } else {
@@ -6232,7 +2207,7 @@ unsafe extern "C" fn push_promise(
                                     as *const i8,
                             );
                             http2_stream_free((*newhandle).req.p.http);
-                            let ref mut fresh14 = (*newhandle).req.p.http;
+                            let fresh14 = &mut ((*newhandle).req.p.http);
                             *fresh14 = 0 as *mut HTTP;
                             Curl_close(&mut newhandle);
                             rv = 1 as i32;
@@ -6365,13 +2340,13 @@ unsafe extern "C" fn on_frame_recv(
                         as *const libc::c_void,
                     ncopy,
                 );
-                let ref mut fresh15 = (*stream).nread_header_recvbuf;
+                let fresh15 = &mut ((*stream).nread_header_recvbuf);
                 *fresh15 = (*fresh15 as u64).wrapping_add(ncopy) as size_t
                     as size_t;
-                let ref mut fresh16 = (*stream).len;
+                let fresh16 = &mut ((*stream).len);
                 *fresh16 = (*fresh16 as u64).wrapping_sub(ncopy) as size_t
                     as size_t;
-                let ref mut fresh17 = (*stream).memlen;
+                let fresh17 = &mut ((*stream).memlen);
                 *fresh17 = (*fresh17 as u64).wrapping_add(ncopy) as size_t
                     as size_t;
                 drain_this(data_s, httpc);
@@ -6431,16 +2406,16 @@ unsafe extern "C" fn on_data_chunk_recv(
         mem as *const libc::c_void,
         nread,
     );
-    let ref mut fresh18 = (*stream).len;
+    let fresh18 = &mut ((*stream).len);
     *fresh18 = (*fresh18 as u64).wrapping_sub(nread) as size_t as size_t;
-    let ref mut fresh19 = (*stream).memlen;
+    let fresh19 = &mut ((*stream).memlen);
     *fresh19 = (*fresh19 as u64).wrapping_add(nread) as size_t as size_t;
     drain_this(data_s, &mut (*conn).proto.httpc);
     if get_transfer(httpc) != data_s {
         Curl_expire(data_s, 0 as i32 as timediff_t, EXPIRE_RUN_NOW);
     }
     if nread < len {
-        let ref mut fresh20 = (*stream).pausedata;
+        let fresh20 = &mut ((*stream).pausedata);
         *fresh20 = mem.offset(nread as isize);
         (*stream).pauselen = len.wrapping_sub(nread);
         (*(*data_s).conn).proto.httpc.pause_stream_id = stream_id;
@@ -6607,7 +2582,7 @@ unsafe extern "C" fn on_header(
         }
         if ((*stream).push_headers).is_null() {
             (*stream).push_headers_alloc = 10 as i32 as size_t;
-            let ref mut fresh21 = (*stream).push_headers;
+            let fresh21 = &mut ((*stream).push_headers);
             *fresh21 = Curl_cmalloc
                 .expect(
                     "non-null function pointer",
@@ -6623,7 +2598,7 @@ unsafe extern "C" fn on_header(
             (*stream).push_headers_used = 0 as i32 as size_t;
         } else if (*stream).push_headers_used == (*stream).push_headers_alloc {
             let mut headp: *mut *mut i8 = 0 as *mut *mut i8;
-            let ref mut fresh22 = (*stream).push_headers_alloc;
+            let fresh22 = &mut ((*stream).push_headers_alloc);
             *fresh22 = (*fresh22 as u64)
                 .wrapping_mul(2 as i32 as u64) as size_t as size_t;
             headp = Curl_saferealloc(
@@ -6634,19 +2609,19 @@ unsafe extern "C" fn on_header(
                     ),
             ) as *mut *mut i8;
             if headp.is_null() {
-                let ref mut fresh23 = (*stream).push_headers;
+                let fresh23 = &mut ((*stream).push_headers);
                 *fresh23 = 0 as *mut *mut i8;
                 return NGHTTP2_ERR_TEMPORAL_CALLBACK_FAILURE as i32;
             }
-            let ref mut fresh24 = (*stream).push_headers;
+            let fresh24 = &mut ((*stream).push_headers);
             *fresh24 = headp;
         }
         h = curl_maprintf(b"%s:%s\0" as *const u8 as *const i8, name, value);
         if !h.is_null() {
-            let ref mut fresh25 = (*stream).push_headers_used;
+            let fresh25 = &mut ((*stream).push_headers_used);
             let fresh26 = *fresh25;
             *fresh25 = (*fresh25).wrapping_add(1);
-            let ref mut fresh27 = *((*stream).push_headers).offset(fresh26 as isize);
+            let fresh27 = &mut (*((*stream).push_headers).offset(fresh26 as isize));
             *fresh27 = h;
         }
         return 0 as i32;
@@ -6769,12 +2744,12 @@ unsafe extern "C" fn data_source_read_callback(
             (*stream).upload_mem as *const libc::c_void,
             nread,
         );
-        let ref mut fresh28 = (*stream).upload_mem;
+        let fresh28 = &mut ((*stream).upload_mem);
         *fresh28 = (*fresh28).offset(nread as isize);
-        let ref mut fresh29 = (*stream).upload_len;
+        let fresh29 = &mut ((*stream).upload_len);
         *fresh29 = (*fresh29 as u64).wrapping_sub(nread) as size_t as size_t;
         if (*data_s).state.infilesize != -(1 as i32) as i64 {
-            let ref mut fresh30 = (*stream).upload_left;
+            let fresh30 = &mut ((*stream).upload_left);
             *fresh30 = (*fresh30 as u64).wrapping_sub(nread) as curl_off_t
                 as curl_off_t;
         }
@@ -6832,14 +2807,14 @@ pub unsafe extern "C" fn Curl_http2_done(mut data: *mut Curl_easy, mut premature
                             .wrapping_sub(1 as i32 as u64) as isize,
                     ) as *mut libc::c_void,
             );
-            let ref mut fresh31 = (*http).push_headers_used;
+            let fresh31 = &mut ((*http).push_headers_used);
             *fresh31 = (*fresh31).wrapping_sub(1);
         }
         Curl_cfree
             .expect(
                 "non-null function pointer",
             )((*http).push_headers as *mut libc::c_void);
-        let ref mut fresh32 = (*http).push_headers;
+        let fresh32 = &mut ((*http).push_headers);
         *fresh32 = 0 as *mut *mut i8;
     }
     if (*(*(*data).conn).handler).protocol
@@ -6897,7 +2872,7 @@ unsafe extern "C" fn http2_init(
         let mut rc: i32 = 0;
         let mut callbacks: *mut nghttp2_session_callbacks = 0
             as *mut nghttp2_session_callbacks;
-        let ref mut fresh33 = (*conn).proto.httpc.inbuf;
+        let fresh33 = &mut ((*conn).proto.httpc.inbuf);
         *fresh33 = Curl_cmalloc
             .expect("non-null function pointer")(32768 as i32 as size_t)
             as *mut i8;
@@ -7102,7 +3077,7 @@ unsafe extern "C" fn h2_process_pending_input(
         (*httpc).inbuflen = 0 as i32 as size_t;
         (*httpc).nread_inbuf = 0 as i32 as size_t;
     } else {
-        let ref mut fresh34 = (*httpc).nread_inbuf;
+        let fresh34 = &mut ((*httpc).nread_inbuf);
         *fresh34 = (*fresh34 as u64).wrapping_add(rv as u64)
             as size_t as size_t;
     }
@@ -7176,7 +3151,7 @@ unsafe extern "C" fn http2_handle_stream_close(
     (*stream).closed = 0 as i32 != 0;
     if (*stream).error == NGHTTP2_REFUSED_STREAM as i32 as u32 {
         Curl_conncontrol(conn, 1 as i32);
-        let ref mut fresh35 = (*data).state;
+        let fresh35 = &mut ((*data).state);
         (*fresh35).set_refused_stream(1 as i32 as bit);
         *err = CURLE_RECV_ERROR;
         return -(1 as i32) as ssize_t;
@@ -7258,9 +3233,9 @@ unsafe extern "C" fn h2_pri_spec(
         ((*data).set).stream_depends_e() as i32,
     );
     (*data).state.stream_weight = (*data).set.stream_weight;
-    let ref mut fresh36 = (*data).state;
+    let fresh36 = &mut ((*data).state);
     (*fresh36).set_stream_depends_e(((*data).set).stream_depends_e());
-    let ref mut fresh37 = (*data).state.stream_depends_on;
+    let fresh37 = &mut ((*data).state.stream_depends_on);
     *fresh37 = (*data).set.stream_depends_on;
 }
 unsafe extern "C" fn h2_session_send(
@@ -7313,7 +3288,7 @@ unsafe extern "C" fn http2_recv(
         *err = CURLE_HTTP2;
         return -(1 as i32) as ssize_t;
     }
-    let ref mut fresh38 = (*stream).upload_mem;
+    let fresh38 = &mut ((*stream).upload_mem);
     *fresh38 = 0 as *const uint8_t;
     (*stream).upload_len = 0 as i32 as size_t;
     if (*stream).bodystarted as i32 != 0
@@ -7328,7 +3303,7 @@ unsafe extern "C" fn http2_recv(
                 .offset((*stream).nread_header_recvbuf as isize) as *const libc::c_void,
             ncopy,
         );
-        let ref mut fresh39 = (*stream).nread_header_recvbuf;
+        let fresh39 = &mut ((*stream).nread_header_recvbuf);
         *fresh39 = (*fresh39 as u64).wrapping_add(ncopy) as size_t as size_t;
         return ncopy as ssize_t;
     }
@@ -7340,7 +3315,7 @@ unsafe extern "C" fn http2_recv(
                 (*stream).memlen,
             );
             (*stream).len = len.wrapping_sub((*stream).memlen);
-            let ref mut fresh40 = (*stream).mem;
+            let fresh40 = &mut ((*stream).mem);
             *fresh40 = mem;
         }
         if (*httpc).pause_stream_id == (*stream).stream_id
@@ -7359,14 +3334,14 @@ unsafe extern "C" fn http2_recv(
             (*stream).pausedata as *const libc::c_void,
             nread as u64,
         );
-        let ref mut fresh41 = (*stream).pausedata;
+        let fresh41 = &mut ((*stream).pausedata);
         *fresh41 = (*fresh41).offset(nread as isize);
-        let ref mut fresh42 = (*stream).pauselen;
+        let fresh42 = &mut ((*stream).pauselen);
         *fresh42 = (*fresh42 as u64).wrapping_sub(nread as u64)
             as size_t as size_t;
         if (*stream).pauselen == 0 as i32 as u64 {
             (*httpc).pause_stream_id = 0 as i32;
-            let ref mut fresh43 = (*stream).pausedata;
+            let fresh43 = &mut ((*stream).pausedata);
             *fresh43 = 0 as *const uint8_t;
             (*stream).pauselen = 0 as i32 as size_t;
             if h2_process_pending_input(data, httpc, err) != 0 as i32 {
@@ -7382,7 +3357,7 @@ unsafe extern "C" fn http2_recv(
             *err = CURLE_AGAIN;
             return -(1 as i32) as ssize_t;
         } else {
-            let ref mut fresh44 = (*stream).mem;
+            let fresh44 = &mut ((*stream).mem);
             *fresh44 = mem;
             (*stream).len = len;
             (*stream).memlen = 0 as i32 as size_t;
@@ -7622,7 +3597,7 @@ unsafe extern "C" fn http2_send(
                 return http2_handle_stream_close(conn, data, stream, err);
             }
         }
-        let ref mut fresh45 = (*stream).upload_mem;
+        let fresh45 = &mut ((*stream).upload_mem);
         *fresh45 = mem as *const uint8_t;
         (*stream).upload_len = len;
         rv = nghttp2_session_resume_data(h2, (*stream).stream_id);
@@ -7637,7 +3612,7 @@ unsafe extern "C" fn http2_send(
         }
         len = (len as u64).wrapping_sub((*stream).upload_len) as size_t
             as size_t;
-        let ref mut fresh46 = (*stream).upload_mem;
+        let fresh46 = &mut ((*stream).upload_mem);
         *fresh46 = 0 as *const uint8_t;
         (*stream).upload_len = 0 as i32 as size_t;
         if should_close_session(httpc) != 0 {
@@ -7683,14 +3658,14 @@ unsafe extern "C" fn http2_send(
                 line_end.offset_from(hdbuf) as i64 as u64,
             ) as *mut i8;
             if !(end.is_null() || end == hdbuf) {
-                let ref mut fresh47 = (*nva.offset(0 as i32 as isize)).name;
+                let fresh47 = &mut ((*nva.offset(0 as i32 as isize)).name);
                 *fresh47 = b":method\0" as *const u8 as *const i8
                     as *mut u8;
                 (*nva.offset(0 as i32 as isize))
                     .namelen = strlen(
                     (*nva.offset(0 as i32 as isize)).name as *mut i8,
                 );
-                let ref mut fresh48 = (*nva.offset(0 as i32 as isize)).value;
+                let fresh48 = &mut ((*nva.offset(0 as i32 as isize)).value);
                 *fresh48 = hdbuf as *mut u8;
                 (*nva.offset(0 as i32 as isize))
                     .valuelen = end.offset_from(hdbuf) as i64 as size_t;
@@ -7729,8 +3704,8 @@ unsafe extern "C" fn http2_send(
                         }
                     }
                     if !(end.is_null() || end == hdbuf) {
-                        let ref mut fresh49 = (*nva.offset(1 as i32 as isize))
-                            .name;
+                        let fresh49 = &mut ((*nva.offset(1 as i32 as isize))
+                            .name);
                         *fresh49 = b":path\0" as *const u8 as *const i8
                             as *mut u8;
                         (*nva.offset(1 as i32 as isize))
@@ -7738,8 +3713,8 @@ unsafe extern "C" fn http2_send(
                             (*nva.offset(1 as i32 as isize)).name
                                 as *mut i8,
                         );
-                        let ref mut fresh50 = (*nva.offset(1 as i32 as isize))
-                            .value;
+                        let fresh50 = &mut ((*nva.offset(1 as i32 as isize))
+                            .value);
                         *fresh50 = hdbuf as *mut u8;
                         (*nva.offset(1 as i32 as isize))
                             .valuelen = end.offset_from(hdbuf) as i64 as size_t;
@@ -7759,9 +3734,9 @@ unsafe extern "C" fn http2_send(
                                     as *const u8 as *const i8,
                             );
                         } else {
-                            let ref mut fresh51 = (*nva
+                            let fresh51 = &mut ((*nva
                                 .offset(2 as i32 as isize))
-                                .name;
+                                .name);
                             *fresh51 = b":scheme\0" as *const u8 as *const i8
                                 as *mut u8;
                             (*nva.offset(2 as i32 as isize))
@@ -7773,15 +3748,15 @@ unsafe extern "C" fn http2_send(
                                 & ((1 as i32) << 0 as i32) as u32
                                 != 0
                             {
-                                let ref mut fresh52 = (*nva
+                                let fresh52 = &mut ((*nva
                                     .offset(2 as i32 as isize))
-                                    .value;
+                                    .value);
                                 *fresh52 = b"https\0" as *const u8 as *const i8
                                     as *mut u8;
                             } else {
-                                let ref mut fresh53 = (*nva
+                                let fresh53 = &mut ((*nva
                                     .offset(2 as i32 as isize))
-                                    .value;
+                                    .value);
                                 *fresh53 = b"http\0" as *const u8 as *const i8
                                     as *mut u8;
                             }
@@ -7851,7 +3826,7 @@ unsafe extern "C" fn http2_send(
                                         ) != 0
                                     {
                                         authority_idx = i;
-                                        let ref mut fresh54 = (*nva.offset(i as isize)).name;
+                                        let fresh54 = &mut ((*nva.offset(i as isize)).name);
                                         *fresh54 = b":authority\0" as *const u8
                                             as *const i8 as *mut u8;
                                         (*nva.offset(i as isize))
@@ -7866,7 +3841,7 @@ unsafe extern "C" fn http2_send(
                                             hdbuf,
                                             (*nva.offset(i as isize)).namelen,
                                         );
-                                        let ref mut fresh55 = (*nva.offset(i as isize)).name;
+                                        let fresh55 = &mut ((*nva.offset(i as isize)).name);
                                         *fresh55 = hdbuf as *mut u8;
                                     }
                                     hdbuf = end.offset(1 as i32 as isize);
@@ -7888,7 +3863,7 @@ unsafe extern "C" fn http2_send(
                                             continue;
                                         }
                                         2 => {
-                                            let ref mut fresh56 = (*nva.offset(i as isize)).value;
+                                            let fresh56 = &mut ((*nva.offset(i as isize)).value);
                                             *fresh56 = b"trailers\0" as *const u8 as *const i8
                                                 as *mut uint8_t;
                                             (*nva.offset(i as isize))
@@ -7897,7 +3872,7 @@ unsafe extern "C" fn http2_send(
                                                 .wrapping_sub(1 as i32 as u64);
                                         }
                                         _ => {
-                                            let ref mut fresh57 = (*nva.offset(i as isize)).value;
+                                            let fresh57 = &mut ((*nva.offset(i as isize)).value);
                                             *fresh57 = hdbuf as *mut u8;
                                             (*nva.offset(i as isize))
                                                 .valuelen = end.offset_from(hdbuf) as i64
@@ -8065,10 +4040,10 @@ pub unsafe extern "C" fn Curl_http2_setup(
         (128 as i32 * 1024 as i32) as size_t,
     );
     (*stream).upload_left = 0 as i32 as curl_off_t;
-    let ref mut fresh58 = (*stream).upload_mem;
+    let fresh58 = &mut ((*stream).upload_mem);
     *fresh58 = 0 as *const uint8_t;
     (*stream).upload_len = 0 as i32 as size_t;
-    let ref mut fresh59 = (*stream).mem;
+    let fresh59 = &mut ((*stream).mem);
     *fresh59 = (*data).state.buffer;
     (*stream).len = (*data).set.buffer_size as size_t;
     multi_connchanged((*data).multi);
@@ -8080,10 +4055,10 @@ pub unsafe extern "C" fn Curl_http2_setup(
     if (*(*conn).handler).flags
         & ((1 as i32) << 0 as i32) as u32 != 0
     {
-        let ref mut fresh60 = (*conn).handler;
+        let fresh60 = &mut ((*conn).handler);
         *fresh60 = &Curl_handler_http2_ssl;
     } else {
-        let ref mut fresh61 = (*conn).handler;
+        let fresh61 = &mut ((*conn).handler);
         *fresh61 = &Curl_handler_http2;
     }
     result = http2_init(data, conn);
@@ -8096,7 +4071,7 @@ pub unsafe extern "C" fn Curl_http2_setup(
         b"Using HTTP2, server supports multiplexing\0" as *const u8
             as *const i8,
     );
-    let ref mut fresh62 = (*conn).bits;
+    let fresh62 = &mut ((*conn).bits);
     (*fresh62).set_multiplex(1 as i32 as bit);
     (*conn).httpversion = 20 as i32 as u8;
     (*(*conn).bundle).multiuse = 2 as i32;
@@ -8126,11 +4101,11 @@ pub unsafe extern "C" fn Curl_http2_switched(
     if result as u64 != 0 {
         return result;
     }
-    let ref mut fresh63 = (*httpc).recv_underlying;
+    let fresh63 = &mut ((*httpc).recv_underlying);
     *fresh63 = (*conn).recv[0 as i32 as usize];
-    let ref mut fresh64 = (*httpc).send_underlying;
+    let fresh64 = &mut ((*httpc).send_underlying);
     *fresh64 = (*conn).send[0 as i32 as usize];
-    let ref mut fresh65 = (*conn).recv[0 as i32 as usize];
+    let fresh65 = &mut ((*conn).recv[0 as i32 as usize]);
     *fresh65 = Some(
         http2_recv
             as unsafe extern "C" fn(
@@ -8141,7 +4116,7 @@ pub unsafe extern "C" fn Curl_http2_switched(
                 *mut CURLcode,
             ) -> ssize_t,
     );
-    let ref mut fresh66 = (*conn).send[0 as i32 as usize];
+    let fresh66 = &mut ((*conn).send[0 as i32 as usize]);
     *fresh66 = Some(
         http2_send
             as unsafe extern "C" fn(
@@ -8306,13 +4281,13 @@ pub unsafe extern "C" fn Curl_http2_add_child(
         if dep.is_null() {
             return CURLE_OUT_OF_MEMORY;
         }
-        let ref mut fresh67 = (*dep).data;
+        let fresh67 = &mut ((*dep).data);
         *fresh67 = child;
         if !((*parent).set.stream_dependents).is_null() && exclusive as i32 != 0
         {
             let mut node: *mut Curl_http2_dep = (*parent).set.stream_dependents;
             while !node.is_null() {
-                let ref mut fresh68 = (*(*node).data).set.stream_depends_on;
+                let fresh68 = &mut ((*(*node).data).set.stream_depends_on);
                 *fresh68 = child;
                 node = (*node).next;
             }
@@ -8321,20 +4296,20 @@ pub unsafe extern "C" fn Curl_http2_add_child(
                 tail = &mut (**tail).next;
             }
             *tail = (*parent).set.stream_dependents;
-            let ref mut fresh69 = (*parent).set.stream_dependents;
+            let fresh69 = &mut ((*parent).set.stream_dependents);
             *fresh69 = 0 as *mut Curl_http2_dep;
         }
         tail = &mut (*parent).set.stream_dependents;
         while !(*tail).is_null() {
-            let ref mut fresh70 = (*(**tail).data).set;
+            let fresh70 = &mut ((*(**tail).data).set);
             (*fresh70).set_stream_depends_e(0 as i32 as bit);
             tail = &mut (**tail).next;
         }
         *tail = dep;
     }
-    let ref mut fresh71 = (*child).set.stream_depends_on;
+    let fresh71 = &mut ((*child).set.stream_depends_on);
     *fresh71 = parent;
-    let ref mut fresh72 = (*child).set;
+    let fresh72 = &mut ((*child).set);
     (*fresh72).set_stream_depends_e(exclusive as bit);
     return CURLE_OK;
 }
@@ -8351,17 +4326,17 @@ pub unsafe extern "C" fn Curl_http2_remove_child(
     }
     if !data.is_null() {
         if !last.is_null() {
-            let ref mut fresh73 = (*last).next;
+            let fresh73 = &mut ((*last).next);
             *fresh73 = (*data).next;
         } else {
-            let ref mut fresh74 = (*parent).set.stream_dependents;
+            let fresh74 = &mut ((*parent).set.stream_dependents);
             *fresh74 = (*data).next;
         }
         Curl_cfree.expect("non-null function pointer")(data as *mut libc::c_void);
     }
-    let ref mut fresh75 = (*child).set.stream_depends_on;
+    let fresh75 = &mut ((*child).set.stream_depends_on);
     *fresh75 = 0 as *mut Curl_easy;
-    let ref mut fresh76 = (*child).set;
+    let fresh76 = &mut ((*child).set);
     (*fresh76).set_stream_depends_e(0 as i32 as bit);
 }
 #[no_mangle]

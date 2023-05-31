@@ -3,9 +3,9 @@ extern "C" {
     fn __errno_location() -> *mut i32;
     fn poll(__fds: *mut pollfd, __nfds: nfds_t, __timeout: i32) -> i32;
 }
-pub type curl_off_t = crate::src::lib::http2::curl_off_t;
-pub type timediff_t = crate::src::lib::http2::timediff_t;
-pub type curl_socket_t = crate::src::lib::http2::curl_socket_t;
+pub type curl_off_t = crate::src::lib::altsvc::curl_off_t;
+pub type timediff_t = crate::src::lib::altsvc::timediff_t;
+pub type curl_socket_t = crate::src::lib::altsvc::curl_socket_t;
 pub type nfds_t = u64;
 // #[derive(Copy, Clone)]
 
@@ -166,13 +166,13 @@ pub unsafe extern "C" fn Curl_poll(
             if (*ufds.offset(i as isize)).revents as i32 & 0x10 as i32
                 != 0
             {
-                let ref mut fresh0 = (*ufds.offset(i as isize)).revents;
+                let fresh0 = &mut ((*ufds.offset(i as isize)).revents);
                 *fresh0 = (*fresh0 as i32 | 0x1 as i32) as i16;
             }
             if (*ufds.offset(i as isize)).revents as i32 & 0x8 as i32
                 != 0
             {
-                let ref mut fresh1 = (*ufds.offset(i as isize)).revents;
+                let fresh1 = &mut ((*ufds.offset(i as isize)).revents);
                 *fresh1 = (*fresh1 as i32
                     | (0x1 as i32 | 0x4 as i32)) as i16;
             }

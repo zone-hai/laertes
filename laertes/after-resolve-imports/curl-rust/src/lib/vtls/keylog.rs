@@ -23,18 +23,18 @@ extern "C" {
 }
 pub use crate::src::lib::getenv::curl_getenv;
 pub use crate::src::lib::easy::Curl_cfree;
-pub use crate::src::lib::mqtt::_IO_codecvt;
-pub use crate::src::src::tool_cb_rea::_IO_wide_data;
-pub use crate::src::src::tool_msgs::_IO_marker;
-pub type __off_t = crate::src::lib::http2::__off_t;
-pub type __off64_t = crate::src::lib::http2::__off64_t;
-pub type size_t = crate::src::lib::http2::size_t;
+pub use crate::src::lib::imap::_IO_marker;
+pub use crate::src::lib::speedcheck::_IO_codecvt;
+pub use crate::src::lib::vtls::vtls::_IO_wide_data;
+pub type __off_t = crate::src::lib::altsvc::__off_t;
+pub type __off64_t = crate::src::lib::altsvc::__off64_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
 // #[derive(Copy, Clone)]
 
-pub type _IO_FILE = crate::src::lib::http2::_IO_FILE;
-pub type _IO_lock_t = crate::src::lib::http2::_IO_lock_t;
-pub type FILE = crate::src::lib::http2::FILE;
-pub type curl_free_callback = crate::src::lib::http2::curl_free_callback;
+pub type _IO_FILE = crate::src::lib::altsvc::_IO_FILE;
+pub type _IO_lock_t = crate::src::lib::altsvc::_IO_lock_t;
+pub type FILE = crate::src::lib::altsvc::FILE;
+pub type curl_free_callback = crate::src::lib::altsvc::curl_free_callback;
 static mut keylog_file_fp: *mut FILE = 0 as *const FILE as *mut FILE;
 #[no_mangle]
 pub unsafe extern "C" fn Curl_tls_keylog_open() {

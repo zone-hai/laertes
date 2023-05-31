@@ -1,23 +1,23 @@
 use ::libc;
-pub type size_t = crate::src::lib::http2::size_t;
-pub type Curl_llist_dtor = crate::src::lib::http2::Curl_llist_dtor;
+pub type size_t = crate::src::lib::altsvc::size_t;
+pub type Curl_llist_dtor = crate::src::lib::altsvc::Curl_llist_dtor;
 // #[derive(Copy, Clone)]
 
-pub type Curl_llist_element = crate::src::lib::http2::Curl_llist_element;
+pub type Curl_llist_element = crate::src::lib::altsvc::Curl_llist_element;
 // #[derive(Copy, Clone)]
 
-pub type Curl_llist = crate::src::lib::http2::Curl_llist;
+pub type Curl_llist = crate::src::lib::altsvc::Curl_llist;
 #[no_mangle]
 pub unsafe extern "C" fn Curl_llist_init(
     mut l: *mut Curl_llist,
     mut dtor: Curl_llist_dtor,
 ) {
     (*l).size = 0 as i32 as size_t;
-    let ref mut fresh0 = (*l).dtor;
+    let fresh0 = &mut ((*l).dtor);
     *fresh0 = dtor;
-    let ref mut fresh1 = (*l).head;
+    let fresh1 = &mut ((*l).head);
     *fresh1 = 0 as *mut Curl_llist_element;
-    let ref mut fresh2 = (*l).tail;
+    let fresh2 = &mut ((*l).tail);
     *fresh2 = 0 as *mut Curl_llist_element;
 }
 #[no_mangle]
@@ -27,40 +27,40 @@ pub unsafe extern "C" fn Curl_llist_insert_next(
     mut p: *const libc::c_void,
     mut ne: *mut Curl_llist_element,
 ) {
-    let ref mut fresh3 = (*ne).ptr;
+    let fresh3 = &mut ((*ne).ptr);
     *fresh3 = p as *mut libc::c_void;
     if (*list).size == 0 as i32 as u64 {
-        let ref mut fresh4 = (*list).head;
+        let fresh4 = &mut ((*list).head);
         *fresh4 = ne;
-        let ref mut fresh5 = (*(*list).head).prev;
+        let fresh5 = &mut ((*(*list).head).prev);
         *fresh5 = 0 as *mut Curl_llist_element;
-        let ref mut fresh6 = (*(*list).head).next;
+        let fresh6 = &mut ((*(*list).head).next);
         *fresh6 = 0 as *mut Curl_llist_element;
-        let ref mut fresh7 = (*list).tail;
+        let fresh7 = &mut ((*list).tail);
         *fresh7 = ne;
     } else {
-        let ref mut fresh8 = (*ne).next;
+        let fresh8 = &mut ((*ne).next);
         *fresh8 = if !e.is_null() { (*e).next } else { (*list).head };
-        let ref mut fresh9 = (*ne).prev;
+        let fresh9 = &mut ((*ne).prev);
         *fresh9 = e;
         if e.is_null() {
-            let ref mut fresh10 = (*(*list).head).prev;
+            let fresh10 = &mut ((*(*list).head).prev);
             *fresh10 = ne;
-            let ref mut fresh11 = (*list).head;
+            let fresh11 = &mut ((*list).head);
             *fresh11 = ne;
         } else if !((*e).next).is_null() {
-            let ref mut fresh12 = (*(*e).next).prev;
+            let fresh12 = &mut ((*(*e).next).prev);
             *fresh12 = ne;
         } else {
-            let ref mut fresh13 = (*list).tail;
+            let fresh13 = &mut ((*list).tail);
             *fresh13 = ne;
         }
         if !e.is_null() {
-            let ref mut fresh14 = (*e).next;
+            let fresh14 = &mut ((*e).next);
             *fresh14 = ne;
         }
     }
-    let ref mut fresh15 = (*list).size;
+    let fresh15 = &mut ((*list).size);
     *fresh15 = (*fresh15).wrapping_add(1);
 }
 #[no_mangle]
@@ -74,39 +74,39 @@ pub unsafe extern "C" fn Curl_llist_remove(
         return;
     }
     if e == (*list).head {
-        let ref mut fresh16 = (*list).head;
+        let fresh16 = &mut ((*list).head);
         *fresh16 = (*e).next;
         if ((*list).head).is_null() {
-            let ref mut fresh17 = (*list).tail;
+            let fresh17 = &mut ((*list).tail);
             *fresh17 = 0 as *mut Curl_llist_element;
         } else {
-            let ref mut fresh18 = (*(*e).next).prev;
+            let fresh18 = &mut ((*(*e).next).prev);
             *fresh18 = 0 as *mut Curl_llist_element;
         }
     } else {
         if ((*e).prev).is_null() {
-            let ref mut fresh19 = (*list).head;
+            let fresh19 = &mut ((*list).head);
             *fresh19 = (*e).next;
         } else {
-            let ref mut fresh20 = (*(*e).prev).next;
+            let fresh20 = &mut ((*(*e).prev).next);
             *fresh20 = (*e).next;
         }
         if ((*e).next).is_null() {
-            let ref mut fresh21 = (*list).tail;
+            let fresh21 = &mut ((*list).tail);
             *fresh21 = (*e).prev;
         } else {
-            let ref mut fresh22 = (*(*e).next).prev;
+            let fresh22 = &mut ((*(*e).next).prev);
             *fresh22 = (*e).prev;
         }
     }
     ptr = (*e).ptr;
-    let ref mut fresh23 = (*e).ptr;
+    let fresh23 = &mut ((*e).ptr);
     *fresh23 = 0 as *mut libc::c_void;
-    let ref mut fresh24 = (*e).prev;
+    let fresh24 = &mut ((*e).prev);
     *fresh24 = 0 as *mut Curl_llist_element;
-    let ref mut fresh25 = (*e).next;
+    let fresh25 = &mut ((*e).next);
     *fresh25 = 0 as *mut Curl_llist_element;
-    let ref mut fresh26 = (*list).size;
+    let fresh26 = &mut ((*list).size);
     *fresh26 = (*fresh26).wrapping_sub(1);
     if ((*list).dtor).is_some() {
         ((*list).dtor).expect("non-null function pointer")(user, ptr);

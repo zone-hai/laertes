@@ -18,7 +18,7 @@ extern "C" {
 }
 pub use crate::src::lib::easy::Curl_cfree;
 pub use crate::src::lib::easy::Curl_cmalloc;
-pub type size_t = crate::src::lib::http2::size_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
 pub type pthread_t = crate::src::lib::asyn_thread::pthread_t;
 #[derive(Copy, Clone)]
 #[repr(C)]
@@ -26,8 +26,8 @@ pub union pthread_attr_t {
     pub __size: [i8; 56],
     pub __align: i64,
 }
-pub type curl_malloc_callback = crate::src::lib::http2::curl_malloc_callback;
-pub type curl_free_callback = crate::src::lib::http2::curl_free_callback;
+pub type curl_malloc_callback = crate::src::lib::altsvc::curl_malloc_callback;
+pub type curl_free_callback = crate::src::lib::altsvc::curl_free_callback;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct Curl_actual_call {
@@ -61,9 +61,9 @@ pub unsafe extern "C" fn Curl_thread_create(
         )(::std::mem::size_of::<Curl_actual_call>() as u64)
         as *mut Curl_actual_call;
     if !ac.is_null() && !t.is_null() {
-        let ref mut fresh0 = (*ac).func;
+        let fresh0 = &mut ((*ac).func);
         *fresh0 = func;
-        let ref mut fresh1 = (*ac).arg;
+        let fresh1 = &mut ((*ac).arg);
         *fresh1 = arg;
         if !(pthread_create(
             t,

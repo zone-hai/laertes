@@ -27,12 +27,12 @@ pub use crate::src::lib::easy::Curl_ccalloc;
 pub use crate::src::lib::easy::Curl_cfree;
 pub use crate::src::lib::easy::Curl_cmalloc;
 pub use crate::src::lib::easy::Curl_cstrdup;
-pub type __uint8_t = crate::src::lib::http2::__uint8_t;
+pub type __uint8_t = crate::src::lib::altsvc::__uint8_t;
 pub type __uint16_t = crate::src::lib::connect::__uint16_t;
-pub type __uint32_t = crate::src::lib::http2::__uint32_t;
-pub type __socklen_t = crate::src::lib::http2::__socklen_t;
-pub type size_t = crate::src::lib::http2::size_t;
-pub type socklen_t = crate::src::lib::http2::socklen_t;
+pub type __uint32_t = crate::src::lib::altsvc::__uint32_t;
+pub type __socklen_t = crate::src::lib::altsvc::__socklen_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
+pub type socklen_t = crate::src::lib::altsvc::socklen_t;
 pub type __socket_type = crate::src::lib::asyn_thread::__socket_type;
 pub const SOCK_NONBLOCK: __socket_type = 2048;
 pub const SOCK_CLOEXEC: __socket_type = 524288;
@@ -43,16 +43,16 @@ pub const SOCK_RDM: __socket_type = 4;
 pub const SOCK_RAW: __socket_type = 3;
 pub const SOCK_DGRAM: __socket_type = 2;
 pub const SOCK_STREAM: __socket_type = 1;
-pub type sa_family_t = crate::src::lib::http2::sa_family_t;
+pub type sa_family_t = crate::src::lib::altsvc::sa_family_t;
 // #[derive(Copy, Clone)]
 
-pub type sockaddr = crate::src::lib::http2::sockaddr;
-pub type curl_socklen_t = crate::src::lib::http2::curl_socklen_t;
-pub type curl_malloc_callback = crate::src::lib::http2::curl_malloc_callback;
-pub type curl_free_callback = crate::src::lib::http2::curl_free_callback;
+pub type sockaddr = crate::src::lib::altsvc::sockaddr;
+pub type curl_socklen_t = crate::src::lib::altsvc::curl_socklen_t;
+pub type curl_malloc_callback = crate::src::lib::altsvc::curl_malloc_callback;
+pub type curl_free_callback = crate::src::lib::altsvc::curl_free_callback;
 pub type curl_strdup_callback = crate::src::lib::altsvc::curl_strdup_callback;
-pub type curl_calloc_callback = crate::src::lib::http2::curl_calloc_callback;
-pub type CURLcode = crate::src::lib::http2::CURLcode;
+pub type curl_calloc_callback = crate::src::lib::altsvc::curl_calloc_callback;
+pub type CURLcode = crate::src::lib::altsvc::CURLcode;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
 pub const CURLE_PROXY: CURLcode = 97;
@@ -153,9 +153,9 @@ pub const CURLE_URL_MALFORMAT: CURLcode = 3;
 pub const CURLE_FAILED_INIT: CURLcode = 2;
 pub const CURLE_UNSUPPORTED_PROTOCOL: CURLcode = 1;
 pub const CURLE_OK: CURLcode = 0;
-pub type uint8_t = crate::src::lib::http2::uint8_t;
+pub type uint8_t = crate::src::lib::altsvc::uint8_t;
 pub type uint16_t = crate::src::lib::connect::uint16_t;
-pub type uint32_t = crate::src::lib::http2::uint32_t;
+pub type uint32_t = crate::src::lib::altsvc::uint32_t;
 pub type in_addr_t = crate::src::lib::connect::in_addr_t;
 // #[derive(Copy, Clone)]
 
@@ -190,7 +190,7 @@ pub type addrinfo = crate::src::lib::asyn_thread::addrinfo;
 pub type sockaddr_un = crate::src::lib::connect::sockaddr_un;
 // #[derive(Copy, Clone)]
 
-pub type Curl_addrinfo = crate::src::lib::http2::Curl_addrinfo;
+pub type Curl_addrinfo = crate::src::lib::altsvc::Curl_addrinfo;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct namebuff {
@@ -280,13 +280,13 @@ pub unsafe extern "C" fn Curl_getaddrinfo_ex(
                             (*ca).ai_socktype = (*ai).ai_socktype;
                             (*ca).ai_protocol = (*ai).ai_protocol;
                             (*ca).ai_addrlen = ss_size as curl_socklen_t;
-                            let ref mut fresh0 = (*ca).ai_addr;
+                            let fresh0 = &mut ((*ca).ai_addr);
                             *fresh0 = 0 as *mut sockaddr;
-                            let ref mut fresh1 = (*ca).ai_canonname;
+                            let fresh1 = &mut ((*ca).ai_canonname);
                             *fresh1 = 0 as *mut i8;
-                            let ref mut fresh2 = (*ca).ai_next;
+                            let fresh2 = &mut ((*ca).ai_next);
                             *fresh2 = 0 as *mut Curl_addrinfo;
-                            let ref mut fresh3 = (*ca).ai_addr;
+                            let fresh3 = &mut ((*ca).ai_addr);
                             *fresh3 = (ca as *mut i8)
                                 .offset(
                                     ::std::mem::size_of::<Curl_addrinfo>() as u64
@@ -298,7 +298,7 @@ pub unsafe extern "C" fn Curl_getaddrinfo_ex(
                                 ss_size,
                             );
                             if namelen != 0 {
-                                let ref mut fresh4 = (*ca).ai_canonname;
+                                let fresh4 = &mut ((*ca).ai_canonname);
                                 *fresh4 = ((*ca).ai_addr as *mut i8)
                                     .offset(ss_size as isize) as *mut libc::c_void
                                     as *mut i8;
@@ -312,7 +312,7 @@ pub unsafe extern "C" fn Curl_getaddrinfo_ex(
                                 cafirst = ca;
                             }
                             if !calast.is_null() {
-                                let ref mut fresh5 = (*calast).ai_next;
+                                let fresh5 = &mut ((*calast).ai_next);
                                 *fresh5 = ca;
                             }
                             calast = ca;
@@ -379,11 +379,11 @@ pub unsafe extern "C" fn Curl_he2ai(
             result = CURLE_OUT_OF_MEMORY;
             break;
         } else {
-            let ref mut fresh6 = (*ai).ai_addr;
+            let fresh6 = &mut ((*ai).ai_addr);
             *fresh6 = (ai as *mut i8)
                 .offset(::std::mem::size_of::<Curl_addrinfo>() as u64 as isize)
                 as *mut libc::c_void as *mut sockaddr;
-            let ref mut fresh7 = (*ai).ai_canonname;
+            let fresh7 = &mut ((*ai).ai_canonname);
             *fresh7 = ((*ai).ai_addr as *mut i8).offset(ss_size as isize);
             memcpy(
                 (*ai).ai_canonname as *mut libc::c_void,
@@ -394,7 +394,7 @@ pub unsafe extern "C" fn Curl_he2ai(
                 firstai = ai;
             }
             if !prevai.is_null() {
-                let ref mut fresh8 = (*prevai).ai_next;
+                let fresh8 = &mut ((*prevai).ai_next);
                 *fresh8 = ai;
             }
             (*ai).ai_family = (*he).h_addrtype;
@@ -486,18 +486,18 @@ pub unsafe extern "C" fn Curl_ip2addr(
         }
     }
     h = &mut (*buf).hostentry;
-    let ref mut fresh9 = (*h).h_name;
+    let fresh9 = &mut ((*h).h_name);
     *fresh9 = hoststr;
-    let ref mut fresh10 = (*h).h_aliases;
+    let fresh10 = &mut ((*h).h_aliases);
     *fresh10 = 0 as *mut *mut i8;
     (*h).h_addrtype = af as i16 as i32;
     (*h).h_length = addrsize as i16 as i32;
-    let ref mut fresh11 = (*h).h_addr_list;
+    let fresh11 = &mut ((*h).h_addr_list);
     *fresh11 = &mut *((*buf).h_addr_list).as_mut_ptr().offset(0 as i32 as isize)
         as *mut *mut i8;
-    let ref mut fresh12 = *((*h).h_addr_list).offset(0 as i32 as isize);
+    let fresh12 = &mut (*((*h).h_addr_list).offset(0 as i32 as isize));
     *fresh12 = addrentry;
-    let ref mut fresh13 = *((*h).h_addr_list).offset(1 as i32 as isize);
+    let fresh13 = &mut (*((*h).h_addr_list).offset(1 as i32 as isize));
     *fresh13 = 0 as *mut i8;
     ai = Curl_he2ai(h, port);
     Curl_cfree.expect("non-null function pointer")(hoststr as *mut libc::c_void);
@@ -564,7 +564,7 @@ pub unsafe extern "C" fn Curl_unix2addr(
     if ai.is_null() {
         return 0 as *mut Curl_addrinfo;
     }
-    let ref mut fresh14 = (*ai).ai_addr;
+    let fresh14 = &mut ((*ai).ai_addr);
     *fresh14 = (ai as *mut i8)
         .offset(::std::mem::size_of::<Curl_addrinfo>() as u64 as isize)
         as *mut libc::c_void as *mut sockaddr;

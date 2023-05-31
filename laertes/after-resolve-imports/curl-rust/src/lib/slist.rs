@@ -7,12 +7,12 @@ extern "C" {
 pub use crate::src::lib::easy::Curl_cfree;
 pub use crate::src::lib::easy::Curl_cmalloc;
 pub use crate::src::lib::easy::Curl_cstrdup;
-pub type size_t = crate::src::lib::http2::size_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
 // #[derive(Copy, Clone)]
 
-pub type curl_slist = crate::src::lib::http2::curl_slist;
-pub type curl_malloc_callback = crate::src::lib::http2::curl_malloc_callback;
-pub type curl_free_callback = crate::src::lib::http2::curl_free_callback;
+pub type curl_slist = crate::src::lib::altsvc::curl_slist;
+pub type curl_malloc_callback = crate::src::lib::altsvc::curl_malloc_callback;
+pub type curl_free_callback = crate::src::lib::altsvc::curl_free_callback;
 pub type curl_strdup_callback = crate::src::lib::altsvc::curl_strdup_callback;
 unsafe extern "C" fn slist_get_last(mut list: *mut curl_slist) -> *mut curl_slist {
     let mut item: *mut curl_slist = 0 as *mut curl_slist;
@@ -39,15 +39,15 @@ pub unsafe extern "C" fn Curl_slist_append_nodup(
     if new_item.is_null() {
         return 0 as *mut curl_slist;
     }
-    let ref mut fresh0 = (*new_item).next;
+    let fresh0 = &mut ((*new_item).next);
     *fresh0 = 0 as *mut curl_slist;
-    let ref mut fresh1 = (*new_item).data;
+    let fresh1 = &mut ((*new_item).data);
     *fresh1 = data;
     if list.is_null() {
         return new_item;
     }
     last = slist_get_last(list);
-    let ref mut fresh2 = (*last).next;
+    let fresh2 = &mut ((*last).next);
     *fresh2 = new_item;
     return list;
 }
@@ -96,7 +96,7 @@ pub unsafe extern "C" fn curl_slist_free_all(mut list: *mut curl_slist) {
         next = (*item).next;
         Curl_cfree
             .expect("non-null function pointer")((*item).data as *mut libc::c_void);
-        let ref mut fresh3 = (*item).data;
+        let fresh3 = &mut ((*item).data);
         *fresh3 = 0 as *mut i8;
         Curl_cfree.expect("non-null function pointer")(item as *mut libc::c_void);
         item = next;

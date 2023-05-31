@@ -9,7 +9,7 @@ extern "C" {
     ) -> i64;
 }
 pub use crate::src::lib::curl_ctype::Curl_isspace;
-pub type curl_off_t = crate::src::lib::http2::curl_off_t;
+pub type curl_off_t = crate::src::lib::altsvc::curl_off_t;
 pub type CURLofft = crate::src::lib::cookie::CURLofft;
 pub const CURL_OFFT_INVAL: CURLofft = 2;
 pub const CURL_OFFT_FLOW: CURLofft = 1;

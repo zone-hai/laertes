@@ -3,7 +3,7 @@ extern "C" {
     fn strchr(_: *const i8, _: i32) -> *mut i8;
     fn gethostname(__name: *mut i8, __len: size_t) -> i32;
 }
-pub type size_t = crate::src::lib::http2::size_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
 #[no_mangle]
 pub unsafe extern "C" fn Curl_gethostname(
     name: *mut i8,

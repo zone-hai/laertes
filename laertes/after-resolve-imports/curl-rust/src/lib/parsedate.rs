@@ -20,13 +20,13 @@ pub use crate::src::lib::curl_ctype::Curl_isalpha;
 pub use crate::src::lib::curl_ctype::Curl_isdigit;
 pub use crate::src::lib::strcase::Curl_strcasecompare;
 pub use crate::src::lib::warnless::curlx_sltosi;
-pub type __time_t = crate::src::lib::http2::__time_t;
-pub type time_t = crate::src::lib::http2::time_t;
-pub type size_t = crate::src::lib::http2::size_t;
+pub type __time_t = crate::src::lib::altsvc::__time_t;
+pub type time_t = crate::src::lib::altsvc::time_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
 // #[derive(Copy, Clone)]
 
 pub type tm = crate::src::lib::altsvc::tm;
-pub type CURLcode = crate::src::lib::http2::CURLcode;
+pub type CURLcode = crate::src::lib::altsvc::CURLcode;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
 pub const CURLE_PROXY: CURLcode = 97;

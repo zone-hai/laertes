@@ -425,8 +425,7 @@ pub const CURLSSLBACKEND_NSS: curl_sslbackend = 3;
 pub const CURLSSLBACKEND_GNUTLS: curl_sslbackend = 2;
 pub const CURLSSLBACKEND_OPENSSL: curl_sslbackend = 1;
 pub const CURLSSLBACKEND_NONE: curl_sslbackend = 0;
-// #[derive(Copy, Clone, BitfieldStruct)]
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, BitfieldStruct)]
 #[repr(C)]
 pub struct PureInfo {
     pub httpcode: libc::c_int,
@@ -449,27 +448,10 @@ pub struct PureInfo {
     pub conn_protocol: libc::c_uint,
     pub certs: curl_certinfo,
     pub pxcode: CURLproxycode,
-    // #[bitfield(name = "timecond", ty = "bit", bits = "0..=0")]
+    #[bitfield(name = "timecond", ty = "bit", bits = "0..=0")]
     pub timecond: [u8; 1],
-    // #[bitfield(padding)]
+    #[bitfield(padding)]
     pub c2rust_padding: [u8; 3],
-}
-impl PureInfo {
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_timecond(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self.timecond;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn timecond(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self.timecond;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
 }
 pub type bit = libc::c_uint;
 pub type CURLproxycode = libc::c_uint;

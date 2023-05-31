@@ -13,8 +13,8 @@ extern "C" {
 pub use crate::src::lib::bufref::Curl_bufref_set;
 pub use crate::src::lib::escape::curl_free;
 pub use crate::src::lib::easy::Curl_cmalloc;
-pub type size_t = crate::src::lib::http2::size_t;
-pub type CURLcode = crate::src::lib::http2::CURLcode;
+pub type size_t = crate::src::lib::altsvc::size_t;
+pub type CURLcode = crate::src::lib::altsvc::CURLcode;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
 pub const CURLE_PROXY: CURLcode = 97;
@@ -115,7 +115,7 @@ pub const CURLE_URL_MALFORMAT: CURLcode = 3;
 pub const CURLE_FAILED_INIT: CURLcode = 2;
 pub const CURLE_UNSUPPORTED_PROTOCOL: CURLcode = 1;
 pub const CURLE_OK: CURLcode = 0;
-pub type curl_malloc_callback = crate::src::lib::http2::curl_malloc_callback;
+pub type curl_malloc_callback = crate::src::lib::altsvc::curl_malloc_callback;
 // #[derive(Copy, Clone)]
 
 pub type bufref = crate::src::lib::bufref::bufref;

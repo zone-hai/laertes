@@ -221,21 +221,21 @@ pub use crate::src::lib::asyn_thread::Curl_share;
 pub use crate::src::lib::asyn_thread::thread_data;
 pub use crate::src::lib::content_encoding::contenc_writer;
 pub use crate::src::lib::easy::hsts;
-pub use crate::src::lib::http2::curl_pushheaders;
-pub use crate::src::lib::conncache::Gsasl_session;
+pub use crate::src::lib::altsvc::Gsasl;
 pub use crate::src::lib::easy::Curl_ccalloc;
 pub use crate::src::lib::easy::Curl_cfree;
 pub use crate::src::lib::easy::Curl_cmalloc;
 pub use crate::src::lib::easy::Curl_cstrdup;
-pub use crate::src::lib::escape::Gsasl;
-pub use crate::src::lib::mqtt::_IO_codecvt;
+pub use crate::src::lib::hostip6::psl_ctx_st;
+pub use crate::src::lib::imap::_IO_marker;
 pub use crate::src::lib::parsedate::Curl_month;
 pub use crate::src::lib::parsedate::Curl_wkday;
-pub use crate::src::lib::speedcheck::nghttp2_session;
-pub use crate::src::lib::urlapi::psl_ctx_st;
-pub use crate::src::src::tool_cb_rea::_IO_wide_data;
-pub use crate::src::src::tool_msgs::_IO_marker;
+pub use crate::src::lib::speedcheck::_IO_codecvt;
+pub use crate::src::lib::urlapi::Gsasl_session;
+pub use crate::src::lib::version::nghttp2_session;
+pub use crate::src::lib::vtls::vtls::_IO_wide_data;
 pub use crate::src::lib::ftplistparser::ftp_parselist_data;
+pub use crate::src::lib::http2::curl_pushheaders;
 pub use crate::src::lib::openldap::ldapconninfo;
 pub use crate::src::lib::openldap::ldapreqinfo;
 pub use crate::src::lib::smb::smb_request;
@@ -243,46 +243,46 @@ pub use crate::src::lib::telnet::TELNET;
 pub use crate::src::lib::tftp::tftp_state_data;
 pub use crate::src::lib::urlapi::Curl_URL;
 pub use crate::src::lib::vtls::openssl::ssl_backend_data;
-pub type __uint8_t = crate::src::lib::http2::__uint8_t;
+pub type __uint8_t = crate::src::lib::altsvc::__uint8_t;
 pub type __uint16_t = crate::src::lib::connect::__uint16_t;
-pub type __int32_t = crate::src::lib::http2::__int32_t;
-pub type __uint32_t = crate::src::lib::http2::__uint32_t;
-pub type __off_t = crate::src::lib::http2::__off_t;
-pub type __off64_t = crate::src::lib::http2::__off64_t;
-pub type __pid_t = crate::src::lib::http2::__pid_t;
-pub type __time_t = crate::src::lib::http2::__time_t;
-pub type __ssize_t = crate::src::lib::http2::__ssize_t;
-pub type __socklen_t = crate::src::lib::http2::__socklen_t;
-pub type pid_t = crate::src::lib::http2::pid_t;
-pub type ssize_t = crate::src::lib::http2::ssize_t;
-pub type time_t = crate::src::lib::http2::time_t;
-pub type size_t = crate::src::lib::http2::size_t;
-pub type int32_t = crate::src::lib::http2::int32_t;
-pub type socklen_t = crate::src::lib::http2::socklen_t;
-pub type sa_family_t = crate::src::lib::http2::sa_family_t;
+pub type __int32_t = crate::src::lib::altsvc::__int32_t;
+pub type __uint32_t = crate::src::lib::altsvc::__uint32_t;
+pub type __off_t = crate::src::lib::altsvc::__off_t;
+pub type __off64_t = crate::src::lib::altsvc::__off64_t;
+pub type __pid_t = crate::src::lib::altsvc::__pid_t;
+pub type __time_t = crate::src::lib::altsvc::__time_t;
+pub type __ssize_t = crate::src::lib::altsvc::__ssize_t;
+pub type __socklen_t = crate::src::lib::altsvc::__socklen_t;
+pub type pid_t = crate::src::lib::altsvc::pid_t;
+pub type ssize_t = crate::src::lib::altsvc::ssize_t;
+pub type time_t = crate::src::lib::altsvc::time_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
+pub type int32_t = crate::src::lib::altsvc::int32_t;
+pub type socklen_t = crate::src::lib::altsvc::socklen_t;
+pub type sa_family_t = crate::src::lib::altsvc::sa_family_t;
 // #[derive(Copy, Clone)]
 
-pub type sockaddr = crate::src::lib::http2::sockaddr;
+pub type sockaddr = crate::src::lib::altsvc::sockaddr;
 // #[derive(Copy, Clone)]
 
 pub type sockaddr_storage = crate::src::lib::connect::sockaddr_storage;
-pub type curl_socklen_t = crate::src::lib::http2::curl_socklen_t;
-pub type curl_off_t = crate::src::lib::http2::curl_off_t;
+pub type curl_socklen_t = crate::src::lib::altsvc::curl_socklen_t;
+pub type curl_off_t = crate::src::lib::altsvc::curl_off_t;
 // #[derive(Copy, Clone)]
 
-pub type _IO_FILE = crate::src::lib::http2::_IO_FILE;
-pub type _IO_lock_t = crate::src::lib::http2::_IO_lock_t;
-pub type FILE = crate::src::lib::http2::FILE;
+pub type _IO_FILE = crate::src::lib::altsvc::_IO_FILE;
+pub type _IO_lock_t = crate::src::lib::altsvc::_IO_lock_t;
+pub type FILE = crate::src::lib::altsvc::FILE;
 // #[derive(Copy, Clone)]
 
 pub type tm = crate::src::lib::altsvc::tm;
 // #[derive(Copy, Clone)]
 
-pub type Curl_easy = crate::src::lib::http2::Curl_easy;
+pub type Curl_easy = crate::src::lib::altsvc::Curl_easy;
 // #[derive(Copy, Clone)]
 
-pub type curl_tlssessioninfo = crate::src::lib::http2::curl_tlssessioninfo;
-pub type curl_sslbackend = crate::src::lib::http2::curl_sslbackend;
+pub type curl_tlssessioninfo = crate::src::lib::altsvc::curl_tlssessioninfo;
+pub type curl_sslbackend = crate::src::lib::altsvc::curl_sslbackend;
 pub const CURLSSLBACKEND_RUSTLS: curl_sslbackend = 14;
 pub const CURLSSLBACKEND_BEARSSL: curl_sslbackend = 13;
 pub const CURLSSLBACKEND_MESALINK: curl_sslbackend = 12;
@@ -300,9 +300,9 @@ pub const CURLSSLBACKEND_OPENSSL: curl_sslbackend = 1;
 pub const CURLSSLBACKEND_NONE: curl_sslbackend = 0;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type PureInfo = crate::src::lib::http2::PureInfo;
-pub type bit = crate::src::lib::http2::bit;
-pub type CURLproxycode = crate::src::lib::http2::CURLproxycode;
+pub type PureInfo = crate::src::lib::altsvc::PureInfo;
+pub type bit = crate::src::lib::altsvc::bit;
+pub type CURLproxycode = crate::src::lib::altsvc::CURLproxycode;
 pub const CURLPX_LAST: CURLproxycode = 34;
 pub const CURLPX_USER_REJECTED: CURLproxycode = 33;
 pub const CURLPX_UNKNOWN_MODE: CURLproxycode = 32;
@@ -340,22 +340,22 @@ pub const CURLPX_BAD_ADDRESS_TYPE: CURLproxycode = 1;
 pub const CURLPX_OK: CURLproxycode = 0;
 // #[derive(Copy, Clone)]
 
-pub type curl_certinfo = crate::src::lib::http2::curl_certinfo;
+pub type curl_certinfo = crate::src::lib::altsvc::curl_certinfo;
 // #[derive(Copy, Clone)]
 
-pub type curl_slist = crate::src::lib::http2::curl_slist;
+pub type curl_slist = crate::src::lib::altsvc::curl_slist;
 // #[derive(Copy, Clone)]
 
-pub type WildcardData = crate::src::lib::http2::WildcardData;
-pub type wildcard_dtor = crate::src::lib::http2::wildcard_dtor;
+pub type WildcardData = crate::src::lib::altsvc::WildcardData;
+pub type wildcard_dtor = crate::src::lib::altsvc::wildcard_dtor;
 // #[derive(Copy, Clone)]
 
-pub type Curl_llist = crate::src::lib::http2::Curl_llist;
-pub type Curl_llist_dtor = crate::src::lib::http2::Curl_llist_dtor;
+pub type Curl_llist = crate::src::lib::altsvc::Curl_llist;
+pub type Curl_llist_dtor = crate::src::lib::altsvc::Curl_llist_dtor;
 // #[derive(Copy, Clone)]
 
-pub type Curl_llist_element = crate::src::lib::http2::Curl_llist_element;
-pub type wildcard_states = crate::src::lib::http2::wildcard_states;
+pub type Curl_llist_element = crate::src::lib::altsvc::Curl_llist_element;
+pub type wildcard_states = crate::src::lib::altsvc::wildcard_states;
 pub const CURLWC_DONE: wildcard_states = 7;
 pub const CURLWC_ERROR: wildcard_states = 6;
 pub const CURLWC_SKIP: wildcard_states = 5;
@@ -366,19 +366,19 @@ pub const CURLWC_INIT: wildcard_states = 1;
 pub const CURLWC_CLEAR: wildcard_states = 0;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type UrlState = crate::src::lib::http2::UrlState;
+pub type UrlState = crate::src::lib::altsvc::UrlState;
 // #[derive(Copy, Clone)]
 
-pub type dynamically_allocated_data = crate::src::lib::http2::dynamically_allocated_data;
-pub type trailers_state = crate::src::lib::http2::trailers_state;
+pub type dynamically_allocated_data = crate::src::lib::altsvc::dynamically_allocated_data;
+pub type trailers_state = crate::src::lib::altsvc::trailers_state;
 pub const TRAILERS_DONE: trailers_state = 3;
 pub const TRAILERS_SENDING: trailers_state = 2;
 pub const TRAILERS_INITIALIZED: trailers_state = 1;
 pub const TRAILERS_NONE: trailers_state = 0;
 // #[derive(Copy, Clone)]
 
-pub type dynbuf = crate::src::lib::http2::dynbuf;
-pub type Curl_HttpReq = crate::src::lib::http2::Curl_HttpReq;
+pub type dynbuf = crate::src::lib::altsvc::dynbuf;
+pub type Curl_HttpReq = crate::src::lib::altsvc::Curl_HttpReq;
 pub const HTTPREQ_HEAD: Curl_HttpReq = 5;
 pub const HTTPREQ_PUT: Curl_HttpReq = 4;
 pub const HTTPREQ_POST_MIME: Curl_HttpReq = 3;
@@ -387,13 +387,13 @@ pub const HTTPREQ_POST: Curl_HttpReq = 1;
 pub const HTTPREQ_GET: Curl_HttpReq = 0;
 // #[derive(Copy, Clone)]
 
-pub type urlpieces = crate::src::lib::http2::urlpieces;
-pub type CURLU = crate::src::lib::http2::CURLU;
-pub type curl_read_callback = crate::src::lib::http2::curl_read_callback;
+pub type urlpieces = crate::src::lib::altsvc::urlpieces;
+pub type CURLU = crate::src::lib::altsvc::CURLU;
+pub type curl_read_callback = crate::src::lib::altsvc::curl_read_callback;
 // #[derive(Copy, Clone)]
 
-pub type time_node = crate::src::lib::http2::time_node;
-pub type expire_id = crate::src::lib::http2::expire_id;
+pub type time_node = crate::src::lib::altsvc::time_node;
+pub type expire_id = crate::src::lib::altsvc::expire_id;
 pub const EXPIRE_LAST: expire_id = 13;
 pub const EXPIRE_QUIC: expire_id = 12;
 pub const EXPIRE_TOOFAST: expire_id = 11;
@@ -410,62 +410,62 @@ pub const EXPIRE_ASYNC_NAME: expire_id = 1;
 pub const EXPIRE_100_TIMEOUT: expire_id = 0;
 // #[derive(Copy, Clone)]
 
-pub type curltime = crate::src::lib::http2::curltime;
+pub type curltime = crate::src::lib::altsvc::curltime;
 // #[derive(Copy, Clone)]
 
-pub type Curl_tree = crate::src::lib::http2::Curl_tree;
+pub type Curl_tree = crate::src::lib::altsvc::Curl_tree;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type Curl_async = crate::src::lib::http2::Curl_async;
+pub type Curl_async = crate::src::lib::altsvc::Curl_async;
 // #[derive(Copy, Clone)]
 
-pub type Curl_dns_entry = crate::src::lib::http2::Curl_dns_entry;
+pub type Curl_dns_entry = crate::src::lib::altsvc::Curl_dns_entry;
 // #[derive(Copy, Clone)]
 
-pub type Curl_addrinfo = crate::src::lib::http2::Curl_addrinfo;
+pub type Curl_addrinfo = crate::src::lib::altsvc::Curl_addrinfo;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type auth = crate::src::lib::http2::auth;
+pub type auth = crate::src::lib::altsvc::auth;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type digestdata = crate::src::lib::http2::digestdata;
+pub type digestdata = crate::src::lib::altsvc::digestdata;
 // #[derive(Copy, Clone)]
 
-pub type tempbuf = crate::src::lib::http2::tempbuf;
+pub type tempbuf = crate::src::lib::altsvc::tempbuf;
 // #[derive(Copy, Clone)]
 
-pub type Curl_ssl_session = crate::src::lib::http2::Curl_ssl_session;
+pub type Curl_ssl_session = crate::src::lib::altsvc::Curl_ssl_session;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type ssl_primary_config = crate::src::lib::http2::ssl_primary_config;
+pub type ssl_primary_config = crate::src::lib::altsvc::ssl_primary_config;
 // #[derive(Copy, Clone)]
 
-pub type curl_blob = crate::src::lib::http2::curl_blob;
+pub type curl_blob = crate::src::lib::altsvc::curl_blob;
 // #[derive(Copy, Clone)]
 
-pub type conncache = crate::src::lib::http2::conncache;
+pub type conncache = crate::src::lib::altsvc::conncache;
 // #[derive(Copy, Clone)]
 
-pub type Curl_hash = crate::src::lib::http2::Curl_hash;
-pub type Curl_hash_dtor = crate::src::lib::http2::Curl_hash_dtor;
-pub type comp_function = crate::src::lib::http2::comp_function;
-pub type hash_function = crate::src::lib::http2::hash_function;
+pub type Curl_hash = crate::src::lib::altsvc::Curl_hash;
+pub type Curl_hash_dtor = crate::src::lib::altsvc::Curl_hash_dtor;
+pub type comp_function = crate::src::lib::altsvc::comp_function;
+pub type hash_function = crate::src::lib::altsvc::hash_function;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type Progress = crate::src::lib::http2::Progress;
-pub type timediff_t = crate::src::lib::http2::timediff_t;
+pub type Progress = crate::src::lib::altsvc::Progress;
+pub type timediff_t = crate::src::lib::altsvc::timediff_t;
 // #[derive(Copy, Clone)]
 
-pub type CookieInfo = crate::src::lib::http2::CookieInfo;
+pub type CookieInfo = crate::src::lib::altsvc::CookieInfo;
 // #[derive(Copy, Clone)]
 
-pub type Cookie = crate::src::lib::http2::Cookie;
+pub type Cookie = crate::src::lib::altsvc::Cookie;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type UserDefined = crate::src::lib::http2::UserDefined;
-pub type curl_trailer_callback = crate::src::lib::http2::curl_trailer_callback;
-pub type multidone_func = crate::src::lib::http2::multidone_func;
-pub type CURLcode = crate::src::lib::http2::CURLcode;
+pub type UserDefined = crate::src::lib::altsvc::UserDefined;
+pub type curl_trailer_callback = crate::src::lib::altsvc::curl_trailer_callback;
+pub type multidone_func = crate::src::lib::altsvc::multidone_func;
+pub type CURLcode = crate::src::lib::altsvc::CURLcode;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
 pub const CURLE_PROXY: CURLcode = 97;
@@ -566,14 +566,14 @@ pub const CURLE_URL_MALFORMAT: CURLcode = 3;
 pub const CURLE_FAILED_INIT: CURLcode = 2;
 pub const CURLE_UNSUPPORTED_PROTOCOL: CURLcode = 1;
 pub const CURLE_OK: CURLcode = 0;
-pub type curl_resolver_start_callback = crate::src::lib::http2::curl_resolver_start_callback;
+pub type curl_resolver_start_callback = crate::src::lib::altsvc::curl_resolver_start_callback;
 // #[derive(Copy, Clone)]
 
-pub type Curl_http2_dep = crate::src::lib::http2::Curl_http2_dep;
-pub type curl_fnmatch_callback = crate::src::lib::http2::curl_fnmatch_callback;
-pub type curl_chunk_end_callback = crate::src::lib::http2::curl_chunk_end_callback;
-pub type curl_chunk_bgn_callback = crate::src::lib::http2::curl_chunk_bgn_callback;
-pub type Curl_RtspReq = crate::src::lib::http2::Curl_RtspReq;
+pub type Curl_http2_dep = crate::src::lib::altsvc::Curl_http2_dep;
+pub type curl_fnmatch_callback = crate::src::lib::altsvc::curl_fnmatch_callback;
+pub type curl_chunk_end_callback = crate::src::lib::altsvc::curl_chunk_end_callback;
+pub type curl_chunk_bgn_callback = crate::src::lib::altsvc::curl_chunk_bgn_callback;
+pub type Curl_RtspReq = crate::src::lib::altsvc::Curl_RtspReq;
 pub const RTSPREQ_LAST: Curl_RtspReq = 12;
 pub const RTSPREQ_RECEIVE: Curl_RtspReq = 11;
 pub const RTSPREQ_RECORD: Curl_RtspReq = 10;
@@ -587,60 +587,60 @@ pub const RTSPREQ_ANNOUNCE: Curl_RtspReq = 3;
 pub const RTSPREQ_DESCRIBE: Curl_RtspReq = 2;
 pub const RTSPREQ_OPTIONS: Curl_RtspReq = 1;
 pub const RTSPREQ_NONE: Curl_RtspReq = 0;
-pub type curl_usessl = crate::src::lib::http2::curl_usessl;
+pub type curl_usessl = crate::src::lib::altsvc::curl_usessl;
 pub const CURLUSESSL_LAST: curl_usessl = 4;
 pub const CURLUSESSL_ALL: curl_usessl = 3;
 pub const CURLUSESSL_CONTROL: curl_usessl = 2;
 pub const CURLUSESSL_TRY: curl_usessl = 1;
 pub const CURLUSESSL_NONE: curl_usessl = 0;
-pub type CURL_NETRC_OPTION = crate::src::lib::http2::CURL_NETRC_OPTION;
+pub type CURL_NETRC_OPTION = crate::src::lib::altsvc::CURL_NETRC_OPTION;
 pub const CURL_NETRC_LAST: CURL_NETRC_OPTION = 3;
 pub const CURL_NETRC_REQUIRED: CURL_NETRC_OPTION = 2;
 pub const CURL_NETRC_OPTIONAL: CURL_NETRC_OPTION = 1;
 pub const CURL_NETRC_IGNORED: CURL_NETRC_OPTION = 0;
-pub type curl_sshkeycallback = crate::src::lib::http2::curl_sshkeycallback;
-pub type curl_khmatch = crate::src::lib::http2::curl_khmatch;
+pub type curl_sshkeycallback = crate::src::lib::altsvc::curl_sshkeycallback;
+pub type curl_khmatch = crate::src::lib::altsvc::curl_khmatch;
 pub const CURLKHMATCH_LAST: curl_khmatch = 3;
 pub const CURLKHMATCH_MISSING: curl_khmatch = 2;
 pub const CURLKHMATCH_MISMATCH: curl_khmatch = 1;
 pub const CURLKHMATCH_OK: curl_khmatch = 0;
 // #[derive(Copy, Clone)]
 
-pub type curl_khkey = crate::src::lib::http2::curl_khkey;
-pub type curl_khtype = crate::src::lib::http2::curl_khtype;
+pub type curl_khkey = crate::src::lib::altsvc::curl_khkey;
+pub type curl_khtype = crate::src::lib::altsvc::curl_khtype;
 pub const CURLKHTYPE_ED25519: curl_khtype = 5;
 pub const CURLKHTYPE_ECDSA: curl_khtype = 4;
 pub const CURLKHTYPE_DSS: curl_khtype = 3;
 pub const CURLKHTYPE_RSA: curl_khtype = 2;
 pub const CURLKHTYPE_RSA1: curl_khtype = 1;
 pub const CURLKHTYPE_UNKNOWN: curl_khtype = 0;
-pub type CURL = crate::src::lib::http2::CURL;
-pub type curl_ftpccc = crate::src::lib::http2::curl_ftpccc;
+pub type CURL = crate::src::lib::altsvc::CURL;
+pub type curl_ftpccc = crate::src::lib::altsvc::curl_ftpccc;
 pub const CURLFTPSSL_CCC_LAST: curl_ftpccc = 3;
 pub const CURLFTPSSL_CCC_ACTIVE: curl_ftpccc = 2;
 pub const CURLFTPSSL_CCC_PASSIVE: curl_ftpccc = 1;
 pub const CURLFTPSSL_CCC_NONE: curl_ftpccc = 0;
-pub type curl_ftpauth = crate::src::lib::http2::curl_ftpauth;
+pub type curl_ftpauth = crate::src::lib::altsvc::curl_ftpauth;
 pub const CURLFTPAUTH_LAST: curl_ftpauth = 3;
 pub const CURLFTPAUTH_TLS: curl_ftpauth = 2;
 pub const CURLFTPAUTH_SSL: curl_ftpauth = 1;
 pub const CURLFTPAUTH_DEFAULT: curl_ftpauth = 0;
-pub type curl_ftpfile = crate::src::lib::http2::curl_ftpfile;
+pub type curl_ftpfile = crate::src::lib::altsvc::curl_ftpfile;
 pub const FTPFILE_SINGLECWD: curl_ftpfile = 3;
 pub const FTPFILE_NOCWD: curl_ftpfile = 2;
 pub const FTPFILE_MULTICWD: curl_ftpfile = 1;
 // #[derive(Copy, Clone)]
 
-pub type ssl_general_config = crate::src::lib::http2::ssl_general_config;
+pub type ssl_general_config = crate::src::lib::altsvc::ssl_general_config;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type ssl_config_data = crate::src::lib::http2::ssl_config_data;
-pub type CURL_TLSAUTH = crate::src::lib::http2::CURL_TLSAUTH;
+pub type ssl_config_data = crate::src::lib::altsvc::ssl_config_data;
+pub type CURL_TLSAUTH = crate::src::lib::altsvc::CURL_TLSAUTH;
 pub const CURL_TLSAUTH_LAST: CURL_TLSAUTH = 2;
 pub const CURL_TLSAUTH_SRP: CURL_TLSAUTH = 1;
 pub const CURL_TLSAUTH_NONE: CURL_TLSAUTH = 0;
-pub type curl_ssl_ctx_callback = crate::src::lib::http2::curl_ssl_ctx_callback;
-pub type curl_proxytype = crate::src::lib::http2::curl_proxytype;
+pub type curl_ssl_ctx_callback = crate::src::lib::altsvc::curl_ssl_ctx_callback;
+pub type curl_proxytype = crate::src::lib::altsvc::curl_proxytype;
 pub const CURLPROXY_SOCKS5_HOSTNAME: curl_proxytype = 7;
 pub const CURLPROXY_SOCKS4A: curl_proxytype = 6;
 pub const CURLPROXY_SOCKS5: curl_proxytype = 5;
@@ -648,7 +648,7 @@ pub const CURLPROXY_SOCKS4: curl_proxytype = 4;
 pub const CURLPROXY_HTTPS: curl_proxytype = 2;
 pub const CURLPROXY_HTTP_1_0: curl_proxytype = 1;
 pub const CURLPROXY_HTTP: curl_proxytype = 0;
-pub type curl_TimeCond = crate::src::lib::http2::curl_TimeCond;
+pub type curl_TimeCond = crate::src::lib::altsvc::curl_TimeCond;
 pub const CURL_TIMECOND_LAST: curl_TimeCond = 4;
 pub const CURL_TIMECOND_LASTMOD: curl_TimeCond = 3;
 pub const CURL_TIMECOND_IFUNMODSINCE: curl_TimeCond = 2;
@@ -656,17 +656,17 @@ pub const CURL_TIMECOND_IFMODSINCE: curl_TimeCond = 1;
 pub const CURL_TIMECOND_NONE: curl_TimeCond = 0;
 // #[derive(Copy, Clone)]
 
-pub type curl_mimepart = crate::src::lib::http2::curl_mimepart;
+pub type curl_mimepart = crate::src::lib::altsvc::curl_mimepart;
 // #[derive(Copy, Clone)]
 
-pub type mime_encoder_state = crate::src::lib::http2::mime_encoder_state;
+pub type mime_encoder_state = crate::src::lib::altsvc::mime_encoder_state;
 // #[derive(Copy, Clone)]
 
-pub type mime_encoder = crate::src::lib::http2::mime_encoder;
+pub type mime_encoder = crate::src::lib::altsvc::mime_encoder;
 // #[derive(Copy, Clone)]
 
-pub type mime_state = crate::src::lib::http2::mime_state;
-pub type mimestate = crate::src::lib::http2::mimestate;
+pub type mime_state = crate::src::lib::altsvc::mime_state;
+pub type mimestate = crate::src::lib::altsvc::mimestate;
 pub const MIMESTATE_LAST: mimestate = 9;
 pub const MIMESTATE_END: mimestate = 8;
 pub const MIMESTATE_CONTENT: mimestate = 7;
@@ -677,9 +677,9 @@ pub const MIMESTATE_EOH: mimestate = 3;
 pub const MIMESTATE_USERHEADERS: mimestate = 2;
 pub const MIMESTATE_CURLHEADERS: mimestate = 1;
 pub const MIMESTATE_BEGIN: mimestate = 0;
-pub type curl_free_callback = crate::src::lib::http2::curl_free_callback;
-pub type curl_seek_callback = crate::src::lib::http2::curl_seek_callback;
-pub type mimekind = crate::src::lib::http2::mimekind;
+pub type curl_free_callback = crate::src::lib::altsvc::curl_free_callback;
+pub type curl_seek_callback = crate::src::lib::altsvc::curl_seek_callback;
+pub type mimekind = crate::src::lib::altsvc::mimekind;
 pub const MIMEKIND_LAST: mimekind = 5;
 pub const MIMEKIND_MULTIPART: mimekind = 4;
 pub const MIMEKIND_CALLBACK: mimekind = 3;
@@ -688,42 +688,42 @@ pub const MIMEKIND_DATA: mimekind = 1;
 pub const MIMEKIND_NONE: mimekind = 0;
 // #[derive(Copy, Clone)]
 
-pub type curl_mime = crate::src::lib::http2::curl_mime;
+pub type curl_mime = crate::src::lib::altsvc::curl_mime;
 // #[derive(Copy, Clone)]
 
-pub type curl_httppost = crate::src::lib::http2::curl_httppost;
-pub type curl_hstswrite_callback = crate::src::lib::http2::curl_hstswrite_callback;
+pub type curl_httppost = crate::src::lib::altsvc::curl_httppost;
+pub type curl_hstswrite_callback = crate::src::lib::altsvc::curl_hstswrite_callback;
 // #[derive(Copy, Clone)]
 
-pub type curl_index = crate::src::lib::http2::curl_index;
+pub type curl_index = crate::src::lib::altsvc::curl_index;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type curl_hstsentry = crate::src::lib::http2::curl_hstsentry;
-pub type CURLSTScode = crate::src::lib::http2::CURLSTScode;
+pub type curl_hstsentry = crate::src::lib::altsvc::curl_hstsentry;
+pub type CURLSTScode = crate::src::lib::altsvc::CURLSTScode;
 pub const CURLSTS_FAIL: CURLSTScode = 2;
 pub const CURLSTS_DONE: CURLSTScode = 1;
 pub const CURLSTS_OK: CURLSTScode = 0;
-pub type curl_hstsread_callback = crate::src::lib::http2::curl_hstsread_callback;
-pub type curl_conv_callback = crate::src::lib::http2::curl_conv_callback;
-pub type curl_closesocket_callback = crate::src::lib::http2::curl_closesocket_callback;
-pub type curl_socket_t = crate::src::lib::http2::curl_socket_t;
-pub type curl_opensocket_callback = crate::src::lib::http2::curl_opensocket_callback;
+pub type curl_hstsread_callback = crate::src::lib::altsvc::curl_hstsread_callback;
+pub type curl_conv_callback = crate::src::lib::altsvc::curl_conv_callback;
+pub type curl_closesocket_callback = crate::src::lib::altsvc::curl_closesocket_callback;
+pub type curl_socket_t = crate::src::lib::altsvc::curl_socket_t;
+pub type curl_opensocket_callback = crate::src::lib::altsvc::curl_opensocket_callback;
 // #[derive(Copy, Clone)]
 
-pub type curl_sockaddr = crate::src::lib::http2::curl_sockaddr;
-pub type curlsocktype = crate::src::lib::http2::curlsocktype;
+pub type curl_sockaddr = crate::src::lib::altsvc::curl_sockaddr;
+pub type curlsocktype = crate::src::lib::altsvc::curlsocktype;
 pub const CURLSOCKTYPE_LAST: curlsocktype = 2;
 pub const CURLSOCKTYPE_ACCEPT: curlsocktype = 1;
 pub const CURLSOCKTYPE_IPCXN: curlsocktype = 0;
-pub type curl_sockopt_callback = crate::src::lib::http2::curl_sockopt_callback;
-pub type curl_ioctl_callback = crate::src::lib::http2::curl_ioctl_callback;
-pub type curlioerr = crate::src::lib::http2::curlioerr;
+pub type curl_sockopt_callback = crate::src::lib::altsvc::curl_sockopt_callback;
+pub type curl_ioctl_callback = crate::src::lib::altsvc::curl_ioctl_callback;
+pub type curlioerr = crate::src::lib::altsvc::curlioerr;
 pub const CURLIOE_LAST: curlioerr = 3;
 pub const CURLIOE_FAILRESTART: curlioerr = 2;
 pub const CURLIOE_UNKNOWNCMD: curlioerr = 1;
 pub const CURLIOE_OK: curlioerr = 0;
-pub type curl_debug_callback = crate::src::lib::http2::curl_debug_callback;
-pub type curl_infotype = crate::src::lib::http2::curl_infotype;
+pub type curl_debug_callback = crate::src::lib::altsvc::curl_debug_callback;
+pub type curl_infotype = crate::src::lib::altsvc::curl_infotype;
 pub const CURLINFO_END: curl_infotype = 7;
 pub const CURLINFO_SSL_DATA_OUT: curl_infotype = 6;
 pub const CURLINFO_SSL_DATA_IN: curl_infotype = 5;
@@ -732,67 +732,67 @@ pub const CURLINFO_DATA_IN: curl_infotype = 3;
 pub const CURLINFO_HEADER_OUT: curl_infotype = 2;
 pub const CURLINFO_HEADER_IN: curl_infotype = 1;
 pub const CURLINFO_TEXT: curl_infotype = 0;
-pub type curl_xferinfo_callback = crate::src::lib::http2::curl_xferinfo_callback;
-pub type curl_progress_callback = crate::src::lib::http2::curl_progress_callback;
-pub type curl_write_callback = crate::src::lib::http2::curl_write_callback;
+pub type curl_xferinfo_callback = crate::src::lib::altsvc::curl_xferinfo_callback;
+pub type curl_progress_callback = crate::src::lib::altsvc::curl_progress_callback;
+pub type curl_write_callback = crate::src::lib::altsvc::curl_write_callback;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type SingleRequest = crate::src::lib::http2::SingleRequest;
+pub type SingleRequest = crate::src::lib::altsvc::SingleRequest;
 // #[derive(Copy, Clone)]
 
-pub type dohdata = crate::src::lib::http2::dohdata;
+pub type dohdata = crate::src::lib::altsvc::dohdata;
 // #[derive(Copy, Clone)]
 
-pub type dnsprobe = crate::src::lib::http2::dnsprobe;
+pub type dnsprobe = crate::src::lib::altsvc::dnsprobe;
 // #[derive(Copy, Clone)]
 
-pub type C2RustUnnamed = crate::src::lib::http2::C2RustUnnamed;
+pub type C2RustUnnamed = crate::src::lib::altsvc::C2RustUnnamed;
 // #[derive(Copy, Clone)]
 
-pub type SSHPROTO = crate::src::lib::http2::SSHPROTO;
+pub type SSHPROTO = crate::src::lib::altsvc::SSHPROTO;
 // #[derive(Copy, Clone)]
 
-pub type SMTP = crate::src::lib::http2::SMTP;
-pub type curl_pp_transfer = crate::src::lib::http2::curl_pp_transfer;
+pub type SMTP = crate::src::lib::altsvc::SMTP;
+pub type curl_pp_transfer = crate::src::lib::altsvc::curl_pp_transfer;
 pub const PPTRANSFER_NONE: curl_pp_transfer = 2;
 pub const PPTRANSFER_INFO: curl_pp_transfer = 1;
 pub const PPTRANSFER_BODY: curl_pp_transfer = 0;
 // #[derive(Copy, Clone)]
 
-pub type RTSP = crate::src::lib::http2::RTSP;
+pub type RTSP = crate::src::lib::altsvc::RTSP;
 // #[derive(Copy, Clone)]
 
-pub type HTTP = crate::src::lib::http2::HTTP;
-pub type uint8_t = crate::src::lib::http2::uint8_t;
-pub type uint32_t = crate::src::lib::http2::uint32_t;
+pub type HTTP = crate::src::lib::altsvc::HTTP;
+pub type uint8_t = crate::src::lib::altsvc::uint8_t;
+pub type uint32_t = crate::src::lib::altsvc::uint32_t;
 pub type C2RustUnnamed_0 = u32;
 pub const HTTPSEND_BODY: C2RustUnnamed_0 = 2;
 pub const HTTPSEND_REQUEST: C2RustUnnamed_0 = 1;
 pub const HTTPSEND_NADA: C2RustUnnamed_0 = 0;
 // #[derive(Copy, Clone)]
 
-pub type back = crate::src::lib::http2::back;
+pub type back = crate::src::lib::altsvc::back;
 // #[derive(Copy, Clone)]
 
-pub type POP3 = crate::src::lib::http2::POP3;
+pub type POP3 = crate::src::lib::altsvc::POP3;
 // #[derive(Copy, Clone)]
 
-pub type MQTT = crate::src::lib::http2::MQTT;
+pub type MQTT = crate::src::lib::altsvc::MQTT;
 // #[derive(Copy, Clone)]
 
-pub type IMAP = crate::src::lib::http2::IMAP;
+pub type IMAP = crate::src::lib::altsvc::IMAP;
 // #[derive(Copy, Clone)]
 
-pub type FTP = crate::src::lib::http2::FTP;
+pub type FTP = crate::src::lib::altsvc::FTP;
 // #[derive(Copy, Clone)]
 
-pub type FILEPROTO = crate::src::lib::http2::FILEPROTO;
-pub type upgrade101 = crate::src::lib::http2::upgrade101;
+pub type FILEPROTO = crate::src::lib::altsvc::FILEPROTO;
+pub type upgrade101 = crate::src::lib::altsvc::upgrade101;
 pub const UPGR101_WORKING: upgrade101 = 3;
 pub const UPGR101_RECEIVED: upgrade101 = 2;
 pub const UPGR101_REQUESTED: upgrade101 = 1;
 pub const UPGR101_INIT: upgrade101 = 0;
-pub type expect100 = crate::src::lib::http2::expect100;
+pub type expect100 = crate::src::lib::altsvc::expect100;
 pub const EXP100_FAILED: expect100 = 3;
 pub const EXP100_SENDING_REQUEST: expect100 = 2;
 pub const EXP100_AWAITING_CONTINUE: expect100 = 1;
@@ -803,36 +803,36 @@ pub const HEADER_PARTHEADER: C2RustUnnamed_1 = 1;
 pub const HEADER_NORMAL: C2RustUnnamed_1 = 0;
 // #[derive(Copy, Clone)]
 
-pub type PslCache = crate::src::lib::http2::PslCache;
-pub type psl_ctx_t = crate::src::lib::http2::psl_ctx_t;
+pub type PslCache = crate::src::lib::altsvc::PslCache;
+pub type psl_ctx_t = crate::src::lib::altsvc::psl_ctx_t;
 // #[derive(Copy, Clone)]
 
-pub type Curl_multi = crate::src::lib::http2::Curl_multi;
-pub type curl_multi_timer_callback = crate::src::lib::http2::curl_multi_timer_callback;
-pub type CURLM = crate::src::lib::http2::CURLM;
-pub type curl_push_callback = crate::src::lib::http2::curl_push_callback;
-pub type curl_socket_callback = crate::src::lib::http2::curl_socket_callback;
+pub type Curl_multi = crate::src::lib::altsvc::Curl_multi;
+pub type curl_multi_timer_callback = crate::src::lib::altsvc::curl_multi_timer_callback;
+pub type CURLM = crate::src::lib::altsvc::CURLM;
+pub type curl_push_callback = crate::src::lib::altsvc::curl_push_callback;
+pub type curl_socket_callback = crate::src::lib::altsvc::curl_socket_callback;
 // #[derive(Copy, Clone)]
 
-pub type Names = crate::src::lib::http2::Names;
+pub type Names = crate::src::lib::altsvc::Names;
 pub type C2RustUnnamed_2 = u32;
 pub const HCACHE_SHARED: C2RustUnnamed_2 = 2;
 pub const HCACHE_MULTI: C2RustUnnamed_2 = 1;
 pub const HCACHE_NONE: C2RustUnnamed_2 = 0;
 // #[derive(Copy, Clone)]
 
-pub type Curl_message = crate::src::lib::http2::Curl_message;
+pub type Curl_message = crate::src::lib::altsvc::Curl_message;
 // #[derive(Copy, Clone)]
 
-pub type CURLMsg = crate::src::lib::http2::CURLMsg;
+pub type CURLMsg = crate::src::lib::altsvc::CURLMsg;
 // #[derive(Copy, Clone)]
 
-pub type C2RustUnnamed_3 = crate::src::lib::http2::C2RustUnnamed_3;
-pub type CURLMSG = crate::src::lib::http2::CURLMSG;
+pub type C2RustUnnamed_3 = crate::src::lib::altsvc::C2RustUnnamed_3;
+pub type CURLMSG = crate::src::lib::altsvc::CURLMSG;
 pub const CURLMSG_LAST: CURLMSG = 2;
 pub const CURLMSG_DONE: CURLMSG = 1;
 pub const CURLMSG_NONE: CURLMSG = 0;
-pub type CURLMstate = crate::src::lib::http2::CURLMstate;
+pub type CURLMstate = crate::src::lib::altsvc::CURLMstate;
 pub const MSTATE_LAST: CURLMstate = 17;
 pub const MSTATE_MSGSENT: CURLMstate = 16;
 pub const MSTATE_COMPLETED: CURLMstate = 15;
@@ -853,12 +853,11 @@ pub const MSTATE_PENDING: CURLMstate = 1;
 pub const MSTATE_INIT: CURLMstate = 0;
 // #[derive(Copy, Clone)]
 
-pub type connectdata = crate::src::lib::http2::connectdata;
+pub type connectdata = crate::src::lib::altsvc::connectdata;
 // #[derive(Copy, Clone)]
 
-pub type connectbundle = crate::src::lib::http2::connectbundle;
-// #[derive(Copy, Clone, BitfieldStruct)]
-#[derive(Copy, Clone)]
+pub type connectbundle = crate::src::lib::altsvc::connectbundle;
+#[derive(Copy, Clone, BitfieldStruct)]
 #[repr(C)]
 pub struct http_connect_state {
     pub http_proxy: HTTP,
@@ -869,43 +868,11 @@ pub struct http_connect_state {
     pub keepon: keeponval,
     pub cl: curl_off_t,
     pub tunnel_state: C2RustUnnamed_4,
-    // #[bitfield(name = "chunked_encoding", ty = "bit", bits = "0..=0")]
-    // #[bitfield(name = "close_connection", ty = "bit", bits = "1..=1")]
+    #[bitfield(name = "chunked_encoding", ty = "bit", bits = "0..=0")]
+    #[bitfield(name = "close_connection", ty = "bit", bits = "1..=1")]
     pub chunked_encoding_close_connection: [u8; 1],
-    // #[bitfield(padding)]
+    #[bitfield(padding)]
     pub c2rust_padding: [u8; 3],
-}
-impl http_connect_state {
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_chunked_encoding(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self.chunked_encoding_close_connection;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn chunked_encoding(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self.chunked_encoding_close_connection;
-        let (lhs_bit, rhs_bit) = (0usize, 0usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
-    /// This method allows you to write to a bitfield with a value
-    pub fn set_close_connection(&mut self, int: bit) {
-        use c2rust_bitfields::FieldType;
-        let field = &mut self.chunked_encoding_close_connection;
-        let (lhs_bit, rhs_bit) = (1usize, 1usize);
-        int.set_field(field, (lhs_bit, rhs_bit));
-    }
-    /// This method allows you to read from a bitfield to a value
-    pub fn close_connection(&self) -> bit {
-        use c2rust_bitfields::FieldType;
-        type IntType = bit;
-        let field = &self.chunked_encoding_close_connection;
-        let (lhs_bit, rhs_bit) = (1usize, 1usize);
-        <IntType as FieldType>::get_field(field, (lhs_bit, rhs_bit))
-    }
 }
 pub type C2RustUnnamed_4 = u32;
 pub const TUNNEL_EXIT: C2RustUnnamed_4 = 3;
@@ -918,11 +885,11 @@ pub const KEEPON_CONNECT: keeponval = 1;
 pub const KEEPON_DONE: keeponval = 0;
 // #[derive(Copy, Clone)]
 
-pub type C2RustUnnamed_5 = crate::src::lib::http2::C2RustUnnamed_4;
+pub type C2RustUnnamed_5 = crate::src::lib::altsvc::C2RustUnnamed_4;
 // #[derive(Copy, Clone)]
 
-pub type mqtt_conn = crate::src::lib::http2::mqtt_conn;
-pub type mqttstate = crate::src::lib::http2::mqttstate;
+pub type mqtt_conn = crate::src::lib::altsvc::mqtt_conn;
+pub type mqttstate = crate::src::lib::altsvc::mqttstate;
 pub const MQTT_NOSTATE: mqttstate = 7;
 pub const MQTT_PUB_REMAIN: mqttstate = 6;
 pub const MQTT_PUBWAIT: mqttstate = 5;
@@ -933,8 +900,8 @@ pub const MQTT_REMAINING_LENGTH: mqttstate = 1;
 pub const MQTT_FIRST: mqttstate = 0;
 // #[derive(Copy, Clone)]
 
-pub type smb_conn = crate::src::lib::http2::smb_conn;
-pub type smb_conn_state = crate::src::lib::http2::smb_conn_state;
+pub type smb_conn = crate::src::lib::altsvc::smb_conn;
+pub type smb_conn_state = crate::src::lib::altsvc::smb_conn_state;
 pub const SMB_CONNECTED: smb_conn_state = 4;
 pub const SMB_SETUP: smb_conn_state = 3;
 pub const SMB_NEGOTIATE: smb_conn_state = 2;
@@ -942,14 +909,14 @@ pub const SMB_CONNECTING: smb_conn_state = 1;
 pub const SMB_NOT_CONNECTED: smb_conn_state = 0;
 // #[derive(Copy, Clone)]
 
-pub type rtsp_conn = crate::src::lib::http2::rtsp_conn;
+pub type rtsp_conn = crate::src::lib::altsvc::rtsp_conn;
 // #[derive(Copy, Clone)]
 
-pub type smtp_conn = crate::src::lib::http2::smtp_conn;
+pub type smtp_conn = crate::src::lib::altsvc::smtp_conn;
 // #[derive(Copy, Clone)]
 
-pub type SASL = crate::src::lib::http2::SASL;
-pub type saslstate = crate::src::lib::http2::saslstate;
+pub type SASL = crate::src::lib::altsvc::SASL;
+pub type saslstate = crate::src::lib::altsvc::saslstate;
 pub const SASL_FINAL: saslstate = 17;
 pub const SASL_CANCEL: saslstate = 16;
 pub const SASL_GSASL: saslstate = 15;
@@ -970,8 +937,8 @@ pub const SASL_PLAIN: saslstate = 1;
 pub const SASL_STOP: saslstate = 0;
 // #[derive(Copy, Clone)]
 
-pub type SASLproto = crate::src::lib::http2::SASLproto;
-pub type smtpstate = crate::src::lib::http2::smtpstate;
+pub type SASLproto = crate::src::lib::altsvc::SASLproto;
+pub type smtpstate = crate::src::lib::altsvc::smtpstate;
 pub const SMTP_LAST: smtpstate = 13;
 pub const SMTP_QUIT: smtpstate = 12;
 pub const SMTP_POSTDATA: smtpstate = 11;
@@ -988,11 +955,11 @@ pub const SMTP_SERVERGREET: smtpstate = 1;
 pub const SMTP_STOP: smtpstate = 0;
 // #[derive(Copy, Clone)]
 
-pub type pingpong = crate::src::lib::http2::pingpong;
+pub type pingpong = crate::src::lib::altsvc::pingpong;
 // #[derive(Copy, Clone)]
 
-pub type pop3_conn = crate::src::lib::http2::pop3_conn;
-pub type pop3state = crate::src::lib::http2::pop3state;
+pub type pop3_conn = crate::src::lib::altsvc::pop3_conn;
+pub type pop3state = crate::src::lib::altsvc::pop3state;
 pub const POP3_LAST: pop3state = 11;
 pub const POP3_QUIT: pop3state = 10;
 pub const POP3_COMMAND: pop3state = 9;
@@ -1007,8 +974,8 @@ pub const POP3_SERVERGREET: pop3state = 1;
 pub const POP3_STOP: pop3state = 0;
 // #[derive(Copy, Clone)]
 
-pub type imap_conn = crate::src::lib::http2::imap_conn;
-pub type imapstate = crate::src::lib::http2::imapstate;
+pub type imap_conn = crate::src::lib::altsvc::imap_conn;
+pub type imapstate = crate::src::lib::altsvc::imapstate;
 pub const IMAP_LAST: imapstate = 15;
 pub const IMAP_LOGOUT: imapstate = 14;
 pub const IMAP_SEARCH: imapstate = 13;
@@ -1027,8 +994,8 @@ pub const IMAP_SERVERGREET: imapstate = 1;
 pub const IMAP_STOP: imapstate = 0;
 // #[derive(Copy, Clone)]
 
-pub type ssh_conn = crate::src::lib::http2::ssh_conn;
-pub type sshstate = crate::src::lib::http2::sshstate;
+pub type ssh_conn = crate::src::lib::altsvc::ssh_conn;
+pub type sshstate = crate::src::lib::altsvc::sshstate;
 pub const SSH_LAST: sshstate = 60;
 pub const SSH_QUIT: sshstate = 59;
 pub const SSH_SESSION_FREE: sshstate = 58;
@@ -1093,19 +1060,19 @@ pub const SSH_STOP: sshstate = 0;
 pub const SSH_NO_STATE: sshstate = -1;
 // #[derive(Copy, Clone)]
 
-pub type http_conn = crate::src::lib::http2::http_conn;
+pub type http_conn = crate::src::lib::altsvc::http_conn;
 // #[derive(Copy, Clone)]
 
-pub type nghttp2_settings_entry = crate::src::lib::http2::nghttp2_settings_entry;
+pub type nghttp2_settings_entry = crate::src::lib::altsvc::nghttp2_settings_entry;
 // #[derive(Copy, Clone)]
 
-pub type h2settings = crate::src::lib::http2::h2settings;
-pub type Curl_recv = crate::src::lib::http2::Curl_recv;
-pub type Curl_send = crate::src::lib::http2::Curl_send;
+pub type h2settings = crate::src::lib::altsvc::h2settings;
+pub type Curl_recv = crate::src::lib::altsvc::Curl_recv;
+pub type Curl_send = crate::src::lib::altsvc::Curl_send;
 // #[derive(Copy, Clone)]
 
-pub type ftp_conn = crate::src::lib::http2::ftp_conn;
-pub type ftpstate = crate::src::lib::http2::ftpstate;
+pub type ftp_conn = crate::src::lib::altsvc::ftp_conn;
+pub type ftpstate = crate::src::lib::altsvc::ftpstate;
 pub const FTP_LAST: ftpstate = 35;
 pub const FTP_QUIT: ftpstate = 34;
 pub const FTP_STOR: ftpstate = 33;
@@ -1144,8 +1111,8 @@ pub const FTP_WAIT220: ftpstate = 1;
 pub const FTP_STOP: ftpstate = 0;
 // #[derive(Copy, Clone)]
 
-pub type ntlmdata = crate::src::lib::http2::ntlmdata;
-pub type curlntlm = crate::src::lib::http2::curlntlm;
+pub type ntlmdata = crate::src::lib::altsvc::ntlmdata;
+pub type curlntlm = crate::src::lib::altsvc::curlntlm;
 pub const NTLMSTATE_LAST: curlntlm = 4;
 pub const NTLMSTATE_TYPE3: curlntlm = 3;
 pub const NTLMSTATE_TYPE2: curlntlm = 2;
@@ -1153,41 +1120,41 @@ pub const NTLMSTATE_TYPE1: curlntlm = 1;
 pub const NTLMSTATE_NONE: curlntlm = 0;
 // #[derive(Copy, Clone)]
 
-pub type gsasldata = crate::src::lib::http2::gsasldata;
+pub type gsasldata = crate::src::lib::altsvc::gsasldata;
 // #[derive(Copy, Clone)]
 
-pub type Curl_handler = crate::src::lib::http2::Curl_handler;
+pub type Curl_handler = crate::src::lib::altsvc::Curl_handler;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type ConnectBits = crate::src::lib::http2::ConnectBits;
+pub type ConnectBits = crate::src::lib::altsvc::ConnectBits;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type ssl_connect_data = crate::src::lib::http2::ssl_connect_data;
-pub type ssl_connect_state = crate::src::lib::http2::ssl_connect_state;
+pub type ssl_connect_data = crate::src::lib::altsvc::ssl_connect_data;
+pub type ssl_connect_state = crate::src::lib::altsvc::ssl_connect_state;
 pub const ssl_connect_done: ssl_connect_state = 5;
 pub const ssl_connect_3: ssl_connect_state = 4;
 pub const ssl_connect_2_writing: ssl_connect_state = 3;
 pub const ssl_connect_2_reading: ssl_connect_state = 2;
 pub const ssl_connect_2: ssl_connect_state = 1;
 pub const ssl_connect_1: ssl_connect_state = 0;
-pub type ssl_connection_state = crate::src::lib::http2::ssl_connection_state;
+pub type ssl_connection_state = crate::src::lib::altsvc::ssl_connection_state;
 pub const ssl_connection_complete: ssl_connection_state = 2;
 pub const ssl_connection_negotiating: ssl_connection_state = 1;
 pub const ssl_connection_none: ssl_connection_state = 0;
 // #[derive(Copy, Clone)]
 
-pub type proxy_info = crate::src::lib::http2::proxy_info;
+pub type proxy_info = crate::src::lib::altsvc::proxy_info;
 // #[derive(Copy, Clone)]
 
-pub type hostname = crate::src::lib::http2::hostname;
+pub type hostname = crate::src::lib::altsvc::hostname;
 pub type C2RustUnnamed_6 = u32;
 pub const TRNSPRT_QUIC: C2RustUnnamed_6 = 5;
 pub const TRNSPRT_UDP: C2RustUnnamed_6 = 4;
 pub const TRNSPRT_TCP: C2RustUnnamed_6 = 3;
 // #[derive(Copy, Clone)]
 
-pub type Curl_chunker = crate::src::lib::http2::Curl_chunker;
-pub type ChunkyState = crate::src::lib::http2::ChunkyState;
+pub type Curl_chunker = crate::src::lib::altsvc::Curl_chunker;
+pub type ChunkyState = crate::src::lib::altsvc::ChunkyState;
 pub const CHUNK_TRAILER_POSTCR: ChunkyState = 7;
 pub const CHUNK_TRAILER_CR: ChunkyState = 6;
 pub const CHUNK_TRAILER: ChunkyState = 5;
@@ -1198,8 +1165,8 @@ pub const CHUNK_LF: ChunkyState = 1;
 pub const CHUNK_HEX: ChunkyState = 0;
 // #[derive(Copy, Clone)]
 
-pub type connstate = crate::src::lib::http2::connstate;
-pub type connect_t = crate::src::lib::http2::connect_t;
+pub type connstate = crate::src::lib::altsvc::connstate;
+pub type connect_t = crate::src::lib::altsvc::connect_t;
 pub const CONNECT_DONE: connect_t = 17;
 pub const CONNECT_REQ_READ_MORE: connect_t = 16;
 pub const CONNECT_REQ_READ: connect_t = 15;
@@ -1234,9 +1201,9 @@ pub type curl_fileinfo = crate::src::lib::fileinfo::curl_fileinfo;
 // #[derive(Copy, Clone)]
 
 pub type C2RustUnnamed_7 = crate::src::lib::fileinfo::C2RustUnnamed;
-pub type curl_malloc_callback = crate::src::lib::http2::curl_malloc_callback;
+pub type curl_malloc_callback = crate::src::lib::altsvc::curl_malloc_callback;
 pub type curl_strdup_callback = crate::src::lib::altsvc::curl_strdup_callback;
-pub type curl_calloc_callback = crate::src::lib::http2::curl_calloc_callback;
+pub type curl_calloc_callback = crate::src::lib::altsvc::curl_calloc_callback;
 pub type uint16_t = crate::src::lib::connect::uint16_t;
 pub type in_addr_t = crate::src::lib::connect::in_addr_t;
 // #[derive(Copy, Clone)]
@@ -1581,21 +1548,21 @@ unsafe extern "C" fn freedirs(mut ftpc: *mut ftp_conn) {
                 .expect(
                     "non-null function pointer",
                 )(*((*ftpc).dirs).offset(i as isize) as *mut libc::c_void);
-            let ref mut fresh0 = *((*ftpc).dirs).offset(i as isize);
+            let fresh0 = &mut (*((*ftpc).dirs).offset(i as isize));
             *fresh0 = 0 as *mut i8;
             i += 1;
         }
         Curl_cfree
             .expect("non-null function pointer")((*ftpc).dirs as *mut libc::c_void);
-        let ref mut fresh1 = (*ftpc).dirs;
+        let fresh1 = &mut ((*ftpc).dirs);
         *fresh1 = 0 as *mut *mut i8;
         (*ftpc).dirdepth = 0 as i32;
     }
     Curl_cfree.expect("non-null function pointer")((*ftpc).file as *mut libc::c_void);
-    let ref mut fresh2 = (*ftpc).file;
+    let fresh2 = &mut ((*ftpc).file);
     *fresh2 = 0 as *mut i8;
     Curl_cfree.expect("non-null function pointer")((*ftpc).newhost as *mut libc::c_void);
-    let ref mut fresh3 = (*ftpc).newhost;
+    let fresh3 = &mut ((*ftpc).newhost);
     *fresh3 = 0 as *mut i8;
 }
 unsafe extern "C" fn AcceptServerConnect(mut data: *mut Curl_easy) -> CURLcode {
@@ -1639,11 +1606,11 @@ unsafe extern "C" fn AcceptServerConnect(mut data: *mut Curl_easy) -> CURLcode {
         data,
         b"Connection accepted from server\0" as *const u8 as *const i8,
     );
-    let ref mut fresh4 = (*conn).bits;
+    let fresh4 = &mut ((*conn).bits);
     (*fresh4).set_do_more(0 as i32 as bit);
     (*conn).sock[1 as i32 as usize] = s;
     curlx_nonblock(s, 1 as i32);
-    let ref mut fresh5 = (*conn).bits;
+    let fresh5 = &mut ((*conn).bits);
     (*fresh5).set_sock_accepted(1 as i32 as bit);
     if ((*data).set.fsockopt).is_some() {
         let mut error: i32 = 0 as i32;
@@ -2018,7 +1985,7 @@ unsafe extern "C" fn ftp_state_user(
     );
     if result as u64 == 0 {
         _state(data, FTP_USER);
-        let ref mut fresh6 = (*data).state;
+        let fresh6 = &mut ((*data).state);
         (*fresh6).set_ftp_trying_alternative(0 as i32 as bit);
     }
     return result;
@@ -2493,7 +2460,7 @@ unsafe extern "C" fn ftp_state_use_port(
         ::std::mem::size_of::<[i8; 47]>() as u64,
     );
     if ((*conn).bits).ftp_use_eprt() == 0 && ((*conn).bits).ipv6() as i32 != 0 {
-        let ref mut fresh8 = (*conn).bits;
+        let fresh8 = &mut ((*conn).bits);
         (*fresh8).set_ftp_use_eprt(1 as i32 as bit);
     }
     let mut current_block_152: u64;
@@ -2694,7 +2661,7 @@ unsafe extern "C" fn ftp_state_use_pasv(
     };
     let mut modeoff: i32 = 0;
     if ((*conn).bits).ftp_use_epsv() == 0 && ((*conn).bits).ipv6() as i32 != 0 {
-        let ref mut fresh9 = (*conn).bits;
+        let fresh9 = &mut ((*conn).bits);
         (*fresh9).set_ftp_use_epsv(1 as i32 as bit);
     }
     modeoff = if ((*conn).bits).ftp_use_epsv() as i32 != 0 {
@@ -3011,7 +2978,7 @@ unsafe extern "C" fn ftp_state_ul_setup(
             }
         }
         if (*data).state.infilesize > 0 as i32 as i64 {
-            let ref mut fresh10 = (*data).state.infilesize;
+            let fresh10 = &mut ((*data).state.infilesize);
             *fresh10 -= (*data).state.resume_from;
             if (*data).state.infilesize <= 0 as i32 as i64 {
                 Curl_infof(
@@ -3072,7 +3039,7 @@ unsafe extern "C" fn ftp_state_quote(
     if init {
         (*ftpc).count1 = 0 as i32;
     } else {
-        let ref mut fresh11 = (*ftpc).count1;
+        let fresh11 = &mut ((*ftpc).count1);
         *fresh11 += 1;
     }
     if !item.is_null() {
@@ -3166,9 +3133,9 @@ unsafe extern "C" fn ftp_epsv_disable(
         data,
         b"Failed EPSV attempt. Disabling EPSV\0" as *const u8 as *const i8,
     );
-    let ref mut fresh12 = (*conn).bits;
+    let fresh12 = &mut ((*conn).bits);
     (*fresh12).set_ftp_use_epsv(0 as i32 as bit);
-    let ref mut fresh13 = (*data).state;
+    let fresh13 = &mut ((*data).state);
     (*fresh13).set_errorbuf(0 as i32 as bit);
     result = Curl_pp_sendf(
         data,
@@ -3177,7 +3144,7 @@ unsafe extern "C" fn ftp_epsv_disable(
         b"PASV\0" as *const u8 as *const i8,
     );
     if result as u64 == 0 {
-        let ref mut fresh14 = (*conn).proto.ftpc.count1;
+        let fresh14 = &mut ((*conn).proto.ftpc.count1);
         *fresh14 += 1;
         _state(data, FTP_PASV);
     }
@@ -3204,7 +3171,7 @@ unsafe extern "C" fn ftp_state_pasv_resp(
     let mut str: *mut i8 = &mut *((*data).state.buffer)
         .offset(4 as i32 as isize) as *mut i8;
     Curl_cfree.expect("non-null function pointer")((*ftpc).newhost as *mut libc::c_void);
-    let ref mut fresh15 = (*ftpc).newhost;
+    let fresh15 = &mut ((*ftpc).newhost);
     *fresh15 = 0 as *mut i8;
     if (*ftpc).count1 == 0 as i32 && ftpcode == 229 as i32 {
         let mut ptr: *mut i8 = strchr(str, '(' as i32);
@@ -3250,7 +3217,7 @@ unsafe extern "C" fn ftp_state_pasv_resp(
                     (*ftpc)
                         .newport = (num & 0xffff as i32 as u32)
                         as u16;
-                    let ref mut fresh16 = (*ftpc).newhost;
+                    let fresh16 = &mut ((*ftpc).newhost);
                     *fresh16 = Curl_cstrdup
                         .expect("non-null function pointer")(control_address(conn));
                     if ((*ftpc).newhost).is_null() {
@@ -3328,11 +3295,11 @@ unsafe extern "C" fn ftp_state_pasv_resp(
                 ip[3 as i32 as usize],
                 (*conn).host.name,
             );
-            let ref mut fresh17 = (*ftpc).newhost;
+            let fresh17 = &mut ((*ftpc).newhost);
             *fresh17 = Curl_cstrdup
                 .expect("non-null function pointer")(control_address(conn));
         } else {
-            let ref mut fresh18 = (*ftpc).newhost;
+            let fresh18 = &mut ((*ftpc).newhost);
             *fresh18 = curl_maprintf(
                 b"%u.%u.%u.%u\0" as *const u8 as *const i8,
                 ip[0 as i32 as usize],
@@ -3396,9 +3363,9 @@ unsafe extern "C" fn ftp_state_pasv_resp(
                 .expect(
                     "non-null function pointer",
                 )((*ftpc).newhost as *mut libc::c_void);
-            let ref mut fresh19 = (*ftpc).newhost;
+            let fresh19 = &mut ((*ftpc).newhost);
             *fresh19 = 0 as *mut i8;
-            let ref mut fresh20 = (*ftpc).newhost;
+            let fresh20 = &mut ((*ftpc).newhost);
             *fresh20 = Curl_cstrdup
                 .expect("non-null function pointer")(control_address(conn));
             if ((*ftpc).newhost).is_null() {
@@ -3448,15 +3415,15 @@ unsafe extern "C" fn ftp_state_pasv_resp(
         .expect(
             "non-null function pointer",
         )((*conn).secondaryhostname as *mut libc::c_void);
-    let ref mut fresh21 = (*conn).secondaryhostname;
+    let fresh21 = &mut ((*conn).secondaryhostname);
     *fresh21 = 0 as *mut i8;
     (*conn).secondary_port = (*ftpc).newport;
-    let ref mut fresh22 = (*conn).secondaryhostname;
+    let fresh22 = &mut ((*conn).secondaryhostname);
     *fresh22 = Curl_cstrdup.expect("non-null function pointer")((*ftpc).newhost);
     if ((*conn).secondaryhostname).is_null() {
         return CURLE_OUT_OF_MEMORY;
     }
-    let ref mut fresh23 = (*conn).bits;
+    let fresh23 = &mut ((*conn).bits);
     (*fresh23).set_do_more(1 as i32 as bit);
     _state(data, FTP_STOP);
     return result;
@@ -3475,7 +3442,7 @@ unsafe extern "C" fn ftp_state_port_resp(
                 data,
                 b"disabling EPRT usage\0" as *const u8 as *const i8,
             );
-            let ref mut fresh24 = (*conn).bits;
+            let fresh24 = &mut ((*conn).bits);
             (*fresh24).set_ftp_use_eprt(0 as i32 as bit);
         }
         fcmd += 1;
@@ -3621,7 +3588,7 @@ unsafe extern "C" fn ftp_state_mdtm_resp(
                                 as *const i8,
                         );
                         (*ftp).transfer = PPTRANSFER_NONE;
-                        let ref mut fresh26 = (*data).info;
+                        let fresh26 = &mut ((*data).info);
                         (*fresh26).set_timecond(1 as i32 as bit);
                         _state(data, FTP_STOP);
                         return CURLE_OK;
@@ -3635,7 +3602,7 @@ unsafe extern "C" fn ftp_state_mdtm_resp(
                                 as *const i8,
                         );
                         (*ftp).transfer = PPTRANSFER_NONE;
-                        let ref mut fresh25 = (*data).info;
+                        let fresh25 = &mut ((*data).info);
                         (*fresh25).set_timecond(1 as i32 as bit);
                         _state(data, FTP_STOP);
                         return CURLE_OK;
@@ -3991,7 +3958,7 @@ unsafe extern "C" fn ftp_state_get_resp(
         if size > (*data).req.maxdownload
             && (*data).req.maxdownload > 0 as i32 as i64
         {
-            let ref mut fresh27 = (*data).req.size;
+            let fresh27 = &mut ((*data).req.size);
             *fresh27 = (*data).req.maxdownload;
             size = *fresh27;
         } else if instate as u32 != FTP_LIST as i32 as u32
@@ -4128,7 +4095,7 @@ unsafe extern "C" fn ftp_state_user_resp(
             (*data).set.str_0[STRING_FTP_ALTERNATIVE_TO_USER as i32 as usize],
         );
         if result as u64 == 0 {
-            let ref mut fresh28 = (*data).state;
+            let fresh28 = &mut ((*data).state);
             (*fresh28).set_ftp_trying_alternative(1 as i32 as bit);
             _state(data, FTP_USER);
         }
@@ -4245,14 +4212,14 @@ unsafe extern "C" fn ftp_statemachine(
                 if ftpcode == 234 as i32 || ftpcode == 334 as i32 {
                     result = Curl_ssl_connect(data, conn, 0 as i32);
                     if result as u64 == 0 {
-                        let ref mut fresh29 = (*conn).bits;
+                        let fresh29 = &mut ((*conn).bits);
                         (*fresh29).set_ftp_use_data_ssl(0 as i32 as bit);
-                        let ref mut fresh30 = (*conn).bits;
+                        let fresh30 = &mut ((*conn).bits);
                         (*fresh30).set_ftp_use_control_ssl(1 as i32 as bit);
                         result = ftp_state_user(data, conn);
                     }
                 } else if (*ftpc).count3 < 1 as i32 {
-                    let ref mut fresh31 = (*ftpc).count3;
+                    let fresh31 = &mut ((*ftpc).count3);
                     *fresh31 += 1;
                     (*ftpc).count1 += (*ftpc).count2;
                     result = Curl_pp_sendf(
@@ -4294,7 +4261,7 @@ unsafe extern "C" fn ftp_statemachine(
             }
             7 => {
                 if ftpcode / 100 as i32 == 2 as i32 {
-                    let ref mut fresh32 = (*conn).bits;
+                    let fresh32 = &mut ((*conn).bits);
                     (*fresh32)
                         .set_ftp_use_data_ssl(
                             (if (*data).set.use_ssl as u32
@@ -4407,18 +4374,18 @@ unsafe extern "C" fn ftp_statemachine(
                                 .expect(
                                     "non-null function pointer",
                                 )((*ftpc).entrypath as *mut libc::c_void);
-                            let ref mut fresh33 = (*ftpc).entrypath;
+                            let fresh33 = &mut ((*ftpc).entrypath);
                             *fresh33 = 0 as *mut i8;
-                            let ref mut fresh34 = (*ftpc).entrypath;
+                            let fresh34 = &mut ((*ftpc).entrypath);
                             *fresh34 = dir;
                             Curl_infof(
                                 data,
                                 b"Entry path is '%s'\0" as *const u8 as *const i8,
                                 (*ftpc).entrypath,
                             );
-                            let ref mut fresh35 = (*data)
+                            let fresh35 = &mut ((*data)
                                 .state
-                                .most_recent_ftp_entrypath;
+                                .most_recent_ftp_entrypath);
                             *fresh35 = (*ftpc).entrypath;
                             _state(data, FTP_SYST);
                             current_block_187 = 10490607306284298299;
@@ -4427,18 +4394,18 @@ unsafe extern "C" fn ftp_statemachine(
                                 .expect(
                                     "non-null function pointer",
                                 )((*ftpc).entrypath as *mut libc::c_void);
-                            let ref mut fresh36 = (*ftpc).entrypath;
+                            let fresh36 = &mut ((*ftpc).entrypath);
                             *fresh36 = 0 as *mut i8;
-                            let ref mut fresh37 = (*ftpc).entrypath;
+                            let fresh37 = &mut ((*ftpc).entrypath);
                             *fresh37 = dir;
                             Curl_infof(
                                 data,
                                 b"Entry path is '%s'\0" as *const u8 as *const i8,
                                 (*ftpc).entrypath,
                             );
-                            let ref mut fresh38 = (*data)
+                            let fresh38 = &mut ((*data)
                                 .state
-                                .most_recent_ftp_entrypath;
+                                .most_recent_ftp_entrypath);
                             *fresh38 = (*ftpc).entrypath;
                             current_block_187 = 17917672080766325409;
                         }
@@ -4514,9 +4481,9 @@ unsafe extern "C" fn ftp_statemachine(
                             .expect(
                                 "non-null function pointer",
                             )((*ftpc).server_os as *mut libc::c_void);
-                        let ref mut fresh41 = (*ftpc).server_os;
+                        let fresh41 = &mut ((*ftpc).server_os);
                         *fresh41 = 0 as *mut i8;
-                        let ref mut fresh42 = (*ftpc).server_os;
+                        let fresh42 = &mut ((*ftpc).server_os);
                         *fresh42 = os;
                         _state(data, FTP_NAMEFMT);
                         current_block_187 = 10490607306284298299;
@@ -4525,9 +4492,9 @@ unsafe extern "C" fn ftp_statemachine(
                             .expect(
                                 "non-null function pointer",
                             )((*ftpc).server_os as *mut libc::c_void);
-                        let ref mut fresh43 = (*ftpc).server_os;
+                        let fresh43 = &mut ((*ftpc).server_os);
                         *fresh43 = 0 as *mut i8;
-                        let ref mut fresh44 = (*ftpc).server_os;
+                        let fresh44 = &mut ((*ftpc).server_os);
                         *fresh44 = os;
                         current_block_187 = 6938158527927677584;
                     }
@@ -4566,7 +4533,7 @@ unsafe extern "C" fn ftp_statemachine(
                     if (*data).set.ftp_create_missing_dirs != 0 && (*ftpc).cwdcount != 0
                         && (*ftpc).count2 == 0
                     {
-                        let ref mut fresh45 = (*ftpc).count2;
+                        let fresh45 = &mut ((*ftpc).count2);
                         *fresh45 += 1;
                         result = Curl_pp_sendf(
                             data,
@@ -4589,7 +4556,7 @@ unsafe extern "C" fn ftp_statemachine(
                     }
                 } else {
                     (*ftpc).count2 = 0 as i32;
-                    let ref mut fresh46 = (*ftpc).cwdcount;
+                    let fresh46 = &mut ((*ftpc).cwdcount);
                     *fresh46 += 1;
                     if *fresh46 <= (*ftpc).dirdepth {
                         result = Curl_pp_sendf(
@@ -4607,7 +4574,7 @@ unsafe extern "C" fn ftp_statemachine(
             17 => {
                 if ftpcode / 100 as i32 != 2 as i32
                     && {
-                        let ref mut fresh47 = (*ftpc).count3;
+                        let fresh47 = &mut ((*ftpc).count3);
                         let fresh48 = *fresh47;
                         *fresh47 = *fresh47 - 1;
                         fresh48 == 0
@@ -4723,12 +4690,12 @@ unsafe extern "C" fn ftp_connect(
     *done = 0 as i32 != 0;
     Curl_conncontrol(conn, 0 as i32);
     (*pp).response_time = (120 as i32 * 1000 as i32) as timediff_t;
-    let ref mut fresh49 = (*pp).statemachine;
+    let fresh49 = &mut ((*pp).statemachine);
     *fresh49 = Some(
         ftp_statemachine
             as unsafe extern "C" fn(*mut Curl_easy, *mut connectdata) -> CURLcode,
     );
-    let ref mut fresh50 = (*pp).endofresp;
+    let fresh50 = &mut ((*pp).endofresp);
     *fresh50 = Some(
         ftp_endofresp
             as unsafe extern "C" fn(
@@ -4746,7 +4713,7 @@ unsafe extern "C" fn ftp_connect(
         if result as u64 != 0 {
             return result;
         }
-        let ref mut fresh51 = (*conn).bits;
+        let fresh51 = &mut ((*conn).bits);
         (*fresh51).set_ftp_use_control_ssl(1 as i32 as bit);
     }
     Curl_pp_setup(pp);
@@ -4827,7 +4794,7 @@ unsafe extern "C" fn ftp_done(
         Curl_conncontrol(conn, 1 as i32);
         Curl_cfree
             .expect("non-null function pointer")((*ftpc).prevpath as *mut libc::c_void);
-        let ref mut fresh52 = (*ftpc).prevpath;
+        let fresh52 = &mut ((*ftpc).prevpath);
         *fresh52 = 0 as *mut i8;
     } else {
         if (*data).set.ftp_filemethod as u32
@@ -4856,12 +4823,12 @@ unsafe extern "C" fn ftp_done(
                         ) as size_t as size_t;
                 }
                 *rawPath.offset(pathLen as isize) = '\u{0}' as i32 as i8;
-                let ref mut fresh53 = (*ftpc).prevpath;
+                let fresh53 = &mut ((*ftpc).prevpath);
                 *fresh53 = rawPath;
             } else {
                 Curl_cfree
                     .expect("non-null function pointer")(rawPath as *mut libc::c_void);
-                let ref mut fresh54 = (*ftpc).prevpath;
+                let fresh54 = &mut ((*ftpc).prevpath);
                 *fresh54 = 0 as *mut i8;
             }
         }
@@ -4928,7 +4895,7 @@ unsafe extern "C" fn ftp_done(
                 .expect(
                     "non-null function pointer",
                 )((*ftp).pathalloc as *mut libc::c_void);
-            let ref mut fresh55 = (*ftp).pathalloc;
+            let fresh55 = &mut ((*ftp).pathalloc);
             *fresh55 = 0 as *mut i8;
             return result;
         }
@@ -5015,7 +4982,7 @@ unsafe extern "C" fn ftp_done(
     }
     Curl_cfree
         .expect("non-null function pointer")((*ftp).pathalloc as *mut libc::c_void);
-    let ref mut fresh56 = (*ftp).pathalloc;
+    let fresh56 = &mut ((*ftp).pathalloc);
     *fresh56 = 0 as *mut i8;
     return result;
 }
@@ -5314,14 +5281,14 @@ unsafe extern "C" fn init_wc_data(mut data: *mut Curl_easy) -> CURLcode {
             result = ftp_parse_url_path(data);
             return result;
         }
-        let ref mut fresh57 = (*wildcard).pattern;
+        let fresh57 = &mut ((*wildcard).pattern);
         *fresh57 = Curl_cstrdup.expect("non-null function pointer")(last_slash);
         if ((*wildcard).pattern).is_null() {
             return CURLE_OUT_OF_MEMORY;
         }
         *last_slash.offset(0 as i32 as isize) = '\u{0}' as i32 as i8;
     } else if *path.offset(0 as i32 as isize) != 0 {
-        let ref mut fresh58 = (*wildcard).pattern;
+        let fresh58 = &mut ((*wildcard).pattern);
         *fresh58 = Curl_cstrdup.expect("non-null function pointer")(path);
         if ((*wildcard).pattern).is_null() {
             return CURLE_OUT_OF_MEMORY;
@@ -5340,14 +5307,14 @@ unsafe extern "C" fn init_wc_data(mut data: *mut Curl_easy) -> CURLcode {
     if ftpwc.is_null() {
         result = CURLE_OUT_OF_MEMORY;
     } else {
-        let ref mut fresh59 = (*ftpwc).parser;
+        let fresh59 = &mut ((*ftpwc).parser);
         *fresh59 = Curl_ftp_parselist_data_alloc();
         if ((*ftpwc).parser).is_null() {
             result = CURLE_OUT_OF_MEMORY;
         } else {
-            let ref mut fresh60 = (*wildcard).protdata;
+            let fresh60 = &mut ((*wildcard).protdata);
             *fresh60 = ftpwc as *mut libc::c_void;
-            let ref mut fresh61 = (*wildcard).dtor;
+            let fresh61 = &mut ((*wildcard).dtor);
             *fresh61 = Some(
                 wc_data_dtor as unsafe extern "C" fn(*mut libc::c_void) -> (),
             );
@@ -5358,14 +5325,14 @@ unsafe extern "C" fn init_wc_data(mut data: *mut Curl_easy) -> CURLcode {
             }
             result = ftp_parse_url_path(data);
             if !(result as u64 != 0) {
-                let ref mut fresh62 = (*wildcard).path;
+                let fresh62 = &mut ((*wildcard).path);
                 *fresh62 = Curl_cstrdup.expect("non-null function pointer")((*ftp).path);
                 if ((*wildcard).path).is_null() {
                     result = CURLE_OUT_OF_MEMORY;
                 } else {
-                    let ref mut fresh63 = (*ftpwc).backup.write_function;
+                    let fresh63 = &mut ((*ftpwc).backup.write_function);
                     *fresh63 = (*data).set.fwrite_func;
-                    let ref mut fresh64 = (*data).set.fwrite_func;
+                    let fresh64 = &mut ((*data).set.fwrite_func);
                     *fresh64 = Some(
                         Curl_ftp_parselist
                             as unsafe extern "C" fn(
@@ -5375,9 +5342,9 @@ unsafe extern "C" fn init_wc_data(mut data: *mut Curl_easy) -> CURLcode {
                                 *mut libc::c_void,
                             ) -> size_t,
                     );
-                    let ref mut fresh65 = (*ftpwc).backup.file_descriptor;
+                    let fresh65 = &mut ((*ftpwc).backup.file_descriptor);
                     *fresh65 = (*data).set.out as *mut FILE;
-                    let ref mut fresh66 = (*data).set.out;
+                    let fresh66 = &mut ((*data).set.out);
                     *fresh66 = data as *mut libc::c_void;
                     Curl_infof(
                         data,
@@ -5395,11 +5362,11 @@ unsafe extern "C" fn init_wc_data(mut data: *mut Curl_easy) -> CURLcode {
     }
     Curl_cfree
         .expect("non-null function pointer")((*wildcard).pattern as *mut libc::c_void);
-    let ref mut fresh67 = (*wildcard).pattern;
+    let fresh67 = &mut ((*wildcard).pattern);
     *fresh67 = 0 as *mut i8;
-    let ref mut fresh68 = (*wildcard).dtor;
+    let fresh68 = &mut ((*wildcard).dtor);
     *fresh68 = None;
-    let ref mut fresh69 = (*wildcard).protdata;
+    let fresh69 = &mut ((*wildcard).protdata);
     *fresh69 = 0 as *mut libc::c_void;
     return result;
 }
@@ -5427,13 +5394,13 @@ unsafe extern "C" fn wc_statemach(mut data: *mut Curl_easy) -> CURLcode {
             }
             2 => {
                 let mut ftpwc: *mut ftp_wc = (*wildcard).protdata as *mut ftp_wc;
-                let ref mut fresh70 = (*data).set.fwrite_func;
+                let fresh70 = &mut ((*data).set.fwrite_func);
                 *fresh70 = (*ftpwc).backup.write_function;
-                let ref mut fresh71 = (*data).set.out;
+                let fresh71 = &mut ((*data).set.out);
                 *fresh71 = (*ftpwc).backup.file_descriptor as *mut libc::c_void;
-                let ref mut fresh72 = (*ftpwc).backup.write_function;
+                let fresh72 = &mut ((*ftpwc).backup.write_function);
                 *fresh72 = None;
-                let ref mut fresh73 = (*ftpwc).backup.file_descriptor;
+                let fresh73 = &mut ((*ftpwc).backup.file_descriptor);
                 *fresh73 = 0 as *mut FILE;
                 (*wildcard).state = CURLWC_DOWNLOADING;
                 if Curl_ftp_parselist_geterror((*ftpwc).parser) as u64 != 0 {
@@ -5461,9 +5428,9 @@ unsafe extern "C" fn wc_statemach(mut data: *mut Curl_easy) -> CURLcode {
                     .expect(
                         "non-null function pointer",
                     )((*ftp).pathalloc as *mut libc::c_void);
-                let ref mut fresh74 = (*ftp).path;
+                let fresh74 = &mut ((*ftp).path);
                 *fresh74 = tmp_path;
-                let ref mut fresh75 = (*ftp).pathalloc;
+                let fresh75 = &mut ((*ftp).pathalloc);
                 *fresh75 = *fresh74;
                 Curl_infof(
                     data,
@@ -5659,22 +5626,22 @@ unsafe extern "C" fn ftp_disconnect(
     ftp_quit(data, conn);
     if !((*ftpc).entrypath).is_null() {
         if (*data).state.most_recent_ftp_entrypath == (*ftpc).entrypath {
-            let ref mut fresh76 = (*data).state.most_recent_ftp_entrypath;
+            let fresh76 = &mut ((*data).state.most_recent_ftp_entrypath);
             *fresh76 = 0 as *mut i8;
         }
         Curl_cfree
             .expect("non-null function pointer")((*ftpc).entrypath as *mut libc::c_void);
-        let ref mut fresh77 = (*ftpc).entrypath;
+        let fresh77 = &mut ((*ftpc).entrypath);
         *fresh77 = 0 as *mut i8;
     }
     freedirs(ftpc);
     Curl_cfree
         .expect("non-null function pointer")((*ftpc).prevpath as *mut libc::c_void);
-    let ref mut fresh78 = (*ftpc).prevpath;
+    let fresh78 = &mut ((*ftpc).prevpath);
     *fresh78 = 0 as *mut i8;
     Curl_cfree
         .expect("non-null function pointer")((*ftpc).server_os as *mut libc::c_void);
-    let ref mut fresh79 = (*ftpc).server_os;
+    let fresh79 = &mut ((*ftpc).server_os);
     *fresh79 = 0 as *mut i8;
     Curl_pp_disconnect(pp);
     return CURLE_OK;
@@ -5720,7 +5687,7 @@ unsafe extern "C" fn ftp_parse_url_path(mut data: *mut Curl_easy) -> CURLcode {
                 if dirlen == 0 as i32 as u64 {
                     dirlen = dirlen.wrapping_add(1);
                 }
-                let ref mut fresh80 = (*ftpc).dirs;
+                let fresh80 = &mut ((*ftpc).dirs);
                 *fresh80 = Curl_ccalloc
                     .expect(
                         "non-null function pointer",
@@ -5735,7 +5702,7 @@ unsafe extern "C" fn ftp_parse_url_path(mut data: *mut Curl_easy) -> CURLcode {
                         )(rawPath as *mut libc::c_void);
                     return CURLE_OUT_OF_MEMORY;
                 }
-                let ref mut fresh81 = *((*ftpc).dirs).offset(0 as i32 as isize);
+                let fresh81 = &mut (*((*ftpc).dirs).offset(0 as i32 as isize));
                 *fresh81 = Curl_ccalloc
                     .expect(
                         "non-null function pointer",
@@ -5772,7 +5739,7 @@ unsafe extern "C" fn ftp_parse_url_path(mut data: *mut Curl_easy) -> CURLcode {
                 str = str.offset(1);
             }
             if dirAlloc > 0 as i32 {
-                let ref mut fresh82 = (*ftpc).dirs;
+                let fresh82 = &mut ((*ftpc).dirs);
                 *fresh82 = Curl_ccalloc
                     .expect(
                         "non-null function pointer",
@@ -5815,10 +5782,10 @@ unsafe extern "C" fn ftp_parse_url_path(mut data: *mut Curl_easy) -> CURLcode {
                             return CURLE_OUT_OF_MEMORY;
                         }
                         strncpy(comp, curPos, compLen);
-                        let ref mut fresh83 = (*ftpc).dirdepth;
+                        let fresh83 = &mut ((*ftpc).dirdepth);
                         let fresh84 = *fresh83;
                         *fresh83 = *fresh83 + 1;
-                        let ref mut fresh85 = *((*ftpc).dirs).offset(fresh84 as isize);
+                        let fresh85 = &mut (*((*ftpc).dirs).offset(fresh84 as isize));
                         *fresh85 = comp;
                     }
                     curPos = slashPos.offset(1 as i32 as isize);
@@ -5828,10 +5795,10 @@ unsafe extern "C" fn ftp_parse_url_path(mut data: *mut Curl_easy) -> CURLcode {
         }
     }
     if !fileName.is_null() && *fileName as i32 != 0 {
-        let ref mut fresh86 = (*ftpc).file;
+        let fresh86 = &mut ((*ftpc).file);
         *fresh86 = Curl_cstrdup.expect("non-null function pointer")(fileName);
     } else {
-        let ref mut fresh87 = (*ftpc).file;
+        let fresh87 = &mut ((*ftpc).file);
         *fresh87 = 0 as *mut i8;
     }
     if ((*data).set).upload() as i32 != 0 && ((*ftpc).file).is_null()
@@ -5914,7 +5881,7 @@ unsafe extern "C" fn ftp_dophase_done(
             -(1 as i32),
         );
     } else if !connected {
-        let ref mut fresh88 = (*conn).bits;
+        let fresh88 = &mut ((*conn).bits);
         (*fresh88).set_do_more(1 as i32 as bit);
     }
     (*ftpc).ctl_valid = 1 as i32 != 0;
@@ -5971,12 +5938,12 @@ unsafe extern "C" fn ftp_setup_connection(
             "non-null function pointer",
         )(::std::mem::size_of::<FTP>() as u64, 1 as i32 as size_t)
         as *mut FTP;
-    let ref mut fresh89 = (*data).req.p.ftp;
+    let fresh89 = &mut ((*data).req.p.ftp);
     *fresh89 = ftp;
     if ftp.is_null() {
         return CURLE_OUT_OF_MEMORY;
     }
-    let ref mut fresh90 = (*ftp).path;
+    let fresh90 = &mut ((*ftp).path);
     *fresh90 = &mut *((*data).state.up.path).offset(1 as i32 as isize)
         as *mut i8;
     type_0 = strstr((*ftp).path, b";type=\0" as *const u8 as *const i8);
@@ -5992,15 +5959,15 @@ unsafe extern "C" fn ftp_setup_connection(
         command = Curl_raw_toupper(*type_0.offset(6 as i32 as isize));
         match command as i32 {
             65 => {
-                let ref mut fresh91 = (*data).state;
+                let fresh91 = &mut ((*data).state);
                 (*fresh91).set_prefer_ascii(1 as i32 as bit);
             }
             68 => {
-                let ref mut fresh92 = (*data).state;
+                let fresh92 = &mut ((*data).state);
                 (*fresh92).set_list_only(1 as i32 as bit);
             }
             73 | _ => {
-                let ref mut fresh93 = (*data).state;
+                let fresh93 = &mut ((*data).state);
                 (*fresh93).set_prefer_ascii(0 as i32 as bit);
             }
         }

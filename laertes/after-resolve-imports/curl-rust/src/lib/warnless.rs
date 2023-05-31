@@ -1,8 +1,8 @@
 use ::libc;
-pub type __ssize_t = crate::src::lib::http2::__ssize_t;
-pub type ssize_t = crate::src::lib::http2::ssize_t;
-pub type size_t = crate::src::lib::http2::size_t;
-pub type curl_off_t = crate::src::lib::http2::curl_off_t;
+pub type __ssize_t = crate::src::lib::altsvc::__ssize_t;
+pub type ssize_t = crate::src::lib::altsvc::ssize_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
+pub type curl_off_t = crate::src::lib::altsvc::curl_off_t;
 #[no_mangle]
 pub extern "C" fn curlx_ultous(mut ulnum: u64) -> u16 {
     return (ulnum & !(0 as i32) as u16 as u64)

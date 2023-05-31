@@ -5,10 +5,10 @@ extern "C" {
 }
 pub use crate::src::lib::easy::Curl_ccalloc;
 pub use crate::src::lib::easy::Curl_cfree;
-pub type __time_t = crate::src::lib::http2::__time_t;
-pub type time_t = crate::src::lib::http2::time_t;
-pub type size_t = crate::src::lib::http2::size_t;
-pub type curl_off_t = crate::src::lib::http2::curl_off_t;
+pub type __time_t = crate::src::lib::altsvc::__time_t;
+pub type time_t = crate::src::lib::altsvc::time_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
+pub type curl_off_t = crate::src::lib::altsvc::curl_off_t;
 pub type curlfiletype = u32;
 pub const CURLFILETYPE_UNKNOWN: curlfiletype = 8;
 pub const CURLFILETYPE_DOOR: curlfiletype = 7;
@@ -45,11 +45,11 @@ pub struct C2RustUnnamed {
     pub group: *mut i8,
     pub target: *mut i8,
 }
-pub type curl_free_callback = crate::src::lib::http2::curl_free_callback;
-pub type curl_calloc_callback = crate::src::lib::http2::curl_calloc_callback;
+pub type curl_free_callback = crate::src::lib::altsvc::curl_free_callback;
+pub type curl_calloc_callback = crate::src::lib::altsvc::curl_calloc_callback;
 // #[derive(Copy, Clone)]
 
-pub type Curl_llist_element = crate::src::lib::http2::Curl_llist_element;
+pub type Curl_llist_element = crate::src::lib::altsvc::Curl_llist_element;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct fileinfo {
@@ -71,7 +71,7 @@ pub unsafe extern "C" fn Curl_fileinfo_cleanup(mut finfo: *mut fileinfo) {
     }
     Curl_cfree
         .expect("non-null function pointer")((*finfo).info.b_data as *mut libc::c_void);
-    let ref mut fresh0 = (*finfo).info.b_data;
+    let fresh0 = &mut ((*finfo).info.b_data);
     *fresh0 = 0 as *mut i8;
     Curl_cfree.expect("non-null function pointer")(finfo as *mut libc::c_void);
 }

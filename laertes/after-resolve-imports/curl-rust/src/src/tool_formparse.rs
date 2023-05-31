@@ -86,42 +86,42 @@ pub use crate::src::lib::warnless::curlx_sotouz;
 pub use crate::src::lib::warnless::curlx_uztoso;
 pub use crate::src::src::tool_msgs::warnf;
 pub use crate::src::src::tool_paramhlp::file2memory;
-pub use crate::src::lib::http2::Curl_easy;
-pub use crate::src::lib::http2::curl_mime;
-pub use crate::src::lib::http2::curl_mimepart;
-pub use crate::src::lib::mqtt::_IO_codecvt;
-pub use crate::src::src::tool_cb_rea::_IO_wide_data;
-pub use crate::src::src::tool_msgs::_IO_marker;
+pub use crate::src::lib::altsvc::Curl_easy;
+pub use crate::src::lib::altsvc::curl_mime;
+pub use crate::src::lib::altsvc::curl_mimepart;
+pub use crate::src::lib::imap::_IO_marker;
+pub use crate::src::lib::speedcheck::_IO_codecvt;
+pub use crate::src::lib::vtls::vtls::_IO_wide_data;
 pub type __dev_t = crate::src::lib::file::__dev_t;
 pub type __uid_t = crate::src::lib::conncache::__uid_t;
 pub type __gid_t = crate::src::lib::curl_ntlm_wb::__gid_t;
 pub type __ino_t = crate::src::lib::file::__ino_t;
 pub type __mode_t = crate::src::lib::file::__mode_t;
 pub type __nlink_t = crate::src::lib::file::__nlink_t;
-pub type __off_t = crate::src::lib::http2::__off_t;
-pub type __off64_t = crate::src::lib::http2::__off64_t;
-pub type __time_t = crate::src::lib::http2::__time_t;
+pub type __off_t = crate::src::lib::altsvc::__off_t;
+pub type __off64_t = crate::src::lib::altsvc::__off64_t;
+pub type __time_t = crate::src::lib::altsvc::__time_t;
 pub type __blksize_t = crate::src::lib::file::__blksize_t;
 pub type __blkcnt_t = crate::src::lib::file::__blkcnt_t;
 pub type __syscall_slong_t = crate::src::lib::file::__syscall_slong_t;
-pub type size_t = crate::src::lib::http2::size_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
 // #[derive(Copy, Clone)]
 
 pub type timespec = crate::src::lib::file::timespec;
-pub type curl_off_t = crate::src::lib::http2::curl_off_t;
+pub type curl_off_t = crate::src::lib::altsvc::curl_off_t;
 // #[derive(Copy, Clone)]
 
-pub type _IO_FILE = crate::src::lib::http2::_IO_FILE;
-pub type _IO_lock_t = crate::src::lib::http2::_IO_lock_t;
-pub type FILE = crate::src::lib::http2::FILE;
-pub type CURL = crate::src::lib::http2::CURL;
+pub type _IO_FILE = crate::src::lib::altsvc::_IO_FILE;
+pub type _IO_lock_t = crate::src::lib::altsvc::_IO_lock_t;
+pub type FILE = crate::src::lib::altsvc::FILE;
+pub type CURL = crate::src::lib::altsvc::CURL;
 // #[derive(Copy, Clone)]
 
-pub type curl_slist = crate::src::lib::http2::curl_slist;
-pub type curl_seek_callback = crate::src::lib::http2::curl_seek_callback;
-pub type curl_read_callback = crate::src::lib::http2::curl_read_callback;
-pub type curl_free_callback = crate::src::lib::http2::curl_free_callback;
-pub type CURLcode = crate::src::lib::http2::CURLcode;
+pub type curl_slist = crate::src::lib::altsvc::curl_slist;
+pub type curl_seek_callback = crate::src::lib::altsvc::curl_seek_callback;
+pub type curl_read_callback = crate::src::lib::altsvc::curl_read_callback;
+pub type curl_free_callback = crate::src::lib::altsvc::curl_free_callback;
+pub type CURLcode = crate::src::lib::altsvc::CURLcode;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
 pub const CURLE_PROXY: CURLcode = 97;
@@ -222,7 +222,7 @@ pub const CURLE_URL_MALFORMAT: CURLcode = 3;
 pub const CURLE_FAILED_INIT: CURLcode = 2;
 pub const CURLE_UNSUPPORTED_PROTOCOL: CURLcode = 1;
 pub const CURLE_OK: CURLcode = 0;
-pub type curl_TimeCond = crate::src::lib::http2::curl_TimeCond;
+pub type curl_TimeCond = crate::src::lib::altsvc::curl_TimeCond;
 pub const CURL_TIMECOND_LAST: curl_TimeCond = 4;
 pub const CURL_TIMECOND_LASTMOD: curl_TimeCond = 3;
 pub const CURL_TIMECOND_IFUNMODSINCE: curl_TimeCond = 2;
@@ -331,12 +331,12 @@ unsafe extern "C" fn tool_mime_new(
     ) as *mut tool_mime;
     if !m.is_null() {
         (*m).kind = kind;
-        let ref mut fresh0 = (*m).parent;
+        let fresh0 = &mut ((*m).parent);
         *fresh0 = parent;
         if !parent.is_null() {
-            let ref mut fresh1 = (*m).prev;
+            let fresh1 = &mut ((*m).prev);
             *fresh1 = (*parent).subparts;
-            let ref mut fresh2 = (*parent).subparts;
+            let fresh2 = &mut ((*parent).subparts);
             *fresh2 = m;
         }
     }
@@ -356,7 +356,7 @@ unsafe extern "C" fn tool_mime_new_data(
         if m.is_null() {
             free(data as *mut libc::c_void);
         } else {
-            let ref mut fresh3 = (*m).data;
+            let fresh3 = &mut ((*m).data);
             *fresh3 = data;
         }
     }
@@ -378,7 +378,7 @@ unsafe extern "C" fn tool_mime_new_filedata(
             if m.is_null() {
                 free(filename as *mut libc::c_void);
             } else {
-                let ref mut fresh4 = (*m).data;
+                let fresh4 = &mut ((*m).data);
                 *fresh4 = filename;
                 if !isremotefile {
                     (*m).kind = TOOLMIME_FILEDATA;
@@ -444,7 +444,7 @@ unsafe extern "C" fn tool_mime_new_filedata(
             free(data as *mut libc::c_void);
             data = 0 as *mut i8;
         } else {
-            let ref mut fresh5 = (*m).data;
+            let fresh5 = &mut ((*m).data);
             *fresh5 = data;
             (*m).origin = origin;
             (*m).size = size;
@@ -467,31 +467,31 @@ pub unsafe extern "C" fn tool_mime_free(mut mime: *mut tool_mime) {
             tool_mime_free((*mime).prev);
         }
         free(*(&mut (*mime).name as *mut *const i8 as *mut *mut libc::c_void));
-        let ref mut fresh6 = *(&mut (*mime).name as *mut *const i8
-            as *mut *mut libc::c_void);
+        let fresh6 = &mut (*(&mut (*mime).name as *mut *const i8
+            as *mut *mut libc::c_void));
         *fresh6 = 0 as *mut libc::c_void;
         free(
             *(&mut (*mime).filename as *mut *const i8
                 as *mut *mut libc::c_void),
         );
-        let ref mut fresh7 = *(&mut (*mime).filename as *mut *const i8
-            as *mut *mut libc::c_void);
+        let fresh7 = &mut (*(&mut (*mime).filename as *mut *const i8
+            as *mut *mut libc::c_void));
         *fresh7 = 0 as *mut libc::c_void;
         free(
             *(&mut (*mime).type_0 as *mut *const i8 as *mut *mut libc::c_void),
         );
-        let ref mut fresh8 = *(&mut (*mime).type_0 as *mut *const i8
-            as *mut *mut libc::c_void);
+        let fresh8 = &mut (*(&mut (*mime).type_0 as *mut *const i8
+            as *mut *mut libc::c_void));
         *fresh8 = 0 as *mut libc::c_void;
         free(
             *(&mut (*mime).encoder as *mut *const i8 as *mut *mut libc::c_void),
         );
-        let ref mut fresh9 = *(&mut (*mime).encoder as *mut *const i8
-            as *mut *mut libc::c_void);
+        let fresh9 = &mut (*(&mut (*mime).encoder as *mut *const i8
+            as *mut *mut libc::c_void));
         *fresh9 = 0 as *mut libc::c_void;
         free(*(&mut (*mime).data as *mut *const i8 as *mut *mut libc::c_void));
-        let ref mut fresh10 = *(&mut (*mime).data as *mut *const i8
-            as *mut *mut libc::c_void);
+        let fresh10 = &mut (*(&mut (*mime).data as *mut *const i8
+            as *mut *mut libc::c_void));
         *fresh10 = 0 as *mut libc::c_void;
         curl_slist_free_all((*mime).headers);
         free(mime as *mut libc::c_void);
@@ -537,13 +537,13 @@ pub unsafe extern "C" fn tool_mime_stdin_read(
                         b"stdin: %s\n\0" as *const u8 as *const i8,
                         strerror(*__errno_location()),
                     );
-                    let ref mut fresh11 = (*sip).config;
+                    let fresh11 = &mut ((*sip).config);
                     *fresh11 = 0 as *mut GlobalConfig;
                 }
                 return 0x10000000 as i32 as size_t;
             }
         }
-        let ref mut fresh12 = (*sip).curpos;
+        let fresh12 = &mut ((*sip).curpos);
         *fresh12 += curlx_uztoso(nitems);
     }
     return nitems;
@@ -1317,11 +1317,11 @@ pub unsafe extern "C" fn formparse(
                 return 4 as i32;
             }
             *mimecurrent = part;
-            let ref mut fresh17 = (*part).headers;
+            let fresh17 = &mut ((*part).headers);
             *fresh17 = headers;
             headers = 0 as *mut curl_slist;
             if !type_0.is_null() {
-                let ref mut fresh18 = (*part).type_0;
+                let fresh18 = &mut ((*part).type_0);
                 *fresh18 = strdup(type_0);
                 if ((*part).type_0).is_null() {
                     warnf(
@@ -1402,10 +1402,10 @@ pub unsafe extern "C" fn formparse(
                     contents = 0 as *mut i8;
                     return 9 as i32;
                 }
-                let ref mut fresh19 = (*part).headers;
+                let fresh19 = &mut ((*part).headers);
                 *fresh19 = headers;
                 headers = 0 as *mut curl_slist;
-                let ref mut fresh20 = (*part).config;
+                let fresh20 = &mut ((*part).config);
                 *fresh20 = (*config).global;
                 if res as u32 == CURLE_READ_ERROR as i32 as u32
                 {
@@ -1423,16 +1423,16 @@ pub unsafe extern "C" fn formparse(
                         *(&mut (*part).data as *mut *const i8
                             as *mut *mut libc::c_void),
                     );
-                    let ref mut fresh21 = *(&mut (*part).data as *mut *const i8
-                        as *mut *mut libc::c_void);
+                    let fresh21 = &mut (*(&mut (*part).data as *mut *const i8
+                        as *mut *mut libc::c_void));
                     *fresh21 = 0 as *mut libc::c_void;
-                    let ref mut fresh22 = (*part).data;
+                    let fresh22 = &mut ((*part).data);
                     *fresh22 = 0 as *const i8;
                     (*part).size = -(1 as i32) as curl_off_t;
                     res = CURLE_OK;
                 }
                 if !filename.is_null() {
-                    let ref mut fresh23 = (*part).filename;
+                    let fresh23 = &mut ((*part).filename);
                     *fresh23 = strdup(filename);
                     if ((*part).filename).is_null() {
                         warnf(
@@ -1446,7 +1446,7 @@ pub unsafe extern "C" fn formparse(
                     }
                 }
                 if !type_0.is_null() {
-                    let ref mut fresh24 = (*part).type_0;
+                    let fresh24 = &mut ((*part).type_0);
                     *fresh24 = strdup(type_0);
                     if ((*part).type_0).is_null() {
                         warnf(
@@ -1460,7 +1460,7 @@ pub unsafe extern "C" fn formparse(
                     }
                 }
                 if !encoder.is_null() {
-                    let ref mut fresh25 = (*part).encoder;
+                    let fresh25 = &mut ((*part).encoder);
                     *fresh25 = strdup(encoder);
                     if ((*part).encoder).is_null() {
                         warnf(
@@ -1512,10 +1512,10 @@ pub unsafe extern "C" fn formparse(
                     contents = 0 as *mut i8;
                     return 15 as i32;
                 }
-                let ref mut fresh26 = (*part).headers;
+                let fresh26 = &mut ((*part).headers);
                 *fresh26 = headers;
                 headers = 0 as *mut curl_slist;
-                let ref mut fresh27 = (*part).config;
+                let fresh27 = &mut ((*part).config);
                 *fresh27 = (*config).global;
                 if res as u32 == CURLE_READ_ERROR as i32 as u32
                 {
@@ -1533,10 +1533,10 @@ pub unsafe extern "C" fn formparse(
                         *(&mut (*part).data as *mut *const i8
                             as *mut *mut libc::c_void),
                     );
-                    let ref mut fresh28 = *(&mut (*part).data as *mut *const i8
-                        as *mut *mut libc::c_void);
+                    let fresh28 = &mut (*(&mut (*part).data as *mut *const i8
+                        as *mut *mut libc::c_void));
                     *fresh28 = 0 as *mut libc::c_void;
-                    let ref mut fresh29 = (*part).data;
+                    let fresh29 = &mut ((*part).data);
                     *fresh29 = 0 as *const i8;
                     (*part).size = -(1 as i32) as curl_off_t;
                     res = CURLE_OK;
@@ -1572,12 +1572,12 @@ pub unsafe extern "C" fn formparse(
                     contents = 0 as *mut i8;
                     return 18 as i32;
                 }
-                let ref mut fresh30 = (*part).headers;
+                let fresh30 = &mut ((*part).headers);
                 *fresh30 = headers;
                 headers = 0 as *mut curl_slist;
             }
             if !filename.is_null() {
-                let ref mut fresh31 = (*part).filename;
+                let fresh31 = &mut ((*part).filename);
                 *fresh31 = strdup(filename);
                 if ((*part).filename).is_null() {
                     warnf(
@@ -1591,7 +1591,7 @@ pub unsafe extern "C" fn formparse(
                 }
             }
             if !type_0.is_null() {
-                let ref mut fresh32 = (*part).type_0;
+                let fresh32 = &mut ((*part).type_0);
                 *fresh32 = strdup(type_0);
                 if ((*part).type_0).is_null() {
                     warnf(
@@ -1605,7 +1605,7 @@ pub unsafe extern "C" fn formparse(
                 }
             }
             if !encoder.is_null() {
-                let ref mut fresh33 = (*part).encoder;
+                let fresh33 = &mut ((*part).encoder);
                 *fresh33 = strdup(encoder);
                 if ((*part).encoder).is_null() {
                     warnf(
@@ -1629,7 +1629,7 @@ pub unsafe extern "C" fn formparse(
             }
         }
         if !name.is_null() {
-            let ref mut fresh34 = (*part).name;
+            let fresh34 = &mut ((*part).name);
             *fresh34 = strdup(name);
             if ((*part).name).is_null() {
                 warnf(

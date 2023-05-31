@@ -27,14 +27,14 @@ pub use crate::src::lib::mprintf::curl_mprintf;
 pub use crate::src::lib::slist::curl_slist_free_all;
 pub use crate::src::lib::strcase::curl_strequal;
 pub use crate::src::lib::version::curl_version;
-pub use crate::src::lib::http2::Curl_easy;
+pub use crate::src::lib::altsvc::Curl_easy;
 pub use crate::src::src::tool_libinfo::curlinfo;
-pub type size_t = crate::src::lib::http2::size_t;
-pub type CURL = crate::src::lib::http2::CURL;
+pub type size_t = crate::src::lib::altsvc::size_t;
+pub type CURL = crate::src::lib::altsvc::CURL;
 // #[derive(Copy, Clone)]
 
-pub type curl_slist = crate::src::lib::http2::curl_slist;
-pub type CURLcode = crate::src::lib::http2::CURLcode;
+pub type curl_slist = crate::src::lib::altsvc::curl_slist;
+pub type CURLcode = crate::src::lib::altsvc::CURLcode;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
 pub const CURLE_PROXY: CURLcode = 97;

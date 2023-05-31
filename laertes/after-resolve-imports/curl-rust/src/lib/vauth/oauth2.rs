@@ -8,8 +8,8 @@ extern "C" {
 pub use crate::src::lib::bufref::Curl_bufref_set;
 pub use crate::src::lib::escape::curl_free;
 pub use crate::src::lib::mprintf::curl_maprintf;
-pub type size_t = crate::src::lib::http2::size_t;
-pub type CURLcode = crate::src::lib::http2::CURLcode;
+pub type size_t = crate::src::lib::altsvc::size_t;
+pub type CURLcode = crate::src::lib::altsvc::CURLcode;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
 pub const CURLE_PROXY: CURLcode = 97;

@@ -283,24 +283,24 @@ pub use crate::src::lib::openldap::ldapreqinfo;
 pub use crate::src::lib::smb::smb_request;
 pub use crate::src::lib::telnet::TELNET;
 pub use crate::src::lib::tftp::tftp_state_data;
-pub use crate::src::lib::conncache::Gsasl_session;
+pub use crate::src::lib::altsvc::Gsasl;
 pub use crate::src::lib::dict::Curl_handler_dict;
 pub use crate::src::lib::easy::Curl_ccalloc;
 pub use crate::src::lib::easy::Curl_cfree;
 pub use crate::src::lib::easy::Curl_cmalloc;
 pub use crate::src::lib::easy::Curl_cstrdup;
-pub use crate::src::lib::escape::Gsasl;
 pub use crate::src::lib::file::Curl_handler_file;
 pub use crate::src::lib::ftp::Curl_handler_ftp;
 pub use crate::src::lib::ftp::Curl_handler_ftps;
 pub use crate::src::lib::gopher::Curl_handler_gopher;
 pub use crate::src::lib::gopher::Curl_handler_gophers;
+pub use crate::src::lib::hostip6::psl_ctx_st;
 pub use crate::src::lib::http::Curl_handler_http;
 pub use crate::src::lib::http::Curl_handler_https;
 pub use crate::src::lib::imap::Curl_handler_imap;
 pub use crate::src::lib::imap::Curl_handler_imaps;
+pub use crate::src::lib::imap::_IO_marker;
 pub use crate::src::lib::mqtt::Curl_handler_mqtt;
-pub use crate::src::lib::mqtt::_IO_codecvt;
 pub use crate::src::lib::openldap::Curl_handler_ldap;
 pub use crate::src::lib::openldap::Curl_handler_ldaps;
 pub use crate::src::lib::pop3::Curl_handler_pop3;
@@ -310,47 +310,47 @@ pub use crate::src::lib::smb::Curl_handler_smb;
 pub use crate::src::lib::smb::Curl_handler_smbs;
 pub use crate::src::lib::smtp::Curl_handler_smtp;
 pub use crate::src::lib::smtp::Curl_handler_smtps;
-pub use crate::src::lib::speedcheck::nghttp2_session;
+pub use crate::src::lib::speedcheck::_IO_codecvt;
 pub use crate::src::lib::telnet::Curl_handler_telnet;
 pub use crate::src::lib::tftp::Curl_handler_tftp;
-pub use crate::src::lib::urlapi::psl_ctx_st;
-pub use crate::src::src::tool_cb_rea::_IO_wide_data;
-pub use crate::src::src::tool_msgs::_IO_marker;
+pub use crate::src::lib::urlapi::Gsasl_session;
+pub use crate::src::lib::version::nghttp2_session;
+pub use crate::src::lib::vtls::vtls::_IO_wide_data;
 pub use crate::src::lib::urlapi::Curl_URL;
 pub use crate::src::lib::vtls::openssl::ssl_backend_data;
-pub type __uint8_t = crate::src::lib::http2::__uint8_t;
-pub type __int32_t = crate::src::lib::http2::__int32_t;
-pub type __uint32_t = crate::src::lib::http2::__uint32_t;
-pub type __off_t = crate::src::lib::http2::__off_t;
-pub type __off64_t = crate::src::lib::http2::__off64_t;
-pub type __pid_t = crate::src::lib::http2::__pid_t;
-pub type __time_t = crate::src::lib::http2::__time_t;
-pub type __ssize_t = crate::src::lib::http2::__ssize_t;
-pub type __socklen_t = crate::src::lib::http2::__socklen_t;
-pub type pid_t = crate::src::lib::http2::pid_t;
-pub type ssize_t = crate::src::lib::http2::ssize_t;
-pub type time_t = crate::src::lib::http2::time_t;
-pub type size_t = crate::src::lib::http2::size_t;
-pub type int32_t = crate::src::lib::http2::int32_t;
-pub type socklen_t = crate::src::lib::http2::socklen_t;
-pub type sa_family_t = crate::src::lib::http2::sa_family_t;
+pub type __uint8_t = crate::src::lib::altsvc::__uint8_t;
+pub type __int32_t = crate::src::lib::altsvc::__int32_t;
+pub type __uint32_t = crate::src::lib::altsvc::__uint32_t;
+pub type __off_t = crate::src::lib::altsvc::__off_t;
+pub type __off64_t = crate::src::lib::altsvc::__off64_t;
+pub type __pid_t = crate::src::lib::altsvc::__pid_t;
+pub type __time_t = crate::src::lib::altsvc::__time_t;
+pub type __ssize_t = crate::src::lib::altsvc::__ssize_t;
+pub type __socklen_t = crate::src::lib::altsvc::__socklen_t;
+pub type pid_t = crate::src::lib::altsvc::pid_t;
+pub type ssize_t = crate::src::lib::altsvc::ssize_t;
+pub type time_t = crate::src::lib::altsvc::time_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
+pub type int32_t = crate::src::lib::altsvc::int32_t;
+pub type socklen_t = crate::src::lib::altsvc::socklen_t;
+pub type sa_family_t = crate::src::lib::altsvc::sa_family_t;
 // #[derive(Copy, Clone)]
 
-pub type sockaddr = crate::src::lib::http2::sockaddr;
-pub type curl_socklen_t = crate::src::lib::http2::curl_socklen_t;
-pub type curl_off_t = crate::src::lib::http2::curl_off_t;
+pub type sockaddr = crate::src::lib::altsvc::sockaddr;
+pub type curl_socklen_t = crate::src::lib::altsvc::curl_socklen_t;
+pub type curl_off_t = crate::src::lib::altsvc::curl_off_t;
 // #[derive(Copy, Clone)]
 
-pub type _IO_FILE = crate::src::lib::http2::_IO_FILE;
-pub type _IO_lock_t = crate::src::lib::http2::_IO_lock_t;
-pub type FILE = crate::src::lib::http2::FILE;
+pub type _IO_FILE = crate::src::lib::altsvc::_IO_FILE;
+pub type _IO_lock_t = crate::src::lib::altsvc::_IO_lock_t;
+pub type FILE = crate::src::lib::altsvc::FILE;
 // #[derive(Copy, Clone)]
 
-pub type Curl_easy = crate::src::lib::http2::Curl_easy;
+pub type Curl_easy = crate::src::lib::altsvc::Curl_easy;
 // #[derive(Copy, Clone)]
 
-pub type curl_tlssessioninfo = crate::src::lib::http2::curl_tlssessioninfo;
-pub type curl_sslbackend = crate::src::lib::http2::curl_sslbackend;
+pub type curl_tlssessioninfo = crate::src::lib::altsvc::curl_tlssessioninfo;
+pub type curl_sslbackend = crate::src::lib::altsvc::curl_sslbackend;
 pub const CURLSSLBACKEND_RUSTLS: curl_sslbackend = 14;
 pub const CURLSSLBACKEND_BEARSSL: curl_sslbackend = 13;
 pub const CURLSSLBACKEND_MESALINK: curl_sslbackend = 12;
@@ -368,9 +368,9 @@ pub const CURLSSLBACKEND_OPENSSL: curl_sslbackend = 1;
 pub const CURLSSLBACKEND_NONE: curl_sslbackend = 0;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type PureInfo = crate::src::lib::http2::PureInfo;
-pub type bit = crate::src::lib::http2::bit;
-pub type CURLproxycode = crate::src::lib::http2::CURLproxycode;
+pub type PureInfo = crate::src::lib::altsvc::PureInfo;
+pub type bit = crate::src::lib::altsvc::bit;
+pub type CURLproxycode = crate::src::lib::altsvc::CURLproxycode;
 pub const CURLPX_LAST: CURLproxycode = 34;
 pub const CURLPX_USER_REJECTED: CURLproxycode = 33;
 pub const CURLPX_UNKNOWN_MODE: CURLproxycode = 32;
@@ -408,22 +408,22 @@ pub const CURLPX_BAD_ADDRESS_TYPE: CURLproxycode = 1;
 pub const CURLPX_OK: CURLproxycode = 0;
 // #[derive(Copy, Clone)]
 
-pub type curl_certinfo = crate::src::lib::http2::curl_certinfo;
+pub type curl_certinfo = crate::src::lib::altsvc::curl_certinfo;
 // #[derive(Copy, Clone)]
 
-pub type curl_slist = crate::src::lib::http2::curl_slist;
+pub type curl_slist = crate::src::lib::altsvc::curl_slist;
 // #[derive(Copy, Clone)]
 
-pub type WildcardData = crate::src::lib::http2::WildcardData;
-pub type wildcard_dtor = crate::src::lib::http2::wildcard_dtor;
+pub type WildcardData = crate::src::lib::altsvc::WildcardData;
+pub type wildcard_dtor = crate::src::lib::altsvc::wildcard_dtor;
 // #[derive(Copy, Clone)]
 
-pub type Curl_llist = crate::src::lib::http2::Curl_llist;
-pub type Curl_llist_dtor = crate::src::lib::http2::Curl_llist_dtor;
+pub type Curl_llist = crate::src::lib::altsvc::Curl_llist;
+pub type Curl_llist_dtor = crate::src::lib::altsvc::Curl_llist_dtor;
 // #[derive(Copy, Clone)]
 
-pub type Curl_llist_element = crate::src::lib::http2::Curl_llist_element;
-pub type wildcard_states = crate::src::lib::http2::wildcard_states;
+pub type Curl_llist_element = crate::src::lib::altsvc::Curl_llist_element;
+pub type wildcard_states = crate::src::lib::altsvc::wildcard_states;
 pub const CURLWC_DONE: wildcard_states = 7;
 pub const CURLWC_ERROR: wildcard_states = 6;
 pub const CURLWC_SKIP: wildcard_states = 5;
@@ -434,19 +434,19 @@ pub const CURLWC_INIT: wildcard_states = 1;
 pub const CURLWC_CLEAR: wildcard_states = 0;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type UrlState = crate::src::lib::http2::UrlState;
+pub type UrlState = crate::src::lib::altsvc::UrlState;
 // #[derive(Copy, Clone)]
 
-pub type dynamically_allocated_data = crate::src::lib::http2::dynamically_allocated_data;
-pub type trailers_state = crate::src::lib::http2::trailers_state;
+pub type dynamically_allocated_data = crate::src::lib::altsvc::dynamically_allocated_data;
+pub type trailers_state = crate::src::lib::altsvc::trailers_state;
 pub const TRAILERS_DONE: trailers_state = 3;
 pub const TRAILERS_SENDING: trailers_state = 2;
 pub const TRAILERS_INITIALIZED: trailers_state = 1;
 pub const TRAILERS_NONE: trailers_state = 0;
 // #[derive(Copy, Clone)]
 
-pub type dynbuf = crate::src::lib::http2::dynbuf;
-pub type Curl_HttpReq = crate::src::lib::http2::Curl_HttpReq;
+pub type dynbuf = crate::src::lib::altsvc::dynbuf;
+pub type Curl_HttpReq = crate::src::lib::altsvc::Curl_HttpReq;
 pub const HTTPREQ_HEAD: Curl_HttpReq = 5;
 pub const HTTPREQ_PUT: Curl_HttpReq = 4;
 pub const HTTPREQ_POST_MIME: Curl_HttpReq = 3;
@@ -455,13 +455,13 @@ pub const HTTPREQ_POST: Curl_HttpReq = 1;
 pub const HTTPREQ_GET: Curl_HttpReq = 0;
 // #[derive(Copy, Clone)]
 
-pub type urlpieces = crate::src::lib::http2::urlpieces;
-pub type CURLU = crate::src::lib::http2::CURLU;
-pub type curl_read_callback = crate::src::lib::http2::curl_read_callback;
+pub type urlpieces = crate::src::lib::altsvc::urlpieces;
+pub type CURLU = crate::src::lib::altsvc::CURLU;
+pub type curl_read_callback = crate::src::lib::altsvc::curl_read_callback;
 // #[derive(Copy, Clone)]
 
-pub type time_node = crate::src::lib::http2::time_node;
-pub type expire_id = crate::src::lib::http2::expire_id;
+pub type time_node = crate::src::lib::altsvc::time_node;
+pub type expire_id = crate::src::lib::altsvc::expire_id;
 pub const EXPIRE_LAST: expire_id = 13;
 pub const EXPIRE_QUIC: expire_id = 12;
 pub const EXPIRE_TOOFAST: expire_id = 11;
@@ -478,50 +478,50 @@ pub const EXPIRE_ASYNC_NAME: expire_id = 1;
 pub const EXPIRE_100_TIMEOUT: expire_id = 0;
 // #[derive(Copy, Clone)]
 
-pub type curltime = crate::src::lib::http2::curltime;
+pub type curltime = crate::src::lib::altsvc::curltime;
 // #[derive(Copy, Clone)]
 
-pub type Curl_tree = crate::src::lib::http2::Curl_tree;
+pub type Curl_tree = crate::src::lib::altsvc::Curl_tree;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type Curl_async = crate::src::lib::http2::Curl_async;
+pub type Curl_async = crate::src::lib::altsvc::Curl_async;
 // #[derive(Copy, Clone)]
 
-pub type Curl_dns_entry = crate::src::lib::http2::Curl_dns_entry;
+pub type Curl_dns_entry = crate::src::lib::altsvc::Curl_dns_entry;
 // #[derive(Copy, Clone)]
 
-pub type Curl_addrinfo = crate::src::lib::http2::Curl_addrinfo;
+pub type Curl_addrinfo = crate::src::lib::altsvc::Curl_addrinfo;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type auth = crate::src::lib::http2::auth;
+pub type auth = crate::src::lib::altsvc::auth;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type digestdata = crate::src::lib::http2::digestdata;
+pub type digestdata = crate::src::lib::altsvc::digestdata;
 // #[derive(Copy, Clone)]
 
-pub type tempbuf = crate::src::lib::http2::tempbuf;
+pub type tempbuf = crate::src::lib::altsvc::tempbuf;
 // #[derive(Copy, Clone)]
 
-pub type Curl_ssl_session = crate::src::lib::http2::Curl_ssl_session;
+pub type Curl_ssl_session = crate::src::lib::altsvc::Curl_ssl_session;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type ssl_primary_config = crate::src::lib::http2::ssl_primary_config;
+pub type ssl_primary_config = crate::src::lib::altsvc::ssl_primary_config;
 // #[derive(Copy, Clone)]
 
-pub type curl_blob = crate::src::lib::http2::curl_blob;
+pub type curl_blob = crate::src::lib::altsvc::curl_blob;
 // #[derive(Copy, Clone)]
 
-pub type conncache = crate::src::lib::http2::conncache;
+pub type conncache = crate::src::lib::altsvc::conncache;
 // #[derive(Copy, Clone)]
 
-pub type Curl_hash = crate::src::lib::http2::Curl_hash;
-pub type Curl_hash_dtor = crate::src::lib::http2::Curl_hash_dtor;
-pub type comp_function = crate::src::lib::http2::comp_function;
-pub type hash_function = crate::src::lib::http2::hash_function;
+pub type Curl_hash = crate::src::lib::altsvc::Curl_hash;
+pub type Curl_hash_dtor = crate::src::lib::altsvc::Curl_hash_dtor;
+pub type comp_function = crate::src::lib::altsvc::comp_function;
+pub type hash_function = crate::src::lib::altsvc::hash_function;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type Progress = crate::src::lib::http2::Progress;
-pub type timediff_t = crate::src::lib::http2::timediff_t;
+pub type Progress = crate::src::lib::altsvc::Progress;
+pub type timediff_t = crate::src::lib::altsvc::timediff_t;
 // #[derive(Copy, Clone)]
 
 pub type altsvcinfo = crate::src::lib::altsvc::altsvcinfo;
@@ -530,16 +530,16 @@ pub type altsvcinfo = crate::src::lib::altsvc::altsvcinfo;
 pub type hsts = crate::src::lib::easy::hsts;
 // #[derive(Copy, Clone)]
 
-pub type CookieInfo = crate::src::lib::http2::CookieInfo;
+pub type CookieInfo = crate::src::lib::altsvc::CookieInfo;
 // #[derive(Copy, Clone)]
 
-pub type Cookie = crate::src::lib::http2::Cookie;
+pub type Cookie = crate::src::lib::altsvc::Cookie;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type UserDefined = crate::src::lib::http2::UserDefined;
-pub type curl_trailer_callback = crate::src::lib::http2::curl_trailer_callback;
-pub type multidone_func = crate::src::lib::http2::multidone_func;
-pub type CURLcode = crate::src::lib::http2::CURLcode;
+pub type UserDefined = crate::src::lib::altsvc::UserDefined;
+pub type curl_trailer_callback = crate::src::lib::altsvc::curl_trailer_callback;
+pub type multidone_func = crate::src::lib::altsvc::multidone_func;
+pub type CURLcode = crate::src::lib::altsvc::CURLcode;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
 pub const CURLE_PROXY: CURLcode = 97;
@@ -640,14 +640,14 @@ pub const CURLE_URL_MALFORMAT: CURLcode = 3;
 pub const CURLE_FAILED_INIT: CURLcode = 2;
 pub const CURLE_UNSUPPORTED_PROTOCOL: CURLcode = 1;
 pub const CURLE_OK: CURLcode = 0;
-pub type curl_resolver_start_callback = crate::src::lib::http2::curl_resolver_start_callback;
+pub type curl_resolver_start_callback = crate::src::lib::altsvc::curl_resolver_start_callback;
 // #[derive(Copy, Clone)]
 
-pub type Curl_http2_dep = crate::src::lib::http2::Curl_http2_dep;
-pub type curl_fnmatch_callback = crate::src::lib::http2::curl_fnmatch_callback;
-pub type curl_chunk_end_callback = crate::src::lib::http2::curl_chunk_end_callback;
-pub type curl_chunk_bgn_callback = crate::src::lib::http2::curl_chunk_bgn_callback;
-pub type Curl_RtspReq = crate::src::lib::http2::Curl_RtspReq;
+pub type Curl_http2_dep = crate::src::lib::altsvc::Curl_http2_dep;
+pub type curl_fnmatch_callback = crate::src::lib::altsvc::curl_fnmatch_callback;
+pub type curl_chunk_end_callback = crate::src::lib::altsvc::curl_chunk_end_callback;
+pub type curl_chunk_bgn_callback = crate::src::lib::altsvc::curl_chunk_bgn_callback;
+pub type Curl_RtspReq = crate::src::lib::altsvc::Curl_RtspReq;
 pub const RTSPREQ_LAST: Curl_RtspReq = 12;
 pub const RTSPREQ_RECEIVE: Curl_RtspReq = 11;
 pub const RTSPREQ_RECORD: Curl_RtspReq = 10;
@@ -661,60 +661,60 @@ pub const RTSPREQ_ANNOUNCE: Curl_RtspReq = 3;
 pub const RTSPREQ_DESCRIBE: Curl_RtspReq = 2;
 pub const RTSPREQ_OPTIONS: Curl_RtspReq = 1;
 pub const RTSPREQ_NONE: Curl_RtspReq = 0;
-pub type curl_usessl = crate::src::lib::http2::curl_usessl;
+pub type curl_usessl = crate::src::lib::altsvc::curl_usessl;
 pub const CURLUSESSL_LAST: curl_usessl = 4;
 pub const CURLUSESSL_ALL: curl_usessl = 3;
 pub const CURLUSESSL_CONTROL: curl_usessl = 2;
 pub const CURLUSESSL_TRY: curl_usessl = 1;
 pub const CURLUSESSL_NONE: curl_usessl = 0;
-pub type CURL_NETRC_OPTION = crate::src::lib::http2::CURL_NETRC_OPTION;
+pub type CURL_NETRC_OPTION = crate::src::lib::altsvc::CURL_NETRC_OPTION;
 pub const CURL_NETRC_LAST: CURL_NETRC_OPTION = 3;
 pub const CURL_NETRC_REQUIRED: CURL_NETRC_OPTION = 2;
 pub const CURL_NETRC_OPTIONAL: CURL_NETRC_OPTION = 1;
 pub const CURL_NETRC_IGNORED: CURL_NETRC_OPTION = 0;
-pub type curl_sshkeycallback = crate::src::lib::http2::curl_sshkeycallback;
-pub type curl_khmatch = crate::src::lib::http2::curl_khmatch;
+pub type curl_sshkeycallback = crate::src::lib::altsvc::curl_sshkeycallback;
+pub type curl_khmatch = crate::src::lib::altsvc::curl_khmatch;
 pub const CURLKHMATCH_LAST: curl_khmatch = 3;
 pub const CURLKHMATCH_MISSING: curl_khmatch = 2;
 pub const CURLKHMATCH_MISMATCH: curl_khmatch = 1;
 pub const CURLKHMATCH_OK: curl_khmatch = 0;
 // #[derive(Copy, Clone)]
 
-pub type curl_khkey = crate::src::lib::http2::curl_khkey;
-pub type curl_khtype = crate::src::lib::http2::curl_khtype;
+pub type curl_khkey = crate::src::lib::altsvc::curl_khkey;
+pub type curl_khtype = crate::src::lib::altsvc::curl_khtype;
 pub const CURLKHTYPE_ED25519: curl_khtype = 5;
 pub const CURLKHTYPE_ECDSA: curl_khtype = 4;
 pub const CURLKHTYPE_DSS: curl_khtype = 3;
 pub const CURLKHTYPE_RSA: curl_khtype = 2;
 pub const CURLKHTYPE_RSA1: curl_khtype = 1;
 pub const CURLKHTYPE_UNKNOWN: curl_khtype = 0;
-pub type CURL = crate::src::lib::http2::CURL;
-pub type curl_ftpccc = crate::src::lib::http2::curl_ftpccc;
+pub type CURL = crate::src::lib::altsvc::CURL;
+pub type curl_ftpccc = crate::src::lib::altsvc::curl_ftpccc;
 pub const CURLFTPSSL_CCC_LAST: curl_ftpccc = 3;
 pub const CURLFTPSSL_CCC_ACTIVE: curl_ftpccc = 2;
 pub const CURLFTPSSL_CCC_PASSIVE: curl_ftpccc = 1;
 pub const CURLFTPSSL_CCC_NONE: curl_ftpccc = 0;
-pub type curl_ftpauth = crate::src::lib::http2::curl_ftpauth;
+pub type curl_ftpauth = crate::src::lib::altsvc::curl_ftpauth;
 pub const CURLFTPAUTH_LAST: curl_ftpauth = 3;
 pub const CURLFTPAUTH_TLS: curl_ftpauth = 2;
 pub const CURLFTPAUTH_SSL: curl_ftpauth = 1;
 pub const CURLFTPAUTH_DEFAULT: curl_ftpauth = 0;
-pub type curl_ftpfile = crate::src::lib::http2::curl_ftpfile;
+pub type curl_ftpfile = crate::src::lib::altsvc::curl_ftpfile;
 pub const FTPFILE_SINGLECWD: curl_ftpfile = 3;
 pub const FTPFILE_NOCWD: curl_ftpfile = 2;
 pub const FTPFILE_MULTICWD: curl_ftpfile = 1;
 // #[derive(Copy, Clone)]
 
-pub type ssl_general_config = crate::src::lib::http2::ssl_general_config;
+pub type ssl_general_config = crate::src::lib::altsvc::ssl_general_config;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type ssl_config_data = crate::src::lib::http2::ssl_config_data;
-pub type CURL_TLSAUTH = crate::src::lib::http2::CURL_TLSAUTH;
+pub type ssl_config_data = crate::src::lib::altsvc::ssl_config_data;
+pub type CURL_TLSAUTH = crate::src::lib::altsvc::CURL_TLSAUTH;
 pub const CURL_TLSAUTH_LAST: CURL_TLSAUTH = 2;
 pub const CURL_TLSAUTH_SRP: CURL_TLSAUTH = 1;
 pub const CURL_TLSAUTH_NONE: CURL_TLSAUTH = 0;
-pub type curl_ssl_ctx_callback = crate::src::lib::http2::curl_ssl_ctx_callback;
-pub type curl_proxytype = crate::src::lib::http2::curl_proxytype;
+pub type curl_ssl_ctx_callback = crate::src::lib::altsvc::curl_ssl_ctx_callback;
+pub type curl_proxytype = crate::src::lib::altsvc::curl_proxytype;
 pub const CURLPROXY_SOCKS5_HOSTNAME: curl_proxytype = 7;
 pub const CURLPROXY_SOCKS4A: curl_proxytype = 6;
 pub const CURLPROXY_SOCKS5: curl_proxytype = 5;
@@ -722,7 +722,7 @@ pub const CURLPROXY_SOCKS4: curl_proxytype = 4;
 pub const CURLPROXY_HTTPS: curl_proxytype = 2;
 pub const CURLPROXY_HTTP_1_0: curl_proxytype = 1;
 pub const CURLPROXY_HTTP: curl_proxytype = 0;
-pub type curl_TimeCond = crate::src::lib::http2::curl_TimeCond;
+pub type curl_TimeCond = crate::src::lib::altsvc::curl_TimeCond;
 pub const CURL_TIMECOND_LAST: curl_TimeCond = 4;
 pub const CURL_TIMECOND_LASTMOD: curl_TimeCond = 3;
 pub const CURL_TIMECOND_IFUNMODSINCE: curl_TimeCond = 2;
@@ -730,17 +730,17 @@ pub const CURL_TIMECOND_IFMODSINCE: curl_TimeCond = 1;
 pub const CURL_TIMECOND_NONE: curl_TimeCond = 0;
 // #[derive(Copy, Clone)]
 
-pub type curl_mimepart = crate::src::lib::http2::curl_mimepart;
+pub type curl_mimepart = crate::src::lib::altsvc::curl_mimepart;
 // #[derive(Copy, Clone)]
 
-pub type mime_encoder_state = crate::src::lib::http2::mime_encoder_state;
+pub type mime_encoder_state = crate::src::lib::altsvc::mime_encoder_state;
 // #[derive(Copy, Clone)]
 
-pub type mime_encoder = crate::src::lib::http2::mime_encoder;
+pub type mime_encoder = crate::src::lib::altsvc::mime_encoder;
 // #[derive(Copy, Clone)]
 
-pub type mime_state = crate::src::lib::http2::mime_state;
-pub type mimestate = crate::src::lib::http2::mimestate;
+pub type mime_state = crate::src::lib::altsvc::mime_state;
+pub type mimestate = crate::src::lib::altsvc::mimestate;
 pub const MIMESTATE_LAST: mimestate = 9;
 pub const MIMESTATE_END: mimestate = 8;
 pub const MIMESTATE_CONTENT: mimestate = 7;
@@ -751,9 +751,9 @@ pub const MIMESTATE_EOH: mimestate = 3;
 pub const MIMESTATE_USERHEADERS: mimestate = 2;
 pub const MIMESTATE_CURLHEADERS: mimestate = 1;
 pub const MIMESTATE_BEGIN: mimestate = 0;
-pub type curl_free_callback = crate::src::lib::http2::curl_free_callback;
-pub type curl_seek_callback = crate::src::lib::http2::curl_seek_callback;
-pub type mimekind = crate::src::lib::http2::mimekind;
+pub type curl_free_callback = crate::src::lib::altsvc::curl_free_callback;
+pub type curl_seek_callback = crate::src::lib::altsvc::curl_seek_callback;
+pub type mimekind = crate::src::lib::altsvc::mimekind;
 pub const MIMEKIND_LAST: mimekind = 5;
 pub const MIMEKIND_MULTIPART: mimekind = 4;
 pub const MIMEKIND_CALLBACK: mimekind = 3;
@@ -762,42 +762,42 @@ pub const MIMEKIND_DATA: mimekind = 1;
 pub const MIMEKIND_NONE: mimekind = 0;
 // #[derive(Copy, Clone)]
 
-pub type curl_mime = crate::src::lib::http2::curl_mime;
+pub type curl_mime = crate::src::lib::altsvc::curl_mime;
 // #[derive(Copy, Clone)]
 
-pub type curl_httppost = crate::src::lib::http2::curl_httppost;
-pub type curl_hstswrite_callback = crate::src::lib::http2::curl_hstswrite_callback;
+pub type curl_httppost = crate::src::lib::altsvc::curl_httppost;
+pub type curl_hstswrite_callback = crate::src::lib::altsvc::curl_hstswrite_callback;
 // #[derive(Copy, Clone)]
 
-pub type curl_index = crate::src::lib::http2::curl_index;
+pub type curl_index = crate::src::lib::altsvc::curl_index;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type curl_hstsentry = crate::src::lib::http2::curl_hstsentry;
-pub type CURLSTScode = crate::src::lib::http2::CURLSTScode;
+pub type curl_hstsentry = crate::src::lib::altsvc::curl_hstsentry;
+pub type CURLSTScode = crate::src::lib::altsvc::CURLSTScode;
 pub const CURLSTS_FAIL: CURLSTScode = 2;
 pub const CURLSTS_DONE: CURLSTScode = 1;
 pub const CURLSTS_OK: CURLSTScode = 0;
-pub type curl_hstsread_callback = crate::src::lib::http2::curl_hstsread_callback;
-pub type curl_conv_callback = crate::src::lib::http2::curl_conv_callback;
-pub type curl_closesocket_callback = crate::src::lib::http2::curl_closesocket_callback;
-pub type curl_socket_t = crate::src::lib::http2::curl_socket_t;
-pub type curl_opensocket_callback = crate::src::lib::http2::curl_opensocket_callback;
+pub type curl_hstsread_callback = crate::src::lib::altsvc::curl_hstsread_callback;
+pub type curl_conv_callback = crate::src::lib::altsvc::curl_conv_callback;
+pub type curl_closesocket_callback = crate::src::lib::altsvc::curl_closesocket_callback;
+pub type curl_socket_t = crate::src::lib::altsvc::curl_socket_t;
+pub type curl_opensocket_callback = crate::src::lib::altsvc::curl_opensocket_callback;
 // #[derive(Copy, Clone)]
 
-pub type curl_sockaddr = crate::src::lib::http2::curl_sockaddr;
-pub type curlsocktype = crate::src::lib::http2::curlsocktype;
+pub type curl_sockaddr = crate::src::lib::altsvc::curl_sockaddr;
+pub type curlsocktype = crate::src::lib::altsvc::curlsocktype;
 pub const CURLSOCKTYPE_LAST: curlsocktype = 2;
 pub const CURLSOCKTYPE_ACCEPT: curlsocktype = 1;
 pub const CURLSOCKTYPE_IPCXN: curlsocktype = 0;
-pub type curl_sockopt_callback = crate::src::lib::http2::curl_sockopt_callback;
-pub type curl_ioctl_callback = crate::src::lib::http2::curl_ioctl_callback;
-pub type curlioerr = crate::src::lib::http2::curlioerr;
+pub type curl_sockopt_callback = crate::src::lib::altsvc::curl_sockopt_callback;
+pub type curl_ioctl_callback = crate::src::lib::altsvc::curl_ioctl_callback;
+pub type curlioerr = crate::src::lib::altsvc::curlioerr;
 pub const CURLIOE_LAST: curlioerr = 3;
 pub const CURLIOE_FAILRESTART: curlioerr = 2;
 pub const CURLIOE_UNKNOWNCMD: curlioerr = 1;
 pub const CURLIOE_OK: curlioerr = 0;
-pub type curl_debug_callback = crate::src::lib::http2::curl_debug_callback;
-pub type curl_infotype = crate::src::lib::http2::curl_infotype;
+pub type curl_debug_callback = crate::src::lib::altsvc::curl_debug_callback;
+pub type curl_infotype = crate::src::lib::altsvc::curl_infotype;
 pub const CURLINFO_END: curl_infotype = 7;
 pub const CURLINFO_SSL_DATA_OUT: curl_infotype = 6;
 pub const CURLINFO_SSL_DATA_IN: curl_infotype = 5;
@@ -806,73 +806,73 @@ pub const CURLINFO_DATA_IN: curl_infotype = 3;
 pub const CURLINFO_HEADER_OUT: curl_infotype = 2;
 pub const CURLINFO_HEADER_IN: curl_infotype = 1;
 pub const CURLINFO_TEXT: curl_infotype = 0;
-pub type curl_xferinfo_callback = crate::src::lib::http2::curl_xferinfo_callback;
-pub type curl_progress_callback = crate::src::lib::http2::curl_progress_callback;
-pub type curl_write_callback = crate::src::lib::http2::curl_write_callback;
+pub type curl_xferinfo_callback = crate::src::lib::altsvc::curl_xferinfo_callback;
+pub type curl_progress_callback = crate::src::lib::altsvc::curl_progress_callback;
+pub type curl_write_callback = crate::src::lib::altsvc::curl_write_callback;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type SingleRequest = crate::src::lib::http2::SingleRequest;
+pub type SingleRequest = crate::src::lib::altsvc::SingleRequest;
 // #[derive(Copy, Clone)]
 
-pub type dohdata = crate::src::lib::http2::dohdata;
+pub type dohdata = crate::src::lib::altsvc::dohdata;
 // #[derive(Copy, Clone)]
 
-pub type dnsprobe = crate::src::lib::http2::dnsprobe;
+pub type dnsprobe = crate::src::lib::altsvc::dnsprobe;
 // #[derive(Copy, Clone)]
 
-pub type C2RustUnnamed = crate::src::lib::http2::C2RustUnnamed;
+pub type C2RustUnnamed = crate::src::lib::altsvc::C2RustUnnamed;
 // #[derive(Copy, Clone)]
 
-pub type SSHPROTO = crate::src::lib::http2::SSHPROTO;
+pub type SSHPROTO = crate::src::lib::altsvc::SSHPROTO;
 // #[derive(Copy, Clone)]
 
-pub type SMTP = crate::src::lib::http2::SMTP;
-pub type curl_pp_transfer = crate::src::lib::http2::curl_pp_transfer;
+pub type SMTP = crate::src::lib::altsvc::SMTP;
+pub type curl_pp_transfer = crate::src::lib::altsvc::curl_pp_transfer;
 pub const PPTRANSFER_NONE: curl_pp_transfer = 2;
 pub const PPTRANSFER_INFO: curl_pp_transfer = 1;
 pub const PPTRANSFER_BODY: curl_pp_transfer = 0;
 // #[derive(Copy, Clone)]
 
-pub type RTSP = crate::src::lib::http2::RTSP;
+pub type RTSP = crate::src::lib::altsvc::RTSP;
 // #[derive(Copy, Clone)]
 
-pub type HTTP = crate::src::lib::http2::HTTP;
-pub type uint8_t = crate::src::lib::http2::uint8_t;
-pub type uint32_t = crate::src::lib::http2::uint32_t;
+pub type HTTP = crate::src::lib::altsvc::HTTP;
+pub type uint8_t = crate::src::lib::altsvc::uint8_t;
+pub type uint32_t = crate::src::lib::altsvc::uint32_t;
 pub type C2RustUnnamed_0 = u32;
 pub const HTTPSEND_BODY: C2RustUnnamed_0 = 2;
 pub const HTTPSEND_REQUEST: C2RustUnnamed_0 = 1;
 pub const HTTPSEND_NADA: C2RustUnnamed_0 = 0;
 // #[derive(Copy, Clone)]
 
-pub type back = crate::src::lib::http2::back;
+pub type back = crate::src::lib::altsvc::back;
 // #[derive(Copy, Clone)]
 
-pub type POP3 = crate::src::lib::http2::POP3;
+pub type POP3 = crate::src::lib::altsvc::POP3;
 // #[derive(Copy, Clone)]
 
-pub type MQTT = crate::src::lib::http2::MQTT;
+pub type MQTT = crate::src::lib::altsvc::MQTT;
 // #[derive(Copy, Clone)]
 
-pub type IMAP = crate::src::lib::http2::IMAP;
+pub type IMAP = crate::src::lib::altsvc::IMAP;
 // #[derive(Copy, Clone)]
 
-pub type FTP = crate::src::lib::http2::FTP;
+pub type FTP = crate::src::lib::altsvc::FTP;
 // #[derive(Copy, Clone)]
 
-pub type FILEPROTO = crate::src::lib::http2::FILEPROTO;
+pub type FILEPROTO = crate::src::lib::altsvc::FILEPROTO;
 // #[derive(Copy, Clone)]
 
 pub type contenc_writer = crate::src::lib::content_encoding::contenc_writer;
 // #[derive(Copy, Clone)]
 
 pub type content_encoding = crate::src::lib::content_encoding::content_encoding;
-pub type upgrade101 = crate::src::lib::http2::upgrade101;
+pub type upgrade101 = crate::src::lib::altsvc::upgrade101;
 pub const UPGR101_WORKING: upgrade101 = 3;
 pub const UPGR101_RECEIVED: upgrade101 = 2;
 pub const UPGR101_REQUESTED: upgrade101 = 1;
 pub const UPGR101_INIT: upgrade101 = 0;
-pub type expect100 = crate::src::lib::http2::expect100;
+pub type expect100 = crate::src::lib::altsvc::expect100;
 pub const EXP100_FAILED: expect100 = 3;
 pub const EXP100_SENDING_REQUEST: expect100 = 2;
 pub const EXP100_AWAITING_CONTINUE: expect100 = 1;
@@ -883,8 +883,8 @@ pub const HEADER_PARTHEADER: C2RustUnnamed_1 = 1;
 pub const HEADER_NORMAL: C2RustUnnamed_1 = 0;
 // #[derive(Copy, Clone)]
 
-pub type PslCache = crate::src::lib::http2::PslCache;
-pub type psl_ctx_t = crate::src::lib::http2::psl_ctx_t;
+pub type PslCache = crate::src::lib::altsvc::PslCache;
+pub type psl_ctx_t = crate::src::lib::altsvc::psl_ctx_t;
 // #[derive(Copy, Clone)]
 
 pub type Curl_share = crate::src::lib::asyn_thread::Curl_share;
@@ -906,32 +906,32 @@ pub const CURL_LOCK_ACCESS_SHARED: curl_lock_access = 1;
 pub const CURL_LOCK_ACCESS_NONE: curl_lock_access = 0;
 // #[derive(Copy, Clone)]
 
-pub type Curl_multi = crate::src::lib::http2::Curl_multi;
-pub type curl_multi_timer_callback = crate::src::lib::http2::curl_multi_timer_callback;
-pub type CURLM = crate::src::lib::http2::CURLM;
-pub type curl_push_callback = crate::src::lib::http2::curl_push_callback;
-pub type curl_socket_callback = crate::src::lib::http2::curl_socket_callback;
+pub type Curl_multi = crate::src::lib::altsvc::Curl_multi;
+pub type curl_multi_timer_callback = crate::src::lib::altsvc::curl_multi_timer_callback;
+pub type CURLM = crate::src::lib::altsvc::CURLM;
+pub type curl_push_callback = crate::src::lib::altsvc::curl_push_callback;
+pub type curl_socket_callback = crate::src::lib::altsvc::curl_socket_callback;
 // #[derive(Copy, Clone)]
 
-pub type Names = crate::src::lib::http2::Names;
+pub type Names = crate::src::lib::altsvc::Names;
 pub type C2RustUnnamed_2 = u32;
 pub const HCACHE_SHARED: C2RustUnnamed_2 = 2;
 pub const HCACHE_MULTI: C2RustUnnamed_2 = 1;
 pub const HCACHE_NONE: C2RustUnnamed_2 = 0;
 // #[derive(Copy, Clone)]
 
-pub type Curl_message = crate::src::lib::http2::Curl_message;
+pub type Curl_message = crate::src::lib::altsvc::Curl_message;
 // #[derive(Copy, Clone)]
 
-pub type CURLMsg = crate::src::lib::http2::CURLMsg;
+pub type CURLMsg = crate::src::lib::altsvc::CURLMsg;
 // #[derive(Copy, Clone)]
 
-pub type C2RustUnnamed_3 = crate::src::lib::http2::C2RustUnnamed_3;
-pub type CURLMSG = crate::src::lib::http2::CURLMSG;
+pub type C2RustUnnamed_3 = crate::src::lib::altsvc::C2RustUnnamed_3;
+pub type CURLMSG = crate::src::lib::altsvc::CURLMSG;
 pub const CURLMSG_LAST: CURLMSG = 2;
 pub const CURLMSG_DONE: CURLMSG = 1;
 pub const CURLMSG_NONE: CURLMSG = 0;
-pub type CURLMstate = crate::src::lib::http2::CURLMstate;
+pub type CURLMstate = crate::src::lib::altsvc::CURLMstate;
 pub const MSTATE_LAST: CURLMstate = 17;
 pub const MSTATE_MSGSENT: CURLMstate = 16;
 pub const MSTATE_COMPLETED: CURLMstate = 15;
@@ -952,10 +952,10 @@ pub const MSTATE_PENDING: CURLMstate = 1;
 pub const MSTATE_INIT: CURLMstate = 0;
 // #[derive(Copy, Clone)]
 
-pub type connectdata = crate::src::lib::http2::connectdata;
+pub type connectdata = crate::src::lib::altsvc::connectdata;
 // #[derive(Copy, Clone)]
 
-pub type connectbundle = crate::src::lib::http2::connectbundle;
+pub type connectbundle = crate::src::lib::altsvc::connectbundle;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
 pub type http_connect_state = crate::src::lib::ftp::http_connect_state;
@@ -970,11 +970,11 @@ pub const KEEPON_CONNECT: keeponval = 1;
 pub const KEEPON_DONE: keeponval = 0;
 // #[derive(Copy, Clone)]
 
-pub type C2RustUnnamed_5 = crate::src::lib::http2::C2RustUnnamed_4;
+pub type C2RustUnnamed_5 = crate::src::lib::altsvc::C2RustUnnamed_4;
 // #[derive(Copy, Clone)]
 
-pub type mqtt_conn = crate::src::lib::http2::mqtt_conn;
-pub type mqttstate = crate::src::lib::http2::mqttstate;
+pub type mqtt_conn = crate::src::lib::altsvc::mqtt_conn;
+pub type mqttstate = crate::src::lib::altsvc::mqttstate;
 pub const MQTT_NOSTATE: mqttstate = 7;
 pub const MQTT_PUB_REMAIN: mqttstate = 6;
 pub const MQTT_PUBWAIT: mqttstate = 5;
@@ -985,8 +985,8 @@ pub const MQTT_REMAINING_LENGTH: mqttstate = 1;
 pub const MQTT_FIRST: mqttstate = 0;
 // #[derive(Copy, Clone)]
 
-pub type smb_conn = crate::src::lib::http2::smb_conn;
-pub type smb_conn_state = crate::src::lib::http2::smb_conn_state;
+pub type smb_conn = crate::src::lib::altsvc::smb_conn;
+pub type smb_conn_state = crate::src::lib::altsvc::smb_conn_state;
 pub const SMB_CONNECTED: smb_conn_state = 4;
 pub const SMB_SETUP: smb_conn_state = 3;
 pub const SMB_NEGOTIATE: smb_conn_state = 2;
@@ -994,14 +994,14 @@ pub const SMB_CONNECTING: smb_conn_state = 1;
 pub const SMB_NOT_CONNECTED: smb_conn_state = 0;
 // #[derive(Copy, Clone)]
 
-pub type rtsp_conn = crate::src::lib::http2::rtsp_conn;
+pub type rtsp_conn = crate::src::lib::altsvc::rtsp_conn;
 // #[derive(Copy, Clone)]
 
-pub type smtp_conn = crate::src::lib::http2::smtp_conn;
+pub type smtp_conn = crate::src::lib::altsvc::smtp_conn;
 // #[derive(Copy, Clone)]
 
-pub type SASL = crate::src::lib::http2::SASL;
-pub type saslstate = crate::src::lib::http2::saslstate;
+pub type SASL = crate::src::lib::altsvc::SASL;
+pub type saslstate = crate::src::lib::altsvc::saslstate;
 pub const SASL_FINAL: saslstate = 17;
 pub const SASL_CANCEL: saslstate = 16;
 pub const SASL_GSASL: saslstate = 15;
@@ -1022,8 +1022,8 @@ pub const SASL_PLAIN: saslstate = 1;
 pub const SASL_STOP: saslstate = 0;
 // #[derive(Copy, Clone)]
 
-pub type SASLproto = crate::src::lib::http2::SASLproto;
-pub type smtpstate = crate::src::lib::http2::smtpstate;
+pub type SASLproto = crate::src::lib::altsvc::SASLproto;
+pub type smtpstate = crate::src::lib::altsvc::smtpstate;
 pub const SMTP_LAST: smtpstate = 13;
 pub const SMTP_QUIT: smtpstate = 12;
 pub const SMTP_POSTDATA: smtpstate = 11;
@@ -1040,11 +1040,11 @@ pub const SMTP_SERVERGREET: smtpstate = 1;
 pub const SMTP_STOP: smtpstate = 0;
 // #[derive(Copy, Clone)]
 
-pub type pingpong = crate::src::lib::http2::pingpong;
+pub type pingpong = crate::src::lib::altsvc::pingpong;
 // #[derive(Copy, Clone)]
 
-pub type pop3_conn = crate::src::lib::http2::pop3_conn;
-pub type pop3state = crate::src::lib::http2::pop3state;
+pub type pop3_conn = crate::src::lib::altsvc::pop3_conn;
+pub type pop3state = crate::src::lib::altsvc::pop3state;
 pub const POP3_LAST: pop3state = 11;
 pub const POP3_QUIT: pop3state = 10;
 pub const POP3_COMMAND: pop3state = 9;
@@ -1059,8 +1059,8 @@ pub const POP3_SERVERGREET: pop3state = 1;
 pub const POP3_STOP: pop3state = 0;
 // #[derive(Copy, Clone)]
 
-pub type imap_conn = crate::src::lib::http2::imap_conn;
-pub type imapstate = crate::src::lib::http2::imapstate;
+pub type imap_conn = crate::src::lib::altsvc::imap_conn;
+pub type imapstate = crate::src::lib::altsvc::imapstate;
 pub const IMAP_LAST: imapstate = 15;
 pub const IMAP_LOGOUT: imapstate = 14;
 pub const IMAP_SEARCH: imapstate = 13;
@@ -1079,8 +1079,8 @@ pub const IMAP_SERVERGREET: imapstate = 1;
 pub const IMAP_STOP: imapstate = 0;
 // #[derive(Copy, Clone)]
 
-pub type ssh_conn = crate::src::lib::http2::ssh_conn;
-pub type sshstate = crate::src::lib::http2::sshstate;
+pub type ssh_conn = crate::src::lib::altsvc::ssh_conn;
+pub type sshstate = crate::src::lib::altsvc::sshstate;
 pub const SSH_LAST: sshstate = 60;
 pub const SSH_QUIT: sshstate = 59;
 pub const SSH_SESSION_FREE: sshstate = 58;
@@ -1145,19 +1145,19 @@ pub const SSH_STOP: sshstate = 0;
 pub const SSH_NO_STATE: sshstate = -1;
 // #[derive(Copy, Clone)]
 
-pub type http_conn = crate::src::lib::http2::http_conn;
+pub type http_conn = crate::src::lib::altsvc::http_conn;
 // #[derive(Copy, Clone)]
 
-pub type nghttp2_settings_entry = crate::src::lib::http2::nghttp2_settings_entry;
+pub type nghttp2_settings_entry = crate::src::lib::altsvc::nghttp2_settings_entry;
 // #[derive(Copy, Clone)]
 
-pub type h2settings = crate::src::lib::http2::h2settings;
-pub type Curl_recv = crate::src::lib::http2::Curl_recv;
-pub type Curl_send = crate::src::lib::http2::Curl_send;
+pub type h2settings = crate::src::lib::altsvc::h2settings;
+pub type Curl_recv = crate::src::lib::altsvc::Curl_recv;
+pub type Curl_send = crate::src::lib::altsvc::Curl_send;
 // #[derive(Copy, Clone)]
 
-pub type ftp_conn = crate::src::lib::http2::ftp_conn;
-pub type ftpstate = crate::src::lib::http2::ftpstate;
+pub type ftp_conn = crate::src::lib::altsvc::ftp_conn;
+pub type ftpstate = crate::src::lib::altsvc::ftpstate;
 pub const FTP_LAST: ftpstate = 35;
 pub const FTP_QUIT: ftpstate = 34;
 pub const FTP_STOR: ftpstate = 33;
@@ -1196,8 +1196,8 @@ pub const FTP_WAIT220: ftpstate = 1;
 pub const FTP_STOP: ftpstate = 0;
 // #[derive(Copy, Clone)]
 
-pub type ntlmdata = crate::src::lib::http2::ntlmdata;
-pub type curlntlm = crate::src::lib::http2::curlntlm;
+pub type ntlmdata = crate::src::lib::altsvc::ntlmdata;
+pub type curlntlm = crate::src::lib::altsvc::curlntlm;
 pub const NTLMSTATE_LAST: curlntlm = 4;
 pub const NTLMSTATE_TYPE3: curlntlm = 3;
 pub const NTLMSTATE_TYPE2: curlntlm = 2;
@@ -1205,41 +1205,41 @@ pub const NTLMSTATE_TYPE1: curlntlm = 1;
 pub const NTLMSTATE_NONE: curlntlm = 0;
 // #[derive(Copy, Clone)]
 
-pub type gsasldata = crate::src::lib::http2::gsasldata;
+pub type gsasldata = crate::src::lib::altsvc::gsasldata;
 // #[derive(Copy, Clone)]
 
-pub type Curl_handler = crate::src::lib::http2::Curl_handler;
+pub type Curl_handler = crate::src::lib::altsvc::Curl_handler;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type ConnectBits = crate::src::lib::http2::ConnectBits;
+pub type ConnectBits = crate::src::lib::altsvc::ConnectBits;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
-pub type ssl_connect_data = crate::src::lib::http2::ssl_connect_data;
-pub type ssl_connect_state = crate::src::lib::http2::ssl_connect_state;
+pub type ssl_connect_data = crate::src::lib::altsvc::ssl_connect_data;
+pub type ssl_connect_state = crate::src::lib::altsvc::ssl_connect_state;
 pub const ssl_connect_done: ssl_connect_state = 5;
 pub const ssl_connect_3: ssl_connect_state = 4;
 pub const ssl_connect_2_writing: ssl_connect_state = 3;
 pub const ssl_connect_2_reading: ssl_connect_state = 2;
 pub const ssl_connect_2: ssl_connect_state = 1;
 pub const ssl_connect_1: ssl_connect_state = 0;
-pub type ssl_connection_state = crate::src::lib::http2::ssl_connection_state;
+pub type ssl_connection_state = crate::src::lib::altsvc::ssl_connection_state;
 pub const ssl_connection_complete: ssl_connection_state = 2;
 pub const ssl_connection_negotiating: ssl_connection_state = 1;
 pub const ssl_connection_none: ssl_connection_state = 0;
 // #[derive(Copy, Clone)]
 
-pub type proxy_info = crate::src::lib::http2::proxy_info;
+pub type proxy_info = crate::src::lib::altsvc::proxy_info;
 // #[derive(Copy, Clone)]
 
-pub type hostname = crate::src::lib::http2::hostname;
+pub type hostname = crate::src::lib::altsvc::hostname;
 pub type C2RustUnnamed_6 = u32;
 pub const TRNSPRT_QUIC: C2RustUnnamed_6 = 5;
 pub const TRNSPRT_UDP: C2RustUnnamed_6 = 4;
 pub const TRNSPRT_TCP: C2RustUnnamed_6 = 3;
 // #[derive(Copy, Clone)]
 
-pub type Curl_chunker = crate::src::lib::http2::Curl_chunker;
-pub type ChunkyState = crate::src::lib::http2::ChunkyState;
+pub type Curl_chunker = crate::src::lib::altsvc::Curl_chunker;
+pub type ChunkyState = crate::src::lib::altsvc::ChunkyState;
 pub const CHUNK_TRAILER_POSTCR: ChunkyState = 7;
 pub const CHUNK_TRAILER_CR: ChunkyState = 6;
 pub const CHUNK_TRAILER: ChunkyState = 5;
@@ -1250,8 +1250,8 @@ pub const CHUNK_LF: ChunkyState = 1;
 pub const CHUNK_HEX: ChunkyState = 0;
 // #[derive(Copy, Clone)]
 
-pub type connstate = crate::src::lib::http2::connstate;
-pub type connect_t = crate::src::lib::http2::connect_t;
+pub type connstate = crate::src::lib::altsvc::connstate;
+pub type connect_t = crate::src::lib::altsvc::connect_t;
 pub const CONNECT_DONE: connect_t = 17;
 pub const CONNECT_REQ_READ_MORE: connect_t = 16;
 pub const CONNECT_REQ_READ: connect_t = 15;
@@ -1270,9 +1270,9 @@ pub const CONNECT_SOCKS_READ_INIT: connect_t = 3;
 pub const CONNECT_SOCKS_SEND: connect_t = 2;
 pub const CONNECT_SOCKS_INIT: connect_t = 1;
 pub const CONNECT_INIT: connect_t = 0;
-pub type curl_malloc_callback = crate::src::lib::http2::curl_malloc_callback;
+pub type curl_malloc_callback = crate::src::lib::altsvc::curl_malloc_callback;
 pub type curl_strdup_callback = crate::src::lib::altsvc::curl_strdup_callback;
-pub type curl_calloc_callback = crate::src::lib::http2::curl_calloc_callback;
+pub type curl_calloc_callback = crate::src::lib::altsvc::curl_calloc_callback;
 pub type C2RustUnnamed_7 = u32;
 pub const CURL_HTTP_VERSION_LAST: C2RustUnnamed_7 = 31;
 pub const CURL_HTTP_VERSION_3: C2RustUnnamed_7 = 30;
@@ -1363,7 +1363,7 @@ pub const CURLSHE_INVALID: CURLSHcode = 3;
 pub const CURLSHE_IN_USE: CURLSHcode = 2;
 pub const CURLSHE_BAD_OPTION: CURLSHcode = 1;
 pub const CURLSHE_OK: CURLSHcode = 0;
-pub type CURLMcode = crate::src::lib::http2::CURLMcode;
+pub type CURLMcode = crate::src::lib::doh::CURLMcode;
 pub const CURLM_LAST: CURLMcode = 11;
 pub const CURLM_BAD_FUNCTION_ARGUMENT: CURLMcode = 10;
 pub const CURLM_WAKEUP_FAILURE: CURLMcode = 9;
@@ -1377,7 +1377,7 @@ pub const CURLM_BAD_EASY_HANDLE: CURLMcode = 2;
 pub const CURLM_BAD_HANDLE: CURLMcode = 1;
 pub const CURLM_OK: CURLMcode = 0;
 pub const CURLM_CALL_MULTI_PERFORM: CURLMcode = -1;
-pub type CURLUcode = crate::src::lib::http2::CURLUcode;
+pub type CURLUcode = crate::src::lib::http::CURLUcode;
 pub const CURLUE_NO_FRAGMENT: CURLUcode = 17;
 pub const CURLUE_NO_QUERY: CURLUcode = 16;
 pub const CURLUE_NO_PORT: CURLUcode = 15;
@@ -1396,7 +1396,7 @@ pub const CURLUE_MALFORMED_INPUT: CURLUcode = 3;
 pub const CURLUE_BAD_PARTPOINTER: CURLUcode = 2;
 pub const CURLUE_BAD_HANDLE: CURLUcode = 1;
 pub const CURLUE_OK: CURLUcode = 0;
-pub type CURLUPart = crate::src::lib::http2::CURLUPart;
+pub type CURLUPart = crate::src::lib::http::CURLUPart;
 pub const CURLUPART_ZONEID: CURLUPart = 10;
 pub const CURLUPART_FRAGMENT: CURLUPart = 9;
 pub const CURLUPART_QUERY: CURLUPart = 8;
@@ -1619,7 +1619,7 @@ pub unsafe extern "C" fn Curl_freeset(mut data: *mut Curl_easy) {
             .expect(
                 "non-null function pointer",
             )((*data).set.str_0[i as usize] as *mut libc::c_void);
-        let ref mut fresh0 = (*data).set.str_0[i as usize];
+        let fresh0 = &mut ((*data).set.str_0[i as usize]);
         *fresh0 = 0 as *mut i8;
         i += 1;
     }
@@ -1629,7 +1629,7 @@ pub unsafe extern "C" fn Curl_freeset(mut data: *mut Curl_easy) {
             .expect(
                 "non-null function pointer",
             )((*data).set.blobs[j as usize] as *mut libc::c_void);
-        let ref mut fresh1 = (*data).set.blobs[j as usize];
+        let fresh1 = &mut ((*data).set.blobs[j as usize]);
         *fresh1 = 0 as *mut curl_blob;
         j += 1;
     }
@@ -1638,53 +1638,53 @@ pub unsafe extern "C" fn Curl_freeset(mut data: *mut Curl_easy) {
             .expect(
                 "non-null function pointer",
             )((*data).state.referer as *mut libc::c_void);
-        let ref mut fresh2 = (*data).state.referer;
+        let fresh2 = &mut ((*data).state.referer);
         *fresh2 = 0 as *mut i8;
-        let ref mut fresh3 = (*data).state;
+        let fresh3 = &mut ((*data).state);
         (*fresh3).set_referer_alloc(0 as i32 as bit);
     }
-    let ref mut fresh4 = (*data).state.referer;
+    let fresh4 = &mut ((*data).state.referer);
     *fresh4 = 0 as *mut i8;
     if ((*data).state).url_alloc() != 0 {
         Curl_cfree
             .expect("non-null function pointer")((*data).state.url as *mut libc::c_void);
-        let ref mut fresh5 = (*data).state.url;
+        let fresh5 = &mut ((*data).state.url);
         *fresh5 = 0 as *mut i8;
-        let ref mut fresh6 = (*data).state;
+        let fresh6 = &mut ((*data).state);
         (*fresh6).set_url_alloc(0 as i32 as bit);
     }
-    let ref mut fresh7 = (*data).state.url;
+    let fresh7 = &mut ((*data).state.url);
     *fresh7 = 0 as *mut i8;
     Curl_mime_cleanpart(&mut (*data).set.mimepost);
 }
 unsafe extern "C" fn up_free(mut data: *mut Curl_easy) {
     let mut up: *mut urlpieces = &mut (*data).state.up;
     Curl_cfree.expect("non-null function pointer")((*up).scheme as *mut libc::c_void);
-    let ref mut fresh8 = (*up).scheme;
+    let fresh8 = &mut ((*up).scheme);
     *fresh8 = 0 as *mut i8;
     Curl_cfree.expect("non-null function pointer")((*up).hostname as *mut libc::c_void);
-    let ref mut fresh9 = (*up).hostname;
+    let fresh9 = &mut ((*up).hostname);
     *fresh9 = 0 as *mut i8;
     Curl_cfree.expect("non-null function pointer")((*up).port as *mut libc::c_void);
-    let ref mut fresh10 = (*up).port;
+    let fresh10 = &mut ((*up).port);
     *fresh10 = 0 as *mut i8;
     Curl_cfree.expect("non-null function pointer")((*up).user as *mut libc::c_void);
-    let ref mut fresh11 = (*up).user;
+    let fresh11 = &mut ((*up).user);
     *fresh11 = 0 as *mut i8;
     Curl_cfree.expect("non-null function pointer")((*up).password as *mut libc::c_void);
-    let ref mut fresh12 = (*up).password;
+    let fresh12 = &mut ((*up).password);
     *fresh12 = 0 as *mut i8;
     Curl_cfree.expect("non-null function pointer")((*up).options as *mut libc::c_void);
-    let ref mut fresh13 = (*up).options;
+    let fresh13 = &mut ((*up).options);
     *fresh13 = 0 as *mut i8;
     Curl_cfree.expect("non-null function pointer")((*up).path as *mut libc::c_void);
-    let ref mut fresh14 = (*up).path;
+    let fresh14 = &mut ((*up).path);
     *fresh14 = 0 as *mut i8;
     Curl_cfree.expect("non-null function pointer")((*up).query as *mut libc::c_void);
-    let ref mut fresh15 = (*up).query;
+    let fresh15 = &mut ((*up).query);
     *fresh15 = 0 as *mut i8;
     curl_url_cleanup((*data).state.uh);
-    let ref mut fresh16 = (*data).state.uh;
+    let fresh16 = &mut ((*data).state.uh);
     *fresh16 = 0 as *mut CURLU;
 }
 #[no_mangle]
@@ -1704,7 +1704,7 @@ pub unsafe extern "C" fn Curl_close(mut datap: *mut *mut Curl_easy) -> CURLcode 
     }
     if !((*data).multi_easy).is_null() {
         curl_multi_cleanup((*data).multi_easy);
-        let ref mut fresh17 = (*data).multi_easy;
+        let fresh17 = &mut ((*data).multi_easy);
         *fresh17 = 0 as *mut Curl_multi;
     }
     Curl_llist_destroy(&mut (*data).state.timeoutlist, 0 as *mut libc::c_void);
@@ -1721,38 +1721,38 @@ pub unsafe extern "C" fn Curl_close(mut datap: *mut *mut Curl_easy) -> CURLcode 
         .expect(
             "non-null function pointer",
         )((*data).state.first_host as *mut libc::c_void);
-    let ref mut fresh18 = (*data).state.first_host;
+    let fresh18 = &mut ((*data).state.first_host);
     *fresh18 = 0 as *mut i8;
     Curl_cfree
         .expect("non-null function pointer")((*data).state.scratch as *mut libc::c_void);
-    let ref mut fresh19 = (*data).state.scratch;
+    let fresh19 = &mut ((*data).state.scratch);
     *fresh19 = 0 as *mut i8;
     Curl_ssl_free_certinfo(data);
     Curl_cfree
         .expect("non-null function pointer")((*data).req.newurl as *mut libc::c_void);
-    let ref mut fresh20 = (*data).req.newurl;
+    let fresh20 = &mut ((*data).req.newurl);
     *fresh20 = 0 as *mut i8;
     if ((*data).state).referer_alloc() != 0 {
         Curl_cfree
             .expect(
                 "non-null function pointer",
             )((*data).state.referer as *mut libc::c_void);
-        let ref mut fresh21 = (*data).state.referer;
+        let fresh21 = &mut ((*data).state.referer);
         *fresh21 = 0 as *mut i8;
-        let ref mut fresh22 = (*data).state;
+        let fresh22 = &mut ((*data).state);
         (*fresh22).set_referer_alloc(0 as i32 as bit);
     }
-    let ref mut fresh23 = (*data).state.referer;
+    let fresh23 = &mut ((*data).state.referer);
     *fresh23 = 0 as *mut i8;
     up_free(data);
     Curl_cfree
         .expect("non-null function pointer")((*data).state.buffer as *mut libc::c_void);
-    let ref mut fresh24 = (*data).state.buffer;
+    let fresh24 = &mut ((*data).state.buffer);
     *fresh24 = 0 as *mut i8;
     Curl_dyn_free(&mut (*data).state.headerb);
     Curl_cfree
         .expect("non-null function pointer")((*data).state.ulbuf as *mut libc::c_void);
-    let ref mut fresh25 = (*data).state.ulbuf;
+    let fresh25 = &mut ((*data).state.ulbuf);
     *fresh25 = 0 as *mut i8;
     Curl_flush_cookies(data, 1 as i32 != 0);
     Curl_altsvc_save(
@@ -1772,19 +1772,19 @@ pub unsafe extern "C" fn Curl_close(mut datap: *mut *mut Curl_easy) -> CURLcode 
         .expect(
             "non-null function pointer",
         )((*data).info.contenttype as *mut libc::c_void);
-    let ref mut fresh26 = (*data).info.contenttype;
+    let fresh26 = &mut ((*data).info.contenttype);
     *fresh26 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*data).info.wouldredirect as *mut libc::c_void);
-    let ref mut fresh27 = (*data).info.wouldredirect;
+    let fresh27 = &mut ((*data).info.wouldredirect);
     *fresh27 = 0 as *mut i8;
     Curl_resolver_cleanup((*data).state.async_0.resolver);
     Curl_http2_cleanup_dependencies(data);
     if !((*data).share).is_null() {
         Curl_share_lock(data, CURL_LOCK_DATA_SHARE, CURL_LOCK_ACCESS_SINGLE);
-        let ref mut fresh28 = (*(*data).share).dirty;
+        let fresh28 = &mut ((*(*data).share).dirty);
         ::std::ptr::write_volatile(
             fresh28,
             (::std::ptr::read_volatile::<u32>(fresh28 as *const u32))
@@ -1796,83 +1796,83 @@ pub unsafe extern "C" fn Curl_close(mut datap: *mut *mut Curl_easy) -> CURLcode 
         .expect(
             "non-null function pointer",
         )((*data).state.aptr.proxyuserpwd as *mut libc::c_void);
-    let ref mut fresh29 = (*data).state.aptr.proxyuserpwd;
+    let fresh29 = &mut ((*data).state.aptr.proxyuserpwd);
     *fresh29 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*data).state.aptr.uagent as *mut libc::c_void);
-    let ref mut fresh30 = (*data).state.aptr.uagent;
+    let fresh30 = &mut ((*data).state.aptr.uagent);
     *fresh30 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*data).state.aptr.userpwd as *mut libc::c_void);
-    let ref mut fresh31 = (*data).state.aptr.userpwd;
+    let fresh31 = &mut ((*data).state.aptr.userpwd);
     *fresh31 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*data).state.aptr.accept_encoding as *mut libc::c_void);
-    let ref mut fresh32 = (*data).state.aptr.accept_encoding;
+    let fresh32 = &mut ((*data).state.aptr.accept_encoding);
     *fresh32 = 0 as *mut i8;
     Curl_cfree
         .expect("non-null function pointer")((*data).state.aptr.te as *mut libc::c_void);
-    let ref mut fresh33 = (*data).state.aptr.te;
+    let fresh33 = &mut ((*data).state.aptr.te);
     *fresh33 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*data).state.aptr.rangeline as *mut libc::c_void);
-    let ref mut fresh34 = (*data).state.aptr.rangeline;
+    let fresh34 = &mut ((*data).state.aptr.rangeline);
     *fresh34 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*data).state.aptr.ref_0 as *mut libc::c_void);
-    let ref mut fresh35 = (*data).state.aptr.ref_0;
+    let fresh35 = &mut ((*data).state.aptr.ref_0);
     *fresh35 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*data).state.aptr.host as *mut libc::c_void);
-    let ref mut fresh36 = (*data).state.aptr.host;
+    let fresh36 = &mut ((*data).state.aptr.host);
     *fresh36 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*data).state.aptr.cookiehost as *mut libc::c_void);
-    let ref mut fresh37 = (*data).state.aptr.cookiehost;
+    let fresh37 = &mut ((*data).state.aptr.cookiehost);
     *fresh37 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*data).state.aptr.rtsp_transport as *mut libc::c_void);
-    let ref mut fresh38 = (*data).state.aptr.rtsp_transport;
+    let fresh38 = &mut ((*data).state.aptr.rtsp_transport);
     *fresh38 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*data).state.aptr.user as *mut libc::c_void);
-    let ref mut fresh39 = (*data).state.aptr.user;
+    let fresh39 = &mut ((*data).state.aptr.user);
     *fresh39 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*data).state.aptr.passwd as *mut libc::c_void);
-    let ref mut fresh40 = (*data).state.aptr.passwd;
+    let fresh40 = &mut ((*data).state.aptr.passwd);
     *fresh40 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*data).state.aptr.proxyuser as *mut libc::c_void);
-    let ref mut fresh41 = (*data).state.aptr.proxyuser;
+    let fresh41 = &mut ((*data).state.aptr.proxyuser);
     *fresh41 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*data).state.aptr.proxypasswd as *mut libc::c_void);
-    let ref mut fresh42 = (*data).state.aptr.proxypasswd;
+    let fresh42 = &mut ((*data).state.aptr.proxypasswd);
     *fresh42 = 0 as *mut i8;
     if !((*data).req.doh).is_null() {
         Curl_dyn_free(
@@ -1890,7 +1890,7 @@ pub unsafe extern "C" fn Curl_close(mut datap: *mut *mut Curl_easy) -> CURLcode 
         curl_slist_free_all((*(*data).req.doh).headers);
         Curl_cfree
             .expect("non-null function pointer")((*data).req.doh as *mut libc::c_void);
-        let ref mut fresh43 = (*data).req.doh;
+        let fresh43 = &mut ((*data).req.doh);
         *fresh43 = 0 as *mut dohdata;
     }
     Curl_wildcard_dtor(&mut (*data).wildcard);
@@ -1902,13 +1902,13 @@ pub unsafe extern "C" fn Curl_close(mut datap: *mut *mut Curl_easy) -> CURLcode 
 pub unsafe extern "C" fn Curl_init_userdefined(mut data: *mut Curl_easy) -> CURLcode {
     let mut set: *mut UserDefined = &mut (*data).set;
     let mut result: CURLcode = CURLE_OK;
-    let ref mut fresh44 = (*set).out;
+    let fresh44 = &mut ((*set).out);
     *fresh44 = stdout as *mut libc::c_void;
-    let ref mut fresh45 = (*set).in_set;
+    let fresh45 = &mut ((*set).in_set);
     *fresh45 = stdin as *mut libc::c_void;
-    let ref mut fresh46 = (*set).err;
+    let fresh46 = &mut ((*set).err);
     *fresh46 = stderr;
-    let ref mut fresh47 = (*set).fwrite_func;
+    let fresh47 = &mut ((*set).fwrite_func);
     *fresh47 = ::std::mem::transmute::<
         Option::<
             unsafe extern "C" fn(
@@ -1930,7 +1930,7 @@ pub unsafe extern "C" fn Curl_init_userdefined(mut data: *mut Curl_easy) -> CURL
                 ) -> u64,
         ),
     );
-    let ref mut fresh48 = (*set).fread_func_set;
+    let fresh48 = &mut ((*set).fread_func_set);
     *fresh48 = ::std::mem::transmute::<
         Option::<
             unsafe extern "C" fn(
@@ -1954,15 +1954,15 @@ pub unsafe extern "C" fn Curl_init_userdefined(mut data: *mut Curl_easy) -> CURL
     );
     (*set).set_is_fread_set(0 as i32 as bit);
     (*set).set_is_fwrite_set(0 as i32 as bit);
-    let ref mut fresh49 = (*set).seek_func;
+    let fresh49 = &mut ((*set).seek_func);
     *fresh49 = None;
-    let ref mut fresh50 = (*set).seek_client;
+    let fresh50 = &mut ((*set).seek_client);
     *fresh50 = 0 as *mut libc::c_void;
-    let ref mut fresh51 = (*set).convfromnetwork;
+    let fresh51 = &mut ((*set).convfromnetwork);
     *fresh51 = None;
-    let ref mut fresh52 = (*set).convtonetwork;
+    let fresh52 = &mut ((*set).convtonetwork);
     *fresh52 = None;
-    let ref mut fresh53 = (*set).convfromutf8;
+    let fresh53 = &mut ((*set).convfromutf8);
     *fresh53 = None;
     (*set).filesize = -(1 as i32) as curl_off_t;
     (*set).postfieldsize = -(1 as i32) as curl_off_t;
@@ -1987,13 +1987,13 @@ pub unsafe extern "C" fn Curl_init_userdefined(mut data: *mut Curl_easy) -> CURL
     Curl_mime_initpart(&mut (*set).mimepost, data);
     (*set).set_doh_verifyhost(1 as i32 as bit);
     (*set).set_doh_verifypeer(1 as i32 as bit);
-    let ref mut fresh54 = (*set).ssl.primary;
+    let fresh54 = &mut ((*set).ssl.primary);
     (*fresh54).set_verifypeer(1 as i32 as bit);
-    let ref mut fresh55 = (*set).ssl.primary;
+    let fresh55 = &mut ((*set).ssl.primary);
     (*fresh55).set_verifyhost(1 as i32 as bit);
     (*set).ssl.authtype = CURL_TLSAUTH_NONE;
     (*set).ssh_auth_types = !(0 as i32) as i64;
-    let ref mut fresh56 = (*set).ssl.primary;
+    let fresh56 = &mut ((*set).ssl.primary);
     (*fresh56).set_sessionid(1 as i32 as bit);
     (*set).proxy_ssl = (*set).ssl;
     (*set).new_file_perms = 0o644 as i32 as i64;
@@ -2024,9 +2024,9 @@ pub unsafe extern "C" fn Curl_init_userdefined(mut data: *mut Curl_easy) -> CURL
         }
     }
     (*set).set_wildcard_enabled(0 as i32 as bit);
-    let ref mut fresh57 = (*set).chunk_bgn;
+    let fresh57 = &mut ((*set).chunk_bgn);
     *fresh57 = None;
-    let ref mut fresh58 = (*set).chunk_end;
+    let fresh58 = &mut ((*set).chunk_end);
     *fresh58 = None;
     (*set).set_tcp_keepalive(0 as i32 as bit);
     (*set).tcp_keepintvl = 60 as i32 as i64;
@@ -2040,7 +2040,7 @@ pub unsafe extern "C" fn Curl_init_userdefined(mut data: *mut Curl_easy) -> CURL
     (*set).buffer_size = 16384 as i32 as i64;
     (*set).upload_buffer_size = 65536 as i32 as u32;
     (*set).happy_eyeballs_timeout = 200 as i64;
-    let ref mut fresh59 = (*set).fnmatch;
+    let fresh59 = &mut ((*set).fnmatch);
     *fresh59 = None;
     (*set).upkeep_interval_ms = 60000 as i64;
     (*set).maxconnects = 5 as i32 as size_t;
@@ -2104,13 +2104,13 @@ unsafe extern "C" fn conn_shutdown(
     if !((*conn).connect_state).is_null()
         && !((*(*conn).connect_state).prot_save).is_null()
     {
-        let ref mut fresh60 = (*data).req.p.http;
+        let fresh60 = &mut ((*data).req.p.http);
         *fresh60 = 0 as *mut HTTP;
         Curl_cfree
             .expect(
                 "non-null function pointer",
             )((*(*conn).connect_state).prot_save as *mut libc::c_void);
-        let ref mut fresh61 = (*(*conn).connect_state).prot_save;
+        let fresh61 = &mut ((*(*conn).connect_state).prot_save);
         *fresh61 = 0 as *mut HTTP;
     }
     Curl_resolver_cancel(data);
@@ -2138,93 +2138,93 @@ unsafe extern "C" fn conn_free(mut conn: *mut connectdata) {
         .expect(
             "non-null function pointer",
         )((*conn).http_proxy.user as *mut libc::c_void);
-    let ref mut fresh62 = (*conn).http_proxy.user;
+    let fresh62 = &mut ((*conn).http_proxy.user);
     *fresh62 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*conn).socks_proxy.user as *mut libc::c_void);
-    let ref mut fresh63 = (*conn).socks_proxy.user;
+    let fresh63 = &mut ((*conn).socks_proxy.user);
     *fresh63 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*conn).http_proxy.passwd as *mut libc::c_void);
-    let ref mut fresh64 = (*conn).http_proxy.passwd;
+    let fresh64 = &mut ((*conn).http_proxy.passwd);
     *fresh64 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*conn).socks_proxy.passwd as *mut libc::c_void);
-    let ref mut fresh65 = (*conn).socks_proxy.passwd;
+    let fresh65 = &mut ((*conn).socks_proxy.passwd);
     *fresh65 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*conn).http_proxy.host.rawalloc as *mut libc::c_void);
-    let ref mut fresh66 = (*conn).http_proxy.host.rawalloc;
+    let fresh66 = &mut ((*conn).http_proxy.host.rawalloc);
     *fresh66 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*conn).socks_proxy.host.rawalloc as *mut libc::c_void);
-    let ref mut fresh67 = (*conn).socks_proxy.host.rawalloc;
+    let fresh67 = &mut ((*conn).socks_proxy.host.rawalloc);
     *fresh67 = 0 as *mut i8;
     Curl_free_primary_ssl_config(&mut (*conn).proxy_ssl_config);
     Curl_cfree.expect("non-null function pointer")((*conn).user as *mut libc::c_void);
-    let ref mut fresh68 = (*conn).user;
+    let fresh68 = &mut ((*conn).user);
     *fresh68 = 0 as *mut i8;
     Curl_cfree.expect("non-null function pointer")((*conn).passwd as *mut libc::c_void);
-    let ref mut fresh69 = (*conn).passwd;
+    let fresh69 = &mut ((*conn).passwd);
     *fresh69 = 0 as *mut i8;
     Curl_cfree
         .expect("non-null function pointer")((*conn).sasl_authzid as *mut libc::c_void);
-    let ref mut fresh70 = (*conn).sasl_authzid;
+    let fresh70 = &mut ((*conn).sasl_authzid);
     *fresh70 = 0 as *mut i8;
     Curl_cfree.expect("non-null function pointer")((*conn).options as *mut libc::c_void);
-    let ref mut fresh71 = (*conn).options;
+    let fresh71 = &mut ((*conn).options);
     *fresh71 = 0 as *mut i8;
     Curl_dyn_free(&mut (*conn).trailer);
     Curl_cfree
         .expect("non-null function pointer")((*conn).host.rawalloc as *mut libc::c_void);
-    let ref mut fresh72 = (*conn).host.rawalloc;
+    let fresh72 = &mut ((*conn).host.rawalloc);
     *fresh72 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*conn).conn_to_host.rawalloc as *mut libc::c_void);
-    let ref mut fresh73 = (*conn).conn_to_host.rawalloc;
+    let fresh73 = &mut ((*conn).conn_to_host.rawalloc);
     *fresh73 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*conn).hostname_resolve as *mut libc::c_void);
-    let ref mut fresh74 = (*conn).hostname_resolve;
+    let fresh74 = &mut ((*conn).hostname_resolve);
     *fresh74 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*conn).secondaryhostname as *mut libc::c_void);
-    let ref mut fresh75 = (*conn).secondaryhostname;
+    let fresh75 = &mut ((*conn).secondaryhostname);
     *fresh75 = 0 as *mut i8;
     Curl_cfree
         .expect("non-null function pointer")((*conn).connect_state as *mut libc::c_void);
-    let ref mut fresh76 = (*conn).connect_state;
+    let fresh76 = &mut ((*conn).connect_state);
     *fresh76 = 0 as *mut http_connect_state;
     Curl_llist_destroy(&mut (*conn).easyq, 0 as *mut libc::c_void);
     Curl_cfree
         .expect("non-null function pointer")((*conn).localdev as *mut libc::c_void);
-    let ref mut fresh77 = (*conn).localdev;
+    let fresh77 = &mut ((*conn).localdev);
     *fresh77 = 0 as *mut i8;
     Curl_free_primary_ssl_config(&mut (*conn).ssl_config);
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*conn).unix_domain_socket as *mut libc::c_void);
-    let ref mut fresh78 = (*conn).unix_domain_socket;
+    let fresh78 = &mut ((*conn).unix_domain_socket);
     *fresh78 = 0 as *mut i8;
     Curl_cfree.expect("non-null function pointer")((*conn).ssl_extra);
-    let ref mut fresh79 = (*conn).ssl_extra;
+    let fresh79 = &mut ((*conn).ssl_extra);
     *fresh79 = 0 as *mut libc::c_void;
     Curl_cfree.expect("non-null function pointer")(conn as *mut libc::c_void);
 }
@@ -2239,7 +2239,7 @@ pub unsafe extern "C" fn Curl_disconnect(
     }
     if !((*conn).dns_entry).is_null() {
         Curl_resolv_unlock(data, (*conn).dns_entry);
-        let ref mut fresh80 = (*conn).dns_entry;
+        let fresh80 = &mut ((*conn).dns_entry);
         *fresh80 = 0 as *mut Curl_dns_entry;
     }
     Curl_http_auth_cleanup_ntlm(conn);
@@ -2389,7 +2389,7 @@ unsafe extern "C" fn call_extract_if_dead(
 ) -> i32 {
     let mut p: *mut prunedead = param as *mut prunedead;
     if extract_if_dead(conn, data) {
-        let ref mut fresh81 = (*p).extracted;
+        let fresh81 = &mut ((*p).extracted);
         *fresh81 = conn;
         return 1 as i32;
     }
@@ -2943,7 +2943,7 @@ pub unsafe extern "C" fn Curl_idnconvert_hostname(
     mut data: *mut Curl_easy,
     mut host: *mut hostname,
 ) -> CURLcode {
-    let ref mut fresh83 = (*host).dispname;
+    let fresh83 = &mut ((*host).dispname);
     *fresh83 = (*host).name;
     if !Curl_is_ASCII_name((*host).name) {
         Curl_infof(
@@ -2975,22 +2975,22 @@ unsafe extern "C" fn allocate_conn(mut data: *mut Curl_easy) -> *mut connectdata
         Curl_cfree.expect("non-null function pointer")(conn as *mut libc::c_void);
         return 0 as *mut connectdata;
     }
-    let ref mut fresh84 = (*conn).ssl_extra;
+    let fresh84 = &mut ((*conn).ssl_extra);
     *fresh84 = ssl as *mut libc::c_void;
-    let ref mut fresh85 = (*conn).ssl[0 as i32 as usize].backend;
+    let fresh85 = &mut ((*conn).ssl[0 as i32 as usize].backend);
     *fresh85 = ssl as *mut libc::c_void as *mut ssl_backend_data;
-    let ref mut fresh86 = (*conn).ssl[1 as i32 as usize].backend;
+    let fresh86 = &mut ((*conn).ssl[1 as i32 as usize].backend);
     *fresh86 = ssl.offset(sslsize as isize) as *mut libc::c_void
         as *mut ssl_backend_data;
-    let ref mut fresh87 = (*conn).proxy_ssl[0 as i32 as usize].backend;
+    let fresh87 = &mut ((*conn).proxy_ssl[0 as i32 as usize].backend);
     *fresh87 = ssl
         .offset((2 as i32 as u64).wrapping_mul(sslsize) as isize)
         as *mut libc::c_void as *mut ssl_backend_data;
-    let ref mut fresh88 = (*conn).proxy_ssl[1 as i32 as usize].backend;
+    let fresh88 = &mut ((*conn).proxy_ssl[1 as i32 as usize].backend);
     *fresh88 = ssl
         .offset((3 as i32 as u64).wrapping_mul(sslsize) as isize)
         as *mut libc::c_void as *mut ssl_backend_data;
-    let ref mut fresh89 = (*conn).handler;
+    let fresh89 = &mut ((*conn).handler);
     *fresh89 = &Curl_handler_dummy;
     (*conn).sock[0 as i32 as usize] = -(1 as i32);
     (*conn).sock[1 as i32 as usize] = -(1 as i32);
@@ -3004,7 +3004,7 @@ unsafe extern "C" fn allocate_conn(mut data: *mut Curl_easy) -> *mut connectdata
     (*conn).keepalive = Curl_now();
     (*conn).http_proxy.proxytype = (*data).set.proxytype;
     (*conn).socks_proxy.proxytype = CURLPROXY_SOCKS4;
-    let ref mut fresh90 = (*conn).bits;
+    let fresh90 = &mut ((*conn).bits);
     (*fresh90)
         .set_proxy(
             (if !((*data).set.str_0[STRING_PROXY as i32 as usize]).is_null()
@@ -3016,7 +3016,7 @@ unsafe extern "C" fn allocate_conn(mut data: *mut Curl_easy) -> *mut connectdata
                 0 as i32
             }) as bit,
         );
-    let ref mut fresh91 = (*conn).bits;
+    let fresh91 = &mut ((*conn).bits);
     (*fresh91)
         .set_httpproxy(
             (if ((*conn).bits).proxy() as i32 != 0
@@ -3032,7 +3032,7 @@ unsafe extern "C" fn allocate_conn(mut data: *mut Curl_easy) -> *mut connectdata
                 0 as i32
             }) as bit,
         );
-    let ref mut fresh92 = (*conn).bits;
+    let fresh92 = &mut ((*conn).bits);
     (*fresh92)
         .set_socksproxy(
             (if ((*conn).bits).proxy() as i32 != 0
@@ -3047,12 +3047,12 @@ unsafe extern "C" fn allocate_conn(mut data: *mut Curl_easy) -> *mut connectdata
         && *(*data).set.str_0[STRING_PRE_PROXY as i32 as usize] as i32
             != 0
     {
-        let ref mut fresh93 = (*conn).bits;
+        let fresh93 = &mut ((*conn).bits);
         (*fresh93).set_proxy(1 as i32 as bit);
-        let ref mut fresh94 = (*conn).bits;
+        let fresh94 = &mut ((*conn).bits);
         (*fresh94).set_socksproxy(1 as i32 as bit);
     }
-    let ref mut fresh95 = (*conn).bits;
+    let fresh95 = &mut ((*conn).bits);
     (*fresh95)
         .set_proxy_user_passwd(
             (if !((*data).state.aptr.proxyuser).is_null() {
@@ -3061,9 +3061,9 @@ unsafe extern "C" fn allocate_conn(mut data: *mut Curl_easy) -> *mut connectdata
                 0 as i32
             }) as bit,
         );
-    let ref mut fresh96 = (*conn).bits;
+    let fresh96 = &mut ((*conn).bits);
     (*fresh96).set_tunnel_proxy(((*data).set).tunnel_thru_httpproxy());
-    let ref mut fresh97 = (*conn).bits;
+    let fresh97 = &mut ((*conn).bits);
     (*fresh97)
         .set_user_passwd(
             (if !((*data).state.aptr.user).is_null() {
@@ -3072,31 +3072,31 @@ unsafe extern "C" fn allocate_conn(mut data: *mut Curl_easy) -> *mut connectdata
                 0 as i32
             }) as bit,
         );
-    let ref mut fresh98 = (*conn).bits;
+    let fresh98 = &mut ((*conn).bits);
     (*fresh98).set_ftp_use_epsv(((*data).set).ftp_use_epsv());
-    let ref mut fresh99 = (*conn).bits;
+    let fresh99 = &mut ((*conn).bits);
     (*fresh99).set_ftp_use_eprt(((*data).set).ftp_use_eprt());
-    let ref mut fresh100 = (*conn).ssl_config;
+    let fresh100 = &mut ((*conn).ssl_config);
     (*fresh100).set_verifystatus(((*data).set.ssl.primary).verifystatus());
-    let ref mut fresh101 = (*conn).ssl_config;
+    let fresh101 = &mut ((*conn).ssl_config);
     (*fresh101).set_verifypeer(((*data).set.ssl.primary).verifypeer());
-    let ref mut fresh102 = (*conn).ssl_config;
+    let fresh102 = &mut ((*conn).ssl_config);
     (*fresh102).set_verifyhost(((*data).set.ssl.primary).verifyhost());
-    let ref mut fresh103 = (*conn).proxy_ssl_config;
+    let fresh103 = &mut ((*conn).proxy_ssl_config);
     (*fresh103).set_verifystatus(((*data).set.proxy_ssl.primary).verifystatus());
-    let ref mut fresh104 = (*conn).proxy_ssl_config;
+    let fresh104 = &mut ((*conn).proxy_ssl_config);
     (*fresh104).set_verifypeer(((*data).set.proxy_ssl.primary).verifypeer());
-    let ref mut fresh105 = (*conn).proxy_ssl_config;
+    let fresh105 = &mut ((*conn).proxy_ssl_config);
     (*fresh105).set_verifyhost(((*data).set.proxy_ssl.primary).verifyhost());
     (*conn).ip_version = (*data).set.ipver;
-    let ref mut fresh106 = (*conn).bits;
+    let fresh106 = &mut ((*conn).bits);
     (*fresh106).set_connect_only(((*data).set).connect_only());
     (*conn).transport = TRNSPRT_TCP;
     (*conn).ntlm.ntlm_auth_hlpr_socket = -(1 as i32);
     (*conn).proxyntlm.ntlm_auth_hlpr_socket = -(1 as i32);
     Curl_llist_init(&mut (*conn).easyq, None);
     if !((*data).set.str_0[STRING_DEVICE as i32 as usize]).is_null() {
-        let ref mut fresh107 = (*conn).localdev;
+        let fresh107 = &mut ((*conn).localdev);
         *fresh107 = Curl_cstrdup
             .expect(
                 "non-null function pointer",
@@ -3114,9 +3114,9 @@ unsafe extern "C" fn allocate_conn(mut data: *mut Curl_easy) -> *mut connectdata
     }
     (*conn).localportrange = (*data).set.localportrange;
     (*conn).localport = (*data).set.localport;
-    let ref mut fresh108 = (*conn).fclosesocket;
+    let fresh108 = &mut ((*conn).fclosesocket);
     *fresh108 = (*data).set.fclosesocket;
-    let ref mut fresh109 = (*conn).closesocket_client;
+    let fresh109 = &mut ((*conn).closesocket_client);
     *fresh109 = (*data).set.closesocket_client;
     (*conn).lastused = Curl_now();
     return conn;
@@ -3151,9 +3151,9 @@ unsafe extern "C" fn findprotocol(
         if ((*data).state).this_is_a_follow() as i32 != 0
             && (*data).set.redir_protocols & (*p).protocol as i64 == 0
         {} else {
-            let ref mut fresh110 = (*conn).given;
+            let fresh110 = &mut ((*conn).given);
             *fresh110 = p;
-            let ref mut fresh111 = (*conn).handler;
+            let fresh111 = &mut ((*conn).handler);
             *fresh111 = *fresh110;
             return CURLE_OK;
         }
@@ -3231,11 +3231,11 @@ unsafe extern "C" fn parseurlandfillconn(
         && ((*data).state).this_is_a_follow() == 0;
     up_free(data);
     if use_set_uh {
-        let ref mut fresh112 = (*data).state.uh;
+        let fresh112 = &mut ((*data).state.uh);
         *fresh112 = curl_url_dup((*data).set.uh);
         uh = *fresh112;
     } else {
-        let ref mut fresh113 = (*data).state.uh;
+        let fresh113 = &mut ((*data).state.uh);
         *fresh113 = curl_url();
         uh = *fresh113;
     }
@@ -3263,9 +3263,9 @@ unsafe extern "C" fn parseurlandfillconn(
                     "non-null function pointer",
                 )((*data).state.url as *mut libc::c_void);
         }
-        let ref mut fresh114 = (*data).state.url;
+        let fresh114 = &mut ((*data).state.url);
         *fresh114 = url;
-        let ref mut fresh115 = (*data).state;
+        let fresh115 = &mut ((*data).state);
         (*fresh115).set_url_alloc(1 as i32 as bit);
     }
     if !use_set_uh {
@@ -3305,9 +3305,9 @@ unsafe extern "C" fn parseurlandfillconn(
                     "non-null function pointer",
                 )((*data).state.url as *mut libc::c_void);
         }
-        let ref mut fresh116 = (*data).state.url;
+        let fresh116 = &mut ((*data).state.url);
         *fresh116 = newurl;
-        let ref mut fresh117 = (*data).state;
+        let fresh117 = &mut ((*data).state);
         (*fresh117).set_url_alloc(1 as i32 as bit);
     }
     uc = curl_url_get(
@@ -3348,7 +3348,7 @@ unsafe extern "C" fn parseurlandfillconn(
                 .expect(
                     "non-null function pointer",
                 )((*data).state.up.scheme as *mut libc::c_void);
-            let ref mut fresh118 = (*data).state.up.scheme;
+            let fresh118 = &mut ((*data).state.up.scheme);
             *fresh118 = 0 as *mut i8;
             uc = curl_url_set(
                 uh,
@@ -3364,7 +3364,7 @@ unsafe extern "C" fn parseurlandfillconn(
                     .expect(
                         "non-null function pointer",
                     )((*data).state.url as *mut libc::c_void);
-                let ref mut fresh119 = (*data).state.url;
+                let fresh119 = &mut ((*data).state.url);
                 *fresh119 = 0 as *mut i8;
             }
             uc = curl_url_get(
@@ -3387,9 +3387,9 @@ unsafe extern "C" fn parseurlandfillconn(
                     .expect("non-null function pointer")(url_0 as *mut libc::c_void);
                 return Curl_uc_to_curlcode(uc);
             }
-            let ref mut fresh120 = (*data).state.url;
+            let fresh120 = &mut ((*data).state.url);
             *fresh120 = url_0;
-            let ref mut fresh121 = (*data).state;
+            let fresh121 = &mut ((*data).state);
             (*fresh121).set_url_alloc(1 as i32 as bit);
             Curl_infof(
                 data,
@@ -3429,9 +3429,9 @@ unsafe extern "C" fn parseurlandfillconn(
             if result as u64 != 0 {
                 return result;
             }
-            let ref mut fresh122 = (*conn).user;
+            let fresh122 = &mut ((*conn).user);
             *fresh122 = decoded;
-            let ref mut fresh123 = (*conn).bits;
+            let fresh123 = &mut ((*conn).bits);
             (*fresh123).set_user_passwd(1 as i32 as bit);
             result = Curl_setstropt(&mut (*data).state.aptr.user, decoded);
             if result as u64 != 0 {
@@ -3467,9 +3467,9 @@ unsafe extern "C" fn parseurlandfillconn(
             if result as u64 != 0 {
                 return result;
             }
-            let ref mut fresh124 = (*conn).passwd;
+            let fresh124 = &mut ((*conn).passwd);
             *fresh124 = decoded_0;
-            let ref mut fresh125 = (*conn).bits;
+            let fresh125 = &mut ((*conn).bits);
             (*fresh125).set_user_passwd(1 as i32 as bit);
             result = Curl_setstropt(&mut (*data).state.aptr.passwd, decoded_0);
             if result as u64 != 0 {
@@ -3487,7 +3487,7 @@ unsafe extern "C" fn parseurlandfillconn(
         ((1 as i32) << 6 as i32) as u32,
     );
     if uc as u64 == 0 {
-        let ref mut fresh126 = (*conn).options;
+        let fresh126 = &mut ((*conn).options);
         *fresh126 = Curl_cstrdup
             .expect("non-null function pointer")((*data).state.up.options);
         if ((*conn).options).is_null() {
@@ -3525,7 +3525,7 @@ unsafe extern "C" fn parseurlandfillconn(
             0 as *mut *mut i8,
             10 as i32,
         );
-        let ref mut fresh127 = (*conn).remote_port;
+        let fresh127 = &mut ((*conn).remote_port);
         *fresh127 = if (*data).set.use_port != 0
             && ((*data).state).allow_port() as i32 != 0
         {
@@ -3546,7 +3546,7 @@ unsafe extern "C" fn parseurlandfillconn(
         && *hostname.offset(0 as i32 as isize) as i32 == '[' as i32
     {
         let mut hlen: size_t = 0;
-        let ref mut fresh128 = (*conn).bits;
+        let fresh128 = &mut ((*conn).bits);
         (*fresh128).set_ipv6_ip(1 as i32 as bit);
         hostname = hostname.offset(1);
         hlen = strlen(hostname);
@@ -3556,7 +3556,7 @@ unsafe extern "C" fn parseurlandfillconn(
             ) = 0 as i32 as i8;
         zonefrom_url(uh, data, conn);
     }
-    let ref mut fresh129 = (*conn).host.rawalloc;
+    let fresh129 = &mut ((*conn).host.rawalloc);
     *fresh129 = Curl_cstrdup
         .expect(
             "non-null function pointer",
@@ -3570,7 +3570,7 @@ unsafe extern "C" fn parseurlandfillconn(
     if ((*conn).host.rawalloc).is_null() {
         return CURLE_OUT_OF_MEMORY;
     }
-    let ref mut fresh130 = (*conn).host.name;
+    let fresh130 = &mut ((*conn).host.name);
     *fresh130 = (*conn).host.rawalloc;
     if (*data).set.scope_id != 0 {
         (*conn).scope_id = (*data).set.scope_id;
@@ -3588,13 +3588,13 @@ unsafe extern "C" fn setup_range(mut data: *mut Curl_easy) -> CURLcode {
                 .expect("non-null function pointer")((*s).range as *mut libc::c_void);
         }
         if (*s).resume_from != 0 {
-            let ref mut fresh131 = (*s).range;
+            let fresh131 = &mut ((*s).range);
             *fresh131 = curl_maprintf(
                 b"%ld-\0" as *const u8 as *const i8,
                 (*s).resume_from,
             );
         } else {
-            let ref mut fresh132 = (*s).range;
+            let fresh132 = &mut ((*s).range);
             *fresh132 = Curl_cstrdup
                 .expect(
                     "non-null function pointer",
@@ -3641,11 +3641,11 @@ unsafe extern "C" fn setup_connection_internals(
 pub unsafe extern "C" fn Curl_free_request_state(mut data: *mut Curl_easy) {
     Curl_cfree
         .expect("non-null function pointer")((*data).req.p.http as *mut libc::c_void);
-    let ref mut fresh133 = (*data).req.p.http;
+    let fresh133 = &mut ((*data).req.p.http);
     *fresh133 = 0 as *mut HTTP;
     Curl_cfree
         .expect("non-null function pointer")((*data).req.newurl as *mut libc::c_void);
-    let ref mut fresh134 = (*data).req.newurl;
+    let fresh134 = &mut ((*data).req.newurl);
     *fresh134 = 0 as *mut i8;
     if !((*data).req.doh).is_null() {
         Curl_close(
@@ -3970,9 +3970,9 @@ unsafe extern "C" fn parse_proxy(
                                             .expect(
                                                 "non-null function pointer",
                                             )((*proxyinfo).user as *mut libc::c_void);
-                                        let ref mut fresh139 = (*proxyinfo).user;
+                                        let fresh139 = &mut ((*proxyinfo).user);
                                         *fresh139 = 0 as *mut i8;
-                                        let ref mut fresh140 = (*proxyinfo).user;
+                                        let fresh140 = &mut ((*proxyinfo).user);
                                         *fresh140 = proxyuser;
                                         result = Curl_setstropt(
                                             &mut (*data).state.aptr.proxyuser,
@@ -3986,7 +3986,7 @@ unsafe extern "C" fn parse_proxy(
                                                 .expect(
                                                     "non-null function pointer",
                                                 )((*proxyinfo).passwd as *mut libc::c_void);
-                                            let ref mut fresh141 = (*proxyinfo).passwd;
+                                            let fresh141 = &mut ((*proxyinfo).passwd);
                                             *fresh141 = 0 as *mut i8;
                                             if proxypasswd.is_null() {
                                                 proxypasswd = Curl_cstrdup
@@ -4005,7 +4005,7 @@ unsafe extern "C" fn parse_proxy(
                                             match current_block {
                                                 467357264955599708 => {}
                                                 _ => {
-                                                    let ref mut fresh142 = (*proxyinfo).passwd;
+                                                    let fresh142 = &mut ((*proxyinfo).passwd);
                                                     *fresh142 = proxypasswd;
                                                     result = Curl_setstropt(
                                                         &mut (*data).state.aptr.proxypasswd,
@@ -4015,7 +4015,7 @@ unsafe extern "C" fn parse_proxy(
                                                     if result as u64 != 0 {
                                                         current_block = 467357264955599708;
                                                     } else {
-                                                        let ref mut fresh143 = (*conn).bits;
+                                                        let fresh143 = &mut ((*conn).bits);
                                                         (*fresh143).set_proxy_user_passwd(1 as i32 as bit);
                                                         current_block = 11441799814184323368;
                                                     }
@@ -4075,9 +4075,9 @@ unsafe extern "C" fn parse_proxy(
                                                     .expect(
                                                         "non-null function pointer",
                                                     )((*proxyinfo).host.rawalloc as *mut libc::c_void);
-                                                let ref mut fresh144 = (*proxyinfo).host.rawalloc;
+                                                let fresh144 = &mut ((*proxyinfo).host.rawalloc);
                                                 *fresh144 = 0 as *mut i8;
-                                                let ref mut fresh145 = (*proxyinfo).host.rawalloc;
+                                                let fresh145 = &mut ((*proxyinfo).host.rawalloc);
                                                 *fresh145 = host;
                                                 if *host.offset(0 as i32 as isize) as i32
                                                     == '[' as i32
@@ -4090,7 +4090,7 @@ unsafe extern "C" fn parse_proxy(
                                                     host = host.offset(1);
                                                     zonefrom_url(uhp, data, conn);
                                                 }
-                                                let ref mut fresh146 = (*proxyinfo).host.name;
+                                                let fresh146 = &mut ((*proxyinfo).host.name);
                                                 *fresh146 = host;
                                             }
                                         }
@@ -4377,44 +4377,44 @@ unsafe extern "C" fn create_conn_helper_init_proxy(
                                                             & ((1 as i32) << 11 as i32) as u32
                                                             != 0 && ((*conn).bits).tunnel_proxy() == 0
                                                         {
-                                                            let ref mut fresh147 = (*conn).handler;
+                                                            let fresh147 = &mut ((*conn).handler);
                                                             *fresh147 = &Curl_handler_http;
                                                         } else {
-                                                            let ref mut fresh148 = (*conn).bits;
+                                                            let fresh148 = &mut ((*conn).bits);
                                                             (*fresh148).set_tunnel_proxy(1 as i32 as bit);
                                                         }
                                                     }
-                                                    let ref mut fresh149 = (*conn).bits;
+                                                    let fresh149 = &mut ((*conn).bits);
                                                     (*fresh149).set_httpproxy(1 as i32 as bit);
                                                 } else {
-                                                    let ref mut fresh150 = (*conn).bits;
+                                                    let fresh150 = &mut ((*conn).bits);
                                                     (*fresh150).set_httpproxy(0 as i32 as bit);
-                                                    let ref mut fresh151 = (*conn).bits;
+                                                    let fresh151 = &mut ((*conn).bits);
                                                     (*fresh151).set_tunnel_proxy(0 as i32 as bit);
                                                 }
                                                 if !((*conn).socks_proxy.host.rawalloc).is_null() {
                                                     if ((*conn).http_proxy.host.rawalloc).is_null() {
                                                         if ((*conn).socks_proxy.user).is_null() {
-                                                            let ref mut fresh152 = (*conn).socks_proxy.user;
+                                                            let fresh152 = &mut ((*conn).socks_proxy.user);
                                                             *fresh152 = (*conn).http_proxy.user;
-                                                            let ref mut fresh153 = (*conn).http_proxy.user;
+                                                            let fresh153 = &mut ((*conn).http_proxy.user);
                                                             *fresh153 = 0 as *mut i8;
                                                             Curl_cfree
                                                                 .expect(
                                                                     "non-null function pointer",
                                                                 )((*conn).socks_proxy.passwd as *mut libc::c_void);
-                                                            let ref mut fresh154 = (*conn).socks_proxy.passwd;
+                                                            let fresh154 = &mut ((*conn).socks_proxy.passwd);
                                                             *fresh154 = 0 as *mut i8;
-                                                            let ref mut fresh155 = (*conn).socks_proxy.passwd;
+                                                            let fresh155 = &mut ((*conn).socks_proxy.passwd);
                                                             *fresh155 = (*conn).http_proxy.passwd;
-                                                            let ref mut fresh156 = (*conn).http_proxy.passwd;
+                                                            let fresh156 = &mut ((*conn).http_proxy.passwd);
                                                             *fresh156 = 0 as *mut i8;
                                                         }
                                                     }
-                                                    let ref mut fresh157 = (*conn).bits;
+                                                    let fresh157 = &mut ((*conn).bits);
                                                     (*fresh157).set_socksproxy(1 as i32 as bit);
                                                 } else {
-                                                    let ref mut fresh158 = (*conn).bits;
+                                                    let fresh158 = &mut ((*conn).bits);
                                                     (*fresh158).set_socksproxy(0 as i32 as bit);
                                                 }
                                                 current_block = 16463303006880176998;
@@ -4423,16 +4423,16 @@ unsafe extern "C" fn create_conn_helper_init_proxy(
                                     }
                                 }
                             } else {
-                                let ref mut fresh159 = (*conn).bits;
+                                let fresh159 = &mut ((*conn).bits);
                                 (*fresh159).set_socksproxy(0 as i32 as bit);
-                                let ref mut fresh160 = (*conn).bits;
+                                let fresh160 = &mut ((*conn).bits);
                                 (*fresh160).set_httpproxy(0 as i32 as bit);
                                 current_block = 16463303006880176998;
                             }
                             match current_block {
                                 5128804967847913759 => {}
                                 _ => {
-                                    let ref mut fresh161 = (*conn).bits;
+                                    let fresh161 = &mut ((*conn).bits);
                                     (*fresh161)
                                         .set_proxy(
                                             (((*conn).bits).httpproxy() as i32 != 0
@@ -4440,15 +4440,15 @@ unsafe extern "C" fn create_conn_helper_init_proxy(
                                                 as i32 as bit,
                                         );
                                     if ((*conn).bits).proxy() == 0 {
-                                        let ref mut fresh162 = (*conn).bits;
+                                        let fresh162 = &mut ((*conn).bits);
                                         (*fresh162).set_proxy(0 as i32 as bit);
-                                        let ref mut fresh163 = (*conn).bits;
+                                        let fresh163 = &mut ((*conn).bits);
                                         (*fresh163).set_httpproxy(0 as i32 as bit);
-                                        let ref mut fresh164 = (*conn).bits;
+                                        let fresh164 = &mut ((*conn).bits);
                                         (*fresh164).set_socksproxy(0 as i32 as bit);
-                                        let ref mut fresh165 = (*conn).bits;
+                                        let fresh165 = &mut ((*conn).bits);
                                         (*fresh165).set_proxy_user_passwd(0 as i32 as bit);
-                                        let ref mut fresh166 = (*conn).bits;
+                                        let fresh166 = &mut ((*conn).bits);
                                         (*fresh166).set_tunnel_proxy(0 as i32 as bit);
                                         (*conn).http_proxy.proxytype = CURLPROXY_HTTP;
                                     }
@@ -4636,7 +4636,7 @@ unsafe extern "C" fn override_login(
         *userp = 0 as *mut i8;
         Curl_cfree.expect("non-null function pointer")(*passwdp as *mut libc::c_void);
         *passwdp = 0 as *mut i8;
-        let ref mut fresh167 = (*conn).bits;
+        let fresh167 = &mut ((*conn).bits);
         (*fresh167).set_user_passwd(0 as i32 as bit);
     }
     if !((*data).set.str_0[STRING_OPTIONS as i32 as usize]).is_null() {
@@ -4649,7 +4649,7 @@ unsafe extern "C" fn override_login(
             return CURLE_OUT_OF_MEMORY;
         }
     }
-    let ref mut fresh168 = (*conn).bits;
+    let fresh168 = &mut ((*conn).bits);
     (*fresh168).set_netrc(0 as i32 as bit);
     if (*data).set.use_netrc as u32 != 0
         && ((*data).set.str_0[STRING_USERNAME as i32 as usize]).is_null()
@@ -4676,9 +4676,9 @@ unsafe extern "C" fn override_login(
         } else if ret < 0 as i32 {
             return CURLE_OUT_OF_MEMORY
         } else {
-            let ref mut fresh169 = (*conn).bits;
+            let fresh169 = &mut ((*conn).bits);
             (*fresh169).set_netrc(1 as i32 as bit);
-            let ref mut fresh170 = (*conn).bits;
+            let fresh170 = &mut ((*conn).bits);
             (*fresh170).set_user_passwd(1 as i32 as bit);
         }
     }
@@ -4749,14 +4749,14 @@ unsafe extern "C" fn set_login(mut conn: *mut connectdata) -> CURLcode {
         setpasswd = b"\0" as *const u8 as *const i8;
     }
     if ((*conn).user).is_null() {
-        let ref mut fresh171 = (*conn).user;
+        let fresh171 = &mut ((*conn).user);
         *fresh171 = Curl_cstrdup.expect("non-null function pointer")(setuser);
         if ((*conn).user).is_null() {
             return CURLE_OUT_OF_MEMORY;
         }
     }
     if ((*conn).passwd).is_null() {
-        let ref mut fresh172 = (*conn).passwd;
+        let fresh172 = &mut ((*conn).passwd);
         *fresh172 = Curl_cstrdup.expect("non-null function pointer")(setpasswd);
         if ((*conn).passwd).is_null() {
             result = CURLE_OUT_OF_MEMORY;
@@ -4985,11 +4985,11 @@ unsafe extern "C" fn parse_connect_to_slist(
             return result;
         }
         if !host.is_null() && *host as i32 != 0 {
-            let ref mut fresh174 = (*conn).conn_to_host.rawalloc;
+            let fresh174 = &mut ((*conn).conn_to_host.rawalloc);
             *fresh174 = host;
-            let ref mut fresh175 = (*conn).conn_to_host.name;
+            let fresh175 = &mut ((*conn).conn_to_host.name);
             *fresh175 = host;
-            let ref mut fresh176 = (*conn).bits;
+            let fresh176 = &mut ((*conn).bits);
             (*fresh176).set_conn_to_host(1 as i32 as bit);
             Curl_infof(
                 data,
@@ -4997,14 +4997,14 @@ unsafe extern "C" fn parse_connect_to_slist(
                 host,
             );
         } else {
-            let ref mut fresh177 = (*conn).bits;
+            let fresh177 = &mut ((*conn).bits);
             (*fresh177).set_conn_to_host(0 as i32 as bit);
             Curl_cfree.expect("non-null function pointer")(host as *mut libc::c_void);
             host = 0 as *mut i8;
         }
         if port >= 0 as i32 {
             (*conn).conn_to_port = port;
-            let ref mut fresh178 = (*conn).bits;
+            let fresh178 = &mut ((*conn).bits);
             (*fresh178).set_conn_to_port(1 as i32 as bit);
             Curl_infof(
                 data,
@@ -5012,7 +5012,7 @@ unsafe extern "C" fn parse_connect_to_slist(
                 port,
             );
         } else {
-            let ref mut fresh179 = (*conn).bits;
+            let fresh179 = &mut ((*conn).bits);
             (*fresh179).set_conn_to_port(0 as i32 as bit);
             port = -(1 as i32);
         }
@@ -5056,16 +5056,16 @@ unsafe extern "C" fn parse_connect_to_slist(
             if hostd.is_null() {
                 return CURLE_OUT_OF_MEMORY;
             }
-            let ref mut fresh180 = (*conn).conn_to_host.rawalloc;
+            let fresh180 = &mut ((*conn).conn_to_host.rawalloc);
             *fresh180 = hostd;
-            let ref mut fresh181 = (*conn).conn_to_host.name;
+            let fresh181 = &mut ((*conn).conn_to_host.name);
             *fresh181 = hostd;
-            let ref mut fresh182 = (*conn).bits;
+            let fresh182 = &mut ((*conn).bits);
             (*fresh182).set_conn_to_host(1 as i32 as bit);
             (*conn).conn_to_port = (*as_0).dst.port as i32;
-            let ref mut fresh183 = (*conn).bits;
+            let fresh183 = &mut ((*conn).bits);
             (*fresh183).set_conn_to_port(1 as i32 as bit);
-            let ref mut fresh184 = (*conn).bits;
+            let fresh184 = &mut ((*conn).bits);
             (*fresh184).set_altused(1 as i32 as bit);
             Curl_infof(
                 data,
@@ -5126,14 +5126,14 @@ unsafe extern "C" fn resolve_server(
                 result = CURLE_OUT_OF_MEMORY;
             } else {
                 let mut longpath: bool = 0 as i32 != 0;
-                let ref mut fresh185 = (*hostaddr).addr;
+                let fresh185 = &mut ((*hostaddr).addr);
                 *fresh185 = Curl_unix2addr(
                     path,
                     &mut longpath,
                     ((*conn).bits).abstract_unix_socket() != 0,
                 );
                 if !((*hostaddr).addr).is_null() {
-                    let ref mut fresh186 = (*hostaddr).inuse;
+                    let fresh186 = &mut ((*hostaddr).inuse);
                     *fresh186 += 1;
                 } else {
                     if longpath {
@@ -5166,7 +5166,7 @@ unsafe extern "C" fn resolve_server(
             } else {
                 (*conn).port = (*conn).remote_port;
             }
-            let ref mut fresh187 = (*conn).hostname_resolve;
+            let fresh187 = &mut ((*conn).hostname_resolve);
             *fresh187 = Curl_cstrdup
                 .expect("non-null function pointer")((*connhost).name);
             if ((*conn).hostname_resolve).is_null() {
@@ -5205,7 +5205,7 @@ unsafe extern "C" fn resolve_server(
             } else {
                 &mut (*conn).http_proxy.host
             };
-            let ref mut fresh188 = (*conn).hostname_resolve;
+            let fresh188 = &mut ((*conn).hostname_resolve);
             *fresh188 = Curl_cstrdup.expect("non-null function pointer")((*host).name);
             if ((*conn).hostname_resolve).is_null() {
                 return CURLE_OUT_OF_MEMORY;
@@ -5230,7 +5230,7 @@ unsafe extern "C" fn resolve_server(
                 result = CURLE_COULDNT_RESOLVE_PROXY;
             }
         }
-        let ref mut fresh189 = (*conn).dns_entry;
+        let fresh189 = &mut ((*conn).dns_entry);
         *fresh189 = hostaddr;
     }
     return result;
@@ -5259,105 +5259,105 @@ unsafe extern "C" fn reuse_conn(
         )((*old_conn).socks_proxy.host.rawalloc as *mut libc::c_void);
     Curl_free_primary_ssl_config(&mut (*old_conn).proxy_ssl_config);
     Curl_free_primary_ssl_config(&mut (*old_conn).ssl_config);
-    let ref mut fresh190 = (*conn).bits;
+    let fresh190 = &mut ((*conn).bits);
     (*fresh190).set_user_passwd(((*old_conn).bits).user_passwd());
     if ((*conn).bits).user_passwd() != 0 {
         Curl_cfree
             .expect("non-null function pointer")((*conn).user as *mut libc::c_void);
-        let ref mut fresh191 = (*conn).user;
+        let fresh191 = &mut ((*conn).user);
         *fresh191 = 0 as *mut i8;
         Curl_cfree
             .expect("non-null function pointer")((*conn).passwd as *mut libc::c_void);
-        let ref mut fresh192 = (*conn).passwd;
+        let fresh192 = &mut ((*conn).passwd);
         *fresh192 = 0 as *mut i8;
-        let ref mut fresh193 = (*conn).user;
+        let fresh193 = &mut ((*conn).user);
         *fresh193 = (*old_conn).user;
-        let ref mut fresh194 = (*conn).passwd;
+        let fresh194 = &mut ((*conn).passwd);
         *fresh194 = (*old_conn).passwd;
-        let ref mut fresh195 = (*old_conn).user;
+        let fresh195 = &mut ((*old_conn).user);
         *fresh195 = 0 as *mut i8;
-        let ref mut fresh196 = (*old_conn).passwd;
+        let fresh196 = &mut ((*old_conn).passwd);
         *fresh196 = 0 as *mut i8;
     }
-    let ref mut fresh197 = (*conn).bits;
+    let fresh197 = &mut ((*conn).bits);
     (*fresh197).set_proxy_user_passwd(((*old_conn).bits).proxy_user_passwd());
     if ((*conn).bits).proxy_user_passwd() != 0 {
         Curl_cfree
             .expect(
                 "non-null function pointer",
             )((*conn).http_proxy.user as *mut libc::c_void);
-        let ref mut fresh198 = (*conn).http_proxy.user;
+        let fresh198 = &mut ((*conn).http_proxy.user);
         *fresh198 = 0 as *mut i8;
         Curl_cfree
             .expect(
                 "non-null function pointer",
             )((*conn).socks_proxy.user as *mut libc::c_void);
-        let ref mut fresh199 = (*conn).socks_proxy.user;
+        let fresh199 = &mut ((*conn).socks_proxy.user);
         *fresh199 = 0 as *mut i8;
         Curl_cfree
             .expect(
                 "non-null function pointer",
             )((*conn).http_proxy.passwd as *mut libc::c_void);
-        let ref mut fresh200 = (*conn).http_proxy.passwd;
+        let fresh200 = &mut ((*conn).http_proxy.passwd);
         *fresh200 = 0 as *mut i8;
         Curl_cfree
             .expect(
                 "non-null function pointer",
             )((*conn).socks_proxy.passwd as *mut libc::c_void);
-        let ref mut fresh201 = (*conn).socks_proxy.passwd;
+        let fresh201 = &mut ((*conn).socks_proxy.passwd);
         *fresh201 = 0 as *mut i8;
-        let ref mut fresh202 = (*conn).http_proxy.user;
+        let fresh202 = &mut ((*conn).http_proxy.user);
         *fresh202 = (*old_conn).http_proxy.user;
-        let ref mut fresh203 = (*conn).socks_proxy.user;
+        let fresh203 = &mut ((*conn).socks_proxy.user);
         *fresh203 = (*old_conn).socks_proxy.user;
-        let ref mut fresh204 = (*conn).http_proxy.passwd;
+        let fresh204 = &mut ((*conn).http_proxy.passwd);
         *fresh204 = (*old_conn).http_proxy.passwd;
-        let ref mut fresh205 = (*conn).socks_proxy.passwd;
+        let fresh205 = &mut ((*conn).socks_proxy.passwd);
         *fresh205 = (*old_conn).socks_proxy.passwd;
-        let ref mut fresh206 = (*old_conn).http_proxy.user;
+        let fresh206 = &mut ((*old_conn).http_proxy.user);
         *fresh206 = 0 as *mut i8;
-        let ref mut fresh207 = (*old_conn).socks_proxy.user;
+        let fresh207 = &mut ((*old_conn).socks_proxy.user);
         *fresh207 = 0 as *mut i8;
-        let ref mut fresh208 = (*old_conn).http_proxy.passwd;
+        let fresh208 = &mut ((*old_conn).http_proxy.passwd);
         *fresh208 = 0 as *mut i8;
-        let ref mut fresh209 = (*old_conn).socks_proxy.passwd;
+        let fresh209 = &mut ((*old_conn).socks_proxy.passwd);
         *fresh209 = 0 as *mut i8;
     }
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*old_conn).http_proxy.user as *mut libc::c_void);
-    let ref mut fresh210 = (*old_conn).http_proxy.user;
+    let fresh210 = &mut ((*old_conn).http_proxy.user);
     *fresh210 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*old_conn).socks_proxy.user as *mut libc::c_void);
-    let ref mut fresh211 = (*old_conn).socks_proxy.user;
+    let fresh211 = &mut ((*old_conn).socks_proxy.user);
     *fresh211 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*old_conn).http_proxy.passwd as *mut libc::c_void);
-    let ref mut fresh212 = (*old_conn).http_proxy.passwd;
+    let fresh212 = &mut ((*old_conn).http_proxy.passwd);
     *fresh212 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*old_conn).socks_proxy.passwd as *mut libc::c_void);
-    let ref mut fresh213 = (*old_conn).socks_proxy.passwd;
+    let fresh213 = &mut ((*old_conn).socks_proxy.passwd);
     *fresh213 = 0 as *mut i8;
     Curl_free_idnconverted_hostname(&mut (*conn).host);
     Curl_free_idnconverted_hostname(&mut (*conn).conn_to_host);
     Curl_cfree
         .expect("non-null function pointer")((*conn).host.rawalloc as *mut libc::c_void);
-    let ref mut fresh214 = (*conn).host.rawalloc;
+    let fresh214 = &mut ((*conn).host.rawalloc);
     *fresh214 = 0 as *mut i8;
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*conn).conn_to_host.rawalloc as *mut libc::c_void);
-    let ref mut fresh215 = (*conn).conn_to_host.rawalloc;
+    let fresh215 = &mut ((*conn).conn_to_host.rawalloc);
     *fresh215 = 0 as *mut i8;
     (*conn).host = (*old_conn).host;
     (*conn).conn_to_host = (*old_conn).conn_to_host;
@@ -5367,11 +5367,11 @@ unsafe extern "C" fn reuse_conn(
         .expect(
             "non-null function pointer",
         )((*conn).hostname_resolve as *mut libc::c_void);
-    let ref mut fresh216 = (*conn).hostname_resolve;
+    let fresh216 = &mut ((*conn).hostname_resolve);
     *fresh216 = 0 as *mut i8;
-    let ref mut fresh217 = (*conn).hostname_resolve;
+    let fresh217 = &mut ((*conn).hostname_resolve);
     *fresh217 = (*old_conn).hostname_resolve;
-    let ref mut fresh218 = (*old_conn).hostname_resolve;
+    let fresh218 = &mut ((*old_conn).hostname_resolve);
     *fresh218 = 0 as *mut i8;
     if (*conn).transport as u32 == TRNSPRT_TCP as i32 as u32 {
         Curl_conninfo_local(
@@ -5382,30 +5382,30 @@ unsafe extern "C" fn reuse_conn(
         );
     }
     Curl_persistconninfo(data, conn, local_ip.as_mut_ptr(), local_port);
-    let ref mut fresh219 = (*conn).bits;
+    let fresh219 = &mut ((*conn).bits);
     (*fresh219).set_reuse(1 as i32 as bit);
     Curl_cfree
         .expect("non-null function pointer")((*old_conn).user as *mut libc::c_void);
-    let ref mut fresh220 = (*old_conn).user;
+    let fresh220 = &mut ((*old_conn).user);
     *fresh220 = 0 as *mut i8;
     Curl_cfree
         .expect("non-null function pointer")((*old_conn).passwd as *mut libc::c_void);
-    let ref mut fresh221 = (*old_conn).passwd;
+    let fresh221 = &mut ((*old_conn).passwd);
     *fresh221 = 0 as *mut i8;
     Curl_cfree
         .expect("non-null function pointer")((*old_conn).options as *mut libc::c_void);
-    let ref mut fresh222 = (*old_conn).options;
+    let fresh222 = &mut ((*old_conn).options);
     *fresh222 = 0 as *mut i8;
     Curl_cfree
         .expect("non-null function pointer")((*old_conn).localdev as *mut libc::c_void);
-    let ref mut fresh223 = (*old_conn).localdev;
+    let fresh223 = &mut ((*old_conn).localdev);
     *fresh223 = 0 as *mut i8;
     Curl_llist_destroy(&mut (*old_conn).easyq, 0 as *mut libc::c_void);
     Curl_cfree
         .expect(
             "non-null function pointer",
         )((*old_conn).unix_domain_socket as *mut libc::c_void);
-    let ref mut fresh224 = (*old_conn).unix_domain_socket;
+    let fresh224 = &mut ((*old_conn).unix_domain_socket);
     *fresh224 = 0 as *mut i8;
 }
 unsafe extern "C" fn create_conn(
@@ -5442,7 +5442,7 @@ unsafe extern "C" fn create_conn(
                 if !((*data).set.str_0[STRING_SASL_AUTHZID as i32 as usize])
                     .is_null()
                 {
-                    let ref mut fresh225 = (*conn).sasl_authzid;
+                    let fresh225 = &mut ((*conn).sasl_authzid);
                     *fresh225 = Curl_cstrdup
                         .expect(
                             "non-null function pointer",
@@ -5466,7 +5466,7 @@ unsafe extern "C" fn create_conn(
                             .str_0[STRING_UNIX_SOCKET_PATH as i32 as usize])
                             .is_null()
                         {
-                            let ref mut fresh226 = (*conn).unix_domain_socket;
+                            let fresh226 = &mut ((*conn).unix_domain_socket);
                             *fresh226 = Curl_cstrdup
                                 .expect(
                                     "non-null function pointer",
@@ -5479,7 +5479,7 @@ unsafe extern "C" fn create_conn(
                                 result = CURLE_OUT_OF_MEMORY;
                                 current_block = 4631372686411729056;
                             } else {
-                                let ref mut fresh227 = (*conn).bits;
+                                let fresh227 = &mut ((*conn).bits);
                                 (*fresh227)
                                     .set_abstract_unix_socket(
                                         ((*data).set).abstract_unix_socket(),
@@ -5498,7 +5498,7 @@ unsafe extern "C" fn create_conn(
                                         & ((1 as i32) << 0 as i32) as u32
                                         != 0 && ((*conn).bits).httpproxy() as i32 != 0
                                     {
-                                        let ref mut fresh228 = (*conn).bits;
+                                        let fresh228 = &mut ((*conn).bits);
                                         (*fresh228).set_tunnel_proxy(1 as i32 as bit);
                                     }
                                     result = parse_remote_port(data, conn);
@@ -5569,26 +5569,26 @@ unsafe extern "C" fn create_conn(
                                                                                         (*conn).host.name,
                                                                                     ) != 0
                                                                                 {
-                                                                                    let ref mut fresh229 = (*conn).bits;
+                                                                                    let fresh229 = &mut ((*conn).bits);
                                                                                     (*fresh229).set_conn_to_host(0 as i32 as bit);
                                                                                 }
                                                                                 if ((*conn).bits).conn_to_port() as i32 != 0
                                                                                     && (*conn).conn_to_port == (*conn).remote_port
                                                                                 {
-                                                                                    let ref mut fresh230 = (*conn).bits;
+                                                                                    let fresh230 = &mut ((*conn).bits);
                                                                                     (*fresh230).set_conn_to_port(0 as i32 as bit);
                                                                                 }
                                                                                 if (((*conn).bits).conn_to_host() as i32 != 0
                                                                                     || ((*conn).bits).conn_to_port() as i32 != 0)
                                                                                     && ((*conn).bits).httpproxy() as i32 != 0
                                                                                 {
-                                                                                    let ref mut fresh231 = (*conn).bits;
+                                                                                    let fresh231 = &mut ((*conn).bits);
                                                                                     (*fresh231).set_tunnel_proxy(1 as i32 as bit);
                                                                                 }
                                                                                 result = setup_connection_internals(data, conn);
                                                                                 if !(result as u64 != 0) {
-                                                                                    let ref mut fresh232 = (*conn)
-                                                                                        .recv[0 as i32 as usize];
+                                                                                    let fresh232 = &mut ((*conn)
+                                                                                        .recv[0 as i32 as usize]);
                                                                                     *fresh232 = Some(
                                                                                         Curl_recv_plain
                                                                                             as unsafe extern "C" fn(
@@ -5599,8 +5599,8 @@ unsafe extern "C" fn create_conn(
                                                                                                 *mut CURLcode,
                                                                                             ) -> ssize_t,
                                                                                     );
-                                                                                    let ref mut fresh233 = (*conn)
-                                                                                        .send[0 as i32 as usize];
+                                                                                    let fresh233 = &mut ((*conn)
+                                                                                        .send[0 as i32 as usize]);
                                                                                     *fresh233 = Some(
                                                                                         Curl_send_plain
                                                                                             as unsafe extern "C" fn(
@@ -5611,8 +5611,8 @@ unsafe extern "C" fn create_conn(
                                                                                                 *mut CURLcode,
                                                                                             ) -> ssize_t,
                                                                                     );
-                                                                                    let ref mut fresh234 = (*conn)
-                                                                                        .recv[1 as i32 as usize];
+                                                                                    let fresh234 = &mut ((*conn)
+                                                                                        .recv[1 as i32 as usize]);
                                                                                     *fresh234 = Some(
                                                                                         Curl_recv_plain
                                                                                             as unsafe extern "C" fn(
@@ -5623,8 +5623,8 @@ unsafe extern "C" fn create_conn(
                                                                                                 *mut CURLcode,
                                                                                             ) -> ssize_t,
                                                                                     );
-                                                                                    let ref mut fresh235 = (*conn)
-                                                                                        .send[1 as i32 as usize];
+                                                                                    let fresh235 = &mut ((*conn)
+                                                                                        .send[1 as i32 as usize]);
                                                                                     *fresh235 = Some(
                                                                                         Curl_send_plain
                                                                                             as unsafe extern "C" fn(
@@ -5635,7 +5635,7 @@ unsafe extern "C" fn create_conn(
                                                                                                 *mut CURLcode,
                                                                                             ) -> ssize_t,
                                                                                     );
-                                                                                    let ref mut fresh236 = (*conn).bits;
+                                                                                    let fresh236 = &mut ((*conn).bits);
                                                                                     (*fresh236).set_tcp_fastopen(((*data).set).tcp_fastopen());
                                                                                     if (*(*conn).handler).flags
                                                                                         & ((1 as i32) << 4 as i32) as u32
@@ -5688,220 +5688,220 @@ unsafe extern "C" fn create_conn(
                                                                                             }
                                                                                         }
                                                                                     } else {
-                                                                                        let ref mut fresh237 = (*data).set.ssl.primary.CApath;
+                                                                                        let fresh237 = &mut ((*data).set.ssl.primary.CApath);
                                                                                         *fresh237 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_SSL_CAPATH as i32 as usize];
-                                                                                        let ref mut fresh238 = (*data).set.ssl.primary.CAfile;
+                                                                                        let fresh238 = &mut ((*data).set.ssl.primary.CAfile);
                                                                                         *fresh238 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_SSL_CAFILE as i32 as usize];
-                                                                                        let ref mut fresh239 = (*data).set.ssl.primary.issuercert;
+                                                                                        let fresh239 = &mut ((*data).set.ssl.primary.issuercert);
                                                                                         *fresh239 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_SSL_ISSUERCERT as i32 as usize];
-                                                                                        let ref mut fresh240 = (*data)
+                                                                                        let fresh240 = &mut ((*data)
                                                                                             .set
                                                                                             .ssl
                                                                                             .primary
-                                                                                            .issuercert_blob;
+                                                                                            .issuercert_blob);
                                                                                         *fresh240 = (*data)
                                                                                             .set
                                                                                             .blobs[BLOB_SSL_ISSUERCERT as i32 as usize];
-                                                                                        let ref mut fresh241 = (*data).set.ssl.primary.random_file;
+                                                                                        let fresh241 = &mut ((*data).set.ssl.primary.random_file);
                                                                                         *fresh241 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_SSL_RANDOM_FILE as i32 as usize];
-                                                                                        let ref mut fresh242 = (*data).set.ssl.primary.egdsocket;
+                                                                                        let fresh242 = &mut ((*data).set.ssl.primary.egdsocket);
                                                                                         *fresh242 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_SSL_EGDSOCKET as i32 as usize];
-                                                                                        let ref mut fresh243 = (*data).set.ssl.primary.cipher_list;
+                                                                                        let fresh243 = &mut ((*data).set.ssl.primary.cipher_list);
                                                                                         *fresh243 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_SSL_CIPHER_LIST as i32 as usize];
-                                                                                        let ref mut fresh244 = (*data)
+                                                                                        let fresh244 = &mut ((*data)
                                                                                             .set
                                                                                             .ssl
                                                                                             .primary
-                                                                                            .cipher_list13;
+                                                                                            .cipher_list13);
                                                                                         *fresh244 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_SSL_CIPHER13_LIST as i32 as usize];
-                                                                                        let ref mut fresh245 = (*data).set.ssl.primary.pinned_key;
+                                                                                        let fresh245 = &mut ((*data).set.ssl.primary.pinned_key);
                                                                                         *fresh245 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_SSL_PINNEDPUBLICKEY as i32 as usize];
-                                                                                        let ref mut fresh246 = (*data).set.ssl.primary.cert_blob;
+                                                                                        let fresh246 = &mut ((*data).set.ssl.primary.cert_blob);
                                                                                         *fresh246 = (*data)
                                                                                             .set
                                                                                             .blobs[BLOB_CERT as i32 as usize];
-                                                                                        let ref mut fresh247 = (*data).set.ssl.primary.ca_info_blob;
+                                                                                        let fresh247 = &mut ((*data).set.ssl.primary.ca_info_blob);
                                                                                         *fresh247 = (*data)
                                                                                             .set
                                                                                             .blobs[BLOB_CAINFO as i32 as usize];
-                                                                                        let ref mut fresh248 = (*data).set.ssl.primary.curves;
+                                                                                        let fresh248 = &mut ((*data).set.ssl.primary.curves);
                                                                                         *fresh248 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_SSL_EC_CURVES as i32 as usize];
-                                                                                        let ref mut fresh249 = (*data).set.proxy_ssl.primary.CApath;
+                                                                                        let fresh249 = &mut ((*data).set.proxy_ssl.primary.CApath);
                                                                                         *fresh249 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_SSL_CAPATH_PROXY as i32 as usize];
-                                                                                        let ref mut fresh250 = (*data).set.proxy_ssl.primary.CAfile;
+                                                                                        let fresh250 = &mut ((*data).set.proxy_ssl.primary.CAfile);
                                                                                         *fresh250 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_SSL_CAFILE_PROXY as i32 as usize];
-                                                                                        let ref mut fresh251 = (*data)
+                                                                                        let fresh251 = &mut ((*data)
                                                                                             .set
                                                                                             .proxy_ssl
                                                                                             .primary
-                                                                                            .random_file;
+                                                                                            .random_file);
                                                                                         *fresh251 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_SSL_RANDOM_FILE as i32 as usize];
-                                                                                        let ref mut fresh252 = (*data)
+                                                                                        let fresh252 = &mut ((*data)
                                                                                             .set
                                                                                             .proxy_ssl
                                                                                             .primary
-                                                                                            .egdsocket;
+                                                                                            .egdsocket);
                                                                                         *fresh252 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_SSL_EGDSOCKET as i32 as usize];
-                                                                                        let ref mut fresh253 = (*data)
+                                                                                        let fresh253 = &mut ((*data)
                                                                                             .set
                                                                                             .proxy_ssl
                                                                                             .primary
-                                                                                            .cipher_list;
+                                                                                            .cipher_list);
                                                                                         *fresh253 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_SSL_CIPHER_LIST_PROXY as i32
                                                                                             as usize];
-                                                                                        let ref mut fresh254 = (*data)
+                                                                                        let fresh254 = &mut ((*data)
                                                                                             .set
                                                                                             .proxy_ssl
                                                                                             .primary
-                                                                                            .cipher_list13;
+                                                                                            .cipher_list13);
                                                                                         *fresh254 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_SSL_CIPHER13_LIST_PROXY as i32
                                                                                             as usize];
-                                                                                        let ref mut fresh255 = (*data)
+                                                                                        let fresh255 = &mut ((*data)
                                                                                             .set
                                                                                             .proxy_ssl
                                                                                             .primary
-                                                                                            .pinned_key;
+                                                                                            .pinned_key);
                                                                                         *fresh255 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_SSL_PINNEDPUBLICKEY_PROXY as i32
                                                                                             as usize];
-                                                                                        let ref mut fresh256 = (*data)
+                                                                                        let fresh256 = &mut ((*data)
                                                                                             .set
                                                                                             .proxy_ssl
                                                                                             .primary
-                                                                                            .cert_blob;
+                                                                                            .cert_blob);
                                                                                         *fresh256 = (*data)
                                                                                             .set
                                                                                             .blobs[BLOB_CERT_PROXY as i32 as usize];
-                                                                                        let ref mut fresh257 = (*data)
+                                                                                        let fresh257 = &mut ((*data)
                                                                                             .set
                                                                                             .proxy_ssl
                                                                                             .primary
-                                                                                            .ca_info_blob;
+                                                                                            .ca_info_blob);
                                                                                         *fresh257 = (*data)
                                                                                             .set
                                                                                             .blobs[BLOB_CAINFO_PROXY as i32 as usize];
-                                                                                        let ref mut fresh258 = (*data)
+                                                                                        let fresh258 = &mut ((*data)
                                                                                             .set
                                                                                             .proxy_ssl
                                                                                             .primary
-                                                                                            .issuercert;
+                                                                                            .issuercert);
                                                                                         *fresh258 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_SSL_ISSUERCERT_PROXY as i32 as usize];
-                                                                                        let ref mut fresh259 = (*data)
+                                                                                        let fresh259 = &mut ((*data)
                                                                                             .set
                                                                                             .proxy_ssl
                                                                                             .primary
-                                                                                            .issuercert_blob;
+                                                                                            .issuercert_blob);
                                                                                         *fresh259 = (*data)
                                                                                             .set
                                                                                             .blobs[BLOB_SSL_ISSUERCERT_PROXY as i32 as usize];
-                                                                                        let ref mut fresh260 = (*data).set.proxy_ssl.CRLfile;
+                                                                                        let fresh260 = &mut ((*data).set.proxy_ssl.CRLfile);
                                                                                         *fresh260 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_SSL_CRLFILE_PROXY as i32 as usize];
-                                                                                        let ref mut fresh261 = (*data).set.proxy_ssl.cert_type;
+                                                                                        let fresh261 = &mut ((*data).set.proxy_ssl.cert_type);
                                                                                         *fresh261 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_CERT_TYPE_PROXY as i32 as usize];
-                                                                                        let ref mut fresh262 = (*data).set.proxy_ssl.key;
+                                                                                        let fresh262 = &mut ((*data).set.proxy_ssl.key);
                                                                                         *fresh262 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_KEY_PROXY as i32 as usize];
-                                                                                        let ref mut fresh263 = (*data).set.proxy_ssl.key_type;
+                                                                                        let fresh263 = &mut ((*data).set.proxy_ssl.key_type);
                                                                                         *fresh263 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_KEY_TYPE_PROXY as i32 as usize];
-                                                                                        let ref mut fresh264 = (*data).set.proxy_ssl.key_passwd;
+                                                                                        let fresh264 = &mut ((*data).set.proxy_ssl.key_passwd);
                                                                                         *fresh264 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_KEY_PASSWD_PROXY as i32 as usize];
-                                                                                        let ref mut fresh265 = (*data)
+                                                                                        let fresh265 = &mut ((*data)
                                                                                             .set
                                                                                             .proxy_ssl
                                                                                             .primary
-                                                                                            .clientcert;
+                                                                                            .clientcert);
                                                                                         *fresh265 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_CERT_PROXY as i32 as usize];
-                                                                                        let ref mut fresh266 = (*data).set.proxy_ssl.key_blob;
+                                                                                        let fresh266 = &mut ((*data).set.proxy_ssl.key_blob);
                                                                                         *fresh266 = (*data)
                                                                                             .set
                                                                                             .blobs[BLOB_KEY_PROXY as i32 as usize];
-                                                                                        let ref mut fresh267 = (*data).set.ssl.CRLfile;
+                                                                                        let fresh267 = &mut ((*data).set.ssl.CRLfile);
                                                                                         *fresh267 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_SSL_CRLFILE as i32 as usize];
-                                                                                        let ref mut fresh268 = (*data).set.ssl.cert_type;
+                                                                                        let fresh268 = &mut ((*data).set.ssl.cert_type);
                                                                                         *fresh268 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_CERT_TYPE as i32 as usize];
-                                                                                        let ref mut fresh269 = (*data).set.ssl.key;
+                                                                                        let fresh269 = &mut ((*data).set.ssl.key);
                                                                                         *fresh269 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_KEY as i32 as usize];
-                                                                                        let ref mut fresh270 = (*data).set.ssl.key_type;
+                                                                                        let fresh270 = &mut ((*data).set.ssl.key_type);
                                                                                         *fresh270 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_KEY_TYPE as i32 as usize];
-                                                                                        let ref mut fresh271 = (*data).set.ssl.key_passwd;
+                                                                                        let fresh271 = &mut ((*data).set.ssl.key_passwd);
                                                                                         *fresh271 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_KEY_PASSWD as i32 as usize];
-                                                                                        let ref mut fresh272 = (*data).set.ssl.primary.clientcert;
+                                                                                        let fresh272 = &mut ((*data).set.ssl.primary.clientcert);
                                                                                         *fresh272 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_CERT as i32 as usize];
-                                                                                        let ref mut fresh273 = (*data).set.ssl.username;
+                                                                                        let fresh273 = &mut ((*data).set.ssl.username);
                                                                                         *fresh273 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_TLSAUTH_USERNAME as i32 as usize];
-                                                                                        let ref mut fresh274 = (*data).set.ssl.password;
+                                                                                        let fresh274 = &mut ((*data).set.ssl.password);
                                                                                         *fresh274 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_TLSAUTH_PASSWORD as i32 as usize];
-                                                                                        let ref mut fresh275 = (*data).set.proxy_ssl.username;
+                                                                                        let fresh275 = &mut ((*data).set.proxy_ssl.username);
                                                                                         *fresh275 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_TLSAUTH_USERNAME_PROXY as i32
                                                                                             as usize];
-                                                                                        let ref mut fresh276 = (*data).set.proxy_ssl.password;
+                                                                                        let fresh276 = &mut ((*data).set.proxy_ssl.password);
                                                                                         *fresh276 = (*data)
                                                                                             .set
                                                                                             .str_0[STRING_TLSAUTH_PASSWORD_PROXY as i32
                                                                                             as usize];
-                                                                                        let ref mut fresh277 = (*data).set.ssl.key_blob;
+                                                                                        let fresh277 = &mut ((*data).set.ssl.key_blob);
                                                                                         *fresh277 = (*data)
                                                                                             .set
                                                                                             .blobs[BLOB_KEY as i32 as usize];
@@ -5966,11 +5966,11 @@ unsafe extern "C" fn create_conn(
                                                                                                     != 0
                                                                                                 {
                                                                                                     if ((*data).set).ssl_enable_alpn() != 0 {
-                                                                                                        let ref mut fresh278 = (*conn).bits;
+                                                                                                        let fresh278 = &mut ((*conn).bits);
                                                                                                         (*fresh278).set_tls_enable_alpn(1 as i32 as bit);
                                                                                                     }
                                                                                                     if ((*data).set).ssl_enable_npn() != 0 {
-                                                                                                        let ref mut fresh279 = (*conn).bits;
+                                                                                                        let fresh279 = &mut ((*conn).bits);
                                                                                                         (*fresh279).set_tls_enable_npn(1 as i32 as bit);
                                                                                                     }
                                                                                                 }
@@ -6070,7 +6070,7 @@ unsafe extern "C" fn create_conn(
                                                                                                                 .state
                                                                                                                 .authhost
                                                                                                                 .picked = 0 as i32 as u64;
-                                                                                                            let ref mut fresh280 = (*data).state.authhost;
+                                                                                                            let fresh280 = &mut ((*data).state.authhost);
                                                                                                             (*fresh280).set_done(0 as i32 as bit);
                                                                                                         }
                                                                                                         if (*data).state.authproxy.picked
@@ -6087,7 +6087,7 @@ unsafe extern "C" fn create_conn(
                                                                                                                 .state
                                                                                                                 .authproxy
                                                                                                                 .picked = 0 as i32 as u64;
-                                                                                                            let ref mut fresh281 = (*data).state.authproxy;
+                                                                                                            let fresh281 = &mut ((*data).state.authproxy);
                                                                                                             (*fresh281).set_done(0 as i32 as bit);
                                                                                                         }
                                                                                                         current_block = 2182835884935087477;
@@ -6100,9 +6100,9 @@ unsafe extern "C" fn create_conn(
                                                                                                     Curl_init_do(data, conn);
                                                                                                     result = setup_range(data);
                                                                                                     if !(result as u64 != 0) {
-                                                                                                        let ref mut fresh282 = (*conn).seek_func;
+                                                                                                        let fresh282 = &mut ((*conn).seek_func);
                                                                                                         *fresh282 = (*data).set.seek_func;
-                                                                                                        let ref mut fresh283 = (*conn).seek_client;
+                                                                                                        let fresh283 = &mut ((*conn).seek_client);
                                                                                                         *fresh283 = (*data).set.seek_client;
                                                                                                         result = resolve_server(data, conn, async_0);
                                                                                                         strip_trailing_dot(&mut (*conn).host);
@@ -6157,7 +6157,7 @@ pub unsafe extern "C" fn Curl_setup_conn(
         return result;
     }
     *protocol_done = 0 as i32 != 0;
-    let ref mut fresh284 = (*conn).bits;
+    let fresh284 = &mut ((*conn).bits);
     (*fresh284).set_proxy_connect_closed(0 as i32 as bit);
     (*data).state.crlf_conversions = 0 as i32 as curl_off_t;
     (*conn).now = Curl_now();
@@ -6232,19 +6232,19 @@ pub unsafe extern "C" fn Curl_init_do(
         return result;
     }
     if !conn.is_null() {
-        let ref mut fresh285 = (*conn).bits;
+        let fresh285 = &mut ((*conn).bits);
         (*fresh285).set_do_more(0 as i32 as bit);
         if ((*data).state).wildcardmatch() as i32 != 0
             && (*(*conn).handler).flags
                 & ((1 as i32) << 12 as i32) as u32 == 0
         {
-            let ref mut fresh286 = (*data).state;
+            let fresh286 = &mut ((*data).state);
             (*fresh286).set_wildcardmatch(0 as i32 as bit);
         }
     }
-    let ref mut fresh287 = (*data).state;
+    let fresh287 = &mut ((*data).state);
     (*fresh287).set_done(0 as i32 as bit);
-    let ref mut fresh288 = (*data).state;
+    let fresh288 = &mut ((*data).state);
     (*fresh288).set_expect100header(0 as i32 as bit);
     if ((*data).set).opt_no_body() != 0 {
         (*data).state.httpreq = HTTPREQ_HEAD;

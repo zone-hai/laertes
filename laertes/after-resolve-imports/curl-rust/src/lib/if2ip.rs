@@ -13,20 +13,20 @@ extern "C" {
 }
 pub use crate::src::lib::mprintf::curl_msnprintf;
 pub use crate::src::lib::strcase::Curl_strcasecompare;
-pub type __uint8_t = crate::src::lib::http2::__uint8_t;
+pub type __uint8_t = crate::src::lib::altsvc::__uint8_t;
 pub type __uint16_t = crate::src::lib::connect::__uint16_t;
-pub type __uint32_t = crate::src::lib::http2::__uint32_t;
-pub type __socklen_t = crate::src::lib::http2::__socklen_t;
-pub type size_t = crate::src::lib::http2::size_t;
-pub type socklen_t = crate::src::lib::http2::socklen_t;
-pub type sa_family_t = crate::src::lib::http2::sa_family_t;
+pub type __uint32_t = crate::src::lib::altsvc::__uint32_t;
+pub type __socklen_t = crate::src::lib::altsvc::__socklen_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
+pub type socklen_t = crate::src::lib::altsvc::socklen_t;
+pub type sa_family_t = crate::src::lib::altsvc::sa_family_t;
 // #[derive(Copy, Clone)]
 
-pub type sockaddr = crate::src::lib::http2::sockaddr;
-pub type curl_socklen_t = crate::src::lib::http2::curl_socklen_t;
-pub type uint8_t = crate::src::lib::http2::uint8_t;
+pub type sockaddr = crate::src::lib::altsvc::sockaddr;
+pub type curl_socklen_t = crate::src::lib::altsvc::curl_socklen_t;
+pub type uint8_t = crate::src::lib::altsvc::uint8_t;
 pub type uint16_t = crate::src::lib::connect::uint16_t;
-pub type uint32_t = crate::src::lib::http2::uint32_t;
+pub type uint32_t = crate::src::lib::altsvc::uint32_t;
 pub type in_addr_t = crate::src::lib::connect::in_addr_t;
 // #[derive(Copy, Clone)]
 

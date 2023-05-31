@@ -1,5 +1,5 @@
 use ::libc;
-pub type size_t = crate::src::lib::http2::size_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
 #[no_mangle]
 pub extern "C" fn Curl_raw_toupper(mut in_0: i8) -> i8 {
     if in_0 as i32 >= 'a' as i32 && in_0 as i32 <= 'z' as i32 {

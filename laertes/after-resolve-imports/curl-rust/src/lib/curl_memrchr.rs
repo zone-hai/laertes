@@ -1,5 +1,5 @@
 use ::libc;
-pub type size_t = crate::src::lib::http2::size_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
 #[no_mangle]
 pub unsafe extern "C" fn Curl_memrchr(
     mut s: *const libc::c_void,

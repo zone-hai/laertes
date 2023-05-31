@@ -7,10 +7,10 @@ extern "C" {
 pub use crate::src::lib::warnless::curlx_uztoui;
 pub use crate::src::lib::easy::Curl_cfree;
 pub use crate::src::lib::easy::Curl_cmalloc;
-pub type size_t = crate::src::lib::http2::size_t;
-pub type curl_malloc_callback = crate::src::lib::http2::curl_malloc_callback;
-pub type curl_free_callback = crate::src::lib::http2::curl_free_callback;
-pub type CURLcode = crate::src::lib::http2::CURLcode;
+pub type size_t = crate::src::lib::altsvc::size_t;
+pub type curl_malloc_callback = crate::src::lib::altsvc::curl_malloc_callback;
+pub type curl_free_callback = crate::src::lib::altsvc::curl_free_callback;
+pub type CURLcode = crate::src::lib::altsvc::CURLcode;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
 pub const CURLE_PROXY: CURLcode = 97;
@@ -146,11 +146,11 @@ pub unsafe extern "C" fn Curl_HMAC_init(
     if ctxt.is_null() {
         return ctxt;
     }
-    let ref mut fresh0 = (*ctxt).hmac_hash;
+    let fresh0 = &mut ((*ctxt).hmac_hash);
     *fresh0 = hashparams;
-    let ref mut fresh1 = (*ctxt).hmac_hashctxt1;
+    let fresh1 = &mut ((*ctxt).hmac_hashctxt1);
     *fresh1 = ctxt.offset(1 as i32 as isize) as *mut libc::c_void;
-    let ref mut fresh2 = (*ctxt).hmac_hashctxt2;
+    let fresh2 = &mut ((*ctxt).hmac_hashctxt2);
     *fresh2 = ((*ctxt).hmac_hashctxt1 as *mut i8)
         .offset((*hashparams).hmac_ctxtsize as isize) as *mut libc::c_void;
     if keylen > (*hashparams).hmac_maxkeylen {

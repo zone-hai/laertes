@@ -31,23 +31,23 @@ pub use crate::src::src::tool_cfgable::config_init;
 pub use crate::src::src::tool_libinfo::get_libcurl_info;
 pub use crate::src::src::tool_msgs::errorf;
 pub use crate::src::src::tool_operate::operate;
-pub use crate::src::lib::http2::curl_mime;
-pub use crate::src::lib::mqtt::_IO_codecvt;
-pub use crate::src::src::tool_cb_rea::_IO_wide_data;
-pub use crate::src::src::tool_msgs::_IO_marker;
-pub type __off_t = crate::src::lib::http2::__off_t;
-pub type __off64_t = crate::src::lib::http2::__off64_t;
-pub type size_t = crate::src::lib::http2::size_t;
-pub type curl_off_t = crate::src::lib::http2::curl_off_t;
+pub use crate::src::lib::altsvc::curl_mime;
+pub use crate::src::lib::imap::_IO_marker;
+pub use crate::src::lib::speedcheck::_IO_codecvt;
+pub use crate::src::lib::vtls::vtls::_IO_wide_data;
+pub type __off_t = crate::src::lib::altsvc::__off_t;
+pub type __off64_t = crate::src::lib::altsvc::__off64_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
+pub type curl_off_t = crate::src::lib::altsvc::curl_off_t;
 // #[derive(Copy, Clone)]
 
-pub type _IO_FILE = crate::src::lib::http2::_IO_FILE;
-pub type _IO_lock_t = crate::src::lib::http2::_IO_lock_t;
-pub type FILE = crate::src::lib::http2::FILE;
+pub type _IO_FILE = crate::src::lib::altsvc::_IO_FILE;
+pub type _IO_lock_t = crate::src::lib::altsvc::_IO_lock_t;
+pub type FILE = crate::src::lib::altsvc::FILE;
 // #[derive(Copy, Clone)]
 
-pub type curl_slist = crate::src::lib::http2::curl_slist;
-pub type CURLcode = crate::src::lib::http2::CURLcode;
+pub type curl_slist = crate::src::lib::altsvc::curl_slist;
+pub type CURLcode = crate::src::lib::altsvc::CURLcode;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
 pub const CURLE_PROXY: CURLcode = 97;
@@ -148,7 +148,7 @@ pub const CURLE_URL_MALFORMAT: CURLcode = 3;
 pub const CURLE_FAILED_INIT: CURLcode = 2;
 pub const CURLE_UNSUPPORTED_PROTOCOL: CURLcode = 1;
 pub const CURLE_OK: CURLcode = 0;
-pub type curl_TimeCond = crate::src::lib::http2::curl_TimeCond;
+pub type curl_TimeCond = crate::src::lib::altsvc::curl_TimeCond;
 pub const CURL_TIMECOND_LAST: curl_TimeCond = 4;
 pub const CURL_TIMECOND_LASTMOD: curl_TimeCond = 3;
 pub const CURL_TIMECOND_IFUNMODSINCE: curl_TimeCond = 2;
@@ -234,14 +234,14 @@ unsafe extern "C" fn main_checkfds() {
 unsafe extern "C" fn main_init(mut config: *mut GlobalConfig) -> CURLcode {
     let mut result: CURLcode = CURLE_OK;
     (*config).showerror = -(1 as i32);
-    let ref mut fresh0 = (*config).errors;
+    let fresh0 = &mut ((*config).errors);
     *fresh0 = stderr;
     (*config).styled_output = 1 as i32 != 0;
     (*config).parallel_max = 50 as i32 as i64;
-    let ref mut fresh1 = (*config).last;
+    let fresh1 = &mut ((*config).last);
     *fresh1 = malloc(::std::mem::size_of::<OperationConfig>() as u64)
         as *mut OperationConfig;
-    let ref mut fresh2 = (*config).first;
+    let fresh2 = &mut ((*config).first);
     *fresh2 = *fresh1;
     if !((*config).first).is_null() {
         result = curl_global_init(
@@ -252,7 +252,7 @@ unsafe extern "C" fn main_init(mut config: *mut GlobalConfig) -> CURLcode {
             result = get_libcurl_info();
             if result as u64 == 0 {
                 config_init((*config).first);
-                let ref mut fresh3 = (*(*config).first).global;
+                let fresh3 = &mut ((*(*config).first).global);
                 *fresh3 = config;
             } else {
                 errorf(
@@ -281,30 +281,30 @@ unsafe extern "C" fn main_init(mut config: *mut GlobalConfig) -> CURLcode {
 }
 unsafe extern "C" fn free_globalconfig(mut config: *mut GlobalConfig) {
     free((*config).trace_dump as *mut libc::c_void);
-    let ref mut fresh4 = (*config).trace_dump;
+    let fresh4 = &mut ((*config).trace_dump);
     *fresh4 = 0 as *mut i8;
     if (*config).errors_fopened as i32 != 0 && !((*config).errors).is_null() {
         fclose((*config).errors);
     }
-    let ref mut fresh5 = (*config).errors;
+    let fresh5 = &mut ((*config).errors);
     *fresh5 = 0 as *mut FILE;
     if (*config).trace_fopened as i32 != 0 && !((*config).trace_stream).is_null()
     {
         fclose((*config).trace_stream);
     }
-    let ref mut fresh6 = (*config).trace_stream;
+    let fresh6 = &mut ((*config).trace_stream);
     *fresh6 = 0 as *mut FILE;
     free((*config).libcurl as *mut libc::c_void);
-    let ref mut fresh7 = (*config).libcurl;
+    let fresh7 = &mut ((*config).libcurl);
     *fresh7 = 0 as *mut i8;
 }
 unsafe extern "C" fn main_free(mut config: *mut GlobalConfig) {
     curl_global_cleanup();
     free_globalconfig(config);
     config_free((*config).last);
-    let ref mut fresh8 = (*config).first;
+    let fresh8 = &mut ((*config).first);
     *fresh8 = 0 as *mut OperationConfig;
-    let ref mut fresh9 = (*config).last;
+    let fresh9 = &mut ((*config).last);
     *fresh9 = 0 as *mut OperationConfig;
 }
 unsafe fn main_0(

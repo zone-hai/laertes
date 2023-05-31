@@ -2,7 +2,7 @@ use ::libc;
 extern "C" {
     fn fcntl(__fd: i32, __cmd: i32, _: ...) -> i32;
 }
-pub type curl_socket_t = crate::src::lib::http2::curl_socket_t;
+pub type curl_socket_t = crate::src::lib::altsvc::curl_socket_t;
 #[no_mangle]
 pub unsafe extern "C" fn curlx_nonblock(
     mut sockfd: curl_socket_t,

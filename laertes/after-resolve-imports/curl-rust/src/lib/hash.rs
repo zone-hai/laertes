@@ -23,22 +23,22 @@ pub use crate::src::lib::llist::Curl_llist_insert_next;
 pub use crate::src::lib::llist::Curl_llist_remove;
 pub use crate::src::lib::easy::Curl_cfree;
 pub use crate::src::lib::easy::Curl_cmalloc;
-pub type size_t = crate::src::lib::http2::size_t;
-pub type curl_malloc_callback = crate::src::lib::http2::curl_malloc_callback;
-pub type curl_free_callback = crate::src::lib::http2::curl_free_callback;
-pub type Curl_llist_dtor = crate::src::lib::http2::Curl_llist_dtor;
+pub type size_t = crate::src::lib::altsvc::size_t;
+pub type curl_malloc_callback = crate::src::lib::altsvc::curl_malloc_callback;
+pub type curl_free_callback = crate::src::lib::altsvc::curl_free_callback;
+pub type Curl_llist_dtor = crate::src::lib::altsvc::Curl_llist_dtor;
 // #[derive(Copy, Clone)]
 
-pub type Curl_llist_element = crate::src::lib::http2::Curl_llist_element;
+pub type Curl_llist_element = crate::src::lib::altsvc::Curl_llist_element;
 // #[derive(Copy, Clone)]
 
-pub type Curl_llist = crate::src::lib::http2::Curl_llist;
-pub type hash_function = crate::src::lib::http2::hash_function;
-pub type comp_function = crate::src::lib::http2::comp_function;
-pub type Curl_hash_dtor = crate::src::lib::http2::Curl_hash_dtor;
+pub type Curl_llist = crate::src::lib::altsvc::Curl_llist;
+pub type hash_function = crate::src::lib::altsvc::hash_function;
+pub type comp_function = crate::src::lib::altsvc::comp_function;
+pub type Curl_hash_dtor = crate::src::lib::altsvc::Curl_hash_dtor;
 // #[derive(Copy, Clone)]
 
-pub type Curl_hash = crate::src::lib::http2::Curl_hash;
+pub type Curl_hash = crate::src::lib::altsvc::Curl_hash;
 // #[derive(Copy, Clone)]
 
 pub type Curl_hash_element = crate::src::lib::conncache::Curl_hash_element;
@@ -53,7 +53,7 @@ unsafe extern "C" fn hash_element_dtor(
     let mut e: *mut Curl_hash_element = element as *mut Curl_hash_element;
     if !((*e).ptr).is_null() {
         ((*h).dtor).expect("non-null function pointer")((*e).ptr);
-        let ref mut fresh0 = (*e).ptr;
+        let fresh0 = &mut ((*e).ptr);
         *fresh0 = 0 as *mut libc::c_void;
     }
     (*e).key_len = 0 as i32 as size_t;
@@ -70,15 +70,15 @@ pub unsafe extern "C" fn Curl_hash_init(
     if slots == 0 || hfunc.is_none() || comparator.is_none() || dtor.is_none() {
         return 1 as i32;
     }
-    let ref mut fresh1 = (*h).hash_func;
+    let fresh1 = &mut ((*h).hash_func);
     *fresh1 = hfunc;
-    let ref mut fresh2 = (*h).comp_func;
+    let fresh2 = &mut ((*h).comp_func);
     *fresh2 = comparator;
-    let ref mut fresh3 = (*h).dtor;
+    let fresh3 = &mut ((*h).dtor);
     *fresh3 = dtor;
     (*h).size = 0 as i32 as size_t;
     (*h).slots = slots;
-    let ref mut fresh4 = (*h).table;
+    let fresh4 = &mut ((*h).table);
     *fresh4 = Curl_cmalloc
         .expect(
             "non-null function pointer",
@@ -129,7 +129,7 @@ unsafe extern "C" fn mk_hash_element(
     if !he.is_null() {
         memcpy(((*he).key).as_mut_ptr() as *mut libc::c_void, key, key_len);
         (*he).key_len = key_len;
-        let ref mut fresh5 = (*he).ptr;
+        let fresh5 = &mut ((*he).ptr);
         *fresh5 = p as *mut libc::c_void;
     }
     return he;
@@ -159,7 +159,7 @@ pub unsafe extern "C" fn Curl_hash_add(
             != 0
         {
             Curl_llist_remove(l, le, h as *mut libc::c_void);
-            let ref mut fresh6 = (*h).size;
+            let fresh6 = &mut ((*h).size);
             *fresh6 = (*fresh6).wrapping_sub(1);
             break;
         } else {
@@ -169,7 +169,7 @@ pub unsafe extern "C" fn Curl_hash_add(
     he = mk_hash_element(key, key_len, p);
     if !he.is_null() {
         Curl_llist_insert_next(l, (*l).tail, he as *const libc::c_void, &mut (*he).list);
-        let ref mut fresh7 = (*h).size;
+        let fresh7 = &mut ((*h).size);
         *fresh7 = (*fresh7).wrapping_add(1);
         return p;
     }
@@ -198,7 +198,7 @@ pub unsafe extern "C" fn Curl_hash_delete(
             != 0
         {
             Curl_llist_remove(l, le, h as *mut libc::c_void);
-            let ref mut fresh8 = (*h).size;
+            let fresh8 = &mut ((*h).size);
             *fresh8 = (*fresh8).wrapping_sub(1);
             return 0 as i32;
         }
@@ -254,7 +254,7 @@ pub unsafe extern "C" fn Curl_hash_destroy(mut h: *mut Curl_hash) {
         i += 1;
     }
     Curl_cfree.expect("non-null function pointer")((*h).table as *mut libc::c_void);
-    let ref mut fresh9 = (*h).table;
+    let fresh9 = &mut ((*h).table);
     *fresh9 = 0 as *mut Curl_llist;
     (*h).size = 0 as i32 as size_t;
     (*h).slots = 0 as i32;
@@ -289,7 +289,7 @@ pub unsafe extern "C" fn Curl_hash_clean_with_criterium(
                 || comp.expect("non-null function pointer")(user, (*he).ptr) != 0
             {
                 Curl_llist_remove(list, le, h as *mut libc::c_void);
-                let ref mut fresh10 = (*h).size;
+                let fresh10 = &mut ((*h).size);
                 *fresh10 = (*fresh10).wrapping_sub(1);
             }
             le = lnext;
@@ -331,10 +331,10 @@ pub unsafe extern "C" fn Curl_hash_start_iterate(
     mut hash: *mut Curl_hash,
     mut iter: *mut Curl_hash_iterator,
 ) {
-    let ref mut fresh12 = (*iter).hash;
+    let fresh12 = &mut ((*iter).hash);
     *fresh12 = hash;
     (*iter).slot_index = 0 as i32;
-    let ref mut fresh13 = (*iter).current_element;
+    let fresh13 = &mut ((*iter).current_element);
     *fresh13 = 0 as *mut Curl_llist_element;
 }
 #[no_mangle]
@@ -343,7 +343,7 @@ pub unsafe extern "C" fn Curl_hash_next_element(
 ) -> *mut Curl_hash_element {
     let mut h: *mut Curl_hash = (*iter).hash;
     if !((*iter).current_element).is_null() {
-        let ref mut fresh14 = (*iter).current_element;
+        let fresh14 = &mut ((*iter).current_element);
         *fresh14 = (*(*iter).current_element).next;
     }
     if ((*iter).current_element).is_null() {
@@ -351,7 +351,7 @@ pub unsafe extern "C" fn Curl_hash_next_element(
         i = (*iter).slot_index;
         while i < (*h).slots {
             if !((*((*h).table).offset(i as isize)).head).is_null() {
-                let ref mut fresh15 = (*iter).current_element;
+                let fresh15 = &mut ((*iter).current_element);
                 *fresh15 = (*((*h).table).offset(i as isize)).head;
                 (*iter).slot_index = i + 1 as i32;
                 break;
@@ -365,7 +365,7 @@ pub unsafe extern "C" fn Curl_hash_next_element(
             as *mut Curl_hash_element;
         return he;
     }
-    let ref mut fresh16 = (*iter).current_element;
+    let fresh16 = &mut ((*iter).current_element);
     *fresh16 = 0 as *mut Curl_llist_element;
     return 0 as *mut Curl_hash_element;
 }

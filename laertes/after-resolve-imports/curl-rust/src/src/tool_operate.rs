@@ -232,15 +232,15 @@ pub use crate::src::src::tool_util::tvdiff;
 pub use crate::src::src::tool_util::tvnow;
 pub use crate::src::src::tool_writeout::ourWriteOut;
 pub use crate::src::src::tool_xattr::fwrite_xattr;
+pub use crate::src::lib::altsvc::Curl_easy;
+pub use crate::src::lib::altsvc::Curl_multi;
+pub use crate::src::lib::altsvc::curl_mime;
 pub use crate::src::lib::asyn_thread::Curl_share;
-pub use crate::src::lib::http2::Curl_easy;
-pub use crate::src::lib::http2::Curl_multi;
-pub use crate::src::lib::http2::curl_mime;
-pub use crate::src::lib::mqtt::_IO_codecvt;
-pub use crate::src::src::tool_cb_rea::_IO_wide_data;
+pub use crate::src::lib::imap::_IO_marker;
+pub use crate::src::lib::speedcheck::_IO_codecvt;
+pub use crate::src::lib::vtls::vtls::_IO_wide_data;
 pub use crate::src::src::tool_libinfo::built_in_protos;
 pub use crate::src::src::tool_libinfo::curlinfo;
-pub use crate::src::src::tool_msgs::_IO_marker;
 pub use crate::src::src::tool_progress::all_xfers;
 pub use crate::src::src::tool_setopt::setopt_nv_CURLAUTH;
 pub use crate::src::src::tool_setopt::setopt_nv_CURLFTPSSL_CCC;
@@ -258,31 +258,31 @@ pub type __gid_t = crate::src::lib::curl_ntlm_wb::__gid_t;
 pub type __ino_t = crate::src::lib::file::__ino_t;
 pub type __mode_t = crate::src::lib::file::__mode_t;
 pub type __nlink_t = crate::src::lib::file::__nlink_t;
-pub type __off_t = crate::src::lib::http2::__off_t;
-pub type __off64_t = crate::src::lib::http2::__off64_t;
-pub type __time_t = crate::src::lib::http2::__time_t;
+pub type __off_t = crate::src::lib::altsvc::__off_t;
+pub type __off64_t = crate::src::lib::altsvc::__off64_t;
+pub type __time_t = crate::src::lib::altsvc::__time_t;
 pub type __suseconds_t = crate::src::lib::openldap::__suseconds_t;
 pub type __blksize_t = crate::src::lib::file::__blksize_t;
 pub type __blkcnt_t = crate::src::lib::file::__blkcnt_t;
 pub type __syscall_slong_t = crate::src::lib::file::__syscall_slong_t;
-pub type time_t = crate::src::lib::http2::time_t;
-pub type size_t = crate::src::lib::http2::size_t;
+pub type time_t = crate::src::lib::altsvc::time_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
 // #[derive(Copy, Clone)]
 
 pub type timeval = crate::src::lib::openldap::timeval;
 // #[derive(Copy, Clone)]
 
 pub type timespec = crate::src::lib::file::timespec;
-pub type curl_off_t = crate::src::lib::http2::curl_off_t;
+pub type curl_off_t = crate::src::lib::altsvc::curl_off_t;
 // #[derive(Copy, Clone)]
 
-pub type _IO_FILE = crate::src::lib::http2::_IO_FILE;
-pub type _IO_lock_t = crate::src::lib::http2::_IO_lock_t;
-pub type FILE = crate::src::lib::http2::FILE;
-pub type CURL = crate::src::lib::http2::CURL;
+pub type _IO_FILE = crate::src::lib::altsvc::_IO_FILE;
+pub type _IO_lock_t = crate::src::lib::altsvc::_IO_lock_t;
+pub type FILE = crate::src::lib::altsvc::FILE;
+pub type CURL = crate::src::lib::altsvc::CURL;
 pub type CURLSH = crate::src::lib::share::CURLSH;
-pub type curl_socket_t = crate::src::lib::http2::curl_socket_t;
-pub type curl_sslbackend = crate::src::lib::http2::curl_sslbackend;
+pub type curl_socket_t = crate::src::lib::altsvc::curl_socket_t;
+pub type curl_sslbackend = crate::src::lib::altsvc::curl_sslbackend;
 pub const CURLSSLBACKEND_RUSTLS: curl_sslbackend = 14;
 pub const CURLSSLBACKEND_BEARSSL: curl_sslbackend = 13;
 pub const CURLSSLBACKEND_MESALINK: curl_sslbackend = 12;
@@ -300,8 +300,8 @@ pub const CURLSSLBACKEND_OPENSSL: curl_sslbackend = 1;
 pub const CURLSSLBACKEND_NONE: curl_sslbackend = 0;
 // #[derive(Copy, Clone)]
 
-pub type curl_slist = crate::src::lib::http2::curl_slist;
-pub type curl_infotype = crate::src::lib::http2::curl_infotype;
+pub type curl_slist = crate::src::lib::altsvc::curl_slist;
+pub type curl_infotype = crate::src::lib::altsvc::curl_infotype;
 pub const CURLINFO_END: curl_infotype = 7;
 pub const CURLINFO_SSL_DATA_OUT: curl_infotype = 6;
 pub const CURLINFO_SSL_DATA_IN: curl_infotype = 5;
@@ -310,7 +310,7 @@ pub const CURLINFO_DATA_IN: curl_infotype = 3;
 pub const CURLINFO_HEADER_OUT: curl_infotype = 2;
 pub const CURLINFO_HEADER_IN: curl_infotype = 1;
 pub const CURLINFO_TEXT: curl_infotype = 0;
-pub type CURLcode = crate::src::lib::http2::CURLcode;
+pub type CURLcode = crate::src::lib::altsvc::CURLcode;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
 pub const CURLE_PROXY: CURLcode = 97;
@@ -725,12 +725,12 @@ pub const CURL_HTTP_VERSION_2_0: C2RustUnnamed_1 = 3;
 pub const CURL_HTTP_VERSION_1_1: C2RustUnnamed_1 = 2;
 pub const CURL_HTTP_VERSION_1_0: C2RustUnnamed_1 = 1;
 pub const CURL_HTTP_VERSION_NONE: C2RustUnnamed_1 = 0;
-pub type CURL_NETRC_OPTION = crate::src::lib::http2::CURL_NETRC_OPTION;
+pub type CURL_NETRC_OPTION = crate::src::lib::altsvc::CURL_NETRC_OPTION;
 pub const CURL_NETRC_LAST: CURL_NETRC_OPTION = 3;
 pub const CURL_NETRC_REQUIRED: CURL_NETRC_OPTION = 2;
 pub const CURL_NETRC_OPTIONAL: CURL_NETRC_OPTION = 1;
 pub const CURL_NETRC_IGNORED: CURL_NETRC_OPTION = 0;
-pub type curl_TimeCond = crate::src::lib::http2::curl_TimeCond;
+pub type curl_TimeCond = crate::src::lib::altsvc::curl_TimeCond;
 pub const CURL_TIMECOND_LAST: curl_TimeCond = 4;
 pub const CURL_TIMECOND_LASTMOD: curl_TimeCond = 3;
 pub const CURL_TIMECOND_IFUNMODSINCE: curl_TimeCond = 2;
@@ -738,7 +738,7 @@ pub const CURL_TIMECOND_IFMODSINCE: curl_TimeCond = 1;
 pub const CURL_TIMECOND_NONE: curl_TimeCond = 0;
 // #[derive(Copy, Clone)]
 
-pub type curl_tlssessioninfo = crate::src::lib::http2::curl_tlssessioninfo;
+pub type curl_tlssessioninfo = crate::src::lib::altsvc::curl_tlssessioninfo;
 pub type CURLINFO = crate::src::lib::easy::CURLINFO;
 pub const CURLINFO_LASTONE: CURLINFO = 60;
 pub const CURLINFO_REFERER: CURLINFO = 1048636;
@@ -849,8 +849,8 @@ pub const CURLVERSION_FIRST: CURLversion = 0;
 // #[derive(Copy, Clone)]
 
 pub type curl_version_info_data = crate::src::lib::version::curl_version_info_data;
-pub type CURLM = crate::src::lib::http2::CURLM;
-pub type CURLMcode = crate::src::lib::http2::CURLMcode;
+pub type CURLM = crate::src::lib::altsvc::CURLM;
+pub type CURLMcode = crate::src::lib::doh::CURLMcode;
 pub const CURLM_LAST: CURLMcode = 11;
 pub const CURLM_BAD_FUNCTION_ARGUMENT: CURLMcode = 10;
 pub const CURLM_WAKEUP_FAILURE: CURLMcode = 9;
@@ -864,16 +864,16 @@ pub const CURLM_BAD_EASY_HANDLE: CURLMcode = 2;
 pub const CURLM_BAD_HANDLE: CURLMcode = 1;
 pub const CURLM_OK: CURLMcode = 0;
 pub const CURLM_CALL_MULTI_PERFORM: CURLMcode = -1;
-pub type CURLMSG = crate::src::lib::http2::CURLMSG;
+pub type CURLMSG = crate::src::lib::altsvc::CURLMSG;
 pub const CURLMSG_LAST: CURLMSG = 2;
 pub const CURLMSG_DONE: CURLMSG = 1;
 pub const CURLMSG_NONE: CURLMSG = 0;
 // #[derive(Copy, Clone)]
 
-pub type CURLMsg = crate::src::lib::http2::CURLMsg;
+pub type CURLMsg = crate::src::lib::altsvc::CURLMsg;
 // #[derive(Copy, Clone)]
 
-pub type C2RustUnnamed_3 = crate::src::lib::http2::C2RustUnnamed_3;
+pub type C2RustUnnamed_3 = crate::src::lib::altsvc::C2RustUnnamed_3;
 // #[derive(Copy, Clone)]
 
 pub type curl_waitfd = crate::src::lib::easy::curl_waitfd;
@@ -1000,7 +1000,7 @@ pub struct NameValueUnsigned {
 }
 // #[derive(Copy, Clone)]
 
-pub type dynbuf = crate::src::lib::http2::dynbuf;
+pub type dynbuf = crate::src::lib::altsvc::dynbuf;
 #[inline]
 unsafe extern "C" fn stat(
     mut __path: *const i8,
@@ -1051,9 +1051,9 @@ unsafe extern "C" fn add_per_transfer(mut per: *mut *mut per_transfer) -> CURLco
         transfers = p;
         transfersl = transfers;
     } else {
-        let ref mut fresh0 = (*transfersl).next;
+        let fresh0 = &mut ((*transfersl).next);
         *fresh0 = p;
-        let ref mut fresh1 = (*p).prev;
+        let fresh1 = &mut ((*p).prev);
         *fresh1 = transfersl;
         transfersl = p;
     }
@@ -1067,13 +1067,13 @@ unsafe extern "C" fn del_per_transfer(mut per: *mut per_transfer) -> *mut per_tr
     n = (*per).next;
     p = (*per).prev;
     if !p.is_null() {
-        let ref mut fresh2 = (*p).next;
+        let fresh2 = &mut ((*p).next);
         *fresh2 = n;
     } else {
         transfers = n;
     }
     if !n.is_null() {
-        let ref mut fresh3 = (*n).prev;
+        let fresh3 = &mut ((*n).prev);
         *fresh3 = p;
     } else {
         transfersl = p;
@@ -1432,7 +1432,7 @@ unsafe extern "C" fn post_per_transfer(
                         sleeptime / 1000 as i64,
                         (*per).retry_numretries,
                     );
-                    let ref mut fresh4 = (*per).retry_numretries;
+                    let fresh4 = &mut ((*per).retry_numretries);
                     *fresh4 -= 1;
                     if (*config).retry_delay == 0 {
                         (*per).retry_sleep *= 2 as i32 as i64;
@@ -1519,7 +1519,7 @@ unsafe extern "C" fn post_per_transfer(
     }
     if (*per).heads.alloc_filename {
         free((*per).heads.filename as *mut libc::c_void);
-        let ref mut fresh5 = (*per).heads.filename;
+        let fresh5 = &mut ((*per).heads.filename);
         *fresh5 = 0 as *mut i8;
     }
     if (*per).etag_save.fopened as i32 != 0
@@ -1529,7 +1529,7 @@ unsafe extern "C" fn post_per_transfer(
     }
     if (*per).etag_save.alloc_filename {
         free((*per).etag_save.filename as *mut libc::c_void);
-        let ref mut fresh6 = (*per).etag_save.filename;
+        let fresh6 = &mut ((*per).etag_save.filename);
         *fresh6 = 0 as *mut i8;
     }
     curl_easy_cleanup((*per).curl);
@@ -1548,21 +1548,21 @@ unsafe extern "C" fn single_transfer_cleanup(mut config: *mut OperationConfig) {
         let mut state: *mut State = &mut (*config).state;
         if !((*state).urls).is_null() {
             glob_cleanup((*state).urls);
-            let ref mut fresh7 = (*state).urls;
+            let fresh7 = &mut ((*state).urls);
             *fresh7 = 0 as *mut URLGlob;
         }
         free((*state).outfiles as *mut libc::c_void);
-        let ref mut fresh8 = (*state).outfiles;
+        let fresh8 = &mut ((*state).outfiles);
         *fresh8 = 0 as *mut i8;
         free((*state).httpgetfields as *mut libc::c_void);
-        let ref mut fresh9 = (*state).httpgetfields;
+        let fresh9 = &mut ((*state).httpgetfields);
         *fresh9 = 0 as *mut i8;
         free((*state).uploadfile as *mut libc::c_void);
-        let ref mut fresh10 = (*state).uploadfile;
+        let fresh10 = &mut ((*state).uploadfile);
         *fresh10 = 0 as *mut i8;
         if !((*state).inglob).is_null() {
             glob_cleanup((*state).inglob);
-            let ref mut fresh11 = (*state).inglob;
+            let fresh11 = &mut ((*state).inglob);
             *fresh11 = 0 as *mut URLGlob;
         }
     }
@@ -1584,11 +1584,11 @@ unsafe extern "C" fn single_transfer(
     if !((*config).postfields).is_null() {
         if (*config).use_httpget {
             if httpgetfields.is_null() {
-                let ref mut fresh12 = (*state).httpgetfields;
+                let fresh12 = &mut ((*state).httpgetfields);
                 *fresh12 = strdup((*config).postfields);
                 httpgetfields = *fresh12;
                 free((*config).postfields as *mut libc::c_void);
-                let ref mut fresh13 = (*config).postfields;
+                let fresh13 = &mut ((*config).postfields);
                 *fresh13 = 0 as *mut i8;
                 if httpgetfields.is_null() {
                     errorf(
@@ -1619,7 +1619,7 @@ unsafe extern "C" fn single_transfer(
         }
     }
     if ((*state).urlnode).is_null() {
-        let ref mut fresh14 = (*state).urlnode;
+        let fresh14 = &mut ((*state).urlnode);
         *fresh14 = (*config).url_list;
         (*state).infilenum = 1 as i32 as u64;
     }
@@ -1629,18 +1629,18 @@ unsafe extern "C" fn single_transfer(
         urlnode = (*config).state.urlnode;
         if ((*urlnode).url).is_null() {
             free((*urlnode).outfile as *mut libc::c_void);
-            let ref mut fresh15 = (*urlnode).outfile;
+            let fresh15 = &mut ((*urlnode).outfile);
             *fresh15 = 0 as *mut i8;
             free((*urlnode).infile as *mut libc::c_void);
-            let ref mut fresh16 = (*urlnode).infile;
+            let fresh16 = &mut ((*urlnode).infile);
             *fresh16 = 0 as *mut i8;
             (*urlnode).flags = 0 as i32;
-            let ref mut fresh17 = (*config).state.urlnode;
+            let fresh17 = &mut ((*config).state.urlnode);
             *fresh17 = (*urlnode).next;
             (*state).up = 0 as i32 as u64;
         } else {
             if !((*urlnode).outfile).is_null() && ((*state).outfiles).is_null() {
-                let ref mut fresh18 = (*state).outfiles;
+                let fresh18 = &mut ((*state).outfiles);
                 *fresh18 = strdup((*urlnode).outfile);
                 if ((*state).outfiles).is_null() {
                     errorf(
@@ -1666,7 +1666,7 @@ unsafe extern "C" fn single_transfer(
                 if result as u64 != 0 {
                     break;
                 }
-                let ref mut fresh19 = (*config).state.inglob;
+                let fresh19 = &mut ((*config).state.inglob);
                 *fresh19 = inglob;
             }
             let mut separator: i32 = 0;
@@ -1684,7 +1684,7 @@ unsafe extern "C" fn single_transfer(
                             );
                         }
                     } else if (*state).up == 0 {
-                        let ref mut fresh20 = (*state).uploadfile;
+                        let fresh20 = &mut ((*state).uploadfile);
                         *fresh20 = strdup(infiles);
                         if ((*state).uploadfile).is_null() {
                             errorf(
@@ -1739,7 +1739,7 @@ unsafe extern "C" fn single_transfer(
                     break;
                 } else {
                     if !((*state).uploadfile).is_null() {
-                        let ref mut fresh21 = (*per).uploadfile;
+                        let fresh21 = &mut ((*per).uploadfile);
                         *fresh21 = strdup((*state).uploadfile);
                         if ((*per).uploadfile).is_null() {
                             curl_easy_cleanup(curl);
@@ -1748,13 +1748,13 @@ unsafe extern "C" fn single_transfer(
                         }
                     }
                     *added = 1 as i32 != 0;
-                    let ref mut fresh22 = (*per).config;
+                    let fresh22 = &mut ((*per).config);
                     *fresh22 = config;
-                    let ref mut fresh23 = (*per).curl;
+                    let fresh23 = &mut ((*per).curl);
                     *fresh23 = curl;
                     (*per).urlnum = (*urlnode).num as u32;
                     heads = &mut (*per).heads;
-                    let ref mut fresh24 = (*heads).stream;
+                    let fresh24 = &mut ((*heads).stream);
                     *fresh24 = stdout;
                     if !((*config).headerfile).is_null() {
                         if strcmp(
@@ -1781,11 +1781,11 @@ unsafe extern "C" fn single_transfer(
                                 result = CURLE_WRITE_ERROR;
                                 break;
                             } else {
-                                let ref mut fresh25 = (*heads).filename;
+                                let fresh25 = &mut ((*heads).filename);
                                 *fresh25 = (*config).headerfile;
                                 (*heads).s_isreg = 1 as i32 != 0;
                                 (*heads).fopened = 1 as i32 != 0;
-                                let ref mut fresh26 = (*heads).stream;
+                                let fresh26 = &mut ((*heads).stream);
                                 *fresh26 = newfile;
                             }
                         }
@@ -1793,11 +1793,11 @@ unsafe extern "C" fn single_transfer(
                     hdrcbdata = &mut (*per).hdrcbdata;
                     outs = &mut (*per).outs;
                     input = &mut (*per).input;
-                    let ref mut fresh27 = (*per).outfile;
+                    let fresh27 = &mut ((*per).outfile);
                     *fresh27 = 0 as *mut i8;
                     (*per).infdopen = 0 as i32 != 0;
                     (*per).infd = 0 as i32;
-                    let ref mut fresh28 = (*outs).stream;
+                    let fresh28 = &mut ((*outs).stream);
                     *fresh28 = stdout;
                     if !((*config).etag_compare_file).is_null() {
                         let mut etag_from_file: *mut i8 = 0
@@ -1854,7 +1854,7 @@ unsafe extern "C" fn single_transfer(
                         }
                     }
                     etag_save = &mut (*per).etag_save;
-                    let ref mut fresh29 = (*etag_save).stream;
+                    let fresh29 = &mut ((*etag_save).stream);
                     *fresh29 = stdout;
                     if !((*config).etag_save_file).is_null() {
                         if strcmp(
@@ -1876,11 +1876,11 @@ unsafe extern "C" fn single_transfer(
                                 result = CURLE_WRITE_ERROR;
                                 break;
                             } else {
-                                let ref mut fresh30 = (*etag_save).filename;
+                                let fresh30 = &mut ((*etag_save).filename);
                                 *fresh30 = (*config).etag_save_file;
                                 (*etag_save).s_isreg = 1 as i32 != 0;
                                 (*etag_save).fopened = 1 as i32 != 0;
-                                let ref mut fresh31 = (*etag_save).stream;
+                                let fresh31 = &mut ((*etag_save).stream);
                                 *fresh31 = newfile_0;
                             }
                         }
@@ -1891,21 +1891,21 @@ unsafe extern "C" fn single_transfer(
                             break;
                         }
                     } else if (*state).li == 0 {
-                        let ref mut fresh32 = (*per).this_url;
+                        let fresh32 = &mut ((*per).this_url);
                         *fresh32 = strdup((*urlnode).url);
                         if ((*per).this_url).is_null() {
                             result = CURLE_OUT_OF_MEMORY;
                             break;
                         }
                     } else {
-                        let ref mut fresh33 = (*per).this_url;
+                        let fresh33 = &mut ((*per).this_url);
                         *fresh33 = 0 as *mut i8;
                     }
                     if ((*per).this_url).is_null() {
                         break;
                     }
                     if !((*state).outfiles).is_null() {
-                        let ref mut fresh34 = (*per).outfile;
+                        let fresh34 = &mut ((*per).outfile);
                         *fresh34 = strdup((*state).outfiles);
                         if ((*per).outfile).is_null() {
                             result = CURLE_OUT_OF_MEMORY;
@@ -1972,7 +1972,7 @@ unsafe extern "C" fn single_transfer(
                                 break;
                             } else {
                                 free((*per).outfile as *mut libc::c_void);
-                                let ref mut fresh35 = (*per).outfile;
+                                let fresh35 = &mut ((*per).outfile);
                                 *fresh35 = d;
                             }
                         }
@@ -2026,15 +2026,15 @@ unsafe extern "C" fn single_transfer(
                                 break;
                             } else {
                                 (*outs).fopened = 1 as i32 != 0;
-                                let ref mut fresh36 = (*outs).stream;
+                                let fresh36 = &mut ((*outs).stream);
                                 *fresh36 = file_0;
                                 (*outs).init = (*config).resume_from;
                             }
                         } else {
-                            let ref mut fresh37 = (*outs).stream;
+                            let fresh37 = &mut ((*outs).stream);
                             *fresh37 = 0 as *mut FILE;
                         }
-                        let ref mut fresh38 = (*outs).filename;
+                        let fresh38 = &mut ((*outs).filename);
                         *fresh38 = (*per).outfile;
                         (*outs).s_isreg = 1 as i32 != 0;
                     }
@@ -2048,7 +2048,7 @@ unsafe extern "C" fn single_transfer(
                             result = CURLE_OUT_OF_MEMORY;
                             break;
                         } else {
-                            let ref mut fresh39 = (*per).this_url;
+                            let fresh39 = &mut ((*per).this_url);
                             *fresh39 = nurl;
                         }
                     } else if !((*per).uploadfile).is_null()
@@ -2105,19 +2105,19 @@ unsafe extern "C" fn single_transfer(
                         != 0 && !((*outs).stream).is_null()
                         && isatty(fileno((*outs).stream)) != 0
                     {
-                        let ref mut fresh41 = (*global).isatty;
+                        let fresh41 = &mut ((*global).isatty);
                         *fresh41 = 1 as i32 != 0;
-                        let ref mut fresh42 = (*global).noprogress;
+                        let fresh42 = &mut ((*global).noprogress);
                         *fresh42 = *fresh41;
                         (*per).noprogress = *fresh42;
                     } else {
-                        let ref mut fresh43 = (*global).noprogress;
+                        let fresh43 = &mut ((*global).noprogress);
                         *fresh43 = orig_noprogress;
                         (*per).noprogress = *fresh43;
                         (*global).isatty = orig_isatty;
                     }
                     if urlnum > 1 as i32 as u64 && !(*global).mute {
-                        let ref mut fresh44 = (*per).separator_err;
+                        let fresh44 = &mut ((*per).separator_err);
                         *fresh44 = curl_maprintf(
                             b"\n[%lu/%lu]: %s --> %s\0" as *const u8
                                 as *const i8,
@@ -2132,7 +2132,7 @@ unsafe extern "C" fn single_transfer(
                             },
                         );
                         if separator != 0 {
-                            let ref mut fresh45 = (*per).separator;
+                            let fresh45 = &mut ((*per).separator);
                             *fresh45 = curl_maprintf(
                                 b"%s%s\0" as *const u8 as *const i8,
                                 b"--_curl_--\0" as *const u8 as *const i8,
@@ -2177,14 +2177,14 @@ unsafe extern "C" fn single_transfer(
                             break;
                         } else {
                             free((*per).this_url as *mut libc::c_void);
-                            let ref mut fresh46 = (*per).this_url;
+                            let fresh46 = &mut ((*per).this_url);
                             *fresh46 = 0 as *mut i8;
-                            let ref mut fresh47 = (*per).this_url;
+                            let fresh47 = &mut ((*per).this_url);
                             *fresh47 = urlbuffer;
                         }
                     }
                     if ((*global).errors).is_null() {
-                        let ref mut fresh48 = (*global).errors;
+                        let fresh48 = &mut ((*global).errors);
                         *fresh48 = stderr;
                     }
                     (((*per).outfile).is_null()
@@ -2278,7 +2278,7 @@ unsafe extern "C" fn single_transfer(
                         );
                         result as u64 != 0;
                     }
-                    let ref mut fresh49 = (*input).config;
+                    let fresh49 = &mut ((*input).config);
                     *fresh49 = config;
                     if !tool_setopt_skip(CURLOPT_READDATA) {
                         result = tool_setopt(
@@ -2833,7 +2833,7 @@ unsafe extern "C" fn single_transfer(
                         }
                         3 => {
                             curl_mime_free((*config).mimepost);
-                            let ref mut fresh50 = (*config).mimepost;
+                            let fresh50 = &mut ((*config).mimepost);
                             *fresh50 = 0 as *mut curl_mime;
                             result = tool2curlmime(
                                 curl,
@@ -3453,7 +3453,7 @@ unsafe extern "C" fn single_transfer(
                         if !((*config).cert).is_null() {
                             if ((*config).cert_type).is_null() {
                                 if is_pkcs11_uri((*config).cert) {
-                                    let ref mut fresh51 = (*config).cert_type;
+                                    let fresh51 = &mut ((*config).cert_type);
                                     *fresh51 = strdup(
                                         b"ENG\0" as *const u8 as *const i8,
                                     );
@@ -3463,7 +3463,7 @@ unsafe extern "C" fn single_transfer(
                         if !((*config).key).is_null() {
                             if ((*config).key_type).is_null() {
                                 if is_pkcs11_uri((*config).key) {
-                                    let ref mut fresh52 = (*config).key_type;
+                                    let fresh52 = &mut ((*config).key_type);
                                     *fresh52 = strdup(
                                         b"ENG\0" as *const u8 as *const i8,
                                     );
@@ -3473,7 +3473,7 @@ unsafe extern "C" fn single_transfer(
                         if !((*config).proxy_cert).is_null() {
                             if ((*config).proxy_cert_type).is_null() {
                                 if is_pkcs11_uri((*config).proxy_cert) {
-                                    let ref mut fresh53 = (*config).proxy_cert_type;
+                                    let fresh53 = &mut ((*config).proxy_cert_type);
                                     *fresh53 = strdup(
                                         b"ENG\0" as *const u8 as *const i8,
                                     );
@@ -3483,7 +3483,7 @@ unsafe extern "C" fn single_transfer(
                         if !((*config).proxy_key).is_null() {
                             if ((*config).proxy_key_type).is_null() {
                                 if is_pkcs11_uri((*config).proxy_key) {
-                                    let ref mut fresh54 = (*config).proxy_key_type;
+                                    let fresh54 = &mut ((*config).proxy_key_type);
                                     *fresh54 = strdup(
                                         b"ENG\0" as *const u8 as *const i8,
                                     );
@@ -4988,15 +4988,15 @@ unsafe extern "C" fn single_transfer(
                     } else {
                         (*hdrcbdata).honor_cd_filename = 0 as i32 != 0;
                     }
-                    let ref mut fresh55 = (*hdrcbdata).outs;
+                    let fresh55 = &mut ((*hdrcbdata).outs);
                     *fresh55 = outs;
-                    let ref mut fresh56 = (*hdrcbdata).heads;
+                    let fresh56 = &mut ((*hdrcbdata).heads);
                     *fresh56 = heads;
-                    let ref mut fresh57 = (*hdrcbdata).etag_save;
+                    let fresh57 = &mut ((*hdrcbdata).etag_save);
                     *fresh57 = etag_save;
-                    let ref mut fresh58 = (*hdrcbdata).global;
+                    let fresh58 = &mut ((*hdrcbdata).global);
                     *fresh58 = global;
-                    let ref mut fresh59 = (*hdrcbdata).config;
+                    let fresh59 = &mut ((*hdrcbdata).config);
                     *fresh59 = config;
                     if !tool_setopt_skip(CURLOPT_HEADERFUNCTION) {
                         result = tool_setopt(
@@ -5394,46 +5394,46 @@ unsafe extern "C" fn single_transfer(
                     (*per).retry_numretries = (*config).req_retry;
                     (*per).retry_sleep = (*per).retry_sleep_default;
                     (*per).retrystart = tvnow();
-                    let ref mut fresh60 = (*state).li;
+                    let fresh60 = &mut ((*state).li);
                     *fresh60 = (*fresh60).wrapping_add(1);
                     if (*state).li >= urlnum {
                         (*state).li = 0 as i32 as u64;
                         (*state).urlnum = 0 as i32 as u64;
                         glob_cleanup((*state).urls);
-                        let ref mut fresh61 = (*state).urls;
+                        let fresh61 = &mut ((*state).urls);
                         *fresh61 = 0 as *mut URLGlob;
-                        let ref mut fresh62 = (*state).up;
+                        let fresh62 = &mut ((*state).up);
                         *fresh62 = (*fresh62).wrapping_add(1);
                         free((*state).uploadfile as *mut libc::c_void);
-                        let ref mut fresh63 = (*state).uploadfile;
+                        let fresh63 = &mut ((*state).uploadfile);
                         *fresh63 = 0 as *mut i8;
                     }
                     break;
                 }
             } else {
                 free((*urlnode).outfile as *mut libc::c_void);
-                let ref mut fresh64 = (*urlnode).outfile;
+                let fresh64 = &mut ((*urlnode).outfile);
                 *fresh64 = 0 as *mut i8;
                 free((*urlnode).infile as *mut libc::c_void);
-                let ref mut fresh65 = (*urlnode).infile;
+                let fresh65 = &mut ((*urlnode).infile);
                 *fresh65 = 0 as *mut i8;
                 (*urlnode).flags = 0 as i32;
                 glob_cleanup((*state).urls);
-                let ref mut fresh66 = (*state).urls;
+                let fresh66 = &mut ((*state).urls);
                 *fresh66 = 0 as *mut URLGlob;
                 (*state).urlnum = 0 as i32 as u64;
                 free((*state).outfiles as *mut libc::c_void);
-                let ref mut fresh67 = (*state).outfiles;
+                let fresh67 = &mut ((*state).outfiles);
                 *fresh67 = 0 as *mut i8;
                 free((*state).uploadfile as *mut libc::c_void);
-                let ref mut fresh68 = (*state).uploadfile;
+                let fresh68 = &mut ((*state).uploadfile);
                 *fresh68 = 0 as *mut i8;
                 if !((*state).inglob).is_null() {
                     glob_cleanup((*state).inglob);
-                    let ref mut fresh69 = (*state).inglob;
+                    let fresh69 = &mut ((*state).inglob);
                     *fresh69 = 0 as *mut URLGlob;
                 }
-                let ref mut fresh70 = (*config).state.urlnode;
+                let fresh70 = &mut ((*config).state.urlnode);
                 *fresh70 = (*urlnode).next;
                 (*state).up = 0 as i32 as u64;
             }
@@ -5784,7 +5784,7 @@ unsafe extern "C" fn transfer_per_config(
             let mut env: *mut i8 = 0 as *mut i8;
             env = curl_getenv(b"CURL_CA_BUNDLE\0" as *const u8 as *const i8);
             if !env.is_null() {
-                let ref mut fresh71 = (*config).cacert;
+                let fresh71 = &mut ((*config).cacert);
                 *fresh71 = strdup(env);
                 if ((*config).cacert).is_null() {
                     curl_free(env as *mut libc::c_void);
@@ -5797,7 +5797,7 @@ unsafe extern "C" fn transfer_per_config(
             } else {
                 env = curl_getenv(b"SSL_CERT_DIR\0" as *const u8 as *const i8);
                 if !env.is_null() {
-                    let ref mut fresh72 = (*config).capath;
+                    let fresh72 = &mut ((*config).capath);
                     *fresh72 = strdup(env);
                     if ((*config).capath).is_null() {
                         curl_free(env as *mut libc::c_void);
@@ -5813,7 +5813,7 @@ unsafe extern "C" fn transfer_per_config(
                         b"SSL_CERT_FILE\0" as *const u8 as *const i8,
                     );
                     if !env.is_null() {
-                        let ref mut fresh73 = (*config).cacert;
+                        let fresh73 = &mut ((*config).cacert);
                         *fresh73 = strdup(env);
                         if ((*config).cacert).is_null() {
                             curl_free(env as *mut libc::c_void);
@@ -5849,7 +5849,7 @@ unsafe extern "C" fn create_transfer(
         if !(result as u64 == 0 && !*added) {
             break;
         }
-        let ref mut fresh74 = (*global).current;
+        let fresh74 = &mut ((*global).current);
         *fresh74 = (*(*global).current).next;
     }
     return result;
@@ -5999,7 +5999,7 @@ pub unsafe extern "C" fn operate(
                         break;
                     }
                 }
-                let ref mut fresh76 = (*global).current;
+                let fresh76 = &mut ((*global).current);
                 *fresh76 = (*global).first;
                 result = run_all_transfers(global, share, result);
                 curl_share_cleanup(share);

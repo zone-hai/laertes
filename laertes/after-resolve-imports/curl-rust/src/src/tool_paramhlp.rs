@@ -57,23 +57,23 @@ pub use crate::src::lib::version::curl_version_info;
 pub use crate::src::src::tool_getpass::getpass_r;
 pub use crate::src::src::tool_msgs::errorf;
 pub use crate::src::src::tool_msgs::warnf;
-pub use crate::src::lib::http2::curl_mime;
-pub use crate::src::lib::mqtt::_IO_codecvt;
-pub use crate::src::src::tool_cb_rea::_IO_wide_data;
-pub use crate::src::src::tool_msgs::_IO_marker;
-pub type __off_t = crate::src::lib::http2::__off_t;
-pub type __off64_t = crate::src::lib::http2::__off64_t;
-pub type size_t = crate::src::lib::http2::size_t;
-pub type curl_off_t = crate::src::lib::http2::curl_off_t;
+pub use crate::src::lib::altsvc::curl_mime;
+pub use crate::src::lib::imap::_IO_marker;
+pub use crate::src::lib::speedcheck::_IO_codecvt;
+pub use crate::src::lib::vtls::vtls::_IO_wide_data;
+pub type __off_t = crate::src::lib::altsvc::__off_t;
+pub type __off64_t = crate::src::lib::altsvc::__off64_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
+pub type curl_off_t = crate::src::lib::altsvc::curl_off_t;
 // #[derive(Copy, Clone)]
 
-pub type _IO_FILE = crate::src::lib::http2::_IO_FILE;
-pub type _IO_lock_t = crate::src::lib::http2::_IO_lock_t;
-pub type FILE = crate::src::lib::http2::FILE;
+pub type _IO_FILE = crate::src::lib::altsvc::_IO_FILE;
+pub type _IO_lock_t = crate::src::lib::altsvc::_IO_lock_t;
+pub type FILE = crate::src::lib::altsvc::FILE;
 // #[derive(Copy, Clone)]
 
-pub type curl_slist = crate::src::lib::http2::curl_slist;
-pub type CURLcode = crate::src::lib::http2::CURLcode;
+pub type curl_slist = crate::src::lib::altsvc::curl_slist;
+pub type CURLcode = crate::src::lib::altsvc::CURLcode;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
 pub const CURLE_PROXY: CURLcode = 97;
@@ -193,7 +193,7 @@ pub const CURL_SSLVERSION_MAX_TLSv1_1: C2RustUnnamed_1 = 327680;
 pub const CURL_SSLVERSION_MAX_TLSv1_0: C2RustUnnamed_1 = 262144;
 pub const CURL_SSLVERSION_MAX_DEFAULT: C2RustUnnamed_1 = 65536;
 pub const CURL_SSLVERSION_MAX_NONE: C2RustUnnamed_1 = 0;
-pub type curl_TimeCond = crate::src::lib::http2::curl_TimeCond;
+pub type curl_TimeCond = crate::src::lib::altsvc::curl_TimeCond;
 pub const CURL_TIMECOND_LAST: curl_TimeCond = 4;
 pub const CURL_TIMECOND_LASTMOD: curl_TimeCond = 3;
 pub const CURL_TIMECOND_IFUNMODSINCE: curl_TimeCond = 2;
@@ -299,7 +299,7 @@ pub const PARAM_OPTION_AMBIGUOUS: ParameterError = 1;
 pub const PARAM_OK: ParameterError = 0;
 // #[derive(Copy, Clone)]
 
-pub type dynbuf = crate::src::lib::http2::dynbuf;
+pub type dynbuf = crate::src::lib::altsvc::dynbuf;
 pub const set: e_action = 2;
 pub type e_action = u32;
 pub const deny: e_action = 1;
@@ -326,13 +326,13 @@ pub unsafe extern "C" fn new_getout(mut config: *mut OperationConfig) -> *mut ge
     if !node.is_null() {
         static mut outnum: i32 = 0 as i32;
         if !last.is_null() {
-            let ref mut fresh0 = (*last).next;
+            let fresh0 = &mut ((*last).next);
             *fresh0 = node;
         } else {
-            let ref mut fresh1 = (*config).url_list;
+            let fresh1 = &mut ((*config).url_list);
             *fresh1 = node;
         }
-        let ref mut fresh2 = (*config).url_last;
+        let fresh2 = &mut ((*config).url_last);
         *fresh2 = node;
         (*node).flags = (*config).default_node_flags;
         let fresh3 = outnum;
@@ -1030,7 +1030,7 @@ pub unsafe extern "C" fn get_args(
         }
     }
     if ((*config).useragent).is_null() {
-        let ref mut fresh5 = (*config).useragent;
+        let fresh5 = &mut ((*config).useragent);
         *fresh5 = my_useragent();
         if ((*config).useragent).is_null() {
             errorf(

@@ -9,7 +9,7 @@ pub use crate::src::lib::slist::curl_slist_append;
 pub use crate::src::lib::slist::curl_slist_free_all;
 // #[derive(Copy, Clone)]
 
-pub type curl_slist = crate::src::lib::http2::curl_slist;
+pub type curl_slist = crate::src::lib::altsvc::curl_slist;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct slist_wc {
@@ -32,15 +32,15 @@ pub unsafe extern "C" fn slist_wc_append(
             curl_slist_free_all(new_item);
             return 0 as *mut slist_wc;
         }
-        let ref mut fresh0 = (*list).first;
+        let fresh0 = &mut ((*list).first);
         *fresh0 = new_item;
-        let ref mut fresh1 = (*list).last;
+        let fresh1 = &mut ((*list).last);
         *fresh1 = new_item;
         return list;
     }
-    let ref mut fresh2 = (*(*list).last).next;
+    let fresh2 = &mut ((*(*list).last).next);
     *fresh2 = new_item;
-    let ref mut fresh3 = (*list).last;
+    let fresh3 = &mut ((*list).last);
     *fresh3 = (*(*list).last).next;
     return list;
 }

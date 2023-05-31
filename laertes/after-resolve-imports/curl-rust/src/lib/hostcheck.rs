@@ -13,8 +13,8 @@ pub use crate::src::lib::strcase::Curl_strcasecompare;
 pub use crate::src::lib::strcase::Curl_strncasecompare;
 pub use crate::src::lib::easy::Curl_cfree;
 pub use crate::src::lib::easy::Curl_cstrdup;
-pub type size_t = crate::src::lib::http2::size_t;
-pub type curl_free_callback = crate::src::lib::http2::curl_free_callback;
+pub type size_t = crate::src::lib::altsvc::size_t;
+pub type curl_free_callback = crate::src::lib::altsvc::curl_free_callback;
 pub type curl_strdup_callback = crate::src::lib::altsvc::curl_strdup_callback;
 unsafe extern "C" fn hostmatch(
     mut hostname: *mut i8,

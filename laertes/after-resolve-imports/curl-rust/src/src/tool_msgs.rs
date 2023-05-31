@@ -2,7 +2,7 @@ use ::libc;
 extern "C" {
     
     
-    pub type _IO_marker;
+    
     
     
     fn fputs(__s: *const i8, __stream: *mut FILE) -> i32;
@@ -23,27 +23,28 @@ pub use crate::src::lib::escape::curl_free;
 pub use crate::src::lib::mprintf::curl_mfprintf;
 pub use crate::src::lib::mprintf::curl_mvaprintf;
 pub use crate::src::lib::mprintf::curl_mvfprintf;
-pub use crate::src::lib::http2::curl_mime;
-pub use crate::src::lib::mqtt::_IO_codecvt;
-pub use crate::src::src::tool_cb_rea::_IO_wide_data;
+pub use crate::src::lib::altsvc::curl_mime;
+pub use crate::src::lib::imap::_IO_marker;
+pub use crate::src::lib::speedcheck::_IO_codecvt;
+pub use crate::src::lib::vtls::vtls::_IO_wide_data;
 pub type __builtin_va_list = crate::src::lib::dict::__builtin_va_list;
 // #[derive(Copy, Clone)]
 
 pub type __va_list_tag = crate::src::lib::dict::__va_list_tag;
-pub type __off_t = crate::src::lib::http2::__off_t;
-pub type __off64_t = crate::src::lib::http2::__off64_t;
-pub type size_t = crate::src::lib::http2::size_t;
-pub type curl_off_t = crate::src::lib::http2::curl_off_t;
+pub type __off_t = crate::src::lib::altsvc::__off_t;
+pub type __off64_t = crate::src::lib::altsvc::__off64_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
+pub type curl_off_t = crate::src::lib::altsvc::curl_off_t;
 pub type va_list = crate::src::lib::dict::va_list;
 // #[derive(Copy, Clone)]
 
-pub type _IO_FILE = crate::src::lib::http2::_IO_FILE;
-pub type _IO_lock_t = crate::src::lib::http2::_IO_lock_t;
-pub type FILE = crate::src::lib::http2::FILE;
+pub type _IO_FILE = crate::src::lib::altsvc::_IO_FILE;
+pub type _IO_lock_t = crate::src::lib::altsvc::_IO_lock_t;
+pub type FILE = crate::src::lib::altsvc::FILE;
 // #[derive(Copy, Clone)]
 
-pub type curl_slist = crate::src::lib::http2::curl_slist;
-pub type curl_TimeCond = crate::src::lib::http2::curl_TimeCond;
+pub type curl_slist = crate::src::lib::altsvc::curl_slist;
+pub type curl_TimeCond = crate::src::lib::altsvc::curl_TimeCond;
 pub const CURL_TIMECOND_LAST: curl_TimeCond = 4;
 pub const CURL_TIMECOND_LASTMOD: curl_TimeCond = 3;
 pub const CURL_TIMECOND_IFUNMODSINCE: curl_TimeCond = 2;

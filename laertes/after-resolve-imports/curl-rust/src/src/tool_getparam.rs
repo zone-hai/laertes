@@ -109,27 +109,27 @@ pub use crate::src::src::tool_paramhlp::str2udouble;
 pub use crate::src::src::tool_paramhlp::str2unum;
 pub use crate::src::src::tool_paramhlp::str2unummax;
 pub use crate::src::src::tool_parsecfg::parseconfig;
-pub use crate::src::lib::http2::Curl_easy;
-pub use crate::src::lib::http2::curl_mime;
-pub use crate::src::lib::mqtt::_IO_codecvt;
-pub use crate::src::src::tool_cb_rea::_IO_wide_data;
+pub use crate::src::lib::altsvc::Curl_easy;
+pub use crate::src::lib::altsvc::curl_mime;
+pub use crate::src::lib::imap::_IO_marker;
+pub use crate::src::lib::speedcheck::_IO_codecvt;
+pub use crate::src::lib::vtls::vtls::_IO_wide_data;
 pub use crate::src::src::tool_libinfo::curlinfo;
-pub use crate::src::src::tool_msgs::_IO_marker;
-pub type __off_t = crate::src::lib::http2::__off_t;
-pub type __off64_t = crate::src::lib::http2::__off64_t;
-pub type __time_t = crate::src::lib::http2::__time_t;
-pub type time_t = crate::src::lib::http2::time_t;
-pub type size_t = crate::src::lib::http2::size_t;
-pub type curl_off_t = crate::src::lib::http2::curl_off_t;
+pub type __off_t = crate::src::lib::altsvc::__off_t;
+pub type __off64_t = crate::src::lib::altsvc::__off64_t;
+pub type __time_t = crate::src::lib::altsvc::__time_t;
+pub type time_t = crate::src::lib::altsvc::time_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
+pub type curl_off_t = crate::src::lib::altsvc::curl_off_t;
 // #[derive(Copy, Clone)]
 
-pub type _IO_FILE = crate::src::lib::http2::_IO_FILE;
-pub type _IO_lock_t = crate::src::lib::http2::_IO_lock_t;
-pub type FILE = crate::src::lib::http2::FILE;
-pub type CURL = crate::src::lib::http2::CURL;
+pub type _IO_FILE = crate::src::lib::altsvc::_IO_FILE;
+pub type _IO_lock_t = crate::src::lib::altsvc::_IO_lock_t;
+pub type FILE = crate::src::lib::altsvc::FILE;
+pub type CURL = crate::src::lib::altsvc::CURL;
 // #[derive(Copy, Clone)]
 
-pub type curl_slist = crate::src::lib::http2::curl_slist;
+pub type curl_slist = crate::src::lib::altsvc::curl_slist;
 pub type C2RustUnnamed = u32;
 pub const CURLPROXY_SOCKS5_HOSTNAME: C2RustUnnamed = 7;
 pub const CURLPROXY_SOCKS4A: C2RustUnnamed = 6;
@@ -162,7 +162,7 @@ pub const CURL_SSLVERSION_SSLv3: C2RustUnnamed_2 = 3;
 pub const CURL_SSLVERSION_SSLv2: C2RustUnnamed_2 = 2;
 pub const CURL_SSLVERSION_TLSv1: C2RustUnnamed_2 = 1;
 pub const CURL_SSLVERSION_DEFAULT: C2RustUnnamed_2 = 0;
-pub type curl_TimeCond = crate::src::lib::http2::curl_TimeCond;
+pub type curl_TimeCond = crate::src::lib::altsvc::curl_TimeCond;
 pub const CURL_TIMECOND_LAST: curl_TimeCond = 4;
 pub const CURL_TIMECOND_LASTMOD: curl_TimeCond = 3;
 pub const CURL_TIMECOND_IFUNMODSINCE: curl_TimeCond = 2;
@@ -2609,11 +2609,11 @@ pub unsafe extern "C" fn getparameter(
                     52 => {
                         if !((*config).dns_ipv4_addr).is_null() {
                             free((*config).dns_ipv4_addr as *mut libc::c_void);
-                            let ref mut fresh5 = (*config).dns_ipv4_addr;
+                            let fresh5 = &mut ((*config).dns_ipv4_addr);
                             *fresh5 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh6 = (*config).dns_ipv4_addr;
+                            let fresh6 = &mut ((*config).dns_ipv4_addr);
                             *fresh6 = strdup(nextarg);
                             if ((*config).dns_ipv4_addr).is_null() {
                                 return PARAM_NO_MEM;
@@ -2623,11 +2623,11 @@ pub unsafe extern "C" fn getparameter(
                     54 => {
                         if !((*config).dns_ipv6_addr).is_null() {
                             free((*config).dns_ipv6_addr as *mut libc::c_void);
-                            let ref mut fresh7 = (*config).dns_ipv6_addr;
+                            let fresh7 = &mut ((*config).dns_ipv6_addr);
                             *fresh7 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh8 = (*config).dns_ipv6_addr;
+                            let fresh8 = &mut ((*config).dns_ipv6_addr);
                             *fresh8 = strdup(nextarg);
                             if ((*config).dns_ipv6_addr).is_null() {
                                 return PARAM_NO_MEM;
@@ -2637,11 +2637,11 @@ pub unsafe extern "C" fn getparameter(
                     97 => {
                         if !((*config).random_file).is_null() {
                             free((*config).random_file as *mut libc::c_void);
-                            let ref mut fresh9 = (*config).random_file;
+                            let fresh9 = &mut ((*config).random_file);
                             *fresh9 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh10 = (*config).random_file;
+                            let fresh10 = &mut ((*config).random_file);
                             *fresh10 = strdup(nextarg);
                             if ((*config).random_file).is_null() {
                                 return PARAM_NO_MEM;
@@ -2651,11 +2651,11 @@ pub unsafe extern "C" fn getparameter(
                     98 => {
                         if !((*config).egd_file).is_null() {
                             free((*config).egd_file as *mut libc::c_void);
-                            let ref mut fresh11 = (*config).egd_file;
+                            let fresh11 = &mut ((*config).egd_file);
                             *fresh11 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh12 = (*config).egd_file;
+                            let fresh12 = &mut ((*config).egd_file);
                             *fresh12 = strdup(nextarg);
                             if ((*config).egd_file).is_null() {
                                 return PARAM_NO_MEM;
@@ -2665,11 +2665,11 @@ pub unsafe extern "C" fn getparameter(
                     66 => {
                         if !((*config).oauth_bearer).is_null() {
                             free((*config).oauth_bearer as *mut libc::c_void);
-                            let ref mut fresh13 = (*config).oauth_bearer;
+                            let fresh13 = &mut ((*config).oauth_bearer);
                             *fresh13 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh14 = (*config).oauth_bearer;
+                            let fresh14 = &mut ((*config).oauth_bearer);
                             *fresh14 = strdup(nextarg);
                             if ((*config).oauth_bearer).is_null() {
                                 return PARAM_NO_MEM;
@@ -2692,11 +2692,11 @@ pub unsafe extern "C" fn getparameter(
                     67 => {
                         if !((*config).doh_url).is_null() {
                             free((*config).doh_url as *mut libc::c_void);
-                            let ref mut fresh15 = (*config).doh_url;
+                            let fresh15 = &mut ((*config).doh_url);
                             *fresh15 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh16 = (*config).doh_url;
+                            let fresh16 = &mut ((*config).doh_url);
                             *fresh16 = strdup(nextarg);
                             if ((*config).doh_url).is_null() {
                                 return PARAM_NO_MEM;
@@ -2706,11 +2706,11 @@ pub unsafe extern "C" fn getparameter(
                     100 => {
                         if !((*config).cipher_list).is_null() {
                             free((*config).cipher_list as *mut libc::c_void);
-                            let ref mut fresh17 = (*config).cipher_list;
+                            let fresh17 = &mut ((*config).cipher_list);
                             *fresh17 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh18 = (*config).cipher_list;
+                            let fresh18 = &mut ((*config).cipher_list);
                             *fresh18 = strdup(nextarg);
                             if ((*config).cipher_list).is_null() {
                                 return PARAM_NO_MEM;
@@ -2720,11 +2720,11 @@ pub unsafe extern "C" fn getparameter(
                     68 => {
                         if !((*config).dns_interface).is_null() {
                             free((*config).dns_interface as *mut libc::c_void);
-                            let ref mut fresh19 = (*config).dns_interface;
+                            let fresh19 = &mut ((*config).dns_interface);
                             *fresh19 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh20 = (*config).dns_interface;
+                            let fresh20 = &mut ((*config).dns_interface);
                             *fresh20 = strdup(nextarg);
                             if ((*config).dns_interface).is_null() {
                                 return PARAM_NO_MEM;
@@ -2748,11 +2748,11 @@ pub unsafe extern "C" fn getparameter(
                     70 => {
                         if !((*config).dns_servers).is_null() {
                             free((*config).dns_servers as *mut libc::c_void);
-                            let ref mut fresh21 = (*config).dns_servers;
+                            let fresh21 = &mut ((*config).dns_servers);
                             *fresh21 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh22 = (*config).dns_servers;
+                            let fresh22 = &mut ((*config).dns_servers);
                             *fresh22 = strdup(nextarg);
                             if ((*config).dns_servers).is_null() {
                                 return PARAM_NO_MEM;
@@ -2762,11 +2762,11 @@ pub unsafe extern "C" fn getparameter(
                     103 => {
                         if !((*global).trace_dump).is_null() {
                             free((*global).trace_dump as *mut libc::c_void);
-                            let ref mut fresh23 = (*global).trace_dump;
+                            let fresh23 = &mut ((*global).trace_dump);
                             *fresh23 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh24 = (*global).trace_dump;
+                            let fresh24 = &mut ((*global).trace_dump);
                             *fresh24 = strdup(nextarg);
                             if ((*global).trace_dump).is_null() {
                                 return PARAM_NO_MEM;
@@ -2795,11 +2795,11 @@ pub unsafe extern "C" fn getparameter(
                     104 => {
                         if !((*global).trace_dump).is_null() {
                             free((*global).trace_dump as *mut libc::c_void);
-                            let ref mut fresh25 = (*global).trace_dump;
+                            let fresh25 = &mut ((*global).trace_dump);
                             *fresh25 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh26 = (*global).trace_dump;
+                            let fresh26 = &mut ((*global).trace_dump);
                             *fresh26 = strdup(nextarg);
                             if ((*global).trace_dump).is_null() {
                                 return PARAM_NO_MEM;
@@ -2971,11 +2971,11 @@ pub unsafe extern "C" fn getparameter(
                             |= (1 as i32 as u64) << 7 as i32;
                         if !((*config).aws_sigv4).is_null() {
                             free((*config).aws_sigv4 as *mut libc::c_void);
-                            let ref mut fresh27 = (*config).aws_sigv4;
+                            let fresh27 = &mut ((*config).aws_sigv4);
                             *fresh27 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh28 = (*config).aws_sigv4;
+                            let fresh28 = &mut ((*config).aws_sigv4);
                             *fresh28 = strdup(nextarg);
                             if ((*config).aws_sigv4).is_null() {
                                 return PARAM_NO_MEM;
@@ -3001,23 +3001,23 @@ pub unsafe extern "C" fn getparameter(
                                 if (*global).errors_fopened {
                                     fclose((*global).errors);
                                 }
-                                let ref mut fresh29 = (*global).errors;
+                                let fresh29 = &mut ((*global).errors);
                                 *fresh29 = newfile;
                                 (*global).errors_fopened = 1 as i32 != 0;
                             }
                         } else {
-                            let ref mut fresh30 = (*global).errors;
+                            let fresh30 = &mut ((*global).errors);
                             *fresh30 = stdout;
                         }
                     }
                     119 => {
                         if !((*config).iface).is_null() {
                             free((*config).iface as *mut libc::c_void);
-                            let ref mut fresh31 = (*config).iface;
+                            let fresh31 = &mut ((*config).iface);
                             *fresh31 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh32 = (*config).iface;
+                            let fresh32 = &mut ((*config).iface);
                             *fresh32 = strdup(nextarg);
                             if ((*config).iface).is_null() {
                                 return PARAM_NO_MEM;
@@ -3030,11 +3030,11 @@ pub unsafe extern "C" fn getparameter(
                         {
                             if !((*config).krblevel).is_null() {
                                 free((*config).krblevel as *mut libc::c_void);
-                                let ref mut fresh33 = (*config).krblevel;
+                                let fresh33 = &mut ((*config).krblevel);
                                 *fresh33 = 0 as *mut i8;
                             }
                             if !nextarg.is_null() {
-                                let ref mut fresh34 = (*config).krblevel;
+                                let fresh34 = &mut ((*config).krblevel);
                                 *fresh34 = strdup(nextarg);
                                 if ((*config).krblevel).is_null() {
                                     return PARAM_NO_MEM;
@@ -3079,7 +3079,7 @@ pub unsafe extern "C" fn getparameter(
                     64 => {
                         let mut url: *mut getout = 0 as *mut getout;
                         if ((*config).url_get).is_null() {
-                            let ref mut fresh35 = (*config).url_get;
+                            let fresh35 = &mut ((*config).url_get);
                             *fresh35 = (*config).url_list;
                         }
                         if !((*config).url_get).is_null() {
@@ -3087,7 +3087,7 @@ pub unsafe extern "C" fn getparameter(
                                 && (*(*config).url_get).flags
                                     & (1 as i32) << 1 as i32 != 0
                             {
-                                let ref mut fresh36 = (*config).url_get;
+                                let fresh36 = &mut ((*config).url_get);
                                 *fresh36 = (*(*config).url_get).next;
                             }
                         }
@@ -3095,7 +3095,7 @@ pub unsafe extern "C" fn getparameter(
                             url = (*config).url_get;
                         } else {
                             url = new_getout(config);
-                            let ref mut fresh37 = (*config).url_get;
+                            let fresh37 = &mut ((*config).url_get);
                             *fresh37 = url;
                         }
                         if url.is_null() {
@@ -3103,11 +3103,11 @@ pub unsafe extern "C" fn getparameter(
                         }
                         if !((*url).url).is_null() {
                             free((*url).url as *mut libc::c_void);
-                            let ref mut fresh38 = (*url).url;
+                            let fresh38 = &mut ((*url).url);
                             *fresh38 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh39 = (*url).url;
+                            let fresh39 = &mut ((*url).url);
                             *fresh39 = strdup(nextarg);
                             if ((*url).url).is_null() {
                                 return PARAM_NO_MEM;
@@ -3132,17 +3132,17 @@ pub unsafe extern "C" fn getparameter(
                     }
                     98 => {
                         free((*config).ftpport as *mut libc::c_void);
-                        let ref mut fresh40 = (*config).ftpport;
+                        let fresh40 = &mut ((*config).ftpport);
                         *fresh40 = 0 as *mut i8;
                     }
                     99 => {
                         if !((*config).proxy).is_null() {
                             free((*config).proxy as *mut libc::c_void);
-                            let ref mut fresh41 = (*config).proxy;
+                            let fresh41 = &mut ((*config).proxy);
                             *fresh41 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh42 = (*config).proxy;
+                            let fresh42 = &mut ((*config).proxy);
                             *fresh42 = strdup(nextarg);
                             if ((*config).proxy).is_null() {
                                 return PARAM_NO_MEM;
@@ -3153,11 +3153,11 @@ pub unsafe extern "C" fn getparameter(
                     116 => {
                         if !((*config).proxy).is_null() {
                             free((*config).proxy as *mut libc::c_void);
-                            let ref mut fresh43 = (*config).proxy;
+                            let fresh43 = &mut ((*config).proxy);
                             *fresh43 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh44 = (*config).proxy;
+                            let fresh44 = &mut ((*config).proxy);
                             *fresh44 = strdup(nextarg);
                             if ((*config).proxy).is_null() {
                                 return PARAM_NO_MEM;
@@ -3168,11 +3168,11 @@ pub unsafe extern "C" fn getparameter(
                     84 => {
                         if !((*config).proxy).is_null() {
                             free((*config).proxy as *mut libc::c_void);
-                            let ref mut fresh45 = (*config).proxy;
+                            let fresh45 = &mut ((*config).proxy);
                             *fresh45 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh46 = (*config).proxy;
+                            let fresh46 = &mut ((*config).proxy);
                             *fresh46 = strdup(nextarg);
                             if ((*config).proxy).is_null() {
                                 return PARAM_NO_MEM;
@@ -3183,11 +3183,11 @@ pub unsafe extern "C" fn getparameter(
                     50 => {
                         if !((*config).proxy).is_null() {
                             free((*config).proxy as *mut libc::c_void);
-                            let ref mut fresh47 = (*config).proxy;
+                            let fresh47 = &mut ((*config).proxy);
                             *fresh47 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh48 = (*config).proxy;
+                            let fresh48 = &mut ((*config).proxy);
                             *fresh48 = strdup(nextarg);
                             if ((*config).proxy).is_null() {
                                 return PARAM_NO_MEM;
@@ -3250,11 +3250,11 @@ pub unsafe extern "C" fn getparameter(
                     109 => {
                         if !((*config).ftp_account).is_null() {
                             free((*config).ftp_account as *mut libc::c_void);
-                            let ref mut fresh49 = (*config).ftp_account;
+                            let fresh49 = &mut ((*config).ftp_account);
                             *fresh49 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh50 = (*config).ftp_account;
+                            let fresh50 = &mut ((*config).ftp_account);
                             *fresh50 = strdup(nextarg);
                             if ((*config).ftp_account).is_null() {
                                 return PARAM_NO_MEM;
@@ -3326,11 +3326,11 @@ pub unsafe extern "C" fn getparameter(
                     117 => {
                         if !((*config).ftp_alternative_to_user).is_null() {
                             free((*config).ftp_alternative_to_user as *mut libc::c_void);
-                            let ref mut fresh51 = (*config).ftp_alternative_to_user;
+                            let fresh51 = &mut ((*config).ftp_alternative_to_user);
                             *fresh51 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh52 = (*config).ftp_alternative_to_user;
+                            let fresh52 = &mut ((*config).ftp_alternative_to_user);
                             *fresh52 = strdup(nextarg);
                             if ((*config).ftp_alternative_to_user).is_null() {
                                 return PARAM_NO_MEM;
@@ -3377,11 +3377,11 @@ pub unsafe extern "C" fn getparameter(
                     122 => {
                         if !((*global).libcurl).is_null() {
                             free((*global).libcurl as *mut libc::c_void);
-                            let ref mut fresh53 = (*global).libcurl;
+                            let fresh53 = &mut ((*global).libcurl);
                             *fresh53 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh54 = (*global).libcurl;
+                            let fresh54 = &mut ((*global).libcurl);
                             *fresh54 = strdup(nextarg);
                             if ((*global).libcurl).is_null() {
                                 return PARAM_NO_MEM;
@@ -3417,11 +3417,11 @@ pub unsafe extern "C" fn getparameter(
                     53 => {
                         if !((*config).noproxy).is_null() {
                             free((*config).noproxy as *mut libc::c_void);
-                            let ref mut fresh55 = (*config).noproxy;
+                            let fresh55 = &mut ((*config).noproxy);
                             *fresh55 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh56 = (*config).noproxy;
+                            let fresh56 = &mut ((*config).noproxy);
                             *fresh56 = strdup(nextarg);
                             if ((*config).noproxy).is_null() {
                                 return PARAM_NO_MEM;
@@ -3434,11 +3434,11 @@ pub unsafe extern "C" fn getparameter(
                     56 => {
                         if !((*config).proxy).is_null() {
                             free((*config).proxy as *mut libc::c_void);
-                            let ref mut fresh57 = (*config).proxy;
+                            let fresh57 = &mut ((*config).proxy);
                             *fresh57 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh58 = (*config).proxy;
+                            let fresh58 = &mut ((*config).proxy);
                             *fresh58 = strdup(nextarg);
                             if ((*config).proxy).is_null() {
                                 return PARAM_NO_MEM;
@@ -3455,11 +3455,11 @@ pub unsafe extern "C" fn getparameter(
                     65 => {
                         if !((*config).mail_from).is_null() {
                             free((*config).mail_from as *mut libc::c_void);
-                            let ref mut fresh59 = (*config).mail_from;
+                            let fresh59 = &mut ((*config).mail_from);
                             *fresh59 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh60 = (*config).mail_from;
+                            let fresh60 = &mut ((*config).mail_from);
                             *fresh60 = strdup(nextarg);
                             if ((*config).mail_from).is_null() {
                                 return PARAM_NO_MEM;
@@ -3499,11 +3499,11 @@ pub unsafe extern "C" fn getparameter(
                     72 => {
                         if !((*config).mail_auth).is_null() {
                             free((*config).mail_auth as *mut libc::c_void);
-                            let ref mut fresh61 = (*config).mail_auth;
+                            let fresh61 = &mut ((*config).mail_auth);
                             *fresh61 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh62 = (*config).mail_auth;
+                            let fresh62 = &mut ((*config).mail_auth);
                             *fresh62 = strdup(nextarg);
                             if ((*config).mail_auth).is_null() {
                                 return PARAM_NO_MEM;
@@ -3521,11 +3521,11 @@ pub unsafe extern "C" fn getparameter(
                     54 => {
                         if !((*config).sasl_authzid).is_null() {
                             free((*config).sasl_authzid as *mut libc::c_void);
-                            let ref mut fresh63 = (*config).sasl_authzid;
+                            let fresh63 = &mut ((*config).sasl_authzid);
                             *fresh63 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh64 = (*config).sasl_authzid;
+                            let fresh64 = &mut ((*config).sasl_authzid);
                             *fresh64 = strdup(nextarg);
                             if ((*config).sasl_authzid).is_null() {
                                 return PARAM_NO_MEM;
@@ -3546,11 +3546,11 @@ pub unsafe extern "C" fn getparameter(
                         (*config).abstract_unix_socket = 0 as i32 != 0;
                         if !((*config).unix_socket_path).is_null() {
                             free((*config).unix_socket_path as *mut libc::c_void);
-                            let ref mut fresh65 = (*config).unix_socket_path;
+                            let fresh65 = &mut ((*config).unix_socket_path);
                             *fresh65 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh66 = (*config).unix_socket_path;
+                            let fresh66 = &mut ((*config).unix_socket_path);
                             *fresh66 = strdup(nextarg);
                             if ((*config).unix_socket_path).is_null() {
                                 return PARAM_NO_MEM;
@@ -3563,11 +3563,11 @@ pub unsafe extern "C" fn getparameter(
                     79 => {
                         if !((*config).proxy_service_name).is_null() {
                             free((*config).proxy_service_name as *mut libc::c_void);
-                            let ref mut fresh67 = (*config).proxy_service_name;
+                            let fresh67 = &mut ((*config).proxy_service_name);
                             *fresh67 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh68 = (*config).proxy_service_name;
+                            let fresh68 = &mut ((*config).proxy_service_name);
                             *fresh68 = strdup(nextarg);
                             if ((*config).proxy_service_name).is_null() {
                                 return PARAM_NO_MEM;
@@ -3577,11 +3577,11 @@ pub unsafe extern "C" fn getparameter(
                     80 => {
                         if !((*config).service_name).is_null() {
                             free((*config).service_name as *mut libc::c_void);
-                            let ref mut fresh69 = (*config).service_name;
+                            let fresh69 = &mut ((*config).service_name);
                             *fresh69 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh70 = (*config).service_name;
+                            let fresh70 = &mut ((*config).service_name);
                             *fresh70 = strdup(nextarg);
                             if ((*config).service_name).is_null() {
                                 return PARAM_NO_MEM;
@@ -3591,11 +3591,11 @@ pub unsafe extern "C" fn getparameter(
                     81 => {
                         if !((*config).proto_default).is_null() {
                             free((*config).proto_default as *mut libc::c_void);
-                            let ref mut fresh71 = (*config).proto_default;
+                            let fresh71 = &mut ((*config).proto_default);
                             *fresh71 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh72 = (*config).proto_default;
+                            let fresh72 = &mut ((*config).proto_default);
                             *fresh72 = strdup(nextarg);
                             if ((*config).proto_default).is_null() {
                                 return PARAM_NO_MEM;
@@ -3630,11 +3630,11 @@ pub unsafe extern "C" fn getparameter(
                         (*config).abstract_unix_socket = 1 as i32 != 0;
                         if !((*config).unix_socket_path).is_null() {
                             free((*config).unix_socket_path as *mut libc::c_void);
-                            let ref mut fresh73 = (*config).unix_socket_path;
+                            let fresh73 = &mut ((*config).unix_socket_path);
                             *fresh73 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh74 = (*config).unix_socket_path;
+                            let fresh74 = &mut ((*config).unix_socket_path);
                             *fresh74 = strdup(nextarg);
                             if ((*config).unix_socket_path).is_null() {
                                 return PARAM_NO_MEM;
@@ -3753,11 +3753,11 @@ pub unsafe extern "C" fn getparameter(
                     65 => {
                         if !((*config).cipher13_list).is_null() {
                             free((*config).cipher13_list as *mut libc::c_void);
-                            let ref mut fresh75 = (*config).cipher13_list;
+                            let fresh75 = &mut ((*config).cipher13_list);
                             *fresh75 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh76 = (*config).cipher13_list;
+                            let fresh76 = &mut ((*config).cipher13_list);
                             *fresh76 = strdup(nextarg);
                             if ((*config).cipher13_list).is_null() {
                                 return PARAM_NO_MEM;
@@ -3767,11 +3767,11 @@ pub unsafe extern "C" fn getparameter(
                     66 => {
                         if !((*config).proxy_cipher13_list).is_null() {
                             free((*config).proxy_cipher13_list as *mut libc::c_void);
-                            let ref mut fresh77 = (*config).proxy_cipher13_list;
+                            let fresh77 = &mut ((*config).proxy_cipher13_list);
                             *fresh77 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh78 = (*config).proxy_cipher13_list;
+                            let fresh78 = &mut ((*config).proxy_cipher13_list);
                             *fresh78 = strdup(nextarg);
                             if ((*config).proxy_cipher13_list).is_null() {
                                 return PARAM_NO_MEM;
@@ -3813,11 +3813,11 @@ pub unsafe extern "C" fn getparameter(
             65 => {
                 if !((*config).useragent).is_null() {
                     free((*config).useragent as *mut libc::c_void);
-                    let ref mut fresh79 = (*config).useragent;
+                    let fresh79 = &mut ((*config).useragent);
                     *fresh79 = 0 as *mut i8;
                 }
                 if !nextarg.is_null() {
-                    let ref mut fresh80 = (*config).useragent;
+                    let fresh80 = &mut ((*config).useragent);
                     *fresh80 = strdup(nextarg);
                     if ((*config).useragent).is_null() {
                         return PARAM_NO_MEM;
@@ -3834,11 +3834,11 @@ pub unsafe extern "C" fn getparameter(
                         {
                             if !((*config).altsvc).is_null() {
                                 free((*config).altsvc as *mut libc::c_void);
-                                let ref mut fresh81 = (*config).altsvc;
+                                let fresh81 = &mut ((*config).altsvc);
                                 *fresh81 = 0 as *mut i8;
                             }
                             if !nextarg.is_null() {
-                                let ref mut fresh82 = (*config).altsvc;
+                                let fresh82 = &mut ((*config).altsvc);
                                 *fresh82 = strdup(nextarg);
                                 if ((*config).altsvc).is_null() {
                                     return PARAM_NO_MEM;
@@ -3854,11 +3854,11 @@ pub unsafe extern "C" fn getparameter(
                         {
                             if !((*config).hsts).is_null() {
                                 free((*config).hsts as *mut libc::c_void);
-                                let ref mut fresh83 = (*config).hsts;
+                                let fresh83 = &mut ((*config).hsts);
                                 *fresh83 = 0 as *mut i8;
                             }
                             if !nextarg.is_null() {
-                                let ref mut fresh84 = (*config).hsts;
+                                let fresh84 = &mut ((*config).hsts);
                                 *fresh84 = strdup(nextarg);
                                 if ((*config).hsts).is_null() {
                                     return PARAM_NO_MEM;
@@ -3903,11 +3903,11 @@ pub unsafe extern "C" fn getparameter(
             99 => {
                 if !((*config).cookiejar).is_null() {
                     free((*config).cookiejar as *mut libc::c_void);
-                    let ref mut fresh85 = (*config).cookiejar;
+                    let fresh85 = &mut ((*config).cookiejar);
                     *fresh85 = 0 as *mut i8;
                 }
                 if !nextarg.is_null() {
-                    let ref mut fresh86 = (*config).cookiejar;
+                    let fresh86 = &mut ((*config).cookiejar);
                     *fresh86 = strdup(nextarg);
                     if ((*config).cookiejar).is_null() {
                         return PARAM_NO_MEM;
@@ -4098,7 +4098,7 @@ pub unsafe extern "C" fn getparameter(
                     let mut oldlen: curl_off_t = (*config).postfieldsize;
                     let mut newlen: curl_off_t = oldlen + curlx_uztoso(size)
                         + 2 as i32 as i64;
-                    let ref mut fresh88 = (*config).postfields;
+                    let fresh88 = &mut ((*config).postfields);
                     *fresh88 = malloc(newlen as size_t) as *mut i8;
                     if ((*config).postfields).is_null() {
                         free(oldpost as *mut libc::c_void);
@@ -4131,13 +4131,13 @@ pub unsafe extern "C" fn getparameter(
                     oldpost = 0 as *mut i8;
                     free(postdata as *mut libc::c_void);
                     postdata = 0 as *mut i8;
-                    let ref mut fresh89 = (*config).postfieldsize;
+                    let fresh89 = &mut ((*config).postfieldsize);
                     *fresh89 = (*fresh89 as u64)
                         .wrapping_add(
                             size.wrapping_add(1 as i32 as u64),
                         ) as curl_off_t as curl_off_t;
                 } else {
-                    let ref mut fresh90 = (*config).postfields;
+                    let fresh90 = &mut ((*config).postfields);
                     *fresh90 = postdata;
                     (*config).postfieldsize = curlx_uztoso(size);
                 }
@@ -4146,11 +4146,11 @@ pub unsafe extern "C" fn getparameter(
             68 => {
                 if !((*config).headerfile).is_null() {
                     free((*config).headerfile as *mut libc::c_void);
-                    let ref mut fresh91 = (*config).headerfile;
+                    let fresh91 = &mut ((*config).headerfile);
                     *fresh91 = 0 as *mut i8;
                 }
                 if !nextarg.is_null() {
-                    let ref mut fresh92 = (*config).headerfile;
+                    let fresh92 = &mut ((*config).headerfile);
                     *fresh92 = strdup(nextarg);
                     if ((*config).headerfile).is_null() {
                         return PARAM_NO_MEM;
@@ -4176,11 +4176,11 @@ pub unsafe extern "C" fn getparameter(
                 };
                 if !((*config).referer).is_null() {
                     free((*config).referer as *mut libc::c_void);
-                    let ref mut fresh93 = (*config).referer;
+                    let fresh93 = &mut ((*config).referer);
                     *fresh93 = 0 as *mut i8;
                 }
                 if !ptr.is_null() {
-                    let ref mut fresh94 = (*config).referer;
+                    let fresh94 = &mut ((*config).referer);
                     *fresh94 = strdup(ptr);
                     if ((*config).referer).is_null() {
                         return PARAM_NO_MEM;
@@ -4200,11 +4200,11 @@ pub unsafe extern "C" fn getparameter(
                     97 => {
                         if !((*config).cacert).is_null() {
                             free((*config).cacert as *mut libc::c_void);
-                            let ref mut fresh95 = (*config).cacert;
+                            let fresh95 = &mut ((*config).cacert);
                             *fresh95 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh96 = (*config).cacert;
+                            let fresh96 = &mut ((*config).cacert);
                             *fresh96 = strdup(nextarg);
                             if ((*config).cacert).is_null() {
                                 return PARAM_NO_MEM;
@@ -4214,11 +4214,11 @@ pub unsafe extern "C" fn getparameter(
                     98 => {
                         if !((*config).cert_type).is_null() {
                             free((*config).cert_type as *mut libc::c_void);
-                            let ref mut fresh97 = (*config).cert_type;
+                            let fresh97 = &mut ((*config).cert_type);
                             *fresh97 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh98 = (*config).cert_type;
+                            let fresh98 = &mut ((*config).cert_type);
                             *fresh98 = strdup(nextarg);
                             if ((*config).cert_type).is_null() {
                                 return PARAM_NO_MEM;
@@ -4228,11 +4228,11 @@ pub unsafe extern "C" fn getparameter(
                     99 => {
                         if !((*config).key).is_null() {
                             free((*config).key as *mut libc::c_void);
-                            let ref mut fresh99 = (*config).key;
+                            let fresh99 = &mut ((*config).key);
                             *fresh99 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh100 = (*config).key;
+                            let fresh100 = &mut ((*config).key);
                             *fresh100 = strdup(nextarg);
                             if ((*config).key).is_null() {
                                 return PARAM_NO_MEM;
@@ -4242,11 +4242,11 @@ pub unsafe extern "C" fn getparameter(
                     100 => {
                         if !((*config).key_type).is_null() {
                             free((*config).key_type as *mut libc::c_void);
-                            let ref mut fresh101 = (*config).key_type;
+                            let fresh101 = &mut ((*config).key_type);
                             *fresh101 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh102 = (*config).key_type;
+                            let fresh102 = &mut ((*config).key_type);
                             *fresh102 = strdup(nextarg);
                             if ((*config).key_type).is_null() {
                                 return PARAM_NO_MEM;
@@ -4256,11 +4256,11 @@ pub unsafe extern "C" fn getparameter(
                     101 => {
                         if !((*config).key_passwd).is_null() {
                             free((*config).key_passwd as *mut libc::c_void);
-                            let ref mut fresh103 = (*config).key_passwd;
+                            let fresh103 = &mut ((*config).key_passwd);
                             *fresh103 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh104 = (*config).key_passwd;
+                            let fresh104 = &mut ((*config).key_passwd);
                             *fresh104 = strdup(nextarg);
                             if ((*config).key_passwd).is_null() {
                                 return PARAM_NO_MEM;
@@ -4271,11 +4271,11 @@ pub unsafe extern "C" fn getparameter(
                     102 => {
                         if !((*config).engine).is_null() {
                             free((*config).engine as *mut libc::c_void);
-                            let ref mut fresh105 = (*config).engine;
+                            let fresh105 = &mut ((*config).engine);
                             *fresh105 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh106 = (*config).engine;
+                            let fresh106 = &mut ((*config).engine);
                             *fresh106 = strdup(nextarg);
                             if ((*config).engine).is_null() {
                                 return PARAM_NO_MEM;
@@ -4293,11 +4293,11 @@ pub unsafe extern "C" fn getparameter(
                     103 => {
                         if !((*config).capath).is_null() {
                             free((*config).capath as *mut libc::c_void);
-                            let ref mut fresh107 = (*config).capath;
+                            let fresh107 = &mut ((*config).capath);
                             *fresh107 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh108 = (*config).capath;
+                            let fresh108 = &mut ((*config).capath);
                             *fresh108 = strdup(nextarg);
                             if ((*config).capath).is_null() {
                                 return PARAM_NO_MEM;
@@ -4307,11 +4307,11 @@ pub unsafe extern "C" fn getparameter(
                     104 => {
                         if !((*config).pubkey).is_null() {
                             free((*config).pubkey as *mut libc::c_void);
-                            let ref mut fresh109 = (*config).pubkey;
+                            let fresh109 = &mut ((*config).pubkey);
                             *fresh109 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh110 = (*config).pubkey;
+                            let fresh110 = &mut ((*config).pubkey);
                             *fresh110 = strdup(nextarg);
                             if ((*config).pubkey).is_null() {
                                 return PARAM_NO_MEM;
@@ -4321,11 +4321,11 @@ pub unsafe extern "C" fn getparameter(
                     105 => {
                         if !((*config).hostpubmd5).is_null() {
                             free((*config).hostpubmd5 as *mut libc::c_void);
-                            let ref mut fresh111 = (*config).hostpubmd5;
+                            let fresh111 = &mut ((*config).hostpubmd5);
                             *fresh111 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh112 = (*config).hostpubmd5;
+                            let fresh112 = &mut ((*config).hostpubmd5);
                             *fresh112 = strdup(nextarg);
                             if ((*config).hostpubmd5).is_null() {
                                 return PARAM_NO_MEM;
@@ -4341,11 +4341,11 @@ pub unsafe extern "C" fn getparameter(
                     106 => {
                         if !((*config).crlfile).is_null() {
                             free((*config).crlfile as *mut libc::c_void);
-                            let ref mut fresh113 = (*config).crlfile;
+                            let fresh113 = &mut ((*config).crlfile);
                             *fresh113 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh114 = (*config).crlfile;
+                            let fresh114 = &mut ((*config).crlfile);
                             *fresh114 = strdup(nextarg);
                             if ((*config).crlfile).is_null() {
                                 return PARAM_NO_MEM;
@@ -4358,11 +4358,11 @@ pub unsafe extern "C" fn getparameter(
                         {
                             if !((*config).tls_username).is_null() {
                                 free((*config).tls_username as *mut libc::c_void);
-                                let ref mut fresh115 = (*config).tls_username;
+                                let fresh115 = &mut ((*config).tls_username);
                                 *fresh115 = 0 as *mut i8;
                             }
                             if !nextarg.is_null() {
-                                let ref mut fresh116 = (*config).tls_username;
+                                let fresh116 = &mut ((*config).tls_username);
                                 *fresh116 = strdup(nextarg);
                                 if ((*config).tls_username).is_null() {
                                     return PARAM_NO_MEM;
@@ -4378,11 +4378,11 @@ pub unsafe extern "C" fn getparameter(
                         {
                             if !((*config).tls_password).is_null() {
                                 free((*config).tls_password as *mut libc::c_void);
-                                let ref mut fresh117 = (*config).tls_password;
+                                let fresh117 = &mut ((*config).tls_password);
                                 *fresh117 = 0 as *mut i8;
                             }
                             if !nextarg.is_null() {
-                                let ref mut fresh118 = (*config).tls_password;
+                                let fresh118 = &mut ((*config).tls_password);
                                 *fresh118 = strdup(nextarg);
                                 if ((*config).tls_password).is_null() {
                                     return PARAM_NO_MEM;
@@ -4398,11 +4398,11 @@ pub unsafe extern "C" fn getparameter(
                         {
                             if !((*config).tls_authtype).is_null() {
                                 free((*config).tls_authtype as *mut libc::c_void);
-                                let ref mut fresh119 = (*config).tls_authtype;
+                                let fresh119 = &mut ((*config).tls_authtype);
                                 *fresh119 = 0 as *mut i8;
                             }
                             if !nextarg.is_null() {
-                                let ref mut fresh120 = (*config).tls_authtype;
+                                let fresh120 = &mut ((*config).tls_authtype);
                                 *fresh120 = strdup(nextarg);
                                 if ((*config).tls_authtype).is_null() {
                                     return PARAM_NO_MEM;
@@ -4443,11 +4443,11 @@ pub unsafe extern "C" fn getparameter(
                     112 => {
                         if !((*config).pinnedpubkey).is_null() {
                             free((*config).pinnedpubkey as *mut libc::c_void);
-                            let ref mut fresh121 = (*config).pinnedpubkey;
+                            let fresh121 = &mut ((*config).pinnedpubkey);
                             *fresh121 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh122 = (*config).pinnedpubkey;
+                            let fresh122 = &mut ((*config).pinnedpubkey);
                             *fresh122 = strdup(nextarg);
                             if ((*config).pinnedpubkey).is_null() {
                                 return PARAM_NO_MEM;
@@ -4457,11 +4457,11 @@ pub unsafe extern "C" fn getparameter(
                     80 => {
                         if !((*config).proxy_pinnedpubkey).is_null() {
                             free((*config).proxy_pinnedpubkey as *mut libc::c_void);
-                            let ref mut fresh123 = (*config).proxy_pinnedpubkey;
+                            let fresh123 = &mut ((*config).proxy_pinnedpubkey);
                             *fresh123 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh124 = (*config).proxy_pinnedpubkey;
+                            let fresh124 = &mut ((*config).proxy_pinnedpubkey);
                             *fresh124 = strdup(nextarg);
                             if ((*config).proxy_pinnedpubkey).is_null() {
                                 return PARAM_NO_MEM;
@@ -4500,11 +4500,11 @@ pub unsafe extern "C" fn getparameter(
                         {
                             if !((*config).proxy_tls_username).is_null() {
                                 free((*config).proxy_tls_username as *mut libc::c_void);
-                                let ref mut fresh125 = (*config).proxy_tls_username;
+                                let fresh125 = &mut ((*config).proxy_tls_username);
                                 *fresh125 = 0 as *mut i8;
                             }
                             if !nextarg.is_null() {
-                                let ref mut fresh126 = (*config).proxy_tls_username;
+                                let fresh126 = &mut ((*config).proxy_tls_username);
                                 *fresh126 = strdup(nextarg);
                                 if ((*config).proxy_tls_username).is_null() {
                                     return PARAM_NO_MEM;
@@ -4520,11 +4520,11 @@ pub unsafe extern "C" fn getparameter(
                         {
                             if !((*config).proxy_tls_password).is_null() {
                                 free((*config).proxy_tls_password as *mut libc::c_void);
-                                let ref mut fresh127 = (*config).proxy_tls_password;
+                                let fresh127 = &mut ((*config).proxy_tls_password);
                                 *fresh127 = 0 as *mut i8;
                             }
                             if !nextarg.is_null() {
-                                let ref mut fresh128 = (*config).proxy_tls_password;
+                                let fresh128 = &mut ((*config).proxy_tls_password);
                                 *fresh128 = strdup(nextarg);
                                 if ((*config).proxy_tls_password).is_null() {
                                     return PARAM_NO_MEM;
@@ -4540,11 +4540,11 @@ pub unsafe extern "C" fn getparameter(
                         {
                             if !((*config).proxy_tls_authtype).is_null() {
                                 free((*config).proxy_tls_authtype as *mut libc::c_void);
-                                let ref mut fresh129 = (*config).proxy_tls_authtype;
+                                let fresh129 = &mut ((*config).proxy_tls_authtype);
                                 *fresh129 = 0 as *mut i8;
                             }
                             if !nextarg.is_null() {
-                                let ref mut fresh130 = (*config).proxy_tls_authtype;
+                                let fresh130 = &mut ((*config).proxy_tls_authtype);
                                 *fresh130 = strdup(nextarg);
                                 if ((*config).proxy_tls_authtype).is_null() {
                                     return PARAM_NO_MEM;
@@ -4571,11 +4571,11 @@ pub unsafe extern "C" fn getparameter(
                     121 => {
                         if !((*config).proxy_cert_type).is_null() {
                             free((*config).proxy_cert_type as *mut libc::c_void);
-                            let ref mut fresh131 = (*config).proxy_cert_type;
+                            let fresh131 = &mut ((*config).proxy_cert_type);
                             *fresh131 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh132 = (*config).proxy_cert_type;
+                            let fresh132 = &mut ((*config).proxy_cert_type);
                             *fresh132 = strdup(nextarg);
                             if ((*config).proxy_cert_type).is_null() {
                                 return PARAM_NO_MEM;
@@ -4585,11 +4585,11 @@ pub unsafe extern "C" fn getparameter(
                     122 => {
                         if !((*config).proxy_key).is_null() {
                             free((*config).proxy_key as *mut libc::c_void);
-                            let ref mut fresh133 = (*config).proxy_key;
+                            let fresh133 = &mut ((*config).proxy_key);
                             *fresh133 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh134 = (*config).proxy_key;
+                            let fresh134 = &mut ((*config).proxy_key);
                             *fresh134 = strdup(nextarg);
                             if ((*config).proxy_key).is_null() {
                                 return PARAM_NO_MEM;
@@ -4599,11 +4599,11 @@ pub unsafe extern "C" fn getparameter(
                     48 => {
                         if !((*config).proxy_key_type).is_null() {
                             free((*config).proxy_key_type as *mut libc::c_void);
-                            let ref mut fresh135 = (*config).proxy_key_type;
+                            let fresh135 = &mut ((*config).proxy_key_type);
                             *fresh135 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh136 = (*config).proxy_key_type;
+                            let fresh136 = &mut ((*config).proxy_key_type);
                             *fresh136 = strdup(nextarg);
                             if ((*config).proxy_key_type).is_null() {
                                 return PARAM_NO_MEM;
@@ -4613,11 +4613,11 @@ pub unsafe extern "C" fn getparameter(
                     49 => {
                         if !((*config).proxy_key_passwd).is_null() {
                             free((*config).proxy_key_passwd as *mut libc::c_void);
-                            let ref mut fresh137 = (*config).proxy_key_passwd;
+                            let fresh137 = &mut ((*config).proxy_key_passwd);
                             *fresh137 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh138 = (*config).proxy_key_passwd;
+                            let fresh138 = &mut ((*config).proxy_key_passwd);
                             *fresh138 = strdup(nextarg);
                             if ((*config).proxy_key_passwd).is_null() {
                                 return PARAM_NO_MEM;
@@ -4628,11 +4628,11 @@ pub unsafe extern "C" fn getparameter(
                     50 => {
                         if !((*config).proxy_cipher_list).is_null() {
                             free((*config).proxy_cipher_list as *mut libc::c_void);
-                            let ref mut fresh139 = (*config).proxy_cipher_list;
+                            let fresh139 = &mut ((*config).proxy_cipher_list);
                             *fresh139 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh140 = (*config).proxy_cipher_list;
+                            let fresh140 = &mut ((*config).proxy_cipher_list);
                             *fresh140 = strdup(nextarg);
                             if ((*config).proxy_cipher_list).is_null() {
                                 return PARAM_NO_MEM;
@@ -4642,11 +4642,11 @@ pub unsafe extern "C" fn getparameter(
                     51 => {
                         if !((*config).proxy_crlfile).is_null() {
                             free((*config).proxy_crlfile as *mut libc::c_void);
-                            let ref mut fresh141 = (*config).proxy_crlfile;
+                            let fresh141 = &mut ((*config).proxy_crlfile);
                             *fresh141 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh142 = (*config).proxy_crlfile;
+                            let fresh142 = &mut ((*config).proxy_crlfile);
                             *fresh142 = strdup(nextarg);
                             if ((*config).proxy_crlfile).is_null() {
                                 return PARAM_NO_MEM;
@@ -4663,11 +4663,11 @@ pub unsafe extern "C" fn getparameter(
                     53 => {
                         if !((*config).login_options).is_null() {
                             free((*config).login_options as *mut libc::c_void);
-                            let ref mut fresh143 = (*config).login_options;
+                            let fresh143 = &mut ((*config).login_options);
                             *fresh143 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh144 = (*config).login_options;
+                            let fresh144 = &mut ((*config).login_options);
                             *fresh144 = strdup(nextarg);
                             if ((*config).login_options).is_null() {
                                 return PARAM_NO_MEM;
@@ -4677,11 +4677,11 @@ pub unsafe extern "C" fn getparameter(
                     54 => {
                         if !((*config).proxy_cacert).is_null() {
                             free((*config).proxy_cacert as *mut libc::c_void);
-                            let ref mut fresh145 = (*config).proxy_cacert;
+                            let fresh145 = &mut ((*config).proxy_cacert);
                             *fresh145 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh146 = (*config).proxy_cacert;
+                            let fresh146 = &mut ((*config).proxy_cacert);
                             *fresh146 = strdup(nextarg);
                             if ((*config).proxy_cacert).is_null() {
                                 return PARAM_NO_MEM;
@@ -4691,11 +4691,11 @@ pub unsafe extern "C" fn getparameter(
                     55 => {
                         if !((*config).proxy_capath).is_null() {
                             free((*config).proxy_capath as *mut libc::c_void);
-                            let ref mut fresh147 = (*config).proxy_capath;
+                            let fresh147 = &mut ((*config).proxy_capath);
                             *fresh147 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh148 = (*config).proxy_capath;
+                            let fresh148 = &mut ((*config).proxy_capath);
                             *fresh148 = strdup(nextarg);
                             if ((*config).proxy_capath).is_null() {
                                 return PARAM_NO_MEM;
@@ -4733,11 +4733,11 @@ pub unsafe extern "C" fn getparameter(
                     67 => {
                         if !((*config).etag_save_file).is_null() {
                             free((*config).etag_save_file as *mut libc::c_void);
-                            let ref mut fresh149 = (*config).etag_save_file;
+                            let fresh149 = &mut ((*config).etag_save_file);
                             *fresh149 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh150 = (*config).etag_save_file;
+                            let fresh150 = &mut ((*config).etag_save_file);
                             *fresh150 = strdup(nextarg);
                             if ((*config).etag_save_file).is_null() {
                                 return PARAM_NO_MEM;
@@ -4747,11 +4747,11 @@ pub unsafe extern "C" fn getparameter(
                     68 => {
                         if !((*config).etag_compare_file).is_null() {
                             free((*config).etag_compare_file as *mut libc::c_void);
-                            let ref mut fresh151 = (*config).etag_compare_file;
+                            let fresh151 = &mut ((*config).etag_compare_file);
                             *fresh151 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh152 = (*config).etag_compare_file;
+                            let fresh152 = &mut ((*config).etag_compare_file);
                             *fresh152 = strdup(nextarg);
                             if ((*config).etag_compare_file).is_null() {
                                 return PARAM_NO_MEM;
@@ -4761,11 +4761,11 @@ pub unsafe extern "C" fn getparameter(
                     69 => {
                         if !((*config).ssl_ec_curves).is_null() {
                             free((*config).ssl_ec_curves as *mut libc::c_void);
-                            let ref mut fresh153 = (*config).ssl_ec_curves;
+                            let fresh153 = &mut ((*config).ssl_ec_curves);
                             *fresh153 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh154 = (*config).ssl_ec_curves;
+                            let fresh154 = &mut ((*config).ssl_ec_curves);
                             *fresh154 = strdup(nextarg);
                             if ((*config).ssl_ec_curves).is_null() {
                                 return PARAM_NO_MEM;
@@ -4835,11 +4835,11 @@ pub unsafe extern "C" fn getparameter(
                 if subletter as i32 == 'a' as i32 {
                     if !((*config).request_target).is_null() {
                         free((*config).request_target as *mut libc::c_void);
-                        let ref mut fresh155 = (*config).request_target;
+                        let fresh155 = &mut ((*config).request_target);
                         *fresh155 = 0 as *mut i8;
                     }
                     if !nextarg.is_null() {
-                        let ref mut fresh156 = (*config).request_target;
+                        let fresh156 = &mut ((*config).request_target);
                         *fresh156 = strdup(nextarg);
                         if ((*config).request_target).is_null() {
                             return PARAM_NO_MEM;
@@ -4853,7 +4853,7 @@ pub unsafe extern "C" fn getparameter(
             104 => {
                 if toggle {
                     if !nextarg.is_null() {
-                        let ref mut fresh157 = (*global).help_category;
+                        let fresh157 = &mut ((*global).help_category);
                         *fresh157 = strdup(nextarg);
                         if ((*global).help_category).is_null() {
                             return PARAM_NO_MEM;
@@ -5019,11 +5019,11 @@ pub unsafe extern "C" fn getparameter(
                     101 => {
                         if !((*config).netrc_file).is_null() {
                             free((*config).netrc_file as *mut libc::c_void);
-                            let ref mut fresh158 = (*config).netrc_file;
+                            let fresh158 = &mut ((*config).netrc_file);
                             *fresh158 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh159 = (*config).netrc_file;
+                            let fresh159 = &mut ((*config).netrc_file);
                             *fresh159 = strdup(nextarg);
                             if ((*config).netrc_file).is_null() {
                                 return PARAM_NO_MEM;
@@ -5061,11 +5061,11 @@ pub unsafe extern "C" fn getparameter(
                 } else if subletter as i32 == 'b' as i32 {
                     if !((*config).output_dir).is_null() {
                         free((*config).output_dir as *mut libc::c_void);
-                        let ref mut fresh160 = (*config).output_dir;
+                        let fresh160 = &mut ((*config).output_dir);
                         *fresh160 = 0 as *mut i8;
                     }
                     if !nextarg.is_null() {
-                        let ref mut fresh161 = (*config).output_dir;
+                        let fresh161 = &mut ((*config).output_dir);
                         *fresh161 = strdup(nextarg);
                         if ((*config).output_dir).is_null() {
                             return PARAM_NO_MEM;
@@ -5082,11 +5082,11 @@ pub unsafe extern "C" fn getparameter(
             80 => {
                 if !((*config).ftpport).is_null() {
                     free((*config).ftpport as *mut libc::c_void);
-                    let ref mut fresh168 = (*config).ftpport;
+                    let fresh168 = &mut ((*config).ftpport);
                     *fresh168 = 0 as *mut i8;
                 }
                 if !nextarg.is_null() {
-                    let ref mut fresh169 = (*config).ftpport;
+                    let fresh169 = &mut ((*config).ftpport);
                     *fresh169 = strdup(nextarg);
                     if ((*config).ftpport).is_null() {
                         return PARAM_NO_MEM;
@@ -5152,9 +5152,9 @@ pub unsafe extern "C" fn getparameter(
                         off,
                     );
                     free((*config).range as *mut libc::c_void);
-                    let ref mut fresh170 = (*config).range;
+                    let fresh170 = &mut ((*config).range);
                     *fresh170 = 0 as *mut i8;
-                    let ref mut fresh171 = (*config).range;
+                    let fresh171 = &mut ((*config).range);
                     *fresh171 = strdup(buffer.as_mut_ptr());
                     if ((*config).range).is_null() {
                         return PARAM_NO_MEM;
@@ -5178,11 +5178,11 @@ pub unsafe extern "C" fn getparameter(
                 }
                 if !((*config).range).is_null() {
                     free((*config).range as *mut libc::c_void);
-                    let ref mut fresh172 = (*config).range;
+                    let fresh172 = &mut ((*config).range);
                     *fresh172 = 0 as *mut i8;
                 }
                 if !nextarg.is_null() {
-                    let ref mut fresh173 = (*config).range;
+                    let fresh173 = &mut ((*config).range);
                     *fresh173 = strdup(nextarg);
                     if ((*config).range).is_null() {
                         return PARAM_NO_MEM;
@@ -5196,11 +5196,11 @@ pub unsafe extern "C" fn getparameter(
             }
             115 => {
                 if toggle {
-                    let ref mut fresh174 = (*global).noprogress;
+                    let fresh174 = &mut ((*global).noprogress);
                     *fresh174 = 1 as i32 != 0;
                     (*global).mute = *fresh174;
                 } else {
-                    let ref mut fresh175 = (*global).noprogress;
+                    let fresh175 = &mut ((*global).noprogress);
                     *fresh175 = 0 as i32 != 0;
                     (*global).mute = *fresh175;
                 }
@@ -5233,7 +5233,7 @@ pub unsafe extern "C" fn getparameter(
             84 => {
                 let mut url_1: *mut getout = 0 as *mut getout;
                 if ((*config).url_ul).is_null() {
-                    let ref mut fresh176 = (*config).url_ul;
+                    let fresh176 = &mut ((*config).url_ul);
                     *fresh176 = (*config).url_list;
                 }
                 if !((*config).url_ul).is_null() {
@@ -5241,7 +5241,7 @@ pub unsafe extern "C" fn getparameter(
                         && (*(*config).url_ul).flags
                             & (1 as i32) << 3 as i32 != 0
                     {
-                        let ref mut fresh177 = (*config).url_ul;
+                        let fresh177 = &mut ((*config).url_ul);
                         *fresh177 = (*(*config).url_ul).next;
                     }
                 }
@@ -5249,7 +5249,7 @@ pub unsafe extern "C" fn getparameter(
                     url_1 = (*config).url_ul;
                 } else {
                     url_1 = new_getout(config);
-                    let ref mut fresh178 = (*config).url_ul;
+                    let fresh178 = &mut ((*config).url_ul);
                     *fresh178 = url_1;
                 }
                 if url_1.is_null() {
@@ -5261,11 +5261,11 @@ pub unsafe extern "C" fn getparameter(
                 } else {
                     if !((*url_1).infile).is_null() {
                         free((*url_1).infile as *mut libc::c_void);
-                        let ref mut fresh179 = (*url_1).infile;
+                        let fresh179 = &mut ((*url_1).infile);
                         *fresh179 = 0 as *mut i8;
                     }
                     if !nextarg.is_null() {
-                        let ref mut fresh180 = (*url_1).infile;
+                        let fresh180 = &mut ((*url_1).infile);
                         *fresh180 = strdup(nextarg);
                         if ((*url_1).infile).is_null() {
                             return PARAM_NO_MEM;
@@ -5277,11 +5277,11 @@ pub unsafe extern "C" fn getparameter(
             117 => {
                 if !((*config).userpwd).is_null() {
                     free((*config).userpwd as *mut libc::c_void);
-                    let ref mut fresh181 = (*config).userpwd;
+                    let fresh181 = &mut ((*config).userpwd);
                     *fresh181 = 0 as *mut i8;
                 }
                 if !nextarg.is_null() {
-                    let ref mut fresh182 = (*config).userpwd;
+                    let fresh182 = &mut ((*config).userpwd);
                     *fresh182 = strdup(nextarg);
                     if ((*config).userpwd).is_null() {
                         return PARAM_NO_MEM;
@@ -5293,11 +5293,11 @@ pub unsafe extern "C" fn getparameter(
             85 => {
                 if !((*config).proxyuserpwd).is_null() {
                     free((*config).proxyuserpwd as *mut libc::c_void);
-                    let ref mut fresh183 = (*config).proxyuserpwd;
+                    let fresh183 = &mut ((*config).proxyuserpwd);
                     *fresh183 = 0 as *mut i8;
                 }
                 if !nextarg.is_null() {
-                    let ref mut fresh184 = (*config).proxyuserpwd;
+                    let fresh184 = &mut ((*config).proxyuserpwd);
                     *fresh184 = strdup(nextarg);
                     if ((*config).proxyuserpwd).is_null() {
                         return PARAM_NO_MEM;
@@ -5309,9 +5309,9 @@ pub unsafe extern "C" fn getparameter(
             118 => {
                 if toggle {
                     free((*global).trace_dump as *mut libc::c_void);
-                    let ref mut fresh185 = (*global).trace_dump;
+                    let fresh185 = &mut ((*global).trace_dump);
                     *fresh185 = 0 as *mut i8;
-                    let ref mut fresh186 = (*global).trace_dump;
+                    let fresh186 = &mut ((*global).trace_dump);
                     *fresh186 = strdup(b"%\0" as *const u8 as *const i8);
                     if ((*global).trace_dump).is_null() {
                         return PARAM_NO_MEM;
@@ -5354,7 +5354,7 @@ pub unsafe extern "C" fn getparameter(
                         );
                     }
                     free((*config).writeout as *mut libc::c_void);
-                    let ref mut fresh187 = (*config).writeout;
+                    let fresh187 = &mut ((*config).writeout);
                     *fresh187 = 0 as *mut i8;
                     err = file2string(&mut (*config).writeout, file_1);
                     if !file_1.is_null() && file_1 != stdin {
@@ -5373,11 +5373,11 @@ pub unsafe extern "C" fn getparameter(
                 } else {
                     if !((*config).writeout).is_null() {
                         free((*config).writeout as *mut libc::c_void);
-                        let ref mut fresh188 = (*config).writeout;
+                        let fresh188 = &mut ((*config).writeout);
                         *fresh188 = 0 as *mut i8;
                     }
                     if !nextarg.is_null() {
-                        let ref mut fresh189 = (*config).writeout;
+                        let fresh189 = &mut ((*config).writeout);
                         *fresh189 = strdup(nextarg);
                         if ((*config).writeout).is_null() {
                             return PARAM_NO_MEM;
@@ -5391,11 +5391,11 @@ pub unsafe extern "C" fn getparameter(
                     97 => {
                         if !((*config).preproxy).is_null() {
                             free((*config).preproxy as *mut libc::c_void);
-                            let ref mut fresh190 = (*config).preproxy;
+                            let fresh190 = &mut ((*config).preproxy);
                             *fresh190 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh191 = (*config).preproxy;
+                            let fresh191 = &mut ((*config).preproxy);
                             *fresh191 = strdup(nextarg);
                             if ((*config).preproxy).is_null() {
                                 return PARAM_NO_MEM;
@@ -5405,11 +5405,11 @@ pub unsafe extern "C" fn getparameter(
                     _ => {
                         if !((*config).proxy).is_null() {
                             free((*config).proxy as *mut libc::c_void);
-                            let ref mut fresh192 = (*config).proxy;
+                            let fresh192 = &mut ((*config).proxy);
                             *fresh192 = 0 as *mut i8;
                         }
                         if !nextarg.is_null() {
-                            let ref mut fresh193 = (*config).proxy;
+                            let fresh193 = &mut ((*config).proxy);
                             *fresh193 = strdup(nextarg);
                             if ((*config).proxy).is_null() {
                                 return PARAM_NO_MEM;
@@ -5423,11 +5423,11 @@ pub unsafe extern "C" fn getparameter(
             88 => {
                 if !((*config).customrequest).is_null() {
                     free((*config).customrequest as *mut libc::c_void);
-                    let ref mut fresh194 = (*config).customrequest;
+                    let fresh194 = &mut ((*config).customrequest);
                     *fresh194 = 0 as *mut i8;
                 }
                 if !nextarg.is_null() {
-                    let ref mut fresh195 = (*config).customrequest;
+                    let fresh195 = &mut ((*config).customrequest);
                     *fresh195 = strdup(nextarg);
                     if ((*config).customrequest).is_null() {
                         return PARAM_NO_MEM;
@@ -5528,7 +5528,7 @@ pub unsafe extern "C" fn getparameter(
             11000567119642394172 => {
                 let mut url_0: *mut getout = 0 as *mut getout;
                 if ((*config).url_out).is_null() {
-                    let ref mut fresh162 = (*config).url_out;
+                    let fresh162 = &mut ((*config).url_out);
                     *fresh162 = (*config).url_list;
                 }
                 if !((*config).url_out).is_null() {
@@ -5536,7 +5536,7 @@ pub unsafe extern "C" fn getparameter(
                         && (*(*config).url_out).flags
                             & (1 as i32) << 0 as i32 != 0
                     {
-                        let ref mut fresh163 = (*config).url_out;
+                        let fresh163 = &mut ((*config).url_out);
                         *fresh163 = (*(*config).url_out).next;
                     }
                 }
@@ -5544,7 +5544,7 @@ pub unsafe extern "C" fn getparameter(
                     url_0 = (*config).url_out;
                 } else {
                     url_0 = new_getout(config);
-                    let ref mut fresh164 = (*config).url_out;
+                    let fresh164 = &mut ((*config).url_out);
                     *fresh164 = url_0;
                 }
                 if url_0.is_null() {
@@ -5553,11 +5553,11 @@ pub unsafe extern "C" fn getparameter(
                 if 'o' as i32 == letter as i32 {
                     if !((*url_0).outfile).is_null() {
                         free((*url_0).outfile as *mut libc::c_void);
-                        let ref mut fresh165 = (*url_0).outfile;
+                        let fresh165 = &mut ((*url_0).outfile);
                         *fresh165 = 0 as *mut i8;
                     }
                     if !nextarg.is_null() {
-                        let ref mut fresh166 = (*url_0).outfile;
+                        let fresh166 = &mut ((*url_0).outfile);
                         *fresh166 = strdup(nextarg);
                         if ((*url_0).outfile).is_null() {
                             return PARAM_NO_MEM;
@@ -5565,7 +5565,7 @@ pub unsafe extern "C" fn getparameter(
                     }
                     (*url_0).flags &= !((1 as i32) << 2 as i32);
                 } else {
-                    let ref mut fresh167 = (*url_0).outfile;
+                    let fresh167 = &mut ((*url_0).outfile);
                     *fresh167 = 0 as *mut i8;
                     if toggle {
                         (*url_0).flags |= (1 as i32) << 2 as i32;
@@ -5632,17 +5632,17 @@ pub unsafe extern "C" fn parse_args(
                     if !((*config).url_list).is_null()
                         && !((*(*config).url_list).url).is_null()
                     {
-                        let ref mut fresh196 = (*config).next;
+                        let fresh196 = &mut ((*config).next);
                         *fresh196 = malloc(
                             ::std::mem::size_of::<OperationConfig>() as u64,
                         ) as *mut OperationConfig;
                         if !((*config).next).is_null() {
                             config_init((*config).next);
-                            let ref mut fresh197 = (*(*config).next).global;
+                            let fresh197 = &mut ((*(*config).next).global);
                             *fresh197 = global;
-                            let ref mut fresh198 = (*global).last;
+                            let fresh198 = &mut ((*global).last);
                             *fresh198 = (*config).next;
-                            let ref mut fresh199 = (*(*config).next).prev;
+                            let fresh199 = &mut ((*(*config).next).prev);
                             *fresh199 = config;
                             config = (*config).next;
                         } else {

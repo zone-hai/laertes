@@ -11,16 +11,12 @@
 #![feature(register_tool)]
 #![register_tool(c2rust)]
 #![feature(rustc_private)]
-#![feature(const_mut_refs)]
-#![feature(const_fn_fn_ptr_basics)]
-
 
 #[macro_use]
 extern crate c2rust_bitfields;
 extern crate libc;
 pub mod src {
 pub mod lib {
-pub mod http2;
 pub mod altsvc;
 pub mod amigaos;
 pub mod asyn_ares;
@@ -76,6 +72,7 @@ pub mod hostip6;
 pub mod hostsyn;
 pub mod hsts;
 pub mod http;
+pub mod http2;
 pub mod http_aws_sigv4;
 pub mod http_chunks;
 pub mod http_digest;

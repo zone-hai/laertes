@@ -10,7 +10,7 @@ extern "C" {
     fn MD4_Init(c: *mut MD4_CTX) -> i32;
 }
 pub use crate::src::lib::warnless::curlx_uztoui;
-pub type size_t = crate::src::lib::http2::size_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
 pub type MD4_CTX = MD4state_st;
 #[derive(Copy, Clone)]
 #[repr(C)]

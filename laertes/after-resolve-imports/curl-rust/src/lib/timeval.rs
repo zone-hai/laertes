@@ -3,23 +3,23 @@ extern "C" {
     fn clock_gettime(__clock_id: clockid_t, __tp: *mut timespec) -> i32;
     fn gettimeofday(__tv: *mut timeval, __tz: *mut libc::c_void) -> i32;
 }
-pub type __time_t = crate::src::lib::http2::__time_t;
+pub type __time_t = crate::src::lib::altsvc::__time_t;
 pub type __suseconds_t = crate::src::lib::openldap::__suseconds_t;
 pub type __clockid_t = i32;
 pub type __syscall_slong_t = crate::src::lib::file::__syscall_slong_t;
 pub type clockid_t = __clockid_t;
-pub type time_t = crate::src::lib::http2::time_t;
+pub type time_t = crate::src::lib::altsvc::time_t;
 // #[derive(Copy, Clone)]
 
 pub type timeval = crate::src::lib::openldap::timeval;
 // #[derive(Copy, Clone)]
 
 pub type timespec = crate::src::lib::file::timespec;
-pub type curl_off_t = crate::src::lib::http2::curl_off_t;
-pub type timediff_t = crate::src::lib::http2::timediff_t;
+pub type curl_off_t = crate::src::lib::altsvc::curl_off_t;
+pub type timediff_t = crate::src::lib::altsvc::timediff_t;
 // #[derive(Copy, Clone)]
 
-pub type curltime = crate::src::lib::http2::curltime;
+pub type curltime = crate::src::lib::altsvc::curltime;
 #[no_mangle]
 pub unsafe extern "C" fn Curl_now() -> curltime {
     let mut now: timeval = timeval { tv_sec: 0, tv_usec: 0 };

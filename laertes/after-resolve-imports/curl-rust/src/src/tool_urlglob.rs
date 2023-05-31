@@ -46,18 +46,18 @@ pub use crate::src::lib::urlapi::curl_url;
 pub use crate::src::lib::urlapi::curl_url_cleanup;
 pub use crate::src::lib::urlapi::curl_url_set;
 pub use crate::src::lib::urlapi::Curl_URL;
-pub use crate::src::lib::mqtt::_IO_codecvt;
-pub use crate::src::src::tool_cb_rea::_IO_wide_data;
-pub use crate::src::src::tool_msgs::_IO_marker;
-pub type __off_t = crate::src::lib::http2::__off_t;
-pub type __off64_t = crate::src::lib::http2::__off64_t;
-pub type size_t = crate::src::lib::http2::size_t;
+pub use crate::src::lib::imap::_IO_marker;
+pub use crate::src::lib::speedcheck::_IO_codecvt;
+pub use crate::src::lib::vtls::vtls::_IO_wide_data;
+pub type __off_t = crate::src::lib::altsvc::__off_t;
+pub type __off64_t = crate::src::lib::altsvc::__off64_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
 // #[derive(Copy, Clone)]
 
-pub type _IO_FILE = crate::src::lib::http2::_IO_FILE;
-pub type _IO_lock_t = crate::src::lib::http2::_IO_lock_t;
-pub type FILE = crate::src::lib::http2::FILE;
-pub type CURLcode = crate::src::lib::http2::CURLcode;
+pub type _IO_FILE = crate::src::lib::altsvc::_IO_FILE;
+pub type _IO_lock_t = crate::src::lib::altsvc::_IO_lock_t;
+pub type FILE = crate::src::lib::altsvc::FILE;
+pub type CURLcode = crate::src::lib::altsvc::CURLcode;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
 pub const CURLE_PROXY: CURLcode = 97;
@@ -158,7 +158,7 @@ pub const CURLE_URL_MALFORMAT: CURLcode = 3;
 pub const CURLE_FAILED_INIT: CURLcode = 2;
 pub const CURLE_UNSUPPORTED_PROTOCOL: CURLcode = 1;
 pub const CURLE_OK: CURLcode = 0;
-pub type CURLUcode = crate::src::lib::http2::CURLUcode;
+pub type CURLUcode = crate::src::lib::http::CURLUcode;
 pub const CURLUE_NO_FRAGMENT: CURLUcode = 17;
 pub const CURLUE_NO_QUERY: CURLUcode = 16;
 pub const CURLUE_NO_PORT: CURLUcode = 15;
@@ -177,7 +177,7 @@ pub const CURLUE_MALFORMED_INPUT: CURLUcode = 3;
 pub const CURLUE_BAD_PARTPOINTER: CURLUcode = 2;
 pub const CURLUE_BAD_HANDLE: CURLUcode = 1;
 pub const CURLUE_OK: CURLUcode = 0;
-pub type CURLUPart = crate::src::lib::http2::CURLUPart;
+pub type CURLUPart = crate::src::lib::http::CURLUPart;
 pub const CURLUPART_ZONEID: CURLUPart = 10;
 pub const CURLUPART_FRAGMENT: CURLUPart = 9;
 pub const CURLUPART_QUERY: CURLUPart = 8;
@@ -189,7 +189,7 @@ pub const CURLUPART_PASSWORD: CURLUPart = 3;
 pub const CURLUPART_USER: CURLUPart = 2;
 pub const CURLUPART_SCHEME: CURLUPart = 1;
 pub const CURLUPART_URL: CURLUPart = 0;
-pub type CURLU = crate::src::lib::http2::CURLU;
+pub type CURLU = crate::src::lib::altsvc::CURLU;
 // #[derive(Copy, Clone)]
 
 pub type URLGlob = crate::src::src::tool_cb_dbg::URLGlob;
@@ -214,7 +214,7 @@ pub const UPTCharRange: URLPatternType = 2;
 pub const UPTSet: URLPatternType = 1;
 // #[derive(Copy, Clone)]
 
-pub type dynbuf = crate::src::lib::http2::dynbuf;
+pub type dynbuf = crate::src::lib::altsvc::dynbuf;
 unsafe extern "C" fn glob_fixed(
     mut glob: *mut URLGlob,
     mut fixed: *mut i8,
@@ -227,21 +227,21 @@ unsafe extern "C" fn glob_fixed(
     (*pat).content.Set.size = 1 as i32;
     (*pat).content.Set.ptr_s = 0 as i32;
     (*pat).globindex = -(1 as i32);
-    let ref mut fresh0 = (*pat).content.Set.elements;
+    let fresh0 = &mut ((*pat).content.Set.elements);
     *fresh0 = malloc(::std::mem::size_of::<*mut i8>() as u64)
         as *mut *mut i8;
     if ((*pat).content.Set.elements).is_null() {
-        let ref mut fresh1 = (*glob).error;
+        let fresh1 = &mut ((*glob).error);
         *fresh1 = b"out of memory\0" as *const u8 as *const i8;
         (*glob).pos = 0 as i32 as size_t;
         return CURLE_OUT_OF_MEMORY as i32 as CURLcode;
     }
-    let ref mut fresh2 = *((*pat).content.Set.elements)
-        .offset(0 as i32 as isize);
+    let fresh2 = &mut (*((*pat).content.Set.elements)
+        .offset(0 as i32 as isize));
     *fresh2 = malloc(len.wrapping_add(1 as i32 as u64))
         as *mut i8;
     if (*((*pat).content.Set.elements).offset(0 as i32 as isize)).is_null() {
-        let ref mut fresh3 = (*glob).error;
+        let fresh3 = &mut ((*glob).error);
         *fresh3 = b"out of memory\0" as *const u8 as *const i8;
         (*glob).pos = 0 as i32 as size_t;
         return CURLE_OUT_OF_MEMORY as i32 as CURLcode;
@@ -289,27 +289,27 @@ unsafe extern "C" fn glob_set(
     (*pat).type_0 = UPTSet;
     (*pat).content.Set.size = 0 as i32;
     (*pat).content.Set.ptr_s = 0 as i32;
-    let ref mut fresh4 = (*pat).content.Set.elements;
+    let fresh4 = &mut ((*pat).content.Set.elements);
     *fresh4 = 0 as *mut *mut i8;
     (*pat).globindex = globindex;
     let mut current_block_36: u64;
     while !done {
         match *pattern as i32 {
             0 => {
-                let ref mut fresh5 = (*glob).error;
+                let fresh5 = &mut ((*glob).error);
                 *fresh5 = b"unmatched brace\0" as *const u8 as *const i8;
                 (*glob).pos = opos;
                 return CURLE_URL_MALFORMAT as i32 as CURLcode;
             }
             123 | 91 => {
-                let ref mut fresh6 = (*glob).error;
+                let fresh6 = &mut ((*glob).error);
                 *fresh6 = b"nested brace\0" as *const u8 as *const i8;
                 (*glob).pos = *posp;
                 return CURLE_URL_MALFORMAT as i32 as CURLcode;
             }
             125 => {
                 if opattern == pattern {
-                    let ref mut fresh7 = (*glob).error;
+                    let fresh7 = &mut ((*glob).error);
                     *fresh7 = b"empty string within braces\0" as *const u8
                         as *const i8;
                     (*glob).pos = *posp;
@@ -320,7 +320,7 @@ unsafe extern "C" fn glob_set(
                     ((*pat).content.Set.size + 1 as i32) as i64,
                 ) != 0
                 {
-                    let ref mut fresh8 = (*glob).error;
+                    let fresh8 = &mut ((*glob).error);
                     *fresh8 = b"range overflow\0" as *const u8 as *const i8;
                     (*glob).pos = 0 as i32 as size_t;
                     return CURLE_URL_MALFORMAT as i32 as CURLcode;
@@ -331,7 +331,7 @@ unsafe extern "C" fn glob_set(
                 current_block_36 = 6366302455163204299;
             }
             93 => {
-                let ref mut fresh16 = (*glob).error;
+                let fresh16 = &mut ((*glob).error);
                 *fresh16 = b"unexpected close bracket\0" as *const u8
                     as *const i8;
                 (*glob).pos = *posp;
@@ -360,38 +360,38 @@ unsafe extern "C" fn glob_set(
                             ),
                     ) as *mut *mut i8;
                     if new_arr.is_null() {
-                        let ref mut fresh9 = (*glob).error;
+                        let fresh9 = &mut ((*glob).error);
                         *fresh9 = b"out of memory\0" as *const u8 as *const i8;
                         (*glob).pos = 0 as i32 as size_t;
                         return CURLE_OUT_OF_MEMORY as i32 as CURLcode;
                     }
-                    let ref mut fresh10 = (*pat).content.Set.elements;
+                    let fresh10 = &mut ((*pat).content.Set.elements);
                     *fresh10 = new_arr;
                 } else {
-                    let ref mut fresh11 = (*pat).content.Set.elements;
+                    let fresh11 = &mut ((*pat).content.Set.elements);
                     *fresh11 = malloc(
                         ::std::mem::size_of::<*mut i8>() as u64,
                     ) as *mut *mut i8;
                 }
                 if ((*pat).content.Set.elements).is_null() {
-                    let ref mut fresh12 = (*glob).error;
+                    let fresh12 = &mut ((*glob).error);
                     *fresh12 = b"out of memory\0" as *const u8 as *const i8;
                     (*glob).pos = 0 as i32 as size_t;
                     return CURLE_OUT_OF_MEMORY as i32 as CURLcode;
                 }
-                let ref mut fresh13 = *((*pat).content.Set.elements)
-                    .offset((*pat).content.Set.size as isize);
+                let fresh13 = &mut (*((*pat).content.Set.elements)
+                    .offset((*pat).content.Set.size as isize));
                 *fresh13 = strdup((*glob).glob_buffer);
                 if (*((*pat).content.Set.elements)
                     .offset((*pat).content.Set.size as isize))
                     .is_null()
                 {
-                    let ref mut fresh14 = (*glob).error;
+                    let fresh14 = &mut ((*glob).error);
                     *fresh14 = b"out of memory\0" as *const u8 as *const i8;
                     (*glob).pos = 0 as i32 as size_t;
                     return CURLE_OUT_OF_MEMORY as i32 as CURLcode;
                 }
-                let ref mut fresh15 = (*pat).content.Set.size;
+                let fresh15 = &mut ((*pat).content.Set.size);
                 *fresh15 += 1;
                 if *pattern as i32 == '}' as i32 {
                     pattern = pattern.offset(1);
@@ -482,13 +482,13 @@ unsafe extern "C" fn glob_range(
                     || max_c as i32 - min_c as i32
                         > 'z' as i32 - 'a' as i32)
         {
-            let ref mut fresh19 = (*glob).error;
+            let fresh19 = &mut ((*glob).error);
             *fresh19 = b"bad range\0" as *const u8 as *const i8;
             (*glob).pos = *posp;
             return CURLE_URL_MALFORMAT as i32 as CURLcode;
         }
         (*pat).content.CharRange.step = step as i32;
-        let ref mut fresh20 = (*pat).content.CharRange.min_c;
+        let fresh20 = &mut ((*pat).content.CharRange.min_c);
         *fresh20 = min_c;
         (*pat).content.CharRange.ptr_c = *fresh20;
         (*pat).content.CharRange.max_c = max_c;
@@ -499,7 +499,7 @@ unsafe extern "C" fn glob_range(
                 / (*pat).content.CharRange.step + 1 as i32) as i64,
         ) != 0
         {
-            let ref mut fresh21 = (*glob).error;
+            let fresh21 = &mut ((*glob).error);
             *fresh21 = b"range overflow\0" as *const u8 as *const i8;
             (*glob).pos = *posp;
             return CURLE_URL_MALFORMAT as i32 as CURLcode;
@@ -515,7 +515,7 @@ unsafe extern "C" fn glob_range(
             c = pattern;
             while Curl_isdigit(*c as u8 as i32) != 0 {
                 c = c.offset(1);
-                let ref mut fresh22 = (*pat).content.NumRange.padlength;
+                let fresh22 = &mut ((*pat).content.NumRange.padlength);
                 *fresh22 += 1;
             }
         }
@@ -565,12 +565,12 @@ unsafe extern "C" fn glob_range(
             || min_n == max_n && step_n != 1 as i32 as u64
             || min_n != max_n && (min_n > max_n || step_n > max_n.wrapping_sub(min_n))
         {
-            let ref mut fresh23 = (*glob).error;
+            let fresh23 = &mut ((*glob).error);
             *fresh23 = b"bad range\0" as *const u8 as *const i8;
             (*glob).pos = *posp;
             return CURLE_URL_MALFORMAT as i32 as CURLcode;
         }
-        let ref mut fresh24 = (*pat).content.NumRange.min_n;
+        let fresh24 = &mut ((*pat).content.NumRange.min_n);
         *fresh24 = min_n;
         (*pat).content.NumRange.ptr_n = *fresh24;
         (*pat).content.NumRange.max_n = max_n;
@@ -583,13 +583,13 @@ unsafe extern "C" fn glob_range(
                 .wrapping_add(1 as i32 as u64) as i64,
         ) != 0
         {
-            let ref mut fresh25 = (*glob).error;
+            let fresh25 = &mut ((*glob).error);
             *fresh25 = b"range overflow\0" as *const u8 as *const i8;
             (*glob).pos = *posp;
             return CURLE_URL_MALFORMAT as i32 as CURLcode;
         }
     } else {
-        let ref mut fresh26 = (*glob).error;
+        let fresh26 = &mut ((*glob).error);
         *fresh26 = b"bad range specification\0" as *const u8 as *const i8;
         (*glob).pos = *posp;
         return CURLE_URL_MALFORMAT as i32 as CURLcode;
@@ -666,7 +666,7 @@ unsafe extern "C" fn glob_parse(
                 if *pattern as i32 == '}' as i32
                     || *pattern as i32 == ']' as i32
                 {
-                    let ref mut fresh27 = (*glob).error;
+                    let fresh27 = &mut ((*glob).error);
                     *fresh27 = b"unmatched close brace/bracket\0" as *const u8
                         as *const i8;
                     (*glob).pos = pos;
@@ -716,10 +716,10 @@ unsafe extern "C" fn glob_parse(
                 0 | _ => {}
             }
         }
-        let ref mut fresh32 = (*glob).size;
+        let fresh32 = &mut ((*glob).size);
         *fresh32 = (*fresh32).wrapping_add(1);
         if *fresh32 >= 100 as i32 as u64 {
-            let ref mut fresh33 = (*glob).error;
+            let fresh33 = &mut ((*glob).error);
             *fresh33 = b"too many globs\0" as *const u8 as *const i8;
             (*glob).pos = pos;
             return CURLE_URL_MALFORMAT as i32 as CURLcode;
@@ -755,7 +755,7 @@ pub unsafe extern "C" fn glob_url(
         return CURLE_OUT_OF_MEMORY;
     }
     (*glob_expand).urllen = strlen(url);
-    let ref mut fresh34 = (*glob_expand).glob_buffer;
+    let fresh34 = &mut ((*glob_expand).glob_buffer);
     *fresh34 = glob_buffer;
     res = glob_parse(glob_expand, url, 1 as i32 as size_t, &mut amount);
     if res as u64 == 0 {
@@ -813,20 +813,19 @@ pub unsafe extern "C" fn glob_cleanup(mut glob: *mut URLGlob) {
                     *((*glob).pattern[i as usize].content.Set.elements)
                         .offset(elem as isize) as *mut libc::c_void,
                 );
-                let ref mut fresh35 = *((*glob).pattern[i as usize].content.Set.elements)
-                    .offset(elem as isize);
+                let fresh35 = &mut (*((*glob).pattern[i as usize].content.Set.elements)
+                    .offset(elem as isize));
                 *fresh35 = 0 as *mut i8;
                 elem -= 1;
             }
             free((*glob).pattern[i as usize].content.Set.elements as *mut libc::c_void);
-            // let ref mut fresh36 = (*glob).pattern[i as usize].content.Set.elements;
             let fresh36 = &mut ((*glob).pattern[i as usize].content.Set.elements);
             *fresh36 = 0 as *mut *mut i8;
         }
         i = i.wrapping_add(1);
     }
     free((*glob).glob_buffer as *mut libc::c_void);
-    let ref mut fresh37 = (*glob).glob_buffer;
+    let fresh37 = &mut ((*glob).glob_buffer);
     *fresh37 = 0 as *mut i8;
     free(glob as *mut libc::c_void);
     glob = 0 as *mut URLGlob;
@@ -861,7 +860,7 @@ pub unsafe extern "C" fn glob_next_url(
                 1 => {
                     if !((*pat).content.Set.elements).is_null()
                         && {
-                            let ref mut fresh38 = (*pat).content.Set.ptr_s;
+                            let fresh38 = &mut ((*pat).content.Set.ptr_s);
                             *fresh38 += 1;
                             *fresh38 == (*pat).content.Set.size
                         }
@@ -885,7 +884,7 @@ pub unsafe extern "C" fn glob_next_url(
                     }
                 }
                 3 => {
-                    let ref mut fresh39 = (*pat).content.NumRange.ptr_n;
+                    let fresh39 = &mut ((*pat).content.NumRange.ptr_n);
                     *fresh39 = (*fresh39).wrapping_add((*pat).content.NumRange.step);
                     if (*pat).content.NumRange.ptr_n > (*pat).content.NumRange.max_n {
                         (*pat).content.NumRange.ptr_n = (*pat).content.NumRange.min_n;

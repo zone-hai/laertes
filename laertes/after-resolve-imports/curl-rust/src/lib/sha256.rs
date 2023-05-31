@@ -10,7 +10,7 @@ extern "C" {
     fn SHA256_Final(md: *mut u8, c: *mut SHA256_CTX) -> i32;
 }
 pub use crate::src::lib::warnless::curlx_uztoui;
-pub type size_t = crate::src::lib::http2::size_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
 pub type HMAC_hinit_func = crate::src::lib::curl_ntlm_core::HMAC_hinit_func;
 pub type HMAC_hupdate_func = crate::src::lib::curl_ntlm_core::HMAC_hupdate_func;
 pub type HMAC_hfinal_func = crate::src::lib::curl_ntlm_core::HMAC_hfinal_func;

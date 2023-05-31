@@ -9,10 +9,10 @@ pub use crate::src::lib::fileinfo::Curl_fileinfo_cleanup;
 pub use crate::src::lib::llist::Curl_llist_destroy;
 pub use crate::src::lib::llist::Curl_llist_init;
 pub use crate::src::lib::easy::Curl_cfree;
-pub type __time_t = crate::src::lib::http2::__time_t;
-pub type time_t = crate::src::lib::http2::time_t;
-pub type size_t = crate::src::lib::http2::size_t;
-pub type curl_off_t = crate::src::lib::http2::curl_off_t;
+pub type __time_t = crate::src::lib::altsvc::__time_t;
+pub type time_t = crate::src::lib::altsvc::time_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
+pub type curl_off_t = crate::src::lib::altsvc::curl_off_t;
 pub type curlfiletype = crate::src::lib::fileinfo::curlfiletype;
 pub const CURLFILETYPE_UNKNOWN: curlfiletype = 8;
 pub const CURLFILETYPE_DOOR: curlfiletype = 7;
@@ -29,8 +29,8 @@ pub type curl_fileinfo = crate::src::lib::fileinfo::curl_fileinfo;
 // #[derive(Copy, Clone)]
 
 pub type C2RustUnnamed = crate::src::lib::fileinfo::C2RustUnnamed;
-pub type curl_free_callback = crate::src::lib::http2::curl_free_callback;
-pub type CURLcode = crate::src::lib::http2::CURLcode;
+pub type curl_free_callback = crate::src::lib::altsvc::curl_free_callback;
+pub type CURLcode = crate::src::lib::altsvc::CURLcode;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
 pub const CURLE_PROXY: CURLcode = 97;
@@ -131,14 +131,14 @@ pub const CURLE_URL_MALFORMAT: CURLcode = 3;
 pub const CURLE_FAILED_INIT: CURLcode = 2;
 pub const CURLE_UNSUPPORTED_PROTOCOL: CURLcode = 1;
 pub const CURLE_OK: CURLcode = 0;
-pub type Curl_llist_dtor = crate::src::lib::http2::Curl_llist_dtor;
+pub type Curl_llist_dtor = crate::src::lib::altsvc::Curl_llist_dtor;
 // #[derive(Copy, Clone)]
 
-pub type Curl_llist_element = crate::src::lib::http2::Curl_llist_element;
+pub type Curl_llist_element = crate::src::lib::altsvc::Curl_llist_element;
 // #[derive(Copy, Clone)]
 
-pub type Curl_llist = crate::src::lib::http2::Curl_llist;
-pub type wildcard_states = crate::src::lib::http2::wildcard_states;
+pub type Curl_llist = crate::src::lib::altsvc::Curl_llist;
+pub type wildcard_states = crate::src::lib::altsvc::wildcard_states;
 pub const CURLWC_DONE: wildcard_states = 7;
 pub const CURLWC_ERROR: wildcard_states = 6;
 pub const CURLWC_SKIP: wildcard_states = 5;
@@ -147,10 +147,10 @@ pub const CURLWC_DOWNLOADING: wildcard_states = 3;
 pub const CURLWC_MATCHING: wildcard_states = 2;
 pub const CURLWC_INIT: wildcard_states = 1;
 pub const CURLWC_CLEAR: wildcard_states = 0;
-pub type wildcard_dtor = crate::src::lib::http2::wildcard_dtor;
+pub type wildcard_dtor = crate::src::lib::altsvc::wildcard_dtor;
 // #[derive(Copy, Clone)]
 
-pub type WildcardData = crate::src::lib::http2::WildcardData;
+pub type WildcardData = crate::src::lib::altsvc::WildcardData;
 // #[derive(Copy, Clone)]
 
 pub type fileinfo = crate::src::lib::fileinfo::fileinfo;
@@ -179,19 +179,19 @@ pub unsafe extern "C" fn Curl_wildcard_dtor(mut wc: *mut WildcardData) {
     }
     if ((*wc).dtor).is_some() {
         ((*wc).dtor).expect("non-null function pointer")((*wc).protdata);
-        let ref mut fresh0 = (*wc).dtor;
+        let fresh0 = &mut ((*wc).dtor);
         *fresh0 = None;
-        let ref mut fresh1 = (*wc).protdata;
+        let fresh1 = &mut ((*wc).protdata);
         *fresh1 = 0 as *mut libc::c_void;
     }
     Curl_llist_destroy(&mut (*wc).filelist, 0 as *mut libc::c_void);
     Curl_cfree.expect("non-null function pointer")((*wc).path as *mut libc::c_void);
-    let ref mut fresh2 = (*wc).path;
+    let fresh2 = &mut ((*wc).path);
     *fresh2 = 0 as *mut i8;
     Curl_cfree.expect("non-null function pointer")((*wc).pattern as *mut libc::c_void);
-    let ref mut fresh3 = (*wc).pattern;
+    let fresh3 = &mut ((*wc).pattern);
     *fresh3 = 0 as *mut i8;
-    let ref mut fresh4 = (*wc).customptr;
+    let fresh4 = &mut ((*wc).customptr);
     *fresh4 = 0 as *mut libc::c_void;
     (*wc).state = CURLWC_INIT;
 }

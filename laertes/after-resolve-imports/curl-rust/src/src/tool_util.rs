@@ -3,7 +3,7 @@ extern "C" {
     fn clock_gettime(__clock_id: clockid_t, __tp: *mut timespec) -> i32;
     fn gettimeofday(__tv: *mut timeval, __tz: *mut libc::c_void) -> i32;
 }
-pub type __time_t = crate::src::lib::http2::__time_t;
+pub type __time_t = crate::src::lib::altsvc::__time_t;
 pub type __suseconds_t = crate::src::lib::openldap::__suseconds_t;
 pub type __clockid_t = crate::src::lib::timeval::__clockid_t;
 pub type __syscall_slong_t = crate::src::lib::file::__syscall_slong_t;

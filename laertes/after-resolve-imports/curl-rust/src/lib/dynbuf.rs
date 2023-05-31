@@ -17,13 +17,13 @@ pub type __builtin_va_list = crate::src::lib::dict::__builtin_va_list;
 // #[derive(Copy, Clone)]
 
 pub type __va_list_tag = crate::src::lib::dict::__va_list_tag;
-pub type size_t = crate::src::lib::http2::size_t;
+pub type size_t = crate::src::lib::altsvc::size_t;
 pub type va_list = crate::src::lib::dict::va_list;
-pub type curl_free_callback = crate::src::lib::http2::curl_free_callback;
+pub type curl_free_callback = crate::src::lib::altsvc::curl_free_callback;
 pub type curl_realloc_callback = Option::<
     unsafe extern "C" fn(*mut libc::c_void, size_t) -> *mut libc::c_void,
 >;
-pub type CURLcode = crate::src::lib::http2::CURLcode;
+pub type CURLcode = crate::src::lib::altsvc::CURLcode;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
 pub const CURLE_PROXY: CURLcode = 97;
@@ -126,10 +126,10 @@ pub const CURLE_UNSUPPORTED_PROTOCOL: CURLcode = 1;
 pub const CURLE_OK: CURLcode = 0;
 // #[derive(Copy, Clone)]
 
-pub type dynbuf = crate::src::lib::http2::dynbuf;
+pub type dynbuf = crate::src::lib::altsvc::dynbuf;
 #[no_mangle]
 pub unsafe extern "C" fn Curl_dyn_init(mut s: *mut dynbuf, mut toobig: size_t) {
-    let ref mut fresh0 = (*s).bufr;
+    let fresh0 = &mut ((*s).bufr);
     *fresh0 = 0 as *mut i8;
     (*s).leng = 0 as i32 as size_t;
     (*s).allc = 0 as i32 as size_t;
@@ -138,9 +138,9 @@ pub unsafe extern "C" fn Curl_dyn_init(mut s: *mut dynbuf, mut toobig: size_t) {
 #[no_mangle]
 pub unsafe extern "C" fn Curl_dyn_free(mut s: *mut dynbuf) {
     Curl_cfree.expect("non-null function pointer")((*s).bufr as *mut libc::c_void);
-    let ref mut fresh1 = (*s).bufr;
+    let fresh1 = &mut ((*s).bufr);
     *fresh1 = 0 as *mut i8;
-    let ref mut fresh2 = (*s).allc;
+    let fresh2 = &mut ((*s).allc);
     *fresh2 = 0 as i32 as size_t;
     (*s).leng = *fresh2;
 }
@@ -177,14 +177,14 @@ unsafe extern "C" fn dyn_nappend(
         if p.is_null() {
             Curl_cfree
                 .expect("non-null function pointer")((*s).bufr as *mut libc::c_void);
-            let ref mut fresh3 = (*s).bufr;
+            let fresh3 = &mut ((*s).bufr);
             *fresh3 = 0 as *mut i8;
-            let ref mut fresh4 = (*s).allc;
+            let fresh4 = &mut ((*s).allc);
             *fresh4 = 0 as i32 as size_t;
             (*s).leng = *fresh4;
             return CURLE_OUT_OF_MEMORY;
         }
-        let ref mut fresh5 = (*s).bufr;
+        let fresh5 = &mut ((*s).bufr);
         *fresh5 = p as *mut i8;
         (*s).allc = a;
     }

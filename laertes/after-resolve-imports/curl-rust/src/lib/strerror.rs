@@ -10,8 +10,8 @@ extern "C" {
     
 }
 pub use crate::src::lib::mprintf::curl_msnprintf;
-pub type size_t = crate::src::lib::http2::size_t;
-pub type CURLcode = crate::src::lib::http2::CURLcode;
+pub type size_t = crate::src::lib::altsvc::size_t;
+pub type CURLcode = crate::src::lib::altsvc::CURLcode;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
 pub const CURLE_PROXY: CURLcode = 97;
@@ -120,7 +120,7 @@ pub const CURLSHE_INVALID: CURLSHcode = 3;
 pub const CURLSHE_IN_USE: CURLSHcode = 2;
 pub const CURLSHE_BAD_OPTION: CURLSHcode = 1;
 pub const CURLSHE_OK: CURLSHcode = 0;
-pub type CURLMcode = crate::src::lib::http2::CURLMcode;
+pub type CURLMcode = crate::src::lib::doh::CURLMcode;
 pub const CURLM_LAST: CURLMcode = 11;
 pub const CURLM_BAD_FUNCTION_ARGUMENT: CURLMcode = 10;
 pub const CURLM_WAKEUP_FAILURE: CURLMcode = 9;

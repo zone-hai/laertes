@@ -5,7 +5,7 @@ extern "C" {
 }
 pub use crate::src::lib::strcase::curl_strequal;
 pub use crate::src::lib::version::curl_version_info;
-pub type CURLcode = crate::src::lib::http2::CURLcode;
+pub type CURLcode = crate::src::lib::altsvc::CURLcode;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
 pub const CURLE_PROXY: CURLcode = 97;

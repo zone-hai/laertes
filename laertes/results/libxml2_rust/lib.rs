@@ -45,34 +45,34 @@ pub mod src {
     pub mod schematron;
     pub mod testdso;
     
-    pub mod threads;
-    pub mod tree;  
-    pub mod uri;
-    pub mod valid;
-    pub mod xinclude;  
-    pub mod xlink;
-    pub mod xmlIO;
-    pub mod xmlcatalog;
-    pub mod xmllint;
-    pub mod xmlmemory;
-    pub mod xmlmodule;
-    pub mod xmlreader;
-    pub mod xmlregexp;
-    pub mod xmlsave;
-    pub mod xmlstring;
-    pub mod xmlunicode;
-    pub mod xmlwriter;
-    pub mod xpointer; 
-    pub mod xzlib;
-    pub mod xmlschemas;
-    pub mod xmlschemastypes;
+    // pub mod threads;
+    // pub mod tree;  
+    // pub mod uri;
+    // pub mod valid;
+    // pub mod xinclude;  
+    // pub mod xlink;
+    // pub mod xmlIO;
+    // pub mod xmlcatalog;
+    // pub mod xmllint;
+    // pub mod xmlmemory;
+    // pub mod xmlmodule;
+    // pub mod xmlreader;
+    // pub mod xmlregexp;
+    // pub mod xmlsave;
+    // pub mod xmlstring;
+    // pub mod xmlunicode;
+    // pub mod xmlwriter;
+    // pub mod xpointer; 
+    // pub mod xzlib;
+    // pub mod xmlschemas;
+    // pub mod xmlschemastypes;
 
-    pub mod xpath;
-    pub mod python {
-        pub mod libxml;
-        pub mod libxml2_py;
-        pub mod types;
-    }
+    // pub mod xpath;
+    // pub mod python {
+    //     pub mod libxml;
+    //     pub mod libxml2_py;
+    //     pub mod types;
+    // }
 }
 use crate::laertes_rt::*;// This module is only injected into the rewritten programs, it is not used
 // internally. So, disable unused function warnings.
