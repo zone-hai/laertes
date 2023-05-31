@@ -70,11 +70,6 @@ fn main() {
         unsafe_line_num += format_code.bytes().filter(|c| *c == b'\n').count() - 2;
         fs::remove_file(&filename).unwrap();
     }
-    println!("Total Function Number: {func_num}");
-    println!("Unsafe Function Number: {unsafe_func_num}");
-    println!("Safe Function Without Unsafe Block Number: {safe_func_num}");
-    println!("Total Line Number: {total_line_num}");
-    println!("Unsafe Line Number: {unsafe_line_num}");
     if args.count_type_define {
         println!("Type Define Number: {type_define_num}");
         println!("name,type,number");
@@ -92,6 +87,12 @@ fn main() {
                 );
             })
         });
+    } else {
+        println!("Total Function Number: {func_num}");
+        println!("Unsafe Function Number: {unsafe_func_num}");
+        println!("Safe Function Without Unsafe Block Number: {safe_func_num}");
+        println!("Total Line Number: {total_line_num}");
+        println!("Unsafe Line Number: {unsafe_line_num}");
     }
 }
 
