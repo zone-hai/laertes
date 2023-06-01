@@ -24,18 +24,18 @@ pub use crate::src::lib::llist::Curl_llist_remove;
 pub use crate::src::lib::easy::Curl_cfree;
 pub use crate::src::lib::easy::Curl_cmalloc;
 pub type size_t = u64;
-pub type curl_malloc_callback = Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
-pub type curl_free_callback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type Curl_llist_dtor = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut core::ffi::c_void,) -> ()>;
+pub type curl_malloc_callback<'a1> = Option<unsafe extern "C"  fn(_: u64,) -> Option<&'a1 mut core::ffi::c_void>>;
+pub type curl_free_callback<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,) -> ()>;
+pub type Curl_llist_dtor<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,_: Option<&'a2 mut core::ffi::c_void>,) -> ()>;
 // #[derive(Copy, Clone)]
 
 pub type Curl_llist_element = crate::src::lib::http2::Curl_llist_element;
 // #[derive(Copy, Clone)]
 
 pub type Curl_llist = crate::src::lib::http2::Curl_llist;
-pub type hash_function = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: u64,_: u64,) -> u64>;
-pub type comp_function = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: u64,_: * mut core::ffi::c_void,_: u64,) -> u64>;
-pub type Curl_hash_dtor = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
+pub type hash_function<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,_: u64,_: u64,) -> u64>;
+pub type comp_function<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,_: u64,_: Option<&'a2 mut core::ffi::c_void>,_: u64,) -> u64>;
+pub type Curl_hash_dtor<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,) -> ()>;
 // #[derive(Copy, Clone)]
 
 pub type Curl_hash = crate::src::lib::http2::Curl_hash;
@@ -319,7 +319,7 @@ pub unsafe extern "C" fn Curl_str_key_compare(
 pub unsafe extern "C" fn Curl_hash_start_iterate<'a1, 'a2, 'a3>(
     mut hash: Option<&'a1 mut crate::src::lib::http2::Curl_hash>,
     mut iter: Option<&'a2 mut crate::src::lib::conncache::Curl_hash_iterator<'a3>>,
-) where 'a3: 'a1, 'a1: 'a3 {
+) where 'a1: 'a3, 'a3: 'a1 {
     let mut fresh12 = &mut ((*(borrow_mut(&mut iter)).unwrap()).hash);
     *fresh12 = hash;
     (*(borrow_mut(&mut iter)).unwrap()).slot_index = 0 as i32;

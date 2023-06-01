@@ -1,110 +1,66 @@
-use ::libc;
-use ::c2rust_asm_casts;
+use :: c2rust_asm_casts;
+use :: libc;
 use c2rust_asm_casts::AsmCastTrait;
 use std::arch::asm;
 extern "C" {
-    
-    fn snprintf(
-        _: * mut i8,
-        _: u64,
-        _: * const i8,
-        _: ...
-    ) -> i32;
-    fn sscanf(_: * const i8, _: * const i8, _: ...) -> i32;
-    fn xmlStrndup(cur: * const u8, len: i32) -> * mut u8;
-    fn __xmlIOErr(domain: i32, code: i32, extra: * const i8);
+    fn snprintf(_: *mut i8, _: u64, _: *const i8, _: ...) -> i32;
+    fn sscanf(_: *const i8, _: *const i8, _: ...) -> i32;
+    fn xmlStrndup(cur: *const u8, len: i32) -> *mut u8;
+    fn __xmlIOErr(domain: i32, code: i32, extra: *const i8);
     fn memcpy(
-        _: * mut core::ffi::c_void,
-        _: * const core::ffi::c_void,
+        _: *mut core::ffi::c_void,
+        _: *const core::ffi::c_void,
         _: u64,
-    ) -> * mut core::ffi::c_void;
+    ) -> *mut core::ffi::c_void;
     fn memmove(
-        _: * mut core::ffi::c_void,
-        _: * const core::ffi::c_void,
+        _: *mut core::ffi::c_void,
+        _: *const core::ffi::c_void,
         _: u64,
-    ) -> * mut core::ffi::c_void;
-    fn memset(
-        _: * mut core::ffi::c_void,
-        _: i32,
-        _: u64,
-    ) -> * mut core::ffi::c_void;
-    fn strcmp(_: * const i8, _: * const i8) -> i32;
-    fn strncmp(
-        _: * const i8,
-        _: * const i8,
-        _: u64,
-    ) -> i32;
-    fn strchr(_: * const i8, _: i32) -> * mut i8;
-    fn strlen(_: * const i8) -> u64;
+    ) -> *mut core::ffi::c_void;
+    fn memset(_: *mut core::ffi::c_void, _: i32, _: u64) -> *mut core::ffi::c_void;
+    fn strcmp(_: *const i8, _: *const i8) -> i32;
+    fn strncmp(_: *const i8, _: *const i8, _: u64) -> i32;
+    fn strchr(_: *const i8, _: i32) -> *mut i8;
+    fn strlen(_: *const i8) -> u64;
     fn select(
         __nfds: i32,
-        __readfds: * mut crate::src::nanoftp::fd_set,
-        __writefds: * mut crate::src::nanoftp::fd_set,
-        __exceptfds: * mut crate::src::nanoftp::fd_set,
-        __timeout: * mut crate::src::nanoftp::timeval,
+        __readfds: *mut crate::src::nanoftp::fd_set,
+        __writefds: *mut crate::src::nanoftp::fd_set,
+        __exceptfds: *mut crate::src::nanoftp::fd_set,
+        __timeout: *mut crate::src::nanoftp::timeval,
     ) -> i32;
-    fn getenv(__name: * const i8) -> * mut i8;
+    fn getenv(__name: *const i8) -> *mut i8;
     fn close(__fd: i32) -> i32;
-    fn socket(
-        __domain: i32,
-        __type: i32,
-        __protocol: i32,
-    ) -> i32;
-    fn bind(__fd: i32, __addr: * const crate::src::nanoftp::sockaddr, __len: u32) -> i32;
-    fn getsockname(
-        __fd: i32,
-        __addr: * mut crate::src::nanoftp::sockaddr,
-        __len: * mut u32,
-    ) -> i32;
-    fn connect(
-        __fd: i32,
-        __addr: * const crate::src::nanoftp::sockaddr,
-        __len: u32,
-    ) -> i32;
-    fn send(
-        __fd: i32,
-        __buf: * const core::ffi::c_void,
-        __n: u64,
-        __flags: i32,
-    ) -> i64;
-    fn recv(
-        __fd: i32,
-        __buf: * mut core::ffi::c_void,
-        __n: u64,
-        __flags: i32,
-    ) -> i64;
+    fn socket(__domain: i32, __type: i32, __protocol: i32) -> i32;
+    fn bind(__fd: i32, __addr: *const crate::src::nanoftp::sockaddr, __len: u32) -> i32;
+    fn getsockname(__fd: i32, __addr: *mut crate::src::nanoftp::sockaddr, __len: *mut u32) -> i32;
+    fn connect(__fd: i32, __addr: *const crate::src::nanoftp::sockaddr, __len: u32) -> i32;
+    fn send(__fd: i32, __buf: *const core::ffi::c_void, __n: u64, __flags: i32) -> i64;
+    fn recv(__fd: i32, __buf: *mut core::ffi::c_void, __n: u64, __flags: i32) -> i64;
     fn listen(__fd: i32, __n: i32) -> i32;
     fn inet_ntop(
         __af: i32,
-        __cp: * const core::ffi::c_void,
-        __buf: * mut i8,
+        __cp: *const core::ffi::c_void,
+        __buf: *mut i8,
         __len: u32,
-    ) -> * const i8;
-    fn gethostbyname(__name: * const i8) -> * mut crate::src::nanoftp::hostent;
+    ) -> *const i8;
+    fn gethostbyname(__name: *const i8) -> *mut crate::src::nanoftp::hostent;
     fn getaddrinfo(
-        __name: * const i8,
-        __service: * const i8,
-        __req: * const crate::src::nanoftp::addrinfo,
-        __pai: * mut * mut crate::src::nanoftp::addrinfo,
+        __name: *const i8,
+        __service: *const i8,
+        __req: *const crate::src::nanoftp::addrinfo,
+        __pai: *mut *mut crate::src::nanoftp::addrinfo,
     ) -> i32;
-    fn freeaddrinfo(__ai: * mut crate::src::nanoftp::addrinfo);
-    
-    
-    
-    
-    fn xmlParseURIRaw(str: * const i8, raw: i32) -> * mut crate::src::SAX2::_xmlURI;
-    fn xmlURIUnescapeString(
-        str: * const i8,
-        len: i32,
-        target: * mut i8,
-    ) -> * mut i8;
-    fn xmlFreeURI(uri: * mut crate::src::SAX2::_xmlURI);
+    fn freeaddrinfo(__ai: *mut crate::src::nanoftp::addrinfo);
+    fn xmlParseURIRaw(str: *const i8, raw: i32) -> *mut crate::src::SAX2::_xmlURI;
+    fn xmlURIUnescapeString(str: *const i8, len: i32, target: *mut i8) -> *mut i8;
+    fn xmlFreeURI(uri: *mut crate::src::SAX2::_xmlURI);
 }
-pub use crate::src::error::__xmlSimpleError;
-pub use crate::src::dict::_xmlDict;
-pub use crate::src::globals::xmlFree;
-pub use crate::src::globals::xmlMalloc;
-pub use crate::src::globals::xmlMemStrdup;
+pub use crate::src::{
+    dict::_xmlDict,
+    error::__xmlSimpleError,
+    globals::{xmlFree, xmlMalloc, xmlMemStrdup},
+};
 pub type xmlChar = u8;
 pub type size_t = u64;
 pub type __uint8_t = u8;
@@ -124,16 +80,16 @@ pub struct timeval {
 impl timeval {
     pub const fn new() -> Self {
         timeval {
-        tv_sec: 0,
-        tv_usec: 0
+            tv_sec: 0,
+            tv_usec: 0,
         }
     }
 }
-
 impl std::default::Default for timeval {
-    fn default() -> Self { timeval::new() }
+    fn default() -> Self {
+        timeval::new()
+    }
 }
-
 pub type __fd_mask = i64;
 #[derive(Copy, Clone)]
 #[repr(C)]
@@ -143,15 +99,15 @@ pub struct fd_set {
 impl fd_set {
     pub const fn new() -> Self {
         fd_set {
-        __fds_bits: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,]
+            __fds_bits: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         }
     }
 }
-
 impl std::default::Default for fd_set {
-    fn default() -> Self { fd_set::new() }
+    fn default() -> Self {
+        fd_set::new()
+    }
 }
-
 pub type socklen_t = u32;
 pub type __socket_type = u32;
 pub const SOCK_NONBLOCK: __socket_type = 2048;
@@ -173,16 +129,16 @@ pub struct sockaddr {
 impl sockaddr {
     pub const fn new() -> Self {
         sockaddr {
-        sa_family: 0,
-        sa_data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,]
+            sa_family: 0,
+            sa_data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         }
     }
 }
-
 impl std::default::Default for sockaddr {
-    fn default() -> Self { sockaddr::new() }
+    fn default() -> Self {
+        sockaddr::new()
+    }
 }
-
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct sockaddr_storage {
@@ -193,17 +149,23 @@ pub struct sockaddr_storage {
 impl sockaddr_storage {
     pub const fn new() -> Self {
         sockaddr_storage {
-        ss_family: 0,
-        __ss_padding: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
-        __ss_align: 0
+            ss_family: 0,
+            __ss_padding: [
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0,
+            ],
+            __ss_align: 0,
         }
     }
 }
-
 impl std::default::Default for sockaddr_storage {
-    fn default() -> Self { sockaddr_storage::new() }
+    fn default() -> Self {
+        sockaddr_storage::new()
+    }
 }
-
 pub type uint8_t = u8;
 pub type uint16_t = u16;
 pub type uint32_t = u32;
@@ -215,16 +177,14 @@ pub struct in_addr {
 }
 impl in_addr {
     pub const fn new() -> Self {
-        in_addr {
-        s_addr: 0
-        }
+        in_addr { s_addr: 0 }
     }
 }
-
 impl std::default::Default for in_addr {
-    fn default() -> Self { in_addr::new() }
+    fn default() -> Self {
+        in_addr::new()
+    }
 }
-
 pub type C2RustUnnamed = u32;
 pub const IPPROTO_MAX: C2RustUnnamed = 256;
 pub const IPPROTO_RAW: C2RustUnnamed = 255;
@@ -276,18 +236,18 @@ pub struct sockaddr_in {
 impl sockaddr_in {
     pub const fn new() -> Self {
         sockaddr_in {
-        sin_family: 0,
-        sin_port: 0,
-        sin_addr: crate::src::nanoftp::in_addr::new(),
-        sin_zero: [0,0,0,0,0,0,0,0,]
+            sin_family: 0,
+            sin_port: 0,
+            sin_addr: crate::src::nanoftp::in_addr::new(),
+            sin_zero: [0, 0, 0, 0, 0, 0, 0, 0],
         }
     }
 }
-
 impl std::default::Default for sockaddr_in {
-    fn default() -> Self { sockaddr_in::new() }
+    fn default() -> Self {
+        sockaddr_in::new()
+    }
 }
-
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct sockaddr_in6 {
@@ -300,28 +260,28 @@ pub struct sockaddr_in6 {
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct hostent {
-    pub h_name: * mut i8,
-    pub h_aliases: * mut * mut i8,
+    pub h_name: *mut i8,
+    pub h_aliases: *mut *mut i8,
     pub h_addrtype: i32,
     pub h_length: i32,
-    pub h_addr_list: * mut * mut i8,
+    pub h_addr_list: *mut *mut i8,
 }
 impl hostent {
     pub const fn new() -> Self {
         hostent {
-        h_name: (0 as * mut i8),
-        h_aliases: (0 as * mut * mut i8),
-        h_addrtype: 0,
-        h_length: 0,
-        h_addr_list: (0 as * mut * mut i8)
+            h_name: (0 as *mut i8),
+            h_aliases: (0 as *mut *mut i8),
+            h_addrtype: 0,
+            h_length: 0,
+            h_addr_list: (0 as *mut *mut i8),
         }
     }
 }
-
 impl std::default::Default for hostent {
-    fn default() -> Self { hostent::new() }
+    fn default() -> Self {
+        hostent::new()
+    }
 }
-
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct addrinfo {
@@ -330,44 +290,36 @@ pub struct addrinfo {
     pub ai_socktype: i32,
     pub ai_protocol: i32,
     pub ai_addrlen: u32,
-    pub ai_addr: * mut crate::src::nanoftp::sockaddr,
-    pub ai_canonname: * mut i8,
-    pub ai_next: * mut crate::src::nanoftp::addrinfo,
+    pub ai_addr: *mut crate::src::nanoftp::sockaddr,
+    pub ai_canonname: *mut i8,
+    pub ai_next: *mut crate::src::nanoftp::addrinfo,
 }
 impl addrinfo {
     pub const fn new() -> Self {
         addrinfo {
-        ai_flags: 0,
-        ai_family: 0,
-        ai_socktype: 0,
-        ai_protocol: 0,
-        ai_addrlen: 0,
-        ai_addr: (0 as * mut crate::src::nanoftp::sockaddr),
-        ai_canonname: (0 as * mut i8),
-        ai_next: (0 as * mut crate::src::nanoftp::addrinfo)
+            ai_flags: 0,
+            ai_family: 0,
+            ai_socktype: 0,
+            ai_protocol: 0,
+            ai_addrlen: 0,
+            ai_addr: (0 as *mut crate::src::nanoftp::sockaddr),
+            ai_canonname: (0 as *mut i8),
+            ai_next: (0 as *mut crate::src::nanoftp::addrinfo),
         }
     }
 }
-
 impl std::default::Default for addrinfo {
-    fn default() -> Self { addrinfo::new() }
+    fn default() -> Self {
+        addrinfo::new()
+    }
 }
-
-pub type xmlFreeFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type xmlMallocFunc = Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
-pub type xmlStrdupFunc = Option<unsafe extern "C"  fn(_: * const i8,) -> * mut i8>;
-// #[derive(Copy, Clone)]
-
+pub type xmlFreeFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+pub type xmlMallocFunc = Option<unsafe extern "C" fn(_: u64) -> *mut core::ffi::c_void>;
+pub type xmlStrdupFunc = Option<unsafe extern "C" fn(_: *const i8) -> *mut i8>;
 pub type _xmlNode = crate::src::HTMLparser::_xmlNode;
 pub type xmlNs = crate::src::HTMLparser::_xmlNs;
-// #[derive(Copy, Clone)]
-
 pub type _xmlNs = crate::src::HTMLparser::_xmlNs;
-// #[derive(Copy, Clone)]
-
 pub type _xmlDoc = crate::src::HTMLparser::_xmlDoc;
-// #[derive(Copy, Clone)]
-
 pub type _xmlDtd = crate::src::HTMLparser::_xmlDtd;
 pub type xmlElementType = u32;
 pub const XML_XINCLUDE_END: xmlElementType = 20;
@@ -391,8 +343,6 @@ pub const XML_TEXT_NODE: xmlElementType = 3;
 pub const XML_ATTRIBUTE_NODE: xmlElementType = 2;
 pub const XML_ELEMENT_NODE: xmlElementType = 1;
 pub type xmlNsType = u32;
-// #[derive(Copy, Clone)]
-
 pub type _xmlAttr = crate::src::HTMLparser::_xmlAttr;
 pub type xmlAttributeType = u32;
 pub const XML_ATTRIBUTE_NOTATION: xmlAttributeType = 10;
@@ -405,7 +355,7 @@ pub const XML_ATTRIBUTE_IDREFS: xmlAttributeType = 4;
 pub const XML_ATTRIBUTE_IDREF: xmlAttributeType = 3;
 pub const XML_ATTRIBUTE_ID: xmlAttributeType = 2;
 pub const XML_ATTRIBUTE_CDATA: xmlAttributeType = 1;
-pub type xmlNodePtr = * mut crate::src::HTMLparser::_xmlNode;
+pub type xmlNodePtr = *mut crate::src::HTMLparser::_xmlNode;
 pub type xmlNode = crate::src::HTMLparser::_xmlNode;
 pub type C2RustUnnamed_1 = u32;
 pub const XML_FROM_URI: C2RustUnnamed_1 = 30;
@@ -1176,23 +1126,37 @@ pub const XML_ERR_DOCUMENT_START: C2RustUnnamed_2 = 3;
 pub const XML_ERR_NO_MEMORY: C2RustUnnamed_2 = 2;
 pub const XML_ERR_INTERNAL_ERROR: C2RustUnnamed_2 = 1;
 pub const XML_ERR_OK: C2RustUnnamed_2 = 0;
-// #[derive(Copy, Clone)]
-
 pub type _xmlURI = crate::src::SAX2::_xmlURI;
 pub type xmlURI = crate::src::SAX2::_xmlURI;
-pub type xmlURIPtr = * mut crate::src::SAX2::_xmlURI;
-pub type ftpListCallback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,_: * const i8,_: * const i8,_: * const i8,_: u64,_: i32,_: i32,_: * const i8,_: i32,_: i32,_: i32,) -> ()>;
-pub type ftpDataCallback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,_: i32,) -> ()>;
-pub type xmlNanoFTPCtxtPtr = * mut crate::src::nanoftp::xmlNanoFTPCtxt;
+pub type xmlURIPtr = *mut crate::src::SAX2::_xmlURI;
+pub type ftpListCallback = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const i8,
+        _: *const i8,
+        _: *const i8,
+        _: *const i8,
+        _: u64,
+        _: i32,
+        _: i32,
+        _: *const i8,
+        _: i32,
+        _: i32,
+        _: i32,
+    ) -> (),
+>;
+pub type ftpDataCallback =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, _: i32) -> ()>;
+pub type xmlNanoFTPCtxtPtr = *mut crate::src::nanoftp::xmlNanoFTPCtxt;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct xmlNanoFTPCtxt {
-    pub protocol: * mut i8,
-    pub hostname: * mut i8,
+    pub protocol: *mut i8,
+    pub hostname: *mut i8,
     pub port: i32,
-    pub path: * mut i8,
-    pub user: * mut i8,
-    pub passwd: * mut i8,
+    pub path: *mut i8,
+    pub user: *mut i8,
+    pub passwd: *mut i8,
     pub ftpAddr: crate::src::nanoftp::sockaddr_storage,
     pub passive: i32,
     pub controlFd: i32,
@@ -1207,53 +1171,89 @@ pub struct xmlNanoFTPCtxt {
 impl xmlNanoFTPCtxt {
     pub const fn new() -> Self {
         xmlNanoFTPCtxt {
-        protocol: (0 as * mut i8),
-        hostname: (0 as * mut i8),
-        port: 0,
-        path: (0 as * mut i8),
-        user: (0 as * mut i8),
-        passwd: (0 as * mut i8),
-        ftpAddr: crate::src::nanoftp::sockaddr_storage::new(),
-        passive: 0,
-        controlFd: 0,
-        dataFd: 0,
-        state: 0,
-        returnValue: 0,
-        controlBuf: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
-        controlBufIndex: 0,
-        controlBufUsed: 0,
-        controlBufAnswer: 0
+            protocol: (0 as *mut i8),
+            hostname: (0 as *mut i8),
+            port: 0,
+            path: (0 as *mut i8),
+            user: (0 as *mut i8),
+            passwd: (0 as *mut i8),
+            ftpAddr: crate::src::nanoftp::sockaddr_storage::new(),
+            passive: 0,
+            controlFd: 0,
+            dataFd: 0,
+            state: 0,
+            returnValue: 0,
+            controlBuf: [
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            ],
+            controlBufIndex: 0,
+            controlBufUsed: 0,
+            controlBufAnswer: 0,
         }
     }
 }
-
 impl std::default::Default for xmlNanoFTPCtxt {
-    fn default() -> Self { xmlNanoFTPCtxt::new() }
+    fn default() -> Self {
+        xmlNanoFTPCtxt::new()
+    }
 }
-
 #[inline]
- extern "C" fn __bswap_16(mut __bsx: u16) -> u16 {
-    return (__bsx as i32 >> 8 as i32 & 0xff as i32
-        | (__bsx as i32 & 0xff as i32) << 8 as i32)
+extern "C" fn __bswap_16(mut __bsx: u16) -> u16 {
+    return (__bsx as i32 >> 8 as i32 & 0xff as i32 | (__bsx as i32 & 0xff as i32) << 8 as i32)
         as __uint16_t;
 }
 static mut initialized: i32 = 0 as i32;
-static mut proxy: * mut i8 = 0 as *const i8 as *mut i8;
+static mut proxy: *mut i8 = 0 as *const i8 as *mut i8;
 static mut proxyPort: i32 = 0 as i32;
-static mut proxyUser: * mut i8 = 0 as *const i8 as *mut i8;
-static mut proxyPasswd: * mut i8 = 0 as *const i8
-    as *mut i8;
+static mut proxyUser: *mut i8 = 0 as *const i8 as *mut i8;
+static mut proxyPasswd: *mut i8 = 0 as *const i8 as *mut i8;
 static mut proxyType: i32 = 0 as i32;
-unsafe extern "C" fn have_ipv6() -> i32 {
+extern "C" fn have_ipv6() -> i32 {
     let mut s: i32 = 0;
-    s = socket(10 as i32, SOCK_STREAM as i32, 0 as i32);
+    s = unsafe { socket(10 as i32, SOCK_STREAM as i32, 0 as i32) };
     if s != -(1 as i32) {
-        close(s);
+        (unsafe { close(s) });
         return 1 as i32;
     }
     return 0 as i32;
 }
-unsafe extern "C" fn xmlFTPErrMemory(mut extra: * const i8) {
+extern "C" fn xmlFTPErrMemory(mut extra: *const i8) {
     __xmlSimpleError(
         XML_FROM_FTP as i32,
         XML_ERR_NO_MEMORY as i32,
@@ -1263,410 +1263,385 @@ unsafe extern "C" fn xmlFTPErrMemory(mut extra: * const i8) {
     );
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNanoFTPInit() {
-    let mut env: * const i8 = 0 as *const i8;
-    if initialized != 0 {
+pub extern "C" fn xmlNanoFTPInit() {
+    let mut env: *const i8 = 0 as *const i8;
+    if (unsafe { initialized }) != 0 {
         return;
     }
-    proxyPort = 21 as i32;
-    env = getenv(b"no_proxy\0" as *const u8 as *const i8);
+    (unsafe { proxyPort = 21 as i32 });
+    env = unsafe { getenv(b"no_proxy\0" as *const u8 as *const i8) };
     if !env.is_null()
-        && (*env.offset(0 as i32 as isize) as i32 == '*' as i32
-            && *env.offset(1 as i32 as isize) as i32 == 0 as i32)
+        && ((unsafe { *env.offset(0 as i32 as isize) }) as i32 == '*' as i32
+            && (unsafe { *env.offset(1 as i32 as isize) }) as i32 == 0 as i32)
     {
         return;
     }
-    env = getenv(b"ftp_proxy\0" as *const u8 as *const i8);
+    env = unsafe { getenv(b"ftp_proxy\0" as *const u8 as *const i8) };
     if !env.is_null() {
         xmlNanoFTPScanProxy(env);
     } else {
-        env = getenv(b"FTP_PROXY\0" as *const u8 as *const i8);
+        env = unsafe { getenv(b"FTP_PROXY\0" as *const u8 as *const i8) };
         if !env.is_null() {
             xmlNanoFTPScanProxy(env);
         }
     }
-    env = getenv(b"ftp_proxy_user\0" as *const u8 as *const i8);
+    env = unsafe { getenv(b"ftp_proxy_user\0" as *const u8 as *const i8) };
     if !env.is_null() {
-        proxyUser = xmlMemStrdup.expect("non-null function pointer")(env);
+        (unsafe { proxyUser = xmlMemStrdup.expect("non-null function pointer")(env) });
     }
-    env = getenv(b"ftp_proxy_password\0" as *const u8 as *const i8);
+    env = unsafe { getenv(b"ftp_proxy_password\0" as *const u8 as *const i8) };
     if !env.is_null() {
-        proxyPasswd = xmlMemStrdup.expect("non-null function pointer")(env);
+        (unsafe { proxyPasswd = xmlMemStrdup.expect("non-null function pointer")(env) });
     }
-    initialized = 1 as i32;
+    (unsafe { initialized = 1 as i32 });
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNanoFTPCleanup() {
-    if !proxy.is_null() {
-        xmlFree.expect("non-null function pointer")(proxy as *mut libc::c_void);
-        proxy = 0 as *mut i8;
+pub extern "C" fn xmlNanoFTPCleanup() {
+    if !(unsafe { proxy }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")(proxy as *mut libc::c_void) });
+        (unsafe { proxy = 0 as *mut i8 });
     }
-    if !proxyUser.is_null() {
-        xmlFree.expect("non-null function pointer")(proxyUser as *mut libc::c_void);
-        proxyUser = 0 as *mut i8;
+    if !(unsafe { proxyUser }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")(proxyUser as *mut libc::c_void) });
+        (unsafe { proxyUser = 0 as *mut i8 });
     }
-    if !proxyPasswd.is_null() {
-        xmlFree.expect("non-null function pointer")(proxyPasswd as *mut libc::c_void);
-        proxyPasswd = 0 as *mut i8;
+    if !(unsafe { proxyPasswd }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")(proxyPasswd as *mut libc::c_void) });
+        (unsafe { proxyPasswd = 0 as *mut i8 });
     }
-    initialized = 0 as i32;
+    (unsafe { initialized = 0 as i32 });
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNanoFTPProxy(
-    mut host: * const i8,
+pub extern "C" fn xmlNanoFTPProxy(
+    mut host: *const i8,
     mut port: i32,
-    mut user: * const i8,
-    mut passwd: * const i8,
+    mut user: *const i8,
+    mut passwd: *const i8,
     mut type_0: i32,
 ) {
-    if !proxy.is_null() {
-        xmlFree.expect("non-null function pointer")(proxy as *mut libc::c_void);
-        proxy = 0 as *mut i8;
+    if !(unsafe { proxy }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")(proxy as *mut libc::c_void) });
+        (unsafe { proxy = 0 as *mut i8 });
     }
-    if !proxyUser.is_null() {
-        xmlFree.expect("non-null function pointer")(proxyUser as *mut libc::c_void);
-        proxyUser = 0 as *mut i8;
+    if !(unsafe { proxyUser }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")(proxyUser as *mut libc::c_void) });
+        (unsafe { proxyUser = 0 as *mut i8 });
     }
-    if !proxyPasswd.is_null() {
-        xmlFree.expect("non-null function pointer")(proxyPasswd as *mut libc::c_void);
-        proxyPasswd = 0 as *mut i8;
+    if !(unsafe { proxyPasswd }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")(proxyPasswd as *mut libc::c_void) });
+        (unsafe { proxyPasswd = 0 as *mut i8 });
     }
     if !host.is_null() {
-        proxy = xmlMemStrdup.expect("non-null function pointer")(host);
+        (unsafe { proxy = xmlMemStrdup.expect("non-null function pointer")(host) });
     }
     if !user.is_null() {
-        proxyUser = xmlMemStrdup.expect("non-null function pointer")(user);
+        (unsafe { proxyUser = xmlMemStrdup.expect("non-null function pointer")(user) });
     }
     if !passwd.is_null() {
-        proxyPasswd = xmlMemStrdup.expect("non-null function pointer")(passwd);
+        (unsafe { proxyPasswd = xmlMemStrdup.expect("non-null function pointer")(passwd) });
     }
-    proxyPort = port;
-    proxyType = type_0;
+    (unsafe { proxyPort = port });
+    (unsafe { proxyType = type_0 });
 }
-unsafe extern "C" fn xmlNanoFTPScanURL(
-    mut ctx: * mut core::ffi::c_void,
-    mut URL: * const i8,
-) {
-    let mut ctxt: * mut crate::src::nanoftp::xmlNanoFTPCtxt = ctx as xmlNanoFTPCtxtPtr;
-    let mut uri: * mut crate::src::SAX2::_xmlURI = 0 as *mut xmlURI;
-    if !((*ctxt).protocol).is_null() {
-        xmlFree
-            .expect("non-null function pointer")((*ctxt).protocol as *mut libc::c_void);
-        let ref mut fresh0 = (*ctxt).protocol;
+extern "C" fn xmlNanoFTPScanURL(mut ctx: *mut core::ffi::c_void, mut URL: *const i8) {
+    let mut ctxt: *mut crate::src::nanoftp::xmlNanoFTPCtxt = ctx as xmlNanoFTPCtxtPtr;
+    let mut uri: *mut crate::src::SAX2::_xmlURI = 0 as *mut xmlURI;
+    if !(unsafe { (*ctxt).protocol }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*ctxt).protocol as *mut libc::c_void) });
+        let fresh0 = unsafe { &mut ((*ctxt).protocol) };
         *fresh0 = 0 as *mut i8;
     }
-    if !((*ctxt).hostname).is_null() {
-        xmlFree
-            .expect("non-null function pointer")((*ctxt).hostname as *mut libc::c_void);
-        let ref mut fresh1 = (*ctxt).hostname;
+    if !(unsafe { (*ctxt).hostname }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*ctxt).hostname as *mut libc::c_void) });
+        let fresh1 = unsafe { &mut ((*ctxt).hostname) };
         *fresh1 = 0 as *mut i8;
     }
-    if !((*ctxt).path).is_null() {
-        xmlFree.expect("non-null function pointer")((*ctxt).path as *mut libc::c_void);
-        let ref mut fresh2 = (*ctxt).path;
+    if !(unsafe { (*ctxt).path }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*ctxt).path as *mut libc::c_void) });
+        let fresh2 = unsafe { &mut ((*ctxt).path) };
         *fresh2 = 0 as *mut i8;
     }
     if URL.is_null() {
         return;
     }
-    uri = xmlParseURIRaw(URL, 1 as i32);
+    uri = unsafe { xmlParseURIRaw(URL, 1 as i32) };
     if uri.is_null() {
         return;
     }
-    if ((*uri).scheme).is_null() || ((*uri).server).is_null() {
-        xmlFreeURI(uri);
+    if (unsafe { (*uri).scheme }).is_null() || (unsafe { (*uri).server }).is_null() {
+        (unsafe { xmlFreeURI(uri) });
         return;
     }
-    let ref mut fresh3 = (*ctxt).protocol;
-    *fresh3 = xmlMemStrdup.expect("non-null function pointer")((*uri).scheme);
-    let ref mut fresh4 = (*ctxt).hostname;
-    *fresh4 = xmlMemStrdup.expect("non-null function pointer")((*uri).server);
-    if !((*uri).path).is_null() {
-        let ref mut fresh5 = (*ctxt).path;
-        *fresh5 = xmlMemStrdup.expect("non-null function pointer")((*uri).path);
+    let fresh3 = unsafe { &mut ((*ctxt).protocol) };
+    *fresh3 = unsafe { xmlMemStrdup.expect("non-null function pointer")((*uri).scheme) };
+    let fresh4 = unsafe { &mut ((*ctxt).hostname) };
+    *fresh4 = unsafe { xmlMemStrdup.expect("non-null function pointer")((*uri).server) };
+    if !(unsafe { (*uri).path }).is_null() {
+        let fresh5 = unsafe { &mut ((*ctxt).path) };
+        *fresh5 = unsafe { xmlMemStrdup.expect("non-null function pointer")((*uri).path) };
     } else {
-        let ref mut fresh6 = (*ctxt).path;
-        *fresh6 = xmlMemStrdup
-            .expect(
-                "non-null function pointer",
-            )(b"/\0" as *const u8 as *const i8);
+        let fresh6 = unsafe { &mut ((*ctxt).path) };
+        *fresh6 =
+            unsafe { xmlMemStrdup.expect("non-null function pointer")(b"/\0" as *const u8 as *const i8) };
     }
-    if (*uri).port != 0 as i32 {
-        (*ctxt).port = (*uri).port;
+    if (unsafe { (*uri).port }) != 0 as i32 {
+        (unsafe { (*ctxt).port = (*uri).port });
     }
-    if !((*uri).user).is_null() {
-        let mut cptr: * mut i8 = 0 as *mut i8;
-        cptr = strchr((*uri).user, ':' as i32);
+    if !(unsafe { (*uri).user }).is_null() {
+        let mut cptr: *mut i8 = 0 as *mut i8;
+        cptr = unsafe { strchr((*uri).user, ':' as i32) };
         if cptr.is_null() {
-            let ref mut fresh7 = (*ctxt).user;
-            *fresh7 = xmlMemStrdup.expect("non-null function pointer")((*uri).user);
+            let fresh7 = unsafe { &mut ((*ctxt).user) };
+            *fresh7 = unsafe { xmlMemStrdup.expect("non-null function pointer")((*uri).user) };
         } else {
-            let ref mut fresh8 = (*ctxt).user;
-            *fresh8 = xmlStrndup(
+            let fresh8 = unsafe { &mut ((*ctxt).user) };
+            *fresh8 = (unsafe { xmlStrndup(
                 (*uri).user as *mut xmlChar,
                 cptr.offset_from((*uri).user) as i64 as i32,
-            ) as *mut i8;
-            let ref mut fresh9 = (*ctxt).passwd;
-            *fresh9 = xmlMemStrdup
-                .expect(
-                    "non-null function pointer",
-                )(cptr.offset(1 as i32 as isize));
+            ) }) as *mut i8;
+            let fresh9 = unsafe { &mut ((*ctxt).passwd) };
+            *fresh9 =
+                unsafe { xmlMemStrdup.expect("non-null function pointer")(cptr.offset(1 as i32 as isize)) };
         }
     }
-    xmlFreeURI(uri);
+    (unsafe { xmlFreeURI(uri) });
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNanoFTPUpdateURL(
-    mut ctx: * mut core::ffi::c_void,
-    mut URL: * const i8,
-) -> i32 {
-    let mut ctxt: * mut crate::src::nanoftp::xmlNanoFTPCtxt = ctx as xmlNanoFTPCtxtPtr;
-    let mut uri: * mut crate::src::SAX2::_xmlURI = 0 as *mut xmlURI;
+pub extern "C" fn xmlNanoFTPUpdateURL(mut ctx: *mut core::ffi::c_void, mut URL: *const i8) -> i32 {
+    let mut ctxt: *mut crate::src::nanoftp::xmlNanoFTPCtxt = ctx as xmlNanoFTPCtxtPtr;
+    let mut uri: *mut crate::src::SAX2::_xmlURI = 0 as *mut xmlURI;
     if URL.is_null() {
         return -(1 as i32);
     }
     if ctxt.is_null() {
         return -(1 as i32);
     }
-    if ((*ctxt).protocol).is_null() {
+    if (unsafe { (*ctxt).protocol }).is_null() {
         return -(1 as i32);
     }
-    if ((*ctxt).hostname).is_null() {
+    if (unsafe { (*ctxt).hostname }).is_null() {
         return -(1 as i32);
     }
-    uri = xmlParseURIRaw(URL, 1 as i32);
+    uri = unsafe { xmlParseURIRaw(URL, 1 as i32) };
     if uri.is_null() {
         return -(1 as i32);
     }
-    if ((*uri).scheme).is_null() || ((*uri).server).is_null() {
-        xmlFreeURI(uri);
+    if (unsafe { (*uri).scheme }).is_null() || (unsafe { (*uri).server }).is_null() {
+        (unsafe { xmlFreeURI(uri) });
         return -(1 as i32);
     }
-    if strcmp((*ctxt).protocol, (*uri).scheme) != 0
-        || strcmp((*ctxt).hostname, (*uri).server) != 0
-        || (*uri).port != 0 as i32 && (*ctxt).port != (*uri).port
+    if (unsafe { strcmp((*ctxt).protocol, (*uri).scheme) }) != 0
+        || (unsafe { strcmp((*ctxt).hostname, (*uri).server) }) != 0
+        || (unsafe { (*uri).port }) != 0 as i32 && (unsafe { (*ctxt).port }) != (unsafe { (*uri).port })
     {
-        xmlFreeURI(uri);
+        (unsafe { xmlFreeURI(uri) });
         return -(1 as i32);
     }
-    if (*uri).port != 0 as i32 {
-        (*ctxt).port = (*uri).port;
+    if (unsafe { (*uri).port }) != 0 as i32 {
+        (unsafe { (*ctxt).port = (*uri).port });
     }
-    if !((*ctxt).path).is_null() {
-        xmlFree.expect("non-null function pointer")((*ctxt).path as *mut libc::c_void);
-        let ref mut fresh10 = (*ctxt).path;
+    if !(unsafe { (*ctxt).path }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*ctxt).path as *mut libc::c_void) });
+        let fresh10 = unsafe { &mut ((*ctxt).path) };
         *fresh10 = 0 as *mut i8;
     }
-    if ((*uri).path).is_null() {
-        let ref mut fresh11 = (*ctxt).path;
-        *fresh11 = xmlMemStrdup
-            .expect(
-                "non-null function pointer",
-            )(b"/\0" as *const u8 as *const i8);
+    if (unsafe { (*uri).path }).is_null() {
+        let fresh11 = unsafe { &mut ((*ctxt).path) };
+        *fresh11 =
+            unsafe { xmlMemStrdup.expect("non-null function pointer")(b"/\0" as *const u8 as *const i8) };
     } else {
-        let ref mut fresh12 = (*ctxt).path;
-        *fresh12 = xmlMemStrdup.expect("non-null function pointer")((*uri).path);
+        let fresh12 = unsafe { &mut ((*ctxt).path) };
+        *fresh12 = unsafe { xmlMemStrdup.expect("non-null function pointer")((*uri).path) };
     }
-    xmlFreeURI(uri);
+    (unsafe { xmlFreeURI(uri) });
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNanoFTPScanProxy(mut URL: * const i8) {
-    let mut uri: * mut crate::src::SAX2::_xmlURI = 0 as *mut xmlURI;
-    if !proxy.is_null() {
-        xmlFree.expect("non-null function pointer")(proxy as *mut libc::c_void);
-        proxy = 0 as *mut i8;
+pub extern "C" fn xmlNanoFTPScanProxy(mut URL: *const i8) {
+    let mut uri: *mut crate::src::SAX2::_xmlURI = 0 as *mut xmlURI;
+    if !(unsafe { proxy }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")(proxy as *mut libc::c_void) });
+        (unsafe { proxy = 0 as *mut i8 });
     }
-    proxyPort = 0 as i32;
+    (unsafe { proxyPort = 0 as i32 });
     if URL.is_null() {
         return;
     }
-    uri = xmlParseURIRaw(URL, 1 as i32);
-    if uri.is_null() || ((*uri).scheme).is_null()
-        || strcmp((*uri).scheme, b"ftp\0" as *const u8 as *const i8) != 0
-        || ((*uri).server).is_null()
+    uri = unsafe { xmlParseURIRaw(URL, 1 as i32) };
+    if uri.is_null()
+        || (unsafe { (*uri).scheme }).is_null()
+        || (unsafe { strcmp((*uri).scheme, b"ftp\0" as *const u8 as *const i8) }) != 0
+        || (unsafe { (*uri).server }).is_null()
     {
-        __xmlIOErr(
+        (unsafe { __xmlIOErr(
             XML_FROM_FTP as i32,
             XML_FTP_URL_SYNTAX as i32,
             b"Syntax Error\n\0" as *const u8 as *const i8,
-        );
+        ) });
         if !uri.is_null() {
-            xmlFreeURI(uri);
+            (unsafe { xmlFreeURI(uri) });
         }
         return;
     }
-    proxy = xmlMemStrdup.expect("non-null function pointer")((*uri).server);
-    if (*uri).port != 0 as i32 {
-        proxyPort = (*uri).port;
+    (unsafe { proxy = xmlMemStrdup.expect("non-null function pointer")((*uri).server) });
+    if (unsafe { (*uri).port }) != 0 as i32 {
+        (unsafe { proxyPort = (*uri).port });
     }
-    xmlFreeURI(uri);
+    (unsafe { xmlFreeURI(uri) });
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNanoFTPNewCtxt(
-    mut URL: * const i8,
-) -> * mut core::ffi::c_void {
-    let mut ret: * mut crate::src::nanoftp::xmlNanoFTPCtxt = 0 as *mut xmlNanoFTPCtxt;
-    let mut unescaped: * mut i8 = 0 as *mut i8;
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlNanoFTPCtxt>() as u64) as xmlNanoFTPCtxtPtr;
+pub extern "C" fn xmlNanoFTPNewCtxt(mut URL: *const i8) -> *mut core::ffi::c_void {
+    let mut ret: *mut crate::src::nanoftp::xmlNanoFTPCtxt = 0 as *mut xmlNanoFTPCtxt;
+    let mut unescaped: *mut i8 = 0 as *mut i8;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlNanoFTPCtxt>() as u64
+    ) }) as xmlNanoFTPCtxtPtr;
     if ret.is_null() {
         xmlFTPErrMemory(b"allocating FTP context\0" as *const u8 as *const i8);
         return 0 as *mut libc::c_void;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlNanoFTPCtxt>() as u64,
-    );
-    (*ret).port = 21 as i32;
-    (*ret).passive = 1 as i32;
-    (*ret).returnValue = 0 as i32;
-    (*ret).controlBufIndex = 0 as i32;
-    (*ret).controlBufUsed = 0 as i32;
-    (*ret).controlFd = -(1 as i32);
-    unescaped = xmlURIUnescapeString(URL, 0 as i32, 0 as *mut i8);
+    ) });
+    (unsafe { (*ret).port = 21 as i32 });
+    (unsafe { (*ret).passive = 1 as i32 });
+    (unsafe { (*ret).returnValue = 0 as i32 });
+    (unsafe { (*ret).controlBufIndex = 0 as i32 });
+    (unsafe { (*ret).controlBufUsed = 0 as i32 });
+    (unsafe { (*ret).controlFd = -(1 as i32) });
+    unescaped = unsafe { xmlURIUnescapeString(URL, 0 as i32, 0 as *mut i8) };
     if !unescaped.is_null() {
         xmlNanoFTPScanURL(ret as *mut libc::c_void, unescaped);
-        xmlFree.expect("non-null function pointer")(unescaped as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(unescaped as *mut libc::c_void) });
     } else if !URL.is_null() {
         xmlNanoFTPScanURL(ret as *mut libc::c_void, URL);
     }
     return ret as *mut libc::c_void;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNanoFTPFreeCtxt(mut ctx: * mut core::ffi::c_void) {
-    let mut ctxt: * mut crate::src::nanoftp::xmlNanoFTPCtxt = ctx as xmlNanoFTPCtxtPtr;
+pub extern "C" fn xmlNanoFTPFreeCtxt(mut ctx: *mut core::ffi::c_void) {
+    let mut ctxt: *mut crate::src::nanoftp::xmlNanoFTPCtxt = ctx as xmlNanoFTPCtxtPtr;
     if ctxt.is_null() {
         return;
     }
-    if !((*ctxt).hostname).is_null() {
-        xmlFree
-            .expect("non-null function pointer")((*ctxt).hostname as *mut libc::c_void);
+    if !(unsafe { (*ctxt).hostname }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*ctxt).hostname as *mut libc::c_void) });
     }
-    if !((*ctxt).protocol).is_null() {
-        xmlFree
-            .expect("non-null function pointer")((*ctxt).protocol as *mut libc::c_void);
+    if !(unsafe { (*ctxt).protocol }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*ctxt).protocol as *mut libc::c_void) });
     }
-    if !((*ctxt).path).is_null() {
-        xmlFree.expect("non-null function pointer")((*ctxt).path as *mut libc::c_void);
+    if !(unsafe { (*ctxt).path }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*ctxt).path as *mut libc::c_void) });
     }
-    if !((*ctxt).user).is_null() {
-        xmlFree.expect("non-null function pointer")((*ctxt).user as *mut libc::c_void);
+    if !(unsafe { (*ctxt).user }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*ctxt).user as *mut libc::c_void) });
     }
-    if !((*ctxt).passwd).is_null() {
-        xmlFree.expect("non-null function pointer")((*ctxt).passwd as *mut libc::c_void);
+    if !(unsafe { (*ctxt).passwd }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*ctxt).passwd as *mut libc::c_void) });
     }
-    (*ctxt).passive = 1 as i32;
-    if (*ctxt).controlFd != -(1 as i32) {
-        close((*ctxt).controlFd);
+    (unsafe { (*ctxt).passive = 1 as i32 });
+    if (unsafe { (*ctxt).controlFd }) != -(1 as i32) {
+        (unsafe { close((*ctxt).controlFd) });
     }
-    (*ctxt).controlFd = -(1 as i32);
-    (*ctxt).controlBufIndex = -(1 as i32);
-    (*ctxt).controlBufUsed = -(1 as i32);
-    xmlFree.expect("non-null function pointer")(ctxt as *mut libc::c_void);
+    (unsafe { (*ctxt).controlFd = -(1 as i32) });
+    (unsafe { (*ctxt).controlBufIndex = -(1 as i32) });
+    (unsafe { (*ctxt).controlBufUsed = -(1 as i32) });
+    (unsafe { xmlFree.expect("non-null function pointer")(ctxt as *mut libc::c_void) });
 }
-unsafe extern "C" fn xmlNanoFTPParseResponse(
-    mut buf: * mut i8,
-    mut len: i32,
-) -> i32 {
+extern "C" fn xmlNanoFTPParseResponse(mut buf: *mut i8, mut len: i32) -> i32 {
     let mut val: i32 = 0 as i32;
     if len < 3 as i32 {
         return -(1 as i32);
     }
-    if *buf as i32 >= '0' as i32 && *buf as i32 <= '9' as i32 {
-        val = val * 10 as i32 + (*buf as i32 - '0' as i32);
+    if (unsafe { *buf }) as i32 >= '0' as i32 && (unsafe { *buf }) as i32 <= '9' as i32 {
+        val = val * 10 as i32 + ((unsafe { *buf }) as i32 - '0' as i32);
     } else {
-        return 0 as i32
+        return 0 as i32;
     }
-    buf = buf.offset(1);
-    if *buf as i32 >= '0' as i32 && *buf as i32 <= '9' as i32 {
-        val = val * 10 as i32 + (*buf as i32 - '0' as i32);
+    buf = unsafe { buf.offset(1) };
+    if (unsafe { *buf }) as i32 >= '0' as i32 && (unsafe { *buf }) as i32 <= '9' as i32 {
+        val = val * 10 as i32 + ((unsafe { *buf }) as i32 - '0' as i32);
     } else {
-        return 0 as i32
+        return 0 as i32;
     }
-    buf = buf.offset(1);
-    if *buf as i32 >= '0' as i32 && *buf as i32 <= '9' as i32 {
-        val = val * 10 as i32 + (*buf as i32 - '0' as i32);
+    buf = unsafe { buf.offset(1) };
+    if (unsafe { *buf }) as i32 >= '0' as i32 && (unsafe { *buf }) as i32 <= '9' as i32 {
+        val = val * 10 as i32 + ((unsafe { *buf }) as i32 - '0' as i32);
     } else {
-        return 0 as i32
+        return 0 as i32;
     }
-    buf = buf.offset(1);
-    if *buf as i32 == '-' as i32 {
+    buf = unsafe { buf.offset(1) };
+    if (unsafe { *buf }) as i32 == '-' as i32 {
         return -val;
     }
     return val;
 }
-unsafe extern "C" fn xmlNanoFTPGetMore(mut ctx: * mut core::ffi::c_void) -> i32 {
+extern "C" fn xmlNanoFTPGetMore(mut ctx: *mut core::ffi::c_void) -> i32 {
     let mut ctxt: xmlNanoFTPCtxtPtr = ctx as xmlNanoFTPCtxtPtr;
     let mut len: i32 = 0;
     let mut size: i32 = 0;
-    if ctxt.is_null() || (*ctxt).controlFd == -(1 as i32) {
+    if ctxt.is_null() || (unsafe { (*ctxt).controlFd }) == -(1 as i32) {
         return -(1 as i32);
     }
-    if (*ctxt).controlBufIndex < 0 as i32
-        || (*ctxt).controlBufIndex > 1024 as i32
-    {
+    if (unsafe { (*ctxt).controlBufIndex }) < 0 as i32 || (unsafe { (*ctxt).controlBufIndex }) > 1024 as i32 {
         return -(1 as i32);
     }
-    if (*ctxt).controlBufUsed < 0 as i32
-        || (*ctxt).controlBufUsed > 1024 as i32
-    {
+    if (unsafe { (*ctxt).controlBufUsed }) < 0 as i32 || (unsafe { (*ctxt).controlBufUsed }) > 1024 as i32 {
         return -(1 as i32);
     }
-    if (*ctxt).controlBufIndex > (*ctxt).controlBufUsed {
+    if (unsafe { (*ctxt).controlBufIndex }) > (unsafe { (*ctxt).controlBufUsed }) {
         return -(1 as i32);
     }
-    if (*ctxt).controlBufIndex > 0 as i32 {
-        memmove(
-            &mut *((*ctxt).controlBuf).as_mut_ptr().offset(0 as i32 as isize)
-                as *mut i8 as *mut libc::c_void,
+    if (unsafe { (*ctxt).controlBufIndex }) > 0 as i32 {
+        (unsafe { memmove(
+            &mut *((*ctxt).controlBuf).as_mut_ptr().offset(0 as i32 as isize) as *mut i8
+                as *mut libc::c_void,
             &mut *((*ctxt).controlBuf)
                 .as_mut_ptr()
                 .offset((*ctxt).controlBufIndex as isize) as *mut i8
                 as *const libc::c_void,
             ((*ctxt).controlBufUsed - (*ctxt).controlBufIndex) as u64,
-        );
-        (*ctxt).controlBufUsed -= (*ctxt).controlBufIndex;
-        (*ctxt).controlBufIndex = 0 as i32;
+        ) });
+        (unsafe { (*ctxt).controlBufUsed -= (*ctxt).controlBufIndex });
+        (unsafe { (*ctxt).controlBufIndex = 0 as i32 });
     }
-    size = 1024 as i32 - (*ctxt).controlBufUsed;
+    size = 1024 as i32 - (unsafe { (*ctxt).controlBufUsed });
     if size == 0 as i32 {
         return 0 as i32;
     }
-    len = recv(
+    len = (unsafe { recv(
         (*ctxt).controlFd,
-        &mut *((*ctxt).controlBuf).as_mut_ptr().offset((*ctxt).controlBufIndex as isize)
-            as *mut i8 as *mut libc::c_void,
+        &mut *((*ctxt).controlBuf)
+            .as_mut_ptr()
+            .offset((*ctxt).controlBufIndex as isize) as *mut i8 as *mut libc::c_void,
         size as size_t,
         0 as i32,
-    ) as i32;
+    ) }) as i32;
     if len < 0 as i32 {
-        __xmlIOErr(
+        (unsafe { __xmlIOErr(
             XML_FROM_FTP as i32,
             0 as i32,
             b"recv failed\0" as *const u8 as *const i8,
-        );
-        close((*ctxt).controlFd);
-        (*ctxt).controlFd = -(1 as i32);
-        (*ctxt).controlFd = -(1 as i32);
+        ) });
+        (unsafe { close((*ctxt).controlFd) });
+        (unsafe { (*ctxt).controlFd = -(1 as i32) });
+        (unsafe { (*ctxt).controlFd = -(1 as i32) });
         return -(1 as i32);
     }
-    (*ctxt).controlBufUsed += len;
-    (*ctxt)
-        .controlBuf[(*ctxt).controlBufUsed as usize] = 0 as i32 as i8;
+    (unsafe { (*ctxt).controlBufUsed += len });
+    (unsafe { (*ctxt).controlBuf[(*ctxt).controlBufUsed as usize] = 0 as i32 as i8 });
     return len;
 }
-unsafe extern "C" fn xmlNanoFTPReadResponse(mut ctx: * mut core::ffi::c_void) -> i32 {
-    let mut ctxt: * mut crate::src::nanoftp::xmlNanoFTPCtxt = ctx as xmlNanoFTPCtxtPtr;
-    let mut ptr: * mut i8 = 0 as *mut i8;
-    let mut end: * mut i8 = 0 as *mut i8;
+extern "C" fn xmlNanoFTPReadResponse(mut ctx: *mut core::ffi::c_void) -> i32 {
+    let mut ctxt: *mut crate::src::nanoftp::xmlNanoFTPCtxt = ctx as xmlNanoFTPCtxtPtr;
+    let mut ptr: *mut i8 = 0 as *mut i8;
+    let mut end: *mut i8 = 0 as *mut i8;
     let mut len: i32 = 0;
     let mut res: i32 = -(1 as i32);
     let mut cur: i32 = -(1 as i32);
-    if ctxt.is_null() || (*ctxt).controlFd == -(1 as i32) {
+    if ctxt.is_null() || (unsafe { (*ctxt).controlFd }) == -(1 as i32) {
         return -(1 as i32);
     }
     'c_9842: loop {
@@ -1674,46 +1649,41 @@ unsafe extern "C" fn xmlNanoFTPReadResponse(mut ctx: * mut core::ffi::c_void) ->
         if len < 0 as i32 {
             return -(1 as i32);
         }
-        if (*ctxt).controlBufUsed == 0 as i32 && len == 0 as i32 {
+        if (unsafe { (*ctxt).controlBufUsed }) == 0 as i32 && len == 0 as i32 {
             return -(1 as i32);
         }
-        ptr = &mut *((*ctxt).controlBuf)
+        ptr = (unsafe { &mut *((*ctxt).controlBuf)
             .as_mut_ptr()
-            .offset((*ctxt).controlBufIndex as isize) as *mut i8;
-        end = &mut *((*ctxt).controlBuf)
+            .offset((*ctxt).controlBufIndex as isize) }) as *mut i8;
+        end = (unsafe { &mut *((*ctxt).controlBuf)
             .as_mut_ptr()
-            .offset((*ctxt).controlBufUsed as isize) as *mut i8;
+            .offset((*ctxt).controlBufUsed as isize) }) as *mut i8;
         while ptr < end {
-            cur = xmlNanoFTPParseResponse(
-                ptr,
-                end.offset_from(ptr) as i64 as i32,
-            );
+            cur = xmlNanoFTPParseResponse(ptr, (unsafe { end.offset_from(ptr) }) as i64 as i32);
             if cur > 0 as i32 {
                 res = cur;
-                ptr = ptr.offset(3 as i32 as isize);
-                (*ctxt)
-                    .controlBufAnswer = ptr
-                    .offset_from(((*ctxt).controlBuf).as_mut_ptr()) as i64
-                    as i32;
-                while ptr < end && *ptr as i32 != '\n' as i32 {
-                    ptr = ptr.offset(1);
+                ptr = unsafe { ptr.offset(3 as i32 as isize) };
+                (unsafe { (*ctxt).controlBufAnswer =
+                    ptr.offset_from(((*ctxt).controlBuf).as_mut_ptr()) as i64 as i32 });
+                while ptr < end && (unsafe { *ptr }) as i32 != '\n' as i32 {
+                    ptr = unsafe { ptr.offset(1) };
                 }
-                if *ptr as i32 == '\n' as i32 {
-                    ptr = ptr.offset(1);
+                if (unsafe { *ptr }) as i32 == '\n' as i32 {
+                    ptr = unsafe { ptr.offset(1) };
                 }
-                if *ptr as i32 == '\r' as i32 {
-                    ptr = ptr.offset(1);
+                if (unsafe { *ptr }) as i32 == '\r' as i32 {
+                    ptr = unsafe { ptr.offset(1) };
                 }
                 break;
             } else {
-                while ptr < end && *ptr as i32 != '\n' as i32 {
-                    ptr = ptr.offset(1);
+                while ptr < end && (unsafe { *ptr }) as i32 != '\n' as i32 {
+                    ptr = unsafe { ptr.offset(1) };
                 }
                 if ptr >= end {
-                    (*ctxt).controlBufIndex = (*ctxt).controlBufUsed;
+                    (unsafe { (*ctxt).controlBufIndex = (*ctxt).controlBufUsed });
                     continue 'c_9842;
-                } else if *ptr as i32 != '\r' as i32 {
-                    ptr = ptr.offset(1);
+                } else if (unsafe { *ptr }) as i32 != '\r' as i32 {
+                    ptr = unsafe { ptr.offset(1) };
                 }
             }
         }
@@ -1721,27 +1691,26 @@ unsafe extern "C" fn xmlNanoFTPReadResponse(mut ctx: * mut core::ffi::c_void) ->
             break;
         }
     }
-    (*ctxt)
-        .controlBufIndex = ptr.offset_from(((*ctxt).controlBuf).as_mut_ptr())
-        as i64 as i32;
+    (unsafe { (*ctxt).controlBufIndex = ptr.offset_from(((*ctxt).controlBuf).as_mut_ptr()) as i64 as i32 });
     return res / 100 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNanoFTPGetResponse(
-    mut ctx: * mut core::ffi::c_void,
-) -> i32 {
+pub extern "C" fn xmlNanoFTPGetResponse(mut ctx: *mut core::ffi::c_void) -> i32 {
     let mut res: i32 = 0;
     res = xmlNanoFTPReadResponse(ctx);
     return res;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNanoFTPCheckResponse(
-    mut ctx: * mut core::ffi::c_void,
-) -> i32 {
+pub extern "C" fn xmlNanoFTPCheckResponse(mut ctx: *mut core::ffi::c_void) -> i32 {
     let mut ctxt: xmlNanoFTPCtxtPtr = ctx as xmlNanoFTPCtxtPtr;
-    let mut rfd: fd_set = fd_set { __fds_bits: [0; 16] };
-    let mut tv: timeval = timeval { tv_sec: 0, tv_usec: 0 };
-    if ctxt.is_null() || (*ctxt).controlFd == -(1 as i32) {
+    let mut rfd: fd_set = fd_set {
+        __fds_bits: [0; 16],
+    };
+    let mut tv: timeval = timeval {
+        tv_sec: 0,
+        tv_usec: 0,
+    };
+    if ctxt.is_null() || (unsafe { (*ctxt).controlFd }) == -(1 as i32) {
         return -(1 as i32);
     }
     tv.tv_sec = 0 as i32 as __time_t;
@@ -1754,182 +1723,168 @@ pub unsafe extern "C" fn xmlNanoFTPCheckResponse(
         .wrapping_div(::std::mem::size_of::<__fd_mask>() as u64);
     let fresh16 = &mut __d1;
     let fresh17;
-    let fresh18 = &mut *(rfd.__fds_bits).as_mut_ptr().offset(0 as i32 as isize)
-        as *mut __fd_mask;
-    asm!(
-        "cld; rep; stosq", inlateout("cx") c2rust_asm_casts::AsmCast::cast_in(fresh13,
-        fresh15) => fresh14, inlateout("di") c2rust_asm_casts::AsmCast::cast_in(fresh16,
-        fresh18) => fresh17, inlateout("ax") 0 as i32 => _,
-        options(preserves_flags)
-    );
+    let fresh18 = (unsafe { &mut *(rfd.__fds_bits).as_mut_ptr().offset(0 as i32 as isize) }) as *mut __fd_mask;
+    (unsafe { asm ! ("cld; rep; stosq" , inlateout ("cx") c2rust_asm_casts :: AsmCast :: cast_in (fresh13 , fresh15) => fresh14 , inlateout ("di") c2rust_asm_casts :: AsmCast :: cast_in (fresh16 , fresh18) => fresh17 , inlateout ("ax") 0 as i32 => _ , options (preserves_flags)) });
     c2rust_asm_casts::AsmCast::cast_out(fresh13, fresh15, fresh14);
     c2rust_asm_casts::AsmCast::cast_out(fresh16, fresh18, fresh17);
-    rfd
-        .__fds_bits[((*ctxt).controlFd
-        / (8 as i32
-            * ::std::mem::size_of::<__fd_mask>() as u64 as i32))
-        as usize]
-        |= ((1 as u64)
-            << (*ctxt).controlFd
-                % (8 as i32
-                    * ::std::mem::size_of::<__fd_mask>() as u64
-                        as i32)) as __fd_mask;
-    match select(
+    rfd.__fds_bits[((unsafe { (*ctxt).controlFd })
+        / (8 as i32 * ::std::mem::size_of::<__fd_mask>() as u64 as i32))
+        as usize] |= ((1 as u64)
+        << (unsafe { (*ctxt).controlFd }) % (8 as i32 * ::std::mem::size_of::<__fd_mask>() as u64 as i32))
+        as __fd_mask;
+    match unsafe { select(
         (*ctxt).controlFd + 1 as i32,
         &mut rfd,
         0 as *mut fd_set,
         0 as *mut fd_set,
         &mut tv,
-    ) {
+    ) } {
         0 => return 0 as i32,
         -1 => {
-            __xmlIOErr(
+            (unsafe { __xmlIOErr(
                 XML_FROM_FTP as i32,
                 0 as i32,
                 b"select\0" as *const u8 as *const i8,
-            );
+            ) });
             return -(1 as i32);
-        }
-        _ => {}
+        },
+        _ => {},
     }
     return xmlNanoFTPReadResponse(ctx);
 }
-unsafe extern "C" fn xmlNanoFTPSendUser(mut ctx: * mut core::ffi::c_void) -> i32 {
-    let mut ctxt: * mut crate::src::nanoftp::xmlNanoFTPCtxt = ctx as xmlNanoFTPCtxtPtr;
+extern "C" fn xmlNanoFTPSendUser(mut ctx: *mut core::ffi::c_void) -> i32 {
+    let mut ctxt: *mut crate::src::nanoftp::xmlNanoFTPCtxt = ctx as xmlNanoFTPCtxtPtr;
     let mut buf: [i8; 200] = [0; 200];
     let mut len: i32 = 0;
     let mut res: i32 = 0;
-    if ((*ctxt).user).is_null() {
-        snprintf(
+    if (unsafe { (*ctxt).user }).is_null() {
+        (unsafe { snprintf(
             buf.as_mut_ptr(),
             ::std::mem::size_of::<[i8; 200]>() as u64,
             b"USER anonymous\r\n\0" as *const u8 as *const i8,
-        );
+        ) });
     } else {
-        snprintf(
+        (unsafe { snprintf(
             buf.as_mut_ptr(),
             ::std::mem::size_of::<[i8; 200]>() as u64,
             b"USER %s\r\n\0" as *const u8 as *const i8,
             (*ctxt).user,
-        );
+        ) });
     }
-    buf[(::std::mem::size_of::<[i8; 200]>() as u64)
-        .wrapping_sub(1 as i32 as u64)
-        as usize] = 0 as i32 as i8;
-    len = strlen(buf.as_mut_ptr()) as i32;
-    res = send(
+    buf[(::std::mem::size_of::<[i8; 200]>() as u64).wrapping_sub(1 as i32 as u64) as usize] =
+        0 as i32 as i8;
+    len = (unsafe { strlen(buf.as_mut_ptr()) }) as i32;
+    res = (unsafe { send(
         (*ctxt).controlFd,
         buf.as_mut_ptr() as *const libc::c_void,
         len as size_t,
         0 as i32,
-    ) as i32;
+    ) }) as i32;
     if res < 0 as i32 {
-        __xmlIOErr(
+        (unsafe { __xmlIOErr(
             XML_FROM_FTP as i32,
             0 as i32,
             b"send failed\0" as *const u8 as *const i8,
-        );
+        ) });
         return res;
     }
     return 0 as i32;
 }
-unsafe extern "C" fn xmlNanoFTPSendPasswd(mut ctx: * mut core::ffi::c_void) -> i32 {
-    let mut ctxt: * mut crate::src::nanoftp::xmlNanoFTPCtxt = ctx as xmlNanoFTPCtxtPtr;
+extern "C" fn xmlNanoFTPSendPasswd(mut ctx: *mut core::ffi::c_void) -> i32 {
+    let mut ctxt: *mut crate::src::nanoftp::xmlNanoFTPCtxt = ctx as xmlNanoFTPCtxtPtr;
     let mut buf: [i8; 200] = [0; 200];
     let mut len: i32 = 0;
     let mut res: i32 = 0;
-    if ((*ctxt).passwd).is_null() {
-        snprintf(
+    if (unsafe { (*ctxt).passwd }).is_null() {
+        (unsafe { snprintf(
             buf.as_mut_ptr(),
             ::std::mem::size_of::<[i8; 200]>() as u64,
             b"PASS anonymous@\r\n\0" as *const u8 as *const i8,
-        );
+        ) });
     } else {
-        snprintf(
+        (unsafe { snprintf(
             buf.as_mut_ptr(),
             ::std::mem::size_of::<[i8; 200]>() as u64,
             b"PASS %s\r\n\0" as *const u8 as *const i8,
             (*ctxt).passwd,
-        );
+        ) });
     }
-    buf[(::std::mem::size_of::<[i8; 200]>() as u64)
-        .wrapping_sub(1 as i32 as u64)
-        as usize] = 0 as i32 as i8;
-    len = strlen(buf.as_mut_ptr()) as i32;
-    res = send(
+    buf[(::std::mem::size_of::<[i8; 200]>() as u64).wrapping_sub(1 as i32 as u64) as usize] =
+        0 as i32 as i8;
+    len = (unsafe { strlen(buf.as_mut_ptr()) }) as i32;
+    res = (unsafe { send(
         (*ctxt).controlFd,
         buf.as_mut_ptr() as *const libc::c_void,
         len as size_t,
         0 as i32,
-    ) as i32;
+    ) }) as i32;
     if res < 0 as i32 {
-        __xmlIOErr(
+        (unsafe { __xmlIOErr(
             XML_FROM_FTP as i32,
             0 as i32,
             b"send failed\0" as *const u8 as *const i8,
-        );
+        ) });
         return res;
     }
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNanoFTPQuit(mut ctx: * mut core::ffi::c_void) -> i32 {
-    let mut ctxt: * mut crate::src::nanoftp::xmlNanoFTPCtxt = ctx as xmlNanoFTPCtxtPtr;
+pub extern "C" fn xmlNanoFTPQuit(mut ctx: *mut core::ffi::c_void) -> i32 {
+    let mut ctxt: *mut crate::src::nanoftp::xmlNanoFTPCtxt = ctx as xmlNanoFTPCtxtPtr;
     let mut buf: [i8; 200] = [0; 200];
     let mut len: i32 = 0;
     let mut res: i32 = 0;
-    if ctxt.is_null() || (*ctxt).controlFd == -(1 as i32) {
+    if ctxt.is_null() || (unsafe { (*ctxt).controlFd }) == -(1 as i32) {
         return -(1 as i32);
     }
-    snprintf(
+    (unsafe { snprintf(
         buf.as_mut_ptr(),
         ::std::mem::size_of::<[i8; 200]>() as u64,
         b"QUIT\r\n\0" as *const u8 as *const i8,
-    );
-    len = strlen(buf.as_mut_ptr()) as i32;
-    res = send(
+    ) });
+    len = (unsafe { strlen(buf.as_mut_ptr()) }) as i32;
+    res = (unsafe { send(
         (*ctxt).controlFd,
         buf.as_mut_ptr() as *const libc::c_void,
         len as size_t,
         0 as i32,
-    ) as i32;
+    ) }) as i32;
     if res < 0 as i32 {
-        __xmlIOErr(
+        (unsafe { __xmlIOErr(
             XML_FROM_FTP as i32,
             0 as i32,
             b"send failed\0" as *const u8 as *const i8,
-        );
+        ) });
         return res;
     }
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNanoFTPConnect(mut ctx: * mut core::ffi::c_void) -> i32 {
-    let mut ctxt: * mut crate::src::nanoftp::xmlNanoFTPCtxt = ctx as xmlNanoFTPCtxtPtr;
-    let mut hp: * mut crate::src::nanoftp::hostent = (0 as * mut crate::src::nanoftp::hostent);
+pub extern "C" fn xmlNanoFTPConnect(mut ctx: *mut core::ffi::c_void) -> i32 {
+    let mut ctxt: *mut crate::src::nanoftp::xmlNanoFTPCtxt = ctx as xmlNanoFTPCtxtPtr;
+    let mut hp: *mut crate::src::nanoftp::hostent = 0 as *mut crate::src::nanoftp::hostent;
     let mut port: i32 = 0;
     let mut res: i32 = 0;
-    let mut addrlen: i32 = ::std::mem::size_of::<sockaddr_in>() as u64
-        as i32;
+    let mut addrlen: i32 = ::std::mem::size_of::<sockaddr_in>() as u64 as i32;
     if ctxt.is_null() {
         return -(1 as i32);
     }
-    if ((*ctxt).hostname).is_null() {
+    if (unsafe { (*ctxt).hostname }).is_null() {
         return -(1 as i32);
     }
-    if !proxy.is_null() {
-        port = proxyPort;
+    if !(unsafe { proxy }).is_null() {
+        port = unsafe { proxyPort };
     } else {
-        port = (*ctxt).port;
+        port = unsafe { (*ctxt).port };
     }
     if port == 0 as i32 {
         port = 21 as i32;
     }
-    memset(
+    (unsafe { memset(
         &mut (*ctxt).ftpAddr as *mut sockaddr_storage as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<sockaddr_storage>() as u64,
-    );
+    ) });
     if have_ipv6() != 0 {
         let mut hints: crate::src::nanoftp::addrinfo = addrinfo {
             ai_flags: 0,
@@ -1941,455 +1896,414 @@ pub unsafe extern "C" fn xmlNanoFTPConnect(mut ctx: * mut core::ffi::c_void) -> 
             ai_canonname: 0 as *mut i8,
             ai_next: 0 as *mut addrinfo,
         };
-        let mut tmp: * mut crate::src::nanoftp::addrinfo = 0 as *mut addrinfo;
-        let mut result: * mut crate::src::nanoftp::addrinfo = 0 as *mut addrinfo;
+        let mut tmp: *mut crate::src::nanoftp::addrinfo = 0 as *mut addrinfo;
+        let mut result: *mut crate::src::nanoftp::addrinfo = 0 as *mut addrinfo;
         result = 0 as *mut addrinfo;
-        memset(
+        (unsafe { memset(
             &mut hints as *mut addrinfo as *mut libc::c_void,
             0 as i32,
             ::std::mem::size_of::<addrinfo>() as u64,
-        );
+        ) });
         hints.ai_socktype = SOCK_STREAM as i32;
-        if !proxy.is_null() {
-            if getaddrinfo(proxy, 0 as *const i8, &mut hints, &mut result)
-                != 0 as i32
-            {
-                __xmlIOErr(
+        if !(unsafe { proxy }).is_null() {
+            if (unsafe { getaddrinfo(proxy, 0 as *const i8, &mut hints, &mut result) }) != 0 as i32 {
+                (unsafe { __xmlIOErr(
                     XML_FROM_FTP as i32,
                     0 as i32,
                     b"getaddrinfo failed\0" as *const u8 as *const i8,
-                );
+                ) });
                 return -(1 as i32);
             }
-        } else if getaddrinfo(
-                (*ctxt).hostname,
-                0 as *const i8,
-                &mut hints,
-                &mut result,
-            ) != 0 as i32
-            {
-            __xmlIOErr(
+        } else if (unsafe { getaddrinfo((*ctxt).hostname, 0 as *const i8, &mut hints, &mut result) }) != 0 as i32
+        {
+            (unsafe { __xmlIOErr(
                 XML_FROM_FTP as i32,
                 0 as i32,
                 b"getaddrinfo failed\0" as *const u8 as *const i8,
-            );
+            ) });
             return -(1 as i32);
         }
         tmp = result;
         while !tmp.is_null() {
-            if (*tmp).ai_family == 2 as i32
-                || (*tmp).ai_family == 10 as i32
-            {
+            if (unsafe { (*tmp).ai_family }) == 2 as i32 || (unsafe { (*tmp).ai_family }) == 10 as i32 {
                 break;
             }
-            tmp = (*tmp).ai_next;
+            tmp = unsafe { (*tmp).ai_next };
         }
         if tmp.is_null() {
             if !result.is_null() {
-                freeaddrinfo(result);
+                (unsafe { freeaddrinfo(result) });
             }
-            __xmlIOErr(
+            (unsafe { __xmlIOErr(
                 XML_FROM_FTP as i32,
                 0 as i32,
                 b"getaddrinfo failed\0" as *const u8 as *const i8,
-            );
+            ) });
             return -(1 as i32);
         }
-        if (*tmp).ai_addrlen as size_t
-            > ::std::mem::size_of::<sockaddr_storage>() as u64
-        {
+        if (unsafe { (*tmp).ai_addrlen }) as size_t > ::std::mem::size_of::<sockaddr_storage>() as u64 {
             if !result.is_null() {
-                freeaddrinfo(result);
+                (unsafe { freeaddrinfo(result) });
             }
-            __xmlIOErr(
+            (unsafe { __xmlIOErr(
                 XML_FROM_FTP as i32,
                 0 as i32,
                 b"gethostbyname address mismatch\0" as *const u8 as *const i8,
-            );
+            ) });
             return -(1 as i32);
         }
-        if (*tmp).ai_family == 10 as i32 {
-            memcpy(
+        if (unsafe { (*tmp).ai_family }) == 10 as i32 {
+            (unsafe { memcpy(
                 &mut (*ctxt).ftpAddr as *mut sockaddr_storage as *mut libc::c_void,
                 (*tmp).ai_addr as *const libc::c_void,
                 (*tmp).ai_addrlen as u64,
-            );
-            (*(&mut (*ctxt).ftpAddr as *mut sockaddr_storage as *mut sockaddr_in6))
-                .sin6_port = __bswap_16(port as __uint16_t);
-            (*ctxt)
-                .controlFd = socket(
-                10 as i32,
-                SOCK_STREAM as i32,
-                0 as i32,
-            );
+            ) });
+            (unsafe { (*(&mut (*ctxt).ftpAddr as *mut sockaddr_storage as *mut sockaddr_in6)).sin6_port =
+                __bswap_16(port as __uint16_t) });
+            (unsafe { (*ctxt).controlFd = socket(10 as i32, SOCK_STREAM as i32, 0 as i32) });
         } else {
-            memcpy(
+            (unsafe { memcpy(
                 &mut (*ctxt).ftpAddr as *mut sockaddr_storage as *mut libc::c_void,
                 (*tmp).ai_addr as *const libc::c_void,
                 (*tmp).ai_addrlen as u64,
-            );
-            (*(&mut (*ctxt).ftpAddr as *mut sockaddr_storage as *mut sockaddr_in))
-                .sin_port = __bswap_16(port as __uint16_t);
-            (*ctxt)
-                .controlFd = socket(
-                2 as i32,
-                SOCK_STREAM as i32,
-                0 as i32,
-            );
+            ) });
+            (unsafe { (*(&mut (*ctxt).ftpAddr as *mut sockaddr_storage as *mut sockaddr_in)).sin_port =
+                __bswap_16(port as __uint16_t) });
+            (unsafe { (*ctxt).controlFd = socket(2 as i32, SOCK_STREAM as i32, 0 as i32) });
         }
-        addrlen = (*tmp).ai_addrlen as i32;
-        freeaddrinfo(result);
+        addrlen = (unsafe { (*tmp).ai_addrlen }) as i32;
+        (unsafe { freeaddrinfo(result) });
     } else {
-        if !proxy.is_null() {
-            hp = gethostbyname(proxy);
+        if !(unsafe { proxy }).is_null() {
+            hp = unsafe { gethostbyname(proxy) };
         } else {
-            hp = gethostbyname((*ctxt).hostname);
+            hp = unsafe { gethostbyname((*ctxt).hostname) };
         }
         if hp.is_null() {
-            __xmlIOErr(
+            (unsafe { __xmlIOErr(
                 XML_FROM_FTP as i32,
                 0 as i32,
                 b"gethostbyname failed\0" as *const u8 as *const i8,
-            );
+            ) });
             return -(1 as i32);
         }
-        if (*hp).h_length as u32 as u64
-            > ::std::mem::size_of::<in_addr>() as u64
-        {
-            __xmlIOErr(
+        if (unsafe { (*hp).h_length }) as u32 as u64 > ::std::mem::size_of::<in_addr>() as u64 {
+            (unsafe { __xmlIOErr(
                 XML_FROM_FTP as i32,
                 0 as i32,
                 b"gethostbyname address mismatch\0" as *const u8 as *const i8,
-            );
+            ) });
             return -(1 as i32);
         }
-        (*(&mut (*ctxt).ftpAddr as *mut sockaddr_storage as *mut sockaddr_in))
-            .sin_family = 2 as i32 as sa_family_t;
-        memcpy(
-            &mut (*(&mut (*ctxt).ftpAddr as *mut sockaddr_storage as *mut sockaddr_in))
-                .sin_addr as *mut in_addr as *mut libc::c_void,
-            *((*hp).h_addr_list).offset(0 as i32 as isize)
-                as *const libc::c_void,
+        (unsafe { (*(&mut (*ctxt).ftpAddr as *mut sockaddr_storage as *mut sockaddr_in)).sin_family =
+            2 as i32 as sa_family_t });
+        (unsafe { memcpy(
+            &mut (*(&mut (*ctxt).ftpAddr as *mut sockaddr_storage as *mut sockaddr_in)).sin_addr
+                as *mut in_addr as *mut libc::c_void,
+            *((*hp).h_addr_list).offset(0 as i32 as isize) as *const libc::c_void,
             (*hp).h_length as u64,
-        );
-        (*(&mut (*ctxt).ftpAddr as *mut sockaddr_storage as *mut sockaddr_in))
-            .sin_port = __bswap_16(port as u16);
-        (*ctxt)
-            .controlFd = socket(
-            2 as i32,
-            SOCK_STREAM as i32,
-            0 as i32,
-        );
+        ) });
+        (unsafe { (*(&mut (*ctxt).ftpAddr as *mut sockaddr_storage as *mut sockaddr_in)).sin_port =
+            __bswap_16(port as u16) });
+        (unsafe { (*ctxt).controlFd = socket(2 as i32, SOCK_STREAM as i32, 0 as i32) });
         addrlen = ::std::mem::size_of::<sockaddr_in>() as u64 as i32;
     }
-    if (*ctxt).controlFd == -(1 as i32) {
-        __xmlIOErr(
+    if (unsafe { (*ctxt).controlFd }) == -(1 as i32) {
+        (unsafe { __xmlIOErr(
             XML_FROM_FTP as i32,
             0 as i32,
             b"socket failed\0" as *const u8 as *const i8,
-        );
+        ) });
         return -(1 as i32);
     }
-    if connect(
+    if (unsafe { connect(
         (*ctxt).controlFd,
         &mut (*ctxt).ftpAddr as *mut sockaddr_storage as *mut sockaddr,
         addrlen as socklen_t,
-    ) < 0 as i32
+    ) }) < 0 as i32
     {
-        __xmlIOErr(
+        (unsafe { __xmlIOErr(
             XML_FROM_FTP as i32,
             0 as i32,
             b"Failed to create a connection\0" as *const u8 as *const i8,
-        );
-        close((*ctxt).controlFd);
-        (*ctxt).controlFd = -(1 as i32);
-        (*ctxt).controlFd = -(1 as i32);
+        ) });
+        (unsafe { close((*ctxt).controlFd) });
+        (unsafe { (*ctxt).controlFd = -(1 as i32) });
+        (unsafe { (*ctxt).controlFd = -(1 as i32) });
         return -(1 as i32);
     }
     res = xmlNanoFTPGetResponse(ctxt as *mut libc::c_void);
     if res != 2 as i32 {
-        close((*ctxt).controlFd);
-        (*ctxt).controlFd = -(1 as i32);
-        (*ctxt).controlFd = -(1 as i32);
+        (unsafe { close((*ctxt).controlFd) });
+        (unsafe { (*ctxt).controlFd = -(1 as i32) });
+        (unsafe { (*ctxt).controlFd = -(1 as i32) });
         return -(1 as i32);
     }
-    if !proxy.is_null() {
+    if !(unsafe { proxy }).is_null() {
         let mut len: i32 = 0;
         let mut buf: [i8; 400] = [0; 400];
-        if !proxyUser.is_null() {
-            snprintf(
+        if !(unsafe { proxyUser }).is_null() {
+            (unsafe { snprintf(
                 buf.as_mut_ptr(),
                 ::std::mem::size_of::<[i8; 400]>() as u64,
                 b"USER %s\r\n\0" as *const u8 as *const i8,
                 proxyUser,
-            );
-            buf[(::std::mem::size_of::<[i8; 400]>() as u64)
-                .wrapping_sub(1 as i32 as u64)
+            ) });
+            buf[(::std::mem::size_of::<[i8; 400]>() as u64).wrapping_sub(1 as i32 as u64)
                 as usize] = 0 as i32 as i8;
-            len = strlen(buf.as_mut_ptr()) as i32;
-            res = send(
+            len = (unsafe { strlen(buf.as_mut_ptr()) }) as i32;
+            res = (unsafe { send(
                 (*ctxt).controlFd,
                 buf.as_mut_ptr() as *const libc::c_void,
                 len as size_t,
                 0 as i32,
-            ) as i32;
+            ) }) as i32;
             if res < 0 as i32 {
-                __xmlIOErr(
+                (unsafe { __xmlIOErr(
                     XML_FROM_FTP as i32,
                     0 as i32,
                     b"send failed\0" as *const u8 as *const i8,
-                );
-                close((*ctxt).controlFd);
-                (*ctxt).controlFd = -(1 as i32);
+                ) });
+                (unsafe { close((*ctxt).controlFd) });
+                (unsafe { (*ctxt).controlFd = -(1 as i32) });
                 return res;
             }
             res = xmlNanoFTPGetResponse(ctxt as *mut libc::c_void);
             let mut current_block_118: u64;
             match res {
                 2 => {
-                    if proxyPasswd.is_null() {
+                    if (unsafe { proxyPasswd }).is_null() {
                         current_block_118 = 10109057886293123569;
                     } else {
                         current_block_118 = 2471059741524430763;
                     }
-                }
+                },
                 3 => {
                     current_block_118 = 2471059741524430763;
-                }
+                },
                 1 => {
                     current_block_118 = 10109057886293123569;
-                }
+                },
                 4 | 5 | -1 | _ => {
-                    close((*ctxt).controlFd);
-                    (*ctxt).controlFd = -(1 as i32);
+                    (unsafe { close((*ctxt).controlFd) });
+                    (unsafe { (*ctxt).controlFd = -(1 as i32) });
                     return -(1 as i32);
-                }
+                },
             }
             match current_block_118 {
                 2471059741524430763 => {
-                    if !proxyPasswd.is_null() {
-                        snprintf(
+                    if !(unsafe { proxyPasswd }).is_null() {
+                        (unsafe { snprintf(
                             buf.as_mut_ptr(),
-                            ::std::mem::size_of::<[i8; 400]>()
-                                as u64,
+                            ::std::mem::size_of::<[i8; 400]>() as u64,
                             b"PASS %s\r\n\0" as *const u8 as *const i8,
                             proxyPasswd,
-                        );
+                        ) });
                     } else {
-                        snprintf(
+                        (unsafe { snprintf(
                             buf.as_mut_ptr(),
-                            ::std::mem::size_of::<[i8; 400]>()
-                                as u64,
+                            ::std::mem::size_of::<[i8; 400]>() as u64,
                             b"PASS anonymous@\r\n\0" as *const u8 as *const i8,
-                        );
+                        ) });
                     }
-                    buf[(::std::mem::size_of::<[i8; 400]>() as u64)
-                        .wrapping_sub(1 as i32 as u64)
+                    buf[(::std::mem::size_of::<[i8; 400]>() as u64).wrapping_sub(1 as i32 as u64)
                         as usize] = 0 as i32 as i8;
-                    len = strlen(buf.as_mut_ptr()) as i32;
-                    res = send(
+                    len = (unsafe { strlen(buf.as_mut_ptr()) }) as i32;
+                    res = (unsafe { send(
                         (*ctxt).controlFd,
                         buf.as_mut_ptr() as *const libc::c_void,
                         len as size_t,
                         0 as i32,
-                    ) as i32;
+                    ) }) as i32;
                     if res < 0 as i32 {
-                        __xmlIOErr(
+                        (unsafe { __xmlIOErr(
                             XML_FROM_FTP as i32,
                             0 as i32,
                             b"send failed\0" as *const u8 as *const i8,
-                        );
-                        close((*ctxt).controlFd);
-                        (*ctxt).controlFd = -(1 as i32);
+                        ) });
+                        (unsafe { close((*ctxt).controlFd) });
+                        (unsafe { (*ctxt).controlFd = -(1 as i32) });
                         return res;
                     }
                     res = xmlNanoFTPGetResponse(ctxt as *mut libc::c_void);
                     if res > 3 as i32 {
-                        close((*ctxt).controlFd);
-                        (*ctxt).controlFd = -(1 as i32);
+                        (unsafe { close((*ctxt).controlFd) });
+                        (unsafe { (*ctxt).controlFd = -(1 as i32) });
                         return -(1 as i32);
                     }
-                }
-                _ => {}
+                },
+                _ => {},
             }
         }
         's_856: {
             let mut current_block_186: u64;
-            match proxyType {
+            match unsafe { proxyType } {
                 0 | 1 => {
-                    snprintf(
+                    (unsafe { snprintf(
                         buf.as_mut_ptr(),
                         ::std::mem::size_of::<[i8; 400]>() as u64,
                         b"SITE %s\r\n\0" as *const u8 as *const i8,
                         (*ctxt).hostname,
-                    );
-                    buf[(::std::mem::size_of::<[i8; 400]>() as u64)
-                        .wrapping_sub(1 as i32 as u64)
+                    ) });
+                    buf[(::std::mem::size_of::<[i8; 400]>() as u64).wrapping_sub(1 as i32 as u64)
                         as usize] = 0 as i32 as i8;
-                    len = strlen(buf.as_mut_ptr()) as i32;
-                    res = send(
+                    len = (unsafe { strlen(buf.as_mut_ptr()) }) as i32;
+                    res = (unsafe { send(
                         (*ctxt).controlFd,
                         buf.as_mut_ptr() as *const libc::c_void,
                         len as size_t,
                         0 as i32,
-                    ) as i32;
+                    ) }) as i32;
                     if res < 0 as i32 {
-                        __xmlIOErr(
+                        (unsafe { __xmlIOErr(
                             XML_FROM_FTP as i32,
                             0 as i32,
                             b"send failed\0" as *const u8 as *const i8,
-                        );
-                        close((*ctxt).controlFd);
-                        (*ctxt).controlFd = -(1 as i32);
-                        (*ctxt).controlFd = -(1 as i32);
+                        ) });
+                        (unsafe { close((*ctxt).controlFd) });
+                        (unsafe { (*ctxt).controlFd = -(1 as i32) });
+                        (unsafe { (*ctxt).controlFd = -(1 as i32) });
                         return res;
                     }
                     res = xmlNanoFTPGetResponse(ctxt as *mut libc::c_void);
                     if res == 2 as i32 {
-                        proxyType = 1 as i32;
+                        (unsafe { proxyType = 1 as i32 });
                         break 's_856;
-                    } else if proxyType == 1 as i32 {
-                        close((*ctxt).controlFd);
-                        (*ctxt).controlFd = -(1 as i32);
-                        (*ctxt).controlFd = -(1 as i32);
+                    } else if (unsafe { proxyType }) == 1 as i32 {
+                        (unsafe { close((*ctxt).controlFd) });
+                        (unsafe { (*ctxt).controlFd = -(1 as i32) });
+                        (unsafe { (*ctxt).controlFd = -(1 as i32) });
                         return -(1 as i32);
                     }
                     current_block_186 = 14250728601114395500;
-                }
+                },
                 2 => {
                     current_block_186 = 14250728601114395500;
-                }
+                },
                 3 | _ => {
                     current_block_186 = 5657156001684013740;
-                }
+                },
             }
             match current_block_186 {
                 14250728601114395500 => {
-                    if ((*ctxt).user).is_null() {
-                        snprintf(
+                    if (unsafe { (*ctxt).user }).is_null() {
+                        (unsafe { snprintf(
                             buf.as_mut_ptr(),
-                            ::std::mem::size_of::<[i8; 400]>()
-                                as u64,
-                            b"USER anonymous@%s\r\n\0" as *const u8
-                                as *const i8,
+                            ::std::mem::size_of::<[i8; 400]>() as u64,
+                            b"USER anonymous@%s\r\n\0" as *const u8 as *const i8,
                             (*ctxt).hostname,
-                        );
+                        ) });
                     } else {
-                        snprintf(
+                        (unsafe { snprintf(
                             buf.as_mut_ptr(),
-                            ::std::mem::size_of::<[i8; 400]>()
-                                as u64,
+                            ::std::mem::size_of::<[i8; 400]>() as u64,
                             b"USER %s@%s\r\n\0" as *const u8 as *const i8,
                             (*ctxt).user,
                             (*ctxt).hostname,
-                        );
+                        ) });
                     }
-                    buf[(::std::mem::size_of::<[i8; 400]>() as u64)
-                        .wrapping_sub(1 as i32 as u64)
+                    buf[(::std::mem::size_of::<[i8; 400]>() as u64).wrapping_sub(1 as i32 as u64)
                         as usize] = 0 as i32 as i8;
-                    len = strlen(buf.as_mut_ptr()) as i32;
-                    res = send(
+                    len = (unsafe { strlen(buf.as_mut_ptr()) }) as i32;
+                    res = (unsafe { send(
                         (*ctxt).controlFd,
                         buf.as_mut_ptr() as *const libc::c_void,
                         len as size_t,
                         0 as i32,
-                    ) as i32;
+                    ) }) as i32;
                     if res < 0 as i32 {
-                        __xmlIOErr(
+                        (unsafe { __xmlIOErr(
                             XML_FROM_FTP as i32,
                             0 as i32,
                             b"send failed\0" as *const u8 as *const i8,
-                        );
-                        close((*ctxt).controlFd);
-                        (*ctxt).controlFd = -(1 as i32);
-                        (*ctxt).controlFd = -(1 as i32);
+                        ) });
+                        (unsafe { close((*ctxt).controlFd) });
+                        (unsafe { (*ctxt).controlFd = -(1 as i32) });
+                        (unsafe { (*ctxt).controlFd = -(1 as i32) });
                         return res;
                     }
                     res = xmlNanoFTPGetResponse(ctxt as *mut libc::c_void);
                     if res == 1 as i32 || res == 2 as i32 {
-                        proxyType = 2 as i32;
+                        (unsafe { proxyType = 2 as i32 });
                         return 0 as i32;
                     }
-                    if ((*ctxt).passwd).is_null() {
-                        snprintf(
+                    if (unsafe { (*ctxt).passwd }).is_null() {
+                        (unsafe { snprintf(
                             buf.as_mut_ptr(),
-                            ::std::mem::size_of::<[i8; 400]>()
-                                as u64,
+                            ::std::mem::size_of::<[i8; 400]>() as u64,
                             b"PASS anonymous@\r\n\0" as *const u8 as *const i8,
-                        );
+                        ) });
                     } else {
-                        snprintf(
+                        (unsafe { snprintf(
                             buf.as_mut_ptr(),
-                            ::std::mem::size_of::<[i8; 400]>()
-                                as u64,
+                            ::std::mem::size_of::<[i8; 400]>() as u64,
                             b"PASS %s\r\n\0" as *const u8 as *const i8,
                             (*ctxt).passwd,
-                        );
+                        ) });
                     }
-                    buf[(::std::mem::size_of::<[i8; 400]>() as u64)
-                        .wrapping_sub(1 as i32 as u64)
+                    buf[(::std::mem::size_of::<[i8; 400]>() as u64).wrapping_sub(1 as i32 as u64)
                         as usize] = 0 as i32 as i8;
-                    len = strlen(buf.as_mut_ptr()) as i32;
-                    res = send(
+                    len = (unsafe { strlen(buf.as_mut_ptr()) }) as i32;
+                    res = (unsafe { send(
                         (*ctxt).controlFd,
                         buf.as_mut_ptr() as *const libc::c_void,
                         len as size_t,
                         0 as i32,
-                    ) as i32;
+                    ) }) as i32;
                     if res < 0 as i32 {
-                        __xmlIOErr(
+                        (unsafe { __xmlIOErr(
                             XML_FROM_FTP as i32,
                             0 as i32,
                             b"send failed\0" as *const u8 as *const i8,
-                        );
-                        close((*ctxt).controlFd);
-                        (*ctxt).controlFd = -(1 as i32);
-                        (*ctxt).controlFd = -(1 as i32);
+                        ) });
+                        (unsafe { close((*ctxt).controlFd) });
+                        (unsafe { (*ctxt).controlFd = -(1 as i32) });
+                        (unsafe { (*ctxt).controlFd = -(1 as i32) });
                         return res;
                     }
                     res = xmlNanoFTPGetResponse(ctxt as *mut libc::c_void);
                     if res == 1 as i32 || res == 2 as i32 {
-                        proxyType = 2 as i32;
+                        (unsafe { proxyType = 2 as i32 });
                         return 0 as i32;
                     }
-                    if proxyType == 2 as i32 {
-                        close((*ctxt).controlFd);
-                        (*ctxt).controlFd = -(1 as i32);
-                        (*ctxt).controlFd = -(1 as i32);
+                    if (unsafe { proxyType }) == 2 as i32 {
+                        (unsafe { close((*ctxt).controlFd) });
+                        (unsafe { (*ctxt).controlFd = -(1 as i32) });
+                        (unsafe { (*ctxt).controlFd = -(1 as i32) });
                         return -(1 as i32);
                     }
-                }
-                _ => {}
+                },
+                _ => {},
             }
-            close((*ctxt).controlFd);
-            (*ctxt).controlFd = -(1 as i32);
-            (*ctxt).controlFd = -(1 as i32);
+            (unsafe { close((*ctxt).controlFd) });
+            (unsafe { (*ctxt).controlFd = -(1 as i32) });
+            (unsafe { (*ctxt).controlFd = -(1 as i32) });
             return -(1 as i32);
         }
     }
     res = xmlNanoFTPSendUser(ctxt as *mut libc::c_void);
     if res < 0 as i32 {
-        close((*ctxt).controlFd);
-        (*ctxt).controlFd = -(1 as i32);
-        (*ctxt).controlFd = -(1 as i32);
+        (unsafe { close((*ctxt).controlFd) });
+        (unsafe { (*ctxt).controlFd = -(1 as i32) });
+        (unsafe { (*ctxt).controlFd = -(1 as i32) });
         return -(1 as i32);
     }
     res = xmlNanoFTPGetResponse(ctxt as *mut libc::c_void);
     match res {
         2 => return 0 as i32,
-        3 => {}
+        3 => {},
         1 | 4 | 5 | -1 | _ => {
-            close((*ctxt).controlFd);
-            (*ctxt).controlFd = -(1 as i32);
-            (*ctxt).controlFd = -(1 as i32);
+            (unsafe { close((*ctxt).controlFd) });
+            (unsafe { (*ctxt).controlFd = -(1 as i32) });
+            (unsafe { (*ctxt).controlFd = -(1 as i32) });
             return -(1 as i32);
-        }
+        },
     }
     res = xmlNanoFTPSendPasswd(ctxt as *mut libc::c_void);
     if res < 0 as i32 {
-        close((*ctxt).controlFd);
-        (*ctxt).controlFd = -(1 as i32);
-        (*ctxt).controlFd = -(1 as i32);
+        (unsafe { close((*ctxt).controlFd) });
+        (unsafe { (*ctxt).controlFd = -(1 as i32) });
+        (unsafe { (*ctxt).controlFd = -(1 as i32) });
         return -(1 as i32);
     }
     res = xmlNanoFTPGetResponse(ctxt as *mut libc::c_void);
@@ -2397,93 +2311,89 @@ pub unsafe extern "C" fn xmlNanoFTPConnect(mut ctx: * mut core::ffi::c_void) -> 
         match res {
             2 => {
                 break 's_1008;
-            }
+            },
             3 => {
-                __xmlIOErr(
+                (unsafe { __xmlIOErr(
                     XML_FROM_FTP as i32,
                     XML_FTP_ACCNT as i32,
-                    b"FTP server asking for ACCNT on anonymous\n\0" as *const u8
-                        as *const i8,
-                );
-            }
-            1 | 4 | 5 | -1 | _ => {}
+                    b"FTP server asking for ACCNT on anonymous\n\0" as *const u8 as *const i8,
+                ) });
+            },
+            1 | 4 | 5 | -1 | _ => {},
         }
-        close((*ctxt).controlFd);
-        (*ctxt).controlFd = -(1 as i32);
-        (*ctxt).controlFd = -(1 as i32);
+        (unsafe { close((*ctxt).controlFd) });
+        (unsafe { (*ctxt).controlFd = -(1 as i32) });
+        (unsafe { (*ctxt).controlFd = -(1 as i32) });
         return -(1 as i32);
     }
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNanoFTPConnectTo(
-    mut server: * const i8,
+pub extern "C" fn xmlNanoFTPConnectTo(
+    mut server: *const i8,
     mut port: i32,
-) -> * mut core::ffi::c_void {
-    let mut ctxt: * mut crate::src::nanoftp::xmlNanoFTPCtxt = (0 as * mut crate::src::nanoftp::xmlNanoFTPCtxt);
+) -> *mut core::ffi::c_void {
+    let mut ctxt: *mut crate::src::nanoftp::xmlNanoFTPCtxt =
+        0 as *mut crate::src::nanoftp::xmlNanoFTPCtxt;
     let mut res: i32 = 0;
     xmlNanoFTPInit();
     if server.is_null() {
-        return (0 as * mut core::ffi::c_void);
+        return 0 as *mut core::ffi::c_void;
     }
     if port <= 0 as i32 {
-        return (0 as * mut core::ffi::c_void);
+        return 0 as *mut core::ffi::c_void;
     }
     ctxt = xmlNanoFTPNewCtxt(0 as *const i8) as xmlNanoFTPCtxtPtr;
     if ctxt.is_null() {
-        return (0 as * mut core::ffi::c_void);
+        return 0 as *mut core::ffi::c_void;
     }
-    let ref mut fresh19 = (*ctxt).hostname;
-    *fresh19 = xmlMemStrdup.expect("non-null function pointer")(server);
-    if ((*ctxt).hostname).is_null() {
+    let fresh19 = unsafe { &mut ((*ctxt).hostname) };
+    *fresh19 = unsafe { xmlMemStrdup.expect("non-null function pointer")(server) };
+    if (unsafe { (*ctxt).hostname }).is_null() {
         xmlNanoFTPFreeCtxt(ctxt as *mut libc::c_void);
-        return (0 as * mut core::ffi::c_void);
+        return 0 as *mut core::ffi::c_void;
     }
-    (*ctxt).port = port;
+    (unsafe { (*ctxt).port = port });
     res = xmlNanoFTPConnect(ctxt as *mut libc::c_void);
     if res < 0 as i32 {
         xmlNanoFTPFreeCtxt(ctxt as *mut libc::c_void);
-        return (0 as * mut core::ffi::c_void);
+        return 0 as *mut core::ffi::c_void;
     }
     return ctxt as *mut libc::c_void;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNanoFTPCwd(
-    mut ctx: * mut core::ffi::c_void,
-    mut directory: * const i8,
-) -> i32 {
-    let mut ctxt: * mut crate::src::nanoftp::xmlNanoFTPCtxt = ctx as xmlNanoFTPCtxtPtr;
+pub extern "C" fn xmlNanoFTPCwd(mut ctx: *mut core::ffi::c_void, mut directory: *const i8) -> i32 {
+    let mut ctxt: *mut crate::src::nanoftp::xmlNanoFTPCtxt = ctx as xmlNanoFTPCtxtPtr;
     let mut buf: [i8; 400] = [0; 400];
     let mut len: i32 = 0;
     let mut res: i32 = 0;
-    if ctxt.is_null() || (*ctxt).controlFd == -(1 as i32) {
+    if ctxt.is_null() || (unsafe { (*ctxt).controlFd }) == -(1 as i32) {
         return -(1 as i32);
     }
     if directory.is_null() {
         return 0 as i32;
     }
-    snprintf(
+    (unsafe { snprintf(
         buf.as_mut_ptr(),
         ::std::mem::size_of::<[i8; 400]>() as u64,
         b"CWD %s\r\n\0" as *const u8 as *const i8,
         directory,
-    );
-    buf[(::std::mem::size_of::<[i8; 400]>() as u64)
-        .wrapping_sub(1 as i32 as u64)
-        as usize] = 0 as i32 as i8;
-    len = strlen(buf.as_mut_ptr()) as i32;
-    res = send(
+    ) });
+    buf[(::std::mem::size_of::<[i8; 400]>() as u64).wrapping_sub(1 as i32 as u64) as usize] =
+        0 as i32 as i8;
+    len = (unsafe { strlen(buf.as_mut_ptr()) }) as i32;
+    res = (unsafe { send(
         (*ctxt).controlFd,
         buf.as_mut_ptr() as *const libc::c_void,
         len as size_t,
         0 as i32,
-    ) as i32;
+    ) }) as i32;
     if res < 0 as i32 {
-        __xmlIOErr(
+        (unsafe { __xmlIOErr(
             XML_FROM_FTP as i32,
             0 as i32,
             b"send failed\0" as *const u8 as *const i8,
-        );
+        ) });
         return res;
     }
     res = xmlNanoFTPGetResponse(ctxt as *mut libc::c_void);
@@ -2499,39 +2409,35 @@ pub unsafe extern "C" fn xmlNanoFTPCwd(
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNanoFTPDele(
-    mut ctx: * mut core::ffi::c_void,
-    mut file: * const i8,
-) -> i32 {
-    let mut ctxt: * mut crate::src::nanoftp::xmlNanoFTPCtxt = ctx as xmlNanoFTPCtxtPtr;
+pub extern "C" fn xmlNanoFTPDele(mut ctx: *mut core::ffi::c_void, mut file: *const i8) -> i32 {
+    let mut ctxt: *mut crate::src::nanoftp::xmlNanoFTPCtxt = ctx as xmlNanoFTPCtxtPtr;
     let mut buf: [i8; 400] = [0; 400];
     let mut len: i32 = 0;
     let mut res: i32 = 0;
-    if ctxt.is_null() || (*ctxt).controlFd == -(1 as i32) || file.is_null() {
+    if ctxt.is_null() || (unsafe { (*ctxt).controlFd }) == -(1 as i32) || file.is_null() {
         return -(1 as i32);
     }
-    snprintf(
+    (unsafe { snprintf(
         buf.as_mut_ptr(),
         ::std::mem::size_of::<[i8; 400]>() as u64,
         b"DELE %s\r\n\0" as *const u8 as *const i8,
         file,
-    );
-    buf[(::std::mem::size_of::<[i8; 400]>() as u64)
-        .wrapping_sub(1 as i32 as u64)
-        as usize] = 0 as i32 as i8;
-    len = strlen(buf.as_mut_ptr()) as i32;
-    res = send(
+    ) });
+    buf[(::std::mem::size_of::<[i8; 400]>() as u64).wrapping_sub(1 as i32 as u64) as usize] =
+        0 as i32 as i8;
+    len = (unsafe { strlen(buf.as_mut_ptr()) }) as i32;
+    res = (unsafe { send(
         (*ctxt).controlFd,
         buf.as_mut_ptr() as *const libc::c_void,
         len as size_t,
         0 as i32,
-    ) as i32;
+    ) }) as i32;
     if res < 0 as i32 {
-        __xmlIOErr(
+        (unsafe { __xmlIOErr(
             XML_FROM_FTP as i32,
             0 as i32,
             b"send failed\0" as *const u8 as *const i8,
-        );
+        ) });
         return res;
     }
     res = xmlNanoFTPGetResponse(ctxt as *mut libc::c_void);
@@ -2547,9 +2453,7 @@ pub unsafe extern "C" fn xmlNanoFTPDele(
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNanoFTPGetConnection(
-    mut ctx: * mut core::ffi::c_void,
-) -> i32 {
+pub extern "C" fn xmlNanoFTPGetConnection(mut ctx: *mut core::ffi::c_void) -> i32 {
     let mut ctxt: xmlNanoFTPCtxtPtr = ctx as xmlNanoFTPCtxtPtr;
     let mut buf: [i8; 200] = [0; 200];
     let mut cur: *mut i8 = 0 as *mut i8;
@@ -2569,316 +2473,290 @@ pub unsafe extern "C" fn xmlNanoFTPGetConnection(
     if ctxt.is_null() {
         return -(1 as i32);
     }
-    memset(
+    (unsafe { memset(
         &mut dataAddr as *mut sockaddr_storage as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<sockaddr_storage>() as u64,
-    );
-    if (*ctxt).ftpAddr.ss_family as i32 == 10 as i32 {
-        (*ctxt)
-            .dataFd = socket(
-            10 as i32,
-            SOCK_STREAM as i32,
-            IPPROTO_TCP as i32,
-        );
-        (*(&mut dataAddr as *mut sockaddr_storage as *mut sockaddr_in6))
-            .sin6_family = 10 as i32 as sa_family_t;
-        dataAddrLen = ::std::mem::size_of::<sockaddr_in6>() as u64
-            as socklen_t;
+    ) });
+    if (unsafe { (*ctxt).ftpAddr.ss_family }) as i32 == 10 as i32 {
+        (unsafe { (*ctxt).dataFd = socket(10 as i32, SOCK_STREAM as i32, IPPROTO_TCP as i32) });
+        (unsafe { (*(&mut dataAddr as *mut sockaddr_storage as *mut sockaddr_in6)).sin6_family =
+            10 as i32 as sa_family_t });
+        dataAddrLen = ::std::mem::size_of::<sockaddr_in6>() as u64 as socklen_t;
     } else {
-        (*ctxt)
-            .dataFd = socket(
-            2 as i32,
-            SOCK_STREAM as i32,
-            IPPROTO_TCP as i32,
-        );
-        (*(&mut dataAddr as *mut sockaddr_storage as *mut sockaddr_in))
-            .sin_family = 2 as i32 as sa_family_t;
+        (unsafe { (*ctxt).dataFd = socket(2 as i32, SOCK_STREAM as i32, IPPROTO_TCP as i32) });
+        (unsafe { (*(&mut dataAddr as *mut sockaddr_storage as *mut sockaddr_in)).sin_family =
+            2 as i32 as sa_family_t });
         dataAddrLen = ::std::mem::size_of::<sockaddr_in>() as u64 as socklen_t;
     }
-    if (*ctxt).dataFd == -(1 as i32) {
-        __xmlIOErr(
+    if (unsafe { (*ctxt).dataFd }) == -(1 as i32) {
+        (unsafe { __xmlIOErr(
             XML_FROM_FTP as i32,
             0 as i32,
             b"socket failed\0" as *const u8 as *const i8,
-        );
+        ) });
         return -(1 as i32);
     }
-    if (*ctxt).passive != 0 {
-        if (*ctxt).ftpAddr.ss_family as i32 == 10 as i32 {
-            snprintf(
+    if (unsafe { (*ctxt).passive }) != 0 {
+        if (unsafe { (*ctxt).ftpAddr.ss_family }) as i32 == 10 as i32 {
+            (unsafe { snprintf(
                 buf.as_mut_ptr(),
                 ::std::mem::size_of::<[i8; 200]>() as u64,
                 b"EPSV\r\n\0" as *const u8 as *const i8,
-            );
+            ) });
         } else {
-            snprintf(
+            (unsafe { snprintf(
                 buf.as_mut_ptr(),
                 ::std::mem::size_of::<[i8; 200]>() as u64,
                 b"PASV\r\n\0" as *const u8 as *const i8,
-            );
+            ) });
         }
-        len = strlen(buf.as_mut_ptr()) as i32;
-        res = send(
+        len = (unsafe { strlen(buf.as_mut_ptr()) }) as i32;
+        res = (unsafe { send(
             (*ctxt).controlFd,
             buf.as_mut_ptr() as *const libc::c_void,
             len as size_t,
             0 as i32,
-        ) as i32;
+        ) }) as i32;
         if res < 0 as i32 {
-            __xmlIOErr(
+            (unsafe { __xmlIOErr(
                 XML_FROM_FTP as i32,
                 0 as i32,
                 b"send failed\0" as *const u8 as *const i8,
-            );
-            close((*ctxt).dataFd);
-            (*ctxt).dataFd = -(1 as i32);
+            ) });
+            (unsafe { close((*ctxt).dataFd) });
+            (unsafe { (*ctxt).dataFd = -(1 as i32) });
             return -(1 as i32);
         }
         res = xmlNanoFTPReadResponse(ctx);
         if res != 2 as i32 {
             if res == 5 as i32 {
-                close((*ctxt).dataFd);
-                (*ctxt).dataFd = -(1 as i32);
+                (unsafe { close((*ctxt).dataFd) });
+                (unsafe { (*ctxt).dataFd = -(1 as i32) });
                 return -(1 as i32);
             } else {
-                close((*ctxt).dataFd);
-                (*ctxt).dataFd = -(1 as i32);
-                (*ctxt).passive = 0 as i32;
+                (unsafe { close((*ctxt).dataFd) });
+                (unsafe { (*ctxt).dataFd = -(1 as i32) });
+                (unsafe { (*ctxt).passive = 0 as i32 });
             }
         }
-        cur = &mut *((*ctxt).controlBuf)
+        cur = (unsafe { &mut *((*ctxt).controlBuf)
             .as_mut_ptr()
-            .offset((*ctxt).controlBufAnswer as isize) as *mut i8;
-        while ((*cur as i32) < '0' as i32 || *cur as i32 > '9' as i32)
-            && *cur as i32 != '\u{0}' as i32
+            .offset((*ctxt).controlBufAnswer as isize) }) as *mut i8;
+        while (((unsafe { *cur }) as i32) < '0' as i32 || (unsafe { *cur }) as i32 > '9' as i32)
+            && (unsafe { *cur }) as i32 != '\u{0}' as i32
         {
-            cur = cur.offset(1);
+            cur = unsafe { cur.offset(1) };
         }
-        if (*ctxt).ftpAddr.ss_family as i32 == 10 as i32 {
-            if sscanf(
+        if (unsafe { (*ctxt).ftpAddr.ss_family }) as i32 == 10 as i32 {
+            if (unsafe { sscanf(
                 cur,
                 b"%u\0" as *const u8 as *const i8,
-                &mut *temp.as_mut_ptr().offset(0 as i32 as isize)
-                    as *mut u32,
-            ) != 1 as i32
+                &mut *temp.as_mut_ptr().offset(0 as i32 as isize) as *mut u32,
+            ) }) != 1 as i32
             {
-                __xmlIOErr(
+                (unsafe { __xmlIOErr(
                     XML_FROM_FTP as i32,
                     XML_FTP_EPSV_ANSWER as i32,
                     b"Invalid answer to EPSV\n\0" as *const u8 as *const i8,
-                );
-                if (*ctxt).dataFd != -(1 as i32) {
-                    close((*ctxt).dataFd);
-                    (*ctxt).dataFd = -(1 as i32);
+                ) });
+                if (unsafe { (*ctxt).dataFd }) != -(1 as i32) {
+                    (unsafe { close((*ctxt).dataFd) });
+                    (unsafe { (*ctxt).dataFd = -(1 as i32) });
                 }
                 return -(1 as i32);
             }
-            memcpy(
-                &mut (*(&mut dataAddr as *mut sockaddr_storage as *mut sockaddr_in6))
-                    .sin6_addr as *mut in6_addr as *mut libc::c_void,
-                &mut (*(&mut (*ctxt).ftpAddr as *mut sockaddr_storage
-                    as *mut sockaddr_in6))
+            (unsafe { memcpy(
+                &mut (*(&mut dataAddr as *mut sockaddr_storage as *mut sockaddr_in6)).sin6_addr
+                    as *mut in6_addr as *mut libc::c_void,
+                &mut (*(&mut (*ctxt).ftpAddr as *mut sockaddr_storage as *mut sockaddr_in6))
                     .sin6_addr as *mut in6_addr as *const libc::c_void,
                 ::std::mem::size_of::<in6_addr>() as u64,
-            );
-            (*(&mut dataAddr as *mut sockaddr_storage as *mut sockaddr_in6))
-                .sin6_port = __bswap_16(temp[0 as i32 as usize] as __uint16_t);
+            ) });
+            (unsafe { (*(&mut dataAddr as *mut sockaddr_storage as *mut sockaddr_in6)).sin6_port =
+                __bswap_16(temp[0 as i32 as usize] as __uint16_t) });
         } else {
-            if sscanf(
+            if (unsafe { sscanf(
                 cur,
                 b"%u,%u,%u,%u,%u,%u\0" as *const u8 as *const i8,
-                &mut *temp.as_mut_ptr().offset(0 as i32 as isize)
-                    as *mut u32,
-                &mut *temp.as_mut_ptr().offset(1 as i32 as isize)
-                    as *mut u32,
-                &mut *temp.as_mut_ptr().offset(2 as i32 as isize)
-                    as *mut u32,
-                &mut *temp.as_mut_ptr().offset(3 as i32 as isize)
-                    as *mut u32,
-                &mut *temp.as_mut_ptr().offset(4 as i32 as isize)
-                    as *mut u32,
-                &mut *temp.as_mut_ptr().offset(5 as i32 as isize)
-                    as *mut u32,
-            ) != 6 as i32
+                &mut *temp.as_mut_ptr().offset(0 as i32 as isize) as *mut u32,
+                &mut *temp.as_mut_ptr().offset(1 as i32 as isize) as *mut u32,
+                &mut *temp.as_mut_ptr().offset(2 as i32 as isize) as *mut u32,
+                &mut *temp.as_mut_ptr().offset(3 as i32 as isize) as *mut u32,
+                &mut *temp.as_mut_ptr().offset(4 as i32 as isize) as *mut u32,
+                &mut *temp.as_mut_ptr().offset(5 as i32 as isize) as *mut u32,
+            ) }) != 6 as i32
             {
-                __xmlIOErr(
+                (unsafe { __xmlIOErr(
                     XML_FROM_FTP as i32,
                     XML_FTP_PASV_ANSWER as i32,
                     b"Invalid answer to PASV\n\0" as *const u8 as *const i8,
-                );
-                if (*ctxt).dataFd != -(1 as i32) {
-                    close((*ctxt).dataFd);
-                    (*ctxt).dataFd = -(1 as i32);
+                ) });
+                if (unsafe { (*ctxt).dataFd }) != -(1 as i32) {
+                    (unsafe { close((*ctxt).dataFd) });
+                    (unsafe { (*ctxt).dataFd = -(1 as i32) });
                 }
                 return -(1 as i32);
             }
             i = 0 as i32;
             while i < 6 as i32 {
-                ad[i
-                    as usize] = (temp[i as usize] & 0xff as i32 as u32)
-                    as u8;
+                ad[i as usize] = (temp[i as usize] & 0xff as i32 as u32) as u8;
                 i += 1;
             }
-            memcpy(
-                &mut (*(&mut dataAddr as *mut sockaddr_storage as *mut sockaddr_in))
-                    .sin_addr as *mut in_addr as *mut libc::c_void,
-                &mut *ad.as_mut_ptr().offset(0 as i32 as isize)
-                    as *mut u8 as *const libc::c_void,
+            (unsafe { memcpy(
+                &mut (*(&mut dataAddr as *mut sockaddr_storage as *mut sockaddr_in)).sin_addr
+                    as *mut in_addr as *mut libc::c_void,
+                &mut *ad.as_mut_ptr().offset(0 as i32 as isize) as *mut u8 as *const libc::c_void,
                 4 as i32 as u64,
-            );
-            memcpy(
-                &mut (*(&mut dataAddr as *mut sockaddr_storage as *mut sockaddr_in))
-                    .sin_port as *mut in_port_t as *mut libc::c_void,
-                &mut *ad.as_mut_ptr().offset(4 as i32 as isize)
-                    as *mut u8 as *const libc::c_void,
+            ) });
+            (unsafe { memcpy(
+                &mut (*(&mut dataAddr as *mut sockaddr_storage as *mut sockaddr_in)).sin_port
+                    as *mut in_port_t as *mut libc::c_void,
+                &mut *ad.as_mut_ptr().offset(4 as i32 as isize) as *mut u8 as *const libc::c_void,
                 2 as i32 as u64,
-            );
+            ) });
         }
-        if connect(
+        if (unsafe { connect(
             (*ctxt).dataFd,
             &mut dataAddr as *mut sockaddr_storage as *mut sockaddr,
             dataAddrLen,
-        ) < 0 as i32
+        ) }) < 0 as i32
         {
-            __xmlIOErr(
+            (unsafe { __xmlIOErr(
                 XML_FROM_FTP as i32,
                 0 as i32,
-                b"Failed to create a data connection\0" as *const u8
-                    as *const i8,
-            );
-            close((*ctxt).dataFd);
-            (*ctxt).dataFd = -(1 as i32);
+                b"Failed to create a data connection\0" as *const u8 as *const i8,
+            ) });
+            (unsafe { close((*ctxt).dataFd) });
+            (unsafe { (*ctxt).dataFd = -(1 as i32) });
             return -(1 as i32);
         }
     } else {
-        getsockname(
+        (unsafe { getsockname(
             (*ctxt).dataFd,
             &mut dataAddr as *mut sockaddr_storage as *mut sockaddr,
             &mut dataAddrLen,
-        );
-        if (*ctxt).ftpAddr.ss_family as i32 == 10 as i32 {
-            (*(&mut dataAddr as *mut sockaddr_storage as *mut sockaddr_in6))
-                .sin6_port = 0 as i32 as in_port_t;
+        ) });
+        if (unsafe { (*ctxt).ftpAddr.ss_family }) as i32 == 10 as i32 {
+            (unsafe { (*(&mut dataAddr as *mut sockaddr_storage as *mut sockaddr_in6)).sin6_port =
+                0 as i32 as in_port_t });
         } else {
-            (*(&mut dataAddr as *mut sockaddr_storage as *mut sockaddr_in))
-                .sin_port = 0 as i32 as in_port_t;
+            (unsafe { (*(&mut dataAddr as *mut sockaddr_storage as *mut sockaddr_in)).sin_port =
+                0 as i32 as in_port_t });
         }
-        if bind(
+        if (unsafe { bind(
             (*ctxt).dataFd,
             &mut dataAddr as *mut sockaddr_storage as *mut sockaddr,
             dataAddrLen,
-        ) < 0 as i32
+        ) }) < 0 as i32
         {
-            __xmlIOErr(
+            (unsafe { __xmlIOErr(
                 XML_FROM_FTP as i32,
                 0 as i32,
                 b"bind failed\0" as *const u8 as *const i8,
-            );
-            close((*ctxt).dataFd);
-            (*ctxt).dataFd = -(1 as i32);
+            ) });
+            (unsafe { close((*ctxt).dataFd) });
+            (unsafe { (*ctxt).dataFd = -(1 as i32) });
             return -(1 as i32);
         }
-        getsockname(
+        (unsafe { getsockname(
             (*ctxt).dataFd,
             &mut dataAddr as *mut sockaddr_storage as *mut sockaddr,
             &mut dataAddrLen,
-        );
-        if listen((*ctxt).dataFd, 1 as i32) < 0 as i32 {
-            __xmlIOErr(
+        ) });
+        if (unsafe { listen((*ctxt).dataFd, 1 as i32) }) < 0 as i32 {
+            (unsafe { __xmlIOErr(
                 XML_FROM_FTP as i32,
                 0 as i32,
                 b"listen failed\0" as *const u8 as *const i8,
-            );
-            close((*ctxt).dataFd);
-            (*ctxt).dataFd = -(1 as i32);
+            ) });
+            (unsafe { close((*ctxt).dataFd) });
+            (unsafe { (*ctxt).dataFd = -(1 as i32) });
             return -(1 as i32);
         }
-        if (*ctxt).ftpAddr.ss_family as i32 == 10 as i32 {
+        if (unsafe { (*ctxt).ftpAddr.ss_family }) as i32 == 10 as i32 {
             let mut buf6: [i8; 46] = [0; 46];
-            inet_ntop(
+            (unsafe { inet_ntop(
                 10 as i32,
-                &mut (*(&mut dataAddr as *mut sockaddr_storage as *mut sockaddr_in6))
-                    .sin6_addr as *mut in6_addr as *const libc::c_void,
+                &mut (*(&mut dataAddr as *mut sockaddr_storage as *mut sockaddr_in6)).sin6_addr
+                    as *mut in6_addr as *const libc::c_void,
                 buf6.as_mut_ptr(),
                 46 as i32 as socklen_t,
-            );
+            ) });
             adp = buf6.as_mut_ptr() as *mut u8;
-            portp = &mut (*(&mut dataAddr as *mut sockaddr_storage as *mut sockaddr_in6))
-                .sin6_port as *mut in_port_t as *mut u8;
-            snprintf(
+            portp = (unsafe { &mut (*(&mut dataAddr as *mut sockaddr_storage as *mut sockaddr_in6)).sin6_port })
+                as *mut in_port_t as *mut u8;
+            (unsafe { snprintf(
                 buf.as_mut_ptr(),
                 ::std::mem::size_of::<[i8; 200]>() as u64,
                 b"EPRT |2|%s|%s|\r\n\0" as *const u8 as *const i8,
                 adp,
                 portp,
-            );
+            ) });
         } else {
-            adp = &mut (*(&mut dataAddr as *mut sockaddr_storage as *mut sockaddr_in))
-                .sin_addr as *mut in_addr as *mut u8;
-            portp = &mut (*(&mut dataAddr as *mut sockaddr_storage as *mut sockaddr_in))
-                .sin_port as *mut in_port_t as *mut u8;
-            snprintf(
+            adp = (unsafe { &mut (*(&mut dataAddr as *mut sockaddr_storage as *mut sockaddr_in)).sin_addr })
+                as *mut in_addr as *mut u8;
+            portp = (unsafe { &mut (*(&mut dataAddr as *mut sockaddr_storage as *mut sockaddr_in)).sin_port })
+                as *mut in_port_t as *mut u8;
+            (unsafe { snprintf(
                 buf.as_mut_ptr(),
                 ::std::mem::size_of::<[i8; 200]>() as u64,
                 b"PORT %d,%d,%d,%d,%d,%d\r\n\0" as *const u8 as *const i8,
-                *adp.offset(0 as i32 as isize) as i32
-                    & 0xff as i32,
-                *adp.offset(1 as i32 as isize) as i32
-                    & 0xff as i32,
-                *adp.offset(2 as i32 as isize) as i32
-                    & 0xff as i32,
-                *adp.offset(3 as i32 as isize) as i32
-                    & 0xff as i32,
-                *portp.offset(0 as i32 as isize) as i32
-                    & 0xff as i32,
-                *portp.offset(1 as i32 as isize) as i32
-                    & 0xff as i32,
-            );
+                *adp.offset(0 as i32 as isize) as i32 & 0xff as i32,
+                *adp.offset(1 as i32 as isize) as i32 & 0xff as i32,
+                *adp.offset(2 as i32 as isize) as i32 & 0xff as i32,
+                *adp.offset(3 as i32 as isize) as i32 & 0xff as i32,
+                *portp.offset(0 as i32 as isize) as i32 & 0xff as i32,
+                *portp.offset(1 as i32 as isize) as i32 & 0xff as i32,
+            ) });
         }
-        buf[(::std::mem::size_of::<[i8; 200]>() as u64)
-            .wrapping_sub(1 as i32 as u64)
-            as usize] = 0 as i32 as i8;
-        len = strlen(buf.as_mut_ptr()) as i32;
-        res = send(
+        buf[(::std::mem::size_of::<[i8; 200]>() as u64).wrapping_sub(1 as i32 as u64) as usize] =
+            0 as i32 as i8;
+        len = (unsafe { strlen(buf.as_mut_ptr()) }) as i32;
+        res = (unsafe { send(
             (*ctxt).controlFd,
             buf.as_mut_ptr() as *const libc::c_void,
             len as size_t,
             0 as i32,
-        ) as i32;
+        ) }) as i32;
         if res < 0 as i32 {
-            __xmlIOErr(
+            (unsafe { __xmlIOErr(
                 XML_FROM_FTP as i32,
                 0 as i32,
                 b"send failed\0" as *const u8 as *const i8,
-            );
-            close((*ctxt).dataFd);
-            (*ctxt).dataFd = -(1 as i32);
+            ) });
+            (unsafe { close((*ctxt).dataFd) });
+            (unsafe { (*ctxt).dataFd = -(1 as i32) });
             return -(1 as i32);
         }
         res = xmlNanoFTPGetResponse(ctxt as *mut libc::c_void);
         if res != 2 as i32 {
-            close((*ctxt).dataFd);
-            (*ctxt).dataFd = -(1 as i32);
+            (unsafe { close((*ctxt).dataFd) });
+            (unsafe { (*ctxt).dataFd = -(1 as i32) });
             return -(1 as i32);
         }
     }
-    return (*ctxt).dataFd;
+    return unsafe { (*ctxt).dataFd };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNanoFTPCloseConnection(
-    mut ctx: * mut core::ffi::c_void,
-) -> i32 {
+pub extern "C" fn xmlNanoFTPCloseConnection(mut ctx: *mut core::ffi::c_void) -> i32 {
     let mut ctxt: xmlNanoFTPCtxtPtr = ctx as xmlNanoFTPCtxtPtr;
     let mut res: i32 = 0;
-    let mut rfd: fd_set = fd_set { __fds_bits: [0; 16] };
-    let mut efd: fd_set = fd_set { __fds_bits: [0; 16] };
-    let mut tv: timeval = timeval { tv_sec: 0, tv_usec: 0 };
-    if ctxt.is_null() || (*ctxt).controlFd == -(1 as i32) {
+    let mut rfd: fd_set = fd_set {
+        __fds_bits: [0; 16],
+    };
+    let mut efd: fd_set = fd_set {
+        __fds_bits: [0; 16],
+    };
+    let mut tv: timeval = timeval {
+        tv_sec: 0,
+        tv_usec: 0,
+    };
+    if ctxt.is_null() || (unsafe { (*ctxt).controlFd }) == -(1 as i32) {
         return -(1 as i32);
     }
-    close((*ctxt).dataFd);
-    (*ctxt).dataFd = -(1 as i32);
+    (unsafe { close((*ctxt).dataFd) });
+    (unsafe { (*ctxt).dataFd = -(1 as i32) });
     tv.tv_sec = 15 as i32 as __time_t;
     tv.tv_usec = 0 as i32 as __suseconds_t;
     let mut __d0: i32 = 0;
@@ -2889,26 +2767,15 @@ pub unsafe extern "C" fn xmlNanoFTPCloseConnection(
         .wrapping_div(::std::mem::size_of::<__fd_mask>() as u64);
     let fresh23 = &mut __d1;
     let fresh24;
-    let fresh25 = &mut *(rfd.__fds_bits).as_mut_ptr().offset(0 as i32 as isize)
-        as *mut __fd_mask;
-    asm!(
-        "cld; rep; stosq", inlateout("cx") c2rust_asm_casts::AsmCast::cast_in(fresh20,
-        fresh22) => fresh21, inlateout("di") c2rust_asm_casts::AsmCast::cast_in(fresh23,
-        fresh25) => fresh24, inlateout("ax") 0 as i32 => _,
-        options(preserves_flags)
-    );
+    let fresh25 = (unsafe { &mut *(rfd.__fds_bits).as_mut_ptr().offset(0 as i32 as isize) }) as *mut __fd_mask;
+    (unsafe { asm ! ("cld; rep; stosq" , inlateout ("cx") c2rust_asm_casts :: AsmCast :: cast_in (fresh20 , fresh22) => fresh21 , inlateout ("di") c2rust_asm_casts :: AsmCast :: cast_in (fresh23 , fresh25) => fresh24 , inlateout ("ax") 0 as i32 => _ , options (preserves_flags)) });
     c2rust_asm_casts::AsmCast::cast_out(fresh20, fresh22, fresh21);
     c2rust_asm_casts::AsmCast::cast_out(fresh23, fresh25, fresh24);
-    rfd
-        .__fds_bits[((*ctxt).controlFd
-        / (8 as i32
-            * ::std::mem::size_of::<__fd_mask>() as u64 as i32))
-        as usize]
-        |= ((1 as u64)
-            << (*ctxt).controlFd
-                % (8 as i32
-                    * ::std::mem::size_of::<__fd_mask>() as u64
-                        as i32)) as __fd_mask;
+    rfd.__fds_bits[((unsafe { (*ctxt).controlFd })
+        / (8 as i32 * ::std::mem::size_of::<__fd_mask>() as u64 as i32))
+        as usize] |= ((1 as u64)
+        << (unsafe { (*ctxt).controlFd }) % (8 as i32 * ::std::mem::size_of::<__fd_mask>() as u64 as i32))
+        as __fd_mask;
     let mut __d0_0: i32 = 0;
     let mut __d1_0: i32 = 0;
     let fresh26 = &mut __d0_0;
@@ -2917,57 +2784,61 @@ pub unsafe extern "C" fn xmlNanoFTPCloseConnection(
         .wrapping_div(::std::mem::size_of::<__fd_mask>() as u64);
     let fresh29 = &mut __d1_0;
     let fresh30;
-    let fresh31 = &mut *(efd.__fds_bits).as_mut_ptr().offset(0 as i32 as isize)
-        as *mut __fd_mask;
-    asm!(
-        "cld; rep; stosq", inlateout("cx") c2rust_asm_casts::AsmCast::cast_in(fresh26,
-        fresh28) => fresh27, inlateout("di") c2rust_asm_casts::AsmCast::cast_in(fresh29,
-        fresh31) => fresh30, inlateout("ax") 0 as i32 => _,
-        options(preserves_flags)
-    );
+    let fresh31 = (unsafe { &mut *(efd.__fds_bits).as_mut_ptr().offset(0 as i32 as isize) }) as *mut __fd_mask;
+    (unsafe { asm ! ("cld; rep; stosq" , inlateout ("cx") c2rust_asm_casts :: AsmCast :: cast_in (fresh26 , fresh28) => fresh27 , inlateout ("di") c2rust_asm_casts :: AsmCast :: cast_in (fresh29 , fresh31) => fresh30 , inlateout ("ax") 0 as i32 => _ , options (preserves_flags)) });
     c2rust_asm_casts::AsmCast::cast_out(fresh26, fresh28, fresh27);
     c2rust_asm_casts::AsmCast::cast_out(fresh29, fresh31, fresh30);
-    efd
-        .__fds_bits[((*ctxt).controlFd
-        / (8 as i32
-            * ::std::mem::size_of::<__fd_mask>() as u64 as i32))
-        as usize]
-        |= ((1 as u64)
-            << (*ctxt).controlFd
-                % (8 as i32
-                    * ::std::mem::size_of::<__fd_mask>() as u64
-                        as i32)) as __fd_mask;
-    res = select(
+    efd.__fds_bits[((unsafe { (*ctxt).controlFd })
+        / (8 as i32 * ::std::mem::size_of::<__fd_mask>() as u64 as i32))
+        as usize] |= ((1 as u64)
+        << (unsafe { (*ctxt).controlFd }) % (8 as i32 * ::std::mem::size_of::<__fd_mask>() as u64 as i32))
+        as __fd_mask;
+    res = unsafe { select(
         (*ctxt).controlFd + 1 as i32,
         &mut rfd,
         0 as *mut fd_set,
         &mut efd,
         &mut tv,
-    );
+    ) };
     if res < 0 as i32 {
-        close((*ctxt).controlFd);
-        (*ctxt).controlFd = -(1 as i32);
+        (unsafe { close((*ctxt).controlFd) });
+        (unsafe { (*ctxt).controlFd = -(1 as i32) });
         return -(1 as i32);
     }
     if res == 0 as i32 {
-        close((*ctxt).controlFd);
-        (*ctxt).controlFd = -(1 as i32);
+        (unsafe { close((*ctxt).controlFd) });
+        (unsafe { (*ctxt).controlFd = -(1 as i32) });
     } else {
         res = xmlNanoFTPGetResponse(ctxt as *mut libc::c_void);
         if res != 2 as i32 {
-            close((*ctxt).controlFd);
-            (*ctxt).controlFd = -(1 as i32);
+            (unsafe { close((*ctxt).controlFd) });
+            (unsafe { (*ctxt).controlFd = -(1 as i32) });
             return -(1 as i32);
         }
     }
     return 0 as i32;
 }
-unsafe extern "C" fn xmlNanoFTPParseList(
-    mut list: * const i8,
-    mut callback: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,_: * const i8,_: * const i8,_: * const i8,_: u64,_: i32,_: i32,_: * const i8,_: i32,_: i32,_: i32,) -> ()>,
-    mut userData: * mut core::ffi::c_void,
+extern "C" fn xmlNanoFTPParseList(
+    mut list: *const i8,
+    mut callback: Option<
+        unsafe extern "C" fn(
+            _: *mut core::ffi::c_void,
+            _: *const i8,
+            _: *const i8,
+            _: *const i8,
+            _: *const i8,
+            _: u64,
+            _: i32,
+            _: i32,
+            _: *const i8,
+            _: i32,
+            _: i32,
+            _: i32,
+        ) -> (),
+    >,
+    mut userData: *mut core::ffi::c_void,
 ) -> i32 {
-    let mut cur: * const i8 = list;
+    let mut cur: *const i8 = list;
     let mut filename: [i8; 151] = [0; 151];
     let mut attrib: [i8; 11] = [0; 11];
     let mut owner: [i8; 11] = [0; 11];
@@ -2980,230 +2851,202 @@ unsafe extern "C" fn xmlNanoFTPParseList(
     let mut size: u64 = 0 as i32 as u64;
     let mut links: i32 = 0 as i32;
     let mut i: i32 = 0;
-    if strncmp(
-        cur,
-        b"total\0" as *const u8 as *const i8,
-        5 as i32 as u64,
-    ) == 0
-    {
-        cur = cur.offset(5 as i32 as isize);
-        while *cur as i32 == ' ' as i32 {
-            cur = cur.offset(1);
+    if (unsafe { strncmp(cur, b"total\0" as *const u8 as *const i8, 5 as i32 as u64) }) == 0 {
+        cur = unsafe { cur.offset(5 as i32 as isize) };
+        while (unsafe { *cur }) as i32 == ' ' as i32 {
+            cur = unsafe { cur.offset(1) };
         }
-        while *cur as i32 >= '0' as i32 && *cur as i32 <= '9' as i32 {
+        while (unsafe { *cur }) as i32 >= '0' as i32 && (unsafe { *cur }) as i32 <= '9' as i32 {
             let mut fresh32 = cur;
-            cur = cur.offset(1);
-            links = links * 10 as i32 + (*fresh32 as i32 - '0' as i32);
+            cur = unsafe { cur.offset(1) };
+            links = links * 10 as i32 + ((unsafe { *fresh32 }) as i32 - '0' as i32);
         }
-        while *cur as i32 == ' ' as i32 || *cur as i32 == '\n' as i32
-            || *cur as i32 == '\r' as i32
+        while (unsafe { *cur }) as i32 == ' ' as i32 || (unsafe { *cur }) as i32 == '\n' as i32 || (unsafe { *cur }) as i32 == '\r' as i32
         {
-            cur = cur.offset(1);
+            cur = unsafe { cur.offset(1) };
         }
-        return cur.offset_from(list) as i64 as i32;
+        return (unsafe { cur.offset_from(list) }) as i64 as i32;
     } else {
-        if *list as i32 == '+' as i32 {
-            return 0 as i32
+        if (unsafe { *list }) as i32 == '+' as i32 {
+            return 0 as i32;
         } else {
-            while *cur as i32 == ' ' as i32 || *cur as i32 == '\n' as i32
-                || *cur as i32 == '\r' as i32
+            while (unsafe { *cur }) as i32 == ' ' as i32
+                || (unsafe { *cur }) as i32 == '\n' as i32
+                || (unsafe { *cur }) as i32 == '\r' as i32
             {
-                cur = cur.offset(1);
+                cur = unsafe { cur.offset(1) };
             }
-            if *cur as i32 == 0 as i32 {
+            if (unsafe { *cur }) as i32 == 0 as i32 {
                 return 0 as i32;
             }
             i = 0 as i32;
-            while *cur as i32 != ' ' as i32 {
+            while (unsafe { *cur }) as i32 != ' ' as i32 {
                 if i < 10 as i32 {
                     let mut fresh33 = i;
                     i = i + 1;
-                    attrib[fresh33 as usize] = *cur;
+                    attrib[fresh33 as usize] = unsafe { *cur };
                 }
-                cur = cur.offset(1);
-                if *cur as i32 == 0 as i32 {
+                cur = unsafe { cur.offset(1) };
+                if (unsafe { *cur }) as i32 == 0 as i32 {
                     return 0 as i32;
                 }
             }
             attrib[10 as i32 as usize] = 0 as i32 as i8;
-            while *cur as i32 == ' ' as i32 {
-                cur = cur.offset(1);
+            while (unsafe { *cur }) as i32 == ' ' as i32 {
+                cur = unsafe { cur.offset(1) };
             }
-            if *cur as i32 == 0 as i32 {
+            if (unsafe { *cur }) as i32 == 0 as i32 {
                 return 0 as i32;
             }
-            while *cur as i32 >= '0' as i32 && *cur as i32 <= '9' as i32
-            {
+            while (unsafe { *cur }) as i32 >= '0' as i32 && (unsafe { *cur }) as i32 <= '9' as i32 {
                 let mut fresh34 = cur;
-                cur = cur.offset(1);
-                links = links * 10 as i32
-                    + (*fresh34 as i32 - '0' as i32);
+                cur = unsafe { cur.offset(1) };
+                links = links * 10 as i32 + ((unsafe { *fresh34 }) as i32 - '0' as i32);
             }
-            while *cur as i32 == ' ' as i32 {
-                cur = cur.offset(1);
+            while (unsafe { *cur }) as i32 == ' ' as i32 {
+                cur = unsafe { cur.offset(1) };
             }
-            if *cur as i32 == 0 as i32 {
+            if (unsafe { *cur }) as i32 == 0 as i32 {
                 return 0 as i32;
             }
             i = 0 as i32;
-            while *cur as i32 != ' ' as i32 {
+            while (unsafe { *cur }) as i32 != ' ' as i32 {
                 if i < 10 as i32 {
                     let mut fresh35 = i;
                     i = i + 1;
-                    owner[fresh35 as usize] = *cur;
+                    owner[fresh35 as usize] = unsafe { *cur };
                 }
-                cur = cur.offset(1);
-                if *cur as i32 == 0 as i32 {
+                cur = unsafe { cur.offset(1) };
+                if (unsafe { *cur }) as i32 == 0 as i32 {
                     return 0 as i32;
                 }
             }
             owner[i as usize] = 0 as i32 as i8;
-            while *cur as i32 == ' ' as i32 {
-                cur = cur.offset(1);
+            while (unsafe { *cur }) as i32 == ' ' as i32 {
+                cur = unsafe { cur.offset(1) };
             }
-            if *cur as i32 == 0 as i32 {
+            if (unsafe { *cur }) as i32 == 0 as i32 {
                 return 0 as i32;
             }
             i = 0 as i32;
-            while *cur as i32 != ' ' as i32 {
+            while (unsafe { *cur }) as i32 != ' ' as i32 {
                 if i < 10 as i32 {
                     let mut fresh36 = i;
                     i = i + 1;
-                    group[fresh36 as usize] = *cur;
+                    group[fresh36 as usize] = unsafe { *cur };
                 }
-                cur = cur.offset(1);
-                if *cur as i32 == 0 as i32 {
+                cur = unsafe { cur.offset(1) };
+                if (unsafe { *cur }) as i32 == 0 as i32 {
                     return 0 as i32;
                 }
             }
             group[i as usize] = 0 as i32 as i8;
-            while *cur as i32 == ' ' as i32 {
-                cur = cur.offset(1);
+            while (unsafe { *cur }) as i32 == ' ' as i32 {
+                cur = unsafe { cur.offset(1) };
             }
-            if *cur as i32 == 0 as i32 {
+            if (unsafe { *cur }) as i32 == 0 as i32 {
                 return 0 as i32;
             }
-            while *cur as i32 >= '0' as i32 && *cur as i32 <= '9' as i32
-            {
+            while (unsafe { *cur }) as i32 >= '0' as i32 && (unsafe { *cur }) as i32 <= '9' as i32 {
                 let mut fresh37 = cur;
-                cur = cur.offset(1);
+                cur = unsafe { cur.offset(1) };
                 size = size
                     .wrapping_mul(10 as i32 as u64)
-                    .wrapping_add(
-                        (*fresh37 as i32 - '0' as i32) as u64,
-                    );
+                    .wrapping_add(((unsafe { *fresh37 }) as i32 - '0' as i32) as u64);
             }
-            while *cur as i32 == ' ' as i32 {
-                cur = cur.offset(1);
+            while (unsafe { *cur }) as i32 == ' ' as i32 {
+                cur = unsafe { cur.offset(1) };
             }
-            if *cur as i32 == 0 as i32 {
+            if (unsafe { *cur }) as i32 == 0 as i32 {
                 return 0 as i32;
             }
             i = 0 as i32;
-            while *cur as i32 != ' ' as i32 {
+            while (unsafe { *cur }) as i32 != ' ' as i32 {
                 if i < 3 as i32 {
                     let mut fresh38 = i;
                     i = i + 1;
-                    month[fresh38 as usize] = *cur;
+                    month[fresh38 as usize] = unsafe { *cur };
                 }
-                cur = cur.offset(1);
-                if *cur as i32 == 0 as i32 {
+                cur = unsafe { cur.offset(1) };
+                if (unsafe { *cur }) as i32 == 0 as i32 {
                     return 0 as i32;
                 }
             }
             month[i as usize] = 0 as i32 as i8;
-            while *cur as i32 == ' ' as i32 {
-                cur = cur.offset(1);
+            while (unsafe { *cur }) as i32 == ' ' as i32 {
+                cur = unsafe { cur.offset(1) };
             }
-            if *cur as i32 == 0 as i32 {
+            if (unsafe { *cur }) as i32 == 0 as i32 {
                 return 0 as i32;
             }
-            while *cur as i32 >= '0' as i32 && *cur as i32 <= '9' as i32
-            {
+            while (unsafe { *cur }) as i32 >= '0' as i32 && (unsafe { *cur }) as i32 <= '9' as i32 {
                 let mut fresh39 = cur;
-                cur = cur.offset(1);
-                day = day * 10 as i32 + (*fresh39 as i32 - '0' as i32);
+                cur = unsafe { cur.offset(1) };
+                day = day * 10 as i32 + ((unsafe { *fresh39 }) as i32 - '0' as i32);
             }
-            while *cur as i32 == ' ' as i32 {
-                cur = cur.offset(1);
+            while (unsafe { *cur }) as i32 == ' ' as i32 {
+                cur = unsafe { cur.offset(1) };
             }
-            if *cur as i32 == 0 as i32 {
+            if (unsafe { *cur }) as i32 == 0 as i32 {
                 return 0 as i32;
             }
-            if *cur.offset(1 as i32 as isize) as i32 == 0 as i32
-                || *cur.offset(2 as i32 as isize) as i32
-                    == 0 as i32
+            if (unsafe { *cur.offset(1 as i32 as isize) }) as i32 == 0 as i32
+                || (unsafe { *cur.offset(2 as i32 as isize) }) as i32 == 0 as i32
             {
                 return 0 as i32;
             }
-            if *cur.offset(1 as i32 as isize) as i32 == ':' as i32
-                || *cur.offset(2 as i32 as isize) as i32 == ':' as i32
+            if (unsafe { *cur.offset(1 as i32 as isize) }) as i32 == ':' as i32
+                || (unsafe { *cur.offset(2 as i32 as isize) }) as i32 == ':' as i32
             {
-                while *cur as i32 >= '0' as i32
-                    && *cur as i32 <= '9' as i32
-                {
+                while (unsafe { *cur }) as i32 >= '0' as i32 && (unsafe { *cur }) as i32 <= '9' as i32 {
                     let mut fresh40 = cur;
-                    cur = cur.offset(1);
-                    hour = hour * 10 as i32
-                        + (*fresh40 as i32 - '0' as i32);
+                    cur = unsafe { cur.offset(1) };
+                    hour = hour * 10 as i32 + ((unsafe { *fresh40 }) as i32 - '0' as i32);
                 }
-                if *cur as i32 == ':' as i32 {
-                    cur = cur.offset(1);
+                if (unsafe { *cur }) as i32 == ':' as i32 {
+                    cur = unsafe { cur.offset(1) };
                 }
-                while *cur as i32 >= '0' as i32
-                    && *cur as i32 <= '9' as i32
-                {
+                while (unsafe { *cur }) as i32 >= '0' as i32 && (unsafe { *cur }) as i32 <= '9' as i32 {
                     let mut fresh41 = cur;
-                    cur = cur.offset(1);
-                    minute = minute * 10 as i32
-                        + (*fresh41 as i32 - '0' as i32);
+                    cur = unsafe { cur.offset(1) };
+                    minute = minute * 10 as i32 + ((unsafe { *fresh41 }) as i32 - '0' as i32);
                 }
             } else {
-                while *cur as i32 >= '0' as i32
-                    && *cur as i32 <= '9' as i32
-                {
+                while (unsafe { *cur }) as i32 >= '0' as i32 && (unsafe { *cur }) as i32 <= '9' as i32 {
                     let mut fresh42 = cur;
-                    cur = cur.offset(1);
-                    year = year * 10 as i32
-                        + (*fresh42 as i32 - '0' as i32);
+                    cur = unsafe { cur.offset(1) };
+                    year = year * 10 as i32 + ((unsafe { *fresh42 }) as i32 - '0' as i32);
                 }
             }
-            while *cur as i32 == ' ' as i32 {
-                cur = cur.offset(1);
+            while (unsafe { *cur }) as i32 == ' ' as i32 {
+                cur = unsafe { cur.offset(1) };
             }
-            if *cur as i32 == 0 as i32 {
+            if (unsafe { *cur }) as i32 == 0 as i32 {
                 return 0 as i32;
             }
             i = 0 as i32;
-            while *cur as i32 != '\n' as i32
-                && *cur as i32 != '\r' as i32
-            {
+            while (unsafe { *cur }) as i32 != '\n' as i32 && (unsafe { *cur }) as i32 != '\r' as i32 {
                 if i < 150 as i32 {
                     let mut fresh43 = i;
                     i = i + 1;
-                    filename[fresh43 as usize] = *cur;
+                    filename[fresh43 as usize] = unsafe { *cur };
                 }
-                cur = cur.offset(1);
-                if *cur as i32 == 0 as i32 {
+                cur = unsafe { cur.offset(1) };
+                if (unsafe { *cur }) as i32 == 0 as i32 {
                     return 0 as i32;
                 }
             }
             filename[i as usize] = 0 as i32 as i8;
-            if *cur as i32 != '\n' as i32 && *cur as i32 != '\r' as i32 {
+            if (unsafe { *cur }) as i32 != '\n' as i32 && (unsafe { *cur }) as i32 != '\r' as i32 {
                 return 0 as i32;
             }
-            while *cur as i32 == '\n' as i32
-                || *cur as i32 == '\r' as i32
-            {
-                cur = cur.offset(1);
+            while (unsafe { *cur }) as i32 == '\n' as i32 || (unsafe { *cur }) as i32 == '\r' as i32 {
+                cur = unsafe { cur.offset(1) };
             }
         }
     }
     if callback.is_some() {
-        callback
-            .expect(
-                "non-null function pointer",
-            )(
+        (unsafe { callback.expect("non-null function pointer")(
             userData,
             filename.as_mut_ptr(),
             attrib.as_mut_ptr(),
@@ -3216,16 +3059,31 @@ unsafe extern "C" fn xmlNanoFTPParseList(
             day,
             hour,
             minute,
-        );
+        ) });
     }
-    return cur.offset_from(list) as i64 as i32;
+    return (unsafe { cur.offset_from(list) }) as i64 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNanoFTPList(
-    mut ctx: * mut core::ffi::c_void,
-    mut callback: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,_: * const i8,_: * const i8,_: * const i8,_: u64,_: i32,_: i32,_: * const i8,_: i32,_: i32,_: i32,) -> ()>,
-    mut userData: * mut core::ffi::c_void,
-    mut filename: * const i8,
+pub extern "C" fn xmlNanoFTPList(
+    mut ctx: *mut core::ffi::c_void,
+    mut callback: Option<
+        unsafe extern "C" fn(
+            _: *mut core::ffi::c_void,
+            _: *const i8,
+            _: *const i8,
+            _: *const i8,
+            _: *const i8,
+            _: u64,
+            _: i32,
+            _: i32,
+            _: *const i8,
+            _: i32,
+            _: i32,
+            _: i32,
+        ) -> (),
+    >,
+    mut userData: *mut core::ffi::c_void,
+    mut filename: *const i8,
 ) -> i32 {
     let mut ctxt: xmlNanoFTPCtxtPtr = ctx as xmlNanoFTPCtxtPtr;
     let mut buf: [i8; 4097] = [0; 4097];
@@ -3233,67 +3091,72 @@ pub unsafe extern "C" fn xmlNanoFTPList(
     let mut res: i32 = 0;
     let mut indx: i32 = 0 as i32;
     let mut base: i32 = 0;
-    let mut rfd: fd_set = fd_set { __fds_bits: [0; 16] };
-    let mut efd: fd_set = fd_set { __fds_bits: [0; 16] };
-    let mut tv: timeval = timeval { tv_sec: 0, tv_usec: 0 };
+    let mut rfd: fd_set = fd_set {
+        __fds_bits: [0; 16],
+    };
+    let mut efd: fd_set = fd_set {
+        __fds_bits: [0; 16],
+    };
+    let mut tv: timeval = timeval {
+        tv_sec: 0,
+        tv_usec: 0,
+    };
     if ctxt.is_null() {
         return -(1 as i32);
     }
     if filename.is_null() {
-        if xmlNanoFTPCwd(ctxt as *mut libc::c_void, (*ctxt).path) < 1 as i32 {
+        if xmlNanoFTPCwd(ctxt as *mut libc::c_void, unsafe { (*ctxt).path }) < 1 as i32 {
             return -(1 as i32);
         }
-        (*ctxt).dataFd = xmlNanoFTPGetConnection(ctxt as *mut libc::c_void);
-        if (*ctxt).dataFd == -(1 as i32) {
+        (unsafe { (*ctxt).dataFd = xmlNanoFTPGetConnection(ctxt as *mut libc::c_void) });
+        if (unsafe { (*ctxt).dataFd }) == -(1 as i32) {
             return -(1 as i32);
         }
-        snprintf(
+        (unsafe { snprintf(
             buf.as_mut_ptr(),
             ::std::mem::size_of::<[i8; 4097]>() as u64,
             b"LIST -L\r\n\0" as *const u8 as *const i8,
-        );
+        ) });
     } else {
-        if *filename.offset(0 as i32 as isize) as i32 != '/' as i32 {
-            if xmlNanoFTPCwd(ctxt as *mut libc::c_void, (*ctxt).path) < 1 as i32
-            {
+        if (unsafe { *filename.offset(0 as i32 as isize) }) as i32 != '/' as i32 {
+            if xmlNanoFTPCwd(ctxt as *mut libc::c_void, unsafe { (*ctxt).path }) < 1 as i32 {
                 return -(1 as i32);
             }
         }
-        (*ctxt).dataFd = xmlNanoFTPGetConnection(ctxt as *mut libc::c_void);
-        if (*ctxt).dataFd == -(1 as i32) {
+        (unsafe { (*ctxt).dataFd = xmlNanoFTPGetConnection(ctxt as *mut libc::c_void) });
+        if (unsafe { (*ctxt).dataFd }) == -(1 as i32) {
             return -(1 as i32);
         }
-        snprintf(
+        (unsafe { snprintf(
             buf.as_mut_ptr(),
             ::std::mem::size_of::<[i8; 4097]>() as u64,
             b"LIST -L %s\r\n\0" as *const u8 as *const i8,
             filename,
-        );
+        ) });
     }
-    buf[(::std::mem::size_of::<[i8; 4097]>() as u64)
-        .wrapping_sub(1 as i32 as u64)
-        as usize] = 0 as i32 as i8;
-    len = strlen(buf.as_mut_ptr()) as i32;
-    res = send(
+    buf[(::std::mem::size_of::<[i8; 4097]>() as u64).wrapping_sub(1 as i32 as u64) as usize] =
+        0 as i32 as i8;
+    len = (unsafe { strlen(buf.as_mut_ptr()) }) as i32;
+    res = (unsafe { send(
         (*ctxt).controlFd,
         buf.as_mut_ptr() as *const libc::c_void,
         len as size_t,
         0 as i32,
-    ) as i32;
+    ) }) as i32;
     if res < 0 as i32 {
-        __xmlIOErr(
+        (unsafe { __xmlIOErr(
             XML_FROM_FTP as i32,
             0 as i32,
             b"send failed\0" as *const u8 as *const i8,
-        );
-        close((*ctxt).dataFd);
-        (*ctxt).dataFd = -(1 as i32);
+        ) });
+        (unsafe { close((*ctxt).dataFd) });
+        (unsafe { (*ctxt).dataFd = -(1 as i32) });
         return res;
     }
     res = xmlNanoFTPReadResponse(ctxt as *mut libc::c_void);
     if res != 1 as i32 {
-        close((*ctxt).dataFd);
-        (*ctxt).dataFd = -(1 as i32);
+        (unsafe { close((*ctxt).dataFd) });
+        (unsafe { (*ctxt).dataFd = -(1 as i32) });
         return -res;
     }
     loop {
@@ -3307,27 +3170,16 @@ pub unsafe extern "C" fn xmlNanoFTPList(
             .wrapping_div(::std::mem::size_of::<__fd_mask>() as u64);
         let fresh47 = &mut __d1;
         let fresh48;
-        let fresh49 = &mut *(rfd.__fds_bits)
-            .as_mut_ptr()
-            .offset(0 as i32 as isize) as *mut __fd_mask;
-        asm!(
-            "cld; rep; stosq", inlateout("cx")
-            c2rust_asm_casts::AsmCast::cast_in(fresh44, fresh46) => fresh45,
-            inlateout("di") c2rust_asm_casts::AsmCast::cast_in(fresh47, fresh49) =>
-            fresh48, inlateout("ax") 0 as i32 => _, options(preserves_flags)
-        );
+        let fresh49 =
+            (unsafe { &mut *(rfd.__fds_bits).as_mut_ptr().offset(0 as i32 as isize) }) as *mut __fd_mask;
+        (unsafe { asm ! ("cld; rep; stosq" , inlateout ("cx") c2rust_asm_casts :: AsmCast :: cast_in (fresh44 , fresh46) => fresh45 , inlateout ("di") c2rust_asm_casts :: AsmCast :: cast_in (fresh47 , fresh49) => fresh48 , inlateout ("ax") 0 as i32 => _ , options (preserves_flags)) });
         c2rust_asm_casts::AsmCast::cast_out(fresh44, fresh46, fresh45);
         c2rust_asm_casts::AsmCast::cast_out(fresh47, fresh49, fresh48);
-        rfd
-            .__fds_bits[((*ctxt).dataFd
-            / (8 as i32
-                * ::std::mem::size_of::<__fd_mask>() as u64 as i32))
-            as usize]
-            |= ((1 as u64)
-                << (*ctxt).dataFd
-                    % (8 as i32
-                        * ::std::mem::size_of::<__fd_mask>() as u64
-                            as i32)) as __fd_mask;
+        rfd.__fds_bits[((unsafe { (*ctxt).dataFd })
+            / (8 as i32 * ::std::mem::size_of::<__fd_mask>() as u64 as i32))
+            as usize] |= ((1 as u64)
+            << (unsafe { (*ctxt).dataFd }) % (8 as i32 * ::std::mem::size_of::<__fd_mask>() as u64 as i32))
+            as __fd_mask;
         let mut __d0_0: i32 = 0;
         let mut __d1_0: i32 = 0;
         let fresh50 = &mut __d0_0;
@@ -3336,70 +3188,57 @@ pub unsafe extern "C" fn xmlNanoFTPList(
             .wrapping_div(::std::mem::size_of::<__fd_mask>() as u64);
         let fresh53 = &mut __d1_0;
         let fresh54;
-        let fresh55 = &mut *(efd.__fds_bits)
-            .as_mut_ptr()
-            .offset(0 as i32 as isize) as *mut __fd_mask;
-        asm!(
-            "cld; rep; stosq", inlateout("cx")
-            c2rust_asm_casts::AsmCast::cast_in(fresh50, fresh52) => fresh51,
-            inlateout("di") c2rust_asm_casts::AsmCast::cast_in(fresh53, fresh55) =>
-            fresh54, inlateout("ax") 0 as i32 => _, options(preserves_flags)
-        );
+        let fresh55 =
+            (unsafe { &mut *(efd.__fds_bits).as_mut_ptr().offset(0 as i32 as isize) }) as *mut __fd_mask;
+        (unsafe { asm ! ("cld; rep; stosq" , inlateout ("cx") c2rust_asm_casts :: AsmCast :: cast_in (fresh50 , fresh52) => fresh51 , inlateout ("di") c2rust_asm_casts :: AsmCast :: cast_in (fresh53 , fresh55) => fresh54 , inlateout ("ax") 0 as i32 => _ , options (preserves_flags)) });
         c2rust_asm_casts::AsmCast::cast_out(fresh50, fresh52, fresh51);
         c2rust_asm_casts::AsmCast::cast_out(fresh53, fresh55, fresh54);
-        efd
-            .__fds_bits[((*ctxt).dataFd
-            / (8 as i32
-                * ::std::mem::size_of::<__fd_mask>() as u64 as i32))
-            as usize]
-            |= ((1 as u64)
-                << (*ctxt).dataFd
-                    % (8 as i32
-                        * ::std::mem::size_of::<__fd_mask>() as u64
-                            as i32)) as __fd_mask;
-        res = select(
+        efd.__fds_bits[((unsafe { (*ctxt).dataFd })
+            / (8 as i32 * ::std::mem::size_of::<__fd_mask>() as u64 as i32))
+            as usize] |= ((1 as u64)
+            << (unsafe { (*ctxt).dataFd }) % (8 as i32 * ::std::mem::size_of::<__fd_mask>() as u64 as i32))
+            as __fd_mask;
+        res = unsafe { select(
             (*ctxt).dataFd + 1 as i32,
             &mut rfd,
             0 as *mut fd_set,
             &mut efd,
             &mut tv,
-        );
+        ) };
         if res < 0 as i32 {
-            close((*ctxt).dataFd);
-            (*ctxt).dataFd = -(1 as i32);
+            (unsafe { close((*ctxt).dataFd) });
+            (unsafe { (*ctxt).dataFd = -(1 as i32) });
             return -(1 as i32);
         }
         if res == 0 as i32 {
             res = xmlNanoFTPCheckResponse(ctxt as *mut libc::c_void);
             if res < 0 as i32 {
-                close((*ctxt).dataFd);
-                (*ctxt).dataFd = -(1 as i32);
-                (*ctxt).dataFd = -(1 as i32);
+                (unsafe { close((*ctxt).dataFd) });
+                (unsafe { (*ctxt).dataFd = -(1 as i32) });
+                (unsafe { (*ctxt).dataFd = -(1 as i32) });
                 return -(1 as i32);
             }
             if res == 2 as i32 {
-                close((*ctxt).dataFd);
-                (*ctxt).dataFd = -(1 as i32);
+                (unsafe { close((*ctxt).dataFd) });
+                (unsafe { (*ctxt).dataFd = -(1 as i32) });
                 return 0 as i32;
             }
         } else {
-            len = recv(
+            len = (unsafe { recv(
                 (*ctxt).dataFd,
-                &mut *buf.as_mut_ptr().offset(indx as isize) as *mut i8
-                    as *mut libc::c_void,
-                (::std::mem::size_of::<[i8; 4097]>() as u64)
-                    .wrapping_sub((indx + 1 as i32) as u64),
+                &mut *buf.as_mut_ptr().offset(indx as isize) as *mut i8 as *mut libc::c_void,
+                (::std::mem::size_of::<[i8; 4097]>() as u64).wrapping_sub((indx + 1 as i32) as u64),
                 0 as i32,
-            ) as i32;
+            ) }) as i32;
             if len < 0 as i32 {
-                __xmlIOErr(
+                (unsafe { __xmlIOErr(
                     XML_FROM_FTP as i32,
                     0 as i32,
                     b"recv\0" as *const u8 as *const i8,
-                );
-                close((*ctxt).dataFd);
-                (*ctxt).dataFd = -(1 as i32);
-                (*ctxt).dataFd = -(1 as i32);
+                ) });
+                (unsafe { close((*ctxt).dataFd) });
+                (unsafe { (*ctxt).dataFd = -(1 as i32) });
+                (unsafe { (*ctxt).dataFd = -(1 as i32) });
                 return -(1 as i32);
             }
             indx += len;
@@ -3407,7 +3246,7 @@ pub unsafe extern "C" fn xmlNanoFTPList(
             base = 0 as i32;
             loop {
                 res = xmlNanoFTPParseList(
-                    &mut *buf.as_mut_ptr().offset(base as isize),
+                    unsafe { &mut *buf.as_mut_ptr().offset(base as isize) },
                     callback,
                     userData,
                 );
@@ -3416,13 +3255,11 @@ pub unsafe extern "C" fn xmlNanoFTPList(
                     break;
                 }
             }
-            memmove(
-                &mut *buf.as_mut_ptr().offset(0 as i32 as isize)
-                    as *mut i8 as *mut libc::c_void,
-                &mut *buf.as_mut_ptr().offset(base as isize) as *mut i8
-                    as *const libc::c_void,
+            (unsafe { memmove(
+                &mut *buf.as_mut_ptr().offset(0 as i32 as isize) as *mut i8 as *mut libc::c_void,
+                &mut *buf.as_mut_ptr().offset(base as isize) as *mut i8 as *const libc::c_void,
                 (indx - base) as u64,
-            );
+            ) });
             indx -= base;
         }
         if !(len != 0 as i32) {
@@ -3433,9 +3270,9 @@ pub unsafe extern "C" fn xmlNanoFTPList(
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNanoFTPGetSocket(
-    mut ctx: * mut core::ffi::c_void,
-    mut filename: * const i8,
+pub extern "C" fn xmlNanoFTPGetSocket(
+    mut ctx: *mut core::ffi::c_void,
+    mut filename: *const i8,
 ) -> i32 {
     let mut ctxt: xmlNanoFTPCtxtPtr = ctx as xmlNanoFTPCtxtPtr;
     let mut buf: [i8; 300] = [0; 300];
@@ -3444,101 +3281,107 @@ pub unsafe extern "C" fn xmlNanoFTPGetSocket(
     if ctx.is_null() {
         return -(1 as i32);
     }
-    if filename.is_null() && ((*ctxt).path).is_null() {
+    if filename.is_null() && (unsafe { (*ctxt).path }).is_null() {
         return -(1 as i32);
     }
-    (*ctxt).dataFd = xmlNanoFTPGetConnection(ctxt as *mut libc::c_void);
-    if (*ctxt).dataFd == -(1 as i32) {
+    (unsafe { (*ctxt).dataFd = xmlNanoFTPGetConnection(ctxt as *mut libc::c_void) });
+    if (unsafe { (*ctxt).dataFd }) == -(1 as i32) {
         return -(1 as i32);
     }
-    snprintf(
+    (unsafe { snprintf(
         buf.as_mut_ptr(),
         ::std::mem::size_of::<[i8; 300]>() as u64,
         b"TYPE I\r\n\0" as *const u8 as *const i8,
-    );
-    len = strlen(buf.as_mut_ptr()) as i32;
-    res = send(
+    ) });
+    len = (unsafe { strlen(buf.as_mut_ptr()) }) as i32;
+    res = (unsafe { send(
         (*ctxt).controlFd,
         buf.as_mut_ptr() as *const libc::c_void,
         len as size_t,
         0 as i32,
-    ) as i32;
+    ) }) as i32;
     if res < 0 as i32 {
-        __xmlIOErr(
+        (unsafe { __xmlIOErr(
             XML_FROM_FTP as i32,
             0 as i32,
             b"send failed\0" as *const u8 as *const i8,
-        );
-        close((*ctxt).dataFd);
-        (*ctxt).dataFd = -(1 as i32);
+        ) });
+        (unsafe { close((*ctxt).dataFd) });
+        (unsafe { (*ctxt).dataFd = -(1 as i32) });
         return -(1 as i32);
     }
     res = xmlNanoFTPReadResponse(ctxt as *mut libc::c_void);
     if res != 2 as i32 {
-        close((*ctxt).dataFd);
-        (*ctxt).dataFd = -(1 as i32);
+        (unsafe { close((*ctxt).dataFd) });
+        (unsafe { (*ctxt).dataFd = -(1 as i32) });
         return -(1 as i32);
     }
     if filename.is_null() {
-        snprintf(
+        (unsafe { snprintf(
             buf.as_mut_ptr(),
             ::std::mem::size_of::<[i8; 300]>() as u64,
             b"RETR %s\r\n\0" as *const u8 as *const i8,
             (*ctxt).path,
-        );
+        ) });
     } else {
-        snprintf(
+        (unsafe { snprintf(
             buf.as_mut_ptr(),
             ::std::mem::size_of::<[i8; 300]>() as u64,
             b"RETR %s\r\n\0" as *const u8 as *const i8,
             filename,
-        );
+        ) });
     }
-    buf[(::std::mem::size_of::<[i8; 300]>() as u64)
-        .wrapping_sub(1 as i32 as u64)
-        as usize] = 0 as i32 as i8;
-    len = strlen(buf.as_mut_ptr()) as i32;
-    res = send(
+    buf[(::std::mem::size_of::<[i8; 300]>() as u64).wrapping_sub(1 as i32 as u64) as usize] =
+        0 as i32 as i8;
+    len = (unsafe { strlen(buf.as_mut_ptr()) }) as i32;
+    res = (unsafe { send(
         (*ctxt).controlFd,
         buf.as_mut_ptr() as *const libc::c_void,
         len as size_t,
         0 as i32,
-    ) as i32;
+    ) }) as i32;
     if res < 0 as i32 {
-        __xmlIOErr(
+        (unsafe { __xmlIOErr(
             XML_FROM_FTP as i32,
             0 as i32,
             b"send failed\0" as *const u8 as *const i8,
-        );
-        close((*ctxt).dataFd);
-        (*ctxt).dataFd = -(1 as i32);
+        ) });
+        (unsafe { close((*ctxt).dataFd) });
+        (unsafe { (*ctxt).dataFd = -(1 as i32) });
         return -(1 as i32);
     }
     res = xmlNanoFTPReadResponse(ctxt as *mut libc::c_void);
     if res != 1 as i32 {
-        close((*ctxt).dataFd);
-        (*ctxt).dataFd = -(1 as i32);
+        (unsafe { close((*ctxt).dataFd) });
+        (unsafe { (*ctxt).dataFd = -(1 as i32) });
         return -(1 as i32);
     }
-    return (*ctxt).dataFd;
+    return unsafe { (*ctxt).dataFd };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNanoFTPGet(
-    mut ctx: * mut core::ffi::c_void,
-    mut callback: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,_: i32,) -> ()>,
-    mut userData: * mut core::ffi::c_void,
-    mut filename: * const i8,
+pub extern "C" fn xmlNanoFTPGet(
+    mut ctx: *mut core::ffi::c_void,
+    mut callback: Option<
+        unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, _: i32) -> (),
+    >,
+    mut userData: *mut core::ffi::c_void,
+    mut filename: *const i8,
 ) -> i32 {
     let mut ctxt: xmlNanoFTPCtxtPtr = ctx as xmlNanoFTPCtxtPtr;
     let mut buf: [i8; 4096] = [0; 4096];
     let mut len: i32 = 0 as i32;
     let mut res: i32 = 0;
-    let mut rfd: fd_set = fd_set { __fds_bits: [0; 16] };
-    let mut tv: timeval = timeval { tv_sec: 0, tv_usec: 0 };
+    let mut rfd: fd_set = fd_set {
+        __fds_bits: [0; 16],
+    };
+    let mut tv: timeval = timeval {
+        tv_sec: 0,
+        tv_usec: 0,
+    };
     if ctxt.is_null() {
         return -(1 as i32);
     }
-    if filename.is_null() && ((*ctxt).path).is_null() {
+    if filename.is_null() && (unsafe { (*ctxt).path }).is_null() {
         return -(1 as i32);
     }
     if callback.is_none() {
@@ -3558,75 +3401,60 @@ pub unsafe extern "C" fn xmlNanoFTPGet(
             .wrapping_div(::std::mem::size_of::<__fd_mask>() as u64);
         let fresh59 = &mut __d1;
         let fresh60;
-        let fresh61 = &mut *(rfd.__fds_bits)
-            .as_mut_ptr()
-            .offset(0 as i32 as isize) as *mut __fd_mask;
-        asm!(
-            "cld; rep; stosq", inlateout("cx")
-            c2rust_asm_casts::AsmCast::cast_in(fresh56, fresh58) => fresh57,
-            inlateout("di") c2rust_asm_casts::AsmCast::cast_in(fresh59, fresh61) =>
-            fresh60, inlateout("ax") 0 as i32 => _, options(preserves_flags)
-        );
+        let fresh61 =
+            (unsafe { &mut *(rfd.__fds_bits).as_mut_ptr().offset(0 as i32 as isize) }) as *mut __fd_mask;
+        (unsafe { asm ! ("cld; rep; stosq" , inlateout ("cx") c2rust_asm_casts :: AsmCast :: cast_in (fresh56 , fresh58) => fresh57 , inlateout ("di") c2rust_asm_casts :: AsmCast :: cast_in (fresh59 , fresh61) => fresh60 , inlateout ("ax") 0 as i32 => _ , options (preserves_flags)) });
         c2rust_asm_casts::AsmCast::cast_out(fresh56, fresh58, fresh57);
         c2rust_asm_casts::AsmCast::cast_out(fresh59, fresh61, fresh60);
-        rfd
-            .__fds_bits[((*ctxt).dataFd
-            / (8 as i32
-                * ::std::mem::size_of::<__fd_mask>() as u64 as i32))
-            as usize]
-            |= ((1 as u64)
-                << (*ctxt).dataFd
-                    % (8 as i32
-                        * ::std::mem::size_of::<__fd_mask>() as u64
-                            as i32)) as __fd_mask;
-        res = select(
+        rfd.__fds_bits[((unsafe { (*ctxt).dataFd })
+            / (8 as i32 * ::std::mem::size_of::<__fd_mask>() as u64 as i32))
+            as usize] |= ((1 as u64)
+            << (unsafe { (*ctxt).dataFd }) % (8 as i32 * ::std::mem::size_of::<__fd_mask>() as u64 as i32))
+            as __fd_mask;
+        res = unsafe { select(
             (*ctxt).dataFd + 1 as i32,
             &mut rfd,
             0 as *mut fd_set,
             0 as *mut fd_set,
             &mut tv,
-        );
+        ) };
         if res < 0 as i32 {
-            close((*ctxt).dataFd);
-            (*ctxt).dataFd = -(1 as i32);
+            (unsafe { close((*ctxt).dataFd) });
+            (unsafe { (*ctxt).dataFd = -(1 as i32) });
             return -(1 as i32);
         }
         if res == 0 as i32 {
             res = xmlNanoFTPCheckResponse(ctxt as *mut libc::c_void);
             if res < 0 as i32 {
-                close((*ctxt).dataFd);
-                (*ctxt).dataFd = -(1 as i32);
-                (*ctxt).dataFd = -(1 as i32);
+                (unsafe { close((*ctxt).dataFd) });
+                (unsafe { (*ctxt).dataFd = -(1 as i32) });
+                (unsafe { (*ctxt).dataFd = -(1 as i32) });
                 return -(1 as i32);
             }
             if res == 2 as i32 {
-                close((*ctxt).dataFd);
-                (*ctxt).dataFd = -(1 as i32);
+                (unsafe { close((*ctxt).dataFd) });
+                (unsafe { (*ctxt).dataFd = -(1 as i32) });
                 return 0 as i32;
             }
         } else {
-            len = recv(
+            len = (unsafe { recv(
                 (*ctxt).dataFd,
                 buf.as_mut_ptr() as *mut libc::c_void,
                 ::std::mem::size_of::<[i8; 4096]>() as u64,
                 0 as i32,
-            ) as i32;
+            ) }) as i32;
             if len < 0 as i32 {
-                __xmlIOErr(
+                (unsafe { __xmlIOErr(
                     XML_FROM_FTP as i32,
                     0 as i32,
                     b"recv failed\0" as *const u8 as *const i8,
-                );
-                callback
-                    .expect(
-                        "non-null function pointer",
-                    )(userData, buf.as_mut_ptr(), len);
-                close((*ctxt).dataFd);
-                (*ctxt).dataFd = -(1 as i32);
+                ) });
+                (unsafe { callback.expect("non-null function pointer")(userData, buf.as_mut_ptr(), len) });
+                (unsafe { close((*ctxt).dataFd) });
+                (unsafe { (*ctxt).dataFd = -(1 as i32) });
                 return -(1 as i32);
             }
-            callback
-                .expect("non-null function pointer")(userData, buf.as_mut_ptr(), len);
+            (unsafe { callback.expect("non-null function pointer")(userData, buf.as_mut_ptr(), len) });
         }
         if !(len != 0 as i32) {
             break;
@@ -3635,16 +3463,16 @@ pub unsafe extern "C" fn xmlNanoFTPGet(
     return xmlNanoFTPCloseConnection(ctxt as *mut libc::c_void);
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNanoFTPRead(
-    mut ctx: * mut core::ffi::c_void,
-    mut dest: * mut core::ffi::c_void,
+pub extern "C" fn xmlNanoFTPRead(
+    mut ctx: *mut core::ffi::c_void,
+    mut dest: *mut core::ffi::c_void,
     mut len: i32,
 ) -> i32 {
-    let mut ctxt: * mut crate::src::nanoftp::xmlNanoFTPCtxt = ctx as xmlNanoFTPCtxtPtr;
+    let mut ctxt: *mut crate::src::nanoftp::xmlNanoFTPCtxt = ctx as xmlNanoFTPCtxtPtr;
     if ctx.is_null() {
         return -(1 as i32);
     }
-    if (*ctxt).dataFd == -(1 as i32) {
+    if (unsafe { (*ctxt).dataFd }) == -(1 as i32) {
         return 0 as i32;
     }
     if dest.is_null() {
@@ -3653,68 +3481,62 @@ pub unsafe extern "C" fn xmlNanoFTPRead(
     if len <= 0 as i32 {
         return 0 as i32;
     }
-    len = recv((*ctxt).dataFd, dest, len as size_t, 0 as i32) as i32;
+    len = (unsafe { recv((*ctxt).dataFd, dest, len as size_t, 0 as i32) }) as i32;
     if len <= 0 as i32 {
         if len < 0 as i32 {
-            __xmlIOErr(
+            (unsafe { __xmlIOErr(
                 XML_FROM_FTP as i32,
                 0 as i32,
                 b"recv failed\0" as *const u8 as *const i8,
-            );
+            ) });
         }
         xmlNanoFTPCloseConnection(ctxt as *mut libc::c_void);
     }
     return len;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNanoFTPOpen(
-    mut URL: * const i8,
-) -> * mut core::ffi::c_void {
-    let mut ctxt: * mut crate::src::nanoftp::xmlNanoFTPCtxt = (0 as * mut crate::src::nanoftp::xmlNanoFTPCtxt);
+pub extern "C" fn xmlNanoFTPOpen(mut URL: *const i8) -> *mut core::ffi::c_void {
+    let mut ctxt: *mut crate::src::nanoftp::xmlNanoFTPCtxt =
+        0 as *mut crate::src::nanoftp::xmlNanoFTPCtxt;
     let mut sock: i32 = 0;
     xmlNanoFTPInit();
     if URL.is_null() {
-        return (0 as * mut core::ffi::c_void);
+        return 0 as *mut core::ffi::c_void;
     }
-    if strncmp(
-        b"ftp://\0" as *const u8 as *const i8,
-        URL,
-        6 as i32 as u64,
-    ) != 0
-    {
-        return (0 as * mut core::ffi::c_void);
+    if (unsafe { strncmp(b"ftp://\0" as *const u8 as *const i8, URL, 6 as i32 as u64) }) != 0 {
+        return 0 as *mut core::ffi::c_void;
     }
     ctxt = xmlNanoFTPNewCtxt(URL) as xmlNanoFTPCtxtPtr;
     if ctxt.is_null() {
-        return (0 as * mut core::ffi::c_void);
+        return 0 as *mut core::ffi::c_void;
     }
     if xmlNanoFTPConnect(ctxt as *mut libc::c_void) < 0 as i32 {
         xmlNanoFTPFreeCtxt(ctxt as *mut libc::c_void);
-        return (0 as * mut core::ffi::c_void);
+        return 0 as *mut core::ffi::c_void;
     }
-    sock = xmlNanoFTPGetSocket(ctxt as *mut libc::c_void, (*ctxt).path);
+    sock = xmlNanoFTPGetSocket(ctxt as *mut libc::c_void, unsafe { (*ctxt).path });
     if sock == -(1 as i32) {
         xmlNanoFTPFreeCtxt(ctxt as *mut libc::c_void);
-        return (0 as * mut core::ffi::c_void);
+        return 0 as *mut core::ffi::c_void;
     }
     return ctxt as *mut libc::c_void;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNanoFTPClose(mut ctx: * mut core::ffi::c_void) -> i32 {
-    let mut ctxt: * mut crate::src::nanoftp::xmlNanoFTPCtxt = ctx as xmlNanoFTPCtxtPtr;
+pub extern "C" fn xmlNanoFTPClose(mut ctx: *mut core::ffi::c_void) -> i32 {
+    let mut ctxt: *mut crate::src::nanoftp::xmlNanoFTPCtxt = ctx as xmlNanoFTPCtxtPtr;
     if ctxt.is_null() {
         return -(1 as i32);
     }
-    if (*ctxt).dataFd != -(1 as i32) {
-        close((*ctxt).dataFd);
-        (*ctxt).dataFd = -(1 as i32);
+    if (unsafe { (*ctxt).dataFd }) != -(1 as i32) {
+        (unsafe { close((*ctxt).dataFd) });
+        (unsafe { (*ctxt).dataFd = -(1 as i32) });
     }
-    if (*ctxt).controlFd != -(1 as i32) {
+    if (unsafe { (*ctxt).controlFd }) != -(1 as i32) {
         xmlNanoFTPQuit(ctxt as *mut libc::c_void);
-        close((*ctxt).controlFd);
-        (*ctxt).controlFd = -(1 as i32);
+        (unsafe { close((*ctxt).controlFd) });
+        (unsafe { (*ctxt).controlFd = -(1 as i32) });
     }
     xmlNanoFTPFreeCtxt(ctxt as *mut libc::c_void);
     return 0 as i32;
 }
-use crate::laertes_rt::*;
+

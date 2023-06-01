@@ -4,7 +4,7 @@ extern "C" {
     
 }
 pub use crate::src::lib::easy::Curl_cstrdup;
-pub type curl_strdup_callback = Option<unsafe extern "C"  fn(_: * const i8,) -> * mut i8>;
+pub type curl_strdup_callback<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 i8>,) -> Option<&'a2 mut i8>>;
 unsafe extern "C" fn GetEnv(mut variable: * const i8) -> * mut i8 {
     let mut env: * mut i8 = getenv(variable);
     return if !env.is_null()

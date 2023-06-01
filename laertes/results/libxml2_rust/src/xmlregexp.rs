@@ -1,208 +1,109 @@
-use ::libc;
+use :: libc;
 extern "C" {
-    
-    
-    
-    
-    
-    
-    
-    
-    static mut stderr: * mut crate::src::tree::_IO_FILE;
-    fn fprintf(_: * mut crate::src::tree::_IO_FILE, _: * const i8, _: ...) -> i32;
-    fn printf(_: * const i8, _: ...) -> i32;
-    fn snprintf(
-        _: * mut i8,
-        _: u64,
-        _: * const i8,
-        _: ...
-    ) -> i32;
-    
-    
-    
-    
+    static mut stderr: *mut crate::src::tree::_IO_FILE;
+    fn fprintf(_: *mut crate::src::tree::_IO_FILE, _: *const i8, _: ...) -> i32;
+    fn printf(_: *const i8, _: ...) -> i32;
+    fn snprintf(_: *mut i8, _: u64, _: *const i8, _: ...) -> i32;
     fn memcpy(
-        _: * mut core::ffi::c_void,
-        _: * const core::ffi::c_void,
+        _: *mut core::ffi::c_void,
+        _: *const core::ffi::c_void,
         _: u64,
-    ) -> * mut core::ffi::c_void;
-    fn memset(
-        _: * mut core::ffi::c_void,
-        _: i32,
-        _: u64,
-    ) -> * mut core::ffi::c_void;
-    fn strlen(_: * const i8) -> u64;
-    static mut xmlFree: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
+    ) -> *mut core::ffi::c_void;
+    fn memset(_: *mut core::ffi::c_void, _: i32, _: u64) -> *mut core::ffi::c_void;
+    fn strlen(_: *const i8) -> u64;
+    static mut xmlFree: Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
     fn __xmlRaiseError(
-        schannel: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::threads::_xmlError,) -> ()>,
-        channel: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>,
-        data: * mut core::ffi::c_void,
-        ctx: * mut core::ffi::c_void,
-        node: * mut core::ffi::c_void,
+        schannel: Option<
+            unsafe extern "C" fn(
+                _: *mut core::ffi::c_void,
+                _: *mut crate::src::threads::_xmlError,
+            ) -> (),
+        >,
+        channel: Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>,
+        data: *mut core::ffi::c_void,
+        ctx: *mut core::ffi::c_void,
+        node: *mut core::ffi::c_void,
         domain: i32,
         code: i32,
         level: u32,
-        file: * const i8,
+        file: *const i8,
         line: i32,
-        str1: * const i8,
-        str2: * const i8,
-        str3: * const i8,
+        str1: *const i8,
+        str2: *const i8,
+        str3: *const i8,
         int1: i32,
         col: i32,
-        msg: * const i8,
+        msg: *const i8,
         _: ...
     );
-    static mut xmlMalloc: Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
-    static mut xmlRealloc: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: u64,) -> * mut core::ffi::c_void>;
-    static mut xmlMallocAtomic: Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
-    fn __xmlGenericErrorContext() -> * mut * mut core::ffi::c_void;
-    fn __xmlGenericError() -> * mut Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-    fn xmlCharInRange(val: u32, group: * const crate::src::tree::_xmlChRangeGroup) -> i32;
+    static mut xmlMalloc: Option<unsafe extern "C" fn(_: u64) -> *mut core::ffi::c_void>;
+    static mut xmlRealloc:
+        Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: u64) -> *mut core::ffi::c_void>;
+    static mut xmlMallocAtomic: Option<unsafe extern "C" fn(_: u64) -> *mut core::ffi::c_void>;
+    fn __xmlGenericErrorContext() -> *mut *mut core::ffi::c_void;
+    fn __xmlGenericError()
+    -> *mut Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+    fn xmlCharInRange(val: u32, group: *const crate::src::tree::_xmlChRangeGroup) -> i32;
     static xmlIsBaseCharGroup: crate::src::tree::_xmlChRangeGroup;
     static xmlIsCombiningGroup: crate::src::tree::_xmlChRangeGroup;
     static xmlIsDigitGroup: crate::src::tree::_xmlChRangeGroup;
     static xmlIsExtenderGroup: crate::src::tree::_xmlChRangeGroup;
     fn xmlStringCurrentChar(
-        ctxt: * mut crate::src::tree::_xmlParserCtxt,
-        cur: * const u8,
-        len: * mut i32,
+        ctxt: *mut crate::src::tree::_xmlParserCtxt,
+        cur: *const u8,
+        len: *mut i32,
     ) -> i32;
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
-pub use crate::src::xmlstring::xmlStrEqual;
-pub use crate::src::xmlstring::xmlStrchr;
-pub use crate::src::xmlstring::xmlStrdup;
-pub use crate::src::xmlstring::xmlStrndup;
-pub use crate::src::xmlunicode::xmlUCSIsBlock;
-pub use crate::src::xmlunicode::xmlUCSIsCatC;
-pub use crate::src::xmlunicode::xmlUCSIsCatCc;
-pub use crate::src::xmlunicode::xmlUCSIsCatCf;
-pub use crate::src::xmlunicode::xmlUCSIsCatCo;
-pub use crate::src::xmlunicode::xmlUCSIsCatL;
-pub use crate::src::xmlunicode::xmlUCSIsCatLl;
-pub use crate::src::xmlunicode::xmlUCSIsCatLm;
-pub use crate::src::xmlunicode::xmlUCSIsCatLo;
-pub use crate::src::xmlunicode::xmlUCSIsCatLt;
-pub use crate::src::xmlunicode::xmlUCSIsCatLu;
-pub use crate::src::xmlunicode::xmlUCSIsCatM;
-pub use crate::src::xmlunicode::xmlUCSIsCatMc;
-pub use crate::src::xmlunicode::xmlUCSIsCatMe;
-pub use crate::src::xmlunicode::xmlUCSIsCatMn;
-pub use crate::src::xmlunicode::xmlUCSIsCatN;
-pub use crate::src::xmlunicode::xmlUCSIsCatNd;
-pub use crate::src::xmlunicode::xmlUCSIsCatNl;
-pub use crate::src::xmlunicode::xmlUCSIsCatNo;
-pub use crate::src::xmlunicode::xmlUCSIsCatP;
-pub use crate::src::xmlunicode::xmlUCSIsCatPc;
-pub use crate::src::xmlunicode::xmlUCSIsCatPd;
-pub use crate::src::xmlunicode::xmlUCSIsCatPe;
-pub use crate::src::xmlunicode::xmlUCSIsCatPf;
-pub use crate::src::xmlunicode::xmlUCSIsCatPi;
-pub use crate::src::xmlunicode::xmlUCSIsCatPo;
-pub use crate::src::xmlunicode::xmlUCSIsCatPs;
-pub use crate::src::xmlunicode::xmlUCSIsCatS;
-pub use crate::src::xmlunicode::xmlUCSIsCatSc;
-pub use crate::src::xmlunicode::xmlUCSIsCatSk;
-pub use crate::src::xmlunicode::xmlUCSIsCatSm;
-pub use crate::src::xmlunicode::xmlUCSIsCatSo;
-pub use crate::src::xmlunicode::xmlUCSIsCatZ;
-pub use crate::src::xmlunicode::xmlUCSIsCatZl;
-pub use crate::src::xmlunicode::xmlUCSIsCatZp;
-pub use crate::src::xmlunicode::xmlUCSIsCatZs;
-pub use crate::src::valid::_xmlValidState;
-pub use crate::src::xmllint::_IO_marker;
-pub use crate::src::xmlmemory::_IO_wide_data;
-pub use crate::src::xmlsave::_IO_codecvt;
-pub use crate::src::xmlsave::_xmlHashTable;
-pub use crate::src::xmlstring::_xmlBuf;
-pub use crate::src::xmlstring::_xmlStartTag;
-pub use crate::src::xpointer::_xmlDict;
+pub use crate::src::{
+    valid::_xmlValidState,
+    xmllint::_IO_marker,
+    xmlmemory::_IO_wide_data,
+    xmlsave::{_IO_codecvt, _xmlHashTable},
+    xmlstring::{_xmlBuf, _xmlStartTag, xmlStrEqual, xmlStrchr, xmlStrdup, xmlStrndup},
+    xmlunicode::{
+        xmlUCSIsBlock, xmlUCSIsCatC, xmlUCSIsCatCc, xmlUCSIsCatCf, xmlUCSIsCatCo, xmlUCSIsCatL,
+        xmlUCSIsCatLl, xmlUCSIsCatLm, xmlUCSIsCatLo, xmlUCSIsCatLt, xmlUCSIsCatLu, xmlUCSIsCatM,
+        xmlUCSIsCatMc, xmlUCSIsCatMe, xmlUCSIsCatMn, xmlUCSIsCatN, xmlUCSIsCatNd, xmlUCSIsCatNl,
+        xmlUCSIsCatNo, xmlUCSIsCatP, xmlUCSIsCatPc, xmlUCSIsCatPd, xmlUCSIsCatPe, xmlUCSIsCatPf,
+        xmlUCSIsCatPi, xmlUCSIsCatPo, xmlUCSIsCatPs, xmlUCSIsCatS, xmlUCSIsCatSc, xmlUCSIsCatSk,
+        xmlUCSIsCatSm, xmlUCSIsCatSo, xmlUCSIsCatZ, xmlUCSIsCatZl, xmlUCSIsCatZp, xmlUCSIsCatZs,
+    },
+    xpointer::_xmlDict,
+};
 pub type xmlChar = u8;
 pub type size_t = u64;
 pub type __off_t = i64;
 pub type __off64_t = i64;
-// #[derive(Copy, Clone)]
-
 pub type _IO_FILE = crate::src::tree::_IO_FILE;
 pub type _IO_lock_t = ();
 pub type FILE = crate::src::tree::_IO_FILE;
-// #[derive(Copy, Clone)]
-
 pub type _xmlParserInputBuffer = crate::src::threads::_xmlParserInputBuffer;
-pub type xmlBufPtr = * mut crate::src::xmlstring::_xmlBuf;
+pub type xmlBufPtr = *mut crate::src::xmlstring::_xmlBuf;
 pub type xmlBuf = crate::src::xmlstring::_xmlBuf;
-pub type xmlCharEncodingHandlerPtr = * mut crate::src::threads::_xmlCharEncodingHandler;
+pub type xmlCharEncodingHandlerPtr = *mut crate::src::threads::_xmlCharEncodingHandler;
 pub type xmlCharEncodingHandler = crate::src::threads::_xmlCharEncodingHandler;
-// #[derive(Copy, Clone)]
-
 pub type _xmlCharEncodingHandler = crate::src::threads::_xmlCharEncodingHandler;
-pub type iconv_t = * mut core::ffi::c_void;
-pub type xmlCharEncodingOutputFunc = Option<unsafe extern "C"  fn(_: * mut u8,_: * mut i32,_: * const u8,_: * mut i32,) -> i32>;
-pub type xmlCharEncodingInputFunc = Option<unsafe extern "C"  fn(_: * mut u8,_: * mut i32,_: * const u8,_: * mut i32,) -> i32>;
-pub type xmlInputCloseCallback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type xmlInputReadCallback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut i8,_: i32,) -> i32>;
+pub type iconv_t = *mut core::ffi::c_void;
+pub type xmlCharEncodingOutputFunc =
+    Option<unsafe extern "C" fn(_: *mut u8, _: *mut i32, _: *const u8, _: *mut i32) -> i32>;
+pub type xmlCharEncodingInputFunc =
+    Option<unsafe extern "C" fn(_: *mut u8, _: *mut i32, _: *const u8, _: *mut i32) -> i32>;
+pub type xmlInputCloseCallback = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type xmlInputReadCallback =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *mut i8, _: i32) -> i32>;
 pub type xmlParserInputBuffer = crate::src::threads::_xmlParserInputBuffer;
-pub type xmlParserInputBufferPtr = * mut crate::src::threads::_xmlParserInputBuffer;
-// #[derive(Copy, Clone)]
-
+pub type xmlParserInputBufferPtr = *mut crate::src::threads::_xmlParserInputBuffer;
 pub type _xmlParserInput = crate::src::threads::_xmlParserInput;
-pub type xmlParserInputDeallocate = Option<unsafe extern "C"  fn(_: * mut u8,) -> ()>;
+pub type xmlParserInputDeallocate = Option<unsafe extern "C" fn(_: *mut u8) -> ()>;
 pub type xmlParserInput = crate::src::threads::_xmlParserInput;
-pub type xmlParserInputPtr = * mut crate::src::threads::_xmlParserInput;
-// #[derive(Copy, Clone)]
-
+pub type xmlParserInputPtr = *mut crate::src::threads::_xmlParserInput;
 pub type _xmlParserCtxt = crate::src::tree::_xmlParserCtxt;
 pub type xmlParserNodeInfo = crate::src::tree::_xmlParserNodeInfo;
-// #[derive(Copy, Clone)]
-
 pub type _xmlParserNodeInfo = crate::src::tree::_xmlParserNodeInfo;
-// #[derive(Copy, Clone)]
-
 pub type _xmlNode = crate::src::threads::_xmlNode;
 pub type xmlNs = crate::src::threads::_xmlNs;
-// #[derive(Copy, Clone)]
-
 pub type _xmlNs = crate::src::threads::_xmlNs;
-// #[derive(Copy, Clone)]
-
 pub type _xmlDoc = crate::src::threads::_xmlDoc;
-// #[derive(Copy, Clone)]
-
 pub type _xmlDtd = crate::src::threads::_xmlDtd;
 pub type xmlElementType = u32;
 pub const XML_XINCLUDE_END: xmlElementType = 20;
@@ -226,8 +127,6 @@ pub const XML_TEXT_NODE: xmlElementType = 3;
 pub const XML_ATTRIBUTE_NODE: xmlElementType = 2;
 pub const XML_ELEMENT_NODE: xmlElementType = 1;
 pub type xmlNsType = u32;
-// #[derive(Copy, Clone)]
-
 pub type _xmlAttr = crate::src::threads::_xmlAttr;
 pub type xmlAttributeType = u32;
 pub const XML_ATTRIBUTE_NOTATION: xmlAttributeType = 10;
@@ -248,22 +147,20 @@ pub const XML_PARSE_SAX: xmlParserMode = 2;
 pub const XML_PARSE_DOM: xmlParserMode = 1;
 pub const XML_PARSE_UNKNOWN: xmlParserMode = 0;
 pub type xmlError = crate::src::threads::_xmlError;
-// #[derive(Copy, Clone)]
-
 pub type _xmlError = crate::src::threads::_xmlError;
 pub type xmlErrorLevel = u32;
 pub const XML_ERR_FATAL: xmlErrorLevel = 3;
 pub const XML_ERR_ERROR: xmlErrorLevel = 2;
 pub const XML_ERR_WARNING: xmlErrorLevel = 1;
 pub const XML_ERR_NONE: xmlErrorLevel = 0;
-pub type xmlAttrPtr = * mut crate::src::threads::_xmlAttr;
+pub type xmlAttrPtr = *mut crate::src::threads::_xmlAttr;
 pub type xmlAttr = crate::src::threads::_xmlAttr;
-pub type xmlNodePtr = * mut crate::src::threads::_xmlNode;
+pub type xmlNodePtr = *mut crate::src::threads::_xmlNode;
 pub type xmlNode = crate::src::threads::_xmlNode;
-pub type xmlHashTablePtr = * mut crate::src::xmlsave::_xmlHashTable;
+pub type xmlHashTablePtr = *mut crate::src::xmlsave::_xmlHashTable;
 pub type xmlHashTable = crate::src::xmlsave::_xmlHashTable;
 pub type xmlStartTag = crate::src::xmlstring::_xmlStartTag;
-pub type xmlDictPtr = * mut crate::src::xpointer::_xmlDict;
+pub type xmlDictPtr = *mut crate::src::xpointer::_xmlDict;
 pub type xmlDict = crate::src::xpointer::_xmlDict;
 pub type xmlParserInputState = i32;
 pub const XML_PARSER_PUBLIC_LITERAL: xmlParserInputState = 16;
@@ -285,10 +182,8 @@ pub const XML_PARSER_MISC: xmlParserInputState = 1;
 pub const XML_PARSER_START: xmlParserInputState = 0;
 pub const XML_PARSER_EOF: xmlParserInputState = -1;
 pub type xmlValidCtxt = crate::src::tree::_xmlValidCtxt;
-// #[derive(Copy, Clone)]
-
 pub type _xmlValidCtxt = crate::src::tree::_xmlValidCtxt;
-pub type xmlAutomataStatePtr = * mut crate::src::xmlregexp::_xmlAutomataState;
+pub type xmlAutomataStatePtr = *mut crate::src::xmlregexp::_xmlAutomataState;
 pub type xmlAutomataState = crate::src::xmlregexp::_xmlAutomataState;
 #[derive(Copy, Clone)]
 #[repr(C)]
@@ -300,38 +195,38 @@ pub struct _xmlAutomataState {
     pub no: i32,
     pub maxTrans: i32,
     pub nbTrans: i32,
-    pub trans: * mut crate::src::xmlregexp::_xmlRegTrans,
+    pub trans: *mut crate::src::xmlregexp::_xmlRegTrans,
     pub maxTransTo: i32,
     pub nbTransTo: i32,
-    pub transTo: * mut i32,
+    pub transTo: *mut i32,
 }
 impl _xmlAutomataState {
     pub const fn new() -> Self {
         _xmlAutomataState {
-        type_0: 0,
-        mark: 0,
-        markd: 0,
-        reached: 0,
-        no: 0,
-        maxTrans: 0,
-        nbTrans: 0,
-        trans: (0 as * mut crate::src::xmlregexp::_xmlRegTrans),
-        maxTransTo: 0,
-        nbTransTo: 0,
-        transTo: (0 as * mut i32)
+            type_0: 0,
+            mark: 0,
+            markd: 0,
+            reached: 0,
+            no: 0,
+            maxTrans: 0,
+            nbTrans: 0,
+            trans: (0 as *mut crate::src::xmlregexp::_xmlRegTrans),
+            maxTransTo: 0,
+            nbTransTo: 0,
+            transTo: (0 as *mut i32),
         }
     }
 }
-
 impl std::default::Default for _xmlAutomataState {
-    fn default() -> Self { _xmlAutomataState::new() }
+    fn default() -> Self {
+        _xmlAutomataState::new()
+    }
 }
-
 pub type xmlRegTrans = crate::src::xmlregexp::_xmlRegTrans;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlRegTrans {
-    pub atom: * mut crate::src::xmlregexp::_xmlRegAtom,
+    pub atom: *mut crate::src::xmlregexp::_xmlRegAtom,
     pub to: i32,
     pub counter: i32,
     pub count: i32,
@@ -340,20 +235,20 @@ pub struct _xmlRegTrans {
 impl _xmlRegTrans {
     pub const fn new() -> Self {
         _xmlRegTrans {
-        atom: (0 as * mut crate::src::xmlregexp::_xmlRegAtom),
-        to: 0,
-        counter: 0,
-        count: 0,
-        nd: 0
+            atom: (0 as *mut crate::src::xmlregexp::_xmlRegAtom),
+            to: 0,
+            counter: 0,
+            count: 0,
+            nd: 0,
         }
     }
 }
-
 impl std::default::Default for _xmlRegTrans {
-    fn default() -> Self { _xmlRegTrans::new() }
+    fn default() -> Self {
+        _xmlRegTrans::new()
+    }
 }
-
-pub type xmlRegAtomPtr = * mut crate::src::xmlregexp::_xmlRegAtom;
+pub type xmlRegAtomPtr = *mut crate::src::xmlregexp::_xmlRegAtom;
 pub type xmlRegAtom = crate::src::xmlregexp::_xmlRegAtom;
 #[derive(Copy, Clone)]
 #[repr(C)]
@@ -363,46 +258,46 @@ pub struct _xmlRegAtom {
     pub quant: u32,
     pub min: i32,
     pub max: i32,
-    pub valuep: * mut core::ffi::c_void,
-    pub valuep2: * mut core::ffi::c_void,
+    pub valuep: *mut core::ffi::c_void,
+    pub valuep2: *mut core::ffi::c_void,
     pub neg: i32,
     pub codepoint: i32,
-    pub start: * mut crate::src::xmlregexp::_xmlAutomataState,
-    pub start0: * mut crate::src::xmlregexp::_xmlAutomataState,
-    pub stop: * mut crate::src::xmlregexp::_xmlAutomataState,
+    pub start: *mut crate::src::xmlregexp::_xmlAutomataState,
+    pub start0: *mut crate::src::xmlregexp::_xmlAutomataState,
+    pub stop: *mut crate::src::xmlregexp::_xmlAutomataState,
     pub maxRanges: i32,
     pub nbRanges: i32,
-    pub ranges: * mut * mut crate::src::xmlregexp::_xmlRegRange,
-    pub data: * mut core::ffi::c_void,
+    pub ranges: *mut *mut crate::src::xmlregexp::_xmlRegRange,
+    pub data: *mut core::ffi::c_void,
 }
 impl _xmlRegAtom {
     pub const fn new() -> Self {
         _xmlRegAtom {
-        no: 0,
-        type_0: 0,
-        quant: 0,
-        min: 0,
-        max: 0,
-        valuep: (0 as * mut core::ffi::c_void),
-        valuep2: (0 as * mut core::ffi::c_void),
-        neg: 0,
-        codepoint: 0,
-        start: (0 as * mut crate::src::xmlregexp::_xmlAutomataState),
-        start0: (0 as * mut crate::src::xmlregexp::_xmlAutomataState),
-        stop: (0 as * mut crate::src::xmlregexp::_xmlAutomataState),
-        maxRanges: 0,
-        nbRanges: 0,
-        ranges: (0 as * mut * mut crate::src::xmlregexp::_xmlRegRange),
-        data: (0 as * mut core::ffi::c_void)
+            no: 0,
+            type_0: 0,
+            quant: 0,
+            min: 0,
+            max: 0,
+            valuep: (0 as *mut core::ffi::c_void),
+            valuep2: (0 as *mut core::ffi::c_void),
+            neg: 0,
+            codepoint: 0,
+            start: (0 as *mut crate::src::xmlregexp::_xmlAutomataState),
+            start0: (0 as *mut crate::src::xmlregexp::_xmlAutomataState),
+            stop: (0 as *mut crate::src::xmlregexp::_xmlAutomataState),
+            maxRanges: 0,
+            nbRanges: 0,
+            ranges: (0 as *mut *mut crate::src::xmlregexp::_xmlRegRange),
+            data: (0 as *mut core::ffi::c_void),
         }
     }
 }
-
 impl std::default::Default for _xmlRegAtom {
-    fn default() -> Self { _xmlRegAtom::new() }
+    fn default() -> Self {
+        _xmlRegAtom::new()
+    }
 }
-
-pub type xmlRegRangePtr = * mut crate::src::xmlregexp::_xmlRegRange;
+pub type xmlRegRangePtr = *mut crate::src::xmlregexp::_xmlRegRange;
 pub type xmlRegRange = crate::src::xmlregexp::_xmlRegRange;
 #[derive(Copy, Clone)]
 #[repr(C)]
@@ -411,24 +306,24 @@ pub struct _xmlRegRange {
     pub type_0: u32,
     pub start: i32,
     pub end: i32,
-    pub blockName: * mut u8,
+    pub blockName: *mut u8,
 }
 impl _xmlRegRange {
     pub const fn new() -> Self {
         _xmlRegRange {
-        neg: 0,
-        type_0: 0,
-        start: 0,
-        end: 0,
-        blockName: (0 as * mut u8)
+            neg: 0,
+            type_0: 0,
+            start: 0,
+            end: 0,
+            blockName: (0 as *mut u8),
         }
     }
 }
-
 impl std::default::Default for _xmlRegRange {
-    fn default() -> Self { _xmlRegRange::new() }
+    fn default() -> Self {
+        _xmlRegRange::new()
+    }
 }
-
 pub type xmlRegAtomType = u32;
 pub const XML_REGEXP_BLOCK_NAME: xmlRegAtomType = 136;
 pub const XML_REGEXP_OTHER_NA: xmlRegAtomType = 135;
@@ -483,7 +378,7 @@ pub const XML_REGEXP_SUBREG: xmlRegAtomType = 4;
 pub const XML_REGEXP_RANGES: xmlRegAtomType = 3;
 pub const XML_REGEXP_CHARVAL: xmlRegAtomType = 2;
 pub const XML_REGEXP_EPSILON: xmlRegAtomType = 1;
-pub type xmlRegStatePtr = * mut crate::src::xmlregexp::_xmlAutomataState;
+pub type xmlRegStatePtr = *mut crate::src::xmlregexp::_xmlAutomataState;
 pub type xmlRegState = crate::src::xmlregexp::_xmlAutomataState;
 pub type xmlRegQuantType = u32;
 pub const XML_REGEXP_QUANT_RANGE: xmlRegQuantType = 8;
@@ -504,28 +399,28 @@ pub const XML_REGEXP_SINK_STATE: xmlRegStateType = 4;
 pub const XML_REGEXP_TRANS_STATE: xmlRegStateType = 3;
 pub const XML_REGEXP_FINAL_STATE: xmlRegStateType = 2;
 pub const XML_REGEXP_START_STATE: xmlRegStateType = 1;
-pub type xmlAutomataPtr = * mut crate::src::xmlregexp::_xmlAutomata;
+pub type xmlAutomataPtr = *mut crate::src::xmlregexp::_xmlAutomata;
 pub type xmlAutomata = crate::src::xmlregexp::_xmlAutomata;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlAutomata {
-    pub string: * mut u8,
-    pub cur: * mut u8,
+    pub string: *mut u8,
+    pub cur: *mut u8,
     pub error: i32,
     pub neg: i32,
-    pub start: * mut crate::src::xmlregexp::_xmlAutomataState,
-    pub end: * mut crate::src::xmlregexp::_xmlAutomataState,
-    pub state: * mut crate::src::xmlregexp::_xmlAutomataState,
-    pub atom: * mut crate::src::xmlregexp::_xmlRegAtom,
+    pub start: *mut crate::src::xmlregexp::_xmlAutomataState,
+    pub end: *mut crate::src::xmlregexp::_xmlAutomataState,
+    pub state: *mut crate::src::xmlregexp::_xmlAutomataState,
+    pub atom: *mut crate::src::xmlregexp::_xmlRegAtom,
     pub maxAtoms: i32,
     pub nbAtoms: i32,
-    pub atoms: * mut * mut crate::src::xmlregexp::_xmlRegAtom,
+    pub atoms: *mut *mut crate::src::xmlregexp::_xmlRegAtom,
     pub maxStates: i32,
     pub nbStates: i32,
-    pub states: * mut * mut crate::src::xmlregexp::_xmlAutomataState,
+    pub states: *mut *mut crate::src::xmlregexp::_xmlAutomataState,
     pub maxCounters: i32,
     pub nbCounters: i32,
-    pub counters: * mut crate::src::xmlregexp::_xmlRegCounter,
+    pub counters: *mut crate::src::xmlregexp::_xmlRegCounter,
     pub determinist: i32,
     pub negs: i32,
     pub flags: i32,
@@ -534,35 +429,35 @@ pub struct _xmlAutomata {
 impl _xmlAutomata {
     pub const fn new() -> Self {
         _xmlAutomata {
-        string: (0 as * mut u8),
-        cur: (0 as * mut u8),
-        error: 0,
-        neg: 0,
-        start: (0 as * mut crate::src::xmlregexp::_xmlAutomataState),
-        end: (0 as * mut crate::src::xmlregexp::_xmlAutomataState),
-        state: (0 as * mut crate::src::xmlregexp::_xmlAutomataState),
-        atom: (0 as * mut crate::src::xmlregexp::_xmlRegAtom),
-        maxAtoms: 0,
-        nbAtoms: 0,
-        atoms: (0 as * mut * mut crate::src::xmlregexp::_xmlRegAtom),
-        maxStates: 0,
-        nbStates: 0,
-        states: (0 as * mut * mut crate::src::xmlregexp::_xmlAutomataState),
-        maxCounters: 0,
-        nbCounters: 0,
-        counters: (0 as * mut crate::src::xmlregexp::_xmlRegCounter),
-        determinist: 0,
-        negs: 0,
-        flags: 0,
-        depth: 0
+            string: (0 as *mut u8),
+            cur: (0 as *mut u8),
+            error: 0,
+            neg: 0,
+            start: (0 as *mut crate::src::xmlregexp::_xmlAutomataState),
+            end: (0 as *mut crate::src::xmlregexp::_xmlAutomataState),
+            state: (0 as *mut crate::src::xmlregexp::_xmlAutomataState),
+            atom: (0 as *mut crate::src::xmlregexp::_xmlRegAtom),
+            maxAtoms: 0,
+            nbAtoms: 0,
+            atoms: (0 as *mut *mut crate::src::xmlregexp::_xmlRegAtom),
+            maxStates: 0,
+            nbStates: 0,
+            states: (0 as *mut *mut crate::src::xmlregexp::_xmlAutomataState),
+            maxCounters: 0,
+            nbCounters: 0,
+            counters: (0 as *mut crate::src::xmlregexp::_xmlRegCounter),
+            determinist: 0,
+            negs: 0,
+            flags: 0,
+            depth: 0,
         }
     }
 }
-
 impl std::default::Default for _xmlAutomata {
-    fn default() -> Self { _xmlAutomata::new() }
+    fn default() -> Self {
+        _xmlAutomata::new()
+    }
 }
-
 pub type xmlRegCounter = crate::src::xmlregexp::_xmlRegCounter;
 #[derive(Copy, Clone)]
 #[repr(C)]
@@ -572,40 +467,57 @@ pub struct _xmlRegCounter {
 }
 impl _xmlRegCounter {
     pub const fn new() -> Self {
-        _xmlRegCounter {
-        min: 0,
-        max: 0
-        }
+        _xmlRegCounter { min: 0, max: 0 }
     }
 }
-
 impl std::default::Default for _xmlRegCounter {
-    fn default() -> Self { _xmlRegCounter::new() }
+    fn default() -> Self {
+        _xmlRegCounter::new()
+    }
 }
-
 pub type xmlValidState = crate::src::valid::_xmlValidState;
-pub type xmlDocPtr = * mut crate::src::threads::_xmlDoc;
+pub type xmlDocPtr = *mut crate::src::threads::_xmlDoc;
 pub type xmlDoc = crate::src::threads::_xmlDoc;
-pub type xmlValidityWarningFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type xmlValidityErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
+pub type xmlValidityWarningFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type xmlValidityErrorFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
 pub type xmlParserNodeInfoSeq = crate::src::tree::_xmlParserNodeInfoSeq;
-// #[derive(Copy, Clone)]
-
 pub type _xmlParserNodeInfoSeq = crate::src::tree::_xmlParserNodeInfoSeq;
-// #[derive(Copy, Clone)]
-
 pub type _xmlSAXHandler = crate::src::tree::_xmlSAXHandler;
-pub type xmlStructuredErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::threads::_xmlError,) -> ()>;
-pub type xmlErrorPtr = * mut crate::src::threads::_xmlError;
-pub type endElementNsSAX2Func = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
-pub type startElementNsSAX2Func = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,_: i32,_: * mut * const u8,_: i32,_: i32,_: * mut * const u8,) -> ()>;
-pub type externalSubsetSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
-pub type cdataBlockSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,) -> ()>;
-pub type getParameterEntitySAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> * mut crate::src::threads::_xmlEntity>;
-pub type xmlEntityPtr = * mut crate::src::threads::_xmlEntity;
+pub type xmlStructuredErrorFunc = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *mut crate::src::threads::_xmlError) -> (),
+>;
+pub type xmlErrorPtr = *mut crate::src::threads::_xmlError;
+pub type endElementNsSAX2Func = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8, _: *const u8) -> (),
+>;
+pub type startElementNsSAX2Func = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+        _: *const u8,
+        _: i32,
+        _: *mut *const u8,
+        _: i32,
+        _: i32,
+        _: *mut *const u8,
+    ) -> (),
+>;
+pub type externalSubsetSAXFunc = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8, _: *const u8) -> (),
+>;
+pub type cdataBlockSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: i32) -> ()>;
+pub type getParameterEntitySAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+    ) -> *mut crate::src::threads::_xmlEntity,
+>;
+pub type xmlEntityPtr = *mut crate::src::threads::_xmlEntity;
 pub type xmlEntity = crate::src::threads::_xmlEntity;
-// #[derive(Copy, Clone)]
-
 pub type _xmlEntity = crate::src::threads::_xmlEntity;
 pub type xmlEntityType = u32;
 pub const XML_INTERNAL_PREDEFINED_ENTITY: xmlEntityType = 6;
@@ -614,30 +526,56 @@ pub const XML_INTERNAL_PARAMETER_ENTITY: xmlEntityType = 4;
 pub const XML_EXTERNAL_GENERAL_UNPARSED_ENTITY: xmlEntityType = 3;
 pub const XML_EXTERNAL_GENERAL_PARSED_ENTITY: xmlEntityType = 2;
 pub const XML_INTERNAL_GENERAL_ENTITY: xmlEntityType = 1;
-pub type fatalErrorSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type errorSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type warningSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type commentSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> ()>;
-pub type processingInstructionSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,) -> ()>;
-pub type ignorableWhitespaceSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,) -> ()>;
-pub type charactersSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,) -> ()>;
-pub type referenceSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> ()>;
-pub type endElementSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> ()>;
-pub type startElementSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * mut * const u8,) -> ()>;
-pub type endDocumentSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type startDocumentSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type setDocumentLocatorSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::threads::_xmlSAXLocator,) -> ()>;
-pub type xmlSAXLocatorPtr = * mut crate::src::threads::_xmlSAXLocator;
+pub type fatalErrorSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type errorSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type warningSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type commentSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8) -> ()>;
+pub type processingInstructionSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8) -> ()>;
+pub type ignorableWhitespaceSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: i32) -> ()>;
+pub type charactersSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: i32) -> ()>;
+pub type referenceSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8) -> ()>;
+pub type endElementSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8) -> ()>;
+pub type startElementSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *mut *const u8) -> ()>;
+pub type endDocumentSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+pub type startDocumentSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+pub type setDocumentLocatorSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *mut crate::src::threads::_xmlSAXLocator,
+    ) -> (),
+>;
+pub type xmlSAXLocatorPtr = *mut crate::src::threads::_xmlSAXLocator;
 pub type xmlSAXLocator = crate::src::threads::_xmlSAXLocator;
-// #[derive(Copy, Clone)]
-
 pub type _xmlSAXLocator = crate::src::threads::_xmlSAXLocator;
-pub type unparsedEntityDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
-pub type elementDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,_: * mut crate::src::threads::_xmlElementContent,) -> ()>;
-pub type xmlElementContentPtr = * mut crate::src::threads::_xmlElementContent;
+pub type unparsedEntityDeclSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+        _: *const u8,
+        _: *const u8,
+    ) -> (),
+>;
+pub type elementDeclSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: i32,
+        _: *mut crate::src::threads::_xmlElementContent,
+    ) -> (),
+>;
+pub type xmlElementContentPtr = *mut crate::src::threads::_xmlElementContent;
 pub type xmlElementContent = crate::src::threads::_xmlElementContent;
-// #[derive(Copy, Clone)]
-
 pub type _xmlElementContent = crate::src::threads::_xmlElementContent;
 pub type xmlElementContentOccur = u32;
 pub const XML_ELEMENT_CONTENT_PLUS: xmlElementContentOccur = 4;
@@ -649,199 +587,241 @@ pub const XML_ELEMENT_CONTENT_OR: xmlElementContentType = 4;
 pub const XML_ELEMENT_CONTENT_SEQ: xmlElementContentType = 3;
 pub const XML_ELEMENT_CONTENT_ELEMENT: xmlElementContentType = 2;
 pub const XML_ELEMENT_CONTENT_PCDATA: xmlElementContentType = 1;
-pub type attributeDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: i32,_: i32,_: * const u8,_: * mut crate::src::threads::_xmlEnumeration,) -> ()>;
-pub type xmlEnumerationPtr = * mut crate::src::threads::_xmlEnumeration;
+pub type attributeDeclSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+        _: i32,
+        _: i32,
+        _: *const u8,
+        _: *mut crate::src::threads::_xmlEnumeration,
+    ) -> (),
+>;
+pub type xmlEnumerationPtr = *mut crate::src::threads::_xmlEnumeration;
 pub type xmlEnumeration = crate::src::threads::_xmlEnumeration;
-// #[derive(Copy, Clone)]
-
 pub type _xmlEnumeration = crate::src::threads::_xmlEnumeration;
-pub type notationDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
-pub type entityDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,_: * const u8,_: * const u8,_: * mut u8,) -> ()>;
-pub type getEntitySAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> * mut crate::src::threads::_xmlEntity>;
-pub type resolveEntitySAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,) -> * mut crate::src::threads::_xmlParserInput>;
-pub type hasExternalSubsetSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type hasInternalSubsetSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type isStandaloneSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type internalSubsetSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
+pub type notationDeclSAXFunc = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8, _: *const u8) -> (),
+>;
+pub type entityDeclSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: i32,
+        _: *const u8,
+        _: *const u8,
+        _: *mut u8,
+    ) -> (),
+>;
+pub type getEntitySAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+    ) -> *mut crate::src::threads::_xmlEntity,
+>;
+pub type resolveEntitySAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+    ) -> *mut crate::src::threads::_xmlParserInput,
+>;
+pub type hasExternalSubsetSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type hasInternalSubsetSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type isStandaloneSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type internalSubsetSAXFunc = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8, _: *const u8) -> (),
+>;
 pub type xmlParserCtxt = crate::src::tree::_xmlParserCtxt;
-pub type xmlParserCtxtPtr = * mut crate::src::tree::_xmlParserCtxt;
+pub type xmlParserCtxtPtr = *mut crate::src::tree::_xmlParserCtxt;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlRegexp {
-    pub string: * mut u8,
+    pub string: *mut u8,
     pub nbStates: i32,
-    pub states: * mut * mut crate::src::xmlregexp::_xmlAutomataState,
+    pub states: *mut *mut crate::src::xmlregexp::_xmlAutomataState,
     pub nbAtoms: i32,
-    pub atoms: * mut * mut crate::src::xmlregexp::_xmlRegAtom,
+    pub atoms: *mut *mut crate::src::xmlregexp::_xmlRegAtom,
     pub nbCounters: i32,
-    pub counters: * mut crate::src::xmlregexp::_xmlRegCounter,
+    pub counters: *mut crate::src::xmlregexp::_xmlRegCounter,
     pub determinist: i32,
     pub flags: i32,
     pub nbstates: i32,
-    pub compact: * mut i32,
-    pub transdata: * mut * mut core::ffi::c_void,
+    pub compact: *mut i32,
+    pub transdata: *mut *mut core::ffi::c_void,
     pub nbstrings: i32,
-    pub stringMap: * mut * mut u8,
+    pub stringMap: *mut *mut u8,
 }
 impl _xmlRegexp {
     pub const fn new() -> Self {
         _xmlRegexp {
-        string: (0 as * mut u8),
-        nbStates: 0,
-        states: (0 as * mut * mut crate::src::xmlregexp::_xmlAutomataState),
-        nbAtoms: 0,
-        atoms: (0 as * mut * mut crate::src::xmlregexp::_xmlRegAtom),
-        nbCounters: 0,
-        counters: (0 as * mut crate::src::xmlregexp::_xmlRegCounter),
-        determinist: 0,
-        flags: 0,
-        nbstates: 0,
-        compact: (0 as * mut i32),
-        transdata: (0 as * mut * mut core::ffi::c_void),
-        nbstrings: 0,
-        stringMap: (0 as * mut * mut u8)
+            string: (0 as *mut u8),
+            nbStates: 0,
+            states: (0 as *mut *mut crate::src::xmlregexp::_xmlAutomataState),
+            nbAtoms: 0,
+            atoms: (0 as *mut *mut crate::src::xmlregexp::_xmlRegAtom),
+            nbCounters: 0,
+            counters: (0 as *mut crate::src::xmlregexp::_xmlRegCounter),
+            determinist: 0,
+            flags: 0,
+            nbstates: 0,
+            compact: (0 as *mut i32),
+            transdata: (0 as *mut *mut core::ffi::c_void),
+            nbstrings: 0,
+            stringMap: (0 as *mut *mut u8),
         }
     }
 }
-
 impl std::default::Default for _xmlRegexp {
-    fn default() -> Self { _xmlRegexp::new() }
+    fn default() -> Self {
+        _xmlRegexp::new()
+    }
 }
-
 pub type xmlRegexp = crate::src::xmlregexp::_xmlRegexp;
-pub type xmlRegexpPtr = * mut crate::src::xmlregexp::_xmlRegexp;
+pub type xmlRegexpPtr = *mut crate::src::xmlregexp::_xmlRegexp;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlRegExecCtxt {
     pub status: i32,
     pub determinist: i32,
-    pub comp: * mut crate::src::xmlregexp::_xmlRegexp,
-    pub callback: Option<unsafe extern "C"  fn(_: * mut crate::src::xmlregexp::_xmlRegExecCtxt,_: * const u8,_: * mut core::ffi::c_void,_: * mut core::ffi::c_void,) -> ()>,
-    pub data: * mut core::ffi::c_void,
-    pub state: * mut crate::src::xmlregexp::_xmlAutomataState,
+    pub comp: *mut crate::src::xmlregexp::_xmlRegexp,
+    pub callback: Option<
+        unsafe extern "C" fn(
+            _: *mut crate::src::xmlregexp::_xmlRegExecCtxt,
+            _: *const u8,
+            _: *mut core::ffi::c_void,
+            _: *mut core::ffi::c_void,
+        ) -> (),
+    >,
+    pub data: *mut core::ffi::c_void,
+    pub state: *mut crate::src::xmlregexp::_xmlAutomataState,
     pub transno: i32,
     pub transcount: i32,
     pub maxRollbacks: i32,
     pub nbRollbacks: i32,
-    pub rollbacks: * mut crate::src::xmlregexp::_xmlRegExecRollback,
-    pub counts: * mut i32,
+    pub rollbacks: *mut crate::src::xmlregexp::_xmlRegExecRollback,
+    pub counts: *mut i32,
     pub inputStackMax: i32,
     pub inputStackNr: i32,
     pub index: i32,
-    pub charStack: * mut i32,
-    pub inputString: * const u8,
-    pub inputStack: * mut crate::src::xmlregexp::_xmlRegInputToken,
+    pub charStack: *mut i32,
+    pub inputString: *const u8,
+    pub inputStack: *mut crate::src::xmlregexp::_xmlRegInputToken,
     pub errStateNo: i32,
-    pub errState: * mut crate::src::xmlregexp::_xmlAutomataState,
-    pub errString: * mut u8,
-    pub errCounts: * mut i32,
+    pub errState: *mut crate::src::xmlregexp::_xmlAutomataState,
+    pub errString: *mut u8,
+    pub errCounts: *mut i32,
     pub nbPush: i32,
 }
 impl _xmlRegExecCtxt {
     pub const fn new() -> Self {
         _xmlRegExecCtxt {
-        status: 0,
-        determinist: 0,
-        comp: (0 as * mut crate::src::xmlregexp::_xmlRegexp),
-        callback: None,
-        data: (0 as * mut core::ffi::c_void),
-        state: (0 as * mut crate::src::xmlregexp::_xmlAutomataState),
-        transno: 0,
-        transcount: 0,
-        maxRollbacks: 0,
-        nbRollbacks: 0,
-        rollbacks: (0 as * mut crate::src::xmlregexp::_xmlRegExecRollback),
-        counts: (0 as * mut i32),
-        inputStackMax: 0,
-        inputStackNr: 0,
-        index: 0,
-        charStack: (0 as * mut i32),
-        inputString: (0 as * const u8),
-        inputStack: (0 as * mut crate::src::xmlregexp::_xmlRegInputToken),
-        errStateNo: 0,
-        errState: (0 as * mut crate::src::xmlregexp::_xmlAutomataState),
-        errString: (0 as * mut u8),
-        errCounts: (0 as * mut i32),
-        nbPush: 0
+            status: 0,
+            determinist: 0,
+            comp: (0 as *mut crate::src::xmlregexp::_xmlRegexp),
+            callback: None,
+            data: (0 as *mut core::ffi::c_void),
+            state: (0 as *mut crate::src::xmlregexp::_xmlAutomataState),
+            transno: 0,
+            transcount: 0,
+            maxRollbacks: 0,
+            nbRollbacks: 0,
+            rollbacks: (0 as *mut crate::src::xmlregexp::_xmlRegExecRollback),
+            counts: (0 as *mut i32),
+            inputStackMax: 0,
+            inputStackNr: 0,
+            index: 0,
+            charStack: (0 as *mut i32),
+            inputString: (0 as *const u8),
+            inputStack: (0 as *mut crate::src::xmlregexp::_xmlRegInputToken),
+            errStateNo: 0,
+            errState: (0 as *mut crate::src::xmlregexp::_xmlAutomataState),
+            errString: (0 as *mut u8),
+            errCounts: (0 as *mut i32),
+            nbPush: 0,
         }
     }
 }
-
 impl std::default::Default for _xmlRegExecCtxt {
-    fn default() -> Self { _xmlRegExecCtxt::new() }
+    fn default() -> Self {
+        _xmlRegExecCtxt::new()
+    }
 }
-
-pub type xmlRegInputTokenPtr = * mut crate::src::xmlregexp::_xmlRegInputToken;
+pub type xmlRegInputTokenPtr = *mut crate::src::xmlregexp::_xmlRegInputToken;
 pub type xmlRegInputToken = crate::src::xmlregexp::_xmlRegInputToken;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlRegInputToken {
-    pub value: * mut u8,
-    pub data: * mut core::ffi::c_void,
+    pub value: *mut u8,
+    pub data: *mut core::ffi::c_void,
 }
 impl _xmlRegInputToken {
     pub const fn new() -> Self {
         _xmlRegInputToken {
-        value: (0 as * mut u8),
-        data: (0 as * mut core::ffi::c_void)
+            value: (0 as *mut u8),
+            data: (0 as *mut core::ffi::c_void),
         }
     }
 }
-
 impl std::default::Default for _xmlRegInputToken {
-    fn default() -> Self { _xmlRegInputToken::new() }
+    fn default() -> Self {
+        _xmlRegInputToken::new()
+    }
 }
-
 pub type xmlRegExecRollback = crate::src::xmlregexp::_xmlRegExecRollback;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlRegExecRollback {
-    pub state: * mut crate::src::xmlregexp::_xmlAutomataState,
+    pub state: *mut crate::src::xmlregexp::_xmlAutomataState,
     pub index: i32,
     pub nextbranch: i32,
-    pub counts: * mut i32,
+    pub counts: *mut i32,
 }
 impl _xmlRegExecRollback {
     pub const fn new() -> Self {
         _xmlRegExecRollback {
-        state: (0 as * mut crate::src::xmlregexp::_xmlAutomataState),
-        index: 0,
-        nextbranch: 0,
-        counts: (0 as * mut i32)
+            state: (0 as *mut crate::src::xmlregexp::_xmlAutomataState),
+            index: 0,
+            nextbranch: 0,
+            counts: (0 as *mut i32),
         }
     }
 }
-
 impl std::default::Default for _xmlRegExecRollback {
-    fn default() -> Self { _xmlRegExecRollback::new() }
+    fn default() -> Self {
+        _xmlRegExecRollback::new()
+    }
 }
-
-pub type xmlRegExecCallbacks = Option<unsafe extern "C"  fn(_: * mut crate::src::xmlregexp::_xmlRegExecCtxt,_: * const u8,_: * mut core::ffi::c_void,_: * mut core::ffi::c_void,) -> ()>;
-pub type xmlRegExecCtxtPtr = * mut crate::src::xmlregexp::_xmlRegExecCtxt;
+pub type xmlRegExecCallbacks = Option<
+    unsafe extern "C" fn(
+        _: *mut crate::src::xmlregexp::_xmlRegExecCtxt,
+        _: *const u8,
+        _: *mut core::ffi::c_void,
+        _: *mut core::ffi::c_void,
+    ) -> (),
+>;
+pub type xmlRegExecCtxtPtr = *mut crate::src::xmlregexp::_xmlRegExecCtxt;
 pub type xmlRegExecCtxt = crate::src::xmlregexp::_xmlRegExecCtxt;
-pub type xmlRegParserCtxtPtr = * mut crate::src::xmlregexp::_xmlAutomata;
+pub type xmlRegParserCtxtPtr = *mut crate::src::xmlregexp::_xmlAutomata;
 pub type xmlRegParserCtxt = crate::src::xmlregexp::_xmlAutomata;
-pub type xmlFreeFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type xmlRegTransPtr = * mut crate::src::xmlregexp::_xmlRegTrans;
+pub type xmlFreeFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+pub type xmlRegTransPtr = *mut crate::src::xmlregexp::_xmlRegTrans;
 pub const XML_ERR_NO_MEMORY: C2RustUnnamed_0 = 2;
 pub const XML_FROM_REGEXP: C2RustUnnamed = 14;
-pub type xmlGenericErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type xmlMallocFunc = Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
+pub type xmlGenericErrorFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type xmlMallocFunc = Option<unsafe extern "C" fn(_: u64) -> *mut core::ffi::c_void>;
 pub type xmlChRangeGroup = crate::src::tree::_xmlChRangeGroup;
-// #[derive(Copy, Clone)]
-
 pub type _xmlChRangeGroup = crate::src::tree::_xmlChRangeGroup;
 pub type xmlChLRange = crate::src::tree::_xmlChLRange;
-// #[derive(Copy, Clone)]
-
 pub type _xmlChLRange = crate::src::tree::_xmlChLRange;
 pub type xmlChSRange = crate::src::tree::_xmlChSRange;
-// #[derive(Copy, Clone)]
-
 pub type _xmlChSRange = crate::src::tree::_xmlChSRange;
-pub type xmlReallocFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: u64,) -> * mut core::ffi::c_void>;
+pub type xmlReallocFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: u64) -> *mut core::ffi::c_void>;
 pub const XML_REGEXP_COMPILE_ERROR: C2RustUnnamed_0 = 1450;
-pub type xmlRegCounterPtr = * mut crate::src::xmlregexp::_xmlRegCounter;
+pub type xmlRegCounterPtr = *mut crate::src::xmlregexp::_xmlRegCounter;
 pub type C2RustUnnamed = u32;
 pub const XML_FROM_URI: C2RustUnnamed = 30;
 pub const XML_FROM_BUFFER: C2RustUnnamed = 29;
@@ -1608,16 +1588,16 @@ pub const XML_ERR_DOCUMENT_EMPTY: C2RustUnnamed_0 = 4;
 pub const XML_ERR_DOCUMENT_START: C2RustUnnamed_0 = 3;
 pub const XML_ERR_INTERNAL_ERROR: C2RustUnnamed_0 = 1;
 pub const XML_ERR_OK: C2RustUnnamed_0 = 0;
-unsafe extern "C" fn xmlRegexpErrMemory(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut extra: * const i8,
+extern "C" fn xmlRegexpErrMemory(
+    mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut extra: *const i8,
 ) {
-    let mut regexp: * const i8 = 0 as *const i8;
+    let mut regexp: *const i8 = 0 as *const i8;
     if !ctxt.is_null() {
-        regexp = (*ctxt).string as *const i8;
-        (*ctxt).error = XML_ERR_NO_MEMORY as i32;
+        regexp = (unsafe { (*ctxt).string }) as *const i8;
+        (unsafe { (*ctxt).error = XML_ERR_NO_MEMORY as i32 });
     }
-    __xmlRaiseError(
+    (unsafe { __xmlRaiseError(
         None,
         None,
         0 as *mut libc::c_void,
@@ -1635,20 +1615,20 @@ unsafe extern "C" fn xmlRegexpErrMemory(
         0 as i32,
         b"Memory allocation failed : %s\n\0" as *const u8 as *const i8,
         extra,
-    );
+    ) });
 }
-unsafe extern "C" fn xmlRegexpErrCompile(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut extra: * const i8,
+extern "C" fn xmlRegexpErrCompile(
+    mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut extra: *const i8,
 ) {
-    let mut regexp: * const i8 = 0 as *const i8;
+    let mut regexp: *const i8 = 0 as *const i8;
     let mut idx: i32 = 0 as i32;
     if !ctxt.is_null() {
-        regexp = (*ctxt).string as *const i8;
-        idx = ((*ctxt).cur).offset_from((*ctxt).string) as i64 as i32;
-        (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
+        regexp = (unsafe { (*ctxt).string }) as *const i8;
+        idx = (unsafe { ((*ctxt).cur).offset_from((*ctxt).string) }) as i64 as i32;
+        (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
     }
-    __xmlRaiseError(
+    (unsafe { __xmlRaiseError(
         None,
         None,
         0 as *mut libc::c_void,
@@ -1666,206 +1646,169 @@ unsafe extern "C" fn xmlRegexpErrCompile(
         0 as i32,
         b"failed to compile: %s\n\0" as *const u8 as *const i8,
         extra,
-    );
+    ) });
 }
-unsafe extern "C" fn xmlRegCalloc2(
+extern "C" fn xmlRegCalloc2(
     mut dim1: u64,
     mut dim2: u64,
     mut elemSize: u64,
-) -> * mut core::ffi::c_void {
+) -> *mut core::ffi::c_void {
     let mut totalSize: u64 = 0;
-    let mut ret: * mut core::ffi::c_void = 0 as *mut libc::c_void;
-    if dim1 > (-(1 as i32) as size_t).wrapping_div(dim2).wrapping_div(elemSize) {
+    let mut ret: *mut core::ffi::c_void = 0 as *mut libc::c_void;
+    if dim1
+        > (-(1 as i32) as size_t)
+            .wrapping_div(dim2)
+            .wrapping_div(elemSize)
+    {
         return 0 as *mut libc::c_void;
     }
     totalSize = dim1.wrapping_mul(dim2).wrapping_mul(elemSize);
-    ret = xmlMalloc.expect("non-null function pointer")(totalSize);
+    ret = unsafe { xmlMalloc.expect("non-null function pointer")(totalSize) };
     if !ret.is_null() {
-        memset(ret, 0 as i32, totalSize);
+        (unsafe { memset(ret, 0 as i32, totalSize) });
     }
     return ret;
 }
-unsafe extern "C" fn xmlRegEpxFromParse(mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata) -> * mut crate::src::xmlregexp::_xmlRegexp {
+extern "C" fn xmlRegEpxFromParse(
+    mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata,
+) -> *mut crate::src::xmlregexp::_xmlRegexp {
     let mut current_block: u64;
-    let mut ret: * mut crate::src::xmlregexp::_xmlRegexp = 0 as *mut xmlRegexp;
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlRegexp>() as u64) as xmlRegexpPtr;
+    let mut ret: *mut crate::src::xmlregexp::_xmlRegexp = 0 as *mut xmlRegexp;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(::std::mem::size_of::<xmlRegexp>() as u64) })
+        as xmlRegexpPtr;
     if ret.is_null() {
-        xmlRegexpErrMemory(
-            ctxt,
-            b"compiling regexp\0" as *const u8 as *const i8,
-        );
+        xmlRegexpErrMemory(ctxt, b"compiling regexp\0" as *const u8 as *const i8);
         return 0 as xmlRegexpPtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlRegexp>() as u64,
-    );
-    let ref mut fresh0 = (*ret).string;
-    *fresh0 = (*ctxt).string;
-    (*ret).nbStates = (*ctxt).nbStates;
-    let ref mut fresh1 = (*ret).states;
-    *fresh1 = (*ctxt).states;
-    (*ret).nbAtoms = (*ctxt).nbAtoms;
-    let ref mut fresh2 = (*ret).atoms;
-    *fresh2 = (*ctxt).atoms;
-    (*ret).nbCounters = (*ctxt).nbCounters;
-    let ref mut fresh3 = (*ret).counters;
-    *fresh3 = (*ctxt).counters;
-    (*ret).determinist = (*ctxt).determinist;
-    (*ret).flags = (*ctxt).flags;
-    if (*ret).determinist == -(1 as i32) {
+    ) });
+    let fresh0 = unsafe { &mut ((*ret).string) };
+    *fresh0 = unsafe { (*ctxt).string };
+    (unsafe { (*ret).nbStates = (*ctxt).nbStates });
+    let fresh1 = unsafe { &mut ((*ret).states) };
+    *fresh1 = unsafe { (*ctxt).states };
+    (unsafe { (*ret).nbAtoms = (*ctxt).nbAtoms });
+    let fresh2 = unsafe { &mut ((*ret).atoms) };
+    *fresh2 = unsafe { (*ctxt).atoms };
+    (unsafe { (*ret).nbCounters = (*ctxt).nbCounters });
+    let fresh3 = unsafe { &mut ((*ret).counters) };
+    *fresh3 = unsafe { (*ctxt).counters };
+    (unsafe { (*ret).determinist = (*ctxt).determinist });
+    (unsafe { (*ret).flags = (*ctxt).flags });
+    if (unsafe { (*ret).determinist }) == -(1 as i32) {
         xmlRegexpIsDeterminist(ret);
     }
-    if (*ret).determinist != 0 as i32 && (*ret).nbCounters == 0 as i32
-        && (*ctxt).negs == 0 as i32 && !((*ret).atoms).is_null()
-        && !(*((*ret).atoms).offset(0 as i32 as isize)).is_null()
-        && (**((*ret).atoms).offset(0 as i32 as isize)).type_0 as u32
+    if (unsafe { (*ret).determinist }) != 0 as i32
+        && (unsafe { (*ret).nbCounters }) == 0 as i32
+        && (unsafe { (*ctxt).negs }) == 0 as i32
+        && !(unsafe { (*ret).atoms }).is_null()
+        && !(unsafe { *((*ret).atoms).offset(0 as i32 as isize) }).is_null()
+        && (unsafe { (**((*ret).atoms).offset(0 as i32 as isize)).type_0 }) as u32
             == XML_REGEXP_STRING as i32 as u32
     {
         let mut i: i32 = 0;
         let mut j: i32 = 0;
         let mut nbstates: i32 = 0 as i32;
         let mut nbatoms: i32 = 0 as i32;
-        let mut stateRemap: * mut i32 = 0 as *mut i32;
-        let mut stringRemap: * mut i32 = 0 as *mut i32;
-        let mut transitions: * mut i32 = 0 as *mut i32;
-        let mut transdata: * mut * mut core::ffi::c_void = 0 as *mut *mut libc::c_void;
-        let mut stringMap: * mut * mut u8 = 0 as *mut *mut xmlChar;
-        let mut value: * mut u8 = 0 as *mut xmlChar;
-        stateRemap = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(
-            ((*ret).nbStates as u64)
-                .wrapping_mul(::std::mem::size_of::<i32>() as u64),
-        ) as *mut i32;
+        let mut stateRemap: *mut i32 = 0 as *mut i32;
+        let mut stringRemap: *mut i32 = 0 as *mut i32;
+        let mut transitions: *mut i32 = 0 as *mut i32;
+        let mut transdata: *mut *mut core::ffi::c_void = 0 as *mut *mut libc::c_void;
+        let mut stringMap: *mut *mut u8 = 0 as *mut *mut xmlChar;
+        let mut value: *mut u8 = 0 as *mut xmlChar;
+        stateRemap = (unsafe { xmlMalloc.expect("non-null function pointer")(
+            ((*ret).nbStates as u64).wrapping_mul(::std::mem::size_of::<i32>() as u64),
+        ) }) as *mut i32;
         if stateRemap.is_null() {
-            xmlRegexpErrMemory(
-                ctxt,
-                b"compiling regexp\0" as *const u8 as *const i8,
-            );
-            xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+            xmlRegexpErrMemory(ctxt, b"compiling regexp\0" as *const u8 as *const i8);
+            (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
             return 0 as xmlRegexpPtr;
         }
         i = 0 as i32;
-        while i < (*ret).nbStates {
-            if !(*((*ret).states).offset(i as isize)).is_null() {
-                *stateRemap.offset(i as isize) = nbstates;
+        while i < (unsafe { (*ret).nbStates }) {
+            if !(unsafe { *((*ret).states).offset(i as isize) }).is_null() {
+                (unsafe { *stateRemap.offset(i as isize) = nbstates });
                 nbstates += 1;
             } else {
-                *stateRemap.offset(i as isize) = -(1 as i32);
+                (unsafe { *stateRemap.offset(i as isize) = -(1 as i32) });
             }
             i += 1;
         }
-        stringMap = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(
-            ((*ret).nbAtoms as u64)
-                .wrapping_mul(
-                    ::std::mem::size_of::<*mut i8>() as u64,
-                ),
-        ) as *mut *mut xmlChar;
+        stringMap = (unsafe { xmlMalloc.expect("non-null function pointer")(
+            ((*ret).nbAtoms as u64).wrapping_mul(::std::mem::size_of::<*mut i8>() as u64),
+        ) }) as *mut *mut xmlChar;
         if stringMap.is_null() {
-            xmlRegexpErrMemory(
-                ctxt,
-                b"compiling regexp\0" as *const u8 as *const i8,
-            );
-            xmlFree.expect("non-null function pointer")(stateRemap as *mut libc::c_void);
-            xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+            xmlRegexpErrMemory(ctxt, b"compiling regexp\0" as *const u8 as *const i8);
+            (unsafe { xmlFree.expect("non-null function pointer")(stateRemap as *mut libc::c_void) });
+            (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
             return 0 as xmlRegexpPtr;
         }
-        stringRemap = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(
-            ((*ret).nbAtoms as u64)
-                .wrapping_mul(::std::mem::size_of::<i32>() as u64),
-        ) as *mut i32;
+        stringRemap = (unsafe { xmlMalloc.expect("non-null function pointer")(
+            ((*ret).nbAtoms as u64).wrapping_mul(::std::mem::size_of::<i32>() as u64),
+        ) }) as *mut i32;
         if stringRemap.is_null() {
-            xmlRegexpErrMemory(
-                ctxt,
-                b"compiling regexp\0" as *const u8 as *const i8,
-            );
-            xmlFree.expect("non-null function pointer")(stringMap as *mut libc::c_void);
-            xmlFree.expect("non-null function pointer")(stateRemap as *mut libc::c_void);
-            xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+            xmlRegexpErrMemory(ctxt, b"compiling regexp\0" as *const u8 as *const i8);
+            (unsafe { xmlFree.expect("non-null function pointer")(stringMap as *mut libc::c_void) });
+            (unsafe { xmlFree.expect("non-null function pointer")(stateRemap as *mut libc::c_void) });
+            (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
             return 0 as xmlRegexpPtr;
         }
         i = 0 as i32;
-        while i < (*ret).nbAtoms {
-            if (**((*ret).atoms).offset(i as isize)).type_0 as u32
+        while i < (unsafe { (*ret).nbAtoms }) {
+            if (unsafe { (**((*ret).atoms).offset(i as isize)).type_0 }) as u32
                 == XML_REGEXP_STRING as i32 as u32
-                && (**((*ret).atoms).offset(i as isize)).quant as u32
+                && (unsafe { (**((*ret).atoms).offset(i as isize)).quant }) as u32
                     == XML_REGEXP_QUANT_ONCE as i32 as u32
             {
-                value = (**((*ret).atoms).offset(i as isize)).valuep as *mut xmlChar;
+                value = (unsafe { (**((*ret).atoms).offset(i as isize)).valuep }) as *mut xmlChar;
                 j = 0 as i32;
                 while j < nbatoms {
-                    if xmlStrEqual(*stringMap.offset(j as isize), value) != 0 {
-                        *stringRemap.offset(i as isize) = j;
+                    if xmlStrEqual(unsafe { *stringMap.offset(j as isize) }, value) != 0 {
+                        (unsafe { *stringRemap.offset(i as isize) = j });
                         break;
                     } else {
                         j += 1;
                     }
                 }
                 if j >= nbatoms {
-                    *stringRemap.offset(i as isize) = nbatoms;
-                    let ref mut fresh4 = *stringMap.offset(nbatoms as isize);
+                    (unsafe { *stringRemap.offset(i as isize) = nbatoms });
+                    let fresh4 = unsafe { &mut (*stringMap.offset(nbatoms as isize)) };
                     *fresh4 = xmlStrdup(value);
-                    if (*stringMap.offset(nbatoms as isize)).is_null() {
+                    if (unsafe { *stringMap.offset(nbatoms as isize) }).is_null() {
                         i = 0 as i32;
                         while i < nbatoms {
-                            xmlFree
-                                .expect(
-                                    "non-null function pointer",
-                                )(*stringMap.offset(i as isize) as *mut libc::c_void);
+                            (unsafe { xmlFree.expect("non-null function pointer")(
+                                *stringMap.offset(i as isize) as *mut libc::c_void,
+                            ) });
                             i += 1;
                         }
-                        xmlFree
-                            .expect(
-                                "non-null function pointer",
-                            )(stringRemap as *mut libc::c_void);
-                        xmlFree
-                            .expect(
-                                "non-null function pointer",
-                            )(stringMap as *mut libc::c_void);
-                        xmlFree
-                            .expect(
-                                "non-null function pointer",
-                            )(stateRemap as *mut libc::c_void);
-                        xmlFree
-                            .expect(
-                                "non-null function pointer",
-                            )(ret as *mut libc::c_void);
+                        (unsafe { xmlFree.expect("non-null function pointer")(
+                            stringRemap as *mut libc::c_void,
+                        ) });
+                        (unsafe { xmlFree.expect("non-null function pointer")(stringMap as *mut libc::c_void) });
+                        (unsafe { xmlFree.expect("non-null function pointer")(
+                            stateRemap as *mut libc::c_void,
+                        ) });
+                        (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
                         return 0 as xmlRegexpPtr;
                     }
                     nbatoms += 1;
                 }
             } else {
-                xmlFree
-                    .expect(
-                        "non-null function pointer",
-                    )(stateRemap as *mut libc::c_void);
-                xmlFree
-                    .expect(
-                        "non-null function pointer",
-                    )(stringRemap as *mut libc::c_void);
+                (unsafe { xmlFree.expect("non-null function pointer")(stateRemap as *mut libc::c_void) });
+                (unsafe { xmlFree.expect("non-null function pointer")(stringRemap as *mut libc::c_void) });
                 i = 0 as i32;
                 while i < nbatoms {
-                    xmlFree
-                        .expect(
-                            "non-null function pointer",
-                        )(*stringMap.offset(i as isize) as *mut libc::c_void);
+                    (unsafe { xmlFree.expect("non-null function pointer")(
+                        *stringMap.offset(i as isize) as *mut libc::c_void
+                    ) });
                     i += 1;
                 }
-                xmlFree
-                    .expect("non-null function pointer")(stringMap as *mut libc::c_void);
-                xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+                (unsafe { xmlFree.expect("non-null function pointer")(stringMap as *mut libc::c_void) });
+                (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
                 return 0 as xmlRegexpPtr;
             }
             i += 1;
@@ -1876,25 +1819,23 @@ unsafe extern "C" fn xmlRegEpxFromParse(mut ctxt: * mut crate::src::xmlregexp::_
             ::std::mem::size_of::<i32>() as u64,
         ) as *mut i32;
         if transitions.is_null() {
-            xmlFree.expect("non-null function pointer")(stateRemap as *mut libc::c_void);
-            xmlFree
-                .expect("non-null function pointer")(stringRemap as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(stateRemap as *mut libc::c_void) });
+            (unsafe { xmlFree.expect("non-null function pointer")(stringRemap as *mut libc::c_void) });
             i = 0 as i32;
             while i < nbatoms {
-                xmlFree
-                    .expect(
-                        "non-null function pointer",
-                    )(*stringMap.offset(i as isize) as *mut libc::c_void);
+                (unsafe { xmlFree.expect("non-null function pointer")(
+                    *stringMap.offset(i as isize) as *mut libc::c_void
+                ) });
                 i += 1;
             }
-            xmlFree.expect("non-null function pointer")(stringMap as *mut libc::c_void);
-            xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(stringMap as *mut libc::c_void) });
+            (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
             return 0 as xmlRegexpPtr;
         }
         transdata = 0 as *mut *mut libc::c_void;
         i = 0 as i32;
         's_444: loop {
-            if !(i < (*ret).nbStates) {
+            if !(i < (unsafe { (*ret).nbStates })) {
                 current_block = 2627991079881472758;
                 break;
             }
@@ -1902,22 +1843,25 @@ unsafe extern "C" fn xmlRegEpxFromParse(mut ctxt: * mut crate::src::xmlregexp::_
             let mut atomno: i32 = 0;
             let mut targetno: i32 = 0;
             let mut prev: i32 = 0;
-            let mut state: * mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
-            let mut trans: Option<&'_ mut crate::src::xmlregexp::_xmlRegTrans> = Option::<&'_ mut crate::src::xmlregexp::_xmlRegTrans>::None;
-            stateno = *stateRemap.offset(i as isize);
+            let mut state: *mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
+            let mut trans: Option<&'_ mut crate::src::xmlregexp::_xmlRegTrans> =
+                Option::<&'_ mut crate::src::xmlregexp::_xmlRegTrans>::None;
+            stateno = unsafe { *stateRemap.offset(i as isize) };
             if !(stateno == -(1 as i32)) {
-                state = *((*ret).states).offset(i as isize);
-                *transitions
-                    .offset(
-                        (stateno * (nbatoms + 1 as i32)) as isize,
-                    ) = (*state).type_0 as i32;
+                state = unsafe { *((*ret).states).offset(i as isize) };
+                (unsafe { *transitions.offset((stateno * (nbatoms + 1 as i32)) as isize) =
+                    (*state).type_0 as i32 });
                 j = 0 as i32;
-                while j < (*state).nbTrans {
-                    trans = Some(&mut *((*state).trans).offset(j as isize));
-                    if !((*(borrow(& trans)).unwrap()).to == -(1 as i32) || ((*(borrow(& trans)).unwrap()).atom).is_null())
+                while j < (unsafe { (*state).nbTrans }) {
+                    trans = Some(unsafe { &mut *((*state).trans).offset(j as isize) });
+                    if !((*(borrow(&trans)).unwrap()).to == -(1 as i32)
+                        || ((*(borrow(&trans)).unwrap()).atom).is_null())
                     {
-                        atomno = *stringRemap.offset((*(*(borrow(& trans)).unwrap()).atom).no as isize);
-                        if !((*(*(borrow_mut(&mut trans)).unwrap()).atom).data).is_null() && transdata.is_null() {
+                        atomno =
+                            unsafe { *stringRemap.offset((*(*(borrow(&trans)).unwrap()).atom).no as isize) };
+                        if !(unsafe { (*(*(borrow_mut(&mut trans)).unwrap()).atom).data }).is_null()
+                            && transdata.is_null()
+                        {
                             transdata = xmlRegCalloc2(
                                 nbstates as size_t,
                                 nbatoms as size_t,
@@ -1931,58 +1875,47 @@ unsafe extern "C" fn xmlRegEpxFromParse(mut ctxt: * mut crate::src::xmlregexp::_
                                 break;
                             }
                         }
-                        targetno = *stateRemap.offset((*(borrow(& trans)).unwrap()).to as isize);
-                        prev = *transitions
-                            .offset(
-                                (stateno * (nbatoms + 1 as i32) + atomno
-                                    + 1 as i32) as isize,
-                            );
+                        targetno = unsafe { *stateRemap.offset((*(borrow(&trans)).unwrap()).to as isize) };
+                        prev = unsafe { *transitions
+                            .offset((stateno * (nbatoms + 1 as i32) + atomno + 1 as i32) as isize) };
                         if prev != 0 as i32 {
                             if prev != targetno + 1 as i32 {
-                                (*ret).determinist = 0 as i32;
+                                (unsafe { (*ret).determinist = 0 as i32 });
                                 if !transdata.is_null() {
-                                    xmlFree
-                                        .expect(
-                                            "non-null function pointer",
-                                        )(transdata as *mut libc::c_void);
+                                    (unsafe { xmlFree.expect("non-null function pointer")(
+                                        transdata as *mut libc::c_void,
+                                    ) });
                                 }
-                                xmlFree
-                                    .expect(
-                                        "non-null function pointer",
-                                    )(transitions as *mut libc::c_void);
-                                xmlFree
-                                    .expect(
-                                        "non-null function pointer",
-                                    )(stateRemap as *mut libc::c_void);
-                                xmlFree
-                                    .expect(
-                                        "non-null function pointer",
-                                    )(stringRemap as *mut libc::c_void);
+                                (unsafe { xmlFree.expect("non-null function pointer")(
+                                    transitions as *mut libc::c_void,
+                                ) });
+                                (unsafe { xmlFree.expect("non-null function pointer")(
+                                    stateRemap as *mut libc::c_void,
+                                ) });
+                                (unsafe { xmlFree.expect("non-null function pointer")(
+                                    stringRemap as *mut libc::c_void,
+                                ) });
                                 i = 0 as i32;
                                 while i < nbatoms {
-                                    xmlFree
-                                        .expect(
-                                            "non-null function pointer",
-                                        )(*stringMap.offset(i as isize) as *mut libc::c_void);
+                                    (unsafe { xmlFree.expect("non-null function pointer")(
+                                        *stringMap.offset(i as isize) as *mut libc::c_void,
+                                    ) });
                                     i += 1;
                                 }
-                                xmlFree
-                                    .expect(
-                                        "non-null function pointer",
-                                    )(stringMap as *mut libc::c_void);
+                                (unsafe { xmlFree.expect("non-null function pointer")(
+                                    stringMap as *mut libc::c_void,
+                                ) });
                                 current_block = 13635467803606088781;
                                 break 's_444;
                             }
                         } else {
-                            *transitions
-                                .offset(
-                                    (stateno * (nbatoms + 1 as i32) + atomno
-                                        + 1 as i32) as isize,
-                                ) = targetno + 1 as i32;
+                            (unsafe { *transitions.offset(
+                                (stateno * (nbatoms + 1 as i32) + atomno + 1 as i32) as isize,
+                            ) = targetno + 1 as i32 });
                             if !transdata.is_null() {
-                                let ref mut fresh5 = *transdata
-                                    .offset((stateno * nbatoms + atomno) as isize);
-                                *fresh5 = (*(*(borrow_mut(&mut trans)).unwrap()).atom).data;
+                                let fresh5 =
+                                    unsafe { &mut (*transdata.offset((stateno * nbatoms + atomno) as isize)) };
+                                *fresh5 = unsafe { (*(*(borrow_mut(&mut trans)).unwrap()).atom).data };
                             }
                         }
                     }
@@ -1992,971 +1925,847 @@ unsafe extern "C" fn xmlRegEpxFromParse(mut ctxt: * mut crate::src::xmlregexp::_
             i += 1;
         }
         match current_block {
-            13635467803606088781 => {}
+            13635467803606088781 => {},
             _ => {
-                (*ret).determinist = 1 as i32;
-                if !((*ret).states).is_null() {
+                (unsafe { (*ret).determinist = 1 as i32 });
+                if !(unsafe { (*ret).states }).is_null() {
                     i = 0 as i32;
-                    while i < (*ret).nbStates {
-                        xmlRegFreeState(*((*ret).states).offset(i as isize));
+                    while i < (unsafe { (*ret).nbStates }) {
+                        xmlRegFreeState(unsafe { *((*ret).states).offset(i as isize) });
                         i += 1;
                     }
-                    xmlFree
-                        .expect(
-                            "non-null function pointer",
-                        )((*ret).states as *mut libc::c_void);
+                    (unsafe { xmlFree.expect("non-null function pointer")((*ret).states as *mut libc::c_void) });
                 }
-                let ref mut fresh6 = (*ret).states;
+                let fresh6 = unsafe { &mut ((*ret).states) };
                 *fresh6 = 0 as *mut xmlRegStatePtr;
-                (*ret).nbStates = 0 as i32;
-                if !((*ret).atoms).is_null() {
+                (unsafe { (*ret).nbStates = 0 as i32 });
+                if !(unsafe { (*ret).atoms }).is_null() {
                     i = 0 as i32;
-                    while i < (*ret).nbAtoms {
-                        xmlRegFreeAtom(*((*ret).atoms).offset(i as isize));
+                    while i < (unsafe { (*ret).nbAtoms }) {
+                        xmlRegFreeAtom(unsafe { *((*ret).atoms).offset(i as isize) });
                         i += 1;
                     }
-                    xmlFree
-                        .expect(
-                            "non-null function pointer",
-                        )((*ret).atoms as *mut libc::c_void);
+                    (unsafe { xmlFree.expect("non-null function pointer")((*ret).atoms as *mut libc::c_void) });
                 }
-                let ref mut fresh7 = (*ret).atoms;
+                let fresh7 = unsafe { &mut ((*ret).atoms) };
                 *fresh7 = 0 as *mut xmlRegAtomPtr;
-                (*ret).nbAtoms = 0 as i32;
-                let ref mut fresh8 = (*ret).compact;
+                (unsafe { (*ret).nbAtoms = 0 as i32 });
+                let fresh8 = unsafe { &mut ((*ret).compact) };
                 *fresh8 = transitions;
-                let ref mut fresh9 = (*ret).transdata;
+                let fresh9 = unsafe { &mut ((*ret).transdata) };
                 *fresh9 = transdata;
-                let ref mut fresh10 = (*ret).stringMap;
+                let fresh10 = unsafe { &mut ((*ret).stringMap) };
                 *fresh10 = stringMap;
-                (*ret).nbstrings = nbatoms;
-                (*ret).nbstates = nbstates;
-                xmlFree
-                    .expect(
-                        "non-null function pointer",
-                    )(stateRemap as *mut libc::c_void);
-                xmlFree
-                    .expect(
-                        "non-null function pointer",
-                    )(stringRemap as *mut libc::c_void);
-            }
+                (unsafe { (*ret).nbstrings = nbatoms });
+                (unsafe { (*ret).nbstates = nbstates });
+                (unsafe { xmlFree.expect("non-null function pointer")(stateRemap as *mut libc::c_void) });
+                (unsafe { xmlFree.expect("non-null function pointer")(stringRemap as *mut libc::c_void) });
+            },
         }
     }
-    let ref mut fresh11 = (*ctxt).string;
+    let fresh11 = unsafe { &mut ((*ctxt).string) };
     *fresh11 = 0 as *mut xmlChar;
-    (*ctxt).nbStates = 0 as i32;
-    let ref mut fresh12 = (*ctxt).states;
+    (unsafe { (*ctxt).nbStates = 0 as i32 });
+    let fresh12 = unsafe { &mut ((*ctxt).states) };
     *fresh12 = 0 as *mut xmlRegStatePtr;
-    (*ctxt).nbAtoms = 0 as i32;
-    let ref mut fresh13 = (*ctxt).atoms;
+    (unsafe { (*ctxt).nbAtoms = 0 as i32 });
+    let fresh13 = unsafe { &mut ((*ctxt).atoms) };
     *fresh13 = 0 as *mut xmlRegAtomPtr;
-    (*ctxt).nbCounters = 0 as i32;
-    let ref mut fresh14 = (*ctxt).counters;
+    (unsafe { (*ctxt).nbCounters = 0 as i32 });
+    let fresh14 = unsafe { &mut ((*ctxt).counters) };
     *fresh14 = 0 as *mut xmlRegCounter;
     return ret;
 }
-unsafe extern "C" fn xmlRegNewParserCtxt(
-    mut string: * const u8,
-) -> * mut crate::src::xmlregexp::_xmlAutomata {
-    let mut ret: * mut crate::src::xmlregexp::_xmlAutomata = 0 as *mut xmlRegParserCtxt;
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlRegParserCtxt>() as u64)
-        as xmlRegParserCtxtPtr;
+extern "C" fn xmlRegNewParserCtxt(
+    mut string: *const u8,
+) -> *mut crate::src::xmlregexp::_xmlAutomata {
+    let mut ret: *mut crate::src::xmlregexp::_xmlAutomata = 0 as *mut xmlRegParserCtxt;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlRegParserCtxt>() as u64
+    ) }) as xmlRegParserCtxtPtr;
     if ret.is_null() {
         return 0 as xmlRegParserCtxtPtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlRegParserCtxt>() as u64,
-    );
+    ) });
     if !string.is_null() {
-        let ref mut fresh15 = (*ret).string;
+        let fresh15 = unsafe { &mut ((*ret).string) };
         *fresh15 = xmlStrdup(string);
     }
-    let ref mut fresh16 = (*ret).cur;
-    *fresh16 = (*ret).string;
-    (*ret).neg = 0 as i32;
-    (*ret).negs = 0 as i32;
-    (*ret).error = 0 as i32;
-    (*ret).determinist = -(1 as i32);
+    let fresh16 = unsafe { &mut ((*ret).cur) };
+    *fresh16 = unsafe { (*ret).string };
+    (unsafe { (*ret).neg = 0 as i32 });
+    (unsafe { (*ret).negs = 0 as i32 });
+    (unsafe { (*ret).error = 0 as i32 });
+    (unsafe { (*ret).determinist = -(1 as i32) });
     return ret;
 }
-unsafe extern "C" fn xmlRegNewRange(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
+extern "C" fn xmlRegNewRange(
+    mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata,
     mut neg: i32,
     mut type_0: u32,
     mut start: i32,
     mut end: i32,
-) -> * mut crate::src::xmlregexp::_xmlRegRange {
-    let mut ret: * mut crate::src::xmlregexp::_xmlRegRange = 0 as *mut xmlRegRange;
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlRegRange>() as u64) as xmlRegRangePtr;
+) -> *mut crate::src::xmlregexp::_xmlRegRange {
+    let mut ret: *mut crate::src::xmlregexp::_xmlRegRange = 0 as *mut xmlRegRange;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(::std::mem::size_of::<xmlRegRange>() as u64) })
+        as xmlRegRangePtr;
     if ret.is_null() {
-        xmlRegexpErrMemory(
-            ctxt,
-            b"allocating range\0" as *const u8 as *const i8,
-        );
+        xmlRegexpErrMemory(ctxt, b"allocating range\0" as *const u8 as *const i8);
         return 0 as xmlRegRangePtr;
     }
-    (*ret).neg = neg;
-    (*ret).type_0 = type_0;
-    (*ret).start = start;
-    (*ret).end = end;
+    (unsafe { (*ret).neg = neg });
+    (unsafe { (*ret).type_0 = type_0 });
+    (unsafe { (*ret).start = start });
+    (unsafe { (*ret).end = end });
     return ret;
 }
-unsafe extern "C" fn xmlRegFreeRange(mut range: * mut crate::src::xmlregexp::_xmlRegRange) {
+extern "C" fn xmlRegFreeRange(mut range: *mut crate::src::xmlregexp::_xmlRegRange) {
     if range.is_null() {
         return;
     }
-    if !((*range).blockName).is_null() {
-        xmlFree
-            .expect(
-                "non-null function pointer",
-            )((*range).blockName as *mut libc::c_void);
+    if !(unsafe { (*range).blockName }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*range).blockName as *mut libc::c_void) });
     }
-    xmlFree.expect("non-null function pointer")(range as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(range as *mut libc::c_void) });
 }
-unsafe extern "C" fn xmlRegCopyRange(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut range: * mut crate::src::xmlregexp::_xmlRegRange,
-) -> * mut crate::src::xmlregexp::_xmlRegRange {
-    let mut ret: * mut crate::src::xmlregexp::_xmlRegRange = 0 as *mut xmlRegRange;
+extern "C" fn xmlRegCopyRange(
+    mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut range: *mut crate::src::xmlregexp::_xmlRegRange,
+) -> *mut crate::src::xmlregexp::_xmlRegRange {
+    let mut ret: *mut crate::src::xmlregexp::_xmlRegRange = 0 as *mut xmlRegRange;
     if range.is_null() {
         return 0 as xmlRegRangePtr;
     }
     ret = xmlRegNewRange(
         ctxt,
-        (*range).neg,
-        (*range).type_0,
-        (*range).start,
-        (*range).end,
+        unsafe { (*range).neg },
+        unsafe { (*range).type_0 },
+        unsafe { (*range).start },
+        unsafe { (*range).end },
     );
     if ret.is_null() {
         return 0 as xmlRegRangePtr;
     }
-    if !((*range).blockName).is_null() {
-        let ref mut fresh17 = (*ret).blockName;
-        *fresh17 = xmlStrdup((*range).blockName);
-        if ((*ret).blockName).is_null() {
-            xmlRegexpErrMemory(
-                ctxt,
-                b"allocating range\0" as *const u8 as *const i8,
-            );
+    if !(unsafe { (*range).blockName }).is_null() {
+        let fresh17 = unsafe { &mut ((*ret).blockName) };
+        *fresh17 = xmlStrdup(unsafe { (*range).blockName });
+        if (unsafe { (*ret).blockName }).is_null() {
+            xmlRegexpErrMemory(ctxt, b"allocating range\0" as *const u8 as *const i8);
             xmlRegFreeRange(ret);
             return 0 as xmlRegRangePtr;
         }
     }
     return ret;
 }
-unsafe extern "C" fn xmlRegNewAtom(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
+extern "C" fn xmlRegNewAtom(
+    mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata,
     mut type_0: u32,
-) -> * mut crate::src::xmlregexp::_xmlRegAtom {
-    let mut ret: * mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlRegAtom>() as u64) as xmlRegAtomPtr;
+) -> *mut crate::src::xmlregexp::_xmlRegAtom {
+    let mut ret: *mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(::std::mem::size_of::<xmlRegAtom>() as u64) })
+        as xmlRegAtomPtr;
     if ret.is_null() {
-        xmlRegexpErrMemory(
-            ctxt,
-            b"allocating atom\0" as *const u8 as *const i8,
-        );
+        xmlRegexpErrMemory(ctxt, b"allocating atom\0" as *const u8 as *const i8);
         return 0 as xmlRegAtomPtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlRegAtom>() as u64,
-    );
-    (*ret).type_0 = type_0;
-    (*ret).quant = XML_REGEXP_QUANT_ONCE;
-    (*ret).min = 0 as i32;
-    (*ret).max = 0 as i32;
+    ) });
+    (unsafe { (*ret).type_0 = type_0 });
+    (unsafe { (*ret).quant = XML_REGEXP_QUANT_ONCE });
+    (unsafe { (*ret).min = 0 as i32 });
+    (unsafe { (*ret).max = 0 as i32 });
     return ret;
 }
-unsafe extern "C" fn xmlRegFreeAtom(mut atom: * mut crate::src::xmlregexp::_xmlRegAtom) {
+extern "C" fn xmlRegFreeAtom(mut atom: *mut crate::src::xmlregexp::_xmlRegAtom) {
     let mut i: i32 = 0;
     if atom.is_null() {
         return;
     }
     i = 0 as i32;
-    while i < (*atom).nbRanges {
-        xmlRegFreeRange(*((*atom).ranges).offset(i as isize));
+    while i < (unsafe { (*atom).nbRanges }) {
+        xmlRegFreeRange(unsafe { *((*atom).ranges).offset(i as isize) });
         i += 1;
     }
-    if !((*atom).ranges).is_null() {
-        xmlFree.expect("non-null function pointer")((*atom).ranges as *mut libc::c_void);
+    if !(unsafe { (*atom).ranges }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*atom).ranges as *mut libc::c_void) });
     }
-    if (*atom).type_0 as u32 == XML_REGEXP_STRING as i32 as u32
-        && !((*atom).valuep).is_null()
-    {
-        xmlFree.expect("non-null function pointer")((*atom).valuep);
+    if (unsafe { (*atom).type_0 }) as u32 == XML_REGEXP_STRING as i32 as u32 && !(unsafe { (*atom).valuep }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*atom).valuep) });
     }
-    if (*atom).type_0 as u32 == XML_REGEXP_STRING as i32 as u32
-        && !((*atom).valuep2).is_null()
-    {
-        xmlFree.expect("non-null function pointer")((*atom).valuep2);
+    if (unsafe { (*atom).type_0 }) as u32 == XML_REGEXP_STRING as i32 as u32 && !(unsafe { (*atom).valuep2 }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*atom).valuep2) });
     }
-    if (*atom).type_0 as u32
-        == XML_REGEXP_BLOCK_NAME as i32 as u32
-        && !((*atom).valuep).is_null()
-    {
-        xmlFree.expect("non-null function pointer")((*atom).valuep);
+    if (unsafe { (*atom).type_0 }) as u32 == XML_REGEXP_BLOCK_NAME as i32 as u32 && !(unsafe { (*atom).valuep }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*atom).valuep) });
     }
-    xmlFree.expect("non-null function pointer")(atom as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(atom as *mut libc::c_void) });
 }
-unsafe extern "C" fn xmlRegCopyAtom(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut atom: * mut crate::src::xmlregexp::_xmlRegAtom,
-) -> * mut crate::src::xmlregexp::_xmlRegAtom {
+extern "C" fn xmlRegCopyAtom(
+    mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut atom: *mut crate::src::xmlregexp::_xmlRegAtom,
+) -> *mut crate::src::xmlregexp::_xmlRegAtom {
     let mut current_block: u64;
-    let mut ret: * mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlRegAtom>() as u64) as xmlRegAtomPtr;
+    let mut ret: *mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(::std::mem::size_of::<xmlRegAtom>() as u64) })
+        as xmlRegAtomPtr;
     if ret.is_null() {
         xmlRegexpErrMemory(ctxt, b"copying atom\0" as *const u8 as *const i8);
         return 0 as xmlRegAtomPtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlRegAtom>() as u64,
-    );
-    (*ret).type_0 = (*atom).type_0;
-    (*ret).quant = (*atom).quant;
-    (*ret).min = (*atom).min;
-    (*ret).max = (*atom).max;
-    if (*atom).nbRanges > 0 as i32 {
+    ) });
+    (unsafe { (*ret).type_0 = (*atom).type_0 });
+    (unsafe { (*ret).quant = (*atom).quant });
+    (unsafe { (*ret).min = (*atom).min });
+    (unsafe { (*ret).max = (*atom).max });
+    if (unsafe { (*atom).nbRanges }) > 0 as i32 {
         let mut i: i32 = 0;
-        let ref mut fresh18 = (*ret).ranges;
-        *fresh18 = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(
-            (::std::mem::size_of::<xmlRegRangePtr>() as u64)
-                .wrapping_mul((*atom).nbRanges as u64),
-        ) as *mut xmlRegRangePtr;
-        if ((*ret).ranges).is_null() {
-            xmlRegexpErrMemory(
-                ctxt,
-                b"copying atom\0" as *const u8 as *const i8,
-            );
+        let fresh18 = unsafe { &mut ((*ret).ranges) };
+        *fresh18 = (unsafe { xmlMalloc.expect("non-null function pointer")(
+            (::std::mem::size_of::<xmlRegRangePtr>() as u64).wrapping_mul((*atom).nbRanges as u64),
+        ) }) as *mut xmlRegRangePtr;
+        if (unsafe { (*ret).ranges }).is_null() {
+            xmlRegexpErrMemory(ctxt, b"copying atom\0" as *const u8 as *const i8);
             current_block = 16366640603525550618;
         } else {
             i = 0 as i32;
             loop {
-                if !(i < (*atom).nbRanges) {
+                if !(i < (unsafe { (*atom).nbRanges })) {
                     current_block = 12124785117276362961;
                     break;
                 }
-                let ref mut fresh19 = *((*ret).ranges).offset(i as isize);
-                *fresh19 = xmlRegCopyRange(ctxt, *((*atom).ranges).offset(i as isize));
-                if (*((*ret).ranges).offset(i as isize)).is_null() {
+                let fresh19 = unsafe { &mut (*((*ret).ranges).offset(i as isize)) };
+                *fresh19 = xmlRegCopyRange(ctxt, unsafe { *((*atom).ranges).offset(i as isize) });
+                if (unsafe { *((*ret).ranges).offset(i as isize) }).is_null() {
                     current_block = 16366640603525550618;
                     break;
                 }
-                (*ret).nbRanges = i + 1 as i32;
+                (unsafe { (*ret).nbRanges = i + 1 as i32 });
                 i += 1;
             }
         }
         match current_block {
-            12124785117276362961 => {}
+            12124785117276362961 => {},
             _ => {
                 xmlRegFreeAtom(ret);
                 return 0 as xmlRegAtomPtr;
-            }
+            },
         }
     }
     return ret;
 }
-unsafe extern "C" fn xmlRegNewState(mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata) -> * mut crate::src::xmlregexp::_xmlAutomataState {
-    let mut ret: * mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlRegState>() as u64) as xmlRegStatePtr;
+extern "C" fn xmlRegNewState(
+    mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata,
+) -> *mut crate::src::xmlregexp::_xmlAutomataState {
+    let mut ret: *mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(::std::mem::size_of::<xmlRegState>() as u64) })
+        as xmlRegStatePtr;
     if ret.is_null() {
-        xmlRegexpErrMemory(
-            ctxt,
-            b"allocating state\0" as *const u8 as *const i8,
-        );
+        xmlRegexpErrMemory(ctxt, b"allocating state\0" as *const u8 as *const i8);
         return 0 as xmlRegStatePtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlRegState>() as u64,
-    );
-    (*ret).type_0 = XML_REGEXP_TRANS_STATE;
-    (*ret).mark = XML_REGEXP_MARK_NORMAL;
+    ) });
+    (unsafe { (*ret).type_0 = XML_REGEXP_TRANS_STATE });
+    (unsafe { (*ret).mark = XML_REGEXP_MARK_NORMAL });
     return ret;
 }
-unsafe extern "C" fn xmlRegFreeState(mut state: * mut crate::src::xmlregexp::_xmlAutomataState) {
+extern "C" fn xmlRegFreeState(mut state: *mut crate::src::xmlregexp::_xmlAutomataState) {
     if state.is_null() {
         return;
     }
-    if !((*state).trans).is_null() {
-        xmlFree.expect("non-null function pointer")((*state).trans as *mut libc::c_void);
+    if !(unsafe { (*state).trans }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*state).trans as *mut libc::c_void) });
     }
-    if !((*state).transTo).is_null() {
-        xmlFree
-            .expect("non-null function pointer")((*state).transTo as *mut libc::c_void);
+    if !(unsafe { (*state).transTo }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*state).transTo as *mut libc::c_void) });
     }
-    xmlFree.expect("non-null function pointer")(state as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(state as *mut libc::c_void) });
 }
-unsafe extern "C" fn xmlRegFreeParserCtxt(mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata) {
+extern "C" fn xmlRegFreeParserCtxt(mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata) {
     let mut i: i32 = 0;
     if ctxt.is_null() {
         return;
     }
-    if !((*ctxt).string).is_null() {
-        xmlFree.expect("non-null function pointer")((*ctxt).string as *mut libc::c_void);
+    if !(unsafe { (*ctxt).string }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*ctxt).string as *mut libc::c_void) });
     }
-    if !((*ctxt).states).is_null() {
+    if !(unsafe { (*ctxt).states }).is_null() {
         i = 0 as i32;
-        while i < (*ctxt).nbStates {
-            xmlRegFreeState(*((*ctxt).states).offset(i as isize));
+        while i < (unsafe { (*ctxt).nbStates }) {
+            xmlRegFreeState(unsafe { *((*ctxt).states).offset(i as isize) });
             i += 1;
         }
-        xmlFree.expect("non-null function pointer")((*ctxt).states as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")((*ctxt).states as *mut libc::c_void) });
     }
-    if !((*ctxt).atoms).is_null() {
+    if !(unsafe { (*ctxt).atoms }).is_null() {
         i = 0 as i32;
-        while i < (*ctxt).nbAtoms {
-            xmlRegFreeAtom(*((*ctxt).atoms).offset(i as isize));
+        while i < (unsafe { (*ctxt).nbAtoms }) {
+            xmlRegFreeAtom(unsafe { *((*ctxt).atoms).offset(i as isize) });
             i += 1;
         }
-        xmlFree.expect("non-null function pointer")((*ctxt).atoms as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")((*ctxt).atoms as *mut libc::c_void) });
     }
-    if !((*ctxt).counters).is_null() {
-        xmlFree
-            .expect("non-null function pointer")((*ctxt).counters as *mut libc::c_void);
+    if !(unsafe { (*ctxt).counters }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*ctxt).counters as *mut libc::c_void) });
     }
-    xmlFree.expect("non-null function pointer")(ctxt as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(ctxt as *mut libc::c_void) });
 }
-unsafe extern "C" fn xmlRegPrintAtomType(
-    mut output: * mut crate::src::tree::_IO_FILE,
-    mut type_0: u32,
-) {
+extern "C" fn xmlRegPrintAtomType(mut output: *mut crate::src::tree::_IO_FILE, mut type_0: u32) {
     match type_0 as u32 {
         1 => {
-            fprintf(output, b"epsilon \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"epsilon \0" as *const u8 as *const i8) });
+        },
         2 => {
-            fprintf(output, b"charval \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"charval \0" as *const u8 as *const i8) });
+        },
         3 => {
-            fprintf(output, b"ranges \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"ranges \0" as *const u8 as *const i8) });
+        },
         4 => {
-            fprintf(output, b"subexpr \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"subexpr \0" as *const u8 as *const i8) });
+        },
         5 => {
-            fprintf(output, b"string \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"string \0" as *const u8 as *const i8) });
+        },
         6 => {
-            fprintf(output, b"anychar \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"anychar \0" as *const u8 as *const i8) });
+        },
         7 => {
-            fprintf(output, b"anyspace \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"anyspace \0" as *const u8 as *const i8) });
+        },
         8 => {
-            fprintf(output, b"notspace \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"notspace \0" as *const u8 as *const i8) });
+        },
         9 => {
-            fprintf(output, b"initname \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"initname \0" as *const u8 as *const i8) });
+        },
         10 => {
-            fprintf(output, b"notinitname \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"notinitname \0" as *const u8 as *const i8) });
+        },
         11 => {
-            fprintf(output, b"namechar \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"namechar \0" as *const u8 as *const i8) });
+        },
         12 => {
-            fprintf(output, b"notnamechar \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"notnamechar \0" as *const u8 as *const i8) });
+        },
         13 => {
-            fprintf(output, b"decimal \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"decimal \0" as *const u8 as *const i8) });
+        },
         14 => {
-            fprintf(output, b"notdecimal \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"notdecimal \0" as *const u8 as *const i8) });
+        },
         15 => {
-            fprintf(output, b"realchar \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"realchar \0" as *const u8 as *const i8) });
+        },
         16 => {
-            fprintf(output, b"notrealchar \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"notrealchar \0" as *const u8 as *const i8) });
+        },
         100 => {
-            fprintf(output, b"LETTER \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"LETTER \0" as *const u8 as *const i8) });
+        },
         101 => {
-            fprintf(output, b"LETTER_UPPERCASE \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"LETTER_UPPERCASE \0" as *const u8 as *const i8) });
+        },
         102 => {
-            fprintf(output, b"LETTER_LOWERCASE \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"LETTER_LOWERCASE \0" as *const u8 as *const i8) });
+        },
         103 => {
-            fprintf(output, b"LETTER_TITLECASE \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"LETTER_TITLECASE \0" as *const u8 as *const i8) });
+        },
         104 => {
-            fprintf(output, b"LETTER_MODIFIER \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"LETTER_MODIFIER \0" as *const u8 as *const i8) });
+        },
         105 => {
-            fprintf(output, b"LETTER_OTHERS \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"LETTER_OTHERS \0" as *const u8 as *const i8) });
+        },
         106 => {
-            fprintf(output, b"MARK \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"MARK \0" as *const u8 as *const i8) });
+        },
         107 => {
-            fprintf(output, b"MARK_NONSPACING \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"MARK_NONSPACING \0" as *const u8 as *const i8) });
+        },
         108 => {
-            fprintf(
-                output,
-                b"MARK_SPACECOMBINING \0" as *const u8 as *const i8,
-            );
-        }
+            (unsafe { fprintf(output, b"MARK_SPACECOMBINING \0" as *const u8 as *const i8) });
+        },
         109 => {
-            fprintf(output, b"MARK_ENCLOSING \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"MARK_ENCLOSING \0" as *const u8 as *const i8) });
+        },
         110 => {
-            fprintf(output, b"NUMBER \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"NUMBER \0" as *const u8 as *const i8) });
+        },
         111 => {
-            fprintf(output, b"NUMBER_DECIMAL \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"NUMBER_DECIMAL \0" as *const u8 as *const i8) });
+        },
         112 => {
-            fprintf(output, b"NUMBER_LETTER \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"NUMBER_LETTER \0" as *const u8 as *const i8) });
+        },
         113 => {
-            fprintf(output, b"NUMBER_OTHERS \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"NUMBER_OTHERS \0" as *const u8 as *const i8) });
+        },
         114 => {
-            fprintf(output, b"PUNCT \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"PUNCT \0" as *const u8 as *const i8) });
+        },
         115 => {
-            fprintf(output, b"PUNCT_CONNECTOR \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"PUNCT_CONNECTOR \0" as *const u8 as *const i8) });
+        },
         116 => {
-            fprintf(output, b"PUNCT_DASH \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"PUNCT_DASH \0" as *const u8 as *const i8) });
+        },
         117 => {
-            fprintf(output, b"PUNCT_OPEN \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"PUNCT_OPEN \0" as *const u8 as *const i8) });
+        },
         118 => {
-            fprintf(output, b"PUNCT_CLOSE \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"PUNCT_CLOSE \0" as *const u8 as *const i8) });
+        },
         119 => {
-            fprintf(output, b"PUNCT_INITQUOTE \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"PUNCT_INITQUOTE \0" as *const u8 as *const i8) });
+        },
         120 => {
-            fprintf(output, b"PUNCT_FINQUOTE \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"PUNCT_FINQUOTE \0" as *const u8 as *const i8) });
+        },
         121 => {
-            fprintf(output, b"PUNCT_OTHERS \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"PUNCT_OTHERS \0" as *const u8 as *const i8) });
+        },
         122 => {
-            fprintf(output, b"SEPAR \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"SEPAR \0" as *const u8 as *const i8) });
+        },
         123 => {
-            fprintf(output, b"SEPAR_SPACE \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"SEPAR_SPACE \0" as *const u8 as *const i8) });
+        },
         124 => {
-            fprintf(output, b"SEPAR_LINE \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"SEPAR_LINE \0" as *const u8 as *const i8) });
+        },
         125 => {
-            fprintf(output, b"SEPAR_PARA \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"SEPAR_PARA \0" as *const u8 as *const i8) });
+        },
         126 => {
-            fprintf(output, b"SYMBOL \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"SYMBOL \0" as *const u8 as *const i8) });
+        },
         127 => {
-            fprintf(output, b"SYMBOL_MATH \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"SYMBOL_MATH \0" as *const u8 as *const i8) });
+        },
         128 => {
-            fprintf(output, b"SYMBOL_CURRENCY \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"SYMBOL_CURRENCY \0" as *const u8 as *const i8) });
+        },
         129 => {
-            fprintf(output, b"SYMBOL_MODIFIER \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"SYMBOL_MODIFIER \0" as *const u8 as *const i8) });
+        },
         130 => {
-            fprintf(output, b"SYMBOL_OTHERS \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"SYMBOL_OTHERS \0" as *const u8 as *const i8) });
+        },
         131 => {
-            fprintf(output, b"OTHER \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"OTHER \0" as *const u8 as *const i8) });
+        },
         132 => {
-            fprintf(output, b"OTHER_CONTROL \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"OTHER_CONTROL \0" as *const u8 as *const i8) });
+        },
         133 => {
-            fprintf(output, b"OTHER_FORMAT \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"OTHER_FORMAT \0" as *const u8 as *const i8) });
+        },
         134 => {
-            fprintf(output, b"OTHER_PRIVATE \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"OTHER_PRIVATE \0" as *const u8 as *const i8) });
+        },
         135 => {
-            fprintf(output, b"OTHER_NA \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"OTHER_NA \0" as *const u8 as *const i8) });
+        },
         136 => {
-            fprintf(output, b"BLOCK \0" as *const u8 as *const i8);
-        }
-        _ => {}
+            (unsafe { fprintf(output, b"BLOCK \0" as *const u8 as *const i8) });
+        },
+        _ => {},
     };
 }
-unsafe extern "C" fn xmlRegPrintQuantType(
-    mut output: * mut crate::src::tree::_IO_FILE,
-    mut type_0: u32,
-) {
+extern "C" fn xmlRegPrintQuantType(mut output: *mut crate::src::tree::_IO_FILE, mut type_0: u32) {
     match type_0 as u32 {
         1 => {
-            fprintf(output, b"epsilon \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"epsilon \0" as *const u8 as *const i8) });
+        },
         2 => {
-            fprintf(output, b"once \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"once \0" as *const u8 as *const i8) });
+        },
         3 => {
-            fprintf(output, b"? \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"? \0" as *const u8 as *const i8) });
+        },
         4 => {
-            fprintf(output, b"* \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"* \0" as *const u8 as *const i8) });
+        },
         5 => {
-            fprintf(output, b"+ \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"+ \0" as *const u8 as *const i8) });
+        },
         8 => {
-            fprintf(output, b"range \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"range \0" as *const u8 as *const i8) });
+        },
         6 => {
-            fprintf(output, b"onceonly \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"onceonly \0" as *const u8 as *const i8) });
+        },
         7 => {
-            fprintf(output, b"all \0" as *const u8 as *const i8);
-        }
-        _ => {}
+            (unsafe { fprintf(output, b"all \0" as *const u8 as *const i8) });
+        },
+        _ => {},
     };
 }
-unsafe extern "C" fn xmlRegPrintRange(mut output: * mut crate::src::tree::_IO_FILE, mut range: * mut crate::src::xmlregexp::_xmlRegRange) {
-    fprintf(output, b"  range: \0" as *const u8 as *const i8);
-    if (*range).neg != 0 {
-        fprintf(output, b"negative \0" as *const u8 as *const i8);
+extern "C" fn xmlRegPrintRange(
+    mut output: *mut crate::src::tree::_IO_FILE,
+    mut range: *mut crate::src::xmlregexp::_xmlRegRange,
+) {
+    (unsafe { fprintf(output, b"  range: \0" as *const u8 as *const i8) });
+    if (unsafe { (*range).neg }) != 0 {
+        (unsafe { fprintf(output, b"negative \0" as *const u8 as *const i8) });
     }
-    xmlRegPrintAtomType(output, (*range).type_0);
-    fprintf(
+    xmlRegPrintAtomType(output, unsafe { (*range).type_0 });
+    (unsafe { fprintf(
         output,
         b"%c - %c\n\0" as *const u8 as *const i8,
         (*range).start,
         (*range).end,
-    );
+    ) });
 }
-unsafe extern "C" fn xmlRegPrintAtom(mut output: * mut crate::src::tree::_IO_FILE, mut atom: * mut crate::src::xmlregexp::_xmlRegAtom) {
-    fprintf(output, b" atom: \0" as *const u8 as *const i8);
+extern "C" fn xmlRegPrintAtom(
+    mut output: *mut crate::src::tree::_IO_FILE,
+    mut atom: *mut crate::src::xmlregexp::_xmlRegAtom,
+) {
+    (unsafe { fprintf(output, b" atom: \0" as *const u8 as *const i8) });
     if atom.is_null() {
-        fprintf(output, b"NULL\n\0" as *const u8 as *const i8);
+        (unsafe { fprintf(output, b"NULL\n\0" as *const u8 as *const i8) });
         return;
     }
-    if (*atom).neg != 0 {
-        fprintf(output, b"not \0" as *const u8 as *const i8);
+    if (unsafe { (*atom).neg }) != 0 {
+        (unsafe { fprintf(output, b"not \0" as *const u8 as *const i8) });
     }
-    xmlRegPrintAtomType(output, (*atom).type_0);
-    xmlRegPrintQuantType(output, (*atom).quant);
-    if (*atom).quant as u32
-        == XML_REGEXP_QUANT_RANGE as i32 as u32
-    {
-        fprintf(
+    xmlRegPrintAtomType(output, unsafe { (*atom).type_0 });
+    xmlRegPrintQuantType(output, unsafe { (*atom).quant });
+    if (unsafe { (*atom).quant }) as u32 == XML_REGEXP_QUANT_RANGE as i32 as u32 {
+        (unsafe { fprintf(
             output,
             b"%d-%d \0" as *const u8 as *const i8,
             (*atom).min,
             (*atom).max,
-        );
+        ) });
     }
-    if (*atom).type_0 as u32 == XML_REGEXP_STRING as i32 as u32
-    {
-        fprintf(
+    if (unsafe { (*atom).type_0 }) as u32 == XML_REGEXP_STRING as i32 as u32 {
+        (unsafe { fprintf(
             output,
             b"'%s' \0" as *const u8 as *const i8,
             (*atom).valuep as *mut i8,
-        );
+        ) });
     }
-    if (*atom).type_0 as u32
-        == XML_REGEXP_CHARVAL as i32 as u32
-    {
-        fprintf(
+    if (unsafe { (*atom).type_0 }) as u32 == XML_REGEXP_CHARVAL as i32 as u32 {
+        (unsafe { fprintf(
             output,
             b"char %c\n\0" as *const u8 as *const i8,
             (*atom).codepoint,
-        );
-    } else if (*atom).type_0 as u32
-            == XML_REGEXP_RANGES as i32 as u32
-        {
+        ) });
+    } else if (unsafe { (*atom).type_0 }) as u32 == XML_REGEXP_RANGES as i32 as u32 {
         let mut i: i32 = 0;
-        fprintf(
+        (unsafe { fprintf(
             output,
             b"%d entries\n\0" as *const u8 as *const i8,
             (*atom).nbRanges,
-        );
+        ) });
         i = 0 as i32;
-        while i < (*atom).nbRanges {
-            xmlRegPrintRange(output, *((*atom).ranges).offset(i as isize));
+        while i < (unsafe { (*atom).nbRanges }) {
+            xmlRegPrintRange(output, unsafe { *((*atom).ranges).offset(i as isize) });
             i += 1;
         }
-    } else if (*atom).type_0 as u32
-            == XML_REGEXP_SUBREG as i32 as u32
-        {
-        fprintf(
+    } else if (unsafe { (*atom).type_0 }) as u32 == XML_REGEXP_SUBREG as i32 as u32 {
+        (unsafe { fprintf(
             output,
             b"start %d end %d\n\0" as *const u8 as *const i8,
             (*(*atom).start).no,
             (*(*atom).stop).no,
-        );
+        ) });
     } else {
-        fprintf(output, b"\n\0" as *const u8 as *const i8);
+        (unsafe { fprintf(output, b"\n\0" as *const u8 as *const i8) });
     };
 }
-unsafe extern "C" fn xmlRegPrintTrans<'a1>(mut output: * mut crate::src::tree::_IO_FILE, mut trans: Option<&'a1 mut crate::src::xmlregexp::_xmlRegTrans>) {
-    fprintf(output, b"  trans: \0" as *const u8 as *const i8);
-    if borrow(& trans).is_none() {
-        fprintf(output, b"NULL\n\0" as *const u8 as *const i8);
+extern "C" fn xmlRegPrintTrans<'a1>(
+    mut output: *mut crate::src::tree::_IO_FILE,
+    mut trans: Option<&'a1 mut crate::src::xmlregexp::_xmlRegTrans>,
+) {
+    (unsafe { fprintf(output, b"  trans: \0" as *const u8 as *const i8) });
+    if borrow(&trans).is_none() {
+        (unsafe { fprintf(output, b"NULL\n\0" as *const u8 as *const i8) });
         return;
     }
-    if (*(borrow(& trans)).unwrap()).to < 0 as i32 {
-        fprintf(output, b"removed\n\0" as *const u8 as *const i8);
+    if (*(borrow(&trans)).unwrap()).to < 0 as i32 {
+        (unsafe { fprintf(output, b"removed\n\0" as *const u8 as *const i8) });
         return;
     }
-    if (*(borrow(& trans)).unwrap()).nd != 0 as i32 {
-        if (*(borrow(& trans)).unwrap()).nd == 2 as i32 {
-            fprintf(
+    if (*(borrow(&trans)).unwrap()).nd != 0 as i32 {
+        if (*(borrow(&trans)).unwrap()).nd == 2 as i32 {
+            (unsafe { fprintf(
                 output,
                 b"last not determinist, \0" as *const u8 as *const i8,
-            );
+            ) });
         } else {
-            fprintf(output, b"not determinist, \0" as *const u8 as *const i8);
+            (unsafe { fprintf(output, b"not determinist, \0" as *const u8 as *const i8) });
         }
     }
-    if (*(borrow(& trans)).unwrap()).counter >= 0 as i32 {
-        fprintf(
+    if (*(borrow(&trans)).unwrap()).counter >= 0 as i32 {
+        (unsafe { fprintf(
             output,
             b"counted %d, \0" as *const u8 as *const i8,
-            (*(borrow(& trans)).unwrap()).counter,
-        );
+            (*(borrow(&trans)).unwrap()).counter,
+        ) });
     }
-    if (*(borrow(& trans)).unwrap()).count == 0x123456 as i32 {
-        fprintf(output, b"all transition, \0" as *const u8 as *const i8);
-    } else if (*(borrow(& trans)).unwrap()).count >= 0 as i32 {
-        fprintf(
+    if (*(borrow(&trans)).unwrap()).count == 0x123456 as i32 {
+        (unsafe { fprintf(output, b"all transition, \0" as *const u8 as *const i8) });
+    } else if (*(borrow(&trans)).unwrap()).count >= 0 as i32 {
+        (unsafe { fprintf(
             output,
             b"count based %d, \0" as *const u8 as *const i8,
-            (*(borrow(& trans)).unwrap()).count,
-        );
+            (*(borrow(&trans)).unwrap()).count,
+        ) });
     }
     if ((*(borrow_mut(&mut trans)).unwrap()).atom).is_null() {
-        fprintf(
+        (unsafe { fprintf(
             output,
             b"epsilon to %d\n\0" as *const u8 as *const i8,
-            (*(borrow(& trans)).unwrap()).to,
-        );
+            (*(borrow(&trans)).unwrap()).to,
+        ) });
         return;
     }
-    if (*(*(borrow(& trans)).unwrap()).atom).type_0 as u32
-        == XML_REGEXP_CHARVAL as i32 as u32
-    {
-        fprintf(
+    if (unsafe { (*(*(borrow(&trans)).unwrap()).atom).type_0 }) as u32 == XML_REGEXP_CHARVAL as i32 as u32 {
+        (unsafe { fprintf(
             output,
             b"char %c \0" as *const u8 as *const i8,
-            (*(*(borrow(& trans)).unwrap()).atom).codepoint,
-        );
+            (*(*(borrow(&trans)).unwrap()).atom).codepoint,
+        ) });
     }
-    fprintf(
+    (unsafe { fprintf(
         output,
         b"atom %d, to %d\n\0" as *const u8 as *const i8,
-        (*(*(borrow(& trans)).unwrap()).atom).no,
-        (*(borrow(& trans)).unwrap()).to,
-    );
+        (*(*(borrow(&trans)).unwrap()).atom).no,
+        (*(borrow(&trans)).unwrap()).to,
+    ) });
 }
-unsafe extern "C" fn xmlRegPrintState(mut output: * mut crate::src::tree::_IO_FILE, mut state: * mut crate::src::xmlregexp::_xmlAutomataState) {
+extern "C" fn xmlRegPrintState(
+    mut output: *mut crate::src::tree::_IO_FILE,
+    mut state: *mut crate::src::xmlregexp::_xmlAutomataState,
+) {
     let mut i: i32 = 0;
-    fprintf(output, b" state: \0" as *const u8 as *const i8);
+    (unsafe { fprintf(output, b" state: \0" as *const u8 as *const i8) });
     if state.is_null() {
-        fprintf(output, b"NULL\n\0" as *const u8 as *const i8);
+        (unsafe { fprintf(output, b"NULL\n\0" as *const u8 as *const i8) });
         return;
     }
-    if (*state).type_0 as u32
-        == XML_REGEXP_START_STATE as i32 as u32
-    {
-        fprintf(output, b"START \0" as *const u8 as *const i8);
+    if (unsafe { (*state).type_0 }) as u32 == XML_REGEXP_START_STATE as i32 as u32 {
+        (unsafe { fprintf(output, b"START \0" as *const u8 as *const i8) });
     }
-    if (*state).type_0 as u32
-        == XML_REGEXP_FINAL_STATE as i32 as u32
-    {
-        fprintf(output, b"FINAL \0" as *const u8 as *const i8);
+    if (unsafe { (*state).type_0 }) as u32 == XML_REGEXP_FINAL_STATE as i32 as u32 {
+        (unsafe { fprintf(output, b"FINAL \0" as *const u8 as *const i8) });
     }
-    fprintf(
+    (unsafe { fprintf(
         output,
         b"%d, %d transitions:\n\0" as *const u8 as *const i8,
         (*state).no,
         (*state).nbTrans,
-    );
+    ) });
     i = 0 as i32;
-    while i < (*state).nbTrans {
-        xmlRegPrintTrans(output, Some(&mut *((*state).trans).offset(i as isize)));
+    while i < (unsafe { (*state).nbTrans }) {
+        xmlRegPrintTrans(output, Some(unsafe { &mut *((*state).trans).offset(i as isize) }));
         i += 1;
     }
 }
-unsafe extern "C" fn xmlRegAtomAddRange(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut atom: * mut crate::src::xmlregexp::_xmlRegAtom,
+extern "C" fn xmlRegAtomAddRange(
+    mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut atom: *mut crate::src::xmlregexp::_xmlRegAtom,
     mut neg: i32,
     mut type_0: u32,
     mut start: i32,
     mut end: i32,
-    mut blockName: * mut u8,
+    mut blockName: *mut u8,
 ) {
-    let mut range: * mut crate::src::xmlregexp::_xmlRegRange = 0 as *mut xmlRegRange;
+    let mut range: *mut crate::src::xmlregexp::_xmlRegRange = 0 as *mut xmlRegRange;
     if atom.is_null() {
-        (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
-        xmlRegexpErrCompile(
-            ctxt,
-            b"add range: atom is NULL\0" as *const u8 as *const i8,
-        );
+        (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
+        xmlRegexpErrCompile(ctxt, b"add range: atom is NULL\0" as *const u8 as *const i8);
         return;
     }
-    if (*atom).type_0 as u32 != XML_REGEXP_RANGES as i32 as u32
-    {
-        (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
+    if (unsafe { (*atom).type_0 }) as u32 != XML_REGEXP_RANGES as i32 as u32 {
+        (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
         xmlRegexpErrCompile(
             ctxt,
             b"add range: atom is not ranges\0" as *const u8 as *const i8,
         );
         return;
     }
-    if (*atom).maxRanges == 0 as i32 {
-        (*atom).maxRanges = 4 as i32;
-        let ref mut fresh20 = (*atom).ranges;
-        *fresh20 = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(
-            ((*atom).maxRanges as u64)
-                .wrapping_mul(::std::mem::size_of::<xmlRegRangePtr>() as u64),
-        ) as *mut xmlRegRangePtr;
-        if ((*atom).ranges).is_null() {
-            xmlRegexpErrMemory(
-                ctxt,
-                b"adding ranges\0" as *const u8 as *const i8,
-            );
-            (*atom).maxRanges = 0 as i32;
+    if (unsafe { (*atom).maxRanges }) == 0 as i32 {
+        (unsafe { (*atom).maxRanges = 4 as i32 });
+        let fresh20 = unsafe { &mut ((*atom).ranges) };
+        *fresh20 = (unsafe { xmlMalloc.expect("non-null function pointer")(
+            ((*atom).maxRanges as u64).wrapping_mul(::std::mem::size_of::<xmlRegRangePtr>() as u64),
+        ) }) as *mut xmlRegRangePtr;
+        if (unsafe { (*atom).ranges }).is_null() {
+            xmlRegexpErrMemory(ctxt, b"adding ranges\0" as *const u8 as *const i8);
+            (unsafe { (*atom).maxRanges = 0 as i32 });
             return;
         }
-    } else if (*atom).nbRanges >= (*atom).maxRanges {
-        let mut tmp: * mut * mut crate::src::xmlregexp::_xmlRegRange = 0 as *mut xmlRegRangePtr;
-        (*atom).maxRanges *= 2 as i32;
-        tmp = xmlRealloc
-            .expect(
-                "non-null function pointer",
-            )(
+    } else if (unsafe { (*atom).nbRanges }) >= (unsafe { (*atom).maxRanges }) {
+        let mut tmp: *mut *mut crate::src::xmlregexp::_xmlRegRange = 0 as *mut xmlRegRangePtr;
+        (unsafe { (*atom).maxRanges *= 2 as i32 });
+        tmp = (unsafe { xmlRealloc.expect("non-null function pointer")(
             (*atom).ranges as *mut libc::c_void,
-            ((*atom).maxRanges as u64)
-                .wrapping_mul(::std::mem::size_of::<xmlRegRangePtr>() as u64),
-        ) as *mut xmlRegRangePtr;
+            ((*atom).maxRanges as u64).wrapping_mul(::std::mem::size_of::<xmlRegRangePtr>() as u64),
+        ) }) as *mut xmlRegRangePtr;
         if tmp.is_null() {
-            xmlRegexpErrMemory(
-                ctxt,
-                b"adding ranges\0" as *const u8 as *const i8,
-            );
-            (*atom).maxRanges /= 2 as i32;
+            xmlRegexpErrMemory(ctxt, b"adding ranges\0" as *const u8 as *const i8);
+            (unsafe { (*atom).maxRanges /= 2 as i32 });
             return;
         }
-        let ref mut fresh21 = (*atom).ranges;
+        let fresh21 = unsafe { &mut ((*atom).ranges) };
         *fresh21 = tmp;
     }
     range = xmlRegNewRange(ctxt, neg, type_0, start, end);
     if range.is_null() {
         return;
     }
-    let ref mut fresh22 = (*range).blockName;
+    let fresh22 = unsafe { &mut ((*range).blockName) };
     *fresh22 = blockName;
-    let ref mut fresh23 = (*atom).nbRanges;
+    let fresh23 = unsafe { &mut ((*atom).nbRanges) };
     let mut fresh24 = *fresh23;
     *fresh23 = *fresh23 + 1;
-    let ref mut fresh25 = *((*atom).ranges).offset(fresh24 as isize);
+    let fresh25 = unsafe { &mut (*((*atom).ranges).offset(fresh24 as isize)) };
     *fresh25 = range;
 }
-unsafe extern "C" fn xmlRegGetCounter(mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata) -> i32 {
-    if (*ctxt).maxCounters == 0 as i32 {
-        (*ctxt).maxCounters = 4 as i32;
-        let ref mut fresh26 = (*ctxt).counters;
-        *fresh26 = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(
+extern "C" fn xmlRegGetCounter(mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata) -> i32 {
+    if (unsafe { (*ctxt).maxCounters }) == 0 as i32 {
+        (unsafe { (*ctxt).maxCounters = 4 as i32 });
+        let fresh26 = unsafe { &mut ((*ctxt).counters) };
+        *fresh26 = (unsafe { xmlMalloc.expect("non-null function pointer")(
             ((*ctxt).maxCounters as u64)
                 .wrapping_mul(::std::mem::size_of::<xmlRegCounter>() as u64),
-        ) as *mut xmlRegCounter;
-        if ((*ctxt).counters).is_null() {
-            xmlRegexpErrMemory(
-                ctxt,
-                b"allocating counter\0" as *const u8 as *const i8,
-            );
-            (*ctxt).maxCounters = 0 as i32;
+        ) }) as *mut xmlRegCounter;
+        if (unsafe { (*ctxt).counters }).is_null() {
+            xmlRegexpErrMemory(ctxt, b"allocating counter\0" as *const u8 as *const i8);
+            (unsafe { (*ctxt).maxCounters = 0 as i32 });
             return -(1 as i32);
         }
-    } else if (*ctxt).nbCounters >= (*ctxt).maxCounters {
-        let mut tmp: * mut crate::src::xmlregexp::_xmlRegCounter = 0 as *mut xmlRegCounter;
-        (*ctxt).maxCounters *= 2 as i32;
-        tmp = xmlRealloc
-            .expect(
-                "non-null function pointer",
-            )(
+    } else if (unsafe { (*ctxt).nbCounters }) >= (unsafe { (*ctxt).maxCounters }) {
+        let mut tmp: *mut crate::src::xmlregexp::_xmlRegCounter = 0 as *mut xmlRegCounter;
+        (unsafe { (*ctxt).maxCounters *= 2 as i32 });
+        tmp = (unsafe { xmlRealloc.expect("non-null function pointer")(
             (*ctxt).counters as *mut libc::c_void,
             ((*ctxt).maxCounters as u64)
                 .wrapping_mul(::std::mem::size_of::<xmlRegCounter>() as u64),
-        ) as *mut xmlRegCounter;
+        ) }) as *mut xmlRegCounter;
         if tmp.is_null() {
-            xmlRegexpErrMemory(
-                ctxt,
-                b"allocating counter\0" as *const u8 as *const i8,
-            );
-            (*ctxt).maxCounters /= 2 as i32;
+            xmlRegexpErrMemory(ctxt, b"allocating counter\0" as *const u8 as *const i8);
+            (unsafe { (*ctxt).maxCounters /= 2 as i32 });
             return -(1 as i32);
         }
-        let ref mut fresh27 = (*ctxt).counters;
+        let fresh27 = unsafe { &mut ((*ctxt).counters) };
         *fresh27 = tmp;
     }
-    (*((*ctxt).counters).offset((*ctxt).nbCounters as isize)).min = -(1 as i32);
-    (*((*ctxt).counters).offset((*ctxt).nbCounters as isize)).max = -(1 as i32);
-    let ref mut fresh28 = (*ctxt).nbCounters;
+    (unsafe { (*((*ctxt).counters).offset((*ctxt).nbCounters as isize)).min = -(1 as i32) });
+    (unsafe { (*((*ctxt).counters).offset((*ctxt).nbCounters as isize)).max = -(1 as i32) });
+    let fresh28 = unsafe { &mut ((*ctxt).nbCounters) };
     let mut fresh29 = *fresh28;
     *fresh28 = *fresh28 + 1;
     return fresh29;
 }
-unsafe extern "C" fn xmlRegAtomPush(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut atom: * mut crate::src::xmlregexp::_xmlRegAtom,
+extern "C" fn xmlRegAtomPush(
+    mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut atom: *mut crate::src::xmlregexp::_xmlRegAtom,
 ) -> i32 {
     if atom.is_null() {
-        (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
-        xmlRegexpErrCompile(
-            ctxt,
-            b"atom push: atom is NULL\0" as *const u8 as *const i8,
-        );
+        (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
+        xmlRegexpErrCompile(ctxt, b"atom push: atom is NULL\0" as *const u8 as *const i8);
         return -(1 as i32);
     }
-    if (*ctxt).maxAtoms == 0 as i32 {
-        (*ctxt).maxAtoms = 4 as i32;
-        let ref mut fresh30 = (*ctxt).atoms;
-        *fresh30 = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(
-            ((*ctxt).maxAtoms as u64)
-                .wrapping_mul(::std::mem::size_of::<xmlRegAtomPtr>() as u64),
-        ) as *mut xmlRegAtomPtr;
-        if ((*ctxt).atoms).is_null() {
-            xmlRegexpErrMemory(
-                ctxt,
-                b"pushing atom\0" as *const u8 as *const i8,
-            );
-            (*ctxt).maxAtoms = 0 as i32;
+    if (unsafe { (*ctxt).maxAtoms }) == 0 as i32 {
+        (unsafe { (*ctxt).maxAtoms = 4 as i32 });
+        let fresh30 = unsafe { &mut ((*ctxt).atoms) };
+        *fresh30 = (unsafe { xmlMalloc.expect("non-null function pointer")(
+            ((*ctxt).maxAtoms as u64).wrapping_mul(::std::mem::size_of::<xmlRegAtomPtr>() as u64),
+        ) }) as *mut xmlRegAtomPtr;
+        if (unsafe { (*ctxt).atoms }).is_null() {
+            xmlRegexpErrMemory(ctxt, b"pushing atom\0" as *const u8 as *const i8);
+            (unsafe { (*ctxt).maxAtoms = 0 as i32 });
             return -(1 as i32);
         }
-    } else if (*ctxt).nbAtoms >= (*ctxt).maxAtoms {
-        let mut tmp: * mut * mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtomPtr;
-        (*ctxt).maxAtoms *= 2 as i32;
-        tmp = xmlRealloc
-            .expect(
-                "non-null function pointer",
-            )(
+    } else if (unsafe { (*ctxt).nbAtoms }) >= (unsafe { (*ctxt).maxAtoms }) {
+        let mut tmp: *mut *mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtomPtr;
+        (unsafe { (*ctxt).maxAtoms *= 2 as i32 });
+        tmp = (unsafe { xmlRealloc.expect("non-null function pointer")(
             (*ctxt).atoms as *mut libc::c_void,
-            ((*ctxt).maxAtoms as u64)
-                .wrapping_mul(::std::mem::size_of::<xmlRegAtomPtr>() as u64),
-        ) as *mut xmlRegAtomPtr;
+            ((*ctxt).maxAtoms as u64).wrapping_mul(::std::mem::size_of::<xmlRegAtomPtr>() as u64),
+        ) }) as *mut xmlRegAtomPtr;
         if tmp.is_null() {
-            xmlRegexpErrMemory(
-                ctxt,
-                b"allocating counter\0" as *const u8 as *const i8,
-            );
-            (*ctxt).maxAtoms /= 2 as i32;
+            xmlRegexpErrMemory(ctxt, b"allocating counter\0" as *const u8 as *const i8);
+            (unsafe { (*ctxt).maxAtoms /= 2 as i32 });
             return -(1 as i32);
         }
-        let ref mut fresh31 = (*ctxt).atoms;
+        let fresh31 = unsafe { &mut ((*ctxt).atoms) };
         *fresh31 = tmp;
     }
-    (*atom).no = (*ctxt).nbAtoms;
-    let ref mut fresh32 = (*ctxt).nbAtoms;
+    (unsafe { (*atom).no = (*ctxt).nbAtoms });
+    let fresh32 = unsafe { &mut ((*ctxt).nbAtoms) };
     let mut fresh33 = *fresh32;
     *fresh32 = *fresh32 + 1;
-    let ref mut fresh34 = *((*ctxt).atoms).offset(fresh33 as isize);
+    let fresh34 = unsafe { &mut (*((*ctxt).atoms).offset(fresh33 as isize)) };
     *fresh34 = atom;
     return 0 as i32;
 }
-unsafe extern "C" fn xmlRegStateAddTransTo(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut target: * mut crate::src::xmlregexp::_xmlAutomataState,
+extern "C" fn xmlRegStateAddTransTo(
+    mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut target: *mut crate::src::xmlregexp::_xmlAutomataState,
     mut from: i32,
 ) {
-    if (*target).maxTransTo == 0 as i32 {
-        (*target).maxTransTo = 8 as i32;
-        let ref mut fresh35 = (*target).transTo;
-        *fresh35 = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(
-            ((*target).maxTransTo as u64)
-                .wrapping_mul(::std::mem::size_of::<i32>() as u64),
-        ) as *mut i32;
-        if ((*target).transTo).is_null() {
-            xmlRegexpErrMemory(
-                ctxt,
-                b"adding transition\0" as *const u8 as *const i8,
-            );
-            (*target).maxTransTo = 0 as i32;
+    if (unsafe { (*target).maxTransTo }) == 0 as i32 {
+        (unsafe { (*target).maxTransTo = 8 as i32 });
+        let fresh35 = unsafe { &mut ((*target).transTo) };
+        *fresh35 = (unsafe { xmlMalloc.expect("non-null function pointer")(
+            ((*target).maxTransTo as u64).wrapping_mul(::std::mem::size_of::<i32>() as u64),
+        ) }) as *mut i32;
+        if (unsafe { (*target).transTo }).is_null() {
+            xmlRegexpErrMemory(ctxt, b"adding transition\0" as *const u8 as *const i8);
+            (unsafe { (*target).maxTransTo = 0 as i32 });
             return;
         }
-    } else if (*target).nbTransTo >= (*target).maxTransTo {
-        let mut tmp: * mut i32 = 0 as *mut i32;
-        (*target).maxTransTo *= 2 as i32;
-        tmp = xmlRealloc
-            .expect(
-                "non-null function pointer",
-            )(
+    } else if (unsafe { (*target).nbTransTo }) >= (unsafe { (*target).maxTransTo }) {
+        let mut tmp: *mut i32 = 0 as *mut i32;
+        (unsafe { (*target).maxTransTo *= 2 as i32 });
+        tmp = (unsafe { xmlRealloc.expect("non-null function pointer")(
             (*target).transTo as *mut libc::c_void,
-            ((*target).maxTransTo as u64)
-                .wrapping_mul(::std::mem::size_of::<i32>() as u64),
-        ) as *mut i32;
+            ((*target).maxTransTo as u64).wrapping_mul(::std::mem::size_of::<i32>() as u64),
+        ) }) as *mut i32;
         if tmp.is_null() {
-            xmlRegexpErrMemory(
-                ctxt,
-                b"adding transition\0" as *const u8 as *const i8,
-            );
-            (*target).maxTransTo /= 2 as i32;
+            xmlRegexpErrMemory(ctxt, b"adding transition\0" as *const u8 as *const i8);
+            (unsafe { (*target).maxTransTo /= 2 as i32 });
             return;
         }
-        let ref mut fresh36 = (*target).transTo;
+        let fresh36 = unsafe { &mut ((*target).transTo) };
         *fresh36 = tmp;
     }
-    *((*target).transTo).offset((*target).nbTransTo as isize) = from;
-    let ref mut fresh37 = (*target).nbTransTo;
+    (unsafe { *((*target).transTo).offset((*target).nbTransTo as isize) = from });
+    let fresh37 = unsafe { &mut ((*target).nbTransTo) };
     *fresh37 += 1;
 }
-unsafe extern "C" fn xmlRegStateAddTrans(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut state: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut atom: * mut crate::src::xmlregexp::_xmlRegAtom,
-    mut target: * mut crate::src::xmlregexp::_xmlAutomataState,
+extern "C" fn xmlRegStateAddTrans(
+    mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut state: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut atom: *mut crate::src::xmlregexp::_xmlRegAtom,
+    mut target: *mut crate::src::xmlregexp::_xmlAutomataState,
     mut counter: i32,
     mut count: i32,
 ) {
     let mut nrtrans: i32 = 0;
     if state.is_null() {
-        (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
+        (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
         xmlRegexpErrCompile(
             ctxt,
             b"add state: state is NULL\0" as *const u8 as *const i8,
@@ -2964,138 +2773,113 @@ unsafe extern "C" fn xmlRegStateAddTrans(
         return;
     }
     if target.is_null() {
-        (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
+        (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
         xmlRegexpErrCompile(
             ctxt,
             b"add state: target is NULL\0" as *const u8 as *const i8,
         );
         return;
     }
-    nrtrans = (*state).nbTrans - 1 as i32;
+    nrtrans = (unsafe { (*state).nbTrans }) - 1 as i32;
     while nrtrans >= 0 as i32 {
-        let mut trans: Option<&'_ mut crate::src::xmlregexp::_xmlRegTrans> = Some(&mut *((*state).trans).offset(nrtrans as isize));
-        if (*(borrow(& trans)).unwrap()).atom == atom && (*(borrow(& trans)).unwrap()).to == (*target).no
-            && (*(borrow(& trans)).unwrap()).counter == counter && (*(borrow(& trans)).unwrap()).count == count
+        let mut trans: Option<&'_ mut crate::src::xmlregexp::_xmlRegTrans> =
+            Some(unsafe { &mut *((*state).trans).offset(nrtrans as isize) });
+        if (*(borrow(&trans)).unwrap()).atom == atom
+            && (*(borrow(&trans)).unwrap()).to == (unsafe { (*target).no })
+            && (*(borrow(&trans)).unwrap()).counter == counter
+            && (*(borrow(&trans)).unwrap()).count == count
         {
             return;
         }
         nrtrans -= 1;
     }
-    if (*state).maxTrans == 0 as i32 {
-        (*state).maxTrans = 8 as i32;
-        let ref mut fresh38 = (*state).trans;
-        *fresh38 = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(
-            ((*state).maxTrans as u64)
-                .wrapping_mul(::std::mem::size_of::<xmlRegTrans>() as u64),
-        ) as *mut xmlRegTrans;
-        if ((*state).trans).is_null() {
-            xmlRegexpErrMemory(
-                ctxt,
-                b"adding transition\0" as *const u8 as *const i8,
-            );
-            (*state).maxTrans = 0 as i32;
+    if (unsafe { (*state).maxTrans }) == 0 as i32 {
+        (unsafe { (*state).maxTrans = 8 as i32 });
+        let fresh38 = unsafe { &mut ((*state).trans) };
+        *fresh38 = (unsafe { xmlMalloc.expect("non-null function pointer")(
+            ((*state).maxTrans as u64).wrapping_mul(::std::mem::size_of::<xmlRegTrans>() as u64),
+        ) }) as *mut xmlRegTrans;
+        if (unsafe { (*state).trans }).is_null() {
+            xmlRegexpErrMemory(ctxt, b"adding transition\0" as *const u8 as *const i8);
+            (unsafe { (*state).maxTrans = 0 as i32 });
             return;
         }
-    } else if (*state).nbTrans >= (*state).maxTrans {
-        let mut tmp: * mut crate::src::xmlregexp::_xmlRegTrans = 0 as *mut xmlRegTrans;
-        (*state).maxTrans *= 2 as i32;
-        tmp = xmlRealloc
-            .expect(
-                "non-null function pointer",
-            )(
+    } else if (unsafe { (*state).nbTrans }) >= (unsafe { (*state).maxTrans }) {
+        let mut tmp: *mut crate::src::xmlregexp::_xmlRegTrans = 0 as *mut xmlRegTrans;
+        (unsafe { (*state).maxTrans *= 2 as i32 });
+        tmp = (unsafe { xmlRealloc.expect("non-null function pointer")(
             (*state).trans as *mut libc::c_void,
-            ((*state).maxTrans as u64)
-                .wrapping_mul(::std::mem::size_of::<xmlRegTrans>() as u64),
-        ) as *mut xmlRegTrans;
+            ((*state).maxTrans as u64).wrapping_mul(::std::mem::size_of::<xmlRegTrans>() as u64),
+        ) }) as *mut xmlRegTrans;
         if tmp.is_null() {
-            xmlRegexpErrMemory(
-                ctxt,
-                b"adding transition\0" as *const u8 as *const i8,
-            );
-            (*state).maxTrans /= 2 as i32;
+            xmlRegexpErrMemory(ctxt, b"adding transition\0" as *const u8 as *const i8);
+            (unsafe { (*state).maxTrans /= 2 as i32 });
             return;
         }
-        let ref mut fresh39 = (*state).trans;
+        let fresh39 = unsafe { &mut ((*state).trans) };
         *fresh39 = tmp;
     }
-    let ref mut fresh40 = (*((*state).trans).offset((*state).nbTrans as isize)).atom;
+    let fresh40 = unsafe { &mut ((*((*state).trans).offset((*state).nbTrans as isize)).atom) };
     *fresh40 = atom;
-    (*((*state).trans).offset((*state).nbTrans as isize)).to = (*target).no;
-    (*((*state).trans).offset((*state).nbTrans as isize)).counter = counter;
-    (*((*state).trans).offset((*state).nbTrans as isize)).count = count;
-    (*((*state).trans).offset((*state).nbTrans as isize)).nd = 0 as i32;
-    let ref mut fresh41 = (*state).nbTrans;
+    (unsafe { (*((*state).trans).offset((*state).nbTrans as isize)).to = (*target).no });
+    (unsafe { (*((*state).trans).offset((*state).nbTrans as isize)).counter = counter });
+    (unsafe { (*((*state).trans).offset((*state).nbTrans as isize)).count = count });
+    (unsafe { (*((*state).trans).offset((*state).nbTrans as isize)).nd = 0 as i32 });
+    let fresh41 = unsafe { &mut ((*state).nbTrans) };
     *fresh41 += 1;
-    xmlRegStateAddTransTo(ctxt, target, (*state).no);
+    xmlRegStateAddTransTo(ctxt, target, unsafe { (*state).no });
 }
-unsafe extern "C" fn xmlRegStatePush(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut state: * mut crate::src::xmlregexp::_xmlAutomataState,
+extern "C" fn xmlRegStatePush(
+    mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut state: *mut crate::src::xmlregexp::_xmlAutomataState,
 ) -> i32 {
     if state.is_null() {
         return -(1 as i32);
     }
-    if (*ctxt).maxStates == 0 as i32 {
-        (*ctxt).maxStates = 4 as i32;
-        let ref mut fresh42 = (*ctxt).states;
-        *fresh42 = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(
-            ((*ctxt).maxStates as u64)
-                .wrapping_mul(::std::mem::size_of::<xmlRegStatePtr>() as u64),
-        ) as *mut xmlRegStatePtr;
-        if ((*ctxt).states).is_null() {
-            xmlRegexpErrMemory(
-                ctxt,
-                b"adding state\0" as *const u8 as *const i8,
-            );
-            (*ctxt).maxStates = 0 as i32;
+    if (unsafe { (*ctxt).maxStates }) == 0 as i32 {
+        (unsafe { (*ctxt).maxStates = 4 as i32 });
+        let fresh42 = unsafe { &mut ((*ctxt).states) };
+        *fresh42 = (unsafe { xmlMalloc.expect("non-null function pointer")(
+            ((*ctxt).maxStates as u64).wrapping_mul(::std::mem::size_of::<xmlRegStatePtr>() as u64),
+        ) }) as *mut xmlRegStatePtr;
+        if (unsafe { (*ctxt).states }).is_null() {
+            xmlRegexpErrMemory(ctxt, b"adding state\0" as *const u8 as *const i8);
+            (unsafe { (*ctxt).maxStates = 0 as i32 });
             return -(1 as i32);
         }
-    } else if (*ctxt).nbStates >= (*ctxt).maxStates {
-        let mut tmp: * mut * mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegStatePtr;
-        (*ctxt).maxStates *= 2 as i32;
-        tmp = xmlRealloc
-            .expect(
-                "non-null function pointer",
-            )(
+    } else if (unsafe { (*ctxt).nbStates }) >= (unsafe { (*ctxt).maxStates }) {
+        let mut tmp: *mut *mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegStatePtr;
+        (unsafe { (*ctxt).maxStates *= 2 as i32 });
+        tmp = (unsafe { xmlRealloc.expect("non-null function pointer")(
             (*ctxt).states as *mut libc::c_void,
-            ((*ctxt).maxStates as u64)
-                .wrapping_mul(::std::mem::size_of::<xmlRegStatePtr>() as u64),
-        ) as *mut xmlRegStatePtr;
+            ((*ctxt).maxStates as u64).wrapping_mul(::std::mem::size_of::<xmlRegStatePtr>() as u64),
+        ) }) as *mut xmlRegStatePtr;
         if tmp.is_null() {
-            xmlRegexpErrMemory(
-                ctxt,
-                b"adding state\0" as *const u8 as *const i8,
-            );
-            (*ctxt).maxStates /= 2 as i32;
+            xmlRegexpErrMemory(ctxt, b"adding state\0" as *const u8 as *const i8);
+            (unsafe { (*ctxt).maxStates /= 2 as i32 });
             return -(1 as i32);
         }
-        let ref mut fresh43 = (*ctxt).states;
+        let fresh43 = unsafe { &mut ((*ctxt).states) };
         *fresh43 = tmp;
     }
-    (*state).no = (*ctxt).nbStates;
-    let ref mut fresh44 = (*ctxt).nbStates;
+    (unsafe { (*state).no = (*ctxt).nbStates });
+    let fresh44 = unsafe { &mut ((*ctxt).nbStates) };
     let mut fresh45 = *fresh44;
     *fresh44 = *fresh44 + 1;
-    let ref mut fresh46 = *((*ctxt).states).offset(fresh45 as isize);
+    let fresh46 = unsafe { &mut (*((*ctxt).states).offset(fresh45 as isize)) };
     *fresh46 = state;
     return 0 as i32;
 }
-unsafe extern "C" fn xmlFAGenerateAllTransition(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut from: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut to: * mut crate::src::xmlregexp::_xmlAutomataState,
+extern "C" fn xmlFAGenerateAllTransition(
+    mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut from: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut to: *mut crate::src::xmlregexp::_xmlAutomataState,
     mut lax: i32,
 ) {
     if to.is_null() {
         to = xmlRegNewState(ctxt);
         xmlRegStatePush(ctxt, to);
-        let ref mut fresh47 = (*ctxt).state;
+        let fresh47 = unsafe { &mut ((*ctxt).state) };
         *fresh47 = to;
     }
     if lax != 0 {
@@ -3118,206 +2902,164 @@ unsafe extern "C" fn xmlFAGenerateAllTransition(
         );
     };
 }
-unsafe extern "C" fn xmlFAGenerateEpsilonTransition(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut from: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut to: * mut crate::src::xmlregexp::_xmlAutomataState,
+extern "C" fn xmlFAGenerateEpsilonTransition(
+    mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut from: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut to: *mut crate::src::xmlregexp::_xmlAutomataState,
 ) {
     if to.is_null() {
         to = xmlRegNewState(ctxt);
         xmlRegStatePush(ctxt, to);
-        let ref mut fresh48 = (*ctxt).state;
+        let fresh48 = unsafe { &mut ((*ctxt).state) };
         *fresh48 = to;
     }
-    xmlRegStateAddTrans(
-        ctxt,
-        from,
-        0 as xmlRegAtomPtr,
-        to,
-        -(1 as i32),
-        -(1 as i32),
-    );
+    xmlRegStateAddTrans(ctxt, from, 0 as xmlRegAtomPtr, to, -(1 as i32), -(1 as i32));
 }
-unsafe extern "C" fn xmlFAGenerateCountedEpsilonTransition(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut from: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut to: * mut crate::src::xmlregexp::_xmlAutomataState,
+extern "C" fn xmlFAGenerateCountedEpsilonTransition(
+    mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut from: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut to: *mut crate::src::xmlregexp::_xmlAutomataState,
     mut counter: i32,
 ) {
     if to.is_null() {
         to = xmlRegNewState(ctxt);
         xmlRegStatePush(ctxt, to);
-        let ref mut fresh49 = (*ctxt).state;
+        let fresh49 = unsafe { &mut ((*ctxt).state) };
         *fresh49 = to;
     }
-    xmlRegStateAddTrans(
-        ctxt,
-        from,
-        0 as xmlRegAtomPtr,
-        to,
-        counter,
-        -(1 as i32),
-    );
+    xmlRegStateAddTrans(ctxt, from, 0 as xmlRegAtomPtr, to, counter, -(1 as i32));
 }
-unsafe extern "C" fn xmlFAGenerateCountedTransition(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut from: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut to: * mut crate::src::xmlregexp::_xmlAutomataState,
+extern "C" fn xmlFAGenerateCountedTransition(
+    mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut from: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut to: *mut crate::src::xmlregexp::_xmlAutomataState,
     mut counter: i32,
 ) {
     if to.is_null() {
         to = xmlRegNewState(ctxt);
         xmlRegStatePush(ctxt, to);
-        let ref mut fresh50 = (*ctxt).state;
+        let fresh50 = unsafe { &mut ((*ctxt).state) };
         *fresh50 = to;
     }
-    xmlRegStateAddTrans(
-        ctxt,
-        from,
-        0 as xmlRegAtomPtr,
-        to,
-        -(1 as i32),
-        counter,
-    );
+    xmlRegStateAddTrans(ctxt, from, 0 as xmlRegAtomPtr, to, -(1 as i32), counter);
 }
-unsafe extern "C" fn xmlFAGenerateTransitions(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut from: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut to: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut atom: * mut crate::src::xmlregexp::_xmlRegAtom,
+extern "C" fn xmlFAGenerateTransitions(
+    mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut from: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut to: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut atom: *mut crate::src::xmlregexp::_xmlRegAtom,
 ) -> i32 {
-    let mut end: * mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
+    let mut end: *mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
     let mut nullable: i32 = 0 as i32;
     if atom.is_null() {
-        (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
+        (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
         xmlRegexpErrCompile(
             ctxt,
             b"generate transition: atom == NULL\0" as *const u8 as *const i8,
         );
         return -(1 as i32);
     }
-    if (*atom).type_0 as u32 == XML_REGEXP_SUBREG as i32 as u32
-    {
+    if (unsafe { (*atom).type_0 }) as u32 == XML_REGEXP_SUBREG as i32 as u32 {
         if xmlRegAtomPush(ctxt, atom) < 0 as i32 {
             return -(1 as i32);
         }
-        if !to.is_null() && (*atom).stop != to
-            && (*atom).quant as u32
-                != XML_REGEXP_QUANT_RANGE as i32 as u32
+        if !to.is_null()
+            && (unsafe { (*atom).stop }) != to
+            && (unsafe { (*atom).quant }) as u32 != XML_REGEXP_QUANT_RANGE as i32 as u32
         {
-            xmlFAGenerateEpsilonTransition(ctxt, (*atom).stop, to);
+            xmlFAGenerateEpsilonTransition(ctxt, unsafe { (*atom).stop }, to);
         }
-        match (*atom).quant as u32 {
+        match (unsafe { (*atom).quant }) as u32 {
             3 => {
-                (*atom).quant = XML_REGEXP_QUANT_ONCE;
+                (unsafe { (*atom).quant = XML_REGEXP_QUANT_ONCE });
                 if to.is_null() {
-                    xmlFAGenerateEpsilonTransition(
-                        ctxt,
-                        (*atom).start,
-                        0 as xmlRegStatePtr,
-                    );
-                    xmlFAGenerateEpsilonTransition(ctxt, (*atom).stop, (*ctxt).state);
+                    xmlFAGenerateEpsilonTransition(ctxt, unsafe { (*atom).start }, 0 as xmlRegStatePtr);
+                    xmlFAGenerateEpsilonTransition(ctxt, unsafe { (*atom).stop }, unsafe { (*ctxt).state });
                 } else {
-                    xmlFAGenerateEpsilonTransition(ctxt, (*atom).start, to);
+                    xmlFAGenerateEpsilonTransition(ctxt, unsafe { (*atom).start }, to);
                 }
-            }
+            },
             4 => {
-                (*atom).quant = XML_REGEXP_QUANT_ONCE;
-                xmlFAGenerateEpsilonTransition(ctxt, (*atom).start, (*atom).stop);
-                xmlFAGenerateEpsilonTransition(ctxt, (*atom).stop, (*atom).start);
-            }
+                (unsafe { (*atom).quant = XML_REGEXP_QUANT_ONCE });
+                xmlFAGenerateEpsilonTransition(ctxt, unsafe { (*atom).start }, unsafe { (*atom).stop });
+                xmlFAGenerateEpsilonTransition(ctxt, unsafe { (*atom).stop }, unsafe { (*atom).start });
+            },
             5 => {
-                (*atom).quant = XML_REGEXP_QUANT_ONCE;
-                xmlFAGenerateEpsilonTransition(ctxt, (*atom).stop, (*atom).start);
-            }
+                (unsafe { (*atom).quant = XML_REGEXP_QUANT_ONCE });
+                xmlFAGenerateEpsilonTransition(ctxt, unsafe { (*atom).stop }, unsafe { (*atom).start });
+            },
             8 => {
                 let mut counter: i32 = 0;
-                let mut inter: * mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
-                let mut newstate: * mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
+                let mut inter: *mut crate::src::xmlregexp::_xmlAutomataState =
+                    0 as *mut xmlRegState;
+                let mut newstate: *mut crate::src::xmlregexp::_xmlAutomataState =
+                    0 as *mut xmlRegState;
                 if !to.is_null() {
                     newstate = to;
                 } else {
                     newstate = xmlRegNewState(ctxt);
                     xmlRegStatePush(ctxt, newstate);
                 }
-                if (*atom).min == 0 as i32 && ((*atom).start0).is_null() {
-                    let mut copy: * mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
+                if (unsafe { (*atom).min }) == 0 as i32 && (unsafe { (*atom).start0 }).is_null() {
+                    let mut copy: *mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
                     copy = xmlRegCopyAtom(ctxt, atom);
                     if copy.is_null() {
                         return -(1 as i32);
                     }
-                    (*copy).quant = XML_REGEXP_QUANT_ONCE;
-                    (*copy).min = 0 as i32;
-                    (*copy).max = 0 as i32;
-                    if xmlFAGenerateTransitions(
-                        ctxt,
-                        (*atom).start,
-                        0 as xmlRegStatePtr,
-                        copy,
-                    ) < 0 as i32
+                    (unsafe { (*copy).quant = XML_REGEXP_QUANT_ONCE });
+                    (unsafe { (*copy).min = 0 as i32 });
+                    (unsafe { (*copy).max = 0 as i32 });
+                    if xmlFAGenerateTransitions(ctxt, unsafe { (*atom).start }, 0 as xmlRegStatePtr, copy)
+                        < 0 as i32
                     {
                         return -(1 as i32);
                     }
-                    inter = (*ctxt).state;
+                    inter = unsafe { (*ctxt).state };
                     counter = xmlRegGetCounter(ctxt);
-                    (*((*ctxt).counters).offset(counter as isize))
-                        .min = (*atom).min - 1 as i32;
-                    (*((*ctxt).counters).offset(counter as isize))
-                        .max = (*atom).max - 1 as i32;
-                    xmlFAGenerateCountedEpsilonTransition(
-                        ctxt,
-                        inter,
-                        (*atom).stop,
-                        counter,
-                    );
+                    (unsafe { (*((*ctxt).counters).offset(counter as isize)).min = (*atom).min - 1 as i32 });
+                    (unsafe { (*((*ctxt).counters).offset(counter as isize)).max = (*atom).max - 1 as i32 });
+                    xmlFAGenerateCountedEpsilonTransition(ctxt, inter, unsafe { (*atom).stop }, counter);
                     xmlFAGenerateCountedTransition(ctxt, inter, newstate, counter);
-                    xmlFAGenerateEpsilonTransition(ctxt, (*atom).start, newstate);
+                    xmlFAGenerateEpsilonTransition(ctxt, unsafe { (*atom).start }, newstate);
                 } else {
                     counter = xmlRegGetCounter(ctxt);
-                    (*((*ctxt).counters).offset(counter as isize))
-                        .min = (*atom).min - 1 as i32;
-                    (*((*ctxt).counters).offset(counter as isize))
-                        .max = (*atom).max - 1 as i32;
-                    xmlFAGenerateCountedTransition(
-                        ctxt,
-                        (*atom).stop,
-                        newstate,
-                        counter,
-                    );
+                    (unsafe { (*((*ctxt).counters).offset(counter as isize)).min = (*atom).min - 1 as i32 });
+                    (unsafe { (*((*ctxt).counters).offset(counter as isize)).max = (*atom).max - 1 as i32 });
+                    xmlFAGenerateCountedTransition(ctxt, unsafe { (*atom).stop }, newstate, counter);
                     xmlFAGenerateCountedEpsilonTransition(
                         ctxt,
-                        (*atom).stop,
-                        (*atom).start,
+                        unsafe { (*atom).stop },
+                        unsafe { (*atom).start },
                         counter,
                     );
-                    if (*atom).min == 0 as i32 {
-                        xmlFAGenerateEpsilonTransition(ctxt, (*atom).start0, newstate);
+                    if (unsafe { (*atom).min }) == 0 as i32 {
+                        xmlFAGenerateEpsilonTransition(ctxt, unsafe { (*atom).start0 }, newstate);
                     }
                 }
-                (*atom).min = 0 as i32;
-                (*atom).max = 0 as i32;
-                (*atom).quant = XML_REGEXP_QUANT_ONCE;
-                let ref mut fresh51 = (*ctxt).state;
+                (unsafe { (*atom).min = 0 as i32 });
+                (unsafe { (*atom).max = 0 as i32 });
+                (unsafe { (*atom).quant = XML_REGEXP_QUANT_ONCE });
+                let fresh51 = unsafe { &mut ((*ctxt).state) };
                 *fresh51 = newstate;
-            }
-            _ => {}
+            },
+            _ => {},
         }
         return 0 as i32;
     }
-    if (*atom).min == 0 as i32 && (*atom).max == 0 as i32
-        && (*atom).quant as u32
-            == XML_REGEXP_QUANT_RANGE as i32 as u32
+    if (unsafe { (*atom).min }) == 0 as i32
+        && (unsafe { (*atom).max }) == 0 as i32
+        && (unsafe { (*atom).quant }) as u32 == XML_REGEXP_QUANT_RANGE as i32 as u32
     {
         if to.is_null() {
             to = xmlRegNewState(ctxt);
             if !to.is_null() {
                 xmlRegStatePush(ctxt, to);
             } else {
-                return -(1 as i32)
+                return -(1 as i32);
             }
         }
         xmlFAGenerateEpsilonTransition(ctxt, from, to);
-        let ref mut fresh52 = (*ctxt).state;
+        let fresh52 = unsafe { &mut ((*ctxt).state) };
         *fresh52 = to;
         xmlRegFreeAtom(atom);
         return 0 as i32;
@@ -3327,21 +3069,19 @@ unsafe extern "C" fn xmlFAGenerateTransitions(
         if !to.is_null() {
             xmlRegStatePush(ctxt, to);
         } else {
-            return -(1 as i32)
+            return -(1 as i32);
         }
     }
     end = to;
-    if (*atom).quant as u32
-        == XML_REGEXP_QUANT_MULT as i32 as u32
-        || (*atom).quant as u32
-            == XML_REGEXP_QUANT_PLUS as i32 as u32
+    if (unsafe { (*atom).quant }) as u32 == XML_REGEXP_QUANT_MULT as i32 as u32
+        || (unsafe { (*atom).quant }) as u32 == XML_REGEXP_QUANT_PLUS as i32 as u32
     {
-        let mut tmp: * mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
+        let mut tmp: *mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
         tmp = xmlRegNewState(ctxt);
         if !tmp.is_null() {
             xmlRegStatePush(ctxt, tmp);
         } else {
-            return -(1 as i32)
+            return -(1 as i32);
         }
         xmlFAGenerateEpsilonTransition(ctxt, tmp, to);
         to = tmp;
@@ -3349,141 +3089,116 @@ unsafe extern "C" fn xmlFAGenerateTransitions(
     if xmlRegAtomPush(ctxt, atom) < 0 as i32 {
         return -(1 as i32);
     }
-    if (*atom).quant as u32
-        == XML_REGEXP_QUANT_RANGE as i32 as u32
-        && (*atom).min == 0 as i32 && (*atom).max > 0 as i32
+    if (unsafe { (*atom).quant }) as u32 == XML_REGEXP_QUANT_RANGE as i32 as u32
+        && (unsafe { (*atom).min }) == 0 as i32
+        && (unsafe { (*atom).max }) > 0 as i32
     {
         nullable = 1 as i32;
-        (*atom).min = 1 as i32;
-        if (*atom).max == 1 as i32 {
-            (*atom).quant = XML_REGEXP_QUANT_OPT;
+        (unsafe { (*atom).min = 1 as i32 });
+        if (unsafe { (*atom).max }) == 1 as i32 {
+            (unsafe { (*atom).quant = XML_REGEXP_QUANT_OPT });
         }
     }
     xmlRegStateAddTrans(ctxt, from, atom, to, -(1 as i32), -(1 as i32));
-    let ref mut fresh53 = (*ctxt).state;
+    let fresh53 = unsafe { &mut ((*ctxt).state) };
     *fresh53 = end;
-    match (*atom).quant as u32 {
+    match (unsafe { (*atom).quant }) as u32 {
         3 => {
-            (*atom).quant = XML_REGEXP_QUANT_ONCE;
+            (unsafe { (*atom).quant = XML_REGEXP_QUANT_ONCE });
             xmlFAGenerateEpsilonTransition(ctxt, from, to);
-        }
+        },
         4 => {
-            (*atom).quant = XML_REGEXP_QUANT_ONCE;
+            (unsafe { (*atom).quant = XML_REGEXP_QUANT_ONCE });
             xmlFAGenerateEpsilonTransition(ctxt, from, to);
-            xmlRegStateAddTrans(
-                ctxt,
-                to,
-                atom,
-                to,
-                -(1 as i32),
-                -(1 as i32),
-            );
-        }
+            xmlRegStateAddTrans(ctxt, to, atom, to, -(1 as i32), -(1 as i32));
+        },
         5 => {
-            (*atom).quant = XML_REGEXP_QUANT_ONCE;
-            xmlRegStateAddTrans(
-                ctxt,
-                to,
-                atom,
-                to,
-                -(1 as i32),
-                -(1 as i32),
-            );
-        }
+            (unsafe { (*atom).quant = XML_REGEXP_QUANT_ONCE });
+            xmlRegStateAddTrans(ctxt, to, atom, to, -(1 as i32), -(1 as i32));
+        },
         8 => {
             if nullable != 0 {
                 xmlFAGenerateEpsilonTransition(ctxt, from, to);
             }
-        }
-        _ => {}
+        },
+        _ => {},
     }
     return 0 as i32;
 }
-unsafe extern "C" fn xmlFAReduceEpsilonTransitions(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
+extern "C" fn xmlFAReduceEpsilonTransitions(
+    mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata,
     mut fromnr: i32,
     mut tonr: i32,
     mut counter: i32,
 ) {
     let mut transnr: i32 = 0;
-    let mut from: * mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
-    let mut to: * mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
-    from = *((*ctxt).states).offset(fromnr as isize);
+    let mut from: *mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
+    let mut to: *mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
+    from = unsafe { *((*ctxt).states).offset(fromnr as isize) };
     if from.is_null() {
         return;
     }
-    to = *((*ctxt).states).offset(tonr as isize);
+    to = unsafe { *((*ctxt).states).offset(tonr as isize) };
     if to.is_null() {
         return;
     }
-    if (*to).mark as u32 == XML_REGEXP_MARK_START as i32 as u32
-        || (*to).mark as u32
-            == XML_REGEXP_MARK_VISITED as i32 as u32
+    if (unsafe { (*to).mark }) as u32 == XML_REGEXP_MARK_START as i32 as u32
+        || (unsafe { (*to).mark }) as u32 == XML_REGEXP_MARK_VISITED as i32 as u32
     {
         return;
     }
-    (*to).mark = XML_REGEXP_MARK_VISITED;
-    if (*to).type_0 as u32
-        == XML_REGEXP_FINAL_STATE as i32 as u32
-    {
-        (*from).type_0 = XML_REGEXP_FINAL_STATE;
+    (unsafe { (*to).mark = XML_REGEXP_MARK_VISITED });
+    if (unsafe { (*to).type_0 }) as u32 == XML_REGEXP_FINAL_STATE as i32 as u32 {
+        (unsafe { (*from).type_0 = XML_REGEXP_FINAL_STATE });
     }
     transnr = 0 as i32;
-    while transnr < (*to).nbTrans {
-        if !((*((*to).trans).offset(transnr as isize)).to < 0 as i32) {
-            if ((*((*to).trans).offset(transnr as isize)).atom).is_null() {
-                if (*((*to).trans).offset(transnr as isize)).to != fromnr {
-                    if (*((*to).trans).offset(transnr as isize)).count
-                        >= 0 as i32
-                    {
-                        let mut newto: i32 = (*((*to).trans)
-                            .offset(transnr as isize))
-                            .to;
+    while transnr < (unsafe { (*to).nbTrans }) {
+        if !((unsafe { (*((*to).trans).offset(transnr as isize)).to }) < 0 as i32) {
+            if (unsafe { (*((*to).trans).offset(transnr as isize)).atom }).is_null() {
+                if (unsafe { (*((*to).trans).offset(transnr as isize)).to }) != fromnr {
+                    if (unsafe { (*((*to).trans).offset(transnr as isize)).count }) >= 0 as i32 {
+                        let mut newto: i32 = unsafe { (*((*to).trans).offset(transnr as isize)).to };
                         xmlRegStateAddTrans(
                             ctxt,
                             from,
                             0 as xmlRegAtomPtr,
-                            *((*ctxt).states).offset(newto as isize),
+                            unsafe { *((*ctxt).states).offset(newto as isize) },
                             -(1 as i32),
-                            (*((*to).trans).offset(transnr as isize)).count,
+                            unsafe { (*((*to).trans).offset(transnr as isize)).count },
                         );
-                    } else if (*((*to).trans).offset(transnr as isize)).counter
-                            >= 0 as i32
-                        {
+                    } else if (unsafe { (*((*to).trans).offset(transnr as isize)).counter }) >= 0 as i32 {
                         xmlFAReduceEpsilonTransitions(
                             ctxt,
                             fromnr,
-                            (*((*to).trans).offset(transnr as isize)).to,
-                            (*((*to).trans).offset(transnr as isize)).counter,
+                            unsafe { (*((*to).trans).offset(transnr as isize)).to },
+                            unsafe { (*((*to).trans).offset(transnr as isize)).counter },
                         );
                     } else {
                         xmlFAReduceEpsilonTransitions(
                             ctxt,
                             fromnr,
-                            (*((*to).trans).offset(transnr as isize)).to,
+                            unsafe { (*((*to).trans).offset(transnr as isize)).to },
                             counter,
                         );
                     }
                 }
             } else {
-                let mut newto_0: i32 = (*((*to).trans).offset(transnr as isize))
-                    .to;
-                if (*((*to).trans).offset(transnr as isize)).counter >= 0 as i32
-                {
+                let mut newto_0: i32 = unsafe { (*((*to).trans).offset(transnr as isize)).to };
+                if (unsafe { (*((*to).trans).offset(transnr as isize)).counter }) >= 0 as i32 {
                     xmlRegStateAddTrans(
                         ctxt,
                         from,
-                        (*((*to).trans).offset(transnr as isize)).atom,
-                        *((*ctxt).states).offset(newto_0 as isize),
-                        (*((*to).trans).offset(transnr as isize)).counter,
+                        unsafe { (*((*to).trans).offset(transnr as isize)).atom },
+                        unsafe { *((*ctxt).states).offset(newto_0 as isize) },
+                        unsafe { (*((*to).trans).offset(transnr as isize)).counter },
                         -(1 as i32),
                     );
                 } else {
                     xmlRegStateAddTrans(
                         ctxt,
                         from,
-                        (*((*to).trans).offset(transnr as isize)).atom,
-                        *((*ctxt).states).offset(newto_0 as isize),
+                        unsafe { (*((*to).trans).offset(transnr as isize)).atom },
+                        unsafe { *((*ctxt).states).offset(newto_0 as isize) },
                         counter,
                         -(1 as i32),
                     );
@@ -3492,72 +3207,60 @@ unsafe extern "C" fn xmlFAReduceEpsilonTransitions(
         }
         transnr += 1;
     }
-    (*to).mark = XML_REGEXP_MARK_NORMAL;
+    (unsafe { (*to).mark = XML_REGEXP_MARK_NORMAL });
 }
-unsafe extern "C" fn xmlFAEliminateSimpleEpsilonTransitions(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
+extern "C" fn xmlFAEliminateSimpleEpsilonTransitions(
+    mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata,
 ) {
     let mut statenr: i32 = 0;
     let mut i: i32 = 0;
     let mut j: i32 = 0;
     let mut newto: i32 = 0;
-    let mut state: * mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
-    let mut tmp: * mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
+    let mut state: *mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
+    let mut tmp: *mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
     statenr = 0 as i32;
-    while statenr < (*ctxt).nbStates {
-        state = *((*ctxt).states).offset(statenr as isize);
+    while statenr < (unsafe { (*ctxt).nbStates }) {
+        state = unsafe { *((*ctxt).states).offset(statenr as isize) };
         if !state.is_null() {
-            if !((*state).nbTrans != 1 as i32) {
-                if !((*state).type_0 as u32
-                    == XML_REGEXP_UNREACH_STATE as i32 as u32
-                    || (*state).type_0 as u32
-                        == XML_REGEXP_FINAL_STATE as i32 as u32)
+            if !((unsafe { (*state).nbTrans }) != 1 as i32) {
+                if !((unsafe { (*state).type_0 }) as u32 == XML_REGEXP_UNREACH_STATE as i32 as u32
+                    || (unsafe { (*state).type_0 }) as u32 == XML_REGEXP_FINAL_STATE as i32 as u32)
                 {
-                    if ((*((*state).trans).offset(0 as i32 as isize)).atom)
-                        .is_null()
-                        && (*((*state).trans).offset(0 as i32 as isize)).to
-                            >= 0 as i32
-                        && (*((*state).trans).offset(0 as i32 as isize)).to
-                            != statenr
-                        && (*((*state).trans).offset(0 as i32 as isize)).counter
-                            < 0 as i32
-                        && (*((*state).trans).offset(0 as i32 as isize)).count
-                            < 0 as i32
+                    if (unsafe { (*((*state).trans).offset(0 as i32 as isize)).atom }).is_null()
+                        && (unsafe { (*((*state).trans).offset(0 as i32 as isize)).to }) >= 0 as i32
+                        && (unsafe { (*((*state).trans).offset(0 as i32 as isize)).to }) != statenr
+                        && (unsafe { (*((*state).trans).offset(0 as i32 as isize)).counter }) < 0 as i32
+                        && (unsafe { (*((*state).trans).offset(0 as i32 as isize)).count }) < 0 as i32
                     {
-                        newto = (*((*state).trans).offset(0 as i32 as isize)).to;
-                        if !((*state).type_0 as u32
-                            == XML_REGEXP_START_STATE as i32 as u32)
-                        {
+                        newto = unsafe { (*((*state).trans).offset(0 as i32 as isize)).to };
+                        if !((unsafe { (*state).type_0 }) as u32 == XML_REGEXP_START_STATE as i32 as u32) {
                             i = 0 as i32;
-                            while i < (*state).nbTransTo {
-                                tmp = *((*ctxt).states)
-                                    .offset(*((*state).transTo).offset(i as isize) as isize);
+                            while i < (unsafe { (*state).nbTransTo }) {
+                                tmp = unsafe { *((*ctxt).states)
+                                    .offset(*((*state).transTo).offset(i as isize) as isize) };
                                 j = 0 as i32;
-                                while j < (*tmp).nbTrans {
-                                    if (*((*tmp).trans).offset(j as isize)).to == statenr {
-                                        (*((*tmp).trans).offset(j as isize))
-                                            .to = -(1 as i32);
+                                while j < (unsafe { (*tmp).nbTrans }) {
+                                    if (unsafe { (*((*tmp).trans).offset(j as isize)).to }) == statenr {
+                                        (unsafe { (*((*tmp).trans).offset(j as isize)).to = -(1 as i32) });
                                         xmlRegStateAddTrans(
                                             ctxt,
                                             tmp,
-                                            (*((*tmp).trans).offset(j as isize)).atom,
-                                            *((*ctxt).states).offset(newto as isize),
-                                            (*((*tmp).trans).offset(j as isize)).counter,
-                                            (*((*tmp).trans).offset(j as isize)).count,
+                                            unsafe { (*((*tmp).trans).offset(j as isize)).atom },
+                                            unsafe { *((*ctxt).states).offset(newto as isize) },
+                                            unsafe { (*((*tmp).trans).offset(j as isize)).counter },
+                                            unsafe { (*((*tmp).trans).offset(j as isize)).count },
                                         );
                                     }
                                     j += 1;
                                 }
                                 i += 1;
                             }
-                            if (*state).type_0 as u32
-                                == XML_REGEXP_FINAL_STATE as i32 as u32
-                            {
-                                (**((*ctxt).states).offset(newto as isize))
-                                    .type_0 = XML_REGEXP_FINAL_STATE;
+                            if (unsafe { (*state).type_0 }) as u32 == XML_REGEXP_FINAL_STATE as i32 as u32 {
+                                (unsafe { (**((*ctxt).states).offset(newto as isize)).type_0 =
+                                    XML_REGEXP_FINAL_STATE });
                             }
-                            (*state).nbTrans = 0 as i32;
-                            (*state).type_0 = XML_REGEXP_UNREACH_STATE;
+                            (unsafe { (*state).nbTrans = 0 as i32 });
+                            (unsafe { (*state).type_0 = XML_REGEXP_UNREACH_STATE });
                         }
                     }
                 }
@@ -3566,65 +3269,54 @@ unsafe extern "C" fn xmlFAEliminateSimpleEpsilonTransitions(
         statenr += 1;
     }
 }
-unsafe extern "C" fn xmlFAEliminateEpsilonTransitions(mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata) {
+extern "C" fn xmlFAEliminateEpsilonTransitions(mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata) {
     let mut statenr: i32 = 0;
     let mut transnr: i32 = 0;
-    let mut state: * mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
+    let mut state: *mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
     let mut has_epsilon: i32 = 0;
-    if ((*ctxt).states).is_null() {
+    if (unsafe { (*ctxt).states }).is_null() {
         return;
     }
     xmlFAEliminateSimpleEpsilonTransitions(ctxt);
     statenr = 0 as i32;
-    while statenr < (*ctxt).nbStates {
-        state = *((*ctxt).states).offset(statenr as isize);
-        if !state.is_null()
-            && (*state).type_0 as u32
-                == XML_REGEXP_UNREACH_STATE as i32 as u32
-        {
+    while statenr < (unsafe { (*ctxt).nbStates }) {
+        state = unsafe { *((*ctxt).states).offset(statenr as isize) };
+        if !state.is_null() && (unsafe { (*state).type_0 }) as u32 == XML_REGEXP_UNREACH_STATE as i32 as u32 {
             xmlRegFreeState(state);
-            let ref mut fresh54 = *((*ctxt).states).offset(statenr as isize);
+            let fresh54 = unsafe { &mut (*((*ctxt).states).offset(statenr as isize)) };
             *fresh54 = 0 as xmlRegStatePtr;
         }
         statenr += 1;
     }
     has_epsilon = 0 as i32;
-    statenr = (*ctxt).nbStates - 1 as i32;
+    statenr = (unsafe { (*ctxt).nbStates }) - 1 as i32;
     while statenr >= 0 as i32 {
-        state = *((*ctxt).states).offset(statenr as isize);
+        state = unsafe { *((*ctxt).states).offset(statenr as isize) };
         if !state.is_null() {
-            if (*state).nbTrans == 0 as i32
-                && (*state).type_0 as u32
-                    != XML_REGEXP_FINAL_STATE as i32 as u32
+            if (unsafe { (*state).nbTrans }) == 0 as i32
+                && (unsafe { (*state).type_0 }) as u32 != XML_REGEXP_FINAL_STATE as i32 as u32
             {
-                (*state).type_0 = XML_REGEXP_SINK_STATE;
+                (unsafe { (*state).type_0 = XML_REGEXP_SINK_STATE });
             }
             transnr = 0 as i32;
-            while transnr < (*state).nbTrans {
-                if ((*((*state).trans).offset(transnr as isize)).atom).is_null()
-                    && (*((*state).trans).offset(transnr as isize)).to
-                        >= 0 as i32
+            while transnr < (unsafe { (*state).nbTrans }) {
+                if (unsafe { (*((*state).trans).offset(transnr as isize)).atom }).is_null()
+                    && (unsafe { (*((*state).trans).offset(transnr as isize)).to }) >= 0 as i32
                 {
-                    if (*((*state).trans).offset(transnr as isize)).to == statenr {
-                        (*((*state).trans).offset(transnr as isize))
-                            .to = -(1 as i32);
-                    } else if (*((*state).trans).offset(transnr as isize)).count
-                            < 0 as i32
-                        {
-                        let mut newto: i32 = (*((*state).trans)
-                            .offset(transnr as isize))
-                            .to;
+                    if (unsafe { (*((*state).trans).offset(transnr as isize)).to }) == statenr {
+                        (unsafe { (*((*state).trans).offset(transnr as isize)).to = -(1 as i32) });
+                    } else if (unsafe { (*((*state).trans).offset(transnr as isize)).count }) < 0 as i32 {
+                        let mut newto: i32 = unsafe { (*((*state).trans).offset(transnr as isize)).to };
                         has_epsilon = 1 as i32;
-                        (*((*state).trans).offset(transnr as isize))
-                            .to = -(2 as i32);
-                        (*state).mark = XML_REGEXP_MARK_START;
+                        (unsafe { (*((*state).trans).offset(transnr as isize)).to = -(2 as i32) });
+                        (unsafe { (*state).mark = XML_REGEXP_MARK_START });
                         xmlFAReduceEpsilonTransitions(
                             ctxt,
                             statenr,
                             newto,
-                            (*((*state).trans).offset(transnr as isize)).counter,
+                            unsafe { (*((*state).trans).offset(transnr as isize)).counter },
                         );
-                        (*state).mark = XML_REGEXP_MARK_NORMAL;
+                        (unsafe { (*state).mark = XML_REGEXP_MARK_NORMAL });
                     }
                 }
                 transnr += 1;
@@ -3634,15 +3326,16 @@ unsafe extern "C" fn xmlFAEliminateEpsilonTransitions(mut ctxt: * mut crate::src
     }
     if has_epsilon != 0 {
         statenr = 0 as i32;
-        while statenr < (*ctxt).nbStates {
-            state = *((*ctxt).states).offset(statenr as isize);
+        while statenr < (unsafe { (*ctxt).nbStates }) {
+            state = unsafe { *((*ctxt).states).offset(statenr as isize) };
             if !state.is_null() {
                 transnr = 0 as i32;
-                while transnr < (*state).nbTrans {
-                    let mut trans: Option<&'_ mut crate::src::xmlregexp::_xmlRegTrans> = Some(&mut *((*state).trans)
-                        .offset(transnr as isize));
-                    if ((*(borrow(& trans)).unwrap()).atom).is_null() && (*(borrow(& trans)).unwrap()).count < 0 as i32
-                        && (*(borrow(& trans)).unwrap()).to >= 0 as i32
+                while transnr < (unsafe { (*state).nbTrans }) {
+                    let mut trans: Option<&'_ mut crate::src::xmlregexp::_xmlRegTrans> =
+                        Some(unsafe { &mut *((*state).trans).offset(transnr as isize) });
+                    if ((*(borrow(&trans)).unwrap()).atom).is_null()
+                        && (*(borrow(&trans)).unwrap()).count < 0 as i32
+                        && (*(borrow(&trans)).unwrap()).to >= 0 as i32
                     {
                         (*(borrow_mut(&mut trans)).unwrap()).to = -(1 as i32);
                     }
@@ -3653,38 +3346,34 @@ unsafe extern "C" fn xmlFAEliminateEpsilonTransitions(mut ctxt: * mut crate::src
         }
     }
     statenr = 0 as i32;
-    while statenr < (*ctxt).nbStates {
-        state = *((*ctxt).states).offset(statenr as isize);
+    while statenr < (unsafe { (*ctxt).nbStates }) {
+        state = unsafe { *((*ctxt).states).offset(statenr as isize) };
         if !state.is_null() {
-            (*state).reached = XML_REGEXP_MARK_NORMAL;
+            (unsafe { (*state).reached = XML_REGEXP_MARK_NORMAL });
         }
         statenr += 1;
     }
-    state = *((*ctxt).states).offset(0 as i32 as isize);
+    state = unsafe { *((*ctxt).states).offset(0 as i32 as isize) };
     if !state.is_null() {
-        (*state).reached = XML_REGEXP_MARK_START;
+        (unsafe { (*state).reached = XML_REGEXP_MARK_START });
     }
     while !state.is_null() {
-        let mut target: * mut crate::src::xmlregexp::_xmlAutomataState = 0 as xmlRegStatePtr;
-        (*state).reached = XML_REGEXP_MARK_VISITED;
+        let mut target: *mut crate::src::xmlregexp::_xmlAutomataState = 0 as xmlRegStatePtr;
+        (unsafe { (*state).reached = XML_REGEXP_MARK_VISITED });
         transnr = 0 as i32;
-        while transnr < (*state).nbTrans {
-            if (*((*state).trans).offset(transnr as isize)).to >= 0 as i32
-                && (!((*((*state).trans).offset(transnr as isize)).atom).is_null()
-                    || (*((*state).trans).offset(transnr as isize)).count
-                        >= 0 as i32)
+        while transnr < (unsafe { (*state).nbTrans }) {
+            if (unsafe { (*((*state).trans).offset(transnr as isize)).to }) >= 0 as i32
+                && (!(unsafe { (*((*state).trans).offset(transnr as isize)).atom }).is_null()
+                    || (unsafe { (*((*state).trans).offset(transnr as isize)).count }) >= 0 as i32)
             {
-                let mut newto_0: i32 = (*((*state).trans)
-                    .offset(transnr as isize))
-                    .to;
-                if !(*((*ctxt).states).offset(newto_0 as isize)).is_null() {
-                    if (**((*ctxt).states).offset(newto_0 as isize)).reached
-                        as u32
+                let mut newto_0: i32 = unsafe { (*((*state).trans).offset(transnr as isize)).to };
+                if !(unsafe { *((*ctxt).states).offset(newto_0 as isize) }).is_null() {
+                    if (unsafe { (**((*ctxt).states).offset(newto_0 as isize)).reached }) as u32
                         == XML_REGEXP_MARK_NORMAL as i32 as u32
                     {
-                        (**((*ctxt).states).offset(newto_0 as isize))
-                            .reached = XML_REGEXP_MARK_START;
-                        target = *((*ctxt).states).offset(newto_0 as isize);
+                        (unsafe { (**((*ctxt).states).offset(newto_0 as isize)).reached =
+                            XML_REGEXP_MARK_START });
+                        target = unsafe { *((*ctxt).states).offset(newto_0 as isize) };
                     }
                 }
             }
@@ -3692,11 +3381,10 @@ unsafe extern "C" fn xmlFAEliminateEpsilonTransitions(mut ctxt: * mut crate::src
         }
         if target.is_null() {
             statenr = 1 as i32;
-            while statenr < (*ctxt).nbStates {
-                state = *((*ctxt).states).offset(statenr as isize);
+            while statenr < (unsafe { (*ctxt).nbStates }) {
+                state = unsafe { *((*ctxt).states).offset(statenr as isize) };
                 if !state.is_null()
-                    && (*state).reached as u32
-                        == XML_REGEXP_MARK_START as i32 as u32
+                    && (unsafe { (*state).reached }) as u32 == XML_REGEXP_MARK_START as i32 as u32
                 {
                     target = state;
                     break;
@@ -3708,272 +3396,203 @@ unsafe extern "C" fn xmlFAEliminateEpsilonTransitions(mut ctxt: * mut crate::src
         state = target;
     }
     statenr = 0 as i32;
-    while statenr < (*ctxt).nbStates {
-        state = *((*ctxt).states).offset(statenr as isize);
-        if !state.is_null()
-            && (*state).reached as u32
-                == XML_REGEXP_MARK_NORMAL as i32 as u32
-        {
+    while statenr < (unsafe { (*ctxt).nbStates }) {
+        state = unsafe { *((*ctxt).states).offset(statenr as isize) };
+        if !state.is_null() && (unsafe { (*state).reached }) as u32 == XML_REGEXP_MARK_NORMAL as i32 as u32 {
             xmlRegFreeState(state);
-            let ref mut fresh55 = *((*ctxt).states).offset(statenr as isize);
+            let fresh55 = unsafe { &mut (*((*ctxt).states).offset(statenr as isize)) };
             *fresh55 = 0 as xmlRegStatePtr;
         }
         statenr += 1;
     }
 }
-unsafe extern "C" fn xmlFACompareRanges(
-    mut range1: * mut crate::src::xmlregexp::_xmlRegRange,
-    mut range2: * mut crate::src::xmlregexp::_xmlRegRange,
+extern "C" fn xmlFACompareRanges(
+    mut range1: *mut crate::src::xmlregexp::_xmlRegRange,
+    mut range2: *mut crate::src::xmlregexp::_xmlRegRange,
 ) -> i32 {
     let mut ret: i32 = 0 as i32;
-    if (*range1).type_0 as u32
-        == XML_REGEXP_RANGES as i32 as u32
-        || (*range2).type_0 as u32
-            == XML_REGEXP_RANGES as i32 as u32
-        || (*range2).type_0 as u32
-            == XML_REGEXP_SUBREG as i32 as u32
-        || (*range1).type_0 as u32
-            == XML_REGEXP_SUBREG as i32 as u32
-        || (*range1).type_0 as u32
-            == XML_REGEXP_STRING as i32 as u32
-        || (*range2).type_0 as u32
-            == XML_REGEXP_STRING as i32 as u32
+    if (unsafe { (*range1).type_0 }) as u32 == XML_REGEXP_RANGES as i32 as u32
+        || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_RANGES as i32 as u32
+        || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_SUBREG as i32 as u32
+        || (unsafe { (*range1).type_0 }) as u32 == XML_REGEXP_SUBREG as i32 as u32
+        || (unsafe { (*range1).type_0 }) as u32 == XML_REGEXP_STRING as i32 as u32
+        || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_STRING as i32 as u32
     {
         return -(1 as i32);
     }
-    if (*range1).type_0 as u32 > (*range2).type_0 as u32 {
-        let mut tmp: * mut crate::src::xmlregexp::_xmlRegRange = 0 as *mut xmlRegRange;
+    if (unsafe { (*range1).type_0 }) as u32 > (unsafe { (*range2).type_0 }) as u32 {
+        let mut tmp: *mut crate::src::xmlregexp::_xmlRegRange = 0 as *mut xmlRegRange;
         tmp = range1;
         range1 = range2;
         range2 = tmp;
     }
-    if (*range1).type_0 as u32
-        == XML_REGEXP_ANYCHAR as i32 as u32
-        || (*range2).type_0 as u32
-            == XML_REGEXP_ANYCHAR as i32 as u32
+    if (unsafe { (*range1).type_0 }) as u32 == XML_REGEXP_ANYCHAR as i32 as u32
+        || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_ANYCHAR as i32 as u32
     {
         ret = 1 as i32;
-    } else if (*range1).type_0 as u32
-            == XML_REGEXP_EPSILON as i32 as u32
-            || (*range2).type_0 as u32
-                == XML_REGEXP_EPSILON as i32 as u32
-        {
-        return 0 as i32
+    } else if (unsafe { (*range1).type_0 }) as u32 == XML_REGEXP_EPSILON as i32 as u32
+        || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_EPSILON as i32 as u32
+    {
+        return 0 as i32;
     } else {
-        if (*range1).type_0 as u32 == (*range2).type_0 as u32 {
-            if (*range1).type_0 as u32
-                != XML_REGEXP_CHARVAL as i32 as u32
-            {
+        if (unsafe { (*range1).type_0 }) as u32 == (unsafe { (*range2).type_0 }) as u32 {
+            if (unsafe { (*range1).type_0 }) as u32 != XML_REGEXP_CHARVAL as i32 as u32 {
                 ret = 1 as i32;
-            } else if (*range1).end < (*range2).start || (*range2).end < (*range1).start
-                {
+            } else if (unsafe { (*range1).end }) < (unsafe { (*range2).start }) || (unsafe { (*range2).end }) < (unsafe { (*range1).start }) {
                 ret = 0 as i32;
             } else {
                 ret = 1 as i32;
             }
-        } else if (*range1).type_0 as u32
-                == XML_REGEXP_CHARVAL as i32 as u32
-            {
+        } else if (unsafe { (*range1).type_0 }) as u32 == XML_REGEXP_CHARVAL as i32 as u32 {
             let mut codepoint: i32 = 0;
             let mut neg: i32 = 0 as i32;
-            if (*range1).neg == 0 as i32 && (*range2).neg != 0 as i32
-                || (*range1).neg != 0 as i32 && (*range2).neg == 0 as i32
+            if (unsafe { (*range1).neg }) == 0 as i32 && (unsafe { (*range2).neg }) != 0 as i32
+                || (unsafe { (*range1).neg }) != 0 as i32 && (unsafe { (*range2).neg }) == 0 as i32
             {
                 neg = 1 as i32;
             }
-            codepoint = (*range1).start;
-            while codepoint <= (*range1).end {
+            codepoint = unsafe { (*range1).start };
+            while codepoint <= (unsafe { (*range1).end }) {
                 ret = xmlRegCheckCharacterRange(
-                    (*range2).type_0,
+                    unsafe { (*range2).type_0 },
                     codepoint,
                     0 as i32,
-                    (*range2).start,
-                    (*range2).end,
-                    (*range2).blockName,
+                    unsafe { (*range2).start },
+                    unsafe { (*range2).end },
+                    unsafe { (*range2).blockName },
                 );
                 if ret < 0 as i32 {
                     return -(1 as i32);
                 }
-                if neg == 1 as i32 && ret == 0 as i32
-                    || neg == 0 as i32 && ret == 1 as i32
-                {
+                if neg == 1 as i32 && ret == 0 as i32 || neg == 0 as i32 && ret == 1 as i32 {
                     return 1 as i32;
                 }
                 codepoint += 1;
             }
             return 0 as i32;
         } else {
-            if (*range1).type_0 as u32
-                == XML_REGEXP_BLOCK_NAME as i32 as u32
-                || (*range2).type_0 as u32
-                    == XML_REGEXP_BLOCK_NAME as i32 as u32
+            if (unsafe { (*range1).type_0 }) as u32 == XML_REGEXP_BLOCK_NAME as i32 as u32
+                || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_BLOCK_NAME as i32 as u32
             {
-                if (*range1).type_0 as u32 == (*range2).type_0 as u32 {
-                    ret = xmlStrEqual((*range1).blockName, (*range2).blockName);
+                if (unsafe { (*range1).type_0 }) as u32 == (unsafe { (*range2).type_0 }) as u32 {
+                    ret = xmlStrEqual(unsafe { (*range1).blockName }, unsafe { (*range2).blockName });
                 } else {
-                    return 1 as i32
+                    return 1 as i32;
                 }
-            } else if ((*range1).type_0 as u32)
-                    < XML_REGEXP_LETTER as i32 as u32
-                    || ((*range2).type_0 as u32)
-                        < XML_REGEXP_LETTER as i32 as u32
-                {
-                if (*range1).type_0 as u32
-                    == XML_REGEXP_ANYSPACE as i32 as u32
-                    && (*range2).type_0 as u32
-                        == XML_REGEXP_NOTSPACE as i32 as u32
+            } else if ((unsafe { (*range1).type_0 }) as u32) < XML_REGEXP_LETTER as i32 as u32
+                || ((unsafe { (*range2).type_0 }) as u32) < XML_REGEXP_LETTER as i32 as u32
+            {
+                if (unsafe { (*range1).type_0 }) as u32 == XML_REGEXP_ANYSPACE as i32 as u32
+                    && (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_NOTSPACE as i32 as u32
                 {
                     ret = 0 as i32;
-                } else if (*range1).type_0 as u32
-                        == XML_REGEXP_INITNAME as i32 as u32
-                        && (*range2).type_0 as u32
-                            == XML_REGEXP_NOTINITNAME as i32 as u32
-                    {
+                } else if (unsafe { (*range1).type_0 }) as u32 == XML_REGEXP_INITNAME as i32 as u32
+                    && (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_NOTINITNAME as i32 as u32
+                {
                     ret = 0 as i32;
-                } else if (*range1).type_0 as u32
-                        == XML_REGEXP_NAMECHAR as i32 as u32
-                        && (*range2).type_0 as u32
-                            == XML_REGEXP_NOTNAMECHAR as i32 as u32
-                    {
+                } else if (unsafe { (*range1).type_0 }) as u32 == XML_REGEXP_NAMECHAR as i32 as u32
+                    && (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_NOTNAMECHAR as i32 as u32
+                {
                     ret = 0 as i32;
-                } else if (*range1).type_0 as u32
-                        == XML_REGEXP_DECIMAL as i32 as u32
-                        && (*range2).type_0 as u32
-                            == XML_REGEXP_NOTDECIMAL as i32 as u32
-                    {
+                } else if (unsafe { (*range1).type_0 }) as u32 == XML_REGEXP_DECIMAL as i32 as u32
+                    && (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_NOTDECIMAL as i32 as u32
+                {
                     ret = 0 as i32;
-                } else if (*range1).type_0 as u32
-                        == XML_REGEXP_REALCHAR as i32 as u32
-                        && (*range2).type_0 as u32
-                            == XML_REGEXP_NOTREALCHAR as i32 as u32
-                    {
+                } else if (unsafe { (*range1).type_0 }) as u32 == XML_REGEXP_REALCHAR as i32 as u32
+                    && (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_NOTREALCHAR as i32 as u32
+                {
                     ret = 0 as i32;
                 } else {
-                    return 1 as i32
+                    return 1 as i32;
                 }
             } else {
                 ret = 0 as i32;
-                match (*range1).type_0 as u32 {
+                match (unsafe { (*range1).type_0 }) as u32 {
                     100 => {
-                        if (*range2).type_0 as u32
-                            == XML_REGEXP_LETTER_UPPERCASE as i32 as u32
-                            || (*range2).type_0 as u32
-                                == XML_REGEXP_LETTER_LOWERCASE as i32
-                                    as u32
-                            || (*range2).type_0 as u32
-                                == XML_REGEXP_LETTER_TITLECASE as i32
-                                    as u32
-                            || (*range2).type_0 as u32
-                                == XML_REGEXP_LETTER_MODIFIER as i32 as u32
-                            || (*range2).type_0 as u32
-                                == XML_REGEXP_LETTER_OTHERS as i32 as u32
+                        if (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_LETTER_UPPERCASE as i32 as u32
+                            || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_LETTER_LOWERCASE as i32 as u32
+                            || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_LETTER_TITLECASE as i32 as u32
+                            || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_LETTER_MODIFIER as i32 as u32
+                            || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_LETTER_OTHERS as i32 as u32
                         {
                             ret = 1 as i32;
                         }
-                    }
+                    },
                     106 => {
-                        if (*range2).type_0 as u32
-                            == XML_REGEXP_MARK_NONSPACING as i32 as u32
-                            || (*range2).type_0 as u32
-                                == XML_REGEXP_MARK_SPACECOMBINING as i32
-                                    as u32
-                            || (*range2).type_0 as u32
-                                == XML_REGEXP_MARK_ENCLOSING as i32 as u32
+                        if (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_MARK_NONSPACING as i32 as u32
+                            || (unsafe { (*range2).type_0 }) as u32
+                                == XML_REGEXP_MARK_SPACECOMBINING as i32 as u32
+                            || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_MARK_ENCLOSING as i32 as u32
                         {
                             ret = 1 as i32;
                         }
-                    }
+                    },
                     110 => {
-                        if (*range2).type_0 as u32
-                            == XML_REGEXP_NUMBER_DECIMAL as i32 as u32
-                            || (*range2).type_0 as u32
-                                == XML_REGEXP_NUMBER_LETTER as i32 as u32
-                            || (*range2).type_0 as u32
-                                == XML_REGEXP_NUMBER_OTHERS as i32 as u32
+                        if (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_NUMBER_DECIMAL as i32 as u32
+                            || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_NUMBER_LETTER as i32 as u32
+                            || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_NUMBER_OTHERS as i32 as u32
                         {
                             ret = 1 as i32;
                         }
-                    }
+                    },
                     114 => {
-                        if (*range2).type_0 as u32
-                            == XML_REGEXP_PUNCT_CONNECTOR as i32 as u32
-                            || (*range2).type_0 as u32
-                                == XML_REGEXP_PUNCT_DASH as i32 as u32
-                            || (*range2).type_0 as u32
-                                == XML_REGEXP_PUNCT_OPEN as i32 as u32
-                            || (*range2).type_0 as u32
-                                == XML_REGEXP_PUNCT_CLOSE as i32 as u32
-                            || (*range2).type_0 as u32
-                                == XML_REGEXP_PUNCT_INITQUOTE as i32 as u32
-                            || (*range2).type_0 as u32
-                                == XML_REGEXP_PUNCT_FINQUOTE as i32 as u32
-                            || (*range2).type_0 as u32
-                                == XML_REGEXP_PUNCT_OTHERS as i32 as u32
+                        if (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_PUNCT_CONNECTOR as i32 as u32
+                            || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_PUNCT_DASH as i32 as u32
+                            || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_PUNCT_OPEN as i32 as u32
+                            || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_PUNCT_CLOSE as i32 as u32
+                            || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_PUNCT_INITQUOTE as i32 as u32
+                            || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_PUNCT_FINQUOTE as i32 as u32
+                            || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_PUNCT_OTHERS as i32 as u32
                         {
                             ret = 1 as i32;
                         }
-                    }
+                    },
                     122 => {
-                        if (*range2).type_0 as u32
-                            == XML_REGEXP_SEPAR_SPACE as i32 as u32
-                            || (*range2).type_0 as u32
-                                == XML_REGEXP_SEPAR_LINE as i32 as u32
-                            || (*range2).type_0 as u32
-                                == XML_REGEXP_SEPAR_PARA as i32 as u32
+                        if (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_SEPAR_SPACE as i32 as u32
+                            || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_SEPAR_LINE as i32 as u32
+                            || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_SEPAR_PARA as i32 as u32
                         {
                             ret = 1 as i32;
                         }
-                    }
+                    },
                     126 => {
-                        if (*range2).type_0 as u32
-                            == XML_REGEXP_SYMBOL_MATH as i32 as u32
-                            || (*range2).type_0 as u32
-                                == XML_REGEXP_SYMBOL_CURRENCY as i32 as u32
-                            || (*range2).type_0 as u32
-                                == XML_REGEXP_SYMBOL_MODIFIER as i32 as u32
-                            || (*range2).type_0 as u32
-                                == XML_REGEXP_SYMBOL_OTHERS as i32 as u32
+                        if (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_SYMBOL_MATH as i32 as u32
+                            || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_SYMBOL_CURRENCY as i32 as u32
+                            || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_SYMBOL_MODIFIER as i32 as u32
+                            || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_SYMBOL_OTHERS as i32 as u32
                         {
                             ret = 1 as i32;
                         }
-                    }
+                    },
                     131 => {
-                        if (*range2).type_0 as u32
-                            == XML_REGEXP_OTHER_CONTROL as i32 as u32
-                            || (*range2).type_0 as u32
-                                == XML_REGEXP_OTHER_FORMAT as i32 as u32
-                            || (*range2).type_0 as u32
-                                == XML_REGEXP_OTHER_PRIVATE as i32 as u32
+                        if (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_OTHER_CONTROL as i32 as u32
+                            || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_OTHER_FORMAT as i32 as u32
+                            || (unsafe { (*range2).type_0 }) as u32 == XML_REGEXP_OTHER_PRIVATE as i32 as u32
                         {
                             ret = 1 as i32;
                         }
-                    }
+                    },
                     _ => {
-                        if (*range2).type_0 as u32
-                            >= XML_REGEXP_LETTER as i32 as u32
-                            && ((*range2).type_0 as u32)
-                                < XML_REGEXP_BLOCK_NAME as i32 as u32
+                        if (unsafe { (*range2).type_0 }) as u32 >= XML_REGEXP_LETTER as i32 as u32
+                            && ((unsafe { (*range2).type_0 }) as u32) < XML_REGEXP_BLOCK_NAME as i32 as u32
                         {
                             ret = 0 as i32;
                         } else {
-                            return 1 as i32
+                            return 1 as i32;
                         }
-                    }
+                    },
                 }
             }
         }
     }
-    if (*range1).neg == 0 as i32 && (*range2).neg != 0 as i32
-        || (*range1).neg != 0 as i32 && (*range2).neg == 0 as i32
+    if (unsafe { (*range1).neg }) == 0 as i32 && (unsafe { (*range2).neg }) != 0 as i32
+        || (unsafe { (*range1).neg }) != 0 as i32 && (unsafe { (*range2).neg }) == 0 as i32
     {
         ret = (ret == 0) as i32;
     }
     return ret;
 }
- extern "C" fn xmlFACompareAtomTypes(
-    mut type1: u32,
-    mut type2: u32,
-) -> i32 {
+extern "C" fn xmlFACompareAtomTypes(mut type1: u32, mut type2: u32) -> i32 {
     if type1 as u32 == XML_REGEXP_EPSILON as i32 as u32
         || type1 as u32 == XML_REGEXP_CHARVAL as i32 as u32
         || type1 as u32 == XML_REGEXP_RANGES as i32 as u32
@@ -4002,224 +3621,150 @@ unsafe extern "C" fn xmlFACompareRanges(
     }
     match type1 as u32 {
         7 => {
-            if type2 as u32
-                == XML_REGEXP_NOTSPACE as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_LETTER as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_LETTER_OTHERS as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_NUMBER as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_NUMBER_OTHERS as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_MARK as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_MARK_ENCLOSING as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_PUNCT as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_PUNCT_OTHERS as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_SYMBOL as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_SYMBOL_OTHERS as i32 as u32
+            if type2 as u32 == XML_REGEXP_NOTSPACE as i32 as u32
+                || type2 as u32 >= XML_REGEXP_LETTER as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_LETTER_OTHERS as i32 as u32
+                || type2 as u32 >= XML_REGEXP_NUMBER as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_NUMBER_OTHERS as i32 as u32
+                || type2 as u32 >= XML_REGEXP_MARK as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_MARK_ENCLOSING as i32 as u32
+                || type2 as u32 >= XML_REGEXP_PUNCT as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_PUNCT_OTHERS as i32 as u32
+                || type2 as u32 >= XML_REGEXP_SYMBOL as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_SYMBOL_OTHERS as i32 as u32
             {
                 return 0 as i32;
             }
-        }
-        8 => {}
+        },
+        8 => {},
         9 => {
-            if type2 as u32
-                == XML_REGEXP_NOTINITNAME as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_NUMBER as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_NUMBER_OTHERS as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_MARK as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_MARK_ENCLOSING as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_SEPAR as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_SEPAR_PARA as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_PUNCT as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_PUNCT_OTHERS as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_SYMBOL as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_SYMBOL_OTHERS as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_OTHER as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_OTHER_NA as i32 as u32
+            if type2 as u32 == XML_REGEXP_NOTINITNAME as i32 as u32
+                || type2 as u32 >= XML_REGEXP_NUMBER as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_NUMBER_OTHERS as i32 as u32
+                || type2 as u32 >= XML_REGEXP_MARK as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_MARK_ENCLOSING as i32 as u32
+                || type2 as u32 >= XML_REGEXP_SEPAR as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_SEPAR_PARA as i32 as u32
+                || type2 as u32 >= XML_REGEXP_PUNCT as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_PUNCT_OTHERS as i32 as u32
+                || type2 as u32 >= XML_REGEXP_SYMBOL as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_SYMBOL_OTHERS as i32 as u32
+                || type2 as u32 >= XML_REGEXP_OTHER as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_OTHER_NA as i32 as u32
             {
                 return 0 as i32;
             }
-        }
-        10 => {}
+        },
+        10 => {},
         11 => {
-            if type2 as u32
-                == XML_REGEXP_NOTNAMECHAR as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_MARK as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_MARK_ENCLOSING as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_PUNCT as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_PUNCT_OTHERS as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_SEPAR as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_SEPAR_PARA as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_SYMBOL as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_SYMBOL_OTHERS as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_OTHER as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_OTHER_NA as i32 as u32
+            if type2 as u32 == XML_REGEXP_NOTNAMECHAR as i32 as u32
+                || type2 as u32 >= XML_REGEXP_MARK as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_MARK_ENCLOSING as i32 as u32
+                || type2 as u32 >= XML_REGEXP_PUNCT as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_PUNCT_OTHERS as i32 as u32
+                || type2 as u32 >= XML_REGEXP_SEPAR as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_SEPAR_PARA as i32 as u32
+                || type2 as u32 >= XML_REGEXP_SYMBOL as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_SYMBOL_OTHERS as i32 as u32
+                || type2 as u32 >= XML_REGEXP_OTHER as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_OTHER_NA as i32 as u32
             {
                 return 0 as i32;
             }
-        }
-        12 => {}
+        },
+        12 => {},
         13 => {
-            if type2 as u32
-                == XML_REGEXP_NOTDECIMAL as i32 as u32
-                || type2 as u32
-                    == XML_REGEXP_REALCHAR as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_LETTER as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_LETTER_OTHERS as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_MARK as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_MARK_ENCLOSING as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_PUNCT as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_PUNCT_OTHERS as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_SEPAR as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_SEPAR_PARA as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_SYMBOL as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_SYMBOL_OTHERS as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_OTHER as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_OTHER_NA as i32 as u32
+            if type2 as u32 == XML_REGEXP_NOTDECIMAL as i32 as u32
+                || type2 as u32 == XML_REGEXP_REALCHAR as i32 as u32
+                || type2 as u32 >= XML_REGEXP_LETTER as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_LETTER_OTHERS as i32 as u32
+                || type2 as u32 >= XML_REGEXP_MARK as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_MARK_ENCLOSING as i32 as u32
+                || type2 as u32 >= XML_REGEXP_PUNCT as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_PUNCT_OTHERS as i32 as u32
+                || type2 as u32 >= XML_REGEXP_SEPAR as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_SEPAR_PARA as i32 as u32
+                || type2 as u32 >= XML_REGEXP_SYMBOL as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_SYMBOL_OTHERS as i32 as u32
+                || type2 as u32 >= XML_REGEXP_OTHER as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_OTHER_NA as i32 as u32
             {
                 return 0 as i32;
             }
-        }
-        14 => {}
+        },
+        14 => {},
         15 => {
-            if type2 as u32
-                == XML_REGEXP_NOTDECIMAL as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_MARK as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_MARK_ENCLOSING as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_PUNCT as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_PUNCT_OTHERS as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_SEPAR as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_SEPAR_PARA as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_SYMBOL as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_SYMBOL_OTHERS as i32 as u32
-                || type2 as u32
-                    >= XML_REGEXP_OTHER as i32 as u32
-                    && type2 as u32
-                        <= XML_REGEXP_OTHER_NA as i32 as u32
+            if type2 as u32 == XML_REGEXP_NOTDECIMAL as i32 as u32
+                || type2 as u32 >= XML_REGEXP_MARK as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_MARK_ENCLOSING as i32 as u32
+                || type2 as u32 >= XML_REGEXP_PUNCT as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_PUNCT_OTHERS as i32 as u32
+                || type2 as u32 >= XML_REGEXP_SEPAR as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_SEPAR_PARA as i32 as u32
+                || type2 as u32 >= XML_REGEXP_SYMBOL as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_SYMBOL_OTHERS as i32 as u32
+                || type2 as u32 >= XML_REGEXP_OTHER as i32 as u32
+                    && type2 as u32 <= XML_REGEXP_OTHER_NA as i32 as u32
             {
                 return 0 as i32;
             }
-        }
+        },
         100 => {
-            if type2 as u32
-                <= XML_REGEXP_LETTER_OTHERS as i32 as u32
-            {
+            if type2 as u32 <= XML_REGEXP_LETTER_OTHERS as i32 as u32 {
                 return 1 as i32;
             }
             return 0 as i32;
-        }
+        },
         101 | 102 | 103 | 104 | 105 => return 0 as i32,
         106 => {
-            if type2 as u32
-                <= XML_REGEXP_MARK_ENCLOSING as i32 as u32
-            {
+            if type2 as u32 <= XML_REGEXP_MARK_ENCLOSING as i32 as u32 {
                 return 1 as i32;
             }
             return 0 as i32;
-        }
+        },
         107 | 108 | 109 => return 0 as i32,
         110 => {
-            if type2 as u32
-                <= XML_REGEXP_NUMBER_OTHERS as i32 as u32
-            {
+            if type2 as u32 <= XML_REGEXP_NUMBER_OTHERS as i32 as u32 {
                 return 1 as i32;
             }
             return 0 as i32;
-        }
+        },
         111 | 112 | 113 => return 0 as i32,
         114 => {
-            if type2 as u32
-                <= XML_REGEXP_PUNCT_OTHERS as i32 as u32
-            {
+            if type2 as u32 <= XML_REGEXP_PUNCT_OTHERS as i32 as u32 {
                 return 1 as i32;
             }
             return 0 as i32;
-        }
+        },
         115 | 116 | 117 | 118 | 119 | 120 | 121 => return 0 as i32,
         122 => {
-            if type2 as u32
-                <= XML_REGEXP_SEPAR_PARA as i32 as u32
-            {
+            if type2 as u32 <= XML_REGEXP_SEPAR_PARA as i32 as u32 {
                 return 1 as i32;
             }
             return 0 as i32;
-        }
+        },
         123 | 124 | 125 => return 0 as i32,
         126 => {
-            if type2 as u32
-                <= XML_REGEXP_SYMBOL_OTHERS as i32 as u32
-            {
+            if type2 as u32 <= XML_REGEXP_SYMBOL_OTHERS as i32 as u32 {
                 return 1 as i32;
             }
             return 0 as i32;
-        }
+        },
         127 | 128 | 129 | 130 => return 0 as i32,
         131 => {
-            if type2 as u32
-                <= XML_REGEXP_OTHER_NA as i32 as u32
-            {
+            if type2 as u32 <= XML_REGEXP_OTHER_NA as i32 as u32 {
                 return 1 as i32;
             }
             return 0 as i32;
-        }
+        },
         132 | 133 | 134 | 135 => return 0 as i32,
-        16 | _ => {}
+        16 | _ => {},
     }
     return 1 as i32;
 }
-unsafe extern "C" fn xmlFAEqualAtoms(
-    mut atom1: * mut crate::src::xmlregexp::_xmlRegAtom,
-    mut atom2: * mut crate::src::xmlregexp::_xmlRegAtom,
+extern "C" fn xmlFAEqualAtoms(
+    mut atom1: *mut crate::src::xmlregexp::_xmlRegAtom,
+    mut atom2: *mut crate::src::xmlregexp::_xmlRegAtom,
     mut deep: i32,
 ) -> i32 {
     let mut ret: i32 = 0 as i32;
@@ -4229,36 +3774,36 @@ unsafe extern "C" fn xmlFAEqualAtoms(
     if atom1.is_null() || atom2.is_null() {
         return 0 as i32;
     }
-    if (*atom1).type_0 as u32 != (*atom2).type_0 as u32 {
+    if (unsafe { (*atom1).type_0 }) as u32 != (unsafe { (*atom2).type_0 }) as u32 {
         return 0 as i32;
     }
-    match (*atom1).type_0 as u32 {
+    match (unsafe { (*atom1).type_0 }) as u32 {
         1 => {
             ret = 0 as i32;
-        }
+        },
         5 => {
             if deep == 0 {
-                ret = ((*atom1).valuep == (*atom2).valuep) as i32;
+                ret = ((unsafe { (*atom1).valuep }) == (unsafe { (*atom2).valuep })) as i32;
             } else {
                 ret = xmlStrEqual(
-                    (*atom1).valuep as *mut xmlChar,
-                    (*atom2).valuep as *mut xmlChar,
+                    (unsafe { (*atom1).valuep }) as *mut xmlChar,
+                    (unsafe { (*atom2).valuep }) as *mut xmlChar,
                 );
             }
-        }
+        },
         2 => {
-            ret = ((*atom1).codepoint == (*atom2).codepoint) as i32;
-        }
+            ret = ((unsafe { (*atom1).codepoint }) == (unsafe { (*atom2).codepoint })) as i32;
+        },
         3 => {
             ret = 0 as i32;
-        }
-        _ => {}
+        },
+        _ => {},
     }
     return ret;
 }
-unsafe extern "C" fn xmlFACompareAtoms(
-    mut atom1: * mut crate::src::xmlregexp::_xmlRegAtom,
-    mut atom2: * mut crate::src::xmlregexp::_xmlRegAtom,
+extern "C" fn xmlFACompareAtoms(
+    mut atom1: *mut crate::src::xmlregexp::_xmlRegAtom,
+    mut atom2: *mut crate::src::xmlregexp::_xmlRegAtom,
     mut deep: i32,
 ) -> i32 {
     let mut current_block: u64;
@@ -4269,75 +3814,71 @@ unsafe extern "C" fn xmlFACompareAtoms(
     if atom1.is_null() || atom2.is_null() {
         return 0 as i32;
     }
-    if (*atom1).type_0 as u32
-        == XML_REGEXP_ANYCHAR as i32 as u32
-        || (*atom2).type_0 as u32
-            == XML_REGEXP_ANYCHAR as i32 as u32
+    if (unsafe { (*atom1).type_0 }) as u32 == XML_REGEXP_ANYCHAR as i32 as u32
+        || (unsafe { (*atom2).type_0 }) as u32 == XML_REGEXP_ANYCHAR as i32 as u32
     {
         return 1 as i32;
     }
-    if (*atom1).type_0 as u32 > (*atom2).type_0 as u32 {
-        let mut tmp: * mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
+    if (unsafe { (*atom1).type_0 }) as u32 > (unsafe { (*atom2).type_0 }) as u32 {
+        let mut tmp: *mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
         tmp = atom1;
         atom1 = atom2;
         atom2 = tmp;
     }
-    if (*atom1).type_0 as u32 != (*atom2).type_0 as u32 {
-        ret = xmlFACompareAtomTypes((*atom1).type_0, (*atom2).type_0);
+    if (unsafe { (*atom1).type_0 }) as u32 != (unsafe { (*atom2).type_0 }) as u32 {
+        ret = xmlFACompareAtomTypes(unsafe { (*atom1).type_0 }, unsafe { (*atom2).type_0 });
         if ret == 0 as i32 {
             return 0 as i32;
         }
     }
-    match (*atom1).type_0 as u32 {
+    match (unsafe { (*atom1).type_0 }) as u32 {
         5 => {
             if deep == 0 {
-                ret = ((*atom1).valuep != (*atom2).valuep) as i32;
+                ret = ((unsafe { (*atom1).valuep }) != (unsafe { (*atom2).valuep })) as i32;
             } else {
-                let mut val1: * mut u8 = (*atom1).valuep as *mut xmlChar;
-                let mut val2: * mut u8 = (*atom2).valuep as *mut xmlChar;
+                let mut val1: *mut u8 = (unsafe { (*atom1).valuep }) as *mut xmlChar;
+                let mut val2: *mut u8 = (unsafe { (*atom2).valuep }) as *mut xmlChar;
                 let mut compound1: i32 = (xmlStrchr(val1, '|' as i32 as xmlChar)
-                    != 0 as *mut libc::c_void as *const xmlChar) as i32;
+                    != 0 as *mut libc::c_void as *const xmlChar)
+                    as i32;
                 let mut compound2: i32 = (xmlStrchr(val2, '|' as i32 as xmlChar)
-                    != 0 as *mut libc::c_void as *const xmlChar) as i32;
+                    != 0 as *mut libc::c_void as *const xmlChar)
+                    as i32;
                 if compound1 != compound2 {
                     return 0 as i32;
                 }
                 ret = xmlRegStrEqualWildcard(val1, val2);
             }
             current_block = 3686881736565329710;
-        }
+        },
         2 => {
-            if (*atom2).type_0 as u32
-                == XML_REGEXP_CHARVAL as i32 as u32
-            {
-                ret = ((*atom1).codepoint == (*atom2).codepoint) as i32;
+            if (unsafe { (*atom2).type_0 }) as u32 == XML_REGEXP_CHARVAL as i32 as u32 {
+                ret = ((unsafe { (*atom1).codepoint }) == (unsafe { (*atom2).codepoint })) as i32;
             } else {
-                ret = xmlRegCheckCharacter(atom2, (*atom1).codepoint);
+                ret = xmlRegCheckCharacter(atom2, unsafe { (*atom1).codepoint });
                 if ret < 0 as i32 {
                     ret = 1 as i32;
                 }
             }
             current_block = 3686881736565329710;
-        }
+        },
         3 => {
-            if (*atom2).type_0 as u32
-                == XML_REGEXP_RANGES as i32 as u32
-            {
+            if (unsafe { (*atom2).type_0 }) as u32 == XML_REGEXP_RANGES as i32 as u32 {
                 let mut i: i32 = 0;
                 let mut j: i32 = 0;
                 let mut res: i32 = 0;
-                let mut r1: * mut crate::src::xmlregexp::_xmlRegRange = 0 as *mut xmlRegRange;
-                let mut r2: * mut crate::src::xmlregexp::_xmlRegRange = 0 as *mut xmlRegRange;
+                let mut r1: *mut crate::src::xmlregexp::_xmlRegRange = 0 as *mut xmlRegRange;
+                let mut r2: *mut crate::src::xmlregexp::_xmlRegRange = 0 as *mut xmlRegRange;
                 i = 0 as i32;
                 's_172: loop {
-                    if !(i < (*atom1).nbRanges) {
+                    if !(i < (unsafe { (*atom1).nbRanges })) {
                         current_block = 3938820862080741272;
                         break;
                     }
                     j = 0 as i32;
-                    while j < (*atom2).nbRanges {
-                        r1 = *((*atom1).ranges).offset(i as isize);
-                        r2 = *((*atom2).ranges).offset(j as isize);
+                    while j < (unsafe { (*atom2).nbRanges }) {
+                        r1 = unsafe { *((*atom1).ranges).offset(i as isize) };
+                        r2 = unsafe { *((*atom2).ranges).offset(j as isize) };
                         res = xmlFACompareRanges(r1, r2);
                         if res == 1 as i32 {
                             ret = 1 as i32;
@@ -4350,66 +3891,65 @@ unsafe extern "C" fn xmlFACompareAtoms(
                     i += 1;
                 }
                 match current_block {
-                    3686881736565329710 => {}
+                    3686881736565329710 => {},
                     _ => {
                         ret = 0 as i32;
                         current_block = 3686881736565329710;
-                    }
+                    },
                 }
             } else {
                 current_block = 3686881736565329710;
             }
-        }
+        },
         1 | _ => {
             current_block = 10156241871818535325;
-        }
+        },
     }
     match current_block {
         3686881736565329710 => {
-            if (*atom1).neg != (*atom2).neg {
+            if (unsafe { (*atom1).neg }) != (unsafe { (*atom2).neg }) {
                 ret = (ret == 0) as i32;
             }
             if ret == 0 as i32 {
                 return 0 as i32;
             }
-        }
-        _ => {}
+        },
+        _ => {},
     }
     return 1 as i32;
 }
-unsafe extern "C" fn xmlFARecurseDeterminism(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut state: * mut crate::src::xmlregexp::_xmlAutomataState,
+extern "C" fn xmlFARecurseDeterminism(
+    mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut state: *mut crate::src::xmlregexp::_xmlAutomataState,
     mut to: i32,
-    mut atom: * mut crate::src::xmlregexp::_xmlRegAtom,
+    mut atom: *mut crate::src::xmlregexp::_xmlRegAtom,
 ) -> i32 {
     let mut ret: i32 = 1 as i32;
     let mut res: i32 = 0;
     let mut transnr: i32 = 0;
     let mut nbTrans: i32 = 0;
-    let mut t1: Option<&'_ mut crate::src::xmlregexp::_xmlRegTrans> = Option::<&'_ mut crate::src::xmlregexp::_xmlRegTrans>::None;
+    let mut t1: Option<&'_ mut crate::src::xmlregexp::_xmlRegTrans> =
+        Option::<&'_ mut crate::src::xmlregexp::_xmlRegTrans>::None;
     let mut deep: i32 = 1 as i32;
     if state.is_null() {
         return ret;
     }
-    if (*state).markd as u32
-        == XML_REGEXP_MARK_VISITED as i32 as u32
-    {
+    if (unsafe { (*state).markd }) as u32 == XML_REGEXP_MARK_VISITED as i32 as u32 {
         return ret;
     }
-    if (*ctxt).flags & 1 as i32 != 0 {
+    if (unsafe { (*ctxt).flags }) & 1 as i32 != 0 {
         deep = 0 as i32;
     }
-    nbTrans = (*state).nbTrans;
+    nbTrans = unsafe { (*state).nbTrans };
     transnr = 0 as i32;
     while transnr < nbTrans {
-        t1 = Some(&mut *((*state).trans).offset(transnr as isize));
-        if ((*(borrow(& t1)).unwrap()).atom).is_null() {
-            if !((*(borrow(& t1)).unwrap()).to < 0 as i32) {
-                (*state).markd = XML_REGEXP_MARK_VISITED;
+        t1 = Some(unsafe { &mut *((*state).trans).offset(transnr as isize) });
+        if ((*(borrow(&t1)).unwrap()).atom).is_null() {
+            if !((*(borrow(&t1)).unwrap()).to < 0 as i32) {
+                (unsafe { (*state).markd = XML_REGEXP_MARK_VISITED });
                 res = xmlFARecurseDeterminism(
                     ctxt,
-                    *((*ctxt).states).offset((*(borrow(& t1)).unwrap()).to as isize),
+                    unsafe { *((*ctxt).states).offset((*(borrow(&t1)).unwrap()).to as isize) },
                     to,
                     atom,
                 );
@@ -4417,7 +3957,7 @@ unsafe extern "C" fn xmlFARecurseDeterminism(
                     ret = 0 as i32;
                 }
             }
-        } else if !((*(borrow(& t1)).unwrap()).to != to) {
+        } else if !((*(borrow(&t1)).unwrap()).to != to) {
             if xmlFACompareAtoms((*(borrow_mut(&mut t1)).unwrap()).atom, atom, deep) != 0 {
                 ret = 0 as i32;
                 (*(borrow_mut(&mut t1)).unwrap()).nd = 1 as i32;
@@ -4427,72 +3967,76 @@ unsafe extern "C" fn xmlFARecurseDeterminism(
     }
     return ret;
 }
-unsafe extern "C" fn xmlFAFinishRecurseDeterminism(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut state: * mut crate::src::xmlregexp::_xmlAutomataState,
+extern "C" fn xmlFAFinishRecurseDeterminism(
+    mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut state: *mut crate::src::xmlregexp::_xmlAutomataState,
 ) {
     let mut transnr: i32 = 0;
     let mut nbTrans: i32 = 0;
     if state.is_null() {
         return;
     }
-    if (*state).markd as u32
-        != XML_REGEXP_MARK_VISITED as i32 as u32
-    {
+    if (unsafe { (*state).markd }) as u32 != XML_REGEXP_MARK_VISITED as i32 as u32 {
         return;
     }
-    (*state).markd = XML_REGEXP_MARK_NORMAL;
-    nbTrans = (*state).nbTrans;
+    (unsafe { (*state).markd = XML_REGEXP_MARK_NORMAL });
+    nbTrans = unsafe { (*state).nbTrans };
     transnr = 0 as i32;
     while transnr < nbTrans {
-        let mut t1: Option<&'_ mut crate::src::xmlregexp::_xmlRegTrans> = Some(&mut *((*state).trans).offset(transnr as isize));
-        if ((*(borrow(& t1)).unwrap()).atom).is_null() && (*(borrow(& t1)).unwrap()).to >= 0 as i32 {
+        let mut t1: Option<&'_ mut crate::src::xmlregexp::_xmlRegTrans> =
+            Some(unsafe { &mut *((*state).trans).offset(transnr as isize) });
+        if ((*(borrow(&t1)).unwrap()).atom).is_null() && (*(borrow(&t1)).unwrap()).to >= 0 as i32 {
             xmlFAFinishRecurseDeterminism(
                 ctxt,
-                *((*ctxt).states).offset((*(borrow(& t1)).unwrap()).to as isize),
+                unsafe { *((*ctxt).states).offset((*(borrow(&t1)).unwrap()).to as isize) },
             );
         }
         transnr += 1;
     }
 }
-unsafe extern "C" fn xmlFAComputesDeterminism(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
-) -> i32 {
+extern "C" fn xmlFAComputesDeterminism(mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata) -> i32 {
     let mut statenr: i32 = 0;
     let mut transnr: i32 = 0;
-    let mut state: * mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
-    let mut t1: * mut crate::src::xmlregexp::_xmlRegTrans = (0 as * mut crate::src::xmlregexp::_xmlRegTrans);
-    let mut t2: Option<&'_ mut crate::src::xmlregexp::_xmlRegTrans> = Option::<&'_ mut crate::src::xmlregexp::_xmlRegTrans>::None;
-    let mut last: * mut crate::src::xmlregexp::_xmlRegTrans = (0 as * mut crate::src::xmlregexp::_xmlRegTrans);
+    let mut state: *mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
+    let mut t1: *mut crate::src::xmlregexp::_xmlRegTrans =
+        0 as *mut crate::src::xmlregexp::_xmlRegTrans;
+    let mut t2: Option<&'_ mut crate::src::xmlregexp::_xmlRegTrans> =
+        Option::<&'_ mut crate::src::xmlregexp::_xmlRegTrans>::None;
+    let mut last: *mut crate::src::xmlregexp::_xmlRegTrans =
+        0 as *mut crate::src::xmlregexp::_xmlRegTrans;
     let mut i: i32 = 0;
     let mut ret: i32 = 1 as i32;
     let mut deep: i32 = 1 as i32;
-    if (*ctxt).determinist != -(1 as i32) {
-        return (*ctxt).determinist;
+    if (unsafe { (*ctxt).determinist }) != -(1 as i32) {
+        return unsafe { (*ctxt).determinist };
     }
-    if (*ctxt).flags & 1 as i32 != 0 {
+    if (unsafe { (*ctxt).flags }) & 1 as i32 != 0 {
         deep = 0 as i32;
     }
     statenr = 0 as i32;
-    while statenr < (*ctxt).nbStates {
-        state = *((*ctxt).states).offset(statenr as isize);
+    while statenr < (unsafe { (*ctxt).nbStates }) {
+        state = unsafe { *((*ctxt).states).offset(statenr as isize) };
         if !state.is_null() {
-            if !((*state).nbTrans < 2 as i32) {
+            if !((unsafe { (*state).nbTrans }) < 2 as i32) {
                 transnr = 0 as i32;
-                while transnr < (*state).nbTrans {
-                    t1 = &mut *((*state).trans).offset(transnr as isize)
-                        as *mut xmlRegTrans;
-                    if !((*t1).atom).is_null() {
-                        if !((*t1).to == -(1 as i32)) {
+                while transnr < (unsafe { (*state).nbTrans }) {
+                    t1 = (unsafe { &mut *((*state).trans).offset(transnr as isize) }) as *mut xmlRegTrans;
+                    if !(unsafe { (*t1).atom }).is_null() {
+                        if !((unsafe { (*t1).to }) == -(1 as i32)) {
                             i = 0 as i32;
                             while i < transnr {
-                                t2 = Some(&mut *((*state).trans).offset(i as isize));
-                                if !((*(borrow(& t2)).unwrap()).to == -(1 as i32)) {
-                                    if !((*(borrow(& t2)).unwrap()).atom).is_null() {
-                                        if (*t1).to == (*(borrow(& t2)).unwrap()).to {
-                                            if xmlFAEqualAtoms((*t1).atom, (*(borrow_mut(&mut t2)).unwrap()).atom, deep) != 0
-                                                && (*t1).counter == (*(borrow(& t2)).unwrap()).counter
-                                                && (*t1).count == (*(borrow(& t2)).unwrap()).count
+                                t2 = Some(unsafe { &mut *((*state).trans).offset(i as isize) });
+                                if !((*(borrow(&t2)).unwrap()).to == -(1 as i32)) {
+                                    if !((*(borrow(&t2)).unwrap()).atom).is_null() {
+                                        if (unsafe { (*t1).to }) == (*(borrow(&t2)).unwrap()).to {
+                                            if xmlFAEqualAtoms(
+                                                unsafe { (*t1).atom },
+                                                (*(borrow_mut(&mut t2)).unwrap()).atom,
+                                                deep,
+                                            ) != 0
+                                                && (unsafe { (*t1).counter })
+                                                    == (*(borrow(&t2)).unwrap()).counter
+                                                && (unsafe { (*t1).count }) == (*(borrow(&t2)).unwrap()).count
                                             {
                                                 (*(borrow_mut(&mut t2)).unwrap()).to = -(1 as i32);
                                             }
@@ -4510,46 +4054,45 @@ unsafe extern "C" fn xmlFAComputesDeterminism(
         statenr += 1;
     }
     statenr = 0 as i32;
-    while statenr < (*ctxt).nbStates {
-        state = *((*ctxt).states).offset(statenr as isize);
+    while statenr < (unsafe { (*ctxt).nbStates }) {
+        state = unsafe { *((*ctxt).states).offset(statenr as isize) };
         if !state.is_null() {
-            if !((*state).nbTrans < 2 as i32) {
-                last = (0 as * mut crate::src::xmlregexp::_xmlRegTrans);
+            if !((unsafe { (*state).nbTrans }) < 2 as i32) {
+                last = 0 as *mut crate::src::xmlregexp::_xmlRegTrans;
                 transnr = 0 as i32;
-                while transnr < (*state).nbTrans {
-                    t1 = &mut *((*state).trans).offset(transnr as isize)
-                        as *mut xmlRegTrans;
-                    if !((*t1).atom).is_null() {
-                        if !((*t1).to == -(1 as i32)) {
+                while transnr < (unsafe { (*state).nbTrans }) {
+                    t1 = (unsafe { &mut *((*state).trans).offset(transnr as isize) }) as *mut xmlRegTrans;
+                    if !(unsafe { (*t1).atom }).is_null() {
+                        if !((unsafe { (*t1).to }) == -(1 as i32)) {
                             i = 0 as i32;
                             while i < transnr {
-                                t2 = Some(&mut *((*state).trans).offset(i as isize));
-                                if !((*(borrow(& t2)).unwrap()).to == -(1 as i32)) {
-                                    if !((*(borrow(& t2)).unwrap()).atom).is_null() {
+                                t2 = Some(unsafe { &mut *((*state).trans).offset(i as isize) });
+                                if !((*(borrow(&t2)).unwrap()).to == -(1 as i32)) {
+                                    if !((*(borrow(&t2)).unwrap()).atom).is_null() {
                                         if xmlFACompareAtoms(
-                                            (*t1).atom,
+                                            unsafe { (*t1).atom },
                                             (*(borrow_mut(&mut t2)).unwrap()).atom,
                                             1 as i32,
                                         ) != 0
                                         {
                                             ret = 0 as i32;
-                                            (*t1).nd = 1 as i32;
+                                            (unsafe { (*t1).nd = 1 as i32 });
                                             (*(borrow_mut(&mut t2)).unwrap()).nd = 1 as i32;
                                             last = t1;
                                         }
-                                    } else if (*t1).to != -(1 as i32) {
+                                    } else if (unsafe { (*t1).to }) != -(1 as i32) {
                                         ret = xmlFARecurseDeterminism(
                                             ctxt,
-                                            *((*ctxt).states).offset((*t1).to as isize),
+                                            unsafe { *((*ctxt).states).offset((*t1).to as isize) },
                                             (*(borrow_mut(&mut t2)).unwrap()).to,
                                             (*(borrow_mut(&mut t2)).unwrap()).atom,
                                         );
                                         xmlFAFinishRecurseDeterminism(
                                             ctxt,
-                                            *((*ctxt).states).offset((*t1).to as isize),
+                                            unsafe { *((*ctxt).states).offset((*t1).to as isize) },
                                         );
                                         if ret == 0 as i32 {
-                                            (*t1).nd = 1 as i32;
+                                            (unsafe { (*t1).nd = 1 as i32 });
                                             last = t1;
                                         }
                                     }
@@ -4561,22 +4104,22 @@ unsafe extern "C" fn xmlFAComputesDeterminism(
                     transnr += 1;
                 }
                 if !last.is_null() {
-                    (*last).nd = 2 as i32;
+                    (unsafe { (*last).nd = 2 as i32 });
                 }
             }
         }
         statenr += 1;
     }
-    (*ctxt).determinist = ret;
+    (unsafe { (*ctxt).determinist = ret });
     return ret;
 }
-unsafe extern "C" fn xmlRegCheckCharacterRange(
+extern "C" fn xmlRegCheckCharacterRange(
     mut type_0: u32,
     mut codepoint: i32,
     mut neg: i32,
     mut start: i32,
     mut end: i32,
-    mut blockName: * const u8,
+    mut blockName: *const u8,
 ) -> i32 {
     let mut ret: i32 = 0 as i32;
     let mut current_block_53: u64;
@@ -4585,197 +4128,197 @@ unsafe extern "C" fn xmlRegCheckCharacterRange(
         6 => {
             ret = (codepoint != '\n' as i32 && codepoint != '\r' as i32) as i32;
             current_block_53 = 3879520548144599102;
-        }
+        },
         2 => {
             ret = (codepoint >= start && codepoint <= end) as i32;
             current_block_53 = 3879520548144599102;
-        }
+        },
         8 => {
             neg = (neg == 0) as i32;
             current_block_53 = 1336241090893225463;
-        }
+        },
         7 => {
             current_block_53 = 1336241090893225463;
-        }
+        },
         10 => {
             neg = (neg == 0) as i32;
             current_block_53 = 465810355216019241;
-        }
+        },
         9 => {
             current_block_53 = 465810355216019241;
-        }
+        },
         12 => {
             neg = (neg == 0) as i32;
             current_block_53 = 10310224489676203593;
-        }
+        },
         11 => {
             current_block_53 = 10310224489676203593;
-        }
+        },
         14 => {
             neg = (neg == 0) as i32;
             current_block_53 = 7867894563361037860;
-        }
+        },
         13 => {
             current_block_53 = 7867894563361037860;
-        }
+        },
         15 => {
             neg = (neg == 0) as i32;
             current_block_53 = 4570984857387965468;
-        }
+        },
         16 => {
             current_block_53 = 4570984857387965468;
-        }
+        },
         100 => {
             ret = xmlUCSIsCatL(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         101 => {
             ret = xmlUCSIsCatLu(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         102 => {
             ret = xmlUCSIsCatLl(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         103 => {
             ret = xmlUCSIsCatLt(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         104 => {
             ret = xmlUCSIsCatLm(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         105 => {
             ret = xmlUCSIsCatLo(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         106 => {
             ret = xmlUCSIsCatM(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         107 => {
             ret = xmlUCSIsCatMn(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         108 => {
             ret = xmlUCSIsCatMc(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         109 => {
             ret = xmlUCSIsCatMe(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         110 => {
             ret = xmlUCSIsCatN(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         111 => {
             ret = xmlUCSIsCatNd(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         112 => {
             ret = xmlUCSIsCatNl(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         113 => {
             ret = xmlUCSIsCatNo(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         114 => {
             ret = xmlUCSIsCatP(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         115 => {
             ret = xmlUCSIsCatPc(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         116 => {
             ret = xmlUCSIsCatPd(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         117 => {
             ret = xmlUCSIsCatPs(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         118 => {
             ret = xmlUCSIsCatPe(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         119 => {
             ret = xmlUCSIsCatPi(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         120 => {
             ret = xmlUCSIsCatPf(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         121 => {
             ret = xmlUCSIsCatPo(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         122 => {
             ret = xmlUCSIsCatZ(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         123 => {
             ret = xmlUCSIsCatZs(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         124 => {
             ret = xmlUCSIsCatZl(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         125 => {
             ret = xmlUCSIsCatZp(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         126 => {
             ret = xmlUCSIsCatS(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         127 => {
             ret = xmlUCSIsCatSm(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         128 => {
             ret = xmlUCSIsCatSc(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         129 => {
             ret = xmlUCSIsCatSk(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         130 => {
             ret = xmlUCSIsCatSo(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         131 => {
             ret = xmlUCSIsCatC(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         132 => {
             ret = xmlUCSIsCatCc(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         133 => {
             ret = xmlUCSIsCatCf(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         134 => {
             ret = xmlUCSIsCatCo(codepoint);
             current_block_53 = 3879520548144599102;
-        }
+        },
         135 => {
             ret = 0 as i32;
             current_block_53 = 3879520548144599102;
-        }
+        },
         136 => {
             ret = xmlUCSIsBlock(codepoint, blockName as *const i8);
             current_block_53 = 3879520548144599102;
-        }
+        },
         _ => {
             current_block_53 = 3879520548144599102;
-        }
+        },
     }
     match current_block_53 {
         4570984857387965468 => {
@@ -4786,149 +4329,144 @@ unsafe extern "C" fn xmlRegCheckCharacterRange(
             if ret == 0 as i32 {
                 ret = xmlUCSIsCatC(codepoint);
             }
-        }
+        },
         1336241090893225463 => {
-            ret = (codepoint == '\n' as i32 || codepoint == '\r' as i32
-                || codepoint == '\t' as i32 || codepoint == ' ' as i32) as i32;
-        }
+            ret = (codepoint == '\n' as i32
+                || codepoint == '\r' as i32
+                || codepoint == '\t' as i32
+                || codepoint == ' ' as i32) as i32;
+        },
         465810355216019241 => {
             ret = ((if codepoint < 0x100 as i32 {
                 (0x41 as i32 <= codepoint && codepoint <= 0x5a as i32
-                    || 0x61 as i32 <= codepoint
-                        && codepoint <= 0x7a as i32
-                    || 0xc0 as i32 <= codepoint
-                        && codepoint <= 0xd6 as i32
-                    || 0xd8 as i32 <= codepoint
-                        && codepoint <= 0xf6 as i32
+                    || 0x61 as i32 <= codepoint && codepoint <= 0x7a as i32
+                    || 0xc0 as i32 <= codepoint && codepoint <= 0xd6 as i32
+                    || 0xd8 as i32 <= codepoint && codepoint <= 0xf6 as i32
                     || 0xf8 as i32 <= codepoint) as i32
             } else {
-                xmlCharInRange(codepoint as u32, &xmlIsBaseCharGroup)
+                unsafe { xmlCharInRange(codepoint as u32, &xmlIsBaseCharGroup) }
             }) != 0
                 || (if codepoint < 0x100 as i32 {
                     0 as i32
                 } else {
-                    (0x4e00 as i32 <= codepoint
-                        && codepoint <= 0x9fa5 as i32
+                    (0x4e00 as i32 <= codepoint && codepoint <= 0x9fa5 as i32
                         || codepoint == 0x3007 as i32
-                        || 0x3021 as i32 <= codepoint
-                            && codepoint <= 0x3029 as i32) as i32
-                }) != 0 || codepoint == '_' as i32 || codepoint == ':' as i32)
-                as i32;
-        }
+                        || 0x3021 as i32 <= codepoint && codepoint <= 0x3029 as i32)
+                        as i32
+                }) != 0
+                || codepoint == '_' as i32
+                || codepoint == ':' as i32) as i32;
+        },
         10310224489676203593 => {
             ret = ((if codepoint < 0x100 as i32 {
                 (0x41 as i32 <= codepoint && codepoint <= 0x5a as i32
-                    || 0x61 as i32 <= codepoint
-                        && codepoint <= 0x7a as i32
-                    || 0xc0 as i32 <= codepoint
-                        && codepoint <= 0xd6 as i32
-                    || 0xd8 as i32 <= codepoint
-                        && codepoint <= 0xf6 as i32
+                    || 0x61 as i32 <= codepoint && codepoint <= 0x7a as i32
+                    || 0xc0 as i32 <= codepoint && codepoint <= 0xd6 as i32
+                    || 0xd8 as i32 <= codepoint && codepoint <= 0xf6 as i32
                     || 0xf8 as i32 <= codepoint) as i32
             } else {
-                xmlCharInRange(codepoint as u32, &xmlIsBaseCharGroup)
+                unsafe { xmlCharInRange(codepoint as u32, &xmlIsBaseCharGroup) }
             }) != 0
                 || (if codepoint < 0x100 as i32 {
                     0 as i32
                 } else {
-                    (0x4e00 as i32 <= codepoint
-                        && codepoint <= 0x9fa5 as i32
+                    (0x4e00 as i32 <= codepoint && codepoint <= 0x9fa5 as i32
                         || codepoint == 0x3007 as i32
-                        || 0x3021 as i32 <= codepoint
-                            && codepoint <= 0x3029 as i32) as i32
+                        || 0x3021 as i32 <= codepoint && codepoint <= 0x3029 as i32)
+                        as i32
                 }) != 0
                 || (if codepoint < 0x100 as i32 {
-                    (0x30 as i32 <= codepoint
-                        && codepoint <= 0x39 as i32) as i32
+                    (0x30 as i32 <= codepoint && codepoint <= 0x39 as i32) as i32
                 } else {
-                    xmlCharInRange(codepoint as u32, &xmlIsDigitGroup)
-                }) != 0 || codepoint == '.' as i32 || codepoint == '-' as i32
-                || codepoint == '_' as i32 || codepoint == ':' as i32
+                    unsafe { xmlCharInRange(codepoint as u32, &xmlIsDigitGroup) }
+                }) != 0
+                || codepoint == '.' as i32
+                || codepoint == '-' as i32
+                || codepoint == '_' as i32
+                || codepoint == ':' as i32
                 || (if codepoint < 0x100 as i32 {
                     0 as i32
                 } else {
-                    xmlCharInRange(codepoint as u32, &xmlIsCombiningGroup)
+                    unsafe { xmlCharInRange(codepoint as u32, &xmlIsCombiningGroup) }
                 }) != 0
                 || (if codepoint < 0x100 as i32 {
                     (codepoint == 0xb7 as i32) as i32
                 } else {
-                    xmlCharInRange(codepoint as u32, &xmlIsExtenderGroup)
+                    unsafe { xmlCharInRange(codepoint as u32, &xmlIsExtenderGroup) }
                 }) != 0) as i32;
-        }
+        },
         7867894563361037860 => {
             ret = xmlUCSIsCatNd(codepoint);
-        }
-        _ => {}
+        },
+        _ => {},
     }
     if neg != 0 {
         return (ret == 0) as i32;
     }
     return ret;
 }
-unsafe extern "C" fn xmlRegCheckCharacter(
-    mut atom: * mut crate::src::xmlregexp::_xmlRegAtom,
+extern "C" fn xmlRegCheckCharacter(
+    mut atom: *mut crate::src::xmlregexp::_xmlRegAtom,
     mut codepoint: i32,
 ) -> i32 {
     let mut i: i32 = 0;
     let mut ret: i32 = 0 as i32;
-    let mut range: * mut crate::src::xmlregexp::_xmlRegRange = 0 as *mut xmlRegRange;
+    let mut range: *mut crate::src::xmlregexp::_xmlRegRange = 0 as *mut xmlRegRange;
     if atom.is_null()
         || (if codepoint < 0x100 as i32 {
             (0x9 as i32 <= codepoint && codepoint <= 0xa as i32
-                || codepoint == 0xd as i32 || 0x20 as i32 <= codepoint)
-                as i32
+                || codepoint == 0xd as i32
+                || 0x20 as i32 <= codepoint) as i32
         } else {
             (0x100 as i32 <= codepoint && codepoint <= 0xd7ff as i32
-                || 0xe000 as i32 <= codepoint
-                    && codepoint <= 0xfffd as i32
-                || 0x10000 as i32 <= codepoint
-                    && codepoint <= 0x10ffff as i32) as i32
+                || 0xe000 as i32 <= codepoint && codepoint <= 0xfffd as i32
+                || 0x10000 as i32 <= codepoint && codepoint <= 0x10ffff as i32) as i32
         }) == 0
     {
         return -(1 as i32);
     }
-    match (*atom).type_0 as u32 {
+    match (unsafe { (*atom).type_0 }) as u32 {
         4 | 1 => return -(1 as i32),
-        2 => return (codepoint == (*atom).codepoint) as i32,
+        2 => return (codepoint == (unsafe { (*atom).codepoint })) as i32,
         3 => {
             let mut accept: i32 = 0 as i32;
             i = 0 as i32;
-            while i < (*atom).nbRanges {
-                range = *((*atom).ranges).offset(i as isize);
-                if (*range).neg == 2 as i32 {
+            while i < (unsafe { (*atom).nbRanges }) {
+                range = unsafe { *((*atom).ranges).offset(i as isize) };
+                if (unsafe { (*range).neg }) == 2 as i32 {
                     ret = xmlRegCheckCharacterRange(
-                        (*range).type_0,
+                        unsafe { (*range).type_0 },
                         codepoint,
                         0 as i32,
-                        (*range).start,
-                        (*range).end,
-                        (*range).blockName,
+                        unsafe { (*range).start },
+                        unsafe { (*range).end },
+                        unsafe { (*range).blockName },
                     );
                     if ret != 0 as i32 {
                         return 0 as i32;
                     }
-                } else if (*range).neg != 0 {
+                } else if (unsafe { (*range).neg }) != 0 {
                     ret = xmlRegCheckCharacterRange(
-                        (*range).type_0,
+                        unsafe { (*range).type_0 },
                         codepoint,
                         0 as i32,
-                        (*range).start,
-                        (*range).end,
-                        (*range).blockName,
+                        unsafe { (*range).start },
+                        unsafe { (*range).end },
+                        unsafe { (*range).blockName },
                     );
                     if ret == 0 as i32 {
                         accept = 1 as i32;
                     } else {
-                        return 0 as i32
+                        return 0 as i32;
                     }
                 } else {
                     ret = xmlRegCheckCharacterRange(
-                        (*range).type_0,
+                        unsafe { (*range).type_0 },
                         codepoint,
                         0 as i32,
-                        (*range).start,
-                        (*range).end,
-                        (*range).blockName,
+                        unsafe { (*range).start },
+                        unsafe { (*range).end },
+                        unsafe { (*range).blockName },
                     );
                     if ret != 0 as i32 {
                         accept = 1 as i32;
@@ -4937,177 +4475,149 @@ unsafe extern "C" fn xmlRegCheckCharacter(
                 i += 1;
             }
             return accept;
-        }
+        },
         5 => {
-            printf(b"TODO: XML_REGEXP_STRING\n\0" as *const u8 as *const i8);
+            (unsafe { printf(b"TODO: XML_REGEXP_STRING\n\0" as *const u8 as *const i8) });
             return -(1 as i32);
-        }
-        6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 100 | 101 | 102 | 103 | 104
-        | 105 | 106 | 107 | 108 | 109 | 110 | 111 | 112 | 113 | 114 | 115 | 116 | 117
-        | 118 | 119 | 120 | 121 | 122 | 123 | 124 | 125 | 126 | 127 | 128 | 129 | 130
-        | 131 | 132 | 133 | 134 | 135 | 136 => {
+        },
+        6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 100 | 101 | 102 | 103 | 104 | 105
+        | 106 | 107 | 108 | 109 | 110 | 111 | 112 | 113 | 114 | 115 | 116 | 117 | 118 | 119
+        | 120 | 121 | 122 | 123 | 124 | 125 | 126 | 127 | 128 | 129 | 130 | 131 | 132 | 133
+        | 134 | 135 | 136 => {
             ret = xmlRegCheckCharacterRange(
-                (*atom).type_0,
+                unsafe { (*atom).type_0 },
                 codepoint,
                 0 as i32,
                 0 as i32,
                 0 as i32,
-                (*atom).valuep as *const xmlChar,
+                (unsafe { (*atom).valuep }) as *const xmlChar,
             );
-            if (*atom).neg != 0 {
+            if (unsafe { (*atom).neg }) != 0 {
                 ret = (ret == 0) as i32;
             }
-        }
-        _ => {}
+        },
+        _ => {},
     }
     return ret;
 }
-unsafe extern "C" fn xmlFARegExecSave(mut exec: * mut crate::src::xmlregexp::_xmlRegExecCtxt) {
-    if (*exec).nbPush > 10000000 as i32 {
+extern "C" fn xmlFARegExecSave(mut exec: *mut crate::src::xmlregexp::_xmlRegExecCtxt) {
+    if (unsafe { (*exec).nbPush }) > 10000000 as i32 {
         return;
     }
-    let ref mut fresh56 = (*exec).nbPush;
+    let fresh56 = unsafe { &mut ((*exec).nbPush) };
     *fresh56 += 1;
-    if (*exec).maxRollbacks == 0 as i32 {
-        (*exec).maxRollbacks = 4 as i32;
-        let ref mut fresh57 = (*exec).rollbacks;
-        *fresh57 = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(
+    if (unsafe { (*exec).maxRollbacks }) == 0 as i32 {
+        (unsafe { (*exec).maxRollbacks = 4 as i32 });
+        let fresh57 = unsafe { &mut ((*exec).rollbacks) };
+        *fresh57 = (unsafe { xmlMalloc.expect("non-null function pointer")(
             ((*exec).maxRollbacks as u64)
-                .wrapping_mul(
-                    ::std::mem::size_of::<xmlRegExecRollback>() as u64,
-                ),
-        ) as *mut xmlRegExecRollback;
-        if ((*exec).rollbacks).is_null() {
+                .wrapping_mul(::std::mem::size_of::<xmlRegExecRollback>() as u64),
+        ) }) as *mut xmlRegExecRollback;
+        if (unsafe { (*exec).rollbacks }).is_null() {
             xmlRegexpErrMemory(
                 0 as xmlRegParserCtxtPtr,
                 b"saving regexp\0" as *const u8 as *const i8,
             );
-            (*exec).maxRollbacks = 0 as i32;
+            (unsafe { (*exec).maxRollbacks = 0 as i32 });
             return;
         }
-        memset(
+        (unsafe { memset(
             (*exec).rollbacks as *mut libc::c_void,
             0 as i32,
             ((*exec).maxRollbacks as u64)
-                .wrapping_mul(
-                    ::std::mem::size_of::<xmlRegExecRollback>() as u64,
-                ),
-        );
-    } else if (*exec).nbRollbacks >= (*exec).maxRollbacks {
-        let mut tmp: * mut crate::src::xmlregexp::_xmlRegExecRollback = 0 as *mut xmlRegExecRollback;
-        let mut len: i32 = (*exec).maxRollbacks;
-        (*exec).maxRollbacks *= 2 as i32;
-        tmp = xmlRealloc
-            .expect(
-                "non-null function pointer",
-            )(
+                .wrapping_mul(::std::mem::size_of::<xmlRegExecRollback>() as u64),
+        ) });
+    } else if (unsafe { (*exec).nbRollbacks }) >= (unsafe { (*exec).maxRollbacks }) {
+        let mut tmp: *mut crate::src::xmlregexp::_xmlRegExecRollback = 0 as *mut xmlRegExecRollback;
+        let mut len: i32 = unsafe { (*exec).maxRollbacks };
+        (unsafe { (*exec).maxRollbacks *= 2 as i32 });
+        tmp = (unsafe { xmlRealloc.expect("non-null function pointer")(
             (*exec).rollbacks as *mut libc::c_void,
             ((*exec).maxRollbacks as u64)
-                .wrapping_mul(
-                    ::std::mem::size_of::<xmlRegExecRollback>() as u64,
-                ),
-        ) as *mut xmlRegExecRollback;
+                .wrapping_mul(::std::mem::size_of::<xmlRegExecRollback>() as u64),
+        ) }) as *mut xmlRegExecRollback;
         if tmp.is_null() {
             xmlRegexpErrMemory(
                 0 as xmlRegParserCtxtPtr,
                 b"saving regexp\0" as *const u8 as *const i8,
             );
-            (*exec).maxRollbacks /= 2 as i32;
+            (unsafe { (*exec).maxRollbacks /= 2 as i32 });
             return;
         }
-        let ref mut fresh58 = (*exec).rollbacks;
+        let fresh58 = unsafe { &mut ((*exec).rollbacks) };
         *fresh58 = tmp;
-        tmp = &mut *((*exec).rollbacks).offset(len as isize) as *mut xmlRegExecRollback;
-        memset(
+        tmp = (unsafe { &mut *((*exec).rollbacks).offset(len as isize) }) as *mut xmlRegExecRollback;
+        (unsafe { memset(
             tmp as *mut libc::c_void,
             0 as i32,
             (((*exec).maxRollbacks - len) as u64)
-                .wrapping_mul(
-                    ::std::mem::size_of::<xmlRegExecRollback>() as u64,
-                ),
-        );
+                .wrapping_mul(::std::mem::size_of::<xmlRegExecRollback>() as u64),
+        ) });
     }
-    let ref mut fresh59 = (*((*exec).rollbacks).offset((*exec).nbRollbacks as isize))
-        .state;
-    *fresh59 = (*exec).state;
-    (*((*exec).rollbacks).offset((*exec).nbRollbacks as isize)).index = (*exec).index;
-    (*((*exec).rollbacks).offset((*exec).nbRollbacks as isize))
-        .nextbranch = (*exec).transno + 1 as i32;
-    if (*(*exec).comp).nbCounters > 0 as i32 {
-        if ((*((*exec).rollbacks).offset((*exec).nbRollbacks as isize)).counts).is_null()
-        {
-            let ref mut fresh60 = (*((*exec).rollbacks)
-                .offset((*exec).nbRollbacks as isize))
-                .counts;
-            *fresh60 = xmlMalloc
-                .expect(
-                    "non-null function pointer",
-                )(
+    let fresh59 = unsafe { &mut ((*((*exec).rollbacks).offset((*exec).nbRollbacks as isize)).state) };
+    *fresh59 = unsafe { (*exec).state };
+    (unsafe { (*((*exec).rollbacks).offset((*exec).nbRollbacks as isize)).index = (*exec).index });
+    (unsafe { (*((*exec).rollbacks).offset((*exec).nbRollbacks as isize)).nextbranch =
+        (*exec).transno + 1 as i32 });
+    if (unsafe { (*(*exec).comp).nbCounters }) > 0 as i32 {
+        if (unsafe { (*((*exec).rollbacks).offset((*exec).nbRollbacks as isize)).counts }).is_null() {
+            let fresh60 = unsafe { &mut ((*((*exec).rollbacks).offset((*exec).nbRollbacks as isize)).counts) };
+            *fresh60 = (unsafe { xmlMalloc.expect("non-null function pointer")(
                 ((*(*exec).comp).nbCounters as u64)
                     .wrapping_mul(::std::mem::size_of::<i32>() as u64),
-            ) as *mut i32;
-            if ((*((*exec).rollbacks).offset((*exec).nbRollbacks as isize)).counts)
-                .is_null()
-            {
+            ) }) as *mut i32;
+            if (unsafe { (*((*exec).rollbacks).offset((*exec).nbRollbacks as isize)).counts }).is_null() {
                 xmlRegexpErrMemory(
                     0 as xmlRegParserCtxtPtr,
                     b"saving regexp\0" as *const u8 as *const i8,
                 );
-                (*exec).status = -(5 as i32);
+                (unsafe { (*exec).status = -(5 as i32) });
                 return;
             }
         }
-        memcpy(
-            (*((*exec).rollbacks).offset((*exec).nbRollbacks as isize)).counts
-                as *mut libc::c_void,
+        (unsafe { memcpy(
+            (*((*exec).rollbacks).offset((*exec).nbRollbacks as isize)).counts as *mut libc::c_void,
             (*exec).counts as *const libc::c_void,
-            ((*(*exec).comp).nbCounters as u64)
-                .wrapping_mul(::std::mem::size_of::<i32>() as u64),
-        );
+            ((*(*exec).comp).nbCounters as u64).wrapping_mul(::std::mem::size_of::<i32>() as u64),
+        ) });
     }
-    let ref mut fresh61 = (*exec).nbRollbacks;
+    let fresh61 = unsafe { &mut ((*exec).nbRollbacks) };
     *fresh61 += 1;
 }
-unsafe extern "C" fn xmlFARegExecRollBack(mut exec: * mut crate::src::xmlregexp::_xmlRegExecCtxt) {
-    if (*exec).nbRollbacks <= 0 as i32 {
-        (*exec).status = -(1 as i32);
+extern "C" fn xmlFARegExecRollBack(mut exec: *mut crate::src::xmlregexp::_xmlRegExecCtxt) {
+    if (unsafe { (*exec).nbRollbacks }) <= 0 as i32 {
+        (unsafe { (*exec).status = -(1 as i32) });
         return;
     }
-    let ref mut fresh62 = (*exec).nbRollbacks;
+    let fresh62 = unsafe { &mut ((*exec).nbRollbacks) };
     *fresh62 -= 1;
-    let ref mut fresh63 = (*exec).state;
-    *fresh63 = (*((*exec).rollbacks).offset((*exec).nbRollbacks as isize)).state;
-    (*exec).index = (*((*exec).rollbacks).offset((*exec).nbRollbacks as isize)).index;
-    (*exec)
-        .transno = (*((*exec).rollbacks).offset((*exec).nbRollbacks as isize))
-        .nextbranch;
-    if (*(*exec).comp).nbCounters > 0 as i32 {
-        if ((*((*exec).rollbacks).offset((*exec).nbRollbacks as isize)).counts).is_null()
-        {
-            fprintf(
+    let fresh63 = unsafe { &mut ((*exec).state) };
+    *fresh63 = unsafe { (*((*exec).rollbacks).offset((*exec).nbRollbacks as isize)).state };
+    (unsafe { (*exec).index = (*((*exec).rollbacks).offset((*exec).nbRollbacks as isize)).index });
+    (unsafe { (*exec).transno = (*((*exec).rollbacks).offset((*exec).nbRollbacks as isize)).nextbranch });
+    if (unsafe { (*(*exec).comp).nbCounters }) > 0 as i32 {
+        if (unsafe { (*((*exec).rollbacks).offset((*exec).nbRollbacks as isize)).counts }).is_null() {
+            (unsafe { fprintf(
                 stderr,
                 b"exec save: allocation failed\0" as *const u8 as *const i8,
-            );
-            (*exec).status = -(6 as i32);
+            ) });
+            (unsafe { (*exec).status = -(6 as i32) });
             return;
         }
-        if !((*exec).counts).is_null() {
-            memcpy(
+        if !(unsafe { (*exec).counts }).is_null() {
+            (unsafe { memcpy(
                 (*exec).counts as *mut libc::c_void,
                 (*((*exec).rollbacks).offset((*exec).nbRollbacks as isize)).counts
                     as *const libc::c_void,
                 ((*(*exec).comp).nbCounters as u64)
                     .wrapping_mul(::std::mem::size_of::<i32>() as u64),
-            );
+            ) });
         }
     }
 }
-unsafe extern "C" fn xmlFARegExec(
-    mut comp: * mut crate::src::xmlregexp::_xmlRegexp,
-    mut content: * const u8,
+extern "C" fn xmlFARegExec(
+    mut comp: *mut crate::src::xmlregexp::_xmlRegexp,
+    mut content: *const u8,
 ) -> i32 {
     let mut current_block: u64;
     let mut execval: crate::src::xmlregexp::_xmlRegExecCtxt = xmlRegExecCtxt {
@@ -5135,76 +4645,69 @@ unsafe extern "C" fn xmlFARegExec(
         errCounts: 0 as *mut i32,
         nbPush: 0,
     };
-    let mut exec: * mut crate::src::xmlregexp::_xmlRegExecCtxt = &mut execval;
+    let mut exec: *mut crate::src::xmlregexp::_xmlRegExecCtxt = &mut execval;
     let mut ret: i32 = 0;
     let mut codepoint: i32 = 0 as i32;
     let mut len: i32 = 0;
     let mut deter: i32 = 0;
-    let ref mut fresh64 = (*exec).inputString;
+    let fresh64 = unsafe { &mut ((*exec).inputString) };
     *fresh64 = content;
-    (*exec).index = 0 as i32;
-    (*exec).nbPush = 0 as i32;
-    (*exec).determinist = 1 as i32;
-    (*exec).maxRollbacks = 0 as i32;
-    (*exec).nbRollbacks = 0 as i32;
-    let ref mut fresh65 = (*exec).rollbacks;
+    (unsafe { (*exec).index = 0 as i32 });
+    (unsafe { (*exec).nbPush = 0 as i32 });
+    (unsafe { (*exec).determinist = 1 as i32 });
+    (unsafe { (*exec).maxRollbacks = 0 as i32 });
+    (unsafe { (*exec).nbRollbacks = 0 as i32 });
+    let fresh65 = unsafe { &mut ((*exec).rollbacks) };
     *fresh65 = 0 as *mut xmlRegExecRollback;
-    (*exec).status = 0 as i32;
-    let ref mut fresh66 = (*exec).comp;
+    (unsafe { (*exec).status = 0 as i32 });
+    let fresh66 = unsafe { &mut ((*exec).comp) };
     *fresh66 = comp;
-    let ref mut fresh67 = (*exec).state;
-    *fresh67 = *((*comp).states).offset(0 as i32 as isize);
-    (*exec).transno = 0 as i32;
-    (*exec).transcount = 0 as i32;
-    let ref mut fresh68 = (*exec).inputStack;
+    let fresh67 = unsafe { &mut ((*exec).state) };
+    *fresh67 = unsafe { *((*comp).states).offset(0 as i32 as isize) };
+    (unsafe { (*exec).transno = 0 as i32 });
+    (unsafe { (*exec).transcount = 0 as i32 });
+    let fresh68 = unsafe { &mut ((*exec).inputStack) };
     *fresh68 = 0 as xmlRegInputTokenPtr;
-    (*exec).inputStackMax = 0 as i32;
-    if (*comp).nbCounters > 0 as i32 {
-        let ref mut fresh69 = (*exec).counts;
-        *fresh69 = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(
-            ((*comp).nbCounters as u64)
-                .wrapping_mul(::std::mem::size_of::<i32>() as u64),
-        ) as *mut i32;
-        if ((*exec).counts).is_null() {
+    (unsafe { (*exec).inputStackMax = 0 as i32 });
+    if (unsafe { (*comp).nbCounters }) > 0 as i32 {
+        let fresh69 = unsafe { &mut ((*exec).counts) };
+        *fresh69 = (unsafe { xmlMalloc.expect("non-null function pointer")(
+            ((*comp).nbCounters as u64).wrapping_mul(::std::mem::size_of::<i32>() as u64),
+        ) }) as *mut i32;
+        if (unsafe { (*exec).counts }).is_null() {
             xmlRegexpErrMemory(
                 0 as xmlRegParserCtxtPtr,
                 b"running regexp\0" as *const u8 as *const i8,
             );
             return -(1 as i32);
         }
-        memset(
+        (unsafe { memset(
             (*exec).counts as *mut libc::c_void,
             0 as i32,
-            ((*comp).nbCounters as u64)
-                .wrapping_mul(::std::mem::size_of::<i32>() as u64),
-        );
+            ((*comp).nbCounters as u64).wrapping_mul(::std::mem::size_of::<i32>() as u64),
+        ) });
     } else {
-        let ref mut fresh70 = (*exec).counts;
+        let fresh70 = unsafe { &mut ((*exec).counts) };
         *fresh70 = 0 as *mut i32;
     }
-    's_105: while (*exec).status == 0 as i32 && !((*exec).state).is_null()
-        && (*((*exec).inputString).offset((*exec).index as isize) as i32
-            != 0 as i32
-            || !((*exec).state).is_null()
-                && (*(*exec).state).type_0 as u32
-                    != XML_REGEXP_FINAL_STATE as i32 as u32)
+    's_105: while (unsafe { (*exec).status }) == 0 as i32
+        && !(unsafe { (*exec).state }).is_null()
+        && ((unsafe { *((*exec).inputString).offset((*exec).index as isize) }) as i32 != 0 as i32
+            || !(unsafe { (*exec).state }).is_null()
+                && (unsafe { (*(*exec).state).type_0 }) as u32 != XML_REGEXP_FINAL_STATE as i32 as u32)
     {
-        let mut trans: Option<&'_ mut crate::src::xmlregexp::_xmlRegTrans> = Option::<&'_ mut crate::src::xmlregexp::_xmlRegTrans>::None;
-        let mut atom: * mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
+        let mut trans: Option<&'_ mut crate::src::xmlregexp::_xmlRegTrans> =
+            Option::<&'_ mut crate::src::xmlregexp::_xmlRegTrans>::None;
+        let mut atom: *mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
         len = 1 as i32;
-        if *((*exec).inputString).offset((*exec).index as isize) as i32
-            == 0 as i32 && ((*exec).counts).is_null()
+        if (unsafe { *((*exec).inputString).offset((*exec).index as isize) }) as i32 == 0 as i32
+            && (unsafe { (*exec).counts }).is_null()
         {
-            if (*exec).transno < (*(*exec).state).nbTrans {
-                trans = Some(&mut *((*(*exec).state).trans).offset((*exec).transno as isize));
-                if (*(borrow(& trans)).unwrap()).to >= 0 as i32 {
+            if (unsafe { (*exec).transno }) < (unsafe { (*(*exec).state).nbTrans }) {
+                trans = Some(unsafe { &mut *((*(*exec).state).trans).offset((*exec).transno as isize) });
+                if (*(borrow(&trans)).unwrap()).to >= 0 as i32 {
                     atom = (*(borrow_mut(&mut trans)).unwrap()).atom;
-                    if !((*atom).min == 0 as i32
-                        && (*atom).max > 0 as i32)
-                    {
+                    if !((unsafe { (*atom).min }) == 0 as i32 && (unsafe { (*atom).max }) > 0 as i32) {
                         current_block = 17840493588698777309;
                     } else {
                         current_block = 17281240262373992796;
@@ -5220,70 +4723,80 @@ unsafe extern "C" fn xmlFARegExec(
         }
         match current_block {
             17281240262373992796 => {
-                (*exec).transcount = 0 as i32;
+                (unsafe { (*exec).transcount = 0 as i32 });
                 loop {
-                    if !((*exec).transno < (*(*exec).state).nbTrans) {
+                    if !((unsafe { (*exec).transno }) < (unsafe { (*(*exec).state).nbTrans })) {
                         current_block = 2872334340672008580;
                         break;
                     }
-                    trans = Some(&mut *((*(*exec).state).trans)
-                        .offset((*exec).transno as isize));
-                    if !((*(borrow(& trans)).unwrap()).to < 0 as i32) {
+                    trans = Some(unsafe { &mut *((*(*exec).state).trans).offset((*exec).transno as isize) });
+                    if !((*(borrow(&trans)).unwrap()).to < 0 as i32) {
                         atom = (*(borrow_mut(&mut trans)).unwrap()).atom;
                         ret = 0 as i32;
                         deter = 1 as i32;
-                        if (*(borrow(& trans)).unwrap()).count >= 0 as i32 {
+                        if (*(borrow(&trans)).unwrap()).count >= 0 as i32 {
                             let mut count: i32 = 0;
-                            let mut counter: Option<&'_ mut crate::src::xmlregexp::_xmlRegCounter> = Option::<&'_ mut crate::src::xmlregexp::_xmlRegCounter>::None;
-                            if ((*exec).counts).is_null() {
-                                (*exec).status = -(1 as i32);
+                            let mut counter: Option<&'_ mut crate::src::xmlregexp::_xmlRegCounter> =
+                                Option::<&'_ mut crate::src::xmlregexp::_xmlRegCounter>::None;
+                            if (unsafe { (*exec).counts }).is_null() {
+                                (unsafe { (*exec).status = -(1 as i32) });
                                 break 's_105;
                             } else {
-                                count = *((*exec).counts).offset((*(borrow(& trans)).unwrap()).count as isize);
-                                counter = Some(&mut *((*(*exec).comp).counters)
-                                    .offset((*(borrow(& trans)).unwrap()).count as isize));
-                                ret = (count >= (*(borrow(& counter)).unwrap()).min && count <= (*(borrow(& counter)).unwrap()).max)
+                                count = unsafe { *((*exec).counts)
+                                    .offset((*(borrow(&trans)).unwrap()).count as isize) };
+                                counter = Some(
+                                    unsafe { &mut *((*(*exec).comp).counters)
+                                        .offset((*(borrow(&trans)).unwrap()).count as isize) },
+                                );
+                                ret = (count >= (*(borrow(&counter)).unwrap()).min
+                                    && count <= (*(borrow(&counter)).unwrap()).max)
                                     as i32;
-                                if ret != 0 && (*(borrow(& counter)).unwrap()).min != (*(borrow(& counter)).unwrap()).max {
+                                if ret != 0
+                                    && (*(borrow(&counter)).unwrap()).min
+                                        != (*(borrow(&counter)).unwrap()).max
+                                {
                                     deter = 0 as i32;
                                 }
                             }
                             current_block = 14155412868135599428;
                         } else if atom.is_null() {
-                            fprintf(
+                            (unsafe { fprintf(
                                 stderr,
-                                b"epsilon transition left at runtime\n\0" as *const u8
-                                    as *const i8,
-                            );
-                            (*exec).status = -(2 as i32);
+                                b"epsilon transition left at runtime\n\0" as *const u8 as *const i8,
+                            ) });
+                            (unsafe { (*exec).status = -(2 as i32) });
                             current_block = 2872334340672008580;
                             break;
-                        } else if *((*exec).inputString).offset((*exec).index as isize)
-                                as i32 != 0 as i32
-                            {
-                            codepoint = xmlStringCurrentChar(
+                        } else if (unsafe { *((*exec).inputString).offset((*exec).index as isize) }) as i32
+                            != 0 as i32
+                        {
+                            codepoint = unsafe { xmlStringCurrentChar(
                                 0 as xmlParserCtxtPtr,
                                 &*((*exec).inputString).offset((*exec).index as isize),
                                 &mut len,
-                            );
+                            ) };
                             ret = xmlRegCheckCharacter(atom, codepoint);
-                            if ret == 1 as i32 && (*atom).min >= 0 as i32
-                                && (*atom).max > 0 as i32
+                            if ret == 1 as i32 && (unsafe { (*atom).min }) >= 0 as i32 && (unsafe { (*atom).max }) > 0 as i32
                             {
-                                let mut to: * mut crate::src::xmlregexp::_xmlAutomataState = *((*comp).states)
-                                    .offset((*(borrow(& trans)).unwrap()).to as isize);
-                                if (*(borrow(& trans)).unwrap()).counter >= 0 as i32 {
-                                    let mut counter_0: Option<&'_ mut crate::src::xmlregexp::_xmlRegCounter> = Option::<&'_ mut crate::src::xmlregexp::_xmlRegCounter>::None;
-                                    if ((*exec).counts).is_null() || ((*exec).comp).is_null()
-                                        || ((*(*exec).comp).counters).is_null()
+                                let mut to: *mut crate::src::xmlregexp::_xmlAutomataState =
+                                    unsafe { *((*comp).states)
+                                        .offset((*(borrow(&trans)).unwrap()).to as isize) };
+                                if (*(borrow(&trans)).unwrap()).counter >= 0 as i32 {
+                                    let mut counter_0 : Option < & '_ mut crate :: src :: xmlregexp :: _xmlRegCounter > = Option :: < & '_ mut crate :: src :: xmlregexp :: _xmlRegCounter > :: None ;
+                                    if (unsafe { (*exec).counts }).is_null()
+                                        || (unsafe { (*exec).comp }).is_null()
+                                        || (unsafe { (*(*exec).comp).counters }).is_null()
                                     {
-                                        (*exec).status = -(1 as i32);
+                                        (unsafe { (*exec).status = -(1 as i32) });
                                         break 's_105;
                                     } else {
-                                        counter_0 = Some(&mut *((*(*exec).comp).counters)
-                                            .offset((*(borrow(& trans)).unwrap()).counter as isize));
-                                        if *((*exec).counts).offset((*(borrow(& trans)).unwrap()).counter as isize)
-                                            >= (*(borrow(& counter_0)).unwrap()).max
+                                        counter_0 =
+                                            Some(unsafe { &mut *((*(*exec).comp).counters).offset(
+                                                (*(borrow(&trans)).unwrap()).counter as isize,
+                                            ) });
+                                        if (unsafe { *((*exec).counts)
+                                            .offset((*(borrow(&trans)).unwrap()).counter as isize) })
+                                            >= (*(borrow(&counter_0)).unwrap()).max
                                         {
                                             current_block = 17500079516916021833;
                                         } else {
@@ -5294,52 +4807,53 @@ unsafe extern "C" fn xmlFARegExec(
                                     current_block = 3546145585875536353;
                                 }
                                 match current_block {
-                                    17500079516916021833 => {}
+                                    17500079516916021833 => {},
                                     _ => {
-                                        if (*(*exec).state).nbTrans
-                                            > (*exec).transno + 1 as i32
-                                        {
+                                        if (unsafe { (*(*exec).state).nbTrans }) > (unsafe { (*exec).transno }) + 1 as i32 {
                                             xmlFARegExecSave(exec);
                                         }
-                                        if (*(borrow(& trans)).unwrap()).counter >= 0 as i32 {
-                                            let ref mut fresh71 = *((*exec).counts)
-                                                .offset((*(borrow(& trans)).unwrap()).counter as isize);
+                                        if (*(borrow(&trans)).unwrap()).counter >= 0 as i32 {
+                                            let fresh71 = unsafe { &mut (*((*exec).counts).offset(
+                                                (*(borrow(&trans)).unwrap()).counter as isize,
+                                            )) };
                                             *fresh71 += 1;
                                         }
-                                        (*exec).transcount = 1 as i32;
-                                        while !((*exec).transcount == (*atom).max) {
-                                            (*exec).index += len;
-                                            if *((*exec).inputString).offset((*exec).index as isize)
-                                                as i32 == 0 as i32
+                                        (unsafe { (*exec).transcount = 1 as i32 });
+                                        while !((unsafe { (*exec).transcount }) == (unsafe { (*atom).max })) {
+                                            (unsafe { (*exec).index += len });
+                                            if (unsafe { *((*exec).inputString).offset((*exec).index as isize) })
+                                                as i32
+                                                == 0 as i32
                                             {
-                                                (*exec).index -= len;
+                                                (unsafe { (*exec).index -= len });
                                                 break;
                                             } else {
-                                                if (*exec).transcount >= (*atom).min {
-                                                    let mut transno: i32 = (*exec).transno;
-                                                    let mut state: * mut crate::src::xmlregexp::_xmlAutomataState = (*exec).state;
-                                                    (*exec).transno = -(1 as i32);
-                                                    let ref mut fresh72 = (*exec).state;
+                                                if (unsafe { (*exec).transcount }) >= (unsafe { (*atom).min }) {
+                                                    let mut transno: i32 = unsafe { (*exec).transno };
+                                                    let mut state : * mut crate :: src :: xmlregexp :: _xmlAutomataState = unsafe { (* exec) . state } ;
+                                                    (unsafe { (*exec).transno = -(1 as i32) });
+                                                    let fresh72 = unsafe { &mut ((*exec).state) };
                                                     *fresh72 = to;
                                                     xmlFARegExecSave(exec);
-                                                    (*exec).transno = transno;
-                                                    let ref mut fresh73 = (*exec).state;
+                                                    (unsafe { (*exec).transno = transno });
+                                                    let fresh73 = unsafe { &mut ((*exec).state) };
                                                     *fresh73 = state;
                                                 }
-                                                codepoint = xmlStringCurrentChar(
+                                                codepoint = unsafe { xmlStringCurrentChar(
                                                     0 as xmlParserCtxtPtr,
-                                                    &*((*exec).inputString).offset((*exec).index as isize),
+                                                    &*((*exec).inputString)
+                                                        .offset((*exec).index as isize),
                                                     &mut len,
-                                                );
+                                                ) };
                                                 ret = xmlRegCheckCharacter(atom, codepoint);
-                                                let ref mut fresh74 = (*exec).transcount;
+                                                let fresh74 = unsafe { &mut ((*exec).transcount) };
                                                 *fresh74 += 1;
                                                 if !(ret == 1 as i32) {
                                                     break;
                                                 }
                                             }
                                         }
-                                        if (*exec).transcount < (*atom).min {
+                                        if (unsafe { (*exec).transcount }) < (unsafe { (*atom).min }) {
                                             ret = 0 as i32;
                                         }
                                         if ret < 0 as i32 {
@@ -5349,71 +4863,74 @@ unsafe extern "C" fn xmlFARegExec(
                                             current_block = 17840493588698777309;
                                             break;
                                         }
-                                        if (*(borrow(& trans)).unwrap()).counter >= 0 as i32 {
-                                            if ((*exec).counts).is_null() {
-                                                (*exec).status = -(1 as i32);
+                                        if (*(borrow(&trans)).unwrap()).counter >= 0 as i32 {
+                                            if (unsafe { (*exec).counts }).is_null() {
+                                                (unsafe { (*exec).status = -(1 as i32) });
                                                 break 's_105;
                                             } else {
-                                                let ref mut fresh75 = *((*exec).counts)
-                                                    .offset((*(borrow(& trans)).unwrap()).counter as isize);
+                                                let fresh75 = unsafe { &mut (*((*exec).counts).offset(
+                                                    (*(borrow(&trans)).unwrap()).counter as isize,
+                                                )) };
                                                 *fresh75 -= 1;
                                             }
                                             current_block = 14155412868135599428;
                                         } else {
                                             current_block = 14155412868135599428;
                                         }
-                                    }
+                                    },
                                 }
                             } else {
                                 if ret == 0 as i32
-                                    && (*atom).min == 0 as i32
-                                    && (*atom).max > 0 as i32
+                                    && (unsafe { (*atom).min }) == 0 as i32
+                                    && (unsafe { (*atom).max }) > 0 as i32
                                 {
-                                    (*exec).transcount = 1 as i32;
+                                    (unsafe { (*exec).transcount = 1 as i32 });
                                     len = 0 as i32;
                                     ret = 1 as i32;
                                 }
                                 current_block = 14155412868135599428;
                             }
                         } else {
-                            if (*atom).min == 0 as i32
-                                && (*atom).max > 0 as i32
-                            {
-                                (*exec).transcount = 1 as i32;
+                            if (unsafe { (*atom).min }) == 0 as i32 && (unsafe { (*atom).max }) > 0 as i32 {
+                                (unsafe { (*exec).transcount = 1 as i32 });
                                 len = 0 as i32;
                                 ret = 1 as i32;
                             }
                             current_block = 14155412868135599428;
                         }
                         match current_block {
-                            17500079516916021833 => {}
+                            17500079516916021833 => {},
                             _ => {
                                 if ret == 1 as i32 {
-                                    if (*(borrow(& trans)).unwrap()).nd == 1 as i32
-                                        || (*(borrow(& trans)).unwrap()).count >= 0 as i32
+                                    if (*(borrow(&trans)).unwrap()).nd == 1 as i32
+                                        || (*(borrow(&trans)).unwrap()).count >= 0 as i32
                                             && deter == 0 as i32
-                                            && (*(*exec).state).nbTrans
-                                                > (*exec).transno + 1 as i32
+                                            && (unsafe { (*(*exec).state).nbTrans }) > (unsafe { (*exec).transno }) + 1 as i32
                                     {
                                         xmlFARegExecSave(exec);
                                     }
-                                    if (*(borrow(& trans)).unwrap()).counter >= 0 as i32 {
-                                        let mut counter_1: Option<&'_ mut crate::src::xmlregexp::_xmlRegCounter> = Option::<&'_ mut crate::src::xmlregexp::_xmlRegCounter>::None;
-                                        if ((*exec).counts).is_null() || ((*exec).comp).is_null()
-                                            || ((*(*exec).comp).counters).is_null()
+                                    if (*(borrow(&trans)).unwrap()).counter >= 0 as i32 {
+                                        let mut counter_1 : Option < & '_ mut crate :: src :: xmlregexp :: _xmlRegCounter > = Option :: < & '_ mut crate :: src :: xmlregexp :: _xmlRegCounter > :: None ;
+                                        if (unsafe { (*exec).counts }).is_null()
+                                            || (unsafe { (*exec).comp }).is_null()
+                                            || (unsafe { (*(*exec).comp).counters }).is_null()
                                         {
-                                            (*exec).status = -(1 as i32);
+                                            (unsafe { (*exec).status = -(1 as i32) });
                                             break 's_105;
                                         } else {
-                                            counter_1 = Some(&mut *((*(*exec).comp).counters)
-                                                .offset((*(borrow(& trans)).unwrap()).counter as isize));
-                                            if *((*exec).counts).offset((*(borrow(& trans)).unwrap()).counter as isize)
-                                                >= (*(borrow(& counter_1)).unwrap()).max
+                                            counter_1 =
+                                                Some(unsafe { &mut *((*(*exec).comp).counters).offset(
+                                                    (*(borrow(&trans)).unwrap()).counter as isize,
+                                                ) });
+                                            if (unsafe { *((*exec).counts).offset(
+                                                (*(borrow(&trans)).unwrap()).counter as isize,
+                                            ) }) >= (*(borrow(&counter_1)).unwrap()).max
                                             {
                                                 current_block = 17500079516916021833;
                                             } else {
-                                                let ref mut fresh76 = *((*exec).counts)
-                                                    .offset((*(borrow(& trans)).unwrap()).counter as isize);
+                                                let fresh76 = unsafe { &mut (*((*exec).counts).offset(
+                                                    (*(borrow(&trans)).unwrap()).counter as isize,
+                                                )) };
                                                 *fresh76 += 1;
                                                 current_block = 11718254377427810743;
                                             }
@@ -5422,109 +4939,113 @@ unsafe extern "C" fn xmlFARegExec(
                                         current_block = 11718254377427810743;
                                     }
                                     match current_block {
-                                        17500079516916021833 => {}
+                                        17500079516916021833 => {},
                                         _ => {
-                                            if (*(borrow(& trans)).unwrap()).count >= 0 as i32
-                                                && (*(borrow(& trans)).unwrap()).count < 0x123456 as i32
+                                            if (*(borrow(&trans)).unwrap()).count >= 0 as i32
+                                                && (*(borrow(&trans)).unwrap()).count
+                                                    < 0x123456 as i32
                                             {
-                                                if ((*exec).counts).is_null() {
-                                                    (*exec).status = -(1 as i32);
+                                                if (unsafe { (*exec).counts }).is_null() {
+                                                    (unsafe { (*exec).status = -(1 as i32) });
                                                     break 's_105;
                                                 } else {
-                                                    *((*exec).counts)
-                                                        .offset((*(borrow(& trans)).unwrap()).count as isize) = 0 as i32;
+                                                    (unsafe { *((*exec).counts).offset(
+                                                        (*(borrow(&trans)).unwrap()).count as isize,
+                                                    ) = 0 as i32 });
                                                 }
                                             }
-                                            let ref mut fresh77 = (*exec).state;
-                                            *fresh77 = *((*comp).states).offset((*(borrow(& trans)).unwrap()).to as isize);
-                                            (*exec).transno = 0 as i32;
-                                            if !((*(borrow_mut(&mut trans)).unwrap()).atom).is_null() {
-                                                (*exec).index += len;
+                                            let fresh77 = unsafe { &mut ((*exec).state) };
+                                            *fresh77 = unsafe { *((*comp).states)
+                                                .offset((*(borrow(&trans)).unwrap()).to as isize) };
+                                            (unsafe { (*exec).transno = 0 as i32 });
+                                            if !((*(borrow_mut(&mut trans)).unwrap()).atom)
+                                                .is_null()
+                                            {
+                                                (unsafe { (*exec).index += len });
                                             }
                                             continue 's_105;
-                                        }
+                                        },
                                     }
                                 } else if ret < 0 as i32 {
-                                    (*exec).status = -(4 as i32);
+                                    (unsafe { (*exec).status = -(4 as i32) });
                                     current_block = 2872334340672008580;
                                     break;
                                 }
-                            }
+                            },
                         }
                     }
-                    let ref mut fresh78 = (*exec).transno;
+                    let fresh78 = unsafe { &mut ((*exec).transno) };
                     *fresh78 += 1;
                 }
                 match current_block {
-                    17840493588698777309 => {}
+                    17840493588698777309 => {},
                     _ => {
-                        if !((*exec).transno != 0 as i32
-                            || (*(*exec).state).nbTrans == 0 as i32)
-                        {
+                        if !((unsafe { (*exec).transno }) != 0 as i32 || (unsafe { (*(*exec).state).nbTrans }) == 0 as i32) {
                             continue;
                         }
-                    }
+                    },
                 }
-            }
-            _ => {}
+            },
+            _ => {},
         }
-        (*exec).determinist = 0 as i32;
+        (unsafe { (*exec).determinist = 0 as i32 });
         xmlFARegExecRollBack(exec);
     }
-    if !((*exec).rollbacks).is_null() {
-        if !((*exec).counts).is_null() {
+    if !(unsafe { (*exec).rollbacks }).is_null() {
+        if !(unsafe { (*exec).counts }).is_null() {
             let mut i: i32 = 0;
             i = 0 as i32;
-            while i < (*exec).maxRollbacks {
-                if !((*((*exec).rollbacks).offset(i as isize)).counts).is_null() {
-                    xmlFree
-                        .expect(
-                            "non-null function pointer",
-                        )(
-                        (*((*exec).rollbacks).offset(i as isize)).counts
-                            as *mut libc::c_void,
-                    );
+            while i < (unsafe { (*exec).maxRollbacks }) {
+                if !(unsafe { (*((*exec).rollbacks).offset(i as isize)).counts }).is_null() {
+                    (unsafe { xmlFree.expect("non-null function pointer")(
+                        (*((*exec).rollbacks).offset(i as isize)).counts as *mut libc::c_void,
+                    ) });
                 }
                 i += 1;
             }
         }
-        xmlFree
-            .expect("non-null function pointer")((*exec).rollbacks as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")((*exec).rollbacks as *mut libc::c_void) });
     }
-    if ((*exec).state).is_null() {
+    if (unsafe { (*exec).state }).is_null() {
         return -(1 as i32);
     }
-    if !((*exec).counts).is_null() {
-        xmlFree.expect("non-null function pointer")((*exec).counts as *mut libc::c_void);
+    if !(unsafe { (*exec).counts }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*exec).counts as *mut libc::c_void) });
     }
-    if (*exec).status == 0 as i32 {
+    if (unsafe { (*exec).status }) == 0 as i32 {
         return 1 as i32;
     }
-    if (*exec).status == -(1 as i32) {
-        if (*exec).nbPush > 10000000 as i32 {
+    if (unsafe { (*exec).status }) == -(1 as i32) {
+        if (unsafe { (*exec).nbPush }) > 10000000 as i32 {
             return -(1 as i32);
         }
         return 0 as i32;
     }
-    return (*exec).status;
+    return unsafe { (*exec).status };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRegNewExecCtxt(
-    mut comp: * mut crate::src::xmlregexp::_xmlRegexp,
-    mut callback: Option<unsafe extern "C"  fn(_: * mut crate::src::xmlregexp::_xmlRegExecCtxt,_: * const u8,_: * mut core::ffi::c_void,_: * mut core::ffi::c_void,) -> ()>,
-    mut data: * mut core::ffi::c_void,
-) -> * mut crate::src::xmlregexp::_xmlRegExecCtxt {
-    let mut exec: * mut crate::src::xmlregexp::_xmlRegExecCtxt = 0 as *mut xmlRegExecCtxt;
+pub extern "C" fn xmlRegNewExecCtxt(
+    mut comp: *mut crate::src::xmlregexp::_xmlRegexp,
+    mut callback: Option<
+        unsafe extern "C" fn(
+            _: *mut crate::src::xmlregexp::_xmlRegExecCtxt,
+            _: *const u8,
+            _: *mut core::ffi::c_void,
+            _: *mut core::ffi::c_void,
+        ) -> (),
+    >,
+    mut data: *mut core::ffi::c_void,
+) -> *mut crate::src::xmlregexp::_xmlRegExecCtxt {
+    let mut exec: *mut crate::src::xmlregexp::_xmlRegExecCtxt = 0 as *mut xmlRegExecCtxt;
     if comp.is_null() {
         return 0 as xmlRegExecCtxtPtr;
     }
-    if ((*comp).compact).is_null() && ((*comp).states).is_null() {
+    if (unsafe { (*comp).compact }).is_null() && (unsafe { (*comp).states }).is_null() {
         return 0 as xmlRegExecCtxtPtr;
     }
-    exec = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlRegExecCtxt>() as u64) as xmlRegExecCtxtPtr;
+    exec = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlRegExecCtxt>() as u64
+    ) }) as xmlRegExecCtxtPtr;
     if exec.is_null() {
         xmlRegexpErrMemory(
             0 as xmlRegParserCtxtPtr,
@@ -5532,194 +5053,164 @@ pub unsafe extern "C" fn xmlRegNewExecCtxt(
         );
         return 0 as xmlRegExecCtxtPtr;
     }
-    memset(
+    (unsafe { memset(
         exec as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlRegExecCtxt>() as u64,
-    );
-    let ref mut fresh79 = (*exec).inputString;
+    ) });
+    let fresh79 = unsafe { &mut ((*exec).inputString) };
     *fresh79 = 0 as *const xmlChar;
-    (*exec).index = 0 as i32;
-    (*exec).determinist = 1 as i32;
-    (*exec).maxRollbacks = 0 as i32;
-    (*exec).nbRollbacks = 0 as i32;
-    let ref mut fresh80 = (*exec).rollbacks;
+    (unsafe { (*exec).index = 0 as i32 });
+    (unsafe { (*exec).determinist = 1 as i32 });
+    (unsafe { (*exec).maxRollbacks = 0 as i32 });
+    (unsafe { (*exec).nbRollbacks = 0 as i32 });
+    let fresh80 = unsafe { &mut ((*exec).rollbacks) };
     *fresh80 = 0 as *mut xmlRegExecRollback;
-    (*exec).status = 0 as i32;
-    let ref mut fresh81 = (*exec).comp;
+    (unsafe { (*exec).status = 0 as i32 });
+    let fresh81 = unsafe { &mut ((*exec).comp) };
     *fresh81 = comp;
-    if ((*comp).compact).is_null() {
-        let ref mut fresh82 = (*exec).state;
-        *fresh82 = *((*comp).states).offset(0 as i32 as isize);
+    if (unsafe { (*comp).compact }).is_null() {
+        let fresh82 = unsafe { &mut ((*exec).state) };
+        *fresh82 = unsafe { *((*comp).states).offset(0 as i32 as isize) };
     }
-    (*exec).transno = 0 as i32;
-    (*exec).transcount = 0 as i32;
-    let ref mut fresh83 = (*exec).callback;
+    (unsafe { (*exec).transno = 0 as i32 });
+    (unsafe { (*exec).transcount = 0 as i32 });
+    let fresh83 = unsafe { &mut ((*exec).callback) };
     *fresh83 = callback;
-    let ref mut fresh84 = (*exec).data;
+    let fresh84 = unsafe { &mut ((*exec).data) };
     *fresh84 = data;
-    if (*comp).nbCounters > 0 as i32 {
-        let ref mut fresh85 = (*exec).counts;
-        *fresh85 = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(
+    if (unsafe { (*comp).nbCounters }) > 0 as i32 {
+        let fresh85 = unsafe { &mut ((*exec).counts) };
+        *fresh85 = (unsafe { xmlMalloc.expect("non-null function pointer")(
             ((*comp).nbCounters as u64)
                 .wrapping_mul(::std::mem::size_of::<i32>() as u64)
                 .wrapping_mul(2 as i32 as u64),
-        ) as *mut i32;
-        if ((*exec).counts).is_null() {
+        ) }) as *mut i32;
+        if (unsafe { (*exec).counts }).is_null() {
             xmlRegexpErrMemory(
                 0 as xmlRegParserCtxtPtr,
                 b"creating execution context\0" as *const u8 as *const i8,
             );
-            xmlFree.expect("non-null function pointer")(exec as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(exec as *mut libc::c_void) });
             return 0 as xmlRegExecCtxtPtr;
         }
-        memset(
+        (unsafe { memset(
             (*exec).counts as *mut libc::c_void,
             0 as i32,
             ((*comp).nbCounters as u64)
                 .wrapping_mul(::std::mem::size_of::<i32>() as u64)
                 .wrapping_mul(2 as i32 as u64),
-        );
-        let ref mut fresh86 = (*exec).errCounts;
-        *fresh86 = &mut *((*exec).counts).offset((*comp).nbCounters as isize)
-            as *mut i32;
+        ) });
+        let fresh86 = unsafe { &mut ((*exec).errCounts) };
+        *fresh86 = (unsafe { &mut *((*exec).counts).offset((*comp).nbCounters as isize) }) as *mut i32;
     } else {
-        let ref mut fresh87 = (*exec).counts;
+        let fresh87 = unsafe { &mut ((*exec).counts) };
         *fresh87 = 0 as *mut i32;
-        let ref mut fresh88 = (*exec).errCounts;
+        let fresh88 = unsafe { &mut ((*exec).errCounts) };
         *fresh88 = 0 as *mut i32;
     }
-    (*exec).inputStackMax = 0 as i32;
-    (*exec).inputStackNr = 0 as i32;
-    let ref mut fresh89 = (*exec).inputStack;
+    (unsafe { (*exec).inputStackMax = 0 as i32 });
+    (unsafe { (*exec).inputStackNr = 0 as i32 });
+    let fresh89 = unsafe { &mut ((*exec).inputStack) };
     *fresh89 = 0 as xmlRegInputTokenPtr;
-    (*exec).errStateNo = -(1 as i32);
-    let ref mut fresh90 = (*exec).errString;
+    (unsafe { (*exec).errStateNo = -(1 as i32) });
+    let fresh90 = unsafe { &mut ((*exec).errString) };
     *fresh90 = 0 as *mut xmlChar;
-    (*exec).nbPush = 0 as i32;
+    (unsafe { (*exec).nbPush = 0 as i32 });
     return exec;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRegFreeExecCtxt(mut exec: * mut crate::src::xmlregexp::_xmlRegExecCtxt) {
+pub extern "C" fn xmlRegFreeExecCtxt(mut exec: *mut crate::src::xmlregexp::_xmlRegExecCtxt) {
     if exec.is_null() {
         return;
     }
-    if !((*exec).rollbacks).is_null() {
-        if !((*exec).counts).is_null() {
+    if !(unsafe { (*exec).rollbacks }).is_null() {
+        if !(unsafe { (*exec).counts }).is_null() {
             let mut i: i32 = 0;
             i = 0 as i32;
-            while i < (*exec).maxRollbacks {
-                if !((*((*exec).rollbacks).offset(i as isize)).counts).is_null() {
-                    xmlFree
-                        .expect(
-                            "non-null function pointer",
-                        )(
-                        (*((*exec).rollbacks).offset(i as isize)).counts
-                            as *mut libc::c_void,
-                    );
+            while i < (unsafe { (*exec).maxRollbacks }) {
+                if !(unsafe { (*((*exec).rollbacks).offset(i as isize)).counts }).is_null() {
+                    (unsafe { xmlFree.expect("non-null function pointer")(
+                        (*((*exec).rollbacks).offset(i as isize)).counts as *mut libc::c_void,
+                    ) });
                 }
                 i += 1;
             }
         }
-        xmlFree
-            .expect("non-null function pointer")((*exec).rollbacks as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")((*exec).rollbacks as *mut libc::c_void) });
     }
-    if !((*exec).counts).is_null() {
-        xmlFree.expect("non-null function pointer")((*exec).counts as *mut libc::c_void);
+    if !(unsafe { (*exec).counts }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*exec).counts as *mut libc::c_void) });
     }
-    if !((*exec).inputStack).is_null() {
+    if !(unsafe { (*exec).inputStack }).is_null() {
         let mut i_0: i32 = 0;
         i_0 = 0 as i32;
-        while i_0 < (*exec).inputStackNr {
-            if !((*((*exec).inputStack).offset(i_0 as isize)).value).is_null() {
-                xmlFree
-                    .expect(
-                        "non-null function pointer",
-                    )(
-                    (*((*exec).inputStack).offset(i_0 as isize)).value
-                        as *mut libc::c_void,
-                );
+        while i_0 < (unsafe { (*exec).inputStackNr }) {
+            if !(unsafe { (*((*exec).inputStack).offset(i_0 as isize)).value }).is_null() {
+                (unsafe { xmlFree.expect("non-null function pointer")(
+                    (*((*exec).inputStack).offset(i_0 as isize)).value as *mut libc::c_void,
+                ) });
             }
             i_0 += 1;
         }
-        xmlFree
-            .expect(
-                "non-null function pointer",
-            )((*exec).inputStack as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")((*exec).inputStack as *mut libc::c_void) });
     }
-    if !((*exec).errString).is_null() {
-        xmlFree
-            .expect("non-null function pointer")((*exec).errString as *mut libc::c_void);
+    if !(unsafe { (*exec).errString }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*exec).errString as *mut libc::c_void) });
     }
-    xmlFree.expect("non-null function pointer")(exec as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(exec as *mut libc::c_void) });
 }
-unsafe extern "C" fn xmlFARegExecSaveInputString(
-    mut exec: * mut crate::src::xmlregexp::_xmlRegExecCtxt,
-    mut value: * const u8,
-    mut data: * mut core::ffi::c_void,
+extern "C" fn xmlFARegExecSaveInputString(
+    mut exec: *mut crate::src::xmlregexp::_xmlRegExecCtxt,
+    mut value: *const u8,
+    mut data: *mut core::ffi::c_void,
 ) {
-    if (*exec).inputStackMax == 0 as i32 {
-        (*exec).inputStackMax = 4 as i32;
-        let ref mut fresh91 = (*exec).inputStack;
-        *fresh91 = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(
+    if (unsafe { (*exec).inputStackMax }) == 0 as i32 {
+        (unsafe { (*exec).inputStackMax = 4 as i32 });
+        let fresh91 = unsafe { &mut ((*exec).inputStack) };
+        *fresh91 = (unsafe { xmlMalloc.expect("non-null function pointer")(
             ((*exec).inputStackMax as u64)
                 .wrapping_mul(::std::mem::size_of::<xmlRegInputToken>() as u64),
-        ) as xmlRegInputTokenPtr;
-        if ((*exec).inputStack).is_null() {
+        ) }) as xmlRegInputTokenPtr;
+        if (unsafe { (*exec).inputStack }).is_null() {
             xmlRegexpErrMemory(
                 0 as xmlRegParserCtxtPtr,
                 b"pushing input string\0" as *const u8 as *const i8,
             );
-            (*exec).inputStackMax = 0 as i32;
+            (unsafe { (*exec).inputStackMax = 0 as i32 });
             return;
         }
-    } else if (*exec).inputStackNr + 1 as i32 >= (*exec).inputStackMax {
-        let mut tmp: * mut crate::src::xmlregexp::_xmlRegInputToken = 0 as *mut xmlRegInputToken;
-        (*exec).inputStackMax *= 2 as i32;
-        tmp = xmlRealloc
-            .expect(
-                "non-null function pointer",
-            )(
+    } else if (unsafe { (*exec).inputStackNr }) + 1 as i32 >= (unsafe { (*exec).inputStackMax }) {
+        let mut tmp: *mut crate::src::xmlregexp::_xmlRegInputToken = 0 as *mut xmlRegInputToken;
+        (unsafe { (*exec).inputStackMax *= 2 as i32 });
+        tmp = (unsafe { xmlRealloc.expect("non-null function pointer")(
             (*exec).inputStack as *mut libc::c_void,
             ((*exec).inputStackMax as u64)
                 .wrapping_mul(::std::mem::size_of::<xmlRegInputToken>() as u64),
-        ) as xmlRegInputTokenPtr;
+        ) }) as xmlRegInputTokenPtr;
         if tmp.is_null() {
             xmlRegexpErrMemory(
                 0 as xmlRegParserCtxtPtr,
                 b"pushing input string\0" as *const u8 as *const i8,
             );
-            (*exec).inputStackMax /= 2 as i32;
+            (unsafe { (*exec).inputStackMax /= 2 as i32 });
             return;
         }
-        let ref mut fresh92 = (*exec).inputStack;
+        let fresh92 = unsafe { &mut ((*exec).inputStack) };
         *fresh92 = tmp;
     }
-    let ref mut fresh93 = (*((*exec).inputStack).offset((*exec).inputStackNr as isize))
-        .value;
+    let fresh93 = unsafe { &mut ((*((*exec).inputStack).offset((*exec).inputStackNr as isize)).value) };
     *fresh93 = xmlStrdup(value);
-    let ref mut fresh94 = (*((*exec).inputStack).offset((*exec).inputStackNr as isize))
-        .data;
+    let fresh94 = unsafe { &mut ((*((*exec).inputStack).offset((*exec).inputStackNr as isize)).data) };
     *fresh94 = data;
-    let ref mut fresh95 = (*exec).inputStackNr;
+    let fresh95 = unsafe { &mut ((*exec).inputStackNr) };
     *fresh95 += 1;
-    let ref mut fresh96 = (*((*exec).inputStack).offset((*exec).inputStackNr as isize))
-        .value;
+    let fresh96 = unsafe { &mut ((*((*exec).inputStack).offset((*exec).inputStackNr as isize)).value) };
     *fresh96 = 0 as *mut xmlChar;
-    let ref mut fresh97 = (*((*exec).inputStack).offset((*exec).inputStackNr as isize))
-        .data;
+    let fresh97 = unsafe { &mut ((*((*exec).inputStack).offset((*exec).inputStackNr as isize)).data) };
     *fresh97 = 0 as *mut libc::c_void;
 }
-unsafe extern "C" fn xmlRegStrEqualWildcard(
-    mut expStr: * const u8,
-    mut valStr: * const u8,
-) -> i32 {
+extern "C" fn xmlRegStrEqualWildcard(mut expStr: *const u8, mut valStr: *const u8) -> i32 {
     if expStr == valStr {
         return 1 as i32;
     }
@@ -5730,59 +5221,55 @@ unsafe extern "C" fn xmlRegStrEqualWildcard(
         return 0 as i32;
     }
     loop {
-        if *expStr as i32 != *valStr as i32 {
-            if *valStr as i32 == '*' as i32 {
-                let mut tmp: * const u8 = 0 as *const xmlChar;
+        if (unsafe { *expStr }) as i32 != (unsafe { *valStr }) as i32 {
+            if (unsafe { *valStr }) as i32 == '*' as i32 {
+                let mut tmp: *const u8 = 0 as *const xmlChar;
                 tmp = valStr;
                 valStr = expStr;
                 expStr = tmp;
             }
-            if *valStr as i32 != 0 as i32
-                && *expStr as i32 != 0 as i32
-                && {
-                    let mut fresh98 = expStr;
-                    expStr = expStr.offset(1);
-                    *fresh98 as i32 == '*' as i32
-                }
-            {
-                while !(*valStr as i32 == '|' as i32) {
-                    valStr = valStr.offset(1);
-                    if !(*valStr as i32 != 0 as i32) {
+            if (unsafe { *valStr }) as i32 != 0 as i32 && (unsafe { *expStr }) as i32 != 0 as i32 && {
+                let mut fresh98 = expStr;
+                expStr = unsafe { expStr.offset(1) };
+                (unsafe { *fresh98 }) as i32 == '*' as i32
+            } {
+                while !((unsafe { *valStr }) as i32 == '|' as i32) {
+                    valStr = unsafe { valStr.offset(1) };
+                    if !((unsafe { *valStr }) as i32 != 0 as i32) {
                         break;
                     }
                 }
             } else {
-                return 0 as i32
+                return 0 as i32;
             }
         } else {
-            expStr = expStr.offset(1);
-            valStr = valStr.offset(1);
+            expStr = unsafe { expStr.offset(1) };
+            valStr = unsafe { valStr.offset(1) };
         }
-        if !(*valStr as i32 != 0 as i32) {
+        if !((unsafe { *valStr }) as i32 != 0 as i32) {
             break;
         }
     }
-    if *expStr as i32 != 0 as i32 {
-        return 0 as i32
+    if (unsafe { *expStr }) as i32 != 0 as i32 {
+        return 0 as i32;
     } else {
-        return 1 as i32
+        return 1 as i32;
     };
 }
-unsafe extern "C" fn xmlRegCompactPushString(
-    mut exec: * mut crate::src::xmlregexp::_xmlRegExecCtxt,
-    mut comp: * mut crate::src::xmlregexp::_xmlRegexp,
-    mut value: * const u8,
-    mut data: * mut core::ffi::c_void,
+extern "C" fn xmlRegCompactPushString(
+    mut exec: *mut crate::src::xmlregexp::_xmlRegExecCtxt,
+    mut comp: *mut crate::src::xmlregexp::_xmlRegexp,
+    mut value: *const u8,
+    mut data: *mut core::ffi::c_void,
 ) -> i32 {
-    let mut state: i32 = (*exec).index;
+    let mut state: i32 = unsafe { (*exec).index };
     let mut i: i32 = 0;
     let mut target: i32 = 0;
-    if comp.is_null() || ((*comp).compact).is_null() || ((*comp).stringMap).is_null() {
+    if comp.is_null() || (unsafe { (*comp).compact }).is_null() || (unsafe { (*comp).stringMap }).is_null() {
         return -(1 as i32);
     }
     if value.is_null() {
-        if *((*comp).compact)
-            .offset((state * ((*comp).nbstrings + 1 as i32)) as isize)
+        if (unsafe { *((*comp).compact).offset((state * ((*comp).nbstrings + 1 as i32)) as isize) })
             == XML_REGEXP_FINAL_STATE as i32
         {
             return 1 as i32;
@@ -5790,38 +5277,27 @@ unsafe extern "C" fn xmlRegCompactPushString(
         return 0 as i32;
     }
     i = 0 as i32;
-    while i < (*comp).nbstrings {
-        target = *((*comp).compact)
-            .offset(
-                (state * ((*comp).nbstrings + 1 as i32) + i + 1 as i32)
-                    as isize,
-            );
-        if target > 0 as i32 && target <= (*comp).nbstates {
+    while i < (unsafe { (*comp).nbstrings }) {
+        target = unsafe { *((*comp).compact)
+            .offset((state * ((*comp).nbstrings + 1 as i32) + i + 1 as i32) as isize) };
+        if target > 0 as i32 && target <= (unsafe { (*comp).nbstates }) {
             target -= 1;
-            if xmlRegStrEqualWildcard(*((*comp).stringMap).offset(i as isize), value)
-                != 0
-            {
-                (*exec).index = target;
-                if ((*exec).callback).is_some() && !((*comp).transdata).is_null() {
-                    ((*exec).callback)
-                        .expect(
-                            "non-null function pointer",
-                        )(
+            if xmlRegStrEqualWildcard(unsafe { *((*comp).stringMap).offset(i as isize) }, value) != 0 {
+                (unsafe { (*exec).index = target });
+                if (unsafe { ((*exec).callback).is_some() }) && !(unsafe { (*comp).transdata }).is_null() {
+                    (unsafe { ((*exec).callback).expect("non-null function pointer")(
                         (*exec).data as xmlRegExecCtxtPtr,
                         value,
-                        *((*comp).transdata)
-                            .offset((state * (*comp).nbstrings + i) as isize),
+                        *((*comp).transdata).offset((state * (*comp).nbstrings + i) as isize),
                         data,
-                    );
+                    ) });
                 }
-                if *((*comp).compact)
-                    .offset((target * ((*comp).nbstrings + 1 as i32)) as isize)
+                if (unsafe { *((*comp).compact).offset((target * ((*comp).nbstrings + 1 as i32)) as isize) })
                     == XML_REGEXP_SINK_STATE as i32
                 {
                     break;
                 }
-                if *((*comp).compact)
-                    .offset((target * ((*comp).nbstrings + 1 as i32)) as isize)
+                if (unsafe { *((*comp).compact).offset((target * ((*comp).nbstrings + 1 as i32)) as isize) })
                     == XML_REGEXP_FINAL_STATE as i32
                 {
                     return 1 as i32;
@@ -5831,99 +5307,100 @@ unsafe extern "C" fn xmlRegCompactPushString(
         }
         i += 1;
     }
-    if !((*exec).errString).is_null() {
-        xmlFree
-            .expect("non-null function pointer")((*exec).errString as *mut libc::c_void);
+    if !(unsafe { (*exec).errString }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*exec).errString as *mut libc::c_void) });
     }
-    let ref mut fresh99 = (*exec).errString;
+    let fresh99 = unsafe { &mut ((*exec).errString) };
     *fresh99 = xmlStrdup(value);
-    (*exec).errStateNo = state;
-    (*exec).status = -(1 as i32);
+    (unsafe { (*exec).errStateNo = state });
+    (unsafe { (*exec).status = -(1 as i32) });
     return -(1 as i32);
 }
-unsafe extern "C" fn xmlRegExecPushStringInternal(
-    mut exec: * mut crate::src::xmlregexp::_xmlRegExecCtxt,
-    mut value: * const u8,
-    mut data: * mut core::ffi::c_void,
+extern "C" fn xmlRegExecPushStringInternal(
+    mut exec: *mut crate::src::xmlregexp::_xmlRegExecCtxt,
+    mut value: *const u8,
+    mut data: *mut core::ffi::c_void,
     mut compound: i32,
 ) -> i32 {
     let mut current_block: u64;
-    let mut trans: * mut crate::src::xmlregexp::_xmlRegTrans = 0 as *mut xmlRegTrans;
-    let mut atom: * mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
+    let mut trans: *mut crate::src::xmlregexp::_xmlRegTrans = 0 as *mut xmlRegTrans;
+    let mut atom: *mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
     let mut ret: i32 = 0;
     let mut final_0: i32 = 0 as i32;
     let mut progress: i32 = 1 as i32;
     if exec.is_null() {
         return -(1 as i32);
     }
-    if ((*exec).comp).is_null() {
+    if (unsafe { (*exec).comp }).is_null() {
         return -(1 as i32);
     }
-    if (*exec).status != 0 as i32 {
-        return (*exec).status;
+    if (unsafe { (*exec).status }) != 0 as i32 {
+        return unsafe { (*exec).status };
     }
-    if !((*(*exec).comp).compact).is_null() {
-        return xmlRegCompactPushString(exec, (*exec).comp, value, data);
+    if !(unsafe { (*(*exec).comp).compact }).is_null() {
+        return xmlRegCompactPushString(exec, unsafe { (*exec).comp }, value, data);
     }
     if value.is_null() {
-        if (*(*exec).state).type_0 as u32
-            == XML_REGEXP_FINAL_STATE as i32 as u32
-        {
+        if (unsafe { (*(*exec).state).type_0 }) as u32 == XML_REGEXP_FINAL_STATE as i32 as u32 {
             return 1 as i32;
         }
         final_0 = 1 as i32;
     }
-    if !value.is_null() && (*exec).inputStackNr > 0 as i32 {
+    if !value.is_null() && (unsafe { (*exec).inputStackNr }) > 0 as i32 {
         xmlFARegExecSaveInputString(exec, value, data);
-        value = (*((*exec).inputStack).offset((*exec).index as isize)).value;
-        data = (*((*exec).inputStack).offset((*exec).index as isize)).data;
+        value = unsafe { (*((*exec).inputStack).offset((*exec).index as isize)).value };
+        data = unsafe { (*((*exec).inputStack).offset((*exec).index as isize)).data };
     }
-    while (*exec).status == 0 as i32
+    while (unsafe { (*exec).status }) == 0 as i32
         && (!value.is_null()
             || final_0 == 1 as i32
-                && (*(*exec).state).type_0 as u32
-                    != XML_REGEXP_FINAL_STATE as i32 as u32)
+                && (unsafe { (*(*exec).state).type_0 }) as u32 != XML_REGEXP_FINAL_STATE as i32 as u32)
     {
-        if !(value.is_null() && ((*exec).counts).is_null()) {
-            (*exec).transcount = 0 as i32;
+        if !(value.is_null() && (unsafe { (*exec).counts }).is_null()) {
+            (unsafe { (*exec).transcount = 0 as i32 });
             loop {
-                if !((*exec).transno < (*(*exec).state).nbTrans) {
+                if !((unsafe { (*exec).transno }) < (unsafe { (*(*exec).state).nbTrans })) {
                     current_block = 5511877782510663281;
                     break;
                 }
-                trans = &mut *((*(*exec).state).trans).offset((*exec).transno as isize)
+                trans = (unsafe { &mut *((*(*exec).state).trans).offset((*exec).transno as isize) })
                     as *mut xmlRegTrans;
-                if !((*trans).to < 0 as i32) {
-                    atom = (*trans).atom;
+                if !((unsafe { (*trans).to }) < 0 as i32) {
+                    atom = unsafe { (*trans).atom };
                     ret = 0 as i32;
-                    if (*trans).count == 0x123457 as i32 {
+                    if (unsafe { (*trans).count }) == 0x123457 as i32 {
                         let mut i: i32 = 0;
                         let mut count: i32 = 0;
-                        let mut t: * mut crate::src::xmlregexp::_xmlRegTrans = 0 as *mut xmlRegTrans;
-                        let mut counter: Option<&'_ mut crate::src::xmlregexp::_xmlRegCounter> = Option::<&'_ mut crate::src::xmlregexp::_xmlRegCounter>::None;
+                        let mut t: *mut crate::src::xmlregexp::_xmlRegTrans = 0 as *mut xmlRegTrans;
+                        let mut counter: Option<&'_ mut crate::src::xmlregexp::_xmlRegCounter> =
+                            Option::<&'_ mut crate::src::xmlregexp::_xmlRegCounter>::None;
                         ret = 0 as i32;
                         if value.is_null() && final_0 != 0 {
                             ret = 1 as i32;
                         } else if !value.is_null() {
                             i = 0 as i32;
-                            while i < (*(*exec).state).nbTrans {
-                                t = &mut *((*(*exec).state).trans).offset(i as isize)
+                            while i < (unsafe { (*(*exec).state).nbTrans }) {
+                                t = (unsafe { &mut *((*(*exec).state).trans).offset(i as isize) })
                                     as *mut xmlRegTrans;
-                                if !((*t).counter < 0 as i32 || t == trans) {
-                                    counter = Some(&mut *((*(*exec).comp).counters)
-                                        .offset((*t).counter as isize));
-                                    count = *((*exec).counts).offset((*t).counter as isize);
-                                    if count < (*(borrow(& counter)).unwrap()).max && !((*t).atom).is_null()
-                                        && xmlStrEqual(value, (*(*t).atom).valuep as *const xmlChar)
+                                if !((unsafe { (*t).counter }) < 0 as i32 || t == trans) {
+                                    counter = Some(
+                                        unsafe { &mut *((*(*exec).comp).counters)
+                                            .offset((*t).counter as isize) },
+                                    );
+                                    count = unsafe { *((*exec).counts).offset((*t).counter as isize) };
+                                    if count < (*(borrow(&counter)).unwrap()).max
+                                        && !(unsafe { (*t).atom }).is_null()
+                                        && xmlStrEqual(value, (unsafe { (*(*t).atom).valuep }) as *const xmlChar)
                                             != 0
                                     {
                                         ret = 0 as i32;
                                         break;
-                                    } else if count >= (*(borrow(& counter)).unwrap()).min && count < (*(borrow(& counter)).unwrap()).max
-                                            && !((*t).atom).is_null()
-                                            && xmlStrEqual(value, (*(*t).atom).valuep as *const xmlChar)
-                                                != 0
-                                        {
+                                    } else if count >= (*(borrow(&counter)).unwrap()).min
+                                        && count < (*(borrow(&counter)).unwrap()).max
+                                        && !(unsafe { (*t).atom }).is_null()
+                                        && xmlStrEqual(value, (unsafe { (*(*t).atom).valuep }) as *const xmlChar)
+                                            != 0
+                                    {
                                         ret = 1 as i32;
                                         break;
                                     }
@@ -5931,21 +5408,26 @@ unsafe extern "C" fn xmlRegExecPushStringInternal(
                                 i += 1;
                             }
                         }
-                    } else if (*trans).count == 0x123456 as i32 {
+                    } else if (unsafe { (*trans).count }) == 0x123456 as i32 {
                         let mut i_0: i32 = 0;
                         let mut count_0: i32 = 0;
-                        let mut t_0: * mut crate::src::xmlregexp::_xmlRegTrans = 0 as *mut xmlRegTrans;
-                        let mut counter_0: Option<&'_ mut crate::src::xmlregexp::_xmlRegCounter> = Option::<&'_ mut crate::src::xmlregexp::_xmlRegCounter>::None;
+                        let mut t_0: *mut crate::src::xmlregexp::_xmlRegTrans =
+                            0 as *mut xmlRegTrans;
+                        let mut counter_0: Option<&'_ mut crate::src::xmlregexp::_xmlRegCounter> =
+                            Option::<&'_ mut crate::src::xmlregexp::_xmlRegCounter>::None;
                         ret = 1 as i32;
                         i_0 = 0 as i32;
-                        while i_0 < (*(*exec).state).nbTrans {
-                            t_0 = &mut *((*(*exec).state).trans).offset(i_0 as isize)
+                        while i_0 < (unsafe { (*(*exec).state).nbTrans }) {
+                            t_0 = (unsafe { &mut *((*(*exec).state).trans).offset(i_0 as isize) })
                                 as *mut xmlRegTrans;
-                            if !((*t_0).counter < 0 as i32 || t_0 == trans) {
-                                counter_0 = Some(&mut *((*(*exec).comp).counters)
-                                    .offset((*t_0).counter as isize));
-                                count_0 = *((*exec).counts).offset((*t_0).counter as isize);
-                                if count_0 < (*(borrow(& counter_0)).unwrap()).min || count_0 > (*(borrow(& counter_0)).unwrap()).max
+                            if !((unsafe { (*t_0).counter }) < 0 as i32 || t_0 == trans) {
+                                counter_0 = Some(
+                                    unsafe { &mut *((*(*exec).comp).counters)
+                                        .offset((*t_0).counter as isize) },
+                                );
+                                count_0 = unsafe { *((*exec).counts).offset((*t_0).counter as isize) };
+                                if count_0 < (*(borrow(&counter_0)).unwrap()).min
+                                    || count_0 > (*(borrow(&counter_0)).unwrap()).max
                                 {
                                     ret = 0 as i32;
                                     break;
@@ -5953,98 +5435,89 @@ unsafe extern "C" fn xmlRegExecPushStringInternal(
                             }
                             i_0 += 1;
                         }
-                    } else if (*trans).count >= 0 as i32 {
+                    } else if (unsafe { (*trans).count }) >= 0 as i32 {
                         let mut count_1: i32 = 0;
-                        let mut counter_1: Option<&'_ mut crate::src::xmlregexp::_xmlRegCounter> = Option::<&'_ mut crate::src::xmlregexp::_xmlRegCounter>::None;
-                        count_1 = *((*exec).counts).offset((*trans).count as isize);
-                        counter_1 = Some(&mut *((*(*exec).comp).counters)
-                            .offset((*trans).count as isize));
-                        ret = (count_1 >= (*(borrow(& counter_1)).unwrap()).min
-                            && count_1 <= (*(borrow(& counter_1)).unwrap()).max) as i32;
+                        let mut counter_1: Option<&'_ mut crate::src::xmlregexp::_xmlRegCounter> =
+                            Option::<&'_ mut crate::src::xmlregexp::_xmlRegCounter>::None;
+                        count_1 = unsafe { *((*exec).counts).offset((*trans).count as isize) };
+                        counter_1 =
+                            Some(unsafe { &mut *((*(*exec).comp).counters).offset((*trans).count as isize) });
+                        ret = (count_1 >= (*(borrow(&counter_1)).unwrap()).min
+                            && count_1 <= (*(borrow(&counter_1)).unwrap()).max)
+                            as i32;
                     } else if atom.is_null() {
-                        fprintf(
+                        (unsafe { fprintf(
                             stderr,
-                            b"epsilon transition left at runtime\n\0" as *const u8
-                                as *const i8,
-                        );
-                        (*exec).status = -(2 as i32);
+                            b"epsilon transition left at runtime\n\0" as *const u8 as *const i8,
+                        ) });
+                        (unsafe { (*exec).status = -(2 as i32) });
                         current_block = 5511877782510663281;
                         break;
                     } else if !value.is_null() {
-                        ret = xmlRegStrEqualWildcard(
-                            (*atom).valuep as *const xmlChar,
-                            value,
-                        );
-                        if (*atom).neg != 0 {
+                        ret = xmlRegStrEqualWildcard((unsafe { (*atom).valuep }) as *const xmlChar, value);
+                        if (unsafe { (*atom).neg }) != 0 {
                             ret = (ret == 0) as i32;
                             if compound == 0 {
                                 ret = 0 as i32;
                             }
                         }
-                        if ret == 1 as i32
-                            && (*trans).counter >= 0 as i32
-                        {
-                            let mut counter_2: Option<&'_ mut crate::src::xmlregexp::_xmlRegCounter> = Option::<&'_ mut crate::src::xmlregexp::_xmlRegCounter>::None;
+                        if ret == 1 as i32 && (unsafe { (*trans).counter }) >= 0 as i32 {
+                            let mut counter_2: Option<
+                                &'_ mut crate::src::xmlregexp::_xmlRegCounter,
+                            > = Option::<&'_ mut crate::src::xmlregexp::_xmlRegCounter>::None;
                             let mut count_2: i32 = 0;
-                            count_2 = *((*exec).counts)
-                                .offset((*trans).counter as isize);
-                            counter_2 = Some(&mut *((*(*exec).comp).counters)
-                                .offset((*trans).counter as isize));
-                            if count_2 >= (*(borrow(& counter_2)).unwrap()).max {
+                            count_2 = unsafe { *((*exec).counts).offset((*trans).counter as isize) };
+                            counter_2 = Some(
+                                unsafe { &mut *((*(*exec).comp).counters).offset((*trans).counter as isize) },
+                            );
+                            if count_2 >= (*(borrow(&counter_2)).unwrap()).max {
                                 ret = 0 as i32;
                             }
                         }
-                        if ret == 1 as i32 && (*atom).min > 0 as i32
-                            && (*atom).max > 0 as i32
-                        {
-                            let mut to: * mut crate::src::xmlregexp::_xmlAutomataState = *((*(*exec).comp).states)
-                                .offset((*trans).to as isize);
-                            if (*(*exec).state).nbTrans
-                                > (*exec).transno + 1 as i32
-                            {
-                                if (*exec).inputStackNr <= 0 as i32 {
+                        if ret == 1 as i32 && (unsafe { (*atom).min }) > 0 as i32 && (unsafe { (*atom).max }) > 0 as i32 {
+                            let mut to: *mut crate::src::xmlregexp::_xmlAutomataState =
+                                unsafe { *((*(*exec).comp).states).offset((*trans).to as isize) };
+                            if (unsafe { (*(*exec).state).nbTrans }) > (unsafe { (*exec).transno }) + 1 as i32 {
+                                if (unsafe { (*exec).inputStackNr }) <= 0 as i32 {
                                     xmlFARegExecSaveInputString(exec, value, data);
                                 }
                                 xmlFARegExecSave(exec);
                             }
-                            (*exec).transcount = 1 as i32;
-                            while !((*exec).transcount == (*atom).max) {
-                                let ref mut fresh100 = (*exec).index;
+                            (unsafe { (*exec).transcount = 1 as i32 });
+                            while !((unsafe { (*exec).transcount }) == (unsafe { (*atom).max })) {
+                                let fresh100 = unsafe { &mut ((*exec).index) };
                                 *fresh100 += 1;
-                                value = (*((*exec).inputStack)
-                                    .offset((*exec).index as isize))
-                                    .value;
-                                data = (*((*exec).inputStack)
-                                    .offset((*exec).index as isize))
-                                    .data;
+                                value =
+                                    unsafe { (*((*exec).inputStack).offset((*exec).index as isize)).value };
+                                data = unsafe { (*((*exec).inputStack).offset((*exec).index as isize)).data };
                                 if value.is_null() {
-                                    let ref mut fresh101 = (*exec).index;
+                                    let fresh101 = unsafe { &mut ((*exec).index) };
                                     *fresh101 -= 1;
                                     break;
                                 } else {
-                                    if (*exec).transcount >= (*atom).min {
-                                        let mut transno: i32 = (*exec).transno;
-                                        let mut state: * mut crate::src::xmlregexp::_xmlAutomataState = (*exec).state;
-                                        (*exec).transno = -(1 as i32);
-                                        let ref mut fresh102 = (*exec).state;
+                                    if (unsafe { (*exec).transcount }) >= (unsafe { (*atom).min }) {
+                                        let mut transno: i32 = unsafe { (*exec).transno };
+                                        let mut state : * mut crate :: src :: xmlregexp :: _xmlAutomataState = unsafe { (* exec) . state } ;
+                                        (unsafe { (*exec).transno = -(1 as i32) });
+                                        let fresh102 = unsafe { &mut ((*exec).state) };
                                         *fresh102 = to;
-                                        if (*exec).inputStackNr <= 0 as i32 {
+                                        if (unsafe { (*exec).inputStackNr }) <= 0 as i32 {
                                             xmlFARegExecSaveInputString(exec, value, data);
                                         }
                                         xmlFARegExecSave(exec);
-                                        (*exec).transno = transno;
-                                        let ref mut fresh103 = (*exec).state;
+                                        (unsafe { (*exec).transno = transno });
+                                        let fresh103 = unsafe { &mut ((*exec).state) };
                                         *fresh103 = state;
                                     }
-                                    ret = xmlStrEqual(value, (*atom).valuep as *const xmlChar);
-                                    let ref mut fresh104 = (*exec).transcount;
+                                    ret = xmlStrEqual(value, (unsafe { (*atom).valuep }) as *const xmlChar);
+                                    let fresh104 = unsafe { &mut ((*exec).transcount) };
                                     *fresh104 += 1;
                                     if !(ret == 1 as i32) {
                                         break;
                                     }
                                 }
                             }
-                            if (*exec).transcount < (*atom).min {
+                            if (unsafe { (*exec).transcount }) < (unsafe { (*atom).min }) {
                                 ret = 0 as i32;
                             }
                             if ret < 0 as i32 {
@@ -6057,77 +5530,61 @@ unsafe extern "C" fn xmlRegExecPushStringInternal(
                         }
                     }
                     if ret == 1 as i32 {
-                        if ((*exec).callback).is_some() && !atom.is_null()
-                            && !data.is_null()
-                        {
-                            ((*exec).callback)
-                                .expect(
-                                    "non-null function pointer",
-                                )(
+                        if (unsafe { ((*exec).callback).is_some() }) && !atom.is_null() && !data.is_null() {
+                            (unsafe { ((*exec).callback).expect("non-null function pointer")(
                                 (*exec).data as xmlRegExecCtxtPtr,
                                 (*atom).valuep as *const xmlChar,
                                 (*atom).data,
                                 data,
-                            );
+                            ) });
                         }
-                        if (*(*exec).state).nbTrans > (*exec).transno + 1 as i32
-                        {
-                            if (*exec).inputStackNr <= 0 as i32 {
+                        if (unsafe { (*(*exec).state).nbTrans }) > (unsafe { (*exec).transno }) + 1 as i32 {
+                            if (unsafe { (*exec).inputStackNr }) <= 0 as i32 {
                                 xmlFARegExecSaveInputString(exec, value, data);
                             }
                             xmlFARegExecSave(exec);
                         }
-                        if (*trans).counter >= 0 as i32 {
-                            let ref mut fresh105 = *((*exec).counts)
-                                .offset((*trans).counter as isize);
+                        if (unsafe { (*trans).counter }) >= 0 as i32 {
+                            let fresh105 =
+                                unsafe { &mut (*((*exec).counts).offset((*trans).counter as isize)) };
                             *fresh105 += 1;
                         }
-                        if (*trans).count >= 0 as i32
-                            && (*trans).count < 0x123456 as i32
-                        {
-                            *((*exec).counts)
-                                .offset((*trans).count as isize) = 0 as i32;
+                        if (unsafe { (*trans).count }) >= 0 as i32 && (unsafe { (*trans).count }) < 0x123456 as i32 {
+                            (unsafe { *((*exec).counts).offset((*trans).count as isize) = 0 as i32 });
                         }
-                        if !(*((*(*exec).comp).states).offset((*trans).to as isize))
-                            .is_null()
-                            && (**((*(*exec).comp).states).offset((*trans).to as isize))
-                                .type_0 as u32
+                        if !(unsafe { *((*(*exec).comp).states).offset((*trans).to as isize) }).is_null()
+                            && (unsafe { (**((*(*exec).comp).states).offset((*trans).to as isize)).type_0 })
+                                as u32
                                 == XML_REGEXP_SINK_STATE as i32 as u32
                         {
-                            if !((*exec).errString).is_null() {
-                                xmlFree
-                                    .expect(
-                                        "non-null function pointer",
-                                    )((*exec).errString as *mut libc::c_void);
+                            if !(unsafe { (*exec).errString }).is_null() {
+                                (unsafe { xmlFree.expect("non-null function pointer")(
+                                    (*exec).errString as *mut libc::c_void,
+                                ) });
                             }
-                            let ref mut fresh106 = (*exec).errString;
+                            let fresh106 = unsafe { &mut ((*exec).errString) };
                             *fresh106 = xmlStrdup(value);
-                            let ref mut fresh107 = (*exec).errState;
-                            *fresh107 = (*exec).state;
-                            memcpy(
+                            let fresh107 = unsafe { &mut ((*exec).errState) };
+                            *fresh107 = unsafe { (*exec).state };
+                            (unsafe { memcpy(
                                 (*exec).errCounts as *mut libc::c_void,
                                 (*exec).counts as *const libc::c_void,
                                 ((*(*exec).comp).nbCounters as u64)
-                                    .wrapping_mul(
-                                        ::std::mem::size_of::<i32>() as u64,
-                                    ),
-                            );
+                                    .wrapping_mul(::std::mem::size_of::<i32>() as u64),
+                            ) });
                         }
-                        let ref mut fresh108 = (*exec).state;
-                        *fresh108 = *((*(*exec).comp).states)
-                            .offset((*trans).to as isize);
-                        (*exec).transno = 0 as i32;
-                        if !((*trans).atom).is_null() {
-                            if !((*exec).inputStack).is_null() {
-                                let ref mut fresh109 = (*exec).index;
+                        let fresh108 = unsafe { &mut ((*exec).state) };
+                        *fresh108 = unsafe { *((*(*exec).comp).states).offset((*trans).to as isize) };
+                        (unsafe { (*exec).transno = 0 as i32 });
+                        if !(unsafe { (*trans).atom }).is_null() {
+                            if !(unsafe { (*exec).inputStack }).is_null() {
+                                let fresh109 = unsafe { &mut ((*exec).index) };
                                 *fresh109 += 1;
-                                if (*exec).index < (*exec).inputStackNr {
-                                    value = (*((*exec).inputStack)
-                                        .offset((*exec).index as isize))
-                                        .value;
-                                    data = (*((*exec).inputStack)
-                                        .offset((*exec).index as isize))
-                                        .data;
+                                if (unsafe { (*exec).index }) < (unsafe { (*exec).inputStackNr }) {
+                                    value = unsafe { (*((*exec).inputStack).offset((*exec).index as isize))
+                                        .value };
+                                    data =
+                                        unsafe { (*((*exec).inputStack).offset((*exec).index as isize)).data };
                                 } else {
                                     value = 0 as *const xmlChar;
                                     data = 0 as *mut libc::c_void;
@@ -6140,176 +5597,166 @@ unsafe extern "C" fn xmlRegExecPushStringInternal(
                         current_block = 8483073061411596610;
                         break;
                     } else if ret < 0 as i32 {
-                        (*exec).status = -(4 as i32);
+                        (unsafe { (*exec).status = -(4 as i32) });
                         current_block = 5511877782510663281;
                         break;
                     }
                 }
-                let ref mut fresh110 = (*exec).transno;
+                let fresh110 = unsafe { &mut ((*exec).transno) };
                 *fresh110 += 1;
             }
             match current_block {
-                10868385912253950213 => {}
-                _ => {
-                    match current_block {
-                        8483073061411596610 => {
-                            progress = 1 as i32;
+                10868385912253950213 => {},
+                _ => match current_block {
+                    8483073061411596610 => {
+                        progress = 1 as i32;
+                        continue;
+                    },
+                    _ => {
+                        if !((unsafe { (*exec).transno }) != 0 as i32 || (unsafe { (*(*exec).state).nbTrans }) == 0 as i32) {
                             continue;
                         }
-                        _ => {
-                            if !((*exec).transno != 0 as i32
-                                || (*(*exec).state).nbTrans == 0 as i32)
-                            {
-                                continue;
-                            }
-                        }
-                    }
-                }
+                    },
+                },
             }
         }
-        if progress != 0 && !((*exec).state).is_null()
-            && (*(*exec).state).type_0 as u32
-                != XML_REGEXP_SINK_STATE as i32 as u32
+        if progress != 0
+            && !(unsafe { (*exec).state }).is_null()
+            && (unsafe { (*(*exec).state).type_0 }) as u32 != XML_REGEXP_SINK_STATE as i32 as u32
         {
             progress = 0 as i32;
-            if !((*exec).errString).is_null() {
-                xmlFree
-                    .expect(
-                        "non-null function pointer",
-                    )((*exec).errString as *mut libc::c_void);
+            if !(unsafe { (*exec).errString }).is_null() {
+                (unsafe { xmlFree.expect("non-null function pointer")((*exec).errString as *mut libc::c_void) });
             }
-            let ref mut fresh111 = (*exec).errString;
+            let fresh111 = unsafe { &mut ((*exec).errString) };
             *fresh111 = xmlStrdup(value);
-            let ref mut fresh112 = (*exec).errState;
-            *fresh112 = (*exec).state;
-            if (*(*exec).comp).nbCounters != 0 {
-                memcpy(
+            let fresh112 = unsafe { &mut ((*exec).errState) };
+            *fresh112 = unsafe { (*exec).state };
+            if (unsafe { (*(*exec).comp).nbCounters }) != 0 {
+                (unsafe { memcpy(
                     (*exec).errCounts as *mut libc::c_void,
                     (*exec).counts as *const libc::c_void,
                     ((*(*exec).comp).nbCounters as u64)
-                        .wrapping_mul(
-                            ::std::mem::size_of::<i32>() as u64,
-                        ),
-                );
+                        .wrapping_mul(::std::mem::size_of::<i32>() as u64),
+                ) });
             }
         }
-        (*exec).determinist = 0 as i32;
+        (unsafe { (*exec).determinist = 0 as i32 });
         xmlFARegExecRollBack(exec);
-        if !((*exec).inputStack).is_null() && (*exec).status == 0 as i32 {
-            value = (*((*exec).inputStack).offset((*exec).index as isize)).value;
-            data = (*((*exec).inputStack).offset((*exec).index as isize)).data;
+        if !(unsafe { (*exec).inputStack }).is_null() && (unsafe { (*exec).status }) == 0 as i32 {
+            value = unsafe { (*((*exec).inputStack).offset((*exec).index as isize)).value };
+            data = unsafe { (*((*exec).inputStack).offset((*exec).index as isize)).data };
         }
     }
-    if (*exec).status == 0 as i32 {
-        return ((*(*exec).state).type_0 as u32
-            == XML_REGEXP_FINAL_STATE as i32 as u32) as i32;
+    if (unsafe { (*exec).status }) == 0 as i32 {
+        return ((unsafe { (*(*exec).state).type_0 }) as u32 == XML_REGEXP_FINAL_STATE as i32 as u32) as i32;
     }
-    return (*exec).status;
+    return unsafe { (*exec).status };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRegExecPushString(
-    mut exec: * mut crate::src::xmlregexp::_xmlRegExecCtxt,
-    mut value: * const u8,
-    mut data: * mut core::ffi::c_void,
+pub extern "C" fn xmlRegExecPushString(
+    mut exec: *mut crate::src::xmlregexp::_xmlRegExecCtxt,
+    mut value: *const u8,
+    mut data: *mut core::ffi::c_void,
 ) -> i32 {
     return xmlRegExecPushStringInternal(exec, value, data, 0 as i32);
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRegExecPushString2(
-    mut exec: * mut crate::src::xmlregexp::_xmlRegExecCtxt,
-    mut value: * const u8,
-    mut value2: * const u8,
-    mut data: * mut core::ffi::c_void,
+pub extern "C" fn xmlRegExecPushString2(
+    mut exec: *mut crate::src::xmlregexp::_xmlRegExecCtxt,
+    mut value: *const u8,
+    mut value2: *const u8,
+    mut data: *mut core::ffi::c_void,
 ) -> i32 {
     let mut buf: [u8; 150] = [0; 150];
     let mut lenn: i32 = 0;
     let mut lenp: i32 = 0;
     let mut ret: i32 = 0;
-    let mut str: * mut u8 = 0 as *mut xmlChar;
+    let mut str: *mut u8 = 0 as *mut xmlChar;
     if exec.is_null() {
         return -(1 as i32);
     }
-    if ((*exec).comp).is_null() {
+    if (unsafe { (*exec).comp }).is_null() {
         return -(1 as i32);
     }
-    if (*exec).status != 0 as i32 {
-        return (*exec).status;
+    if (unsafe { (*exec).status }) != 0 as i32 {
+        return unsafe { (*exec).status };
     }
     if value2.is_null() {
         return xmlRegExecPushString(exec, value, data);
     }
-    lenn = strlen(value2 as *mut i8) as i32;
-    lenp = strlen(value as *mut i8) as i32;
+    lenn = (unsafe { strlen(value2 as *mut i8) }) as i32;
+    lenp = (unsafe { strlen(value as *mut i8) }) as i32;
     if (150 as i32) < lenn + lenp + 2 as i32 {
-        str = xmlMallocAtomic
-            .expect(
-                "non-null function pointer",
-            )((lenn + lenp + 2 as i32) as size_t) as *mut xmlChar;
+        str =
+            (unsafe { xmlMallocAtomic.expect("non-null function pointer")((lenn + lenp + 2 as i32) as size_t) })
+                as *mut xmlChar;
         if str.is_null() {
-            (*exec).status = -(1 as i32);
+            (unsafe { (*exec).status = -(1 as i32) });
             return -(1 as i32);
         }
     } else {
         str = buf.as_mut_ptr();
     }
-    memcpy(
+    (unsafe { memcpy(
         &mut *str.offset(0 as i32 as isize) as *mut xmlChar as *mut libc::c_void,
         value as *const libc::c_void,
         lenp as u64,
-    );
-    *str.offset(lenp as isize) = '|' as i32 as xmlChar;
-    memcpy(
-        &mut *str.offset((lenp + 1 as i32) as isize) as *mut xmlChar
-            as *mut libc::c_void,
+    ) });
+    (unsafe { *str.offset(lenp as isize) = '|' as i32 as xmlChar });
+    (unsafe { memcpy(
+        &mut *str.offset((lenp + 1 as i32) as isize) as *mut xmlChar as *mut libc::c_void,
         value2 as *const libc::c_void,
         lenn as u64,
-    );
-    *str.offset((lenn + lenp + 1 as i32) as isize) = 0 as i32 as xmlChar;
-    if !((*(*exec).comp).compact).is_null() {
-        ret = xmlRegCompactPushString(exec, (*exec).comp, str, data);
+    ) });
+    (unsafe { *str.offset((lenn + lenp + 1 as i32) as isize) = 0 as i32 as xmlChar });
+    if !(unsafe { (*(*exec).comp).compact }).is_null() {
+        ret = xmlRegCompactPushString(exec, unsafe { (*exec).comp }, str, data);
     } else {
         ret = xmlRegExecPushStringInternal(exec, str, data, 1 as i32);
     }
     if str != buf.as_mut_ptr() {
-        xmlFree.expect("non-null function pointer")(str as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(str as *mut libc::c_void) });
     }
     return ret;
 }
-unsafe extern "C" fn xmlRegExecGetValues<'a1, 'a2, 'a3>(
-    mut exec: * mut crate::src::xmlregexp::_xmlRegExecCtxt,
+extern "C" fn xmlRegExecGetValues<'a1, 'a2, 'a3>(
+    mut exec: *mut crate::src::xmlregexp::_xmlRegExecCtxt,
     mut err: i32,
     mut nbval: Option<&'a1 mut i32>,
     mut nbneg: Option<&'a2 mut i32>,
-    mut values: * mut * mut u8,
+    mut values: *mut *mut u8,
     mut terminal: Option<&'a3 mut i32>,
 ) -> i32 {
     let mut maxval: i32 = 0;
     let mut nb: i32 = 0 as i32;
-    if exec.is_null() || borrow(& nbval).is_none() || borrow(& nbneg).is_none() || values.is_null()
-        || *(borrow(& nbval)).unwrap() <= 0 as i32
+    if exec.is_null()
+        || borrow(&nbval).is_none()
+        || borrow(&nbneg).is_none()
+        || values.is_null()
+        || *(borrow(&nbval)).unwrap() <= 0 as i32
     {
         return -(1 as i32);
     }
     maxval = *(borrow_mut(&mut nbval)).unwrap();
     *(borrow_mut(&mut nbval)).unwrap() = 0 as i32;
     *(borrow_mut(&mut nbneg)).unwrap() = 0 as i32;
-    if !((*exec).comp).is_null() && !((*(*exec).comp).compact).is_null() {
-        let mut comp: * mut crate::src::xmlregexp::_xmlRegexp = 0 as *mut xmlRegexp;
+    if !(unsafe { (*exec).comp }).is_null() && !(unsafe { (*(*exec).comp).compact }).is_null() {
+        let mut comp: *mut crate::src::xmlregexp::_xmlRegexp = 0 as *mut xmlRegexp;
         let mut target: i32 = 0;
         let mut i: i32 = 0;
         let mut state: i32 = 0;
-        comp = (*exec).comp;
+        comp = unsafe { (*exec).comp };
         if err != 0 {
-            if (*exec).errStateNo == -(1 as i32) {
+            if (unsafe { (*exec).errStateNo }) == -(1 as i32) {
                 return -(1 as i32);
             }
-            state = (*exec).errStateNo;
+            state = unsafe { (*exec).errStateNo };
         } else {
-            state = (*exec).index;
+            state = unsafe { (*exec).index };
         }
-        if !borrow(& terminal).is_none() {
-            if *((*comp).compact)
-                .offset((state * ((*comp).nbstrings + 1 as i32)) as isize)
+        if !borrow(&terminal).is_none() {
+            if (unsafe { *((*comp).compact).offset((state * ((*comp).nbstrings + 1 as i32)) as isize) })
                 == XML_REGEXP_FINAL_STATE as i32
             {
                 *(borrow_mut(&mut terminal)).unwrap() = 1 as i32;
@@ -6318,146 +5765,136 @@ unsafe extern "C" fn xmlRegExecGetValues<'a1, 'a2, 'a3>(
             }
         }
         i = 0 as i32;
-        while i < (*comp).nbstrings && nb < maxval {
-            target = *((*comp).compact)
-                .offset(
-                    (state * ((*comp).nbstrings + 1 as i32) + i
-                        + 1 as i32) as isize,
-                );
-            if target > 0 as i32 && target <= (*comp).nbstates
-                && *((*comp).compact)
-                    .offset(
-                        ((target - 1 as i32)
-                            * ((*comp).nbstrings + 1 as i32)) as isize,
-                    ) != XML_REGEXP_SINK_STATE as i32
+        while i < (unsafe { (*comp).nbstrings }) && nb < maxval {
+            target = unsafe { *((*comp).compact)
+                .offset((state * ((*comp).nbstrings + 1 as i32) + i + 1 as i32) as isize) };
+            if target > 0 as i32
+                && target <= (unsafe { (*comp).nbstates })
+                && (unsafe { *((*comp).compact)
+                    .offset(((target - 1 as i32) * ((*comp).nbstrings + 1 as i32)) as isize) })
+                    != XML_REGEXP_SINK_STATE as i32
             {
                 let mut fresh113 = nb;
                 nb = nb + 1;
-                let ref mut fresh114 = *values.offset(fresh113 as isize);
-                *fresh114 = *((*comp).stringMap).offset(i as isize);
+                let fresh114 = unsafe { &mut (*values.offset(fresh113 as isize)) };
+                *fresh114 = unsafe { *((*comp).stringMap).offset(i as isize) };
                 *(borrow_mut(&mut nbval)).unwrap() += 1;
             }
             i += 1;
         }
         i = 0 as i32;
-        while i < (*comp).nbstrings && nb < maxval {
-            target = *((*comp).compact)
-                .offset(
-                    (state * ((*comp).nbstrings + 1 as i32) + i
-                        + 1 as i32) as isize,
-                );
-            if target > 0 as i32 && target <= (*comp).nbstates
-                && *((*comp).compact)
-                    .offset(
-                        ((target - 1 as i32)
-                            * ((*comp).nbstrings + 1 as i32)) as isize,
-                    ) == XML_REGEXP_SINK_STATE as i32
+        while i < (unsafe { (*comp).nbstrings }) && nb < maxval {
+            target = unsafe { *((*comp).compact)
+                .offset((state * ((*comp).nbstrings + 1 as i32) + i + 1 as i32) as isize) };
+            if target > 0 as i32
+                && target <= (unsafe { (*comp).nbstates })
+                && (unsafe { *((*comp).compact)
+                    .offset(((target - 1 as i32) * ((*comp).nbstrings + 1 as i32)) as isize) })
+                    == XML_REGEXP_SINK_STATE as i32
             {
                 let mut fresh115 = nb;
                 nb = nb + 1;
-                let ref mut fresh116 = *values.offset(fresh115 as isize);
-                *fresh116 = *((*comp).stringMap).offset(i as isize);
+                let fresh116 = unsafe { &mut (*values.offset(fresh115 as isize)) };
+                *fresh116 = unsafe { *((*comp).stringMap).offset(i as isize) };
                 *(borrow_mut(&mut nbneg)).unwrap() += 1;
             }
             i += 1;
         }
     } else {
         let mut transno: i32 = 0;
-        let mut trans: Option<&'_ mut crate::src::xmlregexp::_xmlRegTrans> = Option::<&'_ mut crate::src::xmlregexp::_xmlRegTrans>::None;
-        let mut atom: * mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
-        let mut state_0: * mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
-        if !borrow(& terminal).is_none() {
-            if (*(*exec).state).type_0 as u32
-                == XML_REGEXP_FINAL_STATE as i32 as u32
-            {
+        let mut trans: Option<&'_ mut crate::src::xmlregexp::_xmlRegTrans> =
+            Option::<&'_ mut crate::src::xmlregexp::_xmlRegTrans>::None;
+        let mut atom: *mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
+        let mut state_0: *mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
+        if !borrow(&terminal).is_none() {
+            if (unsafe { (*(*exec).state).type_0 }) as u32 == XML_REGEXP_FINAL_STATE as i32 as u32 {
                 *(borrow_mut(&mut terminal)).unwrap() = 1 as i32;
             } else {
                 *(borrow_mut(&mut terminal)).unwrap() = 0 as i32;
             }
         }
         if err != 0 {
-            if ((*exec).errState).is_null() {
+            if (unsafe { (*exec).errState }).is_null() {
                 return -(1 as i32);
             }
-            state_0 = (*exec).errState;
+            state_0 = unsafe { (*exec).errState };
         } else {
-            if ((*exec).state).is_null() {
+            if (unsafe { (*exec).state }).is_null() {
                 return -(1 as i32);
             }
-            state_0 = (*exec).state;
+            state_0 = unsafe { (*exec).state };
         }
         transno = 0 as i32;
-        while transno < (*state_0).nbTrans && nb < maxval {
-            trans = Some(&mut *((*state_0).trans).offset(transno as isize));
-            if !((*(borrow(& trans)).unwrap()).to < 0 as i32) {
+        while transno < (unsafe { (*state_0).nbTrans }) && nb < maxval {
+            trans = Some(unsafe { &mut *((*state_0).trans).offset(transno as isize) });
+            if !((*(borrow(&trans)).unwrap()).to < 0 as i32) {
                 atom = (*(borrow_mut(&mut trans)).unwrap()).atom;
-                if !(atom.is_null() || ((*atom).valuep).is_null()) {
-                    if (*(borrow(& trans)).unwrap()).count == 0x123457 as i32 {
-                        (*__xmlGenericError())
-                            .expect(
-                                "non-null function pointer",
-                            )(
+                if !(atom.is_null() || (unsafe { (*atom).valuep }).is_null()) {
+                    if (*(borrow(&trans)).unwrap()).count == 0x123457 as i32 {
+                        (unsafe { (*__xmlGenericError()).expect("non-null function pointer")(
                             *__xmlGenericErrorContext(),
-                            b"Unimplemented block at %s:%d\n\0" as *const u8
-                                as *const i8,
+                            b"Unimplemented block at %s:%d\n\0" as *const u8 as *const i8,
                             b"xmlregexp.c\0" as *const u8 as *const i8,
                             4365 as i32,
-                        );
-                    } else if (*(borrow(& trans)).unwrap()).count == 0x123456 as i32 {
-                        (*__xmlGenericError())
-                            .expect(
-                                "non-null function pointer",
-                            )(
+                        ) });
+                    } else if (*(borrow(&trans)).unwrap()).count == 0x123456 as i32 {
+                        (unsafe { (*__xmlGenericError()).expect("non-null function pointer")(
                             *__xmlGenericErrorContext(),
-                            b"Unimplemented block at %s:%d\n\0" as *const u8
-                                as *const i8,
+                            b"Unimplemented block at %s:%d\n\0" as *const u8 as *const i8,
                             b"xmlregexp.c\0" as *const u8 as *const i8,
                             4368 as i32,
-                        );
-                    } else if (*(borrow(& trans)).unwrap()).counter >= 0 as i32 {
-                        let mut counter: Option<&'_ mut crate::src::xmlregexp::_xmlRegCounter> = Option::<&'_ mut crate::src::xmlregexp::_xmlRegCounter>::None;
+                        ) });
+                    } else if (*(borrow(&trans)).unwrap()).counter >= 0 as i32 {
+                        let mut counter: Option<&'_ mut crate::src::xmlregexp::_xmlRegCounter> =
+                            Option::<&'_ mut crate::src::xmlregexp::_xmlRegCounter>::None;
                         let mut count: i32 = 0;
                         if err != 0 {
-                            count = *((*exec).errCounts)
-                                .offset((*(borrow(& trans)).unwrap()).counter as isize);
+                            count = unsafe { *((*exec).errCounts)
+                                .offset((*(borrow(&trans)).unwrap()).counter as isize) };
                         } else {
-                            count = *((*exec).counts).offset((*(borrow(& trans)).unwrap()).counter as isize);
+                            count = unsafe { *((*exec).counts)
+                                .offset((*(borrow(&trans)).unwrap()).counter as isize) };
                         }
-                        if !((*exec).comp).is_null() {
-                            counter = Some(&mut *((*(*exec).comp).counters)
-                                .offset((*(borrow(& trans)).unwrap()).counter as isize));
+                        if !(unsafe { (*exec).comp }).is_null() {
+                            counter = Some(
+                                unsafe { &mut *((*(*exec).comp).counters)
+                                    .offset((*(borrow(&trans)).unwrap()).counter as isize) },
+                            );
                         }
-                        if borrow(& counter).is_none() || count < (*(borrow(& counter)).unwrap()).max {
-                            if (*atom).neg != 0 {
+                        if borrow(&counter).is_none() || count < (*(borrow(&counter)).unwrap()).max
+                        {
+                            if (unsafe { (*atom).neg }) != 0 {
                                 let mut fresh117 = nb;
                                 nb = nb + 1;
-                                let ref mut fresh118 = *values.offset(fresh117 as isize);
-                                *fresh118 = (*atom).valuep2 as *mut xmlChar;
+                                let fresh118 = unsafe { &mut (*values.offset(fresh117 as isize)) };
+                                *fresh118 = (unsafe { (*atom).valuep2 }) as *mut xmlChar;
                             } else {
                                 let mut fresh119 = nb;
                                 nb = nb + 1;
-                                let ref mut fresh120 = *values.offset(fresh119 as isize);
-                                *fresh120 = (*atom).valuep as *mut xmlChar;
+                                let fresh120 = unsafe { &mut (*values.offset(fresh119 as isize)) };
+                                *fresh120 = (unsafe { (*atom).valuep }) as *mut xmlChar;
                             }
                             *(borrow_mut(&mut nbval)).unwrap() += 1;
                         }
-                    } else if !((*exec).comp).is_null()
-                            && !(*((*(*exec).comp).states).offset((*(borrow(& trans)).unwrap()).to as isize))
-                                .is_null()
-                            && (**((*(*exec).comp).states).offset((*(borrow(& trans)).unwrap()).to as isize))
-                                .type_0 as u32
-                                != XML_REGEXP_SINK_STATE as i32 as u32
-                        {
-                        if (*atom).neg != 0 {
+                    } else if !(unsafe { (*exec).comp }).is_null()
+                        && !(unsafe { *((*(*exec).comp).states)
+                            .offset((*(borrow(&trans)).unwrap()).to as isize) })
+                        .is_null()
+                        && (unsafe { (**((*(*exec).comp).states)
+                            .offset((*(borrow(&trans)).unwrap()).to as isize))
+                        .type_0 }) as u32
+                            != XML_REGEXP_SINK_STATE as i32 as u32
+                    {
+                        if (unsafe { (*atom).neg }) != 0 {
                             let mut fresh121 = nb;
                             nb = nb + 1;
-                            let ref mut fresh122 = *values.offset(fresh121 as isize);
-                            *fresh122 = (*atom).valuep2 as *mut xmlChar;
+                            let fresh122 = unsafe { &mut (*values.offset(fresh121 as isize)) };
+                            *fresh122 = (unsafe { (*atom).valuep2 }) as *mut xmlChar;
                         } else {
                             let mut fresh123 = nb;
                             nb = nb + 1;
-                            let ref mut fresh124 = *values.offset(fresh123 as isize);
-                            *fresh124 = (*atom).valuep as *mut xmlChar;
+                            let fresh124 = unsafe { &mut (*values.offset(fresh123 as isize)) };
+                            *fresh124 = (unsafe { (*atom).valuep }) as *mut xmlChar;
                         }
                         *(borrow_mut(&mut nbval)).unwrap() += 1;
                     }
@@ -6466,30 +5903,32 @@ unsafe extern "C" fn xmlRegExecGetValues<'a1, 'a2, 'a3>(
             transno += 1;
         }
         transno = 0 as i32;
-        while transno < (*state_0).nbTrans && nb < maxval {
-            trans = Some(&mut *((*state_0).trans).offset(transno as isize));
-            if !((*(borrow(& trans)).unwrap()).to < 0 as i32) {
+        while transno < (unsafe { (*state_0).nbTrans }) && nb < maxval {
+            trans = Some(unsafe { &mut *((*state_0).trans).offset(transno as isize) });
+            if !((*(borrow(&trans)).unwrap()).to < 0 as i32) {
                 atom = (*(borrow_mut(&mut trans)).unwrap()).atom;
-                if !(atom.is_null() || ((*atom).valuep).is_null()) {
-                    if !((*(borrow(& trans)).unwrap()).count == 0x123457 as i32) {
-                        if !((*(borrow(& trans)).unwrap()).count == 0x123456 as i32) {
-                            if !((*(borrow(& trans)).unwrap()).counter >= 0 as i32) {
-                                if !(*((*(*exec).comp).states).offset((*(borrow(& trans)).unwrap()).to as isize))
-                                    .is_null()
-                                    && (**((*(*exec).comp).states).offset((*(borrow(& trans)).unwrap()).to as isize))
-                                        .type_0 as u32
+                if !(atom.is_null() || (unsafe { (*atom).valuep }).is_null()) {
+                    if !((*(borrow(&trans)).unwrap()).count == 0x123457 as i32) {
+                        if !((*(borrow(&trans)).unwrap()).count == 0x123456 as i32) {
+                            if !((*(borrow(&trans)).unwrap()).counter >= 0 as i32) {
+                                if !(unsafe { *((*(*exec).comp).states)
+                                    .offset((*(borrow(&trans)).unwrap()).to as isize) })
+                                .is_null()
+                                    && (unsafe { (**((*(*exec).comp).states)
+                                        .offset((*(borrow(&trans)).unwrap()).to as isize))
+                                    .type_0 }) as u32
                                         == XML_REGEXP_SINK_STATE as i32 as u32
                                 {
-                                    if (*atom).neg != 0 {
+                                    if (unsafe { (*atom).neg }) != 0 {
                                         let mut fresh125 = nb;
                                         nb = nb + 1;
-                                        let ref mut fresh126 = *values.offset(fresh125 as isize);
-                                        *fresh126 = (*atom).valuep2 as *mut xmlChar;
+                                        let fresh126 = unsafe { &mut (*values.offset(fresh125 as isize)) };
+                                        *fresh126 = (unsafe { (*atom).valuep2 }) as *mut xmlChar;
                                     } else {
                                         let mut fresh127 = nb;
                                         nb = nb + 1;
-                                        let ref mut fresh128 = *values.offset(fresh127 as isize);
-                                        *fresh128 = (*atom).valuep as *mut xmlChar;
+                                        let fresh128 = unsafe { &mut (*values.offset(fresh127 as isize)) };
+                                        *fresh128 = (unsafe { (*atom).valuep }) as *mut xmlChar;
                                     }
                                     *(borrow_mut(&mut nbneg)).unwrap() += 1;
                                 }
@@ -6504,279 +5943,291 @@ unsafe extern "C" fn xmlRegExecGetValues<'a1, 'a2, 'a3>(
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRegExecNextValues<'a1, 'a2, 'a3>(
-    mut exec: * mut crate::src::xmlregexp::_xmlRegExecCtxt,
+pub extern "C" fn xmlRegExecNextValues<'a1, 'a2, 'a3>(
+    mut exec: *mut crate::src::xmlregexp::_xmlRegExecCtxt,
     mut nbval: Option<&'a1 mut i32>,
     mut nbneg: Option<&'a2 mut i32>,
-    mut values: * mut * mut u8,
+    mut values: *mut *mut u8,
     mut terminal: Option<&'a3 mut i32>,
 ) -> i32 {
-    return xmlRegExecGetValues(exec, 0 as i32, borrow_mut(&mut nbval), borrow_mut(&mut nbneg), values, borrow_mut(&mut terminal));
+    return xmlRegExecGetValues(
+        exec,
+        0 as i32,
+        borrow_mut(&mut nbval),
+        borrow_mut(&mut nbneg),
+        values,
+        borrow_mut(&mut terminal),
+    );
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRegExecErrInfo<'a1, 'a2, 'a3, 'a4>(
-    mut exec: * mut crate::src::xmlregexp::_xmlRegExecCtxt,
-    mut string: Option<&'a1 mut * const u8>,
+pub extern "C" fn xmlRegExecErrInfo<'a1, 'a2, 'a3, 'a4>(
+    mut exec: *mut crate::src::xmlregexp::_xmlRegExecCtxt,
+    mut string: Option<&'a1 mut *const u8>,
     mut nbval: Option<&'a2 mut i32>,
     mut nbneg: Option<&'a3 mut i32>,
-    mut values: * mut * mut u8,
+    mut values: *mut *mut u8,
     mut terminal: Option<&'a4 mut i32>,
 ) -> i32 {
     if exec.is_null() {
         return -(1 as i32);
     }
-    if !borrow(& string).is_none() {
-        if (*exec).status != 0 as i32 {
-            *(borrow_mut(&mut string)).unwrap() = (*exec).errString;
+    if !borrow(&string).is_none() {
+        if (unsafe { (*exec).status }) != 0 as i32 {
+            *(borrow_mut(&mut string)).unwrap() = unsafe { (*exec).errString };
         } else {
             *(borrow_mut(&mut string)).unwrap() = 0 as *const xmlChar;
         }
     }
-    return xmlRegExecGetValues(exec, 1 as i32, borrow_mut(&mut nbval), borrow_mut(&mut nbneg), values, borrow_mut(&mut terminal));
+    return xmlRegExecGetValues(
+        exec,
+        1 as i32,
+        borrow_mut(&mut nbval),
+        borrow_mut(&mut nbneg),
+        values,
+        borrow_mut(&mut terminal),
+    );
 }
-unsafe extern "C" fn xmlFAIsChar(mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata) -> i32 {
+extern "C" fn xmlFAIsChar(mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata) -> i32 {
     let mut cur: i32 = 0;
     let mut len: i32 = 0;
-    cur = xmlStringCurrentChar(0 as xmlParserCtxtPtr, (*ctxt).cur, &mut len);
-    if cur == '.' as i32 || cur == '\\' as i32 || cur == '?' as i32 || cur == '*' as i32
-        || cur == '+' as i32 || cur == '(' as i32 || cur == ')' as i32
-        || cur == '|' as i32 || cur == 0x5b as i32 || cur == 0x5d as i32
+    cur = unsafe { xmlStringCurrentChar(0 as xmlParserCtxtPtr, (*ctxt).cur, &mut len) };
+    if cur == '.' as i32
+        || cur == '\\' as i32
+        || cur == '?' as i32
+        || cur == '*' as i32
+        || cur == '+' as i32
+        || cur == '(' as i32
+        || cur == ')' as i32
+        || cur == '|' as i32
+        || cur == 0x5b as i32
+        || cur == 0x5d as i32
         || cur == 0 as i32
     {
         return -(1 as i32);
     }
     return cur;
 }
-unsafe extern "C" fn xmlFAParseCharProp(mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata) {
+extern "C" fn xmlFAParseCharProp(mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata) {
     let mut cur: i32 = 0;
     let mut type_0: u32 = 0 as xmlRegAtomType;
-    let mut blockName: * mut u8 = 0 as *mut xmlChar;
-    cur = *(*ctxt).cur as i32;
+    let mut blockName: *mut u8 = 0 as *mut xmlChar;
+    cur = (unsafe { *(*ctxt).cur }) as i32;
     if cur == 'L' as i32 {
-        let ref mut fresh129 = (*ctxt).cur;
-        *fresh129 = (*fresh129).offset(1);
-        cur = *(*ctxt).cur as i32;
+        let fresh129 = unsafe { &mut ((*ctxt).cur) };
+        *fresh129 = unsafe { (*fresh129).offset(1) };
+        cur = (unsafe { *(*ctxt).cur }) as i32;
         if cur == 'u' as i32 {
-            let ref mut fresh130 = (*ctxt).cur;
-            *fresh130 = (*fresh130).offset(1);
+            let fresh130 = unsafe { &mut ((*ctxt).cur) };
+            *fresh130 = unsafe { (*fresh130).offset(1) };
             type_0 = XML_REGEXP_LETTER_UPPERCASE;
         } else if cur == 'l' as i32 {
-            let ref mut fresh131 = (*ctxt).cur;
-            *fresh131 = (*fresh131).offset(1);
+            let fresh131 = unsafe { &mut ((*ctxt).cur) };
+            *fresh131 = unsafe { (*fresh131).offset(1) };
             type_0 = XML_REGEXP_LETTER_LOWERCASE;
         } else if cur == 't' as i32 {
-            let ref mut fresh132 = (*ctxt).cur;
-            *fresh132 = (*fresh132).offset(1);
+            let fresh132 = unsafe { &mut ((*ctxt).cur) };
+            *fresh132 = unsafe { (*fresh132).offset(1) };
             type_0 = XML_REGEXP_LETTER_TITLECASE;
         } else if cur == 'm' as i32 {
-            let ref mut fresh133 = (*ctxt).cur;
-            *fresh133 = (*fresh133).offset(1);
+            let fresh133 = unsafe { &mut ((*ctxt).cur) };
+            *fresh133 = unsafe { (*fresh133).offset(1) };
             type_0 = XML_REGEXP_LETTER_MODIFIER;
         } else if cur == 'o' as i32 {
-            let ref mut fresh134 = (*ctxt).cur;
-            *fresh134 = (*fresh134).offset(1);
+            let fresh134 = unsafe { &mut ((*ctxt).cur) };
+            *fresh134 = unsafe { (*fresh134).offset(1) };
             type_0 = XML_REGEXP_LETTER_OTHERS;
         } else {
             type_0 = XML_REGEXP_LETTER;
         }
     } else if cur == 'M' as i32 {
-        let ref mut fresh135 = (*ctxt).cur;
-        *fresh135 = (*fresh135).offset(1);
-        cur = *(*ctxt).cur as i32;
+        let fresh135 = unsafe { &mut ((*ctxt).cur) };
+        *fresh135 = unsafe { (*fresh135).offset(1) };
+        cur = (unsafe { *(*ctxt).cur }) as i32;
         if cur == 'n' as i32 {
-            let ref mut fresh136 = (*ctxt).cur;
-            *fresh136 = (*fresh136).offset(1);
+            let fresh136 = unsafe { &mut ((*ctxt).cur) };
+            *fresh136 = unsafe { (*fresh136).offset(1) };
             type_0 = XML_REGEXP_MARK_NONSPACING;
         } else if cur == 'c' as i32 {
-            let ref mut fresh137 = (*ctxt).cur;
-            *fresh137 = (*fresh137).offset(1);
+            let fresh137 = unsafe { &mut ((*ctxt).cur) };
+            *fresh137 = unsafe { (*fresh137).offset(1) };
             type_0 = XML_REGEXP_MARK_SPACECOMBINING;
         } else if cur == 'e' as i32 {
-            let ref mut fresh138 = (*ctxt).cur;
-            *fresh138 = (*fresh138).offset(1);
+            let fresh138 = unsafe { &mut ((*ctxt).cur) };
+            *fresh138 = unsafe { (*fresh138).offset(1) };
             type_0 = XML_REGEXP_MARK_ENCLOSING;
         } else {
             type_0 = XML_REGEXP_MARK;
         }
     } else if cur == 'N' as i32 {
-        let ref mut fresh139 = (*ctxt).cur;
-        *fresh139 = (*fresh139).offset(1);
-        cur = *(*ctxt).cur as i32;
+        let fresh139 = unsafe { &mut ((*ctxt).cur) };
+        *fresh139 = unsafe { (*fresh139).offset(1) };
+        cur = (unsafe { *(*ctxt).cur }) as i32;
         if cur == 'd' as i32 {
-            let ref mut fresh140 = (*ctxt).cur;
-            *fresh140 = (*fresh140).offset(1);
+            let fresh140 = unsafe { &mut ((*ctxt).cur) };
+            *fresh140 = unsafe { (*fresh140).offset(1) };
             type_0 = XML_REGEXP_NUMBER_DECIMAL;
         } else if cur == 'l' as i32 {
-            let ref mut fresh141 = (*ctxt).cur;
-            *fresh141 = (*fresh141).offset(1);
+            let fresh141 = unsafe { &mut ((*ctxt).cur) };
+            *fresh141 = unsafe { (*fresh141).offset(1) };
             type_0 = XML_REGEXP_NUMBER_LETTER;
         } else if cur == 'o' as i32 {
-            let ref mut fresh142 = (*ctxt).cur;
-            *fresh142 = (*fresh142).offset(1);
+            let fresh142 = unsafe { &mut ((*ctxt).cur) };
+            *fresh142 = unsafe { (*fresh142).offset(1) };
             type_0 = XML_REGEXP_NUMBER_OTHERS;
         } else {
             type_0 = XML_REGEXP_NUMBER;
         }
     } else if cur == 'P' as i32 {
-        let ref mut fresh143 = (*ctxt).cur;
-        *fresh143 = (*fresh143).offset(1);
-        cur = *(*ctxt).cur as i32;
+        let fresh143 = unsafe { &mut ((*ctxt).cur) };
+        *fresh143 = unsafe { (*fresh143).offset(1) };
+        cur = (unsafe { *(*ctxt).cur }) as i32;
         if cur == 'c' as i32 {
-            let ref mut fresh144 = (*ctxt).cur;
-            *fresh144 = (*fresh144).offset(1);
+            let fresh144 = unsafe { &mut ((*ctxt).cur) };
+            *fresh144 = unsafe { (*fresh144).offset(1) };
             type_0 = XML_REGEXP_PUNCT_CONNECTOR;
         } else if cur == 'd' as i32 {
-            let ref mut fresh145 = (*ctxt).cur;
-            *fresh145 = (*fresh145).offset(1);
+            let fresh145 = unsafe { &mut ((*ctxt).cur) };
+            *fresh145 = unsafe { (*fresh145).offset(1) };
             type_0 = XML_REGEXP_PUNCT_DASH;
         } else if cur == 's' as i32 {
-            let ref mut fresh146 = (*ctxt).cur;
-            *fresh146 = (*fresh146).offset(1);
+            let fresh146 = unsafe { &mut ((*ctxt).cur) };
+            *fresh146 = unsafe { (*fresh146).offset(1) };
             type_0 = XML_REGEXP_PUNCT_OPEN;
         } else if cur == 'e' as i32 {
-            let ref mut fresh147 = (*ctxt).cur;
-            *fresh147 = (*fresh147).offset(1);
+            let fresh147 = unsafe { &mut ((*ctxt).cur) };
+            *fresh147 = unsafe { (*fresh147).offset(1) };
             type_0 = XML_REGEXP_PUNCT_CLOSE;
         } else if cur == 'i' as i32 {
-            let ref mut fresh148 = (*ctxt).cur;
-            *fresh148 = (*fresh148).offset(1);
+            let fresh148 = unsafe { &mut ((*ctxt).cur) };
+            *fresh148 = unsafe { (*fresh148).offset(1) };
             type_0 = XML_REGEXP_PUNCT_INITQUOTE;
         } else if cur == 'f' as i32 {
-            let ref mut fresh149 = (*ctxt).cur;
-            *fresh149 = (*fresh149).offset(1);
+            let fresh149 = unsafe { &mut ((*ctxt).cur) };
+            *fresh149 = unsafe { (*fresh149).offset(1) };
             type_0 = XML_REGEXP_PUNCT_FINQUOTE;
         } else if cur == 'o' as i32 {
-            let ref mut fresh150 = (*ctxt).cur;
-            *fresh150 = (*fresh150).offset(1);
+            let fresh150 = unsafe { &mut ((*ctxt).cur) };
+            *fresh150 = unsafe { (*fresh150).offset(1) };
             type_0 = XML_REGEXP_PUNCT_OTHERS;
         } else {
             type_0 = XML_REGEXP_PUNCT;
         }
     } else if cur == 'Z' as i32 {
-        let ref mut fresh151 = (*ctxt).cur;
-        *fresh151 = (*fresh151).offset(1);
-        cur = *(*ctxt).cur as i32;
+        let fresh151 = unsafe { &mut ((*ctxt).cur) };
+        *fresh151 = unsafe { (*fresh151).offset(1) };
+        cur = (unsafe { *(*ctxt).cur }) as i32;
         if cur == 's' as i32 {
-            let ref mut fresh152 = (*ctxt).cur;
-            *fresh152 = (*fresh152).offset(1);
+            let fresh152 = unsafe { &mut ((*ctxt).cur) };
+            *fresh152 = unsafe { (*fresh152).offset(1) };
             type_0 = XML_REGEXP_SEPAR_SPACE;
         } else if cur == 'l' as i32 {
-            let ref mut fresh153 = (*ctxt).cur;
-            *fresh153 = (*fresh153).offset(1);
+            let fresh153 = unsafe { &mut ((*ctxt).cur) };
+            *fresh153 = unsafe { (*fresh153).offset(1) };
             type_0 = XML_REGEXP_SEPAR_LINE;
         } else if cur == 'p' as i32 {
-            let ref mut fresh154 = (*ctxt).cur;
-            *fresh154 = (*fresh154).offset(1);
+            let fresh154 = unsafe { &mut ((*ctxt).cur) };
+            *fresh154 = unsafe { (*fresh154).offset(1) };
             type_0 = XML_REGEXP_SEPAR_PARA;
         } else {
             type_0 = XML_REGEXP_SEPAR;
         }
     } else if cur == 'S' as i32 {
-        let ref mut fresh155 = (*ctxt).cur;
-        *fresh155 = (*fresh155).offset(1);
-        cur = *(*ctxt).cur as i32;
+        let fresh155 = unsafe { &mut ((*ctxt).cur) };
+        *fresh155 = unsafe { (*fresh155).offset(1) };
+        cur = (unsafe { *(*ctxt).cur }) as i32;
         if cur == 'm' as i32 {
-            let ref mut fresh156 = (*ctxt).cur;
-            *fresh156 = (*fresh156).offset(1);
+            let fresh156 = unsafe { &mut ((*ctxt).cur) };
+            *fresh156 = unsafe { (*fresh156).offset(1) };
             type_0 = XML_REGEXP_SYMBOL_MATH;
         } else if cur == 'c' as i32 {
-            let ref mut fresh157 = (*ctxt).cur;
-            *fresh157 = (*fresh157).offset(1);
+            let fresh157 = unsafe { &mut ((*ctxt).cur) };
+            *fresh157 = unsafe { (*fresh157).offset(1) };
             type_0 = XML_REGEXP_SYMBOL_CURRENCY;
         } else if cur == 'k' as i32 {
-            let ref mut fresh158 = (*ctxt).cur;
-            *fresh158 = (*fresh158).offset(1);
+            let fresh158 = unsafe { &mut ((*ctxt).cur) };
+            *fresh158 = unsafe { (*fresh158).offset(1) };
             type_0 = XML_REGEXP_SYMBOL_MODIFIER;
         } else if cur == 'o' as i32 {
-            let ref mut fresh159 = (*ctxt).cur;
-            *fresh159 = (*fresh159).offset(1);
+            let fresh159 = unsafe { &mut ((*ctxt).cur) };
+            *fresh159 = unsafe { (*fresh159).offset(1) };
             type_0 = XML_REGEXP_SYMBOL_OTHERS;
         } else {
             type_0 = XML_REGEXP_SYMBOL;
         }
     } else if cur == 'C' as i32 {
-        let ref mut fresh160 = (*ctxt).cur;
-        *fresh160 = (*fresh160).offset(1);
-        cur = *(*ctxt).cur as i32;
+        let fresh160 = unsafe { &mut ((*ctxt).cur) };
+        *fresh160 = unsafe { (*fresh160).offset(1) };
+        cur = (unsafe { *(*ctxt).cur }) as i32;
         if cur == 'c' as i32 {
-            let ref mut fresh161 = (*ctxt).cur;
-            *fresh161 = (*fresh161).offset(1);
+            let fresh161 = unsafe { &mut ((*ctxt).cur) };
+            *fresh161 = unsafe { (*fresh161).offset(1) };
             type_0 = XML_REGEXP_OTHER_CONTROL;
         } else if cur == 'f' as i32 {
-            let ref mut fresh162 = (*ctxt).cur;
-            *fresh162 = (*fresh162).offset(1);
+            let fresh162 = unsafe { &mut ((*ctxt).cur) };
+            *fresh162 = unsafe { (*fresh162).offset(1) };
             type_0 = XML_REGEXP_OTHER_FORMAT;
         } else if cur == 'o' as i32 {
-            let ref mut fresh163 = (*ctxt).cur;
-            *fresh163 = (*fresh163).offset(1);
+            let fresh163 = unsafe { &mut ((*ctxt).cur) };
+            *fresh163 = unsafe { (*fresh163).offset(1) };
             type_0 = XML_REGEXP_OTHER_PRIVATE;
         } else if cur == 'n' as i32 {
-            let ref mut fresh164 = (*ctxt).cur;
-            *fresh164 = (*fresh164).offset(1);
+            let fresh164 = unsafe { &mut ((*ctxt).cur) };
+            *fresh164 = unsafe { (*fresh164).offset(1) };
             type_0 = XML_REGEXP_OTHER_NA;
         } else {
             type_0 = XML_REGEXP_OTHER;
         }
     } else if cur == 'I' as i32 {
-        let mut start: * const u8 = 0 as *const xmlChar;
-        let ref mut fresh165 = (*ctxt).cur;
-        *fresh165 = (*fresh165).offset(1);
-        cur = *(*ctxt).cur as i32;
+        let mut start: *const u8 = 0 as *const xmlChar;
+        let fresh165 = unsafe { &mut ((*ctxt).cur) };
+        *fresh165 = unsafe { (*fresh165).offset(1) };
+        cur = (unsafe { *(*ctxt).cur }) as i32;
         if cur != 's' as i32 {
-            (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
-            xmlRegexpErrCompile(
-                ctxt,
-                b"IsXXXX expected\0" as *const u8 as *const i8,
-            );
+            (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
+            xmlRegexpErrCompile(ctxt, b"IsXXXX expected\0" as *const u8 as *const i8);
             return;
         }
-        let ref mut fresh166 = (*ctxt).cur;
-        *fresh166 = (*fresh166).offset(1);
-        start = (*ctxt).cur;
-        cur = *(*ctxt).cur as i32;
+        let fresh166 = unsafe { &mut ((*ctxt).cur) };
+        *fresh166 = unsafe { (*fresh166).offset(1) };
+        start = unsafe { (*ctxt).cur };
+        cur = (unsafe { *(*ctxt).cur }) as i32;
         if cur >= 'a' as i32 && cur <= 'z' as i32
             || cur >= 'A' as i32 && cur <= 'Z' as i32
-            || cur >= '0' as i32 && cur <= '9' as i32 || cur == 0x2d as i32
+            || cur >= '0' as i32 && cur <= '9' as i32
+            || cur == 0x2d as i32
         {
-            let ref mut fresh167 = (*ctxt).cur;
-            *fresh167 = (*fresh167).offset(1);
-            cur = *(*ctxt).cur as i32;
+            let fresh167 = unsafe { &mut ((*ctxt).cur) };
+            *fresh167 = unsafe { (*fresh167).offset(1) };
+            cur = (unsafe { *(*ctxt).cur }) as i32;
             while cur >= 'a' as i32 && cur <= 'z' as i32
                 || cur >= 'A' as i32 && cur <= 'Z' as i32
-                || cur >= '0' as i32 && cur <= '9' as i32 || cur == 0x2d as i32
+                || cur >= '0' as i32 && cur <= '9' as i32
+                || cur == 0x2d as i32
             {
-                let ref mut fresh168 = (*ctxt).cur;
-                *fresh168 = (*fresh168).offset(1);
-                cur = *(*ctxt).cur as i32;
+                let fresh168 = unsafe { &mut ((*ctxt).cur) };
+                *fresh168 = unsafe { (*fresh168).offset(1) };
+                cur = (unsafe { *(*ctxt).cur }) as i32;
             }
         }
         type_0 = XML_REGEXP_BLOCK_NAME;
-        blockName = xmlStrndup(
-            start,
-            ((*ctxt).cur).offset_from(start) as i64 as i32,
-        );
+        blockName = xmlStrndup(start, (unsafe { ((*ctxt).cur).offset_from(start) }) as i64 as i32);
     } else {
-        (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
-        xmlRegexpErrCompile(
-            ctxt,
-            b"Unknown char property\0" as *const u8 as *const i8,
-        );
+        (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
+        xmlRegexpErrCompile(ctxt, b"Unknown char property\0" as *const u8 as *const i8);
         return;
     }
-    if ((*ctxt).atom).is_null() {
-        let ref mut fresh169 = (*ctxt).atom;
+    if (unsafe { (*ctxt).atom }).is_null() {
+        let fresh169 = unsafe { &mut ((*ctxt).atom) };
         *fresh169 = xmlRegNewAtom(ctxt, type_0);
-        if !((*ctxt).atom).is_null() {
-            let ref mut fresh170 = (*(*ctxt).atom).valuep;
+        if !(unsafe { (*ctxt).atom }).is_null() {
+            let fresh170 = unsafe { &mut ((*(*ctxt).atom).valuep) };
             *fresh170 = blockName as *mut libc::c_void;
         }
-    } else if (*(*ctxt).atom).type_0 as u32
-            == XML_REGEXP_RANGES as i32 as u32
-        {
+    } else if (unsafe { (*(*ctxt).atom).type_0 }) as u32 == XML_REGEXP_RANGES as i32 as u32 {
         xmlRegAtomAddRange(
             ctxt,
-            (*ctxt).atom,
-            (*ctxt).neg,
+            unsafe { (*ctxt).atom },
+            unsafe { (*ctxt).neg },
             type_0,
             0 as i32,
             0 as i32,
@@ -6784,18 +6235,16 @@ unsafe extern "C" fn xmlFAParseCharProp(mut ctxt: * mut crate::src::xmlregexp::_
         );
     }
 }
-unsafe extern "C" fn parse_escaped_codeunit(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
-) -> i32 {
+extern "C" fn parse_escaped_codeunit(mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata) -> i32 {
     let mut val: i32 = 0 as i32;
     let mut i: i32 = 0;
     let mut cur: i32 = 0;
     i = 0 as i32;
     while i < 4 as i32 {
-        let ref mut fresh171 = (*ctxt).cur;
-        *fresh171 = (*fresh171).offset(1);
+        let fresh171 = unsafe { &mut ((*ctxt).cur) };
+        *fresh171 = unsafe { (*fresh171).offset(1) };
         val *= 16 as i32;
-        cur = *(*ctxt).cur as i32;
+        cur = (unsafe { *(*ctxt).cur }) as i32;
         if cur >= '0' as i32 && cur <= '9' as i32 {
             val += cur - '0' as i32;
         } else if cur >= 'A' as i32 && cur <= 'F' as i32 {
@@ -6803,36 +6252,32 @@ unsafe extern "C" fn parse_escaped_codeunit(
         } else if cur >= 'a' as i32 && cur <= 'f' as i32 {
             val += cur - 'a' as i32 + 10 as i32;
         } else {
-            (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
-            xmlRegexpErrCompile(
-                ctxt,
-                b"Expecting hex digit\0" as *const u8 as *const i8,
-            );
+            (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
+            xmlRegexpErrCompile(ctxt, b"Expecting hex digit\0" as *const u8 as *const i8);
             return -(1 as i32);
         }
         i += 1;
     }
     return val;
 }
-unsafe extern "C" fn parse_escaped_codepoint(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
-) -> i32 {
+extern "C" fn parse_escaped_codepoint(mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata) -> i32 {
     let mut val: i32 = parse_escaped_codeunit(ctxt);
     if 0xd800 as i32 <= val && val <= 0xdbff as i32 {
-        let ref mut fresh172 = (*ctxt).cur;
-        *fresh172 = (*fresh172).offset(1);
-        if *(*ctxt).cur as i32 == '\\' as i32 {
-            let ref mut fresh173 = (*ctxt).cur;
-            *fresh173 = (*fresh173).offset(1);
-            if *(*ctxt).cur as i32 == 'u' as i32 {
+        let fresh172 = unsafe { &mut ((*ctxt).cur) };
+        *fresh172 = unsafe { (*fresh172).offset(1) };
+        if (unsafe { *(*ctxt).cur }) as i32 == '\\' as i32 {
+            let fresh173 = unsafe { &mut ((*ctxt).cur) };
+            *fresh173 = unsafe { (*fresh173).offset(1) };
+            if (unsafe { *(*ctxt).cur }) as i32 == 'u' as i32 {
                 let mut low: i32 = parse_escaped_codeunit(ctxt);
                 if 0xdc00 as i32 <= low && low <= 0xdfff as i32 {
                     return (val - 0xd800 as i32) * 0x400 as i32
-                        + (low - 0xdc00 as i32) + 0x10000 as i32;
+                        + (low - 0xdc00 as i32)
+                        + 0x10000 as i32;
                 }
             }
         }
-        (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
+        (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
         xmlRegexpErrCompile(
             ctxt,
             b"Invalid low surrogate pair code unit\0" as *const u8 as *const i8,
@@ -6841,208 +6286,216 @@ unsafe extern "C" fn parse_escaped_codepoint(
     }
     return val;
 }
-unsafe extern "C" fn xmlFAParseCharClassEsc(mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata) {
+extern "C" fn xmlFAParseCharClassEsc(mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata) {
     let mut cur: i32 = 0;
-    if *(*ctxt).cur as i32 == '.' as i32 {
-        if ((*ctxt).atom).is_null() {
-            let ref mut fresh174 = (*ctxt).atom;
+    if (unsafe { *(*ctxt).cur }) as i32 == '.' as i32 {
+        if (unsafe { (*ctxt).atom }).is_null() {
+            let fresh174 = unsafe { &mut ((*ctxt).atom) };
             *fresh174 = xmlRegNewAtom(ctxt, XML_REGEXP_ANYCHAR);
-        } else if (*(*ctxt).atom).type_0 as u32
-                == XML_REGEXP_RANGES as i32 as u32
-            {
+        } else if (unsafe { (*(*ctxt).atom).type_0 }) as u32 == XML_REGEXP_RANGES as i32 as u32 {
             xmlRegAtomAddRange(
                 ctxt,
-                (*ctxt).atom,
-                (*ctxt).neg,
+                unsafe { (*ctxt).atom },
+                unsafe { (*ctxt).neg },
                 XML_REGEXP_ANYCHAR,
                 0 as i32,
                 0 as i32,
                 0 as *mut xmlChar,
             );
         }
-        let ref mut fresh175 = (*ctxt).cur;
-        *fresh175 = (*fresh175).offset(1);
+        let fresh175 = unsafe { &mut ((*ctxt).cur) };
+        *fresh175 = unsafe { (*fresh175).offset(1) };
         return;
     }
-    if *(*ctxt).cur as i32 != '\\' as i32 {
-        (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
+    if (unsafe { *(*ctxt).cur }) as i32 != '\\' as i32 {
+        (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
         xmlRegexpErrCompile(
             ctxt,
             b"Escaped sequence: expecting \\\0" as *const u8 as *const i8,
         );
         return;
     }
-    let ref mut fresh176 = (*ctxt).cur;
-    *fresh176 = (*fresh176).offset(1);
-    cur = *(*ctxt).cur as i32;
+    let fresh176 = unsafe { &mut ((*ctxt).cur) };
+    *fresh176 = unsafe { (*fresh176).offset(1) };
+    cur = (unsafe { *(*ctxt).cur }) as i32;
     if cur == 'p' as i32 {
-        let ref mut fresh177 = (*ctxt).cur;
-        *fresh177 = (*fresh177).offset(1);
-        if *(*ctxt).cur as i32 != '{' as i32 {
-            (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
-            xmlRegexpErrCompile(
-                ctxt,
-                b"Expecting '{'\0" as *const u8 as *const i8,
-            );
+        let fresh177 = unsafe { &mut ((*ctxt).cur) };
+        *fresh177 = unsafe { (*fresh177).offset(1) };
+        if (unsafe { *(*ctxt).cur }) as i32 != '{' as i32 {
+            (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
+            xmlRegexpErrCompile(ctxt, b"Expecting '{'\0" as *const u8 as *const i8);
             return;
         }
-        let ref mut fresh178 = (*ctxt).cur;
-        *fresh178 = (*fresh178).offset(1);
+        let fresh178 = unsafe { &mut ((*ctxt).cur) };
+        *fresh178 = unsafe { (*fresh178).offset(1) };
         xmlFAParseCharProp(ctxt);
-        if *(*ctxt).cur as i32 != '}' as i32 {
-            (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
-            xmlRegexpErrCompile(
-                ctxt,
-                b"Expecting '}'\0" as *const u8 as *const i8,
-            );
+        if (unsafe { *(*ctxt).cur }) as i32 != '}' as i32 {
+            (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
+            xmlRegexpErrCompile(ctxt, b"Expecting '}'\0" as *const u8 as *const i8);
             return;
         }
-        let ref mut fresh179 = (*ctxt).cur;
-        *fresh179 = (*fresh179).offset(1);
+        let fresh179 = unsafe { &mut ((*ctxt).cur) };
+        *fresh179 = unsafe { (*fresh179).offset(1) };
     } else if cur == 'P' as i32 {
-        let ref mut fresh180 = (*ctxt).cur;
-        *fresh180 = (*fresh180).offset(1);
-        if *(*ctxt).cur as i32 != '{' as i32 {
-            (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
-            xmlRegexpErrCompile(
-                ctxt,
-                b"Expecting '{'\0" as *const u8 as *const i8,
-            );
+        let fresh180 = unsafe { &mut ((*ctxt).cur) };
+        *fresh180 = unsafe { (*fresh180).offset(1) };
+        if (unsafe { *(*ctxt).cur }) as i32 != '{' as i32 {
+            (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
+            xmlRegexpErrCompile(ctxt, b"Expecting '{'\0" as *const u8 as *const i8);
             return;
         }
-        let ref mut fresh181 = (*ctxt).cur;
-        *fresh181 = (*fresh181).offset(1);
+        let fresh181 = unsafe { &mut ((*ctxt).cur) };
+        *fresh181 = unsafe { (*fresh181).offset(1) };
         xmlFAParseCharProp(ctxt);
-        if !((*ctxt).atom).is_null() {
-            (*(*ctxt).atom).neg = 1 as i32;
+        if !(unsafe { (*ctxt).atom }).is_null() {
+            (unsafe { (*(*ctxt).atom).neg = 1 as i32 });
         }
-        if *(*ctxt).cur as i32 != '}' as i32 {
-            (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
-            xmlRegexpErrCompile(
-                ctxt,
-                b"Expecting '}'\0" as *const u8 as *const i8,
-            );
+        if (unsafe { *(*ctxt).cur }) as i32 != '}' as i32 {
+            (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
+            xmlRegexpErrCompile(ctxt, b"Expecting '}'\0" as *const u8 as *const i8);
             return;
         }
-        let ref mut fresh182 = (*ctxt).cur;
-        *fresh182 = (*fresh182).offset(1);
-    } else if cur == 'n' as i32 || cur == 'r' as i32 || cur == 't' as i32
-            || cur == '\\' as i32 || cur == '|' as i32 || cur == '.' as i32
-            || cur == '?' as i32 || cur == '*' as i32 || cur == '+' as i32
-            || cur == '(' as i32 || cur == ')' as i32 || cur == '{' as i32
-            || cur == '}' as i32 || cur == 0x2d as i32
-            || cur == 0x5b as i32 || cur == 0x5d as i32
-            || cur == 0x5e as i32 || cur == '!' as i32 || cur == '"' as i32
-            || cur == '#' as i32 || cur == '$' as i32 || cur == '%' as i32
-            || cur == ',' as i32 || cur == '/' as i32 || cur == ':' as i32
-            || cur == ';' as i32 || cur == '=' as i32 || cur == '>' as i32
-            || cur == '@' as i32 || cur == '`' as i32 || cur == '~' as i32
-            || cur == 'u' as i32
-        {
-        if ((*ctxt).atom).is_null() {
-            let ref mut fresh183 = (*ctxt).atom;
+        let fresh182 = unsafe { &mut ((*ctxt).cur) };
+        *fresh182 = unsafe { (*fresh182).offset(1) };
+    } else if cur == 'n' as i32
+        || cur == 'r' as i32
+        || cur == 't' as i32
+        || cur == '\\' as i32
+        || cur == '|' as i32
+        || cur == '.' as i32
+        || cur == '?' as i32
+        || cur == '*' as i32
+        || cur == '+' as i32
+        || cur == '(' as i32
+        || cur == ')' as i32
+        || cur == '{' as i32
+        || cur == '}' as i32
+        || cur == 0x2d as i32
+        || cur == 0x5b as i32
+        || cur == 0x5d as i32
+        || cur == 0x5e as i32
+        || cur == '!' as i32
+        || cur == '"' as i32
+        || cur == '#' as i32
+        || cur == '$' as i32
+        || cur == '%' as i32
+        || cur == ',' as i32
+        || cur == '/' as i32
+        || cur == ':' as i32
+        || cur == ';' as i32
+        || cur == '=' as i32
+        || cur == '>' as i32
+        || cur == '@' as i32
+        || cur == '`' as i32
+        || cur == '~' as i32
+        || cur == 'u' as i32
+    {
+        if (unsafe { (*ctxt).atom }).is_null() {
+            let fresh183 = unsafe { &mut ((*ctxt).atom) };
             *fresh183 = xmlRegNewAtom(ctxt, XML_REGEXP_CHARVAL);
-            if !((*ctxt).atom).is_null() {
+            if !(unsafe { (*ctxt).atom }).is_null() {
                 match cur {
                     110 => {
-                        (*(*ctxt).atom).codepoint = '\n' as i32;
-                    }
+                        (unsafe { (*(*ctxt).atom).codepoint = '\n' as i32 });
+                    },
                     114 => {
-                        (*(*ctxt).atom).codepoint = '\r' as i32;
-                    }
+                        (unsafe { (*(*ctxt).atom).codepoint = '\r' as i32 });
+                    },
                     116 => {
-                        (*(*ctxt).atom).codepoint = '\t' as i32;
-                    }
+                        (unsafe { (*(*ctxt).atom).codepoint = '\t' as i32 });
+                    },
                     117 => {
                         cur = parse_escaped_codepoint(ctxt);
                         if cur < 0 as i32 {
                             return;
                         }
-                        (*(*ctxt).atom).codepoint = cur;
-                    }
+                        (unsafe { (*(*ctxt).atom).codepoint = cur });
+                    },
                     _ => {
-                        (*(*ctxt).atom).codepoint = cur;
-                    }
+                        (unsafe { (*(*ctxt).atom).codepoint = cur });
+                    },
                 }
             }
-        } else if (*(*ctxt).atom).type_0 as u32
-                == XML_REGEXP_RANGES as i32 as u32
-            {
+        } else if (unsafe { (*(*ctxt).atom).type_0 }) as u32 == XML_REGEXP_RANGES as i32 as u32 {
             match cur {
                 110 => {
                     cur = '\n' as i32;
-                }
+                },
                 114 => {
                     cur = '\r' as i32;
-                }
+                },
                 116 => {
                     cur = '\t' as i32;
-                }
-                _ => {}
+                },
+                _ => {},
             }
             xmlRegAtomAddRange(
                 ctxt,
-                (*ctxt).atom,
-                (*ctxt).neg,
+                unsafe { (*ctxt).atom },
+                unsafe { (*ctxt).neg },
                 XML_REGEXP_CHARVAL,
                 cur,
                 cur,
                 0 as *mut xmlChar,
             );
         }
-        let ref mut fresh184 = (*ctxt).cur;
-        *fresh184 = (*fresh184).offset(1);
-    } else if cur == 's' as i32 || cur == 'S' as i32 || cur == 'i' as i32
-            || cur == 'I' as i32 || cur == 'c' as i32 || cur == 'C' as i32
-            || cur == 'd' as i32 || cur == 'D' as i32 || cur == 'w' as i32
-            || cur == 'W' as i32
-        {
+        let fresh184 = unsafe { &mut ((*ctxt).cur) };
+        *fresh184 = unsafe { (*fresh184).offset(1) };
+    } else if cur == 's' as i32
+        || cur == 'S' as i32
+        || cur == 'i' as i32
+        || cur == 'I' as i32
+        || cur == 'c' as i32
+        || cur == 'C' as i32
+        || cur == 'd' as i32
+        || cur == 'D' as i32
+        || cur == 'w' as i32
+        || cur == 'W' as i32
+    {
         let mut type_0: u32 = XML_REGEXP_ANYSPACE;
         match cur {
             115 => {
                 type_0 = XML_REGEXP_ANYSPACE;
-            }
+            },
             83 => {
                 type_0 = XML_REGEXP_NOTSPACE;
-            }
+            },
             105 => {
                 type_0 = XML_REGEXP_INITNAME;
-            }
+            },
             73 => {
                 type_0 = XML_REGEXP_NOTINITNAME;
-            }
+            },
             99 => {
                 type_0 = XML_REGEXP_NAMECHAR;
-            }
+            },
             67 => {
                 type_0 = XML_REGEXP_NOTNAMECHAR;
-            }
+            },
             100 => {
                 type_0 = XML_REGEXP_DECIMAL;
-            }
+            },
             68 => {
                 type_0 = XML_REGEXP_NOTDECIMAL;
-            }
+            },
             119 => {
                 type_0 = XML_REGEXP_REALCHAR;
-            }
+            },
             87 => {
                 type_0 = XML_REGEXP_NOTREALCHAR;
-            }
-            _ => {}
+            },
+            _ => {},
         }
-        let ref mut fresh185 = (*ctxt).cur;
-        *fresh185 = (*fresh185).offset(1);
-        if ((*ctxt).atom).is_null() {
-            let ref mut fresh186 = (*ctxt).atom;
+        let fresh185 = unsafe { &mut ((*ctxt).cur) };
+        *fresh185 = unsafe { (*fresh185).offset(1) };
+        if (unsafe { (*ctxt).atom }).is_null() {
+            let fresh186 = unsafe { &mut ((*ctxt).atom) };
             *fresh186 = xmlRegNewAtom(ctxt, type_0);
-        } else if (*(*ctxt).atom).type_0 as u32
-                == XML_REGEXP_RANGES as i32 as u32
-            {
+        } else if (unsafe { (*(*ctxt).atom).type_0 }) as u32 == XML_REGEXP_RANGES as i32 as u32 {
             xmlRegAtomAddRange(
                 ctxt,
-                (*ctxt).atom,
-                (*ctxt).neg,
+                unsafe { (*ctxt).atom },
+                unsafe { (*ctxt).neg },
                 type_0,
                 0 as i32,
                 0 as i32,
@@ -7050,89 +6503,77 @@ unsafe extern "C" fn xmlFAParseCharClassEsc(mut ctxt: * mut crate::src::xmlregex
             );
         }
     } else {
-        (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
+        (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
         xmlRegexpErrCompile(
             ctxt,
-            b"Wrong escape sequence, misuse of character '\\'\0" as *const u8
-                as *const i8,
+            b"Wrong escape sequence, misuse of character '\\'\0" as *const u8 as *const i8,
         );
     };
 }
-unsafe extern "C" fn xmlFAParseCharRange(mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata) {
+extern "C" fn xmlFAParseCharRange(mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata) {
     let mut cur: i32 = 0;
     let mut len: i32 = 0;
     let mut start: i32 = -(1 as i32);
     let mut end: i32 = -(1 as i32);
-    if *(*ctxt).cur as i32 == '\u{0}' as i32 {
-        (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
-        xmlRegexpErrCompile(
-            ctxt,
-            b"Expecting ']'\0" as *const u8 as *const i8,
-        );
+    if (unsafe { *(*ctxt).cur }) as i32 == '\u{0}' as i32 {
+        (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
+        xmlRegexpErrCompile(ctxt, b"Expecting ']'\0" as *const u8 as *const i8);
         return;
     }
-    cur = *(*ctxt).cur as i32;
+    cur = (unsafe { *(*ctxt).cur }) as i32;
     if cur == '\\' as i32 {
-        let ref mut fresh187 = (*ctxt).cur;
-        *fresh187 = (*fresh187).offset(1);
-        cur = *(*ctxt).cur as i32;
+        let fresh187 = unsafe { &mut ((*ctxt).cur) };
+        *fresh187 = unsafe { (*fresh187).offset(1) };
+        cur = (unsafe { *(*ctxt).cur }) as i32;
         match cur {
             110 => {
                 start = 0xa as i32;
-            }
+            },
             114 => {
                 start = 0xd as i32;
-            }
+            },
             116 => {
                 start = 0x9 as i32;
-            }
+            },
             92 | 124 | 46 | 45 | 94 | 63 | 42 | 43 | 123 | 125 | 40 | 41 | 91 | 93 => {
                 start = cur;
-            }
+            },
             _ => {
-                (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
-                xmlRegexpErrCompile(
-                    ctxt,
-                    b"Invalid escape value\0" as *const u8 as *const i8,
-                );
+                (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
+                xmlRegexpErrCompile(ctxt, b"Invalid escape value\0" as *const u8 as *const i8);
                 return;
-            }
+            },
         }
         end = start;
         len = 1 as i32;
     } else if cur != 0x5b as i32 && cur != 0x5d as i32 {
-        start = xmlStringCurrentChar(0 as xmlParserCtxtPtr, (*ctxt).cur, &mut len);
+        start = unsafe { xmlStringCurrentChar(0 as xmlParserCtxtPtr, (*ctxt).cur, &mut len) };
         end = start;
     } else {
-        (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
-        xmlRegexpErrCompile(
-            ctxt,
-            b"Expecting a char range\0" as *const u8 as *const i8,
-        );
+        (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
+        xmlRegexpErrCompile(ctxt, b"Expecting a char range\0" as *const u8 as *const i8);
         return;
     }
     if start == '-' as i32
-        && *((*ctxt).cur).offset(1 as i32 as isize) as i32 != ']' as i32
-        && *((*ctxt).cur).offset(-(1 as i32) as isize) as i32
-            != '[' as i32
-        && *((*ctxt).cur).offset(-(1 as i32) as isize) as i32
-            != '^' as i32
+        && (unsafe { *((*ctxt).cur).offset(1 as i32 as isize) }) as i32 != ']' as i32
+        && (unsafe { *((*ctxt).cur).offset(-(1 as i32) as isize) }) as i32 != '[' as i32
+        && (unsafe { *((*ctxt).cur).offset(-(1 as i32) as isize) }) as i32 != '^' as i32
     {
-        let ref mut fresh188 = (*ctxt).cur;
-        *fresh188 = (*fresh188).offset(len as isize);
+        let fresh188 = unsafe { &mut ((*ctxt).cur) };
+        *fresh188 = unsafe { (*fresh188).offset(len as isize) };
         return;
     }
-    let ref mut fresh189 = (*ctxt).cur;
-    *fresh189 = (*fresh189).offset(len as isize);
-    cur = *(*ctxt).cur as i32;
+    let fresh189 = unsafe { &mut ((*ctxt).cur) };
+    *fresh189 = unsafe { (*fresh189).offset(len as isize) };
+    cur = (unsafe { *(*ctxt).cur }) as i32;
     if cur != '-' as i32
-        || *((*ctxt).cur).offset(1 as i32 as isize) as i32 == '[' as i32
-        || *((*ctxt).cur).offset(1 as i32 as isize) as i32 == ']' as i32
+        || (unsafe { *((*ctxt).cur).offset(1 as i32 as isize) }) as i32 == '[' as i32
+        || (unsafe { *((*ctxt).cur).offset(1 as i32 as isize) }) as i32 == ']' as i32
     {
         xmlRegAtomAddRange(
             ctxt,
-            (*ctxt).atom,
-            (*ctxt).neg,
+            unsafe { (*ctxt).atom },
+            unsafe { (*ctxt).neg },
             XML_REGEXP_CHARVAL,
             start,
             end,
@@ -7140,42 +6581,37 @@ unsafe extern "C" fn xmlFAParseCharRange(mut ctxt: * mut crate::src::xmlregexp::
         );
         return;
     }
-    let ref mut fresh190 = (*ctxt).cur;
-    *fresh190 = (*fresh190).offset(1);
-    cur = *(*ctxt).cur as i32;
+    let fresh190 = unsafe { &mut ((*ctxt).cur) };
+    *fresh190 = unsafe { (*fresh190).offset(1) };
+    cur = (unsafe { *(*ctxt).cur }) as i32;
     if cur == '\\' as i32 {
-        let ref mut fresh191 = (*ctxt).cur;
-        *fresh191 = (*fresh191).offset(1);
-        cur = *(*ctxt).cur as i32;
+        let fresh191 = unsafe { &mut ((*ctxt).cur) };
+        *fresh191 = unsafe { (*fresh191).offset(1) };
+        cur = (unsafe { *(*ctxt).cur }) as i32;
         match cur {
             110 => {
                 end = 0xa as i32;
-            }
+            },
             114 => {
                 end = 0xd as i32;
-            }
+            },
             116 => {
                 end = 0x9 as i32;
-            }
+            },
             92 | 124 | 46 | 45 | 94 | 63 | 42 | 43 | 123 | 125 | 40 | 41 | 91 | 93 => {
                 end = cur;
-            }
+            },
             _ => {
-                (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
-                xmlRegexpErrCompile(
-                    ctxt,
-                    b"Invalid escape value\0" as *const u8 as *const i8,
-                );
+                (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
+                xmlRegexpErrCompile(ctxt, b"Invalid escape value\0" as *const u8 as *const i8);
                 return;
-            }
+            },
         }
         len = 1 as i32;
-    } else if cur != '\u{0}' as i32 && cur != 0x5b as i32
-            && cur != 0x5d as i32
-        {
-        end = xmlStringCurrentChar(0 as xmlParserCtxtPtr, (*ctxt).cur, &mut len);
+    } else if cur != '\u{0}' as i32 && cur != 0x5b as i32 && cur != 0x5d as i32 {
+        end = unsafe { xmlStringCurrentChar(0 as xmlParserCtxtPtr, (*ctxt).cur, &mut len) };
     } else {
-        (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
+        (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
         xmlRegexpErrCompile(
             ctxt,
             b"Expecting the end of a char range\0" as *const u8 as *const i8,
@@ -7183,19 +6619,18 @@ unsafe extern "C" fn xmlFAParseCharRange(mut ctxt: * mut crate::src::xmlregexp::
         return;
     }
     if end < start {
-        (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
+        (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
         xmlRegexpErrCompile(
             ctxt,
-            b"End of range is before start of range\0" as *const u8
-                as *const i8,
+            b"End of range is before start of range\0" as *const u8 as *const i8,
         );
     } else {
-        let ref mut fresh192 = (*ctxt).cur;
-        *fresh192 = (*fresh192).offset(len as isize);
+        let fresh192 = unsafe { &mut ((*ctxt).cur) };
+        *fresh192 = unsafe { (*fresh192).offset(len as isize) };
         xmlRegAtomAddRange(
             ctxt,
-            (*ctxt).atom,
-            (*ctxt).neg,
+            unsafe { (*ctxt).atom },
+            unsafe { (*ctxt).neg },
             XML_REGEXP_CHARVAL,
             start,
             end,
@@ -7203,49 +6638,47 @@ unsafe extern "C" fn xmlFAParseCharRange(mut ctxt: * mut crate::src::xmlregexp::
         );
     };
 }
-unsafe extern "C" fn xmlFAParsePosCharGroup(mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata) {
+extern "C" fn xmlFAParsePosCharGroup(mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata) {
     loop {
-        if *(*ctxt).cur as i32 == '\\' as i32 {
+        if (unsafe { *(*ctxt).cur }) as i32 == '\\' as i32 {
             xmlFAParseCharClassEsc(ctxt);
         } else {
             xmlFAParseCharRange(ctxt);
         }
-        if !(*(*ctxt).cur as i32 != ']' as i32
-            && *(*ctxt).cur as i32 != '-' as i32
-            && *(*ctxt).cur as i32 != 0 as i32
-            && (*ctxt).error == 0 as i32)
+        if !((unsafe { *(*ctxt).cur }) as i32 != ']' as i32
+            && (unsafe { *(*ctxt).cur }) as i32 != '-' as i32
+            && (unsafe { *(*ctxt).cur }) as i32 != 0 as i32
+            && (unsafe { (*ctxt).error }) == 0 as i32)
         {
             break;
         }
-    };
-}
-unsafe extern "C" fn xmlFAParseCharGroup(mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata) {
-    let mut neg: i32 = (*ctxt).neg;
-    if *(*ctxt).cur as i32 == '^' as i32 {
-        let ref mut fresh193 = (*ctxt).cur;
-        *fresh193 = (*fresh193).offset(1);
-        (*ctxt).neg = ((*ctxt).neg == 0) as i32;
-        xmlFAParsePosCharGroup(ctxt);
-        (*ctxt).neg = neg;
     }
-    while *(*ctxt).cur as i32 != ']' as i32 && (*ctxt).error == 0 as i32
-    {
-        if *(*ctxt).cur as i32 == '-' as i32
-            && *((*ctxt).cur).offset(1 as i32 as isize) as i32
-                == '[' as i32
+}
+extern "C" fn xmlFAParseCharGroup(mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata) {
+    let mut neg: i32 = unsafe { (*ctxt).neg };
+    if (unsafe { *(*ctxt).cur }) as i32 == '^' as i32 {
+        let fresh193 = unsafe { &mut ((*ctxt).cur) };
+        *fresh193 = unsafe { (*fresh193).offset(1) };
+        (unsafe { (*ctxt).neg = ((*ctxt).neg == 0) as i32 });
+        xmlFAParsePosCharGroup(ctxt);
+        (unsafe { (*ctxt).neg = neg });
+    }
+    while (unsafe { *(*ctxt).cur }) as i32 != ']' as i32 && (unsafe { (*ctxt).error }) == 0 as i32 {
+        if (unsafe { *(*ctxt).cur }) as i32 == '-' as i32
+            && (unsafe { *((*ctxt).cur).offset(1 as i32 as isize) }) as i32 == '[' as i32
         {
-            let ref mut fresh194 = (*ctxt).cur;
-            *fresh194 = (*fresh194).offset(1);
-            let ref mut fresh195 = (*ctxt).cur;
-            *fresh195 = (*fresh195).offset(1);
-            (*ctxt).neg = 2 as i32;
+            let fresh194 = unsafe { &mut ((*ctxt).cur) };
+            *fresh194 = unsafe { (*fresh194).offset(1) };
+            let fresh195 = unsafe { &mut ((*ctxt).cur) };
+            *fresh195 = unsafe { (*fresh195).offset(1) };
+            (unsafe { (*ctxt).neg = 2 as i32 });
             xmlFAParseCharGroup(ctxt);
-            (*ctxt).neg = neg;
-            if *(*ctxt).cur as i32 == ']' as i32 {
-                let ref mut fresh196 = (*ctxt).cur;
-                *fresh196 = (*fresh196).offset(1);
+            (unsafe { (*ctxt).neg = neg });
+            if (unsafe { *(*ctxt).cur }) as i32 == ']' as i32 {
+                let fresh196 = unsafe { &mut ((*ctxt).cur) };
+                *fresh196 = unsafe { (*fresh196).offset(1) };
             } else {
-                (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
+                (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
                 xmlRegexpErrCompile(
                     ctxt,
                     b"charClassExpr: ']' expected\0" as *const u8 as *const i8,
@@ -7257,42 +6690,39 @@ unsafe extern "C" fn xmlFAParseCharGroup(mut ctxt: * mut crate::src::xmlregexp::
         }
     }
 }
-unsafe extern "C" fn xmlFAParseCharClass(mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata) {
-    if *(*ctxt).cur as i32 == '[' as i32 {
-        let ref mut fresh197 = (*ctxt).cur;
-        *fresh197 = (*fresh197).offset(1);
-        let ref mut fresh198 = (*ctxt).atom;
+extern "C" fn xmlFAParseCharClass(mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata) {
+    if (unsafe { *(*ctxt).cur }) as i32 == '[' as i32 {
+        let fresh197 = unsafe { &mut ((*ctxt).cur) };
+        *fresh197 = unsafe { (*fresh197).offset(1) };
+        let fresh198 = unsafe { &mut ((*ctxt).atom) };
         *fresh198 = xmlRegNewAtom(ctxt, XML_REGEXP_RANGES);
-        if ((*ctxt).atom).is_null() {
+        if (unsafe { (*ctxt).atom }).is_null() {
             return;
         }
         xmlFAParseCharGroup(ctxt);
-        if *(*ctxt).cur as i32 == ']' as i32 {
-            let ref mut fresh199 = (*ctxt).cur;
-            *fresh199 = (*fresh199).offset(1);
+        if (unsafe { *(*ctxt).cur }) as i32 == ']' as i32 {
+            let fresh199 = unsafe { &mut ((*ctxt).cur) };
+            *fresh199 = unsafe { (*fresh199).offset(1) };
         } else {
-            (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
+            (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
             xmlRegexpErrCompile(
                 ctxt,
-                b"xmlFAParseCharClass: ']' expected\0" as *const u8
-                    as *const i8,
+                b"xmlFAParseCharClass: ']' expected\0" as *const u8 as *const i8,
             );
         }
     } else {
         xmlFAParseCharClassEsc(ctxt);
     };
 }
-unsafe extern "C" fn xmlFAParseQuantExact(mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata) -> i32 {
+extern "C" fn xmlFAParseQuantExact(mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata) -> i32 {
     let mut ret: i32 = 0 as i32;
     let mut ok: i32 = 0 as i32;
     let mut overflow: i32 = 0 as i32;
-    while *(*ctxt).cur as i32 >= '0' as i32
-        && *(*ctxt).cur as i32 <= '9' as i32
-    {
+    while (unsafe { *(*ctxt).cur }) as i32 >= '0' as i32 && (unsafe { *(*ctxt).cur }) as i32 <= '9' as i32 {
         if ret > 2147483647 as i32 / 10 as i32 {
             overflow = 1 as i32;
         } else {
-            let mut digit: i32 = *(*ctxt).cur as i32 - '0' as i32;
+            let mut digit: i32 = (unsafe { *(*ctxt).cur }) as i32 - '0' as i32;
             ret *= 10 as i32;
             if ret > 2147483647 as i32 - digit {
                 overflow = 1 as i32;
@@ -7301,177 +6731,162 @@ unsafe extern "C" fn xmlFAParseQuantExact(mut ctxt: * mut crate::src::xmlregexp:
             }
         }
         ok = 1 as i32;
-        let ref mut fresh200 = (*ctxt).cur;
-        *fresh200 = (*fresh200).offset(1);
+        let fresh200 = unsafe { &mut ((*ctxt).cur) };
+        *fresh200 = unsafe { (*fresh200).offset(1) };
     }
     if ok != 1 as i32 || overflow == 1 as i32 {
         return -(1 as i32);
     }
     return ret;
 }
-unsafe extern "C" fn xmlFAParseQuantifier(mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata) -> i32 {
+extern "C" fn xmlFAParseQuantifier(mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata) -> i32 {
     let mut cur: i32 = 0;
-    cur = *(*ctxt).cur as i32;
+    cur = (unsafe { *(*ctxt).cur }) as i32;
     if cur == '?' as i32 || cur == '*' as i32 || cur == '+' as i32 {
-        if !((*ctxt).atom).is_null() {
+        if !(unsafe { (*ctxt).atom }).is_null() {
             if cur == '?' as i32 {
-                (*(*ctxt).atom).quant = XML_REGEXP_QUANT_OPT;
+                (unsafe { (*(*ctxt).atom).quant = XML_REGEXP_QUANT_OPT });
             } else if cur == '*' as i32 {
-                (*(*ctxt).atom).quant = XML_REGEXP_QUANT_MULT;
+                (unsafe { (*(*ctxt).atom).quant = XML_REGEXP_QUANT_MULT });
             } else if cur == '+' as i32 {
-                (*(*ctxt).atom).quant = XML_REGEXP_QUANT_PLUS;
+                (unsafe { (*(*ctxt).atom).quant = XML_REGEXP_QUANT_PLUS });
             }
         }
-        let ref mut fresh201 = (*ctxt).cur;
-        *fresh201 = (*fresh201).offset(1);
+        let fresh201 = unsafe { &mut ((*ctxt).cur) };
+        *fresh201 = unsafe { (*fresh201).offset(1) };
         return 1 as i32;
     }
     if cur == '{' as i32 {
         let mut min: i32 = 0 as i32;
         let mut max: i32 = 0 as i32;
-        let ref mut fresh202 = (*ctxt).cur;
-        *fresh202 = (*fresh202).offset(1);
+        let fresh202 = unsafe { &mut ((*ctxt).cur) };
+        *fresh202 = unsafe { (*fresh202).offset(1) };
         cur = xmlFAParseQuantExact(ctxt);
         if cur >= 0 as i32 {
             min = cur;
         } else {
-            (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
-            xmlRegexpErrCompile(
-                ctxt,
-                b"Improper quantifier\0" as *const u8 as *const i8,
-            );
+            (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
+            xmlRegexpErrCompile(ctxt, b"Improper quantifier\0" as *const u8 as *const i8);
         }
-        if *(*ctxt).cur as i32 == ',' as i32 {
-            let ref mut fresh203 = (*ctxt).cur;
-            *fresh203 = (*fresh203).offset(1);
-            if *(*ctxt).cur as i32 == '}' as i32 {
+        if (unsafe { *(*ctxt).cur }) as i32 == ',' as i32 {
+            let fresh203 = unsafe { &mut ((*ctxt).cur) };
+            *fresh203 = unsafe { (*fresh203).offset(1) };
+            if (unsafe { *(*ctxt).cur }) as i32 == '}' as i32 {
                 max = 2147483647 as i32;
             } else {
                 cur = xmlFAParseQuantExact(ctxt);
                 if cur >= 0 as i32 {
                     max = cur;
                 } else {
-                    (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
-                    xmlRegexpErrCompile(
-                        ctxt,
-                        b"Improper quantifier\0" as *const u8 as *const i8,
-                    );
+                    (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
+                    xmlRegexpErrCompile(ctxt, b"Improper quantifier\0" as *const u8 as *const i8);
                 }
             }
         }
-        if *(*ctxt).cur as i32 == '}' as i32 {
-            let ref mut fresh204 = (*ctxt).cur;
-            *fresh204 = (*fresh204).offset(1);
+        if (unsafe { *(*ctxt).cur }) as i32 == '}' as i32 {
+            let fresh204 = unsafe { &mut ((*ctxt).cur) };
+            *fresh204 = unsafe { (*fresh204).offset(1) };
         } else {
-            (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
-            xmlRegexpErrCompile(
-                ctxt,
-                b"Unterminated quantifier\0" as *const u8 as *const i8,
-            );
+            (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
+            xmlRegexpErrCompile(ctxt, b"Unterminated quantifier\0" as *const u8 as *const i8);
         }
         if max == 0 as i32 {
             max = min;
         }
-        if !((*ctxt).atom).is_null() {
-            (*(*ctxt).atom).quant = XML_REGEXP_QUANT_RANGE;
-            (*(*ctxt).atom).min = min;
-            (*(*ctxt).atom).max = max;
+        if !(unsafe { (*ctxt).atom }).is_null() {
+            (unsafe { (*(*ctxt).atom).quant = XML_REGEXP_QUANT_RANGE });
+            (unsafe { (*(*ctxt).atom).min = min });
+            (unsafe { (*(*ctxt).atom).max = max });
         }
         return 1 as i32;
     }
     return 0 as i32;
 }
-unsafe extern "C" fn xmlFAParseAtom(mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata) -> i32 {
+extern "C" fn xmlFAParseAtom(mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata) -> i32 {
     let mut codepoint: i32 = 0;
     let mut len: i32 = 0;
     codepoint = xmlFAIsChar(ctxt);
     if codepoint > 0 as i32 {
-        let ref mut fresh205 = (*ctxt).atom;
+        let fresh205 = unsafe { &mut ((*ctxt).atom) };
         *fresh205 = xmlRegNewAtom(ctxt, XML_REGEXP_CHARVAL);
-        if ((*ctxt).atom).is_null() {
+        if (unsafe { (*ctxt).atom }).is_null() {
             return -(1 as i32);
         }
-        codepoint = xmlStringCurrentChar(0 as xmlParserCtxtPtr, (*ctxt).cur, &mut len);
-        (*(*ctxt).atom).codepoint = codepoint;
-        let ref mut fresh206 = (*ctxt).cur;
-        *fresh206 = (*fresh206).offset(len as isize);
+        codepoint = unsafe { xmlStringCurrentChar(0 as xmlParserCtxtPtr, (*ctxt).cur, &mut len) };
+        (unsafe { (*(*ctxt).atom).codepoint = codepoint });
+        let fresh206 = unsafe { &mut ((*ctxt).cur) };
+        *fresh206 = unsafe { (*fresh206).offset(len as isize) };
         return 1 as i32;
     } else {
-        if *(*ctxt).cur as i32 == '|' as i32 {
-            return 0 as i32
+        if (unsafe { *(*ctxt).cur }) as i32 == '|' as i32 {
+            return 0 as i32;
         } else {
-            if *(*ctxt).cur as i32 == 0 as i32 {
-                return 0 as i32
+            if (unsafe { *(*ctxt).cur }) as i32 == 0 as i32 {
+                return 0 as i32;
             } else {
-                if *(*ctxt).cur as i32 == ')' as i32 {
-                    return 0 as i32
+                if (unsafe { *(*ctxt).cur }) as i32 == ')' as i32 {
+                    return 0 as i32;
                 } else {
-                    if *(*ctxt).cur as i32 == '(' as i32 {
-                        let mut start: * mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
-                        let mut oldend: * mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
-                        let mut start0: * mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
-                        let ref mut fresh207 = (*ctxt).cur;
-                        *fresh207 = (*fresh207).offset(1);
-                        if (*ctxt).depth >= 50 as i32 {
-                            (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
+                    if (unsafe { *(*ctxt).cur }) as i32 == '(' as i32 {
+                        let mut start: *mut crate::src::xmlregexp::_xmlAutomataState =
+                            0 as *mut xmlRegState;
+                        let mut oldend: *mut crate::src::xmlregexp::_xmlAutomataState =
+                            0 as *mut xmlRegState;
+                        let mut start0: *mut crate::src::xmlregexp::_xmlAutomataState =
+                            0 as *mut xmlRegState;
+                        let fresh207 = unsafe { &mut ((*ctxt).cur) };
+                        *fresh207 = unsafe { (*fresh207).offset(1) };
+                        if (unsafe { (*ctxt).depth }) >= 50 as i32 {
+                            (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
                             xmlRegexpErrCompile(
                                 ctxt,
-                                b"xmlFAParseAtom: maximum nesting depth exceeded\0"
-                                    as *const u8 as *const i8,
-                            );
-                            return -(1 as i32);
-                        }
-                        xmlFAGenerateEpsilonTransition(
-                            ctxt,
-                            (*ctxt).state,
-                            0 as xmlRegStatePtr,
-                        );
-                        start0 = (*ctxt).state;
-                        xmlFAGenerateEpsilonTransition(
-                            ctxt,
-                            (*ctxt).state,
-                            0 as xmlRegStatePtr,
-                        );
-                        start = (*ctxt).state;
-                        oldend = (*ctxt).end;
-                        let ref mut fresh208 = (*ctxt).end;
-                        *fresh208 = 0 as xmlRegStatePtr;
-                        let ref mut fresh209 = (*ctxt).atom;
-                        *fresh209 = 0 as xmlRegAtomPtr;
-                        let ref mut fresh210 = (*ctxt).depth;
-                        *fresh210 += 1;
-                        xmlFAParseRegExp(ctxt, 0 as i32);
-                        let ref mut fresh211 = (*ctxt).depth;
-                        *fresh211 -= 1;
-                        if *(*ctxt).cur as i32 == ')' as i32 {
-                            let ref mut fresh212 = (*ctxt).cur;
-                            *fresh212 = (*fresh212).offset(1);
-                        } else {
-                            (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
-                            xmlRegexpErrCompile(
-                                ctxt,
-                                b"xmlFAParseAtom: expecting ')'\0" as *const u8
+                                b"xmlFAParseAtom: maximum nesting depth exceeded\0" as *const u8
                                     as *const i8,
                             );
-                        }
-                        let ref mut fresh213 = (*ctxt).atom;
-                        *fresh213 = xmlRegNewAtom(ctxt, XML_REGEXP_SUBREG);
-                        if ((*ctxt).atom).is_null() {
                             return -(1 as i32);
                         }
-                        let ref mut fresh214 = (*(*ctxt).atom).start;
+                        xmlFAGenerateEpsilonTransition(ctxt, unsafe { (*ctxt).state }, 0 as xmlRegStatePtr);
+                        start0 = unsafe { (*ctxt).state };
+                        xmlFAGenerateEpsilonTransition(ctxt, unsafe { (*ctxt).state }, 0 as xmlRegStatePtr);
+                        start = unsafe { (*ctxt).state };
+                        oldend = unsafe { (*ctxt).end };
+                        let fresh208 = unsafe { &mut ((*ctxt).end) };
+                        *fresh208 = 0 as xmlRegStatePtr;
+                        let fresh209 = unsafe { &mut ((*ctxt).atom) };
+                        *fresh209 = 0 as xmlRegAtomPtr;
+                        let fresh210 = unsafe { &mut ((*ctxt).depth) };
+                        *fresh210 += 1;
+                        xmlFAParseRegExp(ctxt, 0 as i32);
+                        let fresh211 = unsafe { &mut ((*ctxt).depth) };
+                        *fresh211 -= 1;
+                        if (unsafe { *(*ctxt).cur }) as i32 == ')' as i32 {
+                            let fresh212 = unsafe { &mut ((*ctxt).cur) };
+                            *fresh212 = unsafe { (*fresh212).offset(1) };
+                        } else {
+                            (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
+                            xmlRegexpErrCompile(
+                                ctxt,
+                                b"xmlFAParseAtom: expecting ')'\0" as *const u8 as *const i8,
+                            );
+                        }
+                        let fresh213 = unsafe { &mut ((*ctxt).atom) };
+                        *fresh213 = xmlRegNewAtom(ctxt, XML_REGEXP_SUBREG);
+                        if (unsafe { (*ctxt).atom }).is_null() {
+                            return -(1 as i32);
+                        }
+                        let fresh214 = unsafe { &mut ((*(*ctxt).atom).start) };
                         *fresh214 = start;
-                        let ref mut fresh215 = (*(*ctxt).atom).start0;
+                        let fresh215 = unsafe { &mut ((*(*ctxt).atom).start0) };
                         *fresh215 = start0;
-                        let ref mut fresh216 = (*(*ctxt).atom).stop;
-                        *fresh216 = (*ctxt).state;
-                        let ref mut fresh217 = (*ctxt).end;
+                        let fresh216 = unsafe { &mut ((*(*ctxt).atom).stop) };
+                        *fresh216 = unsafe { (*ctxt).state };
+                        let fresh217 = unsafe { &mut ((*ctxt).end) };
                         *fresh217 = oldend;
                         return 1 as i32;
                     } else {
-                        if *(*ctxt).cur as i32 == '[' as i32
-                            || *(*ctxt).cur as i32 == '\\' as i32
-                            || *(*ctxt).cur as i32 == '.' as i32
+                        if (unsafe { *(*ctxt).cur }) as i32 == '[' as i32
+                            || (unsafe { *(*ctxt).cur }) as i32 == '\\' as i32
+                            || (unsafe { *(*ctxt).cur }) as i32 == '.' as i32
                         {
                             xmlFAParseCharClass(ctxt);
                             return 1 as i32;
@@ -7483,16 +6898,16 @@ unsafe extern "C" fn xmlFAParseAtom(mut ctxt: * mut crate::src::xmlregexp::_xmlA
     }
     return 0 as i32;
 }
-unsafe extern "C" fn xmlFAParsePiece(mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata) -> i32 {
+extern "C" fn xmlFAParsePiece(mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata) -> i32 {
     let mut ret: i32 = 0;
-    let ref mut fresh218 = (*ctxt).atom;
+    let fresh218 = unsafe { &mut ((*ctxt).atom) };
     *fresh218 = 0 as xmlRegAtomPtr;
     ret = xmlFAParseAtom(ctxt);
     if ret == 0 as i32 {
         return 0 as i32;
     }
-    if ((*ctxt).atom).is_null() {
-        (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
+    if (unsafe { (*ctxt).atom }).is_null() {
+        (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
         xmlRegexpErrCompile(
             ctxt,
             b"internal: no atom generated\0" as *const u8 as *const i8,
@@ -7501,13 +6916,13 @@ unsafe extern "C" fn xmlFAParsePiece(mut ctxt: * mut crate::src::xmlregexp::_xml
     xmlFAParseQuantifier(ctxt);
     return 1 as i32;
 }
-unsafe extern "C" fn xmlFAParseBranch(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut to: * mut crate::src::xmlregexp::_xmlAutomataState,
+extern "C" fn xmlFAParseBranch(
+    mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut to: *mut crate::src::xmlregexp::_xmlAutomataState,
 ) -> i32 {
-    let mut previous: * mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
+    let mut previous: *mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
     let mut ret: i32 = 0;
-    previous = (*ctxt).state;
+    previous = unsafe { (*ctxt).state };
     ret = xmlFAParsePiece(ctxt);
     if ret == 0 as i32 {
         xmlFAGenerateEpsilonTransition(ctxt, previous, to);
@@ -7515,173 +6930,181 @@ unsafe extern "C" fn xmlFAParseBranch(
         if xmlFAGenerateTransitions(
             ctxt,
             previous,
-            (if *(*ctxt).cur as i32 == '|' as i32
-                || *(*ctxt).cur as i32 == ')' as i32
-                || *(*ctxt).cur as i32 == 0 as i32
+            if (unsafe { *(*ctxt).cur }) as i32 == '|' as i32
+                || (unsafe { *(*ctxt).cur }) as i32 == ')' as i32
+                || (unsafe { *(*ctxt).cur }) as i32 == 0 as i32
             {
                 to
             } else {
                 0 as xmlRegStatePtr
-            }),
-            (*ctxt).atom,
+            },
+            unsafe { (*ctxt).atom },
         ) < 0 as i32
         {
             return -(1 as i32);
         }
-        previous = (*ctxt).state;
-        let ref mut fresh219 = (*ctxt).atom;
+        previous = unsafe { (*ctxt).state };
+        let fresh219 = unsafe { &mut ((*ctxt).atom) };
         *fresh219 = 0 as xmlRegAtomPtr;
     }
-    while ret != 0 as i32 && (*ctxt).error == 0 as i32 {
+    while ret != 0 as i32 && (unsafe { (*ctxt).error }) == 0 as i32 {
         ret = xmlFAParsePiece(ctxt);
         if ret != 0 as i32 {
             if xmlFAGenerateTransitions(
                 ctxt,
                 previous,
-                (if *(*ctxt).cur as i32 == '|' as i32
-                    || *(*ctxt).cur as i32 == ')' as i32
-                    || *(*ctxt).cur as i32 == 0 as i32
+                if (unsafe { *(*ctxt).cur }) as i32 == '|' as i32
+                    || (unsafe { *(*ctxt).cur }) as i32 == ')' as i32
+                    || (unsafe { *(*ctxt).cur }) as i32 == 0 as i32
                 {
                     to
                 } else {
                     0 as xmlRegStatePtr
-                }),
-                (*ctxt).atom,
+                },
+                unsafe { (*ctxt).atom },
             ) < 0 as i32
             {
                 return -(1 as i32);
             }
-            previous = (*ctxt).state;
-            let ref mut fresh220 = (*ctxt).atom;
+            previous = unsafe { (*ctxt).state };
+            let fresh220 = unsafe { &mut ((*ctxt).atom) };
             *fresh220 = 0 as xmlRegAtomPtr;
         }
     }
     return 0 as i32;
 }
-unsafe extern "C" fn xmlFAParseRegExp(
-    mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut top: i32,
-) {
-    let mut start: * mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
-    let mut end: * mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
-    start = (*ctxt).state;
-    let ref mut fresh221 = (*ctxt).end;
+extern "C" fn xmlFAParseRegExp(mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata, mut top: i32) {
+    let mut start: *mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
+    let mut end: *mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlRegState;
+    start = unsafe { (*ctxt).state };
+    let fresh221 = unsafe { &mut ((*ctxt).end) };
     *fresh221 = 0 as xmlRegStatePtr;
     xmlFAParseBranch(ctxt, 0 as xmlRegStatePtr);
     if top != 0 {
-        (*(*ctxt).state).type_0 = XML_REGEXP_FINAL_STATE;
+        (unsafe { (*(*ctxt).state).type_0 = XML_REGEXP_FINAL_STATE });
     }
-    if *(*ctxt).cur as i32 != '|' as i32 {
-        let ref mut fresh222 = (*ctxt).end;
-        *fresh222 = (*ctxt).state;
+    if (unsafe { *(*ctxt).cur }) as i32 != '|' as i32 {
+        let fresh222 = unsafe { &mut ((*ctxt).end) };
+        *fresh222 = unsafe { (*ctxt).state };
         return;
     }
-    end = (*ctxt).state;
-    while *(*ctxt).cur as i32 == '|' as i32 && (*ctxt).error == 0 as i32
-    {
-        let ref mut fresh223 = (*ctxt).cur;
-        *fresh223 = (*fresh223).offset(1);
-        let ref mut fresh224 = (*ctxt).state;
+    end = unsafe { (*ctxt).state };
+    while (unsafe { *(*ctxt).cur }) as i32 == '|' as i32 && (unsafe { (*ctxt).error }) == 0 as i32 {
+        let fresh223 = unsafe { &mut ((*ctxt).cur) };
+        *fresh223 = unsafe { (*fresh223).offset(1) };
+        let fresh224 = unsafe { &mut ((*ctxt).state) };
         *fresh224 = start;
-        let ref mut fresh225 = (*ctxt).end;
+        let fresh225 = unsafe { &mut ((*ctxt).end) };
         *fresh225 = 0 as xmlRegStatePtr;
         xmlFAParseBranch(ctxt, end);
     }
     if top == 0 {
-        let ref mut fresh226 = (*ctxt).state;
+        let fresh226 = unsafe { &mut ((*ctxt).state) };
         *fresh226 = end;
-        let ref mut fresh227 = (*ctxt).end;
+        let fresh227 = unsafe { &mut ((*ctxt).end) };
         *fresh227 = end;
     }
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRegexpPrint<'a1>(
-    mut output: * mut crate::src::tree::_IO_FILE,
+pub extern "C" fn xmlRegexpPrint<'a1>(
+    mut output: *mut crate::src::tree::_IO_FILE,
     mut regexp: Option<&'a1 mut crate::src::xmlregexp::_xmlRegexp>,
 ) {
     let mut i: i32 = 0;
     if output.is_null() {
         return;
     }
-    fprintf(output, b" regexp: \0" as *const u8 as *const i8);
-    if borrow(& regexp).is_none() {
-        fprintf(output, b"NULL\n\0" as *const u8 as *const i8);
+    (unsafe { fprintf(output, b" regexp: \0" as *const u8 as *const i8) });
+    if borrow(&regexp).is_none() {
+        (unsafe { fprintf(output, b"NULL\n\0" as *const u8 as *const i8) });
         return;
     }
-    fprintf(output, b"'%s' \0" as *const u8 as *const i8, (*(borrow(& regexp)).unwrap()).string);
-    fprintf(output, b"\n\0" as *const u8 as *const i8);
-    fprintf(
+    (unsafe { fprintf(
+        output,
+        b"'%s' \0" as *const u8 as *const i8,
+        (*(borrow(&regexp)).unwrap()).string,
+    ) });
+    (unsafe { fprintf(output, b"\n\0" as *const u8 as *const i8) });
+    (unsafe { fprintf(
         output,
         b"%d atoms:\n\0" as *const u8 as *const i8,
-        (*(borrow(& regexp)).unwrap()).nbAtoms,
-    );
+        (*(borrow(&regexp)).unwrap()).nbAtoms,
+    ) });
     i = 0 as i32;
-    while i < (*(borrow(& regexp)).unwrap()).nbAtoms {
-        fprintf(output, b" %02d \0" as *const u8 as *const i8, i);
-        xmlRegPrintAtom(output, *((*(borrow(& regexp)).unwrap()).atoms).offset(i as isize));
+    while i < (*(borrow(&regexp)).unwrap()).nbAtoms {
+        (unsafe { fprintf(output, b" %02d \0" as *const u8 as *const i8, i) });
+        xmlRegPrintAtom(
+            output,
+            unsafe { *((*(borrow(&regexp)).unwrap()).atoms).offset(i as isize) },
+        );
         i += 1;
     }
-    fprintf(
+    (unsafe { fprintf(
         output,
         b"%d states:\0" as *const u8 as *const i8,
-        (*(borrow(& regexp)).unwrap()).nbStates,
-    );
-    fprintf(output, b"\n\0" as *const u8 as *const i8);
+        (*(borrow(&regexp)).unwrap()).nbStates,
+    ) });
+    (unsafe { fprintf(output, b"\n\0" as *const u8 as *const i8) });
     i = 0 as i32;
-    while i < (*(borrow(& regexp)).unwrap()).nbStates {
-        xmlRegPrintState(output, *((*(borrow(& regexp)).unwrap()).states).offset(i as isize));
+    while i < (*(borrow(&regexp)).unwrap()).nbStates {
+        xmlRegPrintState(
+            output,
+            unsafe { *((*(borrow(&regexp)).unwrap()).states).offset(i as isize) },
+        );
         i += 1;
     }
-    fprintf(
+    (unsafe { fprintf(
         output,
         b"%d counters:\n\0" as *const u8 as *const i8,
-        (*(borrow(& regexp)).unwrap()).nbCounters,
-    );
+        (*(borrow(&regexp)).unwrap()).nbCounters,
+    ) });
     i = 0 as i32;
-    while i < (*(borrow(& regexp)).unwrap()).nbCounters {
-        fprintf(
+    while i < (*(borrow(&regexp)).unwrap()).nbCounters {
+        (unsafe { fprintf(
             output,
             b" %d: min %d max %d\n\0" as *const u8 as *const i8,
             i,
-            (*((*(borrow(& regexp)).unwrap()).counters).offset(i as isize)).min,
-            (*((*(borrow(& regexp)).unwrap()).counters).offset(i as isize)).max,
-        );
+            (*((*(borrow(&regexp)).unwrap()).counters).offset(i as isize)).min,
+            (*((*(borrow(&regexp)).unwrap()).counters).offset(i as isize)).max,
+        ) });
         i += 1;
     }
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRegexpCompile(mut regexp: * const u8) -> * mut crate::src::xmlregexp::_xmlRegexp {
-    let mut ret: * mut crate::src::xmlregexp::_xmlRegexp = 0 as *mut xmlRegexp;
-    let mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata = 0 as *mut xmlRegParserCtxt;
+pub extern "C" fn xmlRegexpCompile(
+    mut regexp: *const u8,
+) -> *mut crate::src::xmlregexp::_xmlRegexp {
+    let mut ret: *mut crate::src::xmlregexp::_xmlRegexp = 0 as *mut xmlRegexp;
+    let mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata = 0 as *mut xmlRegParserCtxt;
     ctxt = xmlRegNewParserCtxt(regexp);
     if ctxt.is_null() {
         return 0 as xmlRegexpPtr;
     }
-    let ref mut fresh228 = (*ctxt).end;
+    let fresh228 = unsafe { &mut ((*ctxt).end) };
     *fresh228 = 0 as xmlRegStatePtr;
-    let ref mut fresh229 = (*ctxt).state;
+    let fresh229 = unsafe { &mut ((*ctxt).state) };
     *fresh229 = xmlRegNewState(ctxt);
-    let ref mut fresh230 = (*ctxt).start;
+    let fresh230 = unsafe { &mut ((*ctxt).start) };
     *fresh230 = *fresh229;
-    xmlRegStatePush(ctxt, (*ctxt).start);
+    xmlRegStatePush(ctxt, unsafe { (*ctxt).start });
     xmlFAParseRegExp(ctxt, 1 as i32);
-    if *(*ctxt).cur as i32 != 0 as i32 {
-        (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32;
+    if (unsafe { *(*ctxt).cur }) as i32 != 0 as i32 {
+        (unsafe { (*ctxt).error = XML_REGEXP_COMPILE_ERROR as i32 });
         xmlRegexpErrCompile(
             ctxt,
             b"xmlFAParseRegExp: extra characters\0" as *const u8 as *const i8,
         );
     }
-    if (*ctxt).error != 0 as i32 {
+    if (unsafe { (*ctxt).error }) != 0 as i32 {
         xmlRegFreeParserCtxt(ctxt);
         return 0 as xmlRegexpPtr;
     }
-    let ref mut fresh231 = (*ctxt).end;
-    *fresh231 = (*ctxt).state;
-    (*(*ctxt).start).type_0 = XML_REGEXP_START_STATE;
-    (*(*ctxt).end).type_0 = XML_REGEXP_FINAL_STATE;
+    let fresh231 = unsafe { &mut ((*ctxt).end) };
+    *fresh231 = unsafe { (*ctxt).state };
+    (unsafe { (*(*ctxt).start).type_0 = XML_REGEXP_START_STATE });
+    (unsafe { (*(*ctxt).end).type_0 = XML_REGEXP_FINAL_STATE });
     xmlFAEliminateEpsilonTransitions(ctxt);
-    if (*ctxt).error != 0 as i32 {
+    if (unsafe { (*ctxt).error }) != 0 as i32 {
         xmlRegFreeParserCtxt(ctxt);
         return 0 as xmlRegexpPtr;
     }
@@ -7690,9 +7113,9 @@ pub unsafe extern "C" fn xmlRegexpCompile(mut regexp: * const u8) -> * mut crate
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRegexpExec(
-    mut comp: * mut crate::src::xmlregexp::_xmlRegexp,
-    mut content: * const u8,
+pub extern "C" fn xmlRegexpExec(
+    mut comp: *mut crate::src::xmlregexp::_xmlRegexp,
+    mut content: *const u8,
 ) -> i32 {
     if comp.is_null() || content.is_null() {
         return -(1 as i32);
@@ -7700,177 +7123,163 @@ pub unsafe extern "C" fn xmlRegexpExec(
     return xmlFARegExec(comp, content);
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRegexpIsDeterminist(mut comp: * mut crate::src::xmlregexp::_xmlRegexp) -> i32 {
-    let mut am: * mut crate::src::xmlregexp::_xmlAutomata = 0 as *mut xmlAutomata;
+pub extern "C" fn xmlRegexpIsDeterminist(mut comp: *mut crate::src::xmlregexp::_xmlRegexp) -> i32 {
+    let mut am: *mut crate::src::xmlregexp::_xmlAutomata = 0 as *mut xmlAutomata;
     let mut ret: i32 = 0;
     if comp.is_null() {
         return -(1 as i32);
     }
-    if (*comp).determinist != -(1 as i32) {
-        return (*comp).determinist;
+    if (unsafe { (*comp).determinist }) != -(1 as i32) {
+        return unsafe { (*comp).determinist };
     }
     am = xmlNewAutomata();
     if am.is_null() {
         return -(1 as i32);
     }
-    if !((*am).states).is_null() {
+    if !(unsafe { (*am).states }).is_null() {
         let mut i: i32 = 0;
         i = 0 as i32;
-        while i < (*am).nbStates {
-            xmlRegFreeState(*((*am).states).offset(i as isize));
+        while i < (unsafe { (*am).nbStates }) {
+            xmlRegFreeState(unsafe { *((*am).states).offset(i as isize) });
             i += 1;
         }
-        xmlFree.expect("non-null function pointer")((*am).states as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")((*am).states as *mut libc::c_void) });
     }
-    (*am).nbAtoms = (*comp).nbAtoms;
-    let ref mut fresh232 = (*am).atoms;
-    *fresh232 = (*comp).atoms;
-    (*am).nbStates = (*comp).nbStates;
-    let ref mut fresh233 = (*am).states;
-    *fresh233 = (*comp).states;
-    (*am).determinist = -(1 as i32);
-    (*am).flags = (*comp).flags;
+    (unsafe { (*am).nbAtoms = (*comp).nbAtoms });
+    let fresh232 = unsafe { &mut ((*am).atoms) };
+    *fresh232 = unsafe { (*comp).atoms };
+    (unsafe { (*am).nbStates = (*comp).nbStates });
+    let fresh233 = unsafe { &mut ((*am).states) };
+    *fresh233 = unsafe { (*comp).states };
+    (unsafe { (*am).determinist = -(1 as i32) });
+    (unsafe { (*am).flags = (*comp).flags });
     ret = xmlFAComputesDeterminism(am);
-    let ref mut fresh234 = (*am).atoms;
+    let fresh234 = unsafe { &mut ((*am).atoms) };
     *fresh234 = 0 as *mut xmlRegAtomPtr;
-    let ref mut fresh235 = (*am).states;
+    let fresh235 = unsafe { &mut ((*am).states) };
     *fresh235 = 0 as *mut xmlRegStatePtr;
     xmlFreeAutomata(am);
-    (*comp).determinist = ret;
+    (unsafe { (*comp).determinist = ret });
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRegFreeRegexp(mut regexp: * mut crate::src::xmlregexp::_xmlRegexp) {
+pub extern "C" fn xmlRegFreeRegexp(mut regexp: *mut crate::src::xmlregexp::_xmlRegexp) {
     let mut i: i32 = 0;
     if regexp.is_null() {
         return;
     }
-    if !((*regexp).string).is_null() {
-        xmlFree
-            .expect("non-null function pointer")((*regexp).string as *mut libc::c_void);
+    if !(unsafe { (*regexp).string }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*regexp).string as *mut libc::c_void) });
     }
-    if !((*regexp).states).is_null() {
+    if !(unsafe { (*regexp).states }).is_null() {
         i = 0 as i32;
-        while i < (*regexp).nbStates {
-            xmlRegFreeState(*((*regexp).states).offset(i as isize));
+        while i < (unsafe { (*regexp).nbStates }) {
+            xmlRegFreeState(unsafe { *((*regexp).states).offset(i as isize) });
             i += 1;
         }
-        xmlFree
-            .expect("non-null function pointer")((*regexp).states as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")((*regexp).states as *mut libc::c_void) });
     }
-    if !((*regexp).atoms).is_null() {
+    if !(unsafe { (*regexp).atoms }).is_null() {
         i = 0 as i32;
-        while i < (*regexp).nbAtoms {
-            xmlRegFreeAtom(*((*regexp).atoms).offset(i as isize));
+        while i < (unsafe { (*regexp).nbAtoms }) {
+            xmlRegFreeAtom(unsafe { *((*regexp).atoms).offset(i as isize) });
             i += 1;
         }
-        xmlFree
-            .expect("non-null function pointer")((*regexp).atoms as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")((*regexp).atoms as *mut libc::c_void) });
     }
-    if !((*regexp).counters).is_null() {
-        xmlFree
-            .expect(
-                "non-null function pointer",
-            )((*regexp).counters as *mut libc::c_void);
+    if !(unsafe { (*regexp).counters }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*regexp).counters as *mut libc::c_void) });
     }
-    if !((*regexp).compact).is_null() {
-        xmlFree
-            .expect("non-null function pointer")((*regexp).compact as *mut libc::c_void);
+    if !(unsafe { (*regexp).compact }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*regexp).compact as *mut libc::c_void) });
     }
-    if !((*regexp).transdata).is_null() {
-        xmlFree
-            .expect(
-                "non-null function pointer",
-            )((*regexp).transdata as *mut libc::c_void);
+    if !(unsafe { (*regexp).transdata }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*regexp).transdata as *mut libc::c_void) });
     }
-    if !((*regexp).stringMap).is_null() {
+    if !(unsafe { (*regexp).stringMap }).is_null() {
         i = 0 as i32;
-        while i < (*regexp).nbstrings {
-            xmlFree
-                .expect(
-                    "non-null function pointer",
-                )(*((*regexp).stringMap).offset(i as isize) as *mut libc::c_void);
+        while i < (unsafe { (*regexp).nbstrings }) {
+            (unsafe { xmlFree.expect("non-null function pointer")(
+                *((*regexp).stringMap).offset(i as isize) as *mut libc::c_void
+            ) });
             i += 1;
         }
-        xmlFree
-            .expect(
-                "non-null function pointer",
-            )((*regexp).stringMap as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")((*regexp).stringMap as *mut libc::c_void) });
     }
-    xmlFree.expect("non-null function pointer")(regexp as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(regexp as *mut libc::c_void) });
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNewAutomata() -> * mut crate::src::xmlregexp::_xmlAutomata {
-    let mut ctxt: * mut crate::src::xmlregexp::_xmlAutomata = 0 as *mut xmlAutomata;
+pub extern "C" fn xmlNewAutomata() -> *mut crate::src::xmlregexp::_xmlAutomata {
+    let mut ctxt: *mut crate::src::xmlregexp::_xmlAutomata = 0 as *mut xmlAutomata;
     ctxt = xmlRegNewParserCtxt(0 as *const xmlChar);
     if ctxt.is_null() {
         return 0 as xmlAutomataPtr;
     }
-    let ref mut fresh236 = (*ctxt).end;
+    let fresh236 = unsafe { &mut ((*ctxt).end) };
     *fresh236 = 0 as xmlRegStatePtr;
-    let ref mut fresh237 = (*ctxt).state;
+    let fresh237 = unsafe { &mut ((*ctxt).state) };
     *fresh237 = xmlRegNewState(ctxt);
-    let ref mut fresh238 = (*ctxt).start;
+    let fresh238 = unsafe { &mut ((*ctxt).start) };
     *fresh238 = *fresh237;
-    if ((*ctxt).start).is_null() {
+    if (unsafe { (*ctxt).start }).is_null() {
         xmlFreeAutomata(ctxt);
         return 0 as xmlAutomataPtr;
     }
-    (*(*ctxt).start).type_0 = XML_REGEXP_START_STATE;
-    if xmlRegStatePush(ctxt, (*ctxt).start) < 0 as i32 {
-        xmlRegFreeState((*ctxt).start);
+    (unsafe { (*(*ctxt).start).type_0 = XML_REGEXP_START_STATE });
+    if xmlRegStatePush(ctxt, unsafe { (*ctxt).start }) < 0 as i32 {
+        xmlRegFreeState(unsafe { (*ctxt).start });
         xmlFreeAutomata(ctxt);
         return 0 as xmlAutomataPtr;
     }
-    (*ctxt).flags = 0 as i32;
+    (unsafe { (*ctxt).flags = 0 as i32 });
     return ctxt;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlFreeAutomata(mut am: * mut crate::src::xmlregexp::_xmlAutomata) {
+pub extern "C" fn xmlFreeAutomata(mut am: *mut crate::src::xmlregexp::_xmlAutomata) {
     if am.is_null() {
         return;
     }
     xmlRegFreeParserCtxt(am);
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlAutomataSetFlags<'a1>(
+pub extern "C" fn xmlAutomataSetFlags<'a1>(
     mut am: Option<&'a1 mut crate::src::xmlregexp::_xmlAutomata>,
     mut flags: i32,
 ) {
-    if borrow(& am).is_none() {
+    if borrow(&am).is_none() {
         return;
     }
     (*(borrow_mut(&mut am)).unwrap()).flags |= flags;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlAutomataGetInitState(
-    mut am: * mut crate::src::xmlregexp::_xmlAutomata,
-) -> * mut crate::src::xmlregexp::_xmlAutomataState {
+pub extern "C" fn xmlAutomataGetInitState(
+    mut am: *mut crate::src::xmlregexp::_xmlAutomata,
+) -> *mut crate::src::xmlregexp::_xmlAutomataState {
     if am.is_null() {
         return 0 as xmlAutomataStatePtr;
     }
-    return (*am).start;
+    return unsafe { (*am).start };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlAutomataSetFinalState(
-    mut am: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut state: * mut crate::src::xmlregexp::_xmlAutomataState,
+pub extern "C" fn xmlAutomataSetFinalState(
+    mut am: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut state: *mut crate::src::xmlregexp::_xmlAutomataState,
 ) -> i32 {
     if am.is_null() || state.is_null() {
         return -(1 as i32);
     }
-    (*state).type_0 = XML_REGEXP_FINAL_STATE;
+    (unsafe { (*state).type_0 = XML_REGEXP_FINAL_STATE });
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlAutomataNewTransition(
-    mut am: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut from: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut to: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut token: * const u8,
-    mut data: * mut core::ffi::c_void,
-) -> * mut crate::src::xmlregexp::_xmlAutomataState {
-    let mut atom: * mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
+pub extern "C" fn xmlAutomataNewTransition(
+    mut am: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut from: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut to: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut token: *const u8,
+    mut data: *mut core::ffi::c_void,
+) -> *mut crate::src::xmlregexp::_xmlAutomataState {
+    let mut atom: *mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
     if am.is_null() || from.is_null() || token.is_null() {
         return 0 as xmlAutomataStatePtr;
     }
@@ -7878,29 +7287,29 @@ pub unsafe extern "C" fn xmlAutomataNewTransition(
     if atom.is_null() {
         return 0 as xmlAutomataStatePtr;
     }
-    let ref mut fresh239 = (*atom).data;
+    let fresh239 = unsafe { &mut ((*atom).data) };
     *fresh239 = data;
-    let ref mut fresh240 = (*atom).valuep;
+    let fresh240 = unsafe { &mut ((*atom).valuep) };
     *fresh240 = xmlStrdup(token) as *mut libc::c_void;
     if xmlFAGenerateTransitions(am, from, to, atom) < 0 as i32 {
         xmlRegFreeAtom(atom);
         return 0 as xmlAutomataStatePtr;
     }
     if to.is_null() {
-        return (*am).state;
+        return unsafe { (*am).state };
     }
     return to;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlAutomataNewTransition2(
-    mut am: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut from: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut to: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut token: * const u8,
-    mut token2: * const u8,
-    mut data: * mut core::ffi::c_void,
-) -> * mut crate::src::xmlregexp::_xmlAutomataState {
-    let mut atom: * mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
+pub extern "C" fn xmlAutomataNewTransition2(
+    mut am: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut from: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut to: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut token: *const u8,
+    mut token2: *const u8,
+    mut data: *mut core::ffi::c_void,
+) -> *mut crate::src::xmlregexp::_xmlAutomataState {
+    let mut atom: *mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
     if am.is_null() || from.is_null() || token.is_null() {
         return 0 as xmlAutomataStatePtr;
     }
@@ -7908,43 +7317,37 @@ pub unsafe extern "C" fn xmlAutomataNewTransition2(
     if atom.is_null() {
         return 0 as xmlAutomataStatePtr;
     }
-    let ref mut fresh241 = (*atom).data;
+    let fresh241 = unsafe { &mut ((*atom).data) };
     *fresh241 = data;
-    if token2.is_null() || *token2 as i32 == 0 as i32 {
-        let ref mut fresh242 = (*atom).valuep;
+    if token2.is_null() || (unsafe { *token2 }) as i32 == 0 as i32 {
+        let fresh242 = unsafe { &mut ((*atom).valuep) };
         *fresh242 = xmlStrdup(token) as *mut libc::c_void;
     } else {
         let mut lenn: i32 = 0;
         let mut lenp: i32 = 0;
-        let mut str: * mut u8 = 0 as *mut xmlChar;
-        lenn = strlen(token2 as *mut i8) as i32;
-        lenp = strlen(token as *mut i8) as i32;
-        str = xmlMallocAtomic
-            .expect(
-                "non-null function pointer",
-            )((lenn + lenp + 2 as i32) as size_t) as *mut xmlChar;
+        let mut str: *mut u8 = 0 as *mut xmlChar;
+        lenn = (unsafe { strlen(token2 as *mut i8) }) as i32;
+        lenp = (unsafe { strlen(token as *mut i8) }) as i32;
+        str =
+            (unsafe { xmlMallocAtomic.expect("non-null function pointer")((lenn + lenp + 2 as i32) as size_t) })
+                as *mut xmlChar;
         if str.is_null() {
             xmlRegFreeAtom(atom);
             return 0 as xmlAutomataStatePtr;
         }
-        memcpy(
-            &mut *str.offset(0 as i32 as isize) as *mut xmlChar
-                as *mut libc::c_void,
+        (unsafe { memcpy(
+            &mut *str.offset(0 as i32 as isize) as *mut xmlChar as *mut libc::c_void,
             token as *const libc::c_void,
             lenp as u64,
-        );
-        *str.offset(lenp as isize) = '|' as i32 as xmlChar;
-        memcpy(
-            &mut *str.offset((lenp + 1 as i32) as isize) as *mut xmlChar
-                as *mut libc::c_void,
+        ) });
+        (unsafe { *str.offset(lenp as isize) = '|' as i32 as xmlChar });
+        (unsafe { memcpy(
+            &mut *str.offset((lenp + 1 as i32) as isize) as *mut xmlChar as *mut libc::c_void,
             token2 as *const libc::c_void,
             lenn as u64,
-        );
-        *str
-            .offset(
-                (lenn + lenp + 1 as i32) as isize,
-            ) = 0 as i32 as xmlChar;
-        let ref mut fresh243 = (*atom).valuep;
+        ) });
+        (unsafe { *str.offset((lenn + lenp + 1 as i32) as isize) = 0 as i32 as xmlChar });
+        let fresh243 = unsafe { &mut ((*atom).valuep) };
         *fresh243 = str as *mut libc::c_void;
     }
     if xmlFAGenerateTransitions(am, from, to, atom) < 0 as i32 {
@@ -7952,20 +7355,20 @@ pub unsafe extern "C" fn xmlAutomataNewTransition2(
         return 0 as xmlAutomataStatePtr;
     }
     if to.is_null() {
-        return (*am).state;
+        return unsafe { (*am).state };
     }
     return to;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlAutomataNewNegTrans(
-    mut am: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut from: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut to: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut token: * const u8,
-    mut token2: * const u8,
-    mut data: * mut core::ffi::c_void,
-) -> * mut crate::src::xmlregexp::_xmlAutomataState {
-    let mut atom: * mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
+pub extern "C" fn xmlAutomataNewNegTrans(
+    mut am: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut from: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut to: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut token: *const u8,
+    mut token2: *const u8,
+    mut data: *mut core::ffi::c_void,
+) -> *mut crate::src::xmlregexp::_xmlAutomataState {
+    let mut atom: *mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
     let mut err_msg: [u8; 200] = [0; 200];
     if am.is_null() || from.is_null() || token.is_null() {
         return 0 as xmlAutomataStatePtr;
@@ -7974,78 +7377,72 @@ pub unsafe extern "C" fn xmlAutomataNewNegTrans(
     if atom.is_null() {
         return 0 as xmlAutomataStatePtr;
     }
-    let ref mut fresh244 = (*atom).data;
+    let fresh244 = unsafe { &mut ((*atom).data) };
     *fresh244 = data;
-    (*atom).neg = 1 as i32;
-    if token2.is_null() || *token2 as i32 == 0 as i32 {
-        let ref mut fresh245 = (*atom).valuep;
+    (unsafe { (*atom).neg = 1 as i32 });
+    if token2.is_null() || (unsafe { *token2 }) as i32 == 0 as i32 {
+        let fresh245 = unsafe { &mut ((*atom).valuep) };
         *fresh245 = xmlStrdup(token) as *mut libc::c_void;
     } else {
         let mut lenn: i32 = 0;
         let mut lenp: i32 = 0;
-        let mut str: * mut u8 = 0 as *mut xmlChar;
-        lenn = strlen(token2 as *mut i8) as i32;
-        lenp = strlen(token as *mut i8) as i32;
-        str = xmlMallocAtomic
-            .expect(
-                "non-null function pointer",
-            )((lenn + lenp + 2 as i32) as size_t) as *mut xmlChar;
+        let mut str: *mut u8 = 0 as *mut xmlChar;
+        lenn = (unsafe { strlen(token2 as *mut i8) }) as i32;
+        lenp = (unsafe { strlen(token as *mut i8) }) as i32;
+        str =
+            (unsafe { xmlMallocAtomic.expect("non-null function pointer")((lenn + lenp + 2 as i32) as size_t) })
+                as *mut xmlChar;
         if str.is_null() {
             xmlRegFreeAtom(atom);
             return 0 as xmlAutomataStatePtr;
         }
-        memcpy(
-            &mut *str.offset(0 as i32 as isize) as *mut xmlChar
-                as *mut libc::c_void,
+        (unsafe { memcpy(
+            &mut *str.offset(0 as i32 as isize) as *mut xmlChar as *mut libc::c_void,
             token as *const libc::c_void,
             lenp as u64,
-        );
-        *str.offset(lenp as isize) = '|' as i32 as xmlChar;
-        memcpy(
-            &mut *str.offset((lenp + 1 as i32) as isize) as *mut xmlChar
-                as *mut libc::c_void,
+        ) });
+        (unsafe { *str.offset(lenp as isize) = '|' as i32 as xmlChar });
+        (unsafe { memcpy(
+            &mut *str.offset((lenp + 1 as i32) as isize) as *mut xmlChar as *mut libc::c_void,
             token2 as *const libc::c_void,
             lenn as u64,
-        );
-        *str
-            .offset(
-                (lenn + lenp + 1 as i32) as isize,
-            ) = 0 as i32 as xmlChar;
-        let ref mut fresh246 = (*atom).valuep;
+        ) });
+        (unsafe { *str.offset((lenn + lenp + 1 as i32) as isize) = 0 as i32 as xmlChar });
+        let fresh246 = unsafe { &mut ((*atom).valuep) };
         *fresh246 = str as *mut libc::c_void;
     }
-    snprintf(
+    (unsafe { snprintf(
         err_msg.as_mut_ptr() as *mut i8,
         199 as i32 as u64,
         b"not %s\0" as *const u8 as *const i8,
         (*atom).valuep as *const i8,
-    );
+    ) });
     err_msg[199 as i32 as usize] = 0 as i32 as xmlChar;
-    let ref mut fresh247 = (*atom).valuep2;
+    let fresh247 = unsafe { &mut ((*atom).valuep2) };
     *fresh247 = xmlStrdup(err_msg.as_mut_ptr()) as *mut libc::c_void;
     if xmlFAGenerateTransitions(am, from, to, atom) < 0 as i32 {
         xmlRegFreeAtom(atom);
         return 0 as xmlAutomataStatePtr;
     }
-    let ref mut fresh248 = (*am).negs;
+    let fresh248 = unsafe { &mut ((*am).negs) };
     *fresh248 += 1;
     if to.is_null() {
-        return (*am).state;
+        return unsafe { (*am).state };
     }
     return to;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlAutomataNewCountTrans2(
-    mut am: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut from: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut to: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut token: * const u8,
-    mut token2: * const u8,
+pub extern "C" fn xmlAutomataNewCountTrans2(
+    mut am: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut from: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut to: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut token: *const u8,
+    mut token2: *const u8,
     mut min: i32,
     mut max: i32,
-    mut data: * mut core::ffi::c_void,
-) -> * mut crate::src::xmlregexp::_xmlAutomataState {
-    let mut atom: * mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
+    mut data: *mut core::ffi::c_void,
+) -> *mut crate::src::xmlregexp::_xmlAutomataState {
+    let mut atom: *mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
     let mut counter: i32 = 0;
     if am.is_null() || from.is_null() || token.is_null() {
         return 0 as xmlAutomataStatePtr;
@@ -8060,64 +7457,58 @@ pub unsafe extern "C" fn xmlAutomataNewCountTrans2(
     if atom.is_null() {
         return 0 as xmlAutomataStatePtr;
     }
-    if token2.is_null() || *token2 as i32 == 0 as i32 {
-        let ref mut fresh249 = (*atom).valuep;
+    if token2.is_null() || (unsafe { *token2 }) as i32 == 0 as i32 {
+        let fresh249 = unsafe { &mut ((*atom).valuep) };
         *fresh249 = xmlStrdup(token) as *mut libc::c_void;
     } else {
         let mut lenn: i32 = 0;
         let mut lenp: i32 = 0;
-        let mut str: * mut u8 = 0 as *mut xmlChar;
-        lenn = strlen(token2 as *mut i8) as i32;
-        lenp = strlen(token as *mut i8) as i32;
-        str = xmlMallocAtomic
-            .expect(
-                "non-null function pointer",
-            )((lenn + lenp + 2 as i32) as size_t) as *mut xmlChar;
+        let mut str: *mut u8 = 0 as *mut xmlChar;
+        lenn = (unsafe { strlen(token2 as *mut i8) }) as i32;
+        lenp = (unsafe { strlen(token as *mut i8) }) as i32;
+        str =
+            (unsafe { xmlMallocAtomic.expect("non-null function pointer")((lenn + lenp + 2 as i32) as size_t) })
+                as *mut xmlChar;
         if str.is_null() {
             xmlRegFreeAtom(atom);
             return 0 as xmlAutomataStatePtr;
         }
-        memcpy(
-            &mut *str.offset(0 as i32 as isize) as *mut xmlChar
-                as *mut libc::c_void,
+        (unsafe { memcpy(
+            &mut *str.offset(0 as i32 as isize) as *mut xmlChar as *mut libc::c_void,
             token as *const libc::c_void,
             lenp as u64,
-        );
-        *str.offset(lenp as isize) = '|' as i32 as xmlChar;
-        memcpy(
-            &mut *str.offset((lenp + 1 as i32) as isize) as *mut xmlChar
-                as *mut libc::c_void,
+        ) });
+        (unsafe { *str.offset(lenp as isize) = '|' as i32 as xmlChar });
+        (unsafe { memcpy(
+            &mut *str.offset((lenp + 1 as i32) as isize) as *mut xmlChar as *mut libc::c_void,
             token2 as *const libc::c_void,
             lenn as u64,
-        );
-        *str
-            .offset(
-                (lenn + lenp + 1 as i32) as isize,
-            ) = 0 as i32 as xmlChar;
-        let ref mut fresh250 = (*atom).valuep;
+        ) });
+        (unsafe { *str.offset((lenn + lenp + 1 as i32) as isize) = 0 as i32 as xmlChar });
+        let fresh250 = unsafe { &mut ((*atom).valuep) };
         *fresh250 = str as *mut libc::c_void;
     }
-    let ref mut fresh251 = (*atom).data;
+    let fresh251 = unsafe { &mut ((*atom).data) };
     *fresh251 = data;
     if min == 0 as i32 {
-        (*atom).min = 1 as i32;
+        (unsafe { (*atom).min = 1 as i32 });
     } else {
-        (*atom).min = min;
+        (unsafe { (*atom).min = min });
     }
-    (*atom).max = max;
+    (unsafe { (*atom).max = max });
     counter = xmlRegGetCounter(am);
-    (*((*am).counters).offset(counter as isize)).min = min;
-    (*((*am).counters).offset(counter as isize)).max = max;
+    (unsafe { (*((*am).counters).offset(counter as isize)).min = min });
+    (unsafe { (*((*am).counters).offset(counter as isize)).max = max });
     if to.is_null() {
         to = xmlRegNewState(am);
         xmlRegStatePush(am, to);
     }
     xmlRegStateAddTrans(am, from, atom, to, counter, -(1 as i32));
     xmlRegAtomPush(am, atom);
-    let ref mut fresh252 = (*am).state;
+    let fresh252 = unsafe { &mut ((*am).state) };
     *fresh252 = to;
     if to.is_null() {
-        to = (*am).state;
+        to = unsafe { (*am).state };
     }
     if to.is_null() {
         return 0 as xmlAutomataStatePtr;
@@ -8128,16 +7519,16 @@ pub unsafe extern "C" fn xmlAutomataNewCountTrans2(
     return to;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlAutomataNewCountTrans(
-    mut am: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut from: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut to: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut token: * const u8,
+pub extern "C" fn xmlAutomataNewCountTrans(
+    mut am: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut from: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut to: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut token: *const u8,
     mut min: i32,
     mut max: i32,
-    mut data: * mut core::ffi::c_void,
-) -> * mut crate::src::xmlregexp::_xmlAutomataState {
-    let mut atom: * mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
+    mut data: *mut core::ffi::c_void,
+) -> *mut crate::src::xmlregexp::_xmlAutomataState {
+    let mut atom: *mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
     let mut counter: i32 = 0;
     if am.is_null() || from.is_null() || token.is_null() {
         return 0 as xmlAutomataStatePtr;
@@ -8152,29 +7543,29 @@ pub unsafe extern "C" fn xmlAutomataNewCountTrans(
     if atom.is_null() {
         return 0 as xmlAutomataStatePtr;
     }
-    let ref mut fresh253 = (*atom).valuep;
+    let fresh253 = unsafe { &mut ((*atom).valuep) };
     *fresh253 = xmlStrdup(token) as *mut libc::c_void;
-    let ref mut fresh254 = (*atom).data;
+    let fresh254 = unsafe { &mut ((*atom).data) };
     *fresh254 = data;
     if min == 0 as i32 {
-        (*atom).min = 1 as i32;
+        (unsafe { (*atom).min = 1 as i32 });
     } else {
-        (*atom).min = min;
+        (unsafe { (*atom).min = min });
     }
-    (*atom).max = max;
+    (unsafe { (*atom).max = max });
     counter = xmlRegGetCounter(am);
-    (*((*am).counters).offset(counter as isize)).min = min;
-    (*((*am).counters).offset(counter as isize)).max = max;
+    (unsafe { (*((*am).counters).offset(counter as isize)).min = min });
+    (unsafe { (*((*am).counters).offset(counter as isize)).max = max });
     if to.is_null() {
         to = xmlRegNewState(am);
         xmlRegStatePush(am, to);
     }
     xmlRegStateAddTrans(am, from, atom, to, counter, -(1 as i32));
     xmlRegAtomPush(am, atom);
-    let ref mut fresh255 = (*am).state;
+    let fresh255 = unsafe { &mut ((*am).state) };
     *fresh255 = to;
     if to.is_null() {
-        to = (*am).state;
+        to = unsafe { (*am).state };
     }
     if to.is_null() {
         return 0 as xmlAutomataStatePtr;
@@ -8185,17 +7576,17 @@ pub unsafe extern "C" fn xmlAutomataNewCountTrans(
     return to;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlAutomataNewOnceTrans2(
-    mut am: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut from: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut to: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut token: * const u8,
-    mut token2: * const u8,
+pub extern "C" fn xmlAutomataNewOnceTrans2(
+    mut am: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut from: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut to: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut token: *const u8,
+    mut token2: *const u8,
     mut min: i32,
     mut max: i32,
-    mut data: * mut core::ffi::c_void,
-) -> * mut crate::src::xmlregexp::_xmlAutomataState {
-    let mut atom: * mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
+    mut data: *mut core::ffi::c_void,
+) -> *mut crate::src::xmlregexp::_xmlAutomataState {
+    let mut atom: *mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
     let mut counter: i32 = 0;
     if am.is_null() || from.is_null() || token.is_null() {
         return 0 as xmlAutomataStatePtr;
@@ -8210,72 +7601,66 @@ pub unsafe extern "C" fn xmlAutomataNewOnceTrans2(
     if atom.is_null() {
         return 0 as xmlAutomataStatePtr;
     }
-    if token2.is_null() || *token2 as i32 == 0 as i32 {
-        let ref mut fresh256 = (*atom).valuep;
+    if token2.is_null() || (unsafe { *token2 }) as i32 == 0 as i32 {
+        let fresh256 = unsafe { &mut ((*atom).valuep) };
         *fresh256 = xmlStrdup(token) as *mut libc::c_void;
     } else {
         let mut lenn: i32 = 0;
         let mut lenp: i32 = 0;
-        let mut str: * mut u8 = 0 as *mut xmlChar;
-        lenn = strlen(token2 as *mut i8) as i32;
-        lenp = strlen(token as *mut i8) as i32;
-        str = xmlMallocAtomic
-            .expect(
-                "non-null function pointer",
-            )((lenn + lenp + 2 as i32) as size_t) as *mut xmlChar;
+        let mut str: *mut u8 = 0 as *mut xmlChar;
+        lenn = (unsafe { strlen(token2 as *mut i8) }) as i32;
+        lenp = (unsafe { strlen(token as *mut i8) }) as i32;
+        str =
+            (unsafe { xmlMallocAtomic.expect("non-null function pointer")((lenn + lenp + 2 as i32) as size_t) })
+                as *mut xmlChar;
         if str.is_null() {
             xmlRegFreeAtom(atom);
             return 0 as xmlAutomataStatePtr;
         }
-        memcpy(
-            &mut *str.offset(0 as i32 as isize) as *mut xmlChar
-                as *mut libc::c_void,
+        (unsafe { memcpy(
+            &mut *str.offset(0 as i32 as isize) as *mut xmlChar as *mut libc::c_void,
             token as *const libc::c_void,
             lenp as u64,
-        );
-        *str.offset(lenp as isize) = '|' as i32 as xmlChar;
-        memcpy(
-            &mut *str.offset((lenp + 1 as i32) as isize) as *mut xmlChar
-                as *mut libc::c_void,
+        ) });
+        (unsafe { *str.offset(lenp as isize) = '|' as i32 as xmlChar });
+        (unsafe { memcpy(
+            &mut *str.offset((lenp + 1 as i32) as isize) as *mut xmlChar as *mut libc::c_void,
             token2 as *const libc::c_void,
             lenn as u64,
-        );
-        *str
-            .offset(
-                (lenn + lenp + 1 as i32) as isize,
-            ) = 0 as i32 as xmlChar;
-        let ref mut fresh257 = (*atom).valuep;
+        ) });
+        (unsafe { *str.offset((lenn + lenp + 1 as i32) as isize) = 0 as i32 as xmlChar });
+        let fresh257 = unsafe { &mut ((*atom).valuep) };
         *fresh257 = str as *mut libc::c_void;
     }
-    let ref mut fresh258 = (*atom).data;
+    let fresh258 = unsafe { &mut ((*atom).data) };
     *fresh258 = data;
-    (*atom).quant = XML_REGEXP_QUANT_ONCEONLY;
-    (*atom).min = min;
-    (*atom).max = max;
+    (unsafe { (*atom).quant = XML_REGEXP_QUANT_ONCEONLY });
+    (unsafe { (*atom).min = min });
+    (unsafe { (*atom).max = max });
     counter = xmlRegGetCounter(am);
-    (*((*am).counters).offset(counter as isize)).min = 1 as i32;
-    (*((*am).counters).offset(counter as isize)).max = 1 as i32;
+    (unsafe { (*((*am).counters).offset(counter as isize)).min = 1 as i32 });
+    (unsafe { (*((*am).counters).offset(counter as isize)).max = 1 as i32 });
     if to.is_null() {
         to = xmlRegNewState(am);
         xmlRegStatePush(am, to);
     }
     xmlRegStateAddTrans(am, from, atom, to, counter, -(1 as i32));
     xmlRegAtomPush(am, atom);
-    let ref mut fresh259 = (*am).state;
+    let fresh259 = unsafe { &mut ((*am).state) };
     *fresh259 = to;
     return to;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlAutomataNewOnceTrans(
-    mut am: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut from: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut to: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut token: * const u8,
+pub extern "C" fn xmlAutomataNewOnceTrans(
+    mut am: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut from: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut to: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut token: *const u8,
     mut min: i32,
     mut max: i32,
-    mut data: * mut core::ffi::c_void,
-) -> * mut crate::src::xmlregexp::_xmlAutomataState {
-    let mut atom: * mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
+    mut data: *mut core::ffi::c_void,
+) -> *mut crate::src::xmlregexp::_xmlAutomataState {
+    let mut atom: *mut crate::src::xmlregexp::_xmlRegAtom = 0 as *mut xmlRegAtom;
     let mut counter: i32 = 0;
     if am.is_null() || from.is_null() || token.is_null() {
         return 0 as xmlAutomataStatePtr;
@@ -8290,31 +7675,31 @@ pub unsafe extern "C" fn xmlAutomataNewOnceTrans(
     if atom.is_null() {
         return 0 as xmlAutomataStatePtr;
     }
-    let ref mut fresh260 = (*atom).valuep;
+    let fresh260 = unsafe { &mut ((*atom).valuep) };
     *fresh260 = xmlStrdup(token) as *mut libc::c_void;
-    let ref mut fresh261 = (*atom).data;
+    let fresh261 = unsafe { &mut ((*atom).data) };
     *fresh261 = data;
-    (*atom).quant = XML_REGEXP_QUANT_ONCEONLY;
-    (*atom).min = min;
-    (*atom).max = max;
+    (unsafe { (*atom).quant = XML_REGEXP_QUANT_ONCEONLY });
+    (unsafe { (*atom).min = min });
+    (unsafe { (*atom).max = max });
     counter = xmlRegGetCounter(am);
-    (*((*am).counters).offset(counter as isize)).min = 1 as i32;
-    (*((*am).counters).offset(counter as isize)).max = 1 as i32;
+    (unsafe { (*((*am).counters).offset(counter as isize)).min = 1 as i32 });
+    (unsafe { (*((*am).counters).offset(counter as isize)).max = 1 as i32 });
     if to.is_null() {
         to = xmlRegNewState(am);
         xmlRegStatePush(am, to);
     }
     xmlRegStateAddTrans(am, from, atom, to, counter, -(1 as i32));
     xmlRegAtomPush(am, atom);
-    let ref mut fresh262 = (*am).state;
+    let fresh262 = unsafe { &mut ((*am).state) };
     *fresh262 = to;
     return to;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlAutomataNewState(
-    mut am: * mut crate::src::xmlregexp::_xmlAutomata,
-) -> * mut crate::src::xmlregexp::_xmlAutomataState {
-    let mut to: * mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlAutomataState;
+pub extern "C" fn xmlAutomataNewState(
+    mut am: *mut crate::src::xmlregexp::_xmlAutomata,
+) -> *mut crate::src::xmlregexp::_xmlAutomataState {
+    let mut to: *mut crate::src::xmlregexp::_xmlAutomataState = 0 as *mut xmlAutomataState;
     if am.is_null() {
         return 0 as xmlAutomataStatePtr;
     }
@@ -8323,39 +7708,39 @@ pub unsafe extern "C" fn xmlAutomataNewState(
     return to;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlAutomataNewEpsilon(
-    mut am: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut from: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut to: * mut crate::src::xmlregexp::_xmlAutomataState,
-) -> * mut crate::src::xmlregexp::_xmlAutomataState {
+pub extern "C" fn xmlAutomataNewEpsilon(
+    mut am: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut from: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut to: *mut crate::src::xmlregexp::_xmlAutomataState,
+) -> *mut crate::src::xmlregexp::_xmlAutomataState {
     if am.is_null() || from.is_null() {
         return 0 as xmlAutomataStatePtr;
     }
     xmlFAGenerateEpsilonTransition(am, from, to);
     if to.is_null() {
-        return (*am).state;
+        return unsafe { (*am).state };
     }
     return to;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlAutomataNewAllTrans(
-    mut am: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut from: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut to: * mut crate::src::xmlregexp::_xmlAutomataState,
+pub extern "C" fn xmlAutomataNewAllTrans(
+    mut am: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut from: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut to: *mut crate::src::xmlregexp::_xmlAutomataState,
     mut lax: i32,
-) -> * mut crate::src::xmlregexp::_xmlAutomataState {
+) -> *mut crate::src::xmlregexp::_xmlAutomataState {
     if am.is_null() || from.is_null() {
         return 0 as xmlAutomataStatePtr;
     }
     xmlFAGenerateAllTransition(am, from, to, lax);
     if to.is_null() {
-        return (*am).state;
+        return unsafe { (*am).state };
     }
     return to;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlAutomataNewCounter(
-    mut am: * mut crate::src::xmlregexp::_xmlAutomata,
+pub extern "C" fn xmlAutomataNewCounter(
+    mut am: *mut crate::src::xmlregexp::_xmlAutomata,
     mut min: i32,
     mut max: i32,
 ) -> i32 {
@@ -8367,46 +7752,48 @@ pub unsafe extern "C" fn xmlAutomataNewCounter(
     if ret < 0 as i32 {
         return -(1 as i32);
     }
-    (*((*am).counters).offset(ret as isize)).min = min;
-    (*((*am).counters).offset(ret as isize)).max = max;
+    (unsafe { (*((*am).counters).offset(ret as isize)).min = min });
+    (unsafe { (*((*am).counters).offset(ret as isize)).max = max });
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlAutomataNewCountedTrans(
-    mut am: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut from: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut to: * mut crate::src::xmlregexp::_xmlAutomataState,
+pub extern "C" fn xmlAutomataNewCountedTrans(
+    mut am: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut from: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut to: *mut crate::src::xmlregexp::_xmlAutomataState,
     mut counter: i32,
-) -> * mut crate::src::xmlregexp::_xmlAutomataState {
+) -> *mut crate::src::xmlregexp::_xmlAutomataState {
     if am.is_null() || from.is_null() || counter < 0 as i32 {
         return 0 as xmlAutomataStatePtr;
     }
     xmlFAGenerateCountedEpsilonTransition(am, from, to, counter);
     if to.is_null() {
-        return (*am).state;
+        return unsafe { (*am).state };
     }
     return to;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlAutomataNewCounterTrans(
-    mut am: * mut crate::src::xmlregexp::_xmlAutomata,
-    mut from: * mut crate::src::xmlregexp::_xmlAutomataState,
-    mut to: * mut crate::src::xmlregexp::_xmlAutomataState,
+pub extern "C" fn xmlAutomataNewCounterTrans(
+    mut am: *mut crate::src::xmlregexp::_xmlAutomata,
+    mut from: *mut crate::src::xmlregexp::_xmlAutomataState,
+    mut to: *mut crate::src::xmlregexp::_xmlAutomataState,
     mut counter: i32,
-) -> * mut crate::src::xmlregexp::_xmlAutomataState {
+) -> *mut crate::src::xmlregexp::_xmlAutomataState {
     if am.is_null() || from.is_null() || counter < 0 as i32 {
         return 0 as xmlAutomataStatePtr;
     }
     xmlFAGenerateCountedTransition(am, from, to, counter);
     if to.is_null() {
-        return (*am).state;
+        return unsafe { (*am).state };
     }
     return to;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlAutomataCompile(mut am: * mut crate::src::xmlregexp::_xmlAutomata) -> * mut crate::src::xmlregexp::_xmlRegexp {
-    let mut ret: * mut crate::src::xmlregexp::_xmlRegexp = 0 as *mut xmlRegexp;
-    if am.is_null() || (*am).error != 0 as i32 {
+pub extern "C" fn xmlAutomataCompile(
+    mut am: *mut crate::src::xmlregexp::_xmlAutomata,
+) -> *mut crate::src::xmlregexp::_xmlRegexp {
+    let mut ret: *mut crate::src::xmlregexp::_xmlRegexp = 0 as *mut xmlRegexp;
+    if am.is_null() || (unsafe { (*am).error }) != 0 as i32 {
         return 0 as xmlRegexpPtr;
     }
     xmlFAEliminateEpsilonTransitions(am);
@@ -8414,8 +7801,8 @@ pub unsafe extern "C" fn xmlAutomataCompile(mut am: * mut crate::src::xmlregexp:
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlAutomataIsDeterminist(
-    mut am: * mut crate::src::xmlregexp::_xmlAutomata,
+pub extern "C" fn xmlAutomataIsDeterminist(
+    mut am: *mut crate::src::xmlregexp::_xmlAutomata,
 ) -> i32 {
     let mut ret: i32 = 0;
     if am.is_null() {

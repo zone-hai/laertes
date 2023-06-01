@@ -1,187 +1,134 @@
-use ::libc;
+use :: libc;
 extern "C" {
-    
-    
-    
-    
-    
-    
-    
-    
     pub type _xmlList;
-    fn vsnprintf(
-        _: * mut i8,
-        _: u64,
-        _: * const i8,
-        _: core::ffi::VaList,
-    ) -> i32;
-    
-    
-    
-    
-    
-    fn memset(
-        _: * mut core::ffi::c_void,
-        _: i32,
-        _: u64,
-    ) -> * mut core::ffi::c_void;
-    
-    
-    
+    fn vsnprintf(_: *mut i8, _: u64, _: *const i8, _: core::ffi::VaList) -> i32;
+    fn memset(_: *mut core::ffi::c_void, _: i32, _: u64) -> *mut core::ffi::c_void;
     fn __xmlRaiseError(
-        schannel: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::threads::_xmlError,) -> ()>,
-        channel: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>,
-        data: * mut core::ffi::c_void,
-        ctx: * mut core::ffi::c_void,
-        node: * mut core::ffi::c_void,
+        schannel: Option<
+            unsafe extern "C" fn(
+                _: *mut core::ffi::c_void,
+                _: *mut crate::src::threads::_xmlError,
+            ) -> (),
+        >,
+        channel: Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>,
+        data: *mut core::ffi::c_void,
+        ctx: *mut core::ffi::c_void,
+        node: *mut core::ffi::c_void,
         domain: i32,
         code: i32,
         level: u32,
-        file: * const i8,
+        file: *const i8,
         line: i32,
-        str1: * const i8,
-        str2: * const i8,
-        str3: * const i8,
+        str1: *const i8,
+        str2: *const i8,
+        str3: *const i8,
         int1: i32,
         col: i32,
-        msg: * const i8,
+        msg: *const i8,
         _: ...
     );
     fn xmlListCreate(
-        deallocator: Option<unsafe extern "C"  fn(_: * mut crate::src::valid::_xmlLink,) -> ()>,
-        compare: Option<unsafe extern "C"  fn(_: * const core::ffi::c_void,_: * const core::ffi::c_void,) -> i32>,
-    ) -> * mut crate::src::xmlwriter::_xmlList;
-    fn xmlListDelete(l: * mut crate::src::xmlwriter::_xmlList);
-    fn xmlListSearch(l: * mut crate::src::xmlwriter::_xmlList, data: * mut core::ffi::c_void) -> * mut core::ffi::c_void;
-    fn xmlListEmpty(l: * mut crate::src::xmlwriter::_xmlList) -> i32;
-    fn xmlListFront(l: * mut crate::src::xmlwriter::_xmlList) -> * mut crate::src::valid::_xmlLink;
-    fn xmlListSize(l: * mut crate::src::xmlwriter::_xmlList) -> i32;
-    fn xmlListPopFront(l: * mut crate::src::xmlwriter::_xmlList);
-    fn xmlListPushFront(l: * mut crate::src::xmlwriter::_xmlList, data: * mut core::ffi::c_void) -> i32;
-    fn xmlLinkGetData(lk: * mut crate::src::valid::_xmlLink) -> * mut core::ffi::c_void;
-    fn xmlEncodeSpecialChars(doc: * const crate::src::threads::_xmlDoc, input: * const u8) -> * mut u8;
+        deallocator: Option<unsafe extern "C" fn(_: *mut crate::src::valid::_xmlLink) -> ()>,
+        compare: Option<
+            unsafe extern "C" fn(_: *const core::ffi::c_void, _: *const core::ffi::c_void) -> i32,
+        >,
+    ) -> *mut crate::src::xmlwriter::_xmlList;
+    fn xmlListDelete(l: *mut crate::src::xmlwriter::_xmlList);
+    fn xmlListSearch(
+        l: *mut crate::src::xmlwriter::_xmlList,
+        data: *mut core::ffi::c_void,
+    ) -> *mut core::ffi::c_void;
+    fn xmlListEmpty(l: *mut crate::src::xmlwriter::_xmlList) -> i32;
+    fn xmlListFront(l: *mut crate::src::xmlwriter::_xmlList) -> *mut crate::src::valid::_xmlLink;
+    fn xmlListSize(l: *mut crate::src::xmlwriter::_xmlList) -> i32;
+    fn xmlListPopFront(l: *mut crate::src::xmlwriter::_xmlList);
+    fn xmlListPushFront(
+        l: *mut crate::src::xmlwriter::_xmlList,
+        data: *mut core::ffi::c_void,
+    ) -> i32;
+    fn xmlLinkGetData(lk: *mut crate::src::valid::_xmlLink) -> *mut core::ffi::c_void;
+    fn xmlEncodeSpecialChars(doc: *const crate::src::threads::_xmlDoc, input: *const u8)
+    -> *mut u8;
     fn xmlFindCharEncodingHandler(
-        name: * const i8,
-    ) -> * mut crate::src::threads::_xmlCharEncodingHandler;
-    
-    
-    
-    
-    
-    
-    
-    fn xmlFreeParserCtxt(ctxt: * mut crate::src::tree::_xmlParserCtxt);
+        name: *const i8,
+    ) -> *mut crate::src::threads::_xmlCharEncodingHandler;
+    fn xmlFreeParserCtxt(ctxt: *mut crate::src::tree::_xmlParserCtxt);
     fn xmlCreatePushParserCtxt(
-        sax: * mut crate::src::tree::_xmlSAXHandler,
-        user_data: * mut core::ffi::c_void,
-        chunk: * const i8,
+        sax: *mut crate::src::tree::_xmlSAXHandler,
+        user_data: *mut core::ffi::c_void,
+        chunk: *const i8,
         size: i32,
-        filename: * const i8,
-    ) -> * mut crate::src::tree::_xmlParserCtxt;
+        filename: *const i8,
+    ) -> *mut crate::src::tree::_xmlParserCtxt;
     fn xmlParseChunk(
-        ctxt: * mut crate::src::tree::_xmlParserCtxt,
-        chunk: * const i8,
+        ctxt: *mut crate::src::tree::_xmlParserCtxt,
+        chunk: *const i8,
         size: i32,
         terminate: i32,
     ) -> i32;
-    fn xmlSAX2StartElement(
-        ctx: * mut core::ffi::c_void,
-        fullname: * const u8,
-        atts: * mut * const u8,
-    );
-    fn xmlSAX2EndElement(ctx: * mut core::ffi::c_void, name: * const u8);
-    fn xmlSAX2InitDefaultSAXHandler(hdlr: * mut crate::src::tree::_xmlSAXHandler, warning: i32);
-    static mut xmlMalloc: Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
-    static mut xmlFree: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-    
-    fn htmlNewDocNoDtD(URI: * const u8, ExternalID: * const u8) -> * mut crate::src::threads::_xmlDoc;
-    fn xmlBufCreateSize(size: u64) -> * mut crate::src::xmlstring::_xmlBuf;
-    fn xmlCharEncOutput(output: * mut crate::src::threads::_xmlOutputBuffer, init: i32) -> i32;
-    
+    fn xmlSAX2StartElement(ctx: *mut core::ffi::c_void, fullname: *const u8, atts: *mut *const u8);
+    fn xmlSAX2EndElement(ctx: *mut core::ffi::c_void, name: *const u8);
+    fn xmlSAX2InitDefaultSAXHandler(hdlr: *mut crate::src::tree::_xmlSAXHandler, warning: i32);
+    static mut xmlMalloc: Option<unsafe extern "C" fn(_: u64) -> *mut core::ffi::c_void>;
+    static mut xmlFree: Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+    fn htmlNewDocNoDtD(URI: *const u8, ExternalID: *const u8) -> *mut crate::src::threads::_xmlDoc;
+    fn xmlBufCreateSize(size: u64) -> *mut crate::src::xmlstring::_xmlBuf;
+    fn xmlCharEncOutput(output: *mut crate::src::threads::_xmlOutputBuffer, init: i32) -> i32;
 }
-pub use crate::src::tree::xmlFreeDoc;
-pub use crate::src::tree::xmlNewDoc;
-pub use crate::src::tree::xmlSetDocCompressMode;
-pub use crate::src::uri::xmlCanonicPath;
-pub use crate::src::xmlIO::xmlOutputBufferClose;
-pub use crate::src::xmlIO::xmlOutputBufferCreateBuffer;
-pub use crate::src::xmlIO::xmlOutputBufferCreateFilename;
-pub use crate::src::xmlIO::xmlOutputBufferCreateIO;
-pub use crate::src::xmlIO::xmlOutputBufferFlush;
-pub use crate::src::xmlIO::xmlOutputBufferWrite;
-pub use crate::src::xmlIO::xmlOutputBufferWriteString;
-pub use crate::src::xmlsave::xmlBufAttrSerializeTxtContent;
-pub use crate::src::xmlstring::xmlStrcasecmp;
-pub use crate::src::xmlstring::xmlStrcat;
-pub use crate::src::xmlstring::xmlStrcmp;
-pub use crate::src::xmlstring::xmlStrdup;
-pub use crate::src::xmlstring::xmlStrlen;
-pub use crate::src::valid::_xmlValidState;
-pub use crate::src::xmlregexp::_xmlAutomata;
-pub use crate::src::xmlregexp::_xmlAutomataState;
-pub use crate::src::valid::_xmlLink;
-pub use crate::src::xmlsave::_xmlHashTable;
-pub use crate::src::xmlstring::_xmlBuf;
-pub use crate::src::xmlstring::_xmlStartTag;
-pub use crate::src::xpointer::_xmlDict;
+pub use crate::src::{
+    tree::{xmlFreeDoc, xmlNewDoc, xmlSetDocCompressMode},
+    uri::xmlCanonicPath,
+    valid::{_xmlLink, _xmlValidState},
+    xmlIO::{
+        xmlOutputBufferClose, xmlOutputBufferCreateBuffer, xmlOutputBufferCreateFilename,
+        xmlOutputBufferCreateIO, xmlOutputBufferFlush, xmlOutputBufferWrite,
+        xmlOutputBufferWriteString,
+    },
+    xmlregexp::{_xmlAutomata, _xmlAutomataState},
+    xmlsave::{_xmlHashTable, xmlBufAttrSerializeTxtContent},
+    xmlstring::{_xmlBuf, _xmlStartTag, xmlStrcasecmp, xmlStrcat, xmlStrcmp, xmlStrdup, xmlStrlen},
+    xpointer::_xmlDict,
+};
 pub type __builtin_va_list = [crate::src::xmllint::__va_list_tag; 1];
-// #[derive(Copy, Clone)]
-
 pub type __va_list_tag = crate::src::xmllint::__va_list_tag;
 pub type va_list = [crate::src::xmllint::__va_list_tag; 1];
 pub type xmlChar = u8;
 pub type size_t = u64;
-pub type xmlFreeFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type xmlMallocFunc = Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
-// #[derive(Copy, Clone)]
-
+pub type xmlFreeFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+pub type xmlMallocFunc = Option<unsafe extern "C" fn(_: u64) -> *mut core::ffi::c_void>;
 pub type _xmlParserInputBuffer = crate::src::threads::_xmlParserInputBuffer;
-pub type xmlBufPtr = * mut crate::src::xmlstring::_xmlBuf;
+pub type xmlBufPtr = *mut crate::src::xmlstring::_xmlBuf;
 pub type xmlBuf = crate::src::xmlstring::_xmlBuf;
-pub type xmlCharEncodingHandlerPtr = * mut crate::src::threads::_xmlCharEncodingHandler;
+pub type xmlCharEncodingHandlerPtr = *mut crate::src::threads::_xmlCharEncodingHandler;
 pub type xmlCharEncodingHandler = crate::src::threads::_xmlCharEncodingHandler;
-// #[derive(Copy, Clone)]
-
 pub type _xmlCharEncodingHandler = crate::src::threads::_xmlCharEncodingHandler;
-pub type iconv_t = * mut core::ffi::c_void;
-pub type xmlCharEncodingOutputFunc = Option<unsafe extern "C"  fn(_: * mut u8,_: * mut i32,_: * const u8,_: * mut i32,) -> i32>;
-pub type xmlCharEncodingInputFunc = Option<unsafe extern "C"  fn(_: * mut u8,_: * mut i32,_: * const u8,_: * mut i32,) -> i32>;
-pub type xmlInputCloseCallback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type xmlInputReadCallback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut i8,_: i32,) -> i32>;
+pub type iconv_t = *mut core::ffi::c_void;
+pub type xmlCharEncodingOutputFunc =
+    Option<unsafe extern "C" fn(_: *mut u8, _: *mut i32, _: *const u8, _: *mut i32) -> i32>;
+pub type xmlCharEncodingInputFunc =
+    Option<unsafe extern "C" fn(_: *mut u8, _: *mut i32, _: *const u8, _: *mut i32) -> i32>;
+pub type xmlInputCloseCallback = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type xmlInputReadCallback =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *mut i8, _: i32) -> i32>;
 pub type xmlParserInputBuffer = crate::src::threads::_xmlParserInputBuffer;
-pub type xmlParserInputBufferPtr = * mut crate::src::threads::_xmlParserInputBuffer;
-// #[derive(Copy, Clone)]
-
+pub type xmlParserInputBufferPtr = *mut crate::src::threads::_xmlParserInputBuffer;
 pub type _xmlOutputBuffer = crate::src::threads::_xmlOutputBuffer;
-pub type xmlOutputCloseCallback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type xmlOutputWriteCallback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,_: i32,) -> i32>;
+pub type xmlOutputCloseCallback = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type xmlOutputWriteCallback =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, _: i32) -> i32>;
 pub type xmlOutputBuffer = crate::src::threads::_xmlOutputBuffer;
-pub type xmlOutputBufferPtr = * mut crate::src::threads::_xmlOutputBuffer;
-// #[derive(Copy, Clone)]
-
+pub type xmlOutputBufferPtr = *mut crate::src::threads::_xmlOutputBuffer;
 pub type _xmlParserInput = crate::src::threads::_xmlParserInput;
-pub type xmlParserInputDeallocate = Option<unsafe extern "C"  fn(_: * mut u8,) -> ()>;
+pub type xmlParserInputDeallocate = Option<unsafe extern "C" fn(_: *mut u8) -> ()>;
 pub type xmlParserInput = crate::src::threads::_xmlParserInput;
-pub type xmlParserInputPtr = * mut crate::src::threads::_xmlParserInput;
-// #[derive(Copy, Clone)]
-
+pub type xmlParserInputPtr = *mut crate::src::threads::_xmlParserInput;
 pub type _xmlParserCtxt = crate::src::tree::_xmlParserCtxt;
 pub type xmlParserNodeInfo = crate::src::tree::_xmlParserNodeInfo;
-// #[derive(Copy, Clone)]
-
 pub type _xmlParserNodeInfo = crate::src::tree::_xmlParserNodeInfo;
-// #[derive(Copy, Clone)]
-
 pub type _xmlNode = crate::src::threads::_xmlNode;
 pub type xmlNs = crate::src::threads::_xmlNs;
-// #[derive(Copy, Clone)]
-
 pub type _xmlNs = crate::src::threads::_xmlNs;
-// #[derive(Copy, Clone)]
-
 pub type _xmlDoc = crate::src::threads::_xmlDoc;
-// #[derive(Copy, Clone)]
-
 pub type _xmlDtd = crate::src::threads::_xmlDtd;
 pub type xmlElementType = u32;
 pub const XML_XINCLUDE_END: xmlElementType = 20;
@@ -205,8 +152,6 @@ pub const XML_TEXT_NODE: xmlElementType = 3;
 pub const XML_ATTRIBUTE_NODE: xmlElementType = 2;
 pub const XML_ELEMENT_NODE: xmlElementType = 1;
 pub type xmlNsType = u32;
-// #[derive(Copy, Clone)]
-
 pub type _xmlAttr = crate::src::threads::_xmlAttr;
 pub type xmlAttributeType = u32;
 pub const XML_ATTRIBUTE_NOTATION: xmlAttributeType = 10;
@@ -227,22 +172,20 @@ pub const XML_PARSE_SAX: xmlParserMode = 2;
 pub const XML_PARSE_DOM: xmlParserMode = 1;
 pub const XML_PARSE_UNKNOWN: xmlParserMode = 0;
 pub type xmlError = crate::src::threads::_xmlError;
-// #[derive(Copy, Clone)]
-
 pub type _xmlError = crate::src::threads::_xmlError;
 pub type xmlErrorLevel = u32;
 pub const XML_ERR_FATAL: xmlErrorLevel = 3;
 pub const XML_ERR_ERROR: xmlErrorLevel = 2;
 pub const XML_ERR_WARNING: xmlErrorLevel = 1;
 pub const XML_ERR_NONE: xmlErrorLevel = 0;
-pub type xmlAttrPtr = * mut crate::src::threads::_xmlAttr;
+pub type xmlAttrPtr = *mut crate::src::threads::_xmlAttr;
 pub type xmlAttr = crate::src::threads::_xmlAttr;
-pub type xmlNodePtr = * mut crate::src::threads::_xmlNode;
+pub type xmlNodePtr = *mut crate::src::threads::_xmlNode;
 pub type xmlNode = crate::src::threads::_xmlNode;
-pub type xmlHashTablePtr = * mut crate::src::xmlsave::_xmlHashTable;
+pub type xmlHashTablePtr = *mut crate::src::xmlsave::_xmlHashTable;
 pub type xmlHashTable = crate::src::xmlsave::_xmlHashTable;
 pub type xmlStartTag = crate::src::xmlstring::_xmlStartTag;
-pub type xmlDictPtr = * mut crate::src::xpointer::_xmlDict;
+pub type xmlDictPtr = *mut crate::src::xpointer::_xmlDict;
 pub type xmlDict = crate::src::xpointer::_xmlDict;
 pub type xmlParserInputState = i32;
 pub const XML_PARSER_PUBLIC_LITERAL: xmlParserInputState = 16;
@@ -264,36 +207,54 @@ pub const XML_PARSER_MISC: xmlParserInputState = 1;
 pub const XML_PARSER_START: xmlParserInputState = 0;
 pub const XML_PARSER_EOF: xmlParserInputState = -1;
 pub type xmlValidCtxt = crate::src::tree::_xmlValidCtxt;
-// #[derive(Copy, Clone)]
-
 pub type _xmlValidCtxt = crate::src::tree::_xmlValidCtxt;
-pub type xmlAutomataStatePtr = * mut crate::src::xmlregexp::_xmlAutomataState;
+pub type xmlAutomataStatePtr = *mut crate::src::xmlregexp::_xmlAutomataState;
 pub type xmlAutomataState = crate::src::xmlregexp::_xmlAutomataState;
-pub type xmlAutomataPtr = * mut crate::src::xmlregexp::_xmlAutomata;
+pub type xmlAutomataPtr = *mut crate::src::xmlregexp::_xmlAutomata;
 pub type xmlAutomata = crate::src::xmlregexp::_xmlAutomata;
 pub type xmlValidState = crate::src::valid::_xmlValidState;
-pub type xmlDocPtr = * mut crate::src::threads::_xmlDoc;
+pub type xmlDocPtr = *mut crate::src::threads::_xmlDoc;
 pub type xmlDoc = crate::src::threads::_xmlDoc;
-pub type xmlValidityWarningFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type xmlValidityErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
+pub type xmlValidityWarningFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type xmlValidityErrorFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
 pub type xmlParserNodeInfoSeq = crate::src::tree::_xmlParserNodeInfoSeq;
-// #[derive(Copy, Clone)]
-
 pub type _xmlParserNodeInfoSeq = crate::src::tree::_xmlParserNodeInfoSeq;
-// #[derive(Copy, Clone)]
-
 pub type _xmlSAXHandler = crate::src::tree::_xmlSAXHandler;
-pub type xmlStructuredErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::threads::_xmlError,) -> ()>;
-pub type xmlErrorPtr = * mut crate::src::threads::_xmlError;
-pub type endElementNsSAX2Func = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
-pub type startElementNsSAX2Func = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,_: i32,_: * mut * const u8,_: i32,_: i32,_: * mut * const u8,) -> ()>;
-pub type externalSubsetSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
-pub type cdataBlockSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,) -> ()>;
-pub type getParameterEntitySAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> * mut crate::src::threads::_xmlEntity>;
-pub type xmlEntityPtr = * mut crate::src::threads::_xmlEntity;
+pub type xmlStructuredErrorFunc = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *mut crate::src::threads::_xmlError) -> (),
+>;
+pub type xmlErrorPtr = *mut crate::src::threads::_xmlError;
+pub type endElementNsSAX2Func = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8, _: *const u8) -> (),
+>;
+pub type startElementNsSAX2Func = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+        _: *const u8,
+        _: i32,
+        _: *mut *const u8,
+        _: i32,
+        _: i32,
+        _: *mut *const u8,
+    ) -> (),
+>;
+pub type externalSubsetSAXFunc = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8, _: *const u8) -> (),
+>;
+pub type cdataBlockSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: i32) -> ()>;
+pub type getParameterEntitySAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+    ) -> *mut crate::src::threads::_xmlEntity,
+>;
+pub type xmlEntityPtr = *mut crate::src::threads::_xmlEntity;
 pub type xmlEntity = crate::src::threads::_xmlEntity;
-// #[derive(Copy, Clone)]
-
 pub type _xmlEntity = crate::src::threads::_xmlEntity;
 pub type xmlEntityType = u32;
 pub const XML_INTERNAL_PREDEFINED_ENTITY: xmlEntityType = 6;
@@ -302,30 +263,56 @@ pub const XML_INTERNAL_PARAMETER_ENTITY: xmlEntityType = 4;
 pub const XML_EXTERNAL_GENERAL_UNPARSED_ENTITY: xmlEntityType = 3;
 pub const XML_EXTERNAL_GENERAL_PARSED_ENTITY: xmlEntityType = 2;
 pub const XML_INTERNAL_GENERAL_ENTITY: xmlEntityType = 1;
-pub type fatalErrorSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type errorSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type warningSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type commentSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> ()>;
-pub type processingInstructionSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,) -> ()>;
-pub type ignorableWhitespaceSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,) -> ()>;
-pub type charactersSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,) -> ()>;
-pub type referenceSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> ()>;
-pub type endElementSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> ()>;
-pub type startElementSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * mut * const u8,) -> ()>;
-pub type endDocumentSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type startDocumentSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type setDocumentLocatorSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::threads::_xmlSAXLocator,) -> ()>;
-pub type xmlSAXLocatorPtr = * mut crate::src::threads::_xmlSAXLocator;
+pub type fatalErrorSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type errorSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type warningSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type commentSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8) -> ()>;
+pub type processingInstructionSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8) -> ()>;
+pub type ignorableWhitespaceSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: i32) -> ()>;
+pub type charactersSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: i32) -> ()>;
+pub type referenceSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8) -> ()>;
+pub type endElementSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8) -> ()>;
+pub type startElementSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *mut *const u8) -> ()>;
+pub type endDocumentSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+pub type startDocumentSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+pub type setDocumentLocatorSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *mut crate::src::threads::_xmlSAXLocator,
+    ) -> (),
+>;
+pub type xmlSAXLocatorPtr = *mut crate::src::threads::_xmlSAXLocator;
 pub type xmlSAXLocator = crate::src::threads::_xmlSAXLocator;
-// #[derive(Copy, Clone)]
-
 pub type _xmlSAXLocator = crate::src::threads::_xmlSAXLocator;
-pub type unparsedEntityDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
-pub type elementDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,_: * mut crate::src::threads::_xmlElementContent,) -> ()>;
-pub type xmlElementContentPtr = * mut crate::src::threads::_xmlElementContent;
+pub type unparsedEntityDeclSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+        _: *const u8,
+        _: *const u8,
+    ) -> (),
+>;
+pub type elementDeclSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: i32,
+        _: *mut crate::src::threads::_xmlElementContent,
+    ) -> (),
+>;
+pub type xmlElementContentPtr = *mut crate::src::threads::_xmlElementContent;
 pub type xmlElementContent = crate::src::threads::_xmlElementContent;
-// #[derive(Copy, Clone)]
-
 pub type _xmlElementContent = crate::src::threads::_xmlElementContent;
 pub type xmlElementContentOccur = u32;
 pub const XML_ELEMENT_CONTENT_PLUS: xmlElementContentOccur = 4;
@@ -337,24 +324,56 @@ pub const XML_ELEMENT_CONTENT_OR: xmlElementContentType = 4;
 pub const XML_ELEMENT_CONTENT_SEQ: xmlElementContentType = 3;
 pub const XML_ELEMENT_CONTENT_ELEMENT: xmlElementContentType = 2;
 pub const XML_ELEMENT_CONTENT_PCDATA: xmlElementContentType = 1;
-pub type attributeDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: i32,_: i32,_: * const u8,_: * mut crate::src::threads::_xmlEnumeration,) -> ()>;
-pub type xmlEnumerationPtr = * mut crate::src::threads::_xmlEnumeration;
+pub type attributeDeclSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+        _: i32,
+        _: i32,
+        _: *const u8,
+        _: *mut crate::src::threads::_xmlEnumeration,
+    ) -> (),
+>;
+pub type xmlEnumerationPtr = *mut crate::src::threads::_xmlEnumeration;
 pub type xmlEnumeration = crate::src::threads::_xmlEnumeration;
-// #[derive(Copy, Clone)]
-
 pub type _xmlEnumeration = crate::src::threads::_xmlEnumeration;
-pub type notationDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
-pub type entityDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,_: * const u8,_: * const u8,_: * mut u8,) -> ()>;
-pub type getEntitySAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> * mut crate::src::threads::_xmlEntity>;
-pub type resolveEntitySAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,) -> * mut crate::src::threads::_xmlParserInput>;
-pub type hasExternalSubsetSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type hasInternalSubsetSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type isStandaloneSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type internalSubsetSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
+pub type notationDeclSAXFunc = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8, _: *const u8) -> (),
+>;
+pub type entityDeclSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: i32,
+        _: *const u8,
+        _: *const u8,
+        _: *mut u8,
+    ) -> (),
+>;
+pub type getEntitySAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+    ) -> *mut crate::src::threads::_xmlEntity,
+>;
+pub type resolveEntitySAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+    ) -> *mut crate::src::threads::_xmlParserInput,
+>;
+pub type hasExternalSubsetSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type hasInternalSubsetSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type isStandaloneSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type internalSubsetSAXFunc = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8, _: *const u8) -> (),
+>;
 pub type xmlParserCtxt = crate::src::tree::_xmlParserCtxt;
-pub type xmlParserCtxtPtr = * mut crate::src::tree::_xmlParserCtxt;
+pub type xmlParserCtxtPtr = *mut crate::src::tree::_xmlParserCtxt;
 pub type xmlSAXHandler = crate::src::tree::_xmlSAXHandler;
-pub type xmlSAXHandlerPtr = * mut crate::src::tree::_xmlSAXHandler;
+pub type xmlSAXHandlerPtr = *mut crate::src::tree::_xmlSAXHandler;
 pub type xmlBufferAllocationScheme = u32;
 pub const XML_BUFFER_ALLOC_BOUNDED: xmlBufferAllocationScheme = 5;
 pub const XML_BUFFER_ALLOC_HYBRID: xmlBufferAllocationScheme = 4;
@@ -362,11 +381,9 @@ pub const XML_BUFFER_ALLOC_IO: xmlBufferAllocationScheme = 3;
 pub const XML_BUFFER_ALLOC_IMMUTABLE: xmlBufferAllocationScheme = 2;
 pub const XML_BUFFER_ALLOC_EXACT: xmlBufferAllocationScheme = 1;
 pub const XML_BUFFER_ALLOC_DOUBLEIT: xmlBufferAllocationScheme = 0;
-// #[derive(Copy, Clone)]
-
 pub type _xmlBuffer = crate::src::tree::_xmlBuffer;
 pub type xmlBuffer = crate::src::tree::_xmlBuffer;
-pub type xmlBufferPtr = * mut crate::src::tree::_xmlBuffer;
+pub type xmlBufferPtr = *mut crate::src::tree::_xmlBuffer;
 pub type C2RustUnnamed = u32;
 pub const XML_FROM_URI: C2RustUnnamed = 30;
 pub const XML_FROM_BUFFER: C2RustUnnamed = 29;
@@ -1136,95 +1153,98 @@ pub const XML_ERR_DOCUMENT_START: xmlParserErrors = 3;
 pub const XML_ERR_NO_MEMORY: xmlParserErrors = 2;
 pub const XML_ERR_INTERNAL_ERROR: xmlParserErrors = 1;
 pub const XML_ERR_OK: xmlParserErrors = 0;
-pub type xmlGenericErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
+pub type xmlGenericErrorFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
 pub type xmlLink = crate::src::valid::_xmlLink;
-pub type xmlLinkPtr = * mut crate::src::valid::_xmlLink;
+pub type xmlLinkPtr = *mut crate::src::valid::_xmlLink;
 pub type xmlList = crate::src::xmlwriter::_xmlList;
-pub type xmlListPtr = * mut crate::src::xmlwriter::_xmlList;
-pub type xmlListDeallocator = Option<unsafe extern "C"  fn(_: * mut crate::src::valid::_xmlLink,) -> ()>;
-pub type xmlListDataCompare = Option<unsafe extern "C"  fn(_: * const core::ffi::c_void,_: * const core::ffi::c_void,) -> i32>;
-pub type htmlDocPtr = * mut crate::src::threads::_xmlDoc;
+pub type xmlListPtr = *mut crate::src::xmlwriter::_xmlList;
+pub type xmlListDeallocator =
+    Option<unsafe extern "C" fn(_: *mut crate::src::valid::_xmlLink) -> ()>;
+pub type xmlListDataCompare =
+    Option<unsafe extern "C" fn(_: *const core::ffi::c_void, _: *const core::ffi::c_void) -> i32>;
+pub type htmlDocPtr = *mut crate::src::threads::_xmlDoc;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlTextWriter {
-    pub out: * mut crate::src::threads::_xmlOutputBuffer,
-    pub nodes: * mut crate::src::xmlwriter::_xmlList,
-    pub nsstack: * mut crate::src::xmlwriter::_xmlList,
+    pub out: *mut crate::src::threads::_xmlOutputBuffer,
+    pub nodes: *mut crate::src::xmlwriter::_xmlList,
+    pub nsstack: *mut crate::src::xmlwriter::_xmlList,
     pub level: i32,
     pub indent: i32,
     pub doindent: i32,
-    pub ichar: * mut u8,
+    pub ichar: *mut u8,
     pub qchar: i8,
-    pub ctxt: * mut crate::src::tree::_xmlParserCtxt,
+    pub ctxt: *mut crate::src::tree::_xmlParserCtxt,
     pub no_doc_free: i32,
-    pub doc: * mut crate::src::threads::_xmlDoc,
+    pub doc: *mut crate::src::threads::_xmlDoc,
 }
 impl _xmlTextWriter {
     pub const fn new() -> Self {
         _xmlTextWriter {
-        out: (0 as * mut crate::src::threads::_xmlOutputBuffer),
-        nodes: (0 as * mut crate::src::xmlwriter::_xmlList),
-        nsstack: (0 as * mut crate::src::xmlwriter::_xmlList),
-        level: 0,
-        indent: 0,
-        doindent: 0,
-        ichar: (0 as * mut u8),
-        qchar: 0,
-        ctxt: (0 as * mut crate::src::tree::_xmlParserCtxt),
-        no_doc_free: 0,
-        doc: (0 as * mut crate::src::threads::_xmlDoc)
+            out: (0 as *mut crate::src::threads::_xmlOutputBuffer),
+            nodes: (0 as *mut crate::src::xmlwriter::_xmlList),
+            nsstack: (0 as *mut crate::src::xmlwriter::_xmlList),
+            level: 0,
+            indent: 0,
+            doindent: 0,
+            ichar: (0 as *mut u8),
+            qchar: 0,
+            ctxt: (0 as *mut crate::src::tree::_xmlParserCtxt),
+            no_doc_free: 0,
+            doc: (0 as *mut crate::src::threads::_xmlDoc),
         }
     }
 }
-
 impl std::default::Default for _xmlTextWriter {
-    fn default() -> Self { _xmlTextWriter::new() }
+    fn default() -> Self {
+        _xmlTextWriter::new()
+    }
 }
-
 pub type xmlTextWriter = crate::src::xmlwriter::_xmlTextWriter;
-pub type xmlTextWriterPtr = * mut crate::src::xmlwriter::_xmlTextWriter;
+pub type xmlTextWriterPtr = *mut crate::src::xmlwriter::_xmlTextWriter;
 pub type xmlTextWriterNsStackEntry = crate::src::xmlwriter::_xmlTextWriterNsStackEntry;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlTextWriterNsStackEntry {
-    pub prefix: * mut u8,
-    pub uri: * mut u8,
-    pub elem: * mut crate::src::valid::_xmlLink,
+    pub prefix: *mut u8,
+    pub uri: *mut u8,
+    pub elem: *mut crate::src::valid::_xmlLink,
 }
 impl _xmlTextWriterNsStackEntry {
     pub const fn new() -> Self {
         _xmlTextWriterNsStackEntry {
-        prefix: (0 as * mut u8),
-        uri: (0 as * mut u8),
-        elem: (0 as * mut crate::src::valid::_xmlLink)
+            prefix: (0 as *mut u8),
+            uri: (0 as *mut u8),
+            elem: (0 as *mut crate::src::valid::_xmlLink),
         }
     }
 }
-
 impl std::default::Default for _xmlTextWriterNsStackEntry {
-    fn default() -> Self { _xmlTextWriterNsStackEntry::new() }
+    fn default() -> Self {
+        _xmlTextWriterNsStackEntry::new()
+    }
 }
-
 pub type xmlTextWriterStackEntry = crate::src::xmlwriter::_xmlTextWriterStackEntry;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlTextWriterStackEntry {
-    pub name: * mut u8,
+    pub name: *mut u8,
     pub state: u32,
 }
 impl _xmlTextWriterStackEntry {
     pub const fn new() -> Self {
         _xmlTextWriterStackEntry {
-        name: (0 as * mut u8),
-        state: 0
+            name: (0 as *mut u8),
+            state: 0,
         }
     }
 }
-
 impl std::default::Default for _xmlTextWriterStackEntry {
-    fn default() -> Self { _xmlTextWriterStackEntry::new() }
+    fn default() -> Self {
+        _xmlTextWriterStackEntry::new()
+    }
 }
-
 pub type xmlTextWriterState = u32;
 pub const XML_TEXTWRITER_COMMENT: xmlTextWriterState = 16;
 pub const XML_TEXTWRITER_DTD_PENT: xmlTextWriterState = 15;
@@ -1243,13 +1263,13 @@ pub const XML_TEXTWRITER_TEXT: xmlTextWriterState = 3;
 pub const XML_TEXTWRITER_ATTRIBUTE: xmlTextWriterState = 2;
 pub const XML_TEXTWRITER_NAME: xmlTextWriterState = 1;
 pub const XML_TEXTWRITER_NONE: xmlTextWriterState = 0;
-unsafe extern "C" fn xmlWriterErrMsg<'a1>(
+extern "C" fn xmlWriterErrMsg<'a1>(
     mut ctxt: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
     mut error: u32,
-    mut msg: * const i8,
+    mut msg: *const i8,
 ) {
-    if !borrow(& ctxt).is_none() {
-        __xmlRaiseError(
+    if !borrow(&ctxt).is_none() {
+        (unsafe { __xmlRaiseError(
             None,
             None,
             0 as *mut libc::c_void,
@@ -1267,9 +1287,9 @@ unsafe extern "C" fn xmlWriterErrMsg<'a1>(
             0 as i32,
             b"%s\0" as *const u8 as *const i8,
             msg,
-        );
+        ) });
     } else {
-        __xmlRaiseError(
+        (unsafe { __xmlRaiseError(
             None,
             None,
             0 as *mut libc::c_void,
@@ -1287,17 +1307,17 @@ unsafe extern "C" fn xmlWriterErrMsg<'a1>(
             0 as i32,
             b"%s\0" as *const u8 as *const i8,
             msg,
-        );
+        ) });
     };
 }
-unsafe extern "C" fn xmlWriterErrMsgInt<'a1>(
+extern "C" fn xmlWriterErrMsgInt<'a1>(
     mut ctxt: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
     mut error: u32,
-    mut msg: * const i8,
+    mut msg: *const i8,
     mut val: i32,
 ) {
-    if !borrow(& ctxt).is_none() {
-        __xmlRaiseError(
+    if !borrow(&ctxt).is_none() {
+        (unsafe { __xmlRaiseError(
             None,
             None,
             0 as *mut libc::c_void,
@@ -1315,9 +1335,9 @@ unsafe extern "C" fn xmlWriterErrMsgInt<'a1>(
             0 as i32,
             msg,
             val,
-        );
+        ) });
     } else {
-        __xmlRaiseError(
+        (unsafe { __xmlRaiseError(
             None,
             None,
             0 as *mut libc::c_void,
@@ -1335,18 +1355,17 @@ unsafe extern "C" fn xmlWriterErrMsgInt<'a1>(
             0 as i32,
             msg,
             val,
-        );
+        ) });
     };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNewTextWriter(
-    mut out: * mut crate::src::threads::_xmlOutputBuffer,
-) -> * mut crate::src::xmlwriter::_xmlTextWriter {
-    let mut ret: * mut crate::src::xmlwriter::_xmlTextWriter = 0 as *mut xmlTextWriter;
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlTextWriter>() as u64) as xmlTextWriterPtr;
+pub extern "C" fn xmlNewTextWriter(
+    mut out: *mut crate::src::threads::_xmlOutputBuffer,
+) -> *mut crate::src::xmlwriter::_xmlTextWriter {
+    let mut ret: *mut crate::src::xmlwriter::_xmlTextWriter = 0 as *mut xmlTextWriter;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlTextWriter>() as u64
+    ) }) as xmlTextWriterPtr;
     if ret.is_null() {
         xmlWriterErrMsg(
             Option::<&'_ mut crate::src::xmlwriter::_xmlTextWriter>::None,
@@ -1355,53 +1374,49 @@ pub unsafe extern "C" fn xmlNewTextWriter(
         );
         return 0 as xmlTextWriterPtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlTextWriter>() as u64,
-    );
-    let ref mut fresh0 = (*ret).nodes;
-    *fresh0 = xmlListCreate(
+    ) });
+    let fresh0 = unsafe { &mut ((*ret).nodes) };
+    *fresh0 = unsafe { xmlListCreate(
         Some(xmlFreeTextWriterStackEntry),
-        Some(
-            xmlCmpTextWriterStackEntry,
-        ),
-    );
-    if ((*ret).nodes).is_null() {
+        Some(xmlCmpTextWriterStackEntry),
+    ) };
+    if (unsafe { (*ret).nodes }).is_null() {
         xmlWriterErrMsg(
             Option::<&'_ mut crate::src::xmlwriter::_xmlTextWriter>::None,
             XML_ERR_NO_MEMORY,
             b"xmlNewTextWriter : out of memory!\n\0" as *const u8 as *const i8,
         );
-        xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
         return 0 as xmlTextWriterPtr;
     }
-    let ref mut fresh1 = (*ret).nsstack;
-    *fresh1 = xmlListCreate(
+    let fresh1 = unsafe { &mut ((*ret).nsstack) };
+    *fresh1 = unsafe { xmlListCreate(
         Some(xmlFreeTextWriterNsStackEntry),
-        Some(
-            xmlCmpTextWriterNsStackEntry,
-        ),
-    );
-    if ((*ret).nsstack).is_null() {
+        Some(xmlCmpTextWriterNsStackEntry),
+    ) };
+    if (unsafe { (*ret).nsstack }).is_null() {
         xmlWriterErrMsg(
             Option::<&'_ mut crate::src::xmlwriter::_xmlTextWriter>::None,
             XML_ERR_NO_MEMORY,
             b"xmlNewTextWriter : out of memory!\n\0" as *const u8 as *const i8,
         );
-        xmlListDelete((*ret).nodes);
-        xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+        (unsafe { xmlListDelete((*ret).nodes) });
+        (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
         return 0 as xmlTextWriterPtr;
     }
-    let ref mut fresh2 = (*ret).out;
+    let fresh2 = unsafe { &mut ((*ret).out) };
     *fresh2 = out;
-    let ref mut fresh3 = (*ret).ichar;
+    let fresh3 = unsafe { &mut ((*ret).ichar) };
     *fresh3 = xmlStrdup(b" \0" as *const u8 as *const i8 as *mut xmlChar);
-    (*ret).qchar = '"' as i32 as i8;
-    if ((*ret).ichar).is_null() {
-        xmlListDelete((*ret).nodes);
-        xmlListDelete((*ret).nsstack);
-        xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+    (unsafe { (*ret).qchar = '"' as i32 as i8 });
+    if (unsafe { (*ret).ichar }).is_null() {
+        (unsafe { xmlListDelete((*ret).nodes) });
+        (unsafe { xmlListDelete((*ret).nsstack) });
+        (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
         xmlWriterErrMsg(
             Option::<&'_ mut crate::src::xmlwriter::_xmlTextWriter>::None,
             XML_ERR_NO_MEMORY,
@@ -1409,29 +1424,24 @@ pub unsafe extern "C" fn xmlNewTextWriter(
         );
         return 0 as xmlTextWriterPtr;
     }
-    let ref mut fresh4 = (*ret).doc;
+    let fresh4 = unsafe { &mut ((*ret).doc) };
     *fresh4 = xmlNewDoc(0 as *const xmlChar);
-    (*ret).no_doc_free = 0 as i32;
+    (unsafe { (*ret).no_doc_free = 0 as i32 });
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNewTextWriterFilename(
-    mut uri: * const i8,
+pub extern "C" fn xmlNewTextWriterFilename(
+    mut uri: *const i8,
     mut compression: i32,
-) -> * mut crate::src::xmlwriter::_xmlTextWriter {
-    let mut ret: * mut crate::src::xmlwriter::_xmlTextWriter = 0 as *mut xmlTextWriter;
-    let mut out: * mut crate::src::threads::_xmlOutputBuffer = 0 as *mut xmlOutputBuffer;
-    out = xmlOutputBufferCreateFilename(
-        uri,
-        0 as xmlCharEncodingHandlerPtr,
-        compression,
-    );
+) -> *mut crate::src::xmlwriter::_xmlTextWriter {
+    let mut ret: *mut crate::src::xmlwriter::_xmlTextWriter = 0 as *mut xmlTextWriter;
+    let mut out: *mut crate::src::threads::_xmlOutputBuffer = 0 as *mut xmlOutputBuffer;
+    out = xmlOutputBufferCreateFilename(uri, 0 as xmlCharEncodingHandlerPtr, compression);
     if out.is_null() {
         xmlWriterErrMsg(
             Option::<&'_ mut crate::src::xmlwriter::_xmlTextWriter>::None,
             XML_IO_EIO,
-            b"xmlNewTextWriterFilename : cannot open uri\n\0" as *const u8
-                as *const i8,
+            b"xmlNewTextWriterFilename : cannot open uri\n\0" as *const u8 as *const i8,
         );
         return 0 as xmlTextWriterPtr;
     }
@@ -1440,30 +1450,28 @@ pub unsafe extern "C" fn xmlNewTextWriterFilename(
         xmlWriterErrMsg(
             Option::<&'_ mut crate::src::xmlwriter::_xmlTextWriter>::None,
             XML_ERR_NO_MEMORY,
-            b"xmlNewTextWriterFilename : out of memory!\n\0" as *const u8
-                as *const i8,
+            b"xmlNewTextWriterFilename : out of memory!\n\0" as *const u8 as *const i8,
         );
         xmlOutputBufferClose(out);
         return 0 as xmlTextWriterPtr;
     }
-    (*ret).indent = 0 as i32;
-    (*ret).doindent = 0 as i32;
+    (unsafe { (*ret).indent = 0 as i32 });
+    (unsafe { (*ret).doindent = 0 as i32 });
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNewTextWriterMemory(
-    mut buf: * mut crate::src::tree::_xmlBuffer,
-    mut compression: i32,
-) -> * mut crate::src::xmlwriter::_xmlTextWriter {
-    let mut ret: * mut crate::src::xmlwriter::_xmlTextWriter = 0 as *mut xmlTextWriter;
-    let mut out: * mut crate::src::threads::_xmlOutputBuffer = 0 as *mut xmlOutputBuffer;
+pub extern "C" fn xmlNewTextWriterMemory(
+    mut buf: *mut crate::src::tree::_xmlBuffer,
+    mut _compression: i32,
+) -> *mut crate::src::xmlwriter::_xmlTextWriter {
+    let mut ret: *mut crate::src::xmlwriter::_xmlTextWriter = 0 as *mut xmlTextWriter;
+    let mut out: *mut crate::src::threads::_xmlOutputBuffer = 0 as *mut xmlOutputBuffer;
     out = xmlOutputBufferCreateBuffer(buf, 0 as xmlCharEncodingHandlerPtr);
     if out.is_null() {
         xmlWriterErrMsg(
             Option::<&'_ mut crate::src::xmlwriter::_xmlTextWriter>::None,
             XML_ERR_NO_MEMORY,
-            b"xmlNewTextWriterMemory : out of memory!\n\0" as *const u8
-                as *const i8,
+            b"xmlNewTextWriterMemory : out of memory!\n\0" as *const u8 as *const i8,
         );
         return 0 as xmlTextWriterPtr;
     }
@@ -1472,8 +1480,7 @@ pub unsafe extern "C" fn xmlNewTextWriterMemory(
         xmlWriterErrMsg(
             Option::<&'_ mut crate::src::xmlwriter::_xmlTextWriter>::None,
             XML_ERR_NO_MEMORY,
-            b"xmlNewTextWriterMemory : out of memory!\n\0" as *const u8
-                as *const i8,
+            b"xmlNewTextWriterMemory : out of memory!\n\0" as *const u8 as *const i8,
         );
         xmlOutputBufferClose(out);
         return 0 as xmlTextWriterPtr;
@@ -1481,28 +1488,23 @@ pub unsafe extern "C" fn xmlNewTextWriterMemory(
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNewTextWriterPushParser(
-    mut ctxt: * mut crate::src::tree::_xmlParserCtxt,
-    mut compression: i32,
-) -> * mut crate::src::xmlwriter::_xmlTextWriter {
-    let mut ret: * mut crate::src::xmlwriter::_xmlTextWriter = 0 as *mut xmlTextWriter;
-    let mut out: * mut crate::src::threads::_xmlOutputBuffer = 0 as *mut xmlOutputBuffer;
+pub extern "C" fn xmlNewTextWriterPushParser(
+    mut ctxt: *mut crate::src::tree::_xmlParserCtxt,
+    mut _compression: i32,
+) -> *mut crate::src::xmlwriter::_xmlTextWriter {
+    let mut ret: *mut crate::src::xmlwriter::_xmlTextWriter = 0 as *mut xmlTextWriter;
+    let mut out: *mut crate::src::threads::_xmlOutputBuffer = 0 as *mut xmlOutputBuffer;
     if ctxt.is_null() {
         xmlWriterErrMsg(
             Option::<&'_ mut crate::src::xmlwriter::_xmlTextWriter>::None,
             XML_ERR_INTERNAL_ERROR,
-            b"xmlNewTextWriterPushParser : invalid context!\n\0" as *const u8
-                as *const i8,
+            b"xmlNewTextWriterPushParser : invalid context!\n\0" as *const u8 as *const i8,
         );
         return 0 as xmlTextWriterPtr;
     }
     out = xmlOutputBufferCreateIO(
-        Some(
-            xmlTextWriterWriteDocCallback,
-        ),
-        Some(
-            xmlTextWriterCloseDocCallback,
-        ),
+        Some(xmlTextWriterWriteDocCallback),
+        Some(xmlTextWriterCloseDocCallback),
         ctxt as *mut libc::c_void,
         0 as xmlCharEncodingHandlerPtr,
     );
@@ -1510,8 +1512,8 @@ pub unsafe extern "C" fn xmlNewTextWriterPushParser(
         xmlWriterErrMsg(
             Option::<&'_ mut crate::src::xmlwriter::_xmlTextWriter>::None,
             XML_ERR_INTERNAL_ERROR,
-            b"xmlNewTextWriterPushParser : error at xmlOutputBufferCreateIO!\n\0"
-                as *const u8 as *const i8,
+            b"xmlNewTextWriterPushParser : error at xmlOutputBufferCreateIO!\n\0" as *const u8
+                as *const i8,
         );
         return 0 as xmlTextWriterPtr;
     }
@@ -1526,16 +1528,16 @@ pub unsafe extern "C" fn xmlNewTextWriterPushParser(
         xmlOutputBufferClose(out);
         return 0 as xmlTextWriterPtr;
     }
-    let ref mut fresh5 = (*ret).ctxt;
+    let fresh5 = unsafe { &mut ((*ret).ctxt) };
     *fresh5 = ctxt;
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNewTextWriterDoc<'a1>(
-    mut doc: Option<&'a1 mut * mut crate::src::threads::_xmlDoc>,
+pub extern "C" fn xmlNewTextWriterDoc<'a1>(
+    mut doc: Option<&'a1 mut *mut crate::src::threads::_xmlDoc>,
     mut compression: i32,
-) -> * mut crate::src::xmlwriter::_xmlTextWriter {
-    let mut ret: * mut crate::src::xmlwriter::_xmlTextWriter = 0 as *mut xmlTextWriter;
+) -> *mut crate::src::xmlwriter::_xmlTextWriter {
+    let mut ret: *mut crate::src::xmlwriter::_xmlTextWriter = 0 as *mut xmlTextWriter;
     let mut saxHandler: crate::src::tree::_xmlSAXHandler = xmlSAXHandler {
         internalSubset: None,
         isStandalone: None,
@@ -1570,32 +1572,23 @@ pub unsafe extern "C" fn xmlNewTextWriterDoc<'a1>(
         endElementNs: None,
         serror: None,
     };
-    let mut ctxt: * mut crate::src::tree::_xmlParserCtxt = 0 as *mut xmlParserCtxt;
-    memset(
+    let mut ctxt: *mut crate::src::tree::_xmlParserCtxt = 0 as *mut xmlParserCtxt;
+    (unsafe { memset(
         &mut saxHandler as *mut xmlSAXHandler as *mut libc::c_void,
         '\u{0}' as i32,
         ::std::mem::size_of::<xmlSAXHandler>() as u64,
-    );
-    xmlSAX2InitDefaultSAXHandler(&mut saxHandler, 1 as i32);
-    saxHandler
-        .startDocument = Some(
-        xmlTextWriterStartDocumentCallback,
-    );
-    saxHandler
-        .startElement = Some(
-        xmlSAX2StartElement,
-    );
-    saxHandler
-        .endElement = Some(
-        xmlSAX2EndElement,
-    );
-    ctxt = xmlCreatePushParserCtxt(
+    ) });
+    (unsafe { xmlSAX2InitDefaultSAXHandler(&mut saxHandler, 1 as i32) });
+    saxHandler.startDocument = Some(xmlTextWriterStartDocumentCallback);
+    saxHandler.startElement = Some(xmlSAX2StartElement);
+    saxHandler.endElement = Some(xmlSAX2EndElement);
+    ctxt = unsafe { xmlCreatePushParserCtxt(
         &mut saxHandler,
         0 as *mut libc::c_void,
         0 as *const i8,
         0 as i32,
         0 as *const i8,
-    );
+    ) };
     if ctxt.is_null() {
         xmlWriterErrMsg(
             Option::<&'_ mut crate::src::xmlwriter::_xmlTextWriter>::None,
@@ -1605,45 +1598,44 @@ pub unsafe extern "C" fn xmlNewTextWriterDoc<'a1>(
         );
         return 0 as xmlTextWriterPtr;
     }
-    (*ctxt).dictNames = 0 as i32;
-    let ref mut fresh6 = (*ctxt).myDoc;
+    (unsafe { (*ctxt).dictNames = 0 as i32 });
+    let fresh6 = unsafe { &mut ((*ctxt).myDoc) };
     *fresh6 = xmlNewDoc(b"1.0\0" as *const u8 as *const i8 as *mut xmlChar);
-    if ((*ctxt).myDoc).is_null() {
-        xmlFreeParserCtxt(ctxt);
+    if (unsafe { (*ctxt).myDoc }).is_null() {
+        (unsafe { xmlFreeParserCtxt(ctxt) });
         xmlWriterErrMsg(
             Option::<&'_ mut crate::src::xmlwriter::_xmlTextWriter>::None,
             XML_ERR_INTERNAL_ERROR,
-            b"xmlNewTextWriterDoc : error at xmlNewDoc!\n\0" as *const u8
-                as *const i8,
+            b"xmlNewTextWriterDoc : error at xmlNewDoc!\n\0" as *const u8 as *const i8,
         );
         return 0 as xmlTextWriterPtr;
     }
     ret = xmlNewTextWriterPushParser(ctxt, compression);
     if ret.is_null() {
-        xmlFreeDoc((*ctxt).myDoc);
-        xmlFreeParserCtxt(ctxt);
+        xmlFreeDoc(unsafe { (*ctxt).myDoc });
+        (unsafe { xmlFreeParserCtxt(ctxt) });
         xmlWriterErrMsg(
             Option::<&'_ mut crate::src::xmlwriter::_xmlTextWriter>::None,
             XML_ERR_INTERNAL_ERROR,
-            b"xmlNewTextWriterDoc : error at xmlNewTextWriterPushParser!\n\0"
-                as *const u8 as *const i8,
+            b"xmlNewTextWriterDoc : error at xmlNewTextWriterPushParser!\n\0" as *const u8
+                as *const i8,
         );
         return 0 as xmlTextWriterPtr;
     }
-    xmlSetDocCompressMode((*ctxt).myDoc, compression);
-    if !borrow(& doc).is_none() {
-        *(borrow_mut(&mut doc)).unwrap() = (*ctxt).myDoc;
-        (*ret).no_doc_free = 1 as i32;
+    xmlSetDocCompressMode(unsafe { (*ctxt).myDoc }, compression);
+    if !borrow(&doc).is_none() {
+        *(borrow_mut(&mut doc)).unwrap() = unsafe { (*ctxt).myDoc };
+        (unsafe { (*ret).no_doc_free = 1 as i32 });
     }
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNewTextWriterTree(
-    mut doc: * mut crate::src::threads::_xmlDoc,
-    mut node: * mut crate::src::threads::_xmlNode,
+pub extern "C" fn xmlNewTextWriterTree(
+    mut doc: *mut crate::src::threads::_xmlDoc,
+    mut node: *mut crate::src::threads::_xmlNode,
     mut compression: i32,
-) -> * mut crate::src::xmlwriter::_xmlTextWriter {
-    let mut ret: * mut crate::src::xmlwriter::_xmlTextWriter = 0 as *mut xmlTextWriter;
+) -> *mut crate::src::xmlwriter::_xmlTextWriter {
+    let mut ret: *mut crate::src::xmlwriter::_xmlTextWriter = 0 as *mut xmlTextWriter;
     let mut saxHandler: crate::src::tree::_xmlSAXHandler = xmlSAXHandler {
         internalSubset: None,
         isStandalone: None,
@@ -1678,41 +1670,31 @@ pub unsafe extern "C" fn xmlNewTextWriterTree(
         endElementNs: None,
         serror: None,
     };
-    let mut ctxt: * mut crate::src::tree::_xmlParserCtxt = 0 as *mut xmlParserCtxt;
+    let mut ctxt: *mut crate::src::tree::_xmlParserCtxt = 0 as *mut xmlParserCtxt;
     if doc.is_null() {
         xmlWriterErrMsg(
             Option::<&'_ mut crate::src::xmlwriter::_xmlTextWriter>::None,
             XML_ERR_INTERNAL_ERROR,
-            b"xmlNewTextWriterTree : invalid document tree!\n\0" as *const u8
-                as *const i8,
+            b"xmlNewTextWriterTree : invalid document tree!\n\0" as *const u8 as *const i8,
         );
         return 0 as xmlTextWriterPtr;
     }
-    memset(
+    (unsafe { memset(
         &mut saxHandler as *mut xmlSAXHandler as *mut libc::c_void,
         '\u{0}' as i32,
         ::std::mem::size_of::<xmlSAXHandler>() as u64,
-    );
-    xmlSAX2InitDefaultSAXHandler(&mut saxHandler, 1 as i32);
-    saxHandler
-        .startDocument = Some(
-        xmlTextWriterStartDocumentCallback,
-    );
-    saxHandler
-        .startElement = Some(
-        xmlSAX2StartElement,
-    );
-    saxHandler
-        .endElement = Some(
-        xmlSAX2EndElement,
-    );
-    ctxt = xmlCreatePushParserCtxt(
+    ) });
+    (unsafe { xmlSAX2InitDefaultSAXHandler(&mut saxHandler, 1 as i32) });
+    saxHandler.startDocument = Some(xmlTextWriterStartDocumentCallback);
+    saxHandler.startElement = Some(xmlSAX2StartElement);
+    saxHandler.endElement = Some(xmlSAX2EndElement);
+    ctxt = unsafe { xmlCreatePushParserCtxt(
         &mut saxHandler,
         0 as *mut libc::c_void,
         0 as *const i8,
         0 as i32,
         0 as *const i8,
-    );
+    ) };
     if ctxt.is_null() {
         xmlWriterErrMsg(
             Option::<&'_ mut crate::src::xmlwriter::_xmlTextWriter>::None,
@@ -1722,81 +1704,78 @@ pub unsafe extern "C" fn xmlNewTextWriterTree(
         );
         return 0 as xmlTextWriterPtr;
     }
-    (*ctxt).dictNames = 0 as i32;
+    (unsafe { (*ctxt).dictNames = 0 as i32 });
     ret = xmlNewTextWriterPushParser(ctxt, compression);
     if ret.is_null() {
-        xmlFreeParserCtxt(ctxt);
+        (unsafe { xmlFreeParserCtxt(ctxt) });
         xmlWriterErrMsg(
             Option::<&'_ mut crate::src::xmlwriter::_xmlTextWriter>::None,
             XML_ERR_INTERNAL_ERROR,
-            b"xmlNewTextWriterDoc : error at xmlNewTextWriterPushParser!\n\0"
-                as *const u8 as *const i8,
+            b"xmlNewTextWriterDoc : error at xmlNewTextWriterPushParser!\n\0" as *const u8
+                as *const i8,
         );
         return 0 as xmlTextWriterPtr;
     }
-    let ref mut fresh7 = (*ctxt).myDoc;
+    let fresh7 = unsafe { &mut ((*ctxt).myDoc) };
     *fresh7 = doc;
-    let ref mut fresh8 = (*ctxt).node;
+    let fresh8 = unsafe { &mut ((*ctxt).node) };
     *fresh8 = node;
-    (*ret).no_doc_free = 1 as i32;
+    (unsafe { (*ret).no_doc_free = 1 as i32 });
     xmlSetDocCompressMode(doc, compression);
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlFreeTextWriter(mut writer: * mut crate::src::xmlwriter::_xmlTextWriter) {
+pub extern "C" fn xmlFreeTextWriter(mut writer: *mut crate::src::xmlwriter::_xmlTextWriter) {
     if writer.is_null() {
         return;
     }
-    if !((*writer).out).is_null() {
-        xmlOutputBufferClose((*writer).out);
+    if !(unsafe { (*writer).out }).is_null() {
+        xmlOutputBufferClose(unsafe { (*writer).out });
     }
-    if !((*writer).nodes).is_null() {
-        xmlListDelete((*writer).nodes);
+    if !(unsafe { (*writer).nodes }).is_null() {
+        (unsafe { xmlListDelete((*writer).nodes) });
     }
-    if !((*writer).nsstack).is_null() {
-        xmlListDelete((*writer).nsstack);
+    if !(unsafe { (*writer).nsstack }).is_null() {
+        (unsafe { xmlListDelete((*writer).nsstack) });
     }
-    if !((*writer).ctxt).is_null() {
-        if !((*(*writer).ctxt).myDoc).is_null()
-            && (*writer).no_doc_free == 0 as i32
-        {
-            xmlFreeDoc((*(*writer).ctxt).myDoc);
-            let ref mut fresh9 = (*(*writer).ctxt).myDoc;
+    if !(unsafe { (*writer).ctxt }).is_null() {
+        if !(unsafe { (*(*writer).ctxt).myDoc }).is_null() && (unsafe { (*writer).no_doc_free }) == 0 as i32 {
+            xmlFreeDoc(unsafe { (*(*writer).ctxt).myDoc });
+            let fresh9 = unsafe { &mut ((*(*writer).ctxt).myDoc) };
             *fresh9 = 0 as xmlDocPtr;
         }
-        xmlFreeParserCtxt((*writer).ctxt);
+        (unsafe { xmlFreeParserCtxt((*writer).ctxt) });
     }
-    if !((*writer).doc).is_null() {
-        xmlFreeDoc((*writer).doc);
+    if !(unsafe { (*writer).doc }).is_null() {
+        xmlFreeDoc(unsafe { (*writer).doc });
     }
-    if !((*writer).ichar).is_null() {
-        xmlFree
-            .expect("non-null function pointer")((*writer).ichar as *mut libc::c_void);
+    if !(unsafe { (*writer).ichar }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*writer).ichar as *mut libc::c_void) });
     }
-    xmlFree.expect("non-null function pointer")(writer as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(writer as *mut libc::c_void) });
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterStartDocument<'a1>(
+pub extern "C" fn xmlTextWriterStartDocument<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut version: * const i8,
-    mut encoding: * const i8,
-    mut standalone: * const i8,
+    mut version: *const i8,
+    mut encoding: *const i8,
+    mut standalone: *const i8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut encoder: * mut crate::src::threads::_xmlCharEncodingHandler = 0 as *mut xmlCharEncodingHandler;
-    if borrow(& writer).is_none() || ((*(borrow_mut(&mut writer)).unwrap()).out).is_null() {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut encoder: *mut crate::src::threads::_xmlCharEncodingHandler =
+        0 as *mut xmlCharEncodingHandler;
+    if borrow(&writer).is_none() || ((*(borrow_mut(&mut writer)).unwrap()).out).is_null() {
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_INTERNAL_ERROR,
-            b"xmlTextWriterStartDocument : invalid writer!\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterStartDocument : invalid writer!\n\0" as *const u8 as *const i8,
         );
         return -(1 as i32);
     }
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
-    if !lk.is_null() && !(xmlLinkGetData(lk)).is_null() {
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
+    if !lk.is_null() && !(unsafe { xmlLinkGetData(lk) }).is_null() {
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_INTERNAL_ERROR,
@@ -1807,31 +1786,33 @@ pub unsafe extern "C" fn xmlTextWriterStartDocument<'a1>(
     }
     encoder = 0 as xmlCharEncodingHandlerPtr;
     if !encoding.is_null() {
-        encoder = xmlFindCharEncodingHandler(encoding);
+        encoder = unsafe { xmlFindCharEncodingHandler(encoding) };
         if encoder.is_null() {
             xmlWriterErrMsg(
                 borrow_mut(&mut writer),
                 XML_ERR_UNSUPPORTED_ENCODING,
-                b"xmlTextWriterStartDocument : unsupported encoding\n\0" as *const u8
-                    as *const i8,
+                b"xmlTextWriterStartDocument : unsupported encoding\n\0" as *const u8 as *const i8,
             );
             return -(1 as i32);
         }
     }
-    let ref mut fresh10 = (*(*(borrow_mut(&mut writer)).unwrap()).out).encoder;
+    let fresh10 = unsafe { &mut ((*(*(borrow_mut(&mut writer)).unwrap()).out).encoder) };
     *fresh10 = encoder;
     if !encoder.is_null() {
-        if ((*(*(borrow_mut(&mut writer)).unwrap()).out).conv).is_null() {
-            let ref mut fresh11 = (*(*(borrow_mut(&mut writer)).unwrap()).out).conv;
-            *fresh11 = xmlBufCreateSize(4000 as i32 as size_t);
+        if (unsafe { (*(*(borrow_mut(&mut writer)).unwrap()).out).conv }).is_null() {
+            let fresh11 = unsafe { &mut ((*(*(borrow_mut(&mut writer)).unwrap()).out).conv) };
+            *fresh11 = unsafe { xmlBufCreateSize(4000 as i32 as size_t) };
         }
-        xmlCharEncOutput((*(borrow_mut(&mut writer)).unwrap()).out, 1 as i32);
-        if !((*(borrow_mut(&mut writer)).unwrap()).doc).is_null() && ((*(*(borrow_mut(&mut writer)).unwrap()).doc).encoding).is_null() {
-            let ref mut fresh12 = (*(*(borrow_mut(&mut writer)).unwrap()).doc).encoding;
-            *fresh12 = xmlStrdup((*(*(*(borrow(& writer)).unwrap()).out).encoder).name as *mut xmlChar);
+        (unsafe { xmlCharEncOutput((*(borrow_mut(&mut writer)).unwrap()).out, 1 as i32) });
+        if !((*(borrow_mut(&mut writer)).unwrap()).doc).is_null()
+            && (unsafe { (*(*(borrow_mut(&mut writer)).unwrap()).doc).encoding }).is_null()
+        {
+            let fresh12 = unsafe { &mut ((*(*(borrow_mut(&mut writer)).unwrap()).doc).encoding) };
+            *fresh12 =
+                xmlStrdup((unsafe { (*(*(*(borrow(&writer)).unwrap()).out).encoder).name }) as *mut xmlChar);
         }
     } else {
-        let ref mut fresh13 = (*(*(borrow_mut(&mut writer)).unwrap()).out).conv;
+        let fresh13 = unsafe { &mut ((*(*(borrow_mut(&mut writer)).unwrap()).out).conv) };
         *fresh13 = 0 as xmlBufPtr;
     }
     sum = 0 as i32;
@@ -1843,7 +1824,11 @@ pub unsafe extern "C" fn xmlTextWriterStartDocument<'a1>(
         return -(1 as i32);
     }
     sum += count;
-    count = xmlOutputBufferWrite((*(borrow_mut(&mut writer)).unwrap()).out, 1 as i32, &mut (*(borrow_mut(&mut writer)).unwrap()).qchar);
+    count = xmlOutputBufferWrite(
+        (*(borrow_mut(&mut writer)).unwrap()).out,
+        1 as i32,
+        &mut (*(borrow_mut(&mut writer)).unwrap()).qchar,
+    );
     if count < 0 as i32 {
         return -(1 as i32);
     }
@@ -1860,12 +1845,16 @@ pub unsafe extern "C" fn xmlTextWriterStartDocument<'a1>(
         return -(1 as i32);
     }
     sum += count;
-    count = xmlOutputBufferWrite((*(borrow_mut(&mut writer)).unwrap()).out, 1 as i32, &mut (*(borrow_mut(&mut writer)).unwrap()).qchar);
+    count = xmlOutputBufferWrite(
+        (*(borrow_mut(&mut writer)).unwrap()).out,
+        1 as i32,
+        &mut (*(borrow_mut(&mut writer)).unwrap()).qchar,
+    );
     if count < 0 as i32 {
         return -(1 as i32);
     }
     sum += count;
-    if !((*(*(borrow_mut(&mut writer)).unwrap()).out).encoder).is_null() {
+    if !(unsafe { (*(*(borrow_mut(&mut writer)).unwrap()).out).encoder }).is_null() {
         count = xmlOutputBufferWriteString(
             (*(borrow_mut(&mut writer)).unwrap()).out,
             b" encoding=\0" as *const u8 as *const i8,
@@ -1885,7 +1874,7 @@ pub unsafe extern "C" fn xmlTextWriterStartDocument<'a1>(
         sum += count;
         count = xmlOutputBufferWriteString(
             (*(borrow_mut(&mut writer)).unwrap()).out,
-            (*(*(*(borrow(& writer)).unwrap()).out).encoder).name,
+            unsafe { (*(*(*(borrow(&writer)).unwrap()).out).encoder).name },
         );
         if count < 0 as i32 {
             return -(1 as i32);
@@ -1945,72 +1934,72 @@ pub unsafe extern "C" fn xmlTextWriterStartDocument<'a1>(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterEndDocument<'a1>(
+pub extern "C" fn xmlTextWriterEndDocument<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = (0 as * mut crate::src::xmlwriter::_xmlTextWriterStackEntry);
-    if borrow(& writer).is_none() {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut crate::src::xmlwriter::_xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() {
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_INTERNAL_ERROR,
-            b"xmlTextWriterEndDocument : invalid writer!\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterEndDocument : invalid writer!\n\0" as *const u8 as *const i8,
         );
         return -(1 as i32);
     }
     sum = 0 as i32;
     loop {
-        lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+        lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
         if lk.is_null() {
             break;
         }
-        p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+        p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
         if p.is_null() {
             break;
         }
-        match (*p).state as u32 {
+        match (unsafe { (*p).state }) as u32 {
             1 | 2 | 3 => {
                 count = xmlTextWriterEndElement(borrow_mut(&mut writer));
                 if count < 0 as i32 {
                     return -(1 as i32);
                 }
                 sum += count;
-            }
+            },
             4 | 5 => {
                 count = xmlTextWriterEndPI(borrow_mut(&mut writer));
                 if count < 0 as i32 {
                     return -(1 as i32);
                 }
                 sum += count;
-            }
+            },
             6 => {
                 count = xmlTextWriterEndCDATA(borrow_mut(&mut writer));
                 if count < 0 as i32 {
                     return -(1 as i32);
                 }
                 sum += count;
-            }
+            },
             7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 => {
                 count = xmlTextWriterEndDTD(borrow_mut(&mut writer));
                 if count < 0 as i32 {
                     return -(1 as i32);
                 }
                 sum += count;
-            }
+            },
             16 => {
                 count = xmlTextWriterEndComment(borrow_mut(&mut writer));
                 if count < 0 as i32 {
                     return -(1 as i32);
                 }
                 sum += count;
-            }
-            _ => {}
+            },
+            _ => {},
         }
     }
-    if (*(borrow(& writer)).unwrap()).indent == 0 {
+    if (*(borrow(&writer)).unwrap()).indent == 0 {
         count = xmlOutputBufferWriteString(
             (*(borrow_mut(&mut writer)).unwrap()).out,
             b"\n\0" as *const u8 as *const i8,
@@ -2024,29 +2013,29 @@ pub unsafe extern "C" fn xmlTextWriterEndDocument<'a1>(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterStartComment<'a1>(
+pub extern "C" fn xmlTextWriterStartComment<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = 0 as *mut xmlTextWriterStackEntry;
-    if borrow(& writer).is_none() {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() {
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_INTERNAL_ERROR,
-            b"xmlTextWriterStartComment : invalid writer!\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterStartComment : invalid writer!\n\0" as *const u8 as *const i8,
         );
         return -(1 as i32);
     }
     sum = 0 as i32;
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
     if !lk.is_null() {
-        p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+        p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
         if !p.is_null() {
-            match (*p).state as u32 {
-                3 | 0 => {}
+            match (unsafe { (*p).state }) as u32 {
+                3 | 0 => {},
                 1 => {
                     count = xmlTextWriterOutputNSDecl(borrow_mut(&mut writer));
                     if count < 0 as i32 {
@@ -2061,7 +2050,7 @@ pub unsafe extern "C" fn xmlTextWriterStartComment<'a1>(
                         return -(1 as i32);
                     }
                     sum += count;
-                    if (*(borrow(& writer)).unwrap()).indent != 0 {
+                    if (*(borrow(&writer)).unwrap()).indent != 0 {
                         count = xmlOutputBufferWriteString(
                             (*(borrow_mut(&mut writer)).unwrap()).out,
                             b"\n\0" as *const u8 as *const i8,
@@ -2071,31 +2060,31 @@ pub unsafe extern "C" fn xmlTextWriterStartComment<'a1>(
                         }
                         sum += count;
                     }
-                    (*p).state = XML_TEXTWRITER_TEXT;
-                }
+                    (unsafe { (*p).state = XML_TEXTWRITER_TEXT });
+                },
                 _ => return -(1 as i32),
             }
         }
     }
-    p = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlTextWriterStackEntry>() as u64)
-        as *mut xmlTextWriterStackEntry;
+    p = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlTextWriterStackEntry>() as u64,
+    ) }) as *mut xmlTextWriterStackEntry;
     if p.is_null() {
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_NO_MEMORY,
-            b"xmlTextWriterStartElement : out of memory!\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterStartElement : out of memory!\n\0" as *const u8 as *const i8,
         );
         return -(1 as i32);
     }
-    let ref mut fresh14 = (*p).name;
+    let fresh14 = unsafe { &mut ((*p).name) };
     *fresh14 = 0 as *mut xmlChar;
-    (*p).state = XML_TEXTWRITER_COMMENT;
-    xmlListPushFront((*(borrow_mut(&mut writer)).unwrap()).nodes, p as *mut libc::c_void);
-    if (*(borrow(& writer)).unwrap()).indent != 0 {
+    (unsafe { (*p).state = XML_TEXTWRITER_COMMENT });
+    (unsafe { xmlListPushFront(
+        (*(borrow_mut(&mut writer)).unwrap()).nodes,
+        p as *mut libc::c_void,
+    ) });
+    if (*(borrow(&writer)).unwrap()).indent != 0 {
         count = xmlTextWriterWriteIndent(borrow_mut(&mut writer));
         if count < 0 as i32 {
             return -(1 as i32);
@@ -2113,38 +2102,37 @@ pub unsafe extern "C" fn xmlTextWriterStartComment<'a1>(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterEndComment<'a1>(
+pub extern "C" fn xmlTextWriterEndComment<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = (0 as * mut crate::src::xmlwriter::_xmlTextWriterStackEntry);
-    if borrow(& writer).is_none() {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut crate::src::xmlwriter::_xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() {
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_INTERNAL_ERROR,
-            b"xmlTextWriterEndComment : invalid writer!\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterEndComment : invalid writer!\n\0" as *const u8 as *const i8,
         );
         return -(1 as i32);
     }
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
     if lk.is_null() {
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_INTERNAL_ERROR,
-            b"xmlTextWriterEndComment : not allowed in this context!\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterEndComment : not allowed in this context!\n\0" as *const u8 as *const i8,
         );
         return -(1 as i32);
     }
-    p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+    p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
     if p.is_null() {
         return -(1 as i32);
     }
     sum = 0 as i32;
-    match (*p).state as u32 {
+    match (unsafe { (*p).state }) as u32 {
         16 => {
             count = xmlOutputBufferWriteString(
                 (*(borrow_mut(&mut writer)).unwrap()).out,
@@ -2154,10 +2142,10 @@ pub unsafe extern "C" fn xmlTextWriterEndComment<'a1>(
                 return -(1 as i32);
             }
             sum += count;
-        }
+        },
         _ => return -(1 as i32),
     }
-    if (*(borrow(& writer)).unwrap()).indent != 0 {
+    if (*(borrow(&writer)).unwrap()).indent != 0 {
         count = xmlOutputBufferWriteString(
             (*(borrow_mut(&mut writer)).unwrap()).out,
             b"\n\0" as *const u8 as *const i8,
@@ -2167,13 +2155,13 @@ pub unsafe extern "C" fn xmlTextWriterEndComment<'a1>(
         }
         sum += count;
     }
-    xmlListPopFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    (unsafe { xmlListPopFront((*(borrow_mut(&mut writer)).unwrap()).nodes) });
     return sum;
 }
 #[no_mangle]
 pub unsafe extern "C" fn xmlTextWriterWriteFormatComment<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut format: * const i8,
+    mut format: *const i8,
     mut args: ...
 ) -> i32 {
     let mut rc: i32 = 0;
@@ -2183,19 +2171,18 @@ pub unsafe extern "C" fn xmlTextWriterWriteFormatComment<'a1>(
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteVFormatComment<'a1>(
+pub extern "C" fn xmlTextWriterWriteVFormatComment<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut format: * const i8,
+    mut format: *const i8,
     mut argptr: core::ffi::VaList,
 ) -> i32 {
     let mut rc: i32 = 0;
-    let mut buf: * mut u8 = 0 as *mut xmlChar;
-    if borrow(& writer).is_none() {
+    let mut buf: *mut u8 = 0 as *mut xmlChar;
+    if borrow(&writer).is_none() {
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_INTERNAL_ERROR,
-            b"xmlTextWriterWriteVFormatComment : invalid writer!\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterWriteVFormatComment : invalid writer!\n\0" as *const u8 as *const i8,
         );
         return -(1 as i32);
     }
@@ -2204,13 +2191,13 @@ pub unsafe extern "C" fn xmlTextWriterWriteVFormatComment<'a1>(
         return -(1 as i32);
     }
     rc = xmlTextWriterWriteComment(borrow_mut(&mut writer), buf);
-    xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void) });
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteComment<'a1>(
+pub extern "C" fn xmlTextWriterWriteComment<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut content: * const u8,
+    mut content: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
@@ -2233,24 +2220,25 @@ pub unsafe extern "C" fn xmlTextWriterWriteComment<'a1>(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterStartElement<'a1>(
+pub extern "C" fn xmlTextWriterStartElement<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut name: * const u8,
+    mut name: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = 0 as *mut xmlTextWriterStackEntry;
-    if borrow(& writer).is_none() || name.is_null() || *name as i32 == '\u{0}' as i32 {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() || name.is_null() || (unsafe { *name }) as i32 == '\u{0}' as i32 {
         return -(1 as i32);
     }
     sum = 0 as i32;
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
     if !lk.is_null() {
-        p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+        p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
         if !p.is_null() {
             let mut current_block_20: u64;
-            match (*p).state as u32 {
+            match (unsafe { (*p).state }) as u32 {
                 4 | 5 => return -(1 as i32),
                 2 => {
                     count = xmlTextWriterEndAttribute(borrow_mut(&mut writer));
@@ -2259,13 +2247,13 @@ pub unsafe extern "C" fn xmlTextWriterStartElement<'a1>(
                     }
                     sum += count;
                     current_block_20 = 11617129861404113245;
-                }
+                },
                 1 => {
                     current_block_20 = 11617129861404113245;
-                }
+                },
                 0 | _ => {
                     current_block_20 = 17478428563724192186;
-                }
+                },
             }
             match current_block_20 {
                 11617129861404113245 => {
@@ -2282,47 +2270,46 @@ pub unsafe extern "C" fn xmlTextWriterStartElement<'a1>(
                         return -(1 as i32);
                     }
                     sum += count;
-                    if (*(borrow(& writer)).unwrap()).indent != 0 {
+                    if (*(borrow(&writer)).unwrap()).indent != 0 {
                         count = xmlOutputBufferWriteString(
                             (*(borrow_mut(&mut writer)).unwrap()).out,
                             b"\n\0" as *const u8 as *const i8,
                         );
                     }
-                    (*p).state = XML_TEXTWRITER_TEXT;
-                }
-                _ => {}
+                    (unsafe { (*p).state = XML_TEXTWRITER_TEXT });
+                },
+                _ => {},
             }
         }
     }
-    p = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlTextWriterStackEntry>() as u64)
-        as *mut xmlTextWriterStackEntry;
+    p = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlTextWriterStackEntry>() as u64,
+    ) }) as *mut xmlTextWriterStackEntry;
     if p.is_null() {
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_NO_MEMORY,
-            b"xmlTextWriterStartElement : out of memory!\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterStartElement : out of memory!\n\0" as *const u8 as *const i8,
         );
         return -(1 as i32);
     }
-    let ref mut fresh15 = (*p).name;
+    let fresh15 = unsafe { &mut ((*p).name) };
     *fresh15 = xmlStrdup(name);
-    if ((*p).name).is_null() {
+    if (unsafe { (*p).name }).is_null() {
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_NO_MEMORY,
-            b"xmlTextWriterStartElement : out of memory!\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterStartElement : out of memory!\n\0" as *const u8 as *const i8,
         );
-        xmlFree.expect("non-null function pointer")(p as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(p as *mut libc::c_void) });
         return -(1 as i32);
     }
-    (*p).state = XML_TEXTWRITER_NAME;
-    xmlListPushFront((*(borrow_mut(&mut writer)).unwrap()).nodes, p as *mut libc::c_void);
-    if (*(borrow(& writer)).unwrap()).indent != 0 {
+    (unsafe { (*p).state = XML_TEXTWRITER_NAME });
+    (unsafe { xmlListPushFront(
+        (*(borrow_mut(&mut writer)).unwrap()).nodes,
+        p as *mut libc::c_void,
+    ) });
+    if (*(borrow(&writer)).unwrap()).indent != 0 {
         count = xmlTextWriterWriteIndent(borrow_mut(&mut writer));
         sum += count;
     }
@@ -2334,7 +2321,10 @@ pub unsafe extern "C" fn xmlTextWriterStartElement<'a1>(
         return -(1 as i32);
     }
     sum += count;
-    count = xmlOutputBufferWriteString((*(borrow_mut(&mut writer)).unwrap()).out, (*p).name as *const i8);
+    count = xmlOutputBufferWriteString(
+        (*(borrow_mut(&mut writer)).unwrap()).out,
+        (unsafe { (*p).name }) as *const i8,
+    );
     if count < 0 as i32 {
         return -(1 as i32);
     }
@@ -2342,16 +2332,16 @@ pub unsafe extern "C" fn xmlTextWriterStartElement<'a1>(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterStartElementNS<'a1>(
+pub extern "C" fn xmlTextWriterStartElementNS<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut prefix: * const u8,
-    mut name: * const u8,
-    mut namespaceURI: * const u8,
+    mut prefix: *const u8,
+    mut name: *const u8,
+    mut namespaceURI: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut buf: * mut u8 = 0 as *mut xmlChar;
-    if borrow(& writer).is_none() || name.is_null() || *name as i32 == '\u{0}' as i32 {
+    let mut buf: *mut u8 = 0 as *mut xmlChar;
+    if borrow(&writer).is_none() || name.is_null() || (unsafe { *name }) as i32 == '\u{0}' as i32 {
         return -(1 as i32);
     }
     buf = 0 as *mut xmlChar;
@@ -2362,98 +2352,98 @@ pub unsafe extern "C" fn xmlTextWriterStartElementNS<'a1>(
     buf = xmlStrcat(buf, name);
     sum = 0 as i32;
     count = xmlTextWriterStartElement(borrow_mut(&mut writer), buf);
-    xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void) });
     if count < 0 as i32 {
         return -(1 as i32);
     }
     sum += count;
     if !namespaceURI.is_null() {
-        let mut p: * mut crate::src::xmlwriter::_xmlTextWriterNsStackEntry = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(::std::mem::size_of::<xmlTextWriterNsStackEntry>() as u64)
-            as *mut xmlTextWriterNsStackEntry;
+        let mut p: *mut crate::src::xmlwriter::_xmlTextWriterNsStackEntry =
+            (unsafe { xmlMalloc.expect("non-null function pointer")(::std::mem::size_of::<
+                xmlTextWriterNsStackEntry,
+            >() as u64) }) as *mut xmlTextWriterNsStackEntry;
         if p.is_null() {
             xmlWriterErrMsg(
                 borrow_mut(&mut writer),
                 XML_ERR_NO_MEMORY,
-                b"xmlTextWriterStartElementNS : out of memory!\n\0" as *const u8
-                    as *const i8,
+                b"xmlTextWriterStartElementNS : out of memory!\n\0" as *const u8 as *const i8,
             );
             return -(1 as i32);
         }
         buf = xmlStrdup(b"xmlns\0" as *const u8 as *const i8 as *mut xmlChar);
         if !prefix.is_null() {
-            buf = xmlStrcat(
-                buf,
-                b":\0" as *const u8 as *const i8 as *mut xmlChar,
-            );
+            buf = xmlStrcat(buf, b":\0" as *const u8 as *const i8 as *mut xmlChar);
             buf = xmlStrcat(buf, prefix);
         }
-        let ref mut fresh16 = (*p).prefix;
+        let fresh16 = unsafe { &mut ((*p).prefix) };
         *fresh16 = buf;
-        let ref mut fresh17 = (*p).uri;
+        let fresh17 = unsafe { &mut ((*p).uri) };
         *fresh17 = xmlStrdup(namespaceURI);
-        if ((*p).uri).is_null() {
+        if (unsafe { (*p).uri }).is_null() {
             xmlWriterErrMsg(
                 borrow_mut(&mut writer),
                 XML_ERR_NO_MEMORY,
-                b"xmlTextWriterStartElementNS : out of memory!\n\0" as *const u8
-                    as *const i8,
+                b"xmlTextWriterStartElementNS : out of memory!\n\0" as *const u8 as *const i8,
             );
-            xmlFree.expect("non-null function pointer")(p as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(p as *mut libc::c_void) });
             return -(1 as i32);
         }
-        let ref mut fresh18 = (*p).elem;
-        *fresh18 = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
-        xmlListPushFront((*(borrow_mut(&mut writer)).unwrap()).nsstack, p as *mut libc::c_void);
+        let fresh18 = unsafe { &mut ((*p).elem) };
+        *fresh18 = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
+        (unsafe { xmlListPushFront(
+            (*(borrow_mut(&mut writer)).unwrap()).nsstack,
+            p as *mut libc::c_void,
+        ) });
     }
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterEndElement<'a1>(
+pub extern "C" fn xmlTextWriterEndElement<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = (0 as * mut crate::src::xmlwriter::_xmlTextWriterStackEntry);
-    if borrow(& writer).is_none() {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut crate::src::xmlwriter::_xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() {
         return -(1 as i32);
     }
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
     if lk.is_null() {
-        xmlListDelete((*(borrow_mut(&mut writer)).unwrap()).nsstack);
-        let ref mut fresh19 = (*(borrow_mut(&mut writer)).unwrap()).nsstack;
+        (unsafe { xmlListDelete((*(borrow_mut(&mut writer)).unwrap()).nsstack) });
+        let fresh19 = &mut ((*(borrow_mut(&mut writer)).unwrap()).nsstack);
         *fresh19 = 0 as xmlListPtr;
         return -(1 as i32);
     }
-    p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+    p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
     if p.is_null() {
-        xmlListDelete((*(borrow_mut(&mut writer)).unwrap()).nsstack);
-        let ref mut fresh20 = (*(borrow_mut(&mut writer)).unwrap()).nsstack;
+        (unsafe { xmlListDelete((*(borrow_mut(&mut writer)).unwrap()).nsstack) });
+        let fresh20 = &mut ((*(borrow_mut(&mut writer)).unwrap()).nsstack);
         *fresh20 = 0 as xmlListPtr;
         return -(1 as i32);
     }
     sum = 0 as i32;
     let mut current_block_50: u64;
-    match (*p).state as u32 {
+    match (unsafe { (*p).state }) as u32 {
         2 => {
             count = xmlTextWriterEndAttribute(borrow_mut(&mut writer));
             if count < 0 as i32 {
-                xmlListDelete((*(borrow_mut(&mut writer)).unwrap()).nsstack);
-                let ref mut fresh21 = (*(borrow_mut(&mut writer)).unwrap()).nsstack;
+                (unsafe { xmlListDelete((*(borrow_mut(&mut writer)).unwrap()).nsstack) });
+                let fresh21 = &mut ((*(borrow_mut(&mut writer)).unwrap()).nsstack);
                 *fresh21 = 0 as xmlListPtr;
                 return -(1 as i32);
             }
             sum += count;
             current_block_50 = 9733961473582153922;
-        }
+        },
         1 => {
             current_block_50 = 9733961473582153922;
-        }
+        },
         3 => {
-            if (*(borrow(& writer)).unwrap()).indent != 0 && (*(borrow(& writer)).unwrap()).doindent != 0 {
+            if (*(borrow(&writer)).unwrap()).indent != 0
+                && (*(borrow(&writer)).unwrap()).doindent != 0
+            {
                 count = xmlTextWriterWriteIndent(borrow_mut(&mut writer));
                 sum += count;
                 (*(borrow_mut(&mut writer)).unwrap()).doindent = 1 as i32;
@@ -2470,7 +2460,7 @@ pub unsafe extern "C" fn xmlTextWriterEndElement<'a1>(
             sum += count;
             count = xmlOutputBufferWriteString(
                 (*(borrow_mut(&mut writer)).unwrap()).out,
-                (*p).name as *const i8,
+                (unsafe { (*p).name }) as *const i8,
             );
             if count < 0 as i32 {
                 return -(1 as i32);
@@ -2485,7 +2475,7 @@ pub unsafe extern "C" fn xmlTextWriterEndElement<'a1>(
             }
             sum += count;
             current_block_50 = 3160140712158701372;
-        }
+        },
         _ => return -(1 as i32),
     }
     match current_block_50 {
@@ -2495,7 +2485,7 @@ pub unsafe extern "C" fn xmlTextWriterEndElement<'a1>(
                 return -(1 as i32);
             }
             sum += count;
-            if (*(borrow(& writer)).unwrap()).indent != 0 {
+            if (*(borrow(&writer)).unwrap()).indent != 0 {
                 (*(borrow_mut(&mut writer)).unwrap()).doindent = 1 as i32;
             }
             count = xmlOutputBufferWriteString(
@@ -2506,41 +2496,42 @@ pub unsafe extern "C" fn xmlTextWriterEndElement<'a1>(
                 return -(1 as i32);
             }
             sum += count;
-        }
-        _ => {}
+        },
+        _ => {},
     }
-    if (*(borrow(& writer)).unwrap()).indent != 0 {
+    if (*(borrow(&writer)).unwrap()).indent != 0 {
         count = xmlOutputBufferWriteString(
             (*(borrow_mut(&mut writer)).unwrap()).out,
             b"\n\0" as *const u8 as *const i8,
         );
         sum += count;
     }
-    xmlListPopFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    (unsafe { xmlListPopFront((*(borrow_mut(&mut writer)).unwrap()).nodes) });
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterFullEndElement<'a1>(
+pub extern "C" fn xmlTextWriterFullEndElement<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = (0 as * mut crate::src::xmlwriter::_xmlTextWriterStackEntry);
-    if borrow(& writer).is_none() {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut crate::src::xmlwriter::_xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() {
         return -(1 as i32);
     }
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
     if lk.is_null() {
         return -(1 as i32);
     }
-    p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+    p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
     if p.is_null() {
         return -(1 as i32);
     }
     sum = 0 as i32;
     let mut current_block_41: u64;
-    match (*p).state as u32 {
+    match (unsafe { (*p).state }) as u32 {
         2 => {
             count = xmlTextWriterEndAttribute(borrow_mut(&mut writer));
             if count < 0 as i32 {
@@ -2548,13 +2539,13 @@ pub unsafe extern "C" fn xmlTextWriterFullEndElement<'a1>(
             }
             sum += count;
             current_block_41 = 16476552305145445901;
-        }
+        },
         1 => {
             current_block_41 = 16476552305145445901;
-        }
+        },
         3 => {
             current_block_41 = 16982823512181177793;
-        }
+        },
         _ => return -(1 as i32),
     }
     match current_block_41 {
@@ -2572,13 +2563,13 @@ pub unsafe extern "C" fn xmlTextWriterFullEndElement<'a1>(
                 return -(1 as i32);
             }
             sum += count;
-            if (*(borrow(& writer)).unwrap()).indent != 0 {
+            if (*(borrow(&writer)).unwrap()).indent != 0 {
                 (*(borrow_mut(&mut writer)).unwrap()).doindent = 0 as i32;
             }
-        }
-        _ => {}
+        },
+        _ => {},
     }
-    if (*(borrow(& writer)).unwrap()).indent != 0 && (*(borrow(& writer)).unwrap()).doindent != 0 {
+    if (*(borrow(&writer)).unwrap()).indent != 0 && (*(borrow(&writer)).unwrap()).doindent != 0 {
         count = xmlTextWriterWriteIndent(borrow_mut(&mut writer));
         sum += count;
         (*(borrow_mut(&mut writer)).unwrap()).doindent = 1 as i32;
@@ -2593,7 +2584,10 @@ pub unsafe extern "C" fn xmlTextWriterFullEndElement<'a1>(
         return -(1 as i32);
     }
     sum += count;
-    count = xmlOutputBufferWriteString((*(borrow_mut(&mut writer)).unwrap()).out, (*p).name as *const i8);
+    count = xmlOutputBufferWriteString(
+        (*(borrow_mut(&mut writer)).unwrap()).out,
+        (unsafe { (*p).name }) as *const i8,
+    );
     if count < 0 as i32 {
         return -(1 as i32);
     }
@@ -2606,20 +2600,20 @@ pub unsafe extern "C" fn xmlTextWriterFullEndElement<'a1>(
         return -(1 as i32);
     }
     sum += count;
-    if (*(borrow(& writer)).unwrap()).indent != 0 {
+    if (*(borrow(&writer)).unwrap()).indent != 0 {
         count = xmlOutputBufferWriteString(
             (*(borrow_mut(&mut writer)).unwrap()).out,
             b"\n\0" as *const u8 as *const i8,
         );
         sum += count;
     }
-    xmlListPopFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    (unsafe { xmlListPopFront((*(borrow_mut(&mut writer)).unwrap()).nodes) });
     return sum;
 }
 #[no_mangle]
 pub unsafe extern "C" fn xmlTextWriterWriteFormatRaw<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut format: * const i8,
+    mut format: *const i8,
     mut args: ...
 ) -> i32 {
     let mut rc: i32 = 0;
@@ -2629,14 +2623,14 @@ pub unsafe extern "C" fn xmlTextWriterWriteFormatRaw<'a1>(
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteVFormatRaw<'a1>(
+pub extern "C" fn xmlTextWriterWriteVFormatRaw<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut format: * const i8,
+    mut format: *const i8,
     mut argptr: core::ffi::VaList,
 ) -> i32 {
     let mut rc: i32 = 0;
-    let mut buf: * mut u8 = 0 as *mut xmlChar;
-    if borrow(& writer).is_none() {
+    let mut buf: *mut u8 = 0 as *mut xmlChar;
+    if borrow(&writer).is_none() {
         return -(1 as i32);
     }
     buf = xmlTextWriterVSprintf(format, argptr.as_va_list());
@@ -2644,25 +2638,25 @@ pub unsafe extern "C" fn xmlTextWriterWriteVFormatRaw<'a1>(
         return -(1 as i32);
     }
     rc = xmlTextWriterWriteRaw(borrow_mut(&mut writer), buf);
-    xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void) });
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteRawLen<'a1>(
+pub extern "C" fn xmlTextWriterWriteRawLen<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut content: * const u8,
+    mut content: *const u8,
     mut len: i32,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = (0 as * mut crate::src::xmlwriter::_xmlTextWriterStackEntry);
-    if borrow(& writer).is_none() {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut crate::src::xmlwriter::_xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() {
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_INTERNAL_ERROR,
-            b"xmlTextWriterWriteRawLen : invalid writer!\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterWriteRawLen : invalid writer!\n\0" as *const u8 as *const i8,
         );
         return -(1 as i32);
     }
@@ -2670,26 +2664,29 @@ pub unsafe extern "C" fn xmlTextWriterWriteRawLen<'a1>(
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_INTERNAL_ERROR,
-            b"xmlTextWriterWriteRawLen : invalid content!\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterWriteRawLen : invalid content!\n\0" as *const u8 as *const i8,
         );
         return -(1 as i32);
     }
     sum = 0 as i32;
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
     if !lk.is_null() {
-        p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+        p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
         count = xmlTextWriterHandleStateDependencies(borrow_mut(&mut writer), p);
         if count < 0 as i32 {
             return -(1 as i32);
         }
         sum += count;
     }
-    if (*(borrow(& writer)).unwrap()).indent != 0 {
+    if (*(borrow(&writer)).unwrap()).indent != 0 {
         (*(borrow_mut(&mut writer)).unwrap()).doindent = 0 as i32;
     }
     if !content.is_null() {
-        count = xmlOutputBufferWrite((*(borrow_mut(&mut writer)).unwrap()).out, len, content as *const i8);
+        count = xmlOutputBufferWrite(
+            (*(borrow_mut(&mut writer)).unwrap()).out,
+            len,
+            content as *const i8,
+        );
         if count < 0 as i32 {
             return -(1 as i32);
         }
@@ -2698,21 +2695,21 @@ pub unsafe extern "C" fn xmlTextWriterWriteRawLen<'a1>(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteRaw<'a1>(
+pub extern "C" fn xmlTextWriterWriteRaw<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut content: * const u8,
+    mut content: *const u8,
 ) -> i32 {
     return xmlTextWriterWriteRawLen(borrow_mut(&mut writer), content, xmlStrlen(content));
 }
 #[no_mangle]
 pub unsafe extern "C" fn xmlTextWriterWriteFormatString<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut format: * const i8,
+    mut format: *const i8,
     mut args: ...
 ) -> i32 {
     let mut rc: i32 = 0;
     let mut ap: core::ffi::VaListImpl;
-    if borrow(& writer).is_none() || format.is_null() {
+    if borrow(&writer).is_none() || format.is_null() {
         return -(1 as i32);
     }
     ap = args.clone();
@@ -2720,14 +2717,14 @@ pub unsafe extern "C" fn xmlTextWriterWriteFormatString<'a1>(
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteVFormatString<'a1>(
+pub extern "C" fn xmlTextWriterWriteVFormatString<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut format: * const i8,
+    mut format: *const i8,
     mut argptr: core::ffi::VaList,
 ) -> i32 {
     let mut rc: i32 = 0;
-    let mut buf: * mut u8 = 0 as *mut xmlChar;
-    if borrow(& writer).is_none() || format.is_null() {
+    let mut buf: *mut u8 = 0 as *mut xmlChar;
+    if borrow(&writer).is_none() || format.is_null() {
         return -(1 as i32);
     }
     buf = xmlTextWriterVSprintf(format, argptr.as_va_list());
@@ -2735,49 +2732,50 @@ pub unsafe extern "C" fn xmlTextWriterWriteVFormatString<'a1>(
         return -(1 as i32);
     }
     rc = xmlTextWriterWriteString(borrow_mut(&mut writer), buf);
-    xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void) });
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteString<'a1>(
+pub extern "C" fn xmlTextWriterWriteString<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut content: * const u8,
+    mut content: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = (0 as * mut crate::src::xmlwriter::_xmlTextWriterStackEntry);
-    let mut buf: * mut u8 = 0 as *mut xmlChar;
-    if borrow(& writer).is_none() || content.is_null() {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut crate::src::xmlwriter::_xmlTextWriterStackEntry;
+    let mut buf: *mut u8 = 0 as *mut xmlChar;
+    if borrow(&writer).is_none() || content.is_null() {
         return -(1 as i32);
     }
     sum = 0 as i32;
     buf = content as *mut xmlChar;
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
     if !lk.is_null() {
-        p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+        p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
         if !p.is_null() {
-            match (*p).state as u32 {
+            match (unsafe { (*p).state }) as u32 {
                 1 | 3 => {
-                    buf = xmlEncodeSpecialChars(0 as *const xmlDoc, content);
-                }
+                    buf = unsafe { xmlEncodeSpecialChars(0 as *const xmlDoc, content) };
+                },
                 2 => {
                     buf = 0 as *mut xmlChar;
                     xmlBufAttrSerializeTxtContent(
-                        (*(*(borrow_mut(&mut writer)).unwrap()).out).buffer,
+                        unsafe { (*(*(borrow_mut(&mut writer)).unwrap()).out).buffer },
                         (*(borrow_mut(&mut writer)).unwrap()).doc,
                         0 as xmlAttrPtr,
                         content,
                     );
-                }
-                _ => {}
+                },
+                _ => {},
             }
         }
     }
     if !buf.is_null() {
         count = xmlTextWriterWriteRaw(borrow_mut(&mut writer), buf);
         if buf != content as *mut xmlChar {
-            xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void) });
         }
         if count < 0 as i32 {
             return -(1 as i32);
@@ -2786,10 +2784,10 @@ pub unsafe extern "C" fn xmlTextWriterWriteString<'a1>(
     }
     return sum;
 }
-unsafe extern "C" fn xmlOutputBufferWriteBase64(
-    mut out: * mut crate::src::threads::_xmlOutputBuffer,
+extern "C" fn xmlOutputBufferWriteBase64(
+    mut out: *mut crate::src::threads::_xmlOutputBuffer,
     mut len: i32,
-    mut data: * const u8,
+    mut data: *const u8,
 ) -> i32 {
     static mut dtable: [u8; 64] = [
         'A' as i32 as u8,
@@ -2877,28 +2875,24 @@ unsafe extern "C" fn xmlOutputBufferWriteBase64(
         igroup[0 as i32 as usize] = igroup[1 as i32 as usize];
         n = 0 as i32;
         while n < 3 as i32 && i < len {
-            c = *data.offset(i as isize) as i32;
+            c = (unsafe { *data.offset(i as isize) }) as i32;
             igroup[n as usize] = c as u8;
             n += 1;
             i += 1;
         }
         if n > 0 as i32 {
-            ogroup[0 as i32
-                as usize] = dtable[(igroup[0 as i32 as usize] as i32
-                >> 2 as i32) as usize];
-            ogroup[1 as i32
-                as usize] = dtable[((igroup[0 as i32 as usize] as i32
-                & 3 as i32) << 4 as i32
+            ogroup[0 as i32 as usize] =
+                unsafe { dtable[(igroup[0 as i32 as usize] as i32 >> 2 as i32) as usize] };
+            ogroup[1 as i32 as usize] = unsafe { dtable[((igroup[0 as i32 as usize] as i32 & 3 as i32)
+                << 4 as i32
                 | igroup[1 as i32 as usize] as i32 >> 4 as i32)
-                as usize];
-            ogroup[2 as i32
-                as usize] = dtable[((igroup[1 as i32 as usize] as i32
-                & 0xf as i32) << 2 as i32
+                as usize] };
+            ogroup[2 as i32 as usize] = unsafe { dtable[((igroup[1 as i32 as usize] as i32 & 0xf as i32)
+                << 2 as i32
                 | igroup[2 as i32 as usize] as i32 >> 6 as i32)
-                as usize];
-            ogroup[3 as i32
-                as usize] = dtable[(igroup[2 as i32 as usize] as i32
-                & 0x3f as i32) as usize];
+                as usize] };
+            ogroup[3 as i32 as usize] =
+                unsafe { dtable[(igroup[2 as i32 as usize] as i32 & 0x3f as i32) as usize] };
             if n < 3 as i32 {
                 ogroup[3 as i32 as usize] = '=' as i32 as u8;
                 if n < 2 as i32 {
@@ -2906,22 +2900,14 @@ unsafe extern "C" fn xmlOutputBufferWriteBase64(
                 }
             }
             if linelen >= 72 as i32 {
-                count = xmlOutputBufferWrite(
-                    out,
-                    2 as i32,
-                    b"\r\n\0" as *const u8 as *const i8,
-                );
+                count = xmlOutputBufferWrite(out, 2 as i32, b"\r\n\0" as *const u8 as *const i8);
                 if count == -(1 as i32) {
                     return -(1 as i32);
                 }
                 sum += count;
                 linelen = 0 as i32;
             }
-            count = xmlOutputBufferWrite(
-                out,
-                4 as i32,
-                ogroup.as_mut_ptr() as *const i8,
-            );
+            count = xmlOutputBufferWrite(out, 4 as i32, ogroup.as_mut_ptr() as *const i8);
             if count == -(1 as i32) {
                 return -(1 as i32);
             }
@@ -2935,25 +2921,24 @@ unsafe extern "C" fn xmlOutputBufferWriteBase64(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteBase64<'a1>(
+pub extern "C" fn xmlTextWriterWriteBase64<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut data: * const i8,
+    mut data: *const i8,
     mut start: i32,
     mut len: i32,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = (0 as * mut crate::src::xmlwriter::_xmlTextWriterStackEntry);
-    if borrow(& writer).is_none() || data.is_null() || start < 0 as i32
-        || len < 0 as i32
-    {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut crate::src::xmlwriter::_xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() || data.is_null() || start < 0 as i32 || len < 0 as i32 {
         return -(1 as i32);
     }
     sum = 0 as i32;
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
     if !lk.is_null() {
-        p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+        p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
         if !p.is_null() {
             count = xmlTextWriterHandleStateDependencies(borrow_mut(&mut writer), p);
             if count < 0 as i32 {
@@ -2962,13 +2947,13 @@ pub unsafe extern "C" fn xmlTextWriterWriteBase64<'a1>(
             sum += count;
         }
     }
-    if (*(borrow(& writer)).unwrap()).indent != 0 {
+    if (*(borrow(&writer)).unwrap()).indent != 0 {
         (*(borrow_mut(&mut writer)).unwrap()).doindent = 0 as i32;
     }
     count = xmlOutputBufferWriteBase64(
         (*(borrow_mut(&mut writer)).unwrap()).out,
         len,
-        (data as *mut u8).offset(start as isize),
+        unsafe { (data as *mut u8).offset(start as isize) },
     );
     if count < 0 as i32 {
         return -(1 as i32);
@@ -2976,10 +2961,10 @@ pub unsafe extern "C" fn xmlTextWriterWriteBase64<'a1>(
     sum += count;
     return sum;
 }
-unsafe extern "C" fn xmlOutputBufferWriteBinHex(
-    mut out: * mut crate::src::threads::_xmlOutputBuffer,
+extern "C" fn xmlOutputBufferWriteBinHex(
+    mut out: *mut crate::src::threads::_xmlOutputBuffer,
     mut len: i32,
-    mut data: * const u8,
+    mut data: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
@@ -3011,12 +2996,10 @@ unsafe extern "C" fn xmlOutputBufferWriteBinHex(
         count = xmlOutputBufferWrite(
             out,
             1 as i32,
-            &*hex
+            (unsafe { &*hex
                 .as_ptr()
-                .offset(
-                    (*data.offset(i as isize) as i32 >> 4 as i32)
-                        as isize,
-                ) as *const i8,
+                .offset((*data.offset(i as isize) as i32 >> 4 as i32) as isize) })
+                as *const i8,
         );
         if count == -(1 as i32) {
             return -(1 as i32);
@@ -3025,12 +3008,10 @@ unsafe extern "C" fn xmlOutputBufferWriteBinHex(
         count = xmlOutputBufferWrite(
             out,
             1 as i32,
-            &*hex
+            (unsafe { &*hex
                 .as_ptr()
-                .offset(
-                    (*data.offset(i as isize) as i32 & 0xf as i32)
-                        as isize,
-                ) as *const i8,
+                .offset((*data.offset(i as isize) as i32 & 0xf as i32) as isize) })
+                as *const i8,
         );
         if count == -(1 as i32) {
             return -(1 as i32);
@@ -3041,25 +3022,24 @@ unsafe extern "C" fn xmlOutputBufferWriteBinHex(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteBinHex<'a1>(
+pub extern "C" fn xmlTextWriterWriteBinHex<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut data: * const i8,
+    mut data: *const i8,
     mut start: i32,
     mut len: i32,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = (0 as * mut crate::src::xmlwriter::_xmlTextWriterStackEntry);
-    if borrow(& writer).is_none() || data.is_null() || start < 0 as i32
-        || len < 0 as i32
-    {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut crate::src::xmlwriter::_xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() || data.is_null() || start < 0 as i32 || len < 0 as i32 {
         return -(1 as i32);
     }
     sum = 0 as i32;
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
     if !lk.is_null() {
-        p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+        p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
         if !p.is_null() {
             count = xmlTextWriterHandleStateDependencies(borrow_mut(&mut writer), p);
             if count < 0 as i32 {
@@ -3068,13 +3048,13 @@ pub unsafe extern "C" fn xmlTextWriterWriteBinHex<'a1>(
             sum += count;
         }
     }
-    if (*(borrow(& writer)).unwrap()).indent != 0 {
+    if (*(borrow(&writer)).unwrap()).indent != 0 {
         (*(borrow_mut(&mut writer)).unwrap()).doindent = 0 as i32;
     }
     count = xmlOutputBufferWriteBinHex(
         (*(borrow_mut(&mut writer)).unwrap()).out,
         len,
-        (data as *mut u8).offset(start as isize),
+        unsafe { (data as *mut u8).offset(start as isize) },
     );
     if count < 0 as i32 {
         return -(1 as i32);
@@ -3083,35 +3063,36 @@ pub unsafe extern "C" fn xmlTextWriterWriteBinHex<'a1>(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterStartAttribute<'a1>(
+pub extern "C" fn xmlTextWriterStartAttribute<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut name: * const u8,
+    mut name: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = (0 as * mut crate::src::xmlwriter::_xmlTextWriterStackEntry);
-    if borrow(& writer).is_none() || name.is_null() || *name as i32 == '\u{0}' as i32 {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut crate::src::xmlwriter::_xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() || name.is_null() || (unsafe { *name }) as i32 == '\u{0}' as i32 {
         return -(1 as i32);
     }
     sum = 0 as i32;
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
     if lk.is_null() {
         return -(1 as i32);
     }
-    p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+    p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
     if p.is_null() {
         return -(1 as i32);
     }
-    match (*p).state as u32 {
+    match (unsafe { (*p).state }) as u32 {
         2 => {
             count = xmlTextWriterEndAttribute(borrow_mut(&mut writer));
             if count < 0 as i32 {
                 return -(1 as i32);
             }
             sum += count;
-        }
-        1 => {}
+        },
+        1 => {},
         _ => return -(1 as i32),
     }
     count = xmlOutputBufferWriteString(
@@ -3122,7 +3103,8 @@ pub unsafe extern "C" fn xmlTextWriterStartAttribute<'a1>(
         return -(1 as i32);
     }
     sum += count;
-    count = xmlOutputBufferWriteString((*(borrow_mut(&mut writer)).unwrap()).out, name as *const i8);
+    count =
+        xmlOutputBufferWriteString((*(borrow_mut(&mut writer)).unwrap()).out, name as *const i8);
     if count < 0 as i32 {
         return -(1 as i32);
     }
@@ -3135,90 +3117,93 @@ pub unsafe extern "C" fn xmlTextWriterStartAttribute<'a1>(
         return -(1 as i32);
     }
     sum += count;
-    count = xmlOutputBufferWrite((*(borrow_mut(&mut writer)).unwrap()).out, 1 as i32, &mut (*(borrow_mut(&mut writer)).unwrap()).qchar);
+    count = xmlOutputBufferWrite(
+        (*(borrow_mut(&mut writer)).unwrap()).out,
+        1 as i32,
+        &mut (*(borrow_mut(&mut writer)).unwrap()).qchar,
+    );
     if count < 0 as i32 {
         return -(1 as i32);
     }
     sum += count;
-    (*p).state = XML_TEXTWRITER_ATTRIBUTE;
+    (unsafe { (*p).state = XML_TEXTWRITER_ATTRIBUTE });
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterStartAttributeNS<'a1>(
+pub extern "C" fn xmlTextWriterStartAttributeNS<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut prefix: * const u8,
-    mut name: * const u8,
-    mut namespaceURI: * const u8,
+    mut prefix: *const u8,
+    mut name: *const u8,
+    mut namespaceURI: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut buf: * mut u8 = 0 as *mut xmlChar;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterNsStackEntry = 0 as *mut xmlTextWriterNsStackEntry;
-    if borrow(& writer).is_none() || name.is_null() || *name as i32 == '\u{0}' as i32 {
+    let mut buf: *mut u8 = 0 as *mut xmlChar;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterNsStackEntry =
+        0 as *mut xmlTextWriterNsStackEntry;
+    if borrow(&writer).is_none() || name.is_null() || (unsafe { *name }) as i32 == '\u{0}' as i32 {
         return -(1 as i32);
     }
     if !namespaceURI.is_null() {
-        let mut nsentry: crate::src::xmlwriter::_xmlTextWriterNsStackEntry = xmlTextWriterNsStackEntry {
-            prefix: 0 as *mut xmlChar,
-            uri: 0 as *mut xmlChar,
-            elem: 0 as *mut xmlLink,
-        };
-        let mut curns: * mut crate::src::xmlwriter::_xmlTextWriterNsStackEntry = (0 as * mut crate::src::xmlwriter::_xmlTextWriterNsStackEntry);
+        let mut nsentry: crate::src::xmlwriter::_xmlTextWriterNsStackEntry =
+            xmlTextWriterNsStackEntry {
+                prefix: 0 as *mut xmlChar,
+                uri: 0 as *mut xmlChar,
+                elem: 0 as *mut xmlLink,
+            };
+        let mut curns: *mut crate::src::xmlwriter::_xmlTextWriterNsStackEntry =
+            0 as *mut crate::src::xmlwriter::_xmlTextWriterNsStackEntry;
         buf = xmlStrdup(b"xmlns\0" as *const u8 as *const i8 as *mut xmlChar);
         if !prefix.is_null() {
-            buf = xmlStrcat(
-                buf,
-                b":\0" as *const u8 as *const i8 as *mut xmlChar,
-            );
+            buf = xmlStrcat(buf, b":\0" as *const u8 as *const i8 as *mut xmlChar);
             buf = xmlStrcat(buf, prefix);
         }
         nsentry.prefix = buf;
         nsentry.uri = namespaceURI as *mut xmlChar;
-        nsentry.elem = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
-        curns = xmlListSearch(
+        nsentry.elem = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
+        curns = (unsafe { xmlListSearch(
             (*(borrow_mut(&mut writer)).unwrap()).nsstack,
             &mut nsentry as *mut xmlTextWriterNsStackEntry as *mut libc::c_void,
-        ) as *mut xmlTextWriterNsStackEntry;
+        ) }) as *mut xmlTextWriterNsStackEntry;
         if !curns.is_null() {
-            xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void);
-            if xmlStrcmp((*curns).uri, namespaceURI) == 0 as i32 {
+            (unsafe { xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void) });
+            if xmlStrcmp(unsafe { (*curns).uri }, namespaceURI) == 0 as i32 {
                 buf = 0 as *mut xmlChar;
             } else {
-                return -(1 as i32)
+                return -(1 as i32);
             }
         }
         if !buf.is_null() {
-            p = xmlMalloc
-                .expect(
-                    "non-null function pointer",
-                )(::std::mem::size_of::<xmlTextWriterNsStackEntry>() as u64)
-                as *mut xmlTextWriterNsStackEntry;
+            p = (unsafe { xmlMalloc.expect("non-null function pointer")(::std::mem::size_of::<
+                xmlTextWriterNsStackEntry,
+            >() as u64) }) as *mut xmlTextWriterNsStackEntry;
             if p.is_null() {
                 xmlWriterErrMsg(
                     borrow_mut(&mut writer),
                     XML_ERR_NO_MEMORY,
-                    b"xmlTextWriterStartAttributeNS : out of memory!\n\0" as *const u8
-                        as *const i8,
+                    b"xmlTextWriterStartAttributeNS : out of memory!\n\0" as *const u8 as *const i8,
                 );
                 return -(1 as i32);
             }
-            let ref mut fresh22 = (*p).prefix;
+            let fresh22 = unsafe { &mut ((*p).prefix) };
             *fresh22 = buf;
-            let ref mut fresh23 = (*p).uri;
+            let fresh23 = unsafe { &mut ((*p).uri) };
             *fresh23 = xmlStrdup(namespaceURI);
-            if ((*p).uri).is_null() {
+            if (unsafe { (*p).uri }).is_null() {
                 xmlWriterErrMsg(
                     borrow_mut(&mut writer),
                     XML_ERR_NO_MEMORY,
-                    b"xmlTextWriterStartAttributeNS : out of memory!\n\0" as *const u8
-                        as *const i8,
+                    b"xmlTextWriterStartAttributeNS : out of memory!\n\0" as *const u8 as *const i8,
                 );
-                xmlFree.expect("non-null function pointer")(p as *mut libc::c_void);
+                (unsafe { xmlFree.expect("non-null function pointer")(p as *mut libc::c_void) });
                 return -(1 as i32);
             }
-            let ref mut fresh24 = (*p).elem;
-            *fresh24 = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
-            xmlListPushFront((*(borrow_mut(&mut writer)).unwrap()).nsstack, p as *mut libc::c_void);
+            let fresh24 = unsafe { &mut ((*p).elem) };
+            *fresh24 = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
+            (unsafe { xmlListPushFront(
+                (*(borrow_mut(&mut writer)).unwrap()).nsstack,
+                p as *mut libc::c_void,
+            ) });
         }
     }
     buf = 0 as *mut xmlChar;
@@ -3229,7 +3214,7 @@ pub unsafe extern "C" fn xmlTextWriterStartAttributeNS<'a1>(
     buf = xmlStrcat(buf, name);
     sum = 0 as i32;
     count = xmlTextWriterStartAttribute(borrow_mut(&mut writer), buf);
-    xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void) });
     if count < 0 as i32 {
         return -(1 as i32);
     }
@@ -3237,28 +3222,29 @@ pub unsafe extern "C" fn xmlTextWriterStartAttributeNS<'a1>(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterEndAttribute<'a1>(
+pub extern "C" fn xmlTextWriterEndAttribute<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = (0 as * mut crate::src::xmlwriter::_xmlTextWriterStackEntry);
-    if borrow(& writer).is_none() {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut crate::src::xmlwriter::_xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() {
         return -(1 as i32);
     }
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
     if lk.is_null() {
         return -(1 as i32);
     }
-    p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+    p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
     if p.is_null() {
         return -(1 as i32);
     }
     sum = 0 as i32;
-    match (*p).state as u32 {
+    match (unsafe { (*p).state }) as u32 {
         2 => {
-            (*p).state = XML_TEXTWRITER_NAME;
+            (unsafe { (*p).state = XML_TEXTWRITER_NAME });
             count = xmlOutputBufferWrite(
                 (*(borrow_mut(&mut writer)).unwrap()).out,
                 1 as i32,
@@ -3268,7 +3254,7 @@ pub unsafe extern "C" fn xmlTextWriterEndAttribute<'a1>(
                 return -(1 as i32);
             }
             sum += count;
-        }
+        },
         _ => return -(1 as i32),
     }
     return sum;
@@ -3276,8 +3262,8 @@ pub unsafe extern "C" fn xmlTextWriterEndAttribute<'a1>(
 #[no_mangle]
 pub unsafe extern "C" fn xmlTextWriterWriteFormatAttribute<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut name: * const u8,
-    mut format: * const i8,
+    mut name: *const u8,
+    mut format: *const i8,
     mut args: ...
 ) -> i32 {
     let mut rc: i32 = 0;
@@ -3287,15 +3273,15 @@ pub unsafe extern "C" fn xmlTextWriterWriteFormatAttribute<'a1>(
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteVFormatAttribute<'a1>(
+pub extern "C" fn xmlTextWriterWriteVFormatAttribute<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut name: * const u8,
-    mut format: * const i8,
+    mut name: *const u8,
+    mut format: *const i8,
     mut argptr: core::ffi::VaList,
 ) -> i32 {
     let mut rc: i32 = 0;
-    let mut buf: * mut u8 = 0 as *mut xmlChar;
-    if borrow(& writer).is_none() {
+    let mut buf: *mut u8 = 0 as *mut xmlChar;
+    if borrow(&writer).is_none() {
         return -(1 as i32);
     }
     buf = xmlTextWriterVSprintf(format, argptr.as_va_list());
@@ -3303,14 +3289,14 @@ pub unsafe extern "C" fn xmlTextWriterWriteVFormatAttribute<'a1>(
         return -(1 as i32);
     }
     rc = xmlTextWriterWriteAttribute(borrow_mut(&mut writer), name, buf);
-    xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void) });
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteAttribute<'a1>(
+pub extern "C" fn xmlTextWriterWriteAttribute<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut name: * const u8,
-    mut content: * const u8,
+    mut name: *const u8,
+    mut content: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
@@ -3335,10 +3321,10 @@ pub unsafe extern "C" fn xmlTextWriterWriteAttribute<'a1>(
 #[no_mangle]
 pub unsafe extern "C" fn xmlTextWriterWriteFormatAttributeNS<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut prefix: * const u8,
-    mut name: * const u8,
-    mut namespaceURI: * const u8,
-    mut format: * const i8,
+    mut prefix: *const u8,
+    mut name: *const u8,
+    mut namespaceURI: *const u8,
+    mut format: *const i8,
     mut args: ...
 ) -> i32 {
     let mut rc: i32 = 0;
@@ -3355,17 +3341,17 @@ pub unsafe extern "C" fn xmlTextWriterWriteFormatAttributeNS<'a1>(
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteVFormatAttributeNS<'a1>(
+pub extern "C" fn xmlTextWriterWriteVFormatAttributeNS<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut prefix: * const u8,
-    mut name: * const u8,
-    mut namespaceURI: * const u8,
-    mut format: * const i8,
+    mut prefix: *const u8,
+    mut name: *const u8,
+    mut namespaceURI: *const u8,
+    mut format: *const i8,
     mut argptr: core::ffi::VaList,
 ) -> i32 {
     let mut rc: i32 = 0;
-    let mut buf: * mut u8 = 0 as *mut xmlChar;
-    if borrow(& writer).is_none() {
+    let mut buf: *mut u8 = 0 as *mut xmlChar;
+    if borrow(&writer).is_none() {
         return -(1 as i32);
     }
     buf = xmlTextWriterVSprintf(format, argptr.as_va_list());
@@ -3373,20 +3359,20 @@ pub unsafe extern "C" fn xmlTextWriterWriteVFormatAttributeNS<'a1>(
         return -(1 as i32);
     }
     rc = xmlTextWriterWriteAttributeNS(borrow_mut(&mut writer), prefix, name, namespaceURI, buf);
-    xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void) });
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteAttributeNS<'a1>(
+pub extern "C" fn xmlTextWriterWriteAttributeNS<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut prefix: * const u8,
-    mut name: * const u8,
-    mut namespaceURI: * const u8,
-    mut content: * const u8,
+    mut prefix: *const u8,
+    mut name: *const u8,
+    mut namespaceURI: *const u8,
+    mut content: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    if borrow(& writer).is_none() || name.is_null() || *name as i32 == '\u{0}' as i32 {
+    if borrow(&writer).is_none() || name.is_null() || (unsafe { *name }) as i32 == '\u{0}' as i32 {
         return -(1 as i32);
     }
     sum = 0 as i32;
@@ -3410,8 +3396,8 @@ pub unsafe extern "C" fn xmlTextWriterWriteAttributeNS<'a1>(
 #[no_mangle]
 pub unsafe extern "C" fn xmlTextWriterWriteFormatElement<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut name: * const u8,
-    mut format: * const i8,
+    mut name: *const u8,
+    mut format: *const i8,
     mut args: ...
 ) -> i32 {
     let mut rc: i32 = 0;
@@ -3421,15 +3407,15 @@ pub unsafe extern "C" fn xmlTextWriterWriteFormatElement<'a1>(
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteVFormatElement<'a1>(
+pub extern "C" fn xmlTextWriterWriteVFormatElement<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut name: * const u8,
-    mut format: * const i8,
+    mut name: *const u8,
+    mut format: *const i8,
     mut argptr: core::ffi::VaList,
 ) -> i32 {
     let mut rc: i32 = 0;
-    let mut buf: * mut u8 = 0 as *mut xmlChar;
-    if borrow(& writer).is_none() {
+    let mut buf: *mut u8 = 0 as *mut xmlChar;
+    if borrow(&writer).is_none() {
         return -(1 as i32);
     }
     buf = xmlTextWriterVSprintf(format, argptr.as_va_list());
@@ -3437,14 +3423,14 @@ pub unsafe extern "C" fn xmlTextWriterWriteVFormatElement<'a1>(
         return -(1 as i32);
     }
     rc = xmlTextWriterWriteElement(borrow_mut(&mut writer), name, buf);
-    xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void) });
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteElement<'a1>(
+pub extern "C" fn xmlTextWriterWriteElement<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut name: * const u8,
-    mut content: * const u8,
+    mut name: *const u8,
+    mut content: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
@@ -3471,10 +3457,10 @@ pub unsafe extern "C" fn xmlTextWriterWriteElement<'a1>(
 #[no_mangle]
 pub unsafe extern "C" fn xmlTextWriterWriteFormatElementNS<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut prefix: * const u8,
-    mut name: * const u8,
-    mut namespaceURI: * const u8,
-    mut format: * const i8,
+    mut prefix: *const u8,
+    mut name: *const u8,
+    mut namespaceURI: *const u8,
+    mut format: *const i8,
     mut args: ...
 ) -> i32 {
     let mut rc: i32 = 0;
@@ -3491,17 +3477,17 @@ pub unsafe extern "C" fn xmlTextWriterWriteFormatElementNS<'a1>(
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteVFormatElementNS<'a1>(
+pub extern "C" fn xmlTextWriterWriteVFormatElementNS<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut prefix: * const u8,
-    mut name: * const u8,
-    mut namespaceURI: * const u8,
-    mut format: * const i8,
+    mut prefix: *const u8,
+    mut name: *const u8,
+    mut namespaceURI: *const u8,
+    mut format: *const i8,
     mut argptr: core::ffi::VaList,
 ) -> i32 {
     let mut rc: i32 = 0;
-    let mut buf: * mut u8 = 0 as *mut xmlChar;
-    if borrow(& writer).is_none() {
+    let mut buf: *mut u8 = 0 as *mut xmlChar;
+    if borrow(&writer).is_none() {
         return -(1 as i32);
     }
     buf = xmlTextWriterVSprintf(format, argptr.as_va_list());
@@ -3509,20 +3495,20 @@ pub unsafe extern "C" fn xmlTextWriterWriteVFormatElementNS<'a1>(
         return -(1 as i32);
     }
     rc = xmlTextWriterWriteElementNS(borrow_mut(&mut writer), prefix, name, namespaceURI, buf);
-    xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void) });
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteElementNS<'a1>(
+pub extern "C" fn xmlTextWriterWriteElementNS<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut prefix: * const u8,
-    mut name: * const u8,
-    mut namespaceURI: * const u8,
-    mut content: * const u8,
+    mut prefix: *const u8,
+    mut name: *const u8,
+    mut namespaceURI: *const u8,
+    mut content: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    if borrow(& writer).is_none() || name.is_null() || *name as i32 == '\u{0}' as i32 {
+    if borrow(&writer).is_none() || name.is_null() || (unsafe { *name }) as i32 == '\u{0}' as i32 {
         return -(1 as i32);
     }
     sum = 0 as i32;
@@ -3544,37 +3530,29 @@ pub unsafe extern "C" fn xmlTextWriterWriteElementNS<'a1>(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterStartPI<'a1>(
+pub extern "C" fn xmlTextWriterStartPI<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut target: * const u8,
+    mut target: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = 0 as *mut xmlTextWriterStackEntry;
-    if borrow(& writer).is_none() || target.is_null() || *target as i32 == '\u{0}' as i32 {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() || target.is_null() || (unsafe { *target }) as i32 == '\u{0}' as i32 {
         return -(1 as i32);
     }
-    if xmlStrcasecmp(
-        target,
-        b"xml\0" as *const u8 as *const i8 as *const xmlChar,
-    ) == 0 as i32
-    {
-        xmlWriterErrMsg(
-            borrow_mut(&mut writer),
-            XML_ERR_INTERNAL_ERROR,
-            b"xmlTextWriterStartPI : target name [Xx][Mm][Ll] is reserved for xml standardization!\n\0"
-                as *const u8 as *const i8,
-        );
+    if xmlStrcasecmp(target, b"xml\0" as *const u8 as *const i8 as *const xmlChar) == 0 as i32 {
+        xmlWriterErrMsg (borrow_mut (& mut writer) , XML_ERR_INTERNAL_ERROR , b"xmlTextWriterStartPI : target name [Xx][Mm][Ll] is reserved for xml standardization!\n\0" as * const u8 as * const i8 ,) ;
         return -(1 as i32);
     }
     sum = 0 as i32;
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
     if !lk.is_null() {
-        p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+        p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
         if !p.is_null() {
             let mut current_block_24: u64;
-            match (*p).state as u32 {
+            match (unsafe { (*p).state }) as u32 {
                 2 => {
                     count = xmlTextWriterEndAttribute(borrow_mut(&mut writer));
                     if count < 0 as i32 {
@@ -3582,22 +3560,21 @@ pub unsafe extern "C" fn xmlTextWriterStartPI<'a1>(
                     }
                     sum += count;
                     current_block_24 = 51576440349808026;
-                }
+                },
                 1 => {
                     current_block_24 = 51576440349808026;
-                }
+                },
                 0 | 3 | 7 => {
                     current_block_24 = 13550086250199790493;
-                }
+                },
                 4 | 5 => {
                     xmlWriterErrMsg(
                         borrow_mut(&mut writer),
                         XML_ERR_INTERNAL_ERROR,
-                        b"xmlTextWriterStartPI : nested PI!\n\0" as *const u8
-                            as *const i8,
+                        b"xmlTextWriterStartPI : nested PI!\n\0" as *const u8 as *const i8,
                     );
                     return -(1 as i32);
-                }
+                },
                 _ => return -(1 as i32),
             }
             match current_block_24 {
@@ -3615,40 +3592,39 @@ pub unsafe extern "C" fn xmlTextWriterStartPI<'a1>(
                         return -(1 as i32);
                     }
                     sum += count;
-                    (*p).state = XML_TEXTWRITER_TEXT;
-                }
-                _ => {}
+                    (unsafe { (*p).state = XML_TEXTWRITER_TEXT });
+                },
+                _ => {},
             }
         }
     }
-    p = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlTextWriterStackEntry>() as u64)
-        as *mut xmlTextWriterStackEntry;
+    p = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlTextWriterStackEntry>() as u64,
+    ) }) as *mut xmlTextWriterStackEntry;
     if p.is_null() {
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_NO_MEMORY,
-            b"xmlTextWriterStartPI : out of memory!\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterStartPI : out of memory!\n\0" as *const u8 as *const i8,
         );
         return -(1 as i32);
     }
-    let ref mut fresh25 = (*p).name;
+    let fresh25 = unsafe { &mut ((*p).name) };
     *fresh25 = xmlStrdup(target);
-    if ((*p).name).is_null() {
+    if (unsafe { (*p).name }).is_null() {
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_NO_MEMORY,
-            b"xmlTextWriterStartPI : out of memory!\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterStartPI : out of memory!\n\0" as *const u8 as *const i8,
         );
-        xmlFree.expect("non-null function pointer")(p as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(p as *mut libc::c_void) });
         return -(1 as i32);
     }
-    (*p).state = XML_TEXTWRITER_PI;
-    xmlListPushFront((*(borrow_mut(&mut writer)).unwrap()).nodes, p as *mut libc::c_void);
+    (unsafe { (*p).state = XML_TEXTWRITER_PI });
+    (unsafe { xmlListPushFront(
+        (*(borrow_mut(&mut writer)).unwrap()).nodes,
+        p as *mut libc::c_void,
+    ) });
     count = xmlOutputBufferWriteString(
         (*(borrow_mut(&mut writer)).unwrap()).out,
         b"<?\0" as *const u8 as *const i8,
@@ -3657,7 +3633,10 @@ pub unsafe extern "C" fn xmlTextWriterStartPI<'a1>(
         return -(1 as i32);
     }
     sum += count;
-    count = xmlOutputBufferWriteString((*(borrow_mut(&mut writer)).unwrap()).out, (*p).name as *const i8);
+    count = xmlOutputBufferWriteString(
+        (*(borrow_mut(&mut writer)).unwrap()).out,
+        (unsafe { (*p).name }) as *const i8,
+    );
     if count < 0 as i32 {
         return -(1 as i32);
     }
@@ -3665,26 +3644,27 @@ pub unsafe extern "C" fn xmlTextWriterStartPI<'a1>(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterEndPI<'a1>(
+pub extern "C" fn xmlTextWriterEndPI<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = (0 as * mut crate::src::xmlwriter::_xmlTextWriterStackEntry);
-    if borrow(& writer).is_none() {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut crate::src::xmlwriter::_xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() {
         return -(1 as i32);
     }
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
     if lk.is_null() {
         return 0 as i32;
     }
-    p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+    p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
     if p.is_null() {
         return 0 as i32;
     }
     sum = 0 as i32;
-    match (*p).state as u32 {
+    match (unsafe { (*p).state }) as u32 {
         4 | 5 => {
             count = xmlOutputBufferWriteString(
                 (*(borrow_mut(&mut writer)).unwrap()).out,
@@ -3694,10 +3674,10 @@ pub unsafe extern "C" fn xmlTextWriterEndPI<'a1>(
                 return -(1 as i32);
             }
             sum += count;
-        }
+        },
         _ => return -(1 as i32),
     }
-    if (*(borrow(& writer)).unwrap()).indent != 0 {
+    if (*(borrow(&writer)).unwrap()).indent != 0 {
         count = xmlOutputBufferWriteString(
             (*(borrow_mut(&mut writer)).unwrap()).out,
             b"\n\0" as *const u8 as *const i8,
@@ -3707,14 +3687,14 @@ pub unsafe extern "C" fn xmlTextWriterEndPI<'a1>(
         }
         sum += count;
     }
-    xmlListPopFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    (unsafe { xmlListPopFront((*(borrow_mut(&mut writer)).unwrap()).nodes) });
     return sum;
 }
 #[no_mangle]
 pub unsafe extern "C" fn xmlTextWriterWriteFormatPI<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut target: * const u8,
-    mut format: * const i8,
+    mut target: *const u8,
+    mut format: *const i8,
     mut args: ...
 ) -> i32 {
     let mut rc: i32 = 0;
@@ -3724,15 +3704,15 @@ pub unsafe extern "C" fn xmlTextWriterWriteFormatPI<'a1>(
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteVFormatPI<'a1>(
+pub extern "C" fn xmlTextWriterWriteVFormatPI<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut target: * const u8,
-    mut format: * const i8,
+    mut target: *const u8,
+    mut format: *const i8,
     mut argptr: core::ffi::VaList,
 ) -> i32 {
     let mut rc: i32 = 0;
-    let mut buf: * mut u8 = 0 as *mut xmlChar;
-    if borrow(& writer).is_none() {
+    let mut buf: *mut u8 = 0 as *mut xmlChar;
+    if borrow(&writer).is_none() {
         return -(1 as i32);
     }
     buf = xmlTextWriterVSprintf(format, argptr.as_va_list());
@@ -3740,14 +3720,14 @@ pub unsafe extern "C" fn xmlTextWriterWriteVFormatPI<'a1>(
         return -(1 as i32);
     }
     rc = xmlTextWriterWritePI(borrow_mut(&mut writer), target, buf);
-    xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void) });
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWritePI<'a1>(
+pub extern "C" fn xmlTextWriterWritePI<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut target: * const u8,
-    mut content: * const u8,
+    mut target: *const u8,
+    mut content: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
@@ -3772,26 +3752,27 @@ pub unsafe extern "C" fn xmlTextWriterWritePI<'a1>(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterStartCDATA<'a1>(
+pub extern "C" fn xmlTextWriterStartCDATA<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = 0 as *mut xmlTextWriterStackEntry;
-    if borrow(& writer).is_none() {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() {
         return -(1 as i32);
     }
     sum = 0 as i32;
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
     if !lk.is_null() {
-        p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+        p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
         if !p.is_null() {
             let mut current_block_20: u64;
-            match (*p).state as u32 {
+            match (unsafe { (*p).state }) as u32 {
                 0 | 3 | 4 | 5 => {
                     current_block_20 = 13472856163611868459;
-                }
+                },
                 2 => {
                     count = xmlTextWriterEndAttribute(borrow_mut(&mut writer));
                     if count < 0 as i32 {
@@ -3799,10 +3780,10 @@ pub unsafe extern "C" fn xmlTextWriterStartCDATA<'a1>(
                     }
                     sum += count;
                     current_block_20 = 1628216707406609217;
-                }
+                },
                 1 => {
                     current_block_20 = 1628216707406609217;
-                }
+                },
                 6 => {
                     xmlWriterErrMsg(
                         borrow_mut(&mut writer),
@@ -3811,7 +3792,7 @@ pub unsafe extern "C" fn xmlTextWriterStartCDATA<'a1>(
                             as *const u8 as *const i8,
                     );
                     return -(1 as i32);
-                }
+                },
                 _ => return -(1 as i32),
             }
             match current_block_20 {
@@ -3829,30 +3810,30 @@ pub unsafe extern "C" fn xmlTextWriterStartCDATA<'a1>(
                         return -(1 as i32);
                     }
                     sum += count;
-                    (*p).state = XML_TEXTWRITER_TEXT;
-                }
-                _ => {}
+                    (unsafe { (*p).state = XML_TEXTWRITER_TEXT });
+                },
+                _ => {},
             }
         }
     }
-    p = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlTextWriterStackEntry>() as u64)
-        as *mut xmlTextWriterStackEntry;
+    p = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlTextWriterStackEntry>() as u64,
+    ) }) as *mut xmlTextWriterStackEntry;
     if p.is_null() {
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_NO_MEMORY,
-            b"xmlTextWriterStartCDATA : out of memory!\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterStartCDATA : out of memory!\n\0" as *const u8 as *const i8,
         );
         return -(1 as i32);
     }
-    let ref mut fresh26 = (*p).name;
+    let fresh26 = unsafe { &mut ((*p).name) };
     *fresh26 = 0 as *mut xmlChar;
-    (*p).state = XML_TEXTWRITER_CDATA;
-    xmlListPushFront((*(borrow_mut(&mut writer)).unwrap()).nodes, p as *mut libc::c_void);
+    (unsafe { (*p).state = XML_TEXTWRITER_CDATA });
+    (unsafe { xmlListPushFront(
+        (*(borrow_mut(&mut writer)).unwrap()).nodes,
+        p as *mut libc::c_void,
+    ) });
     count = xmlOutputBufferWriteString(
         (*(borrow_mut(&mut writer)).unwrap()).out,
         b"<![CDATA[\0" as *const u8 as *const i8,
@@ -3864,26 +3845,27 @@ pub unsafe extern "C" fn xmlTextWriterStartCDATA<'a1>(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterEndCDATA<'a1>(
+pub extern "C" fn xmlTextWriterEndCDATA<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = (0 as * mut crate::src::xmlwriter::_xmlTextWriterStackEntry);
-    if borrow(& writer).is_none() {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut crate::src::xmlwriter::_xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() {
         return -(1 as i32);
     }
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
     if lk.is_null() {
         return -(1 as i32);
     }
-    p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+    p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
     if p.is_null() {
         return -(1 as i32);
     }
     sum = 0 as i32;
-    match (*p).state as u32 {
+    match (unsafe { (*p).state }) as u32 {
         6 => {
             count = xmlOutputBufferWriteString(
                 (*(borrow_mut(&mut writer)).unwrap()).out,
@@ -3893,16 +3875,16 @@ pub unsafe extern "C" fn xmlTextWriterEndCDATA<'a1>(
                 return -(1 as i32);
             }
             sum += count;
-        }
+        },
         _ => return -(1 as i32),
     }
-    xmlListPopFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    (unsafe { xmlListPopFront((*(borrow_mut(&mut writer)).unwrap()).nodes) });
     return sum;
 }
 #[no_mangle]
 pub unsafe extern "C" fn xmlTextWriterWriteFormatCDATA<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut format: * const i8,
+    mut format: *const i8,
     mut args: ...
 ) -> i32 {
     let mut rc: i32 = 0;
@@ -3912,14 +3894,14 @@ pub unsafe extern "C" fn xmlTextWriterWriteFormatCDATA<'a1>(
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteVFormatCDATA<'a1>(
+pub extern "C" fn xmlTextWriterWriteVFormatCDATA<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut format: * const i8,
+    mut format: *const i8,
     mut argptr: core::ffi::VaList,
 ) -> i32 {
     let mut rc: i32 = 0;
-    let mut buf: * mut u8 = 0 as *mut xmlChar;
-    if borrow(& writer).is_none() {
+    let mut buf: *mut u8 = 0 as *mut xmlChar;
+    if borrow(&writer).is_none() {
         return -(1 as i32);
     }
     buf = xmlTextWriterVSprintf(format, argptr.as_va_list());
@@ -3927,13 +3909,13 @@ pub unsafe extern "C" fn xmlTextWriterWriteVFormatCDATA<'a1>(
         return -(1 as i32);
     }
     rc = xmlTextWriterWriteCDATA(borrow_mut(&mut writer), buf);
-    xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void) });
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteCDATA<'a1>(
+pub extern "C" fn xmlTextWriterWriteCDATA<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut content: * const u8,
+    mut content: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
@@ -3958,58 +3940,57 @@ pub unsafe extern "C" fn xmlTextWriterWriteCDATA<'a1>(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterStartDTD<'a1>(
+pub extern "C" fn xmlTextWriterStartDTD<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut name: * const u8,
-    mut pubid: * const u8,
-    mut sysid: * const u8,
+    mut name: *const u8,
+    mut pubid: *const u8,
+    mut sysid: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = 0 as *mut xmlTextWriterStackEntry;
-    if borrow(& writer).is_none() || name.is_null() || *name as i32 == '\u{0}' as i32 {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() || name.is_null() || (unsafe { *name }) as i32 == '\u{0}' as i32 {
         return -(1 as i32);
     }
     sum = 0 as i32;
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
-    if !lk.is_null() && !(xmlLinkGetData(lk)).is_null() {
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
+    if !lk.is_null() && !(unsafe { xmlLinkGetData(lk) }).is_null() {
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_INTERNAL_ERROR,
-            b"xmlTextWriterStartDTD : DTD allowed only in prolog!\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterStartDTD : DTD allowed only in prolog!\n\0" as *const u8 as *const i8,
         );
         return -(1 as i32);
     }
-    p = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlTextWriterStackEntry>() as u64)
-        as *mut xmlTextWriterStackEntry;
+    p = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlTextWriterStackEntry>() as u64,
+    ) }) as *mut xmlTextWriterStackEntry;
     if p.is_null() {
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_NO_MEMORY,
-            b"xmlTextWriterStartDTD : out of memory!\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterStartDTD : out of memory!\n\0" as *const u8 as *const i8,
         );
         return -(1 as i32);
     }
-    let ref mut fresh27 = (*p).name;
+    let fresh27 = unsafe { &mut ((*p).name) };
     *fresh27 = xmlStrdup(name);
-    if ((*p).name).is_null() {
+    if (unsafe { (*p).name }).is_null() {
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_NO_MEMORY,
-            b"xmlTextWriterStartDTD : out of memory!\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterStartDTD : out of memory!\n\0" as *const u8 as *const i8,
         );
-        xmlFree.expect("non-null function pointer")(p as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(p as *mut libc::c_void) });
         return -(1 as i32);
     }
-    (*p).state = XML_TEXTWRITER_DTD;
-    xmlListPushFront((*(borrow_mut(&mut writer)).unwrap()).nodes, p as *mut libc::c_void);
+    (unsafe { (*p).state = XML_TEXTWRITER_DTD });
+    (unsafe { xmlListPushFront(
+        (*(borrow_mut(&mut writer)).unwrap()).nodes,
+        p as *mut libc::c_void,
+    ) });
     count = xmlOutputBufferWriteString(
         (*(borrow_mut(&mut writer)).unwrap()).out,
         b"<!DOCTYPE \0" as *const u8 as *const i8,
@@ -4018,7 +3999,8 @@ pub unsafe extern "C" fn xmlTextWriterStartDTD<'a1>(
         return -(1 as i32);
     }
     sum += count;
-    count = xmlOutputBufferWriteString((*(borrow_mut(&mut writer)).unwrap()).out, name as *const i8);
+    count =
+        xmlOutputBufferWriteString((*(borrow_mut(&mut writer)).unwrap()).out, name as *const i8);
     if count < 0 as i32 {
         return -(1 as i32);
     }
@@ -4028,12 +4010,11 @@ pub unsafe extern "C" fn xmlTextWriterStartDTD<'a1>(
             xmlWriterErrMsg(
                 borrow_mut(&mut writer),
                 XML_ERR_INTERNAL_ERROR,
-                b"xmlTextWriterStartDTD : system identifier needed!\n\0" as *const u8
-                    as *const i8,
+                b"xmlTextWriterStartDTD : system identifier needed!\n\0" as *const u8 as *const i8,
             );
             return -(1 as i32);
         }
-        if (*(borrow(& writer)).unwrap()).indent != 0 {
+        if (*(borrow(&writer)).unwrap()).indent != 0 {
             count = xmlOutputBufferWrite(
                 (*(borrow_mut(&mut writer)).unwrap()).out,
                 1 as i32,
@@ -4067,7 +4048,10 @@ pub unsafe extern "C" fn xmlTextWriterStartDTD<'a1>(
             return -(1 as i32);
         }
         sum += count;
-        count = xmlOutputBufferWriteString((*(borrow_mut(&mut writer)).unwrap()).out, pubid as *const i8);
+        count = xmlOutputBufferWriteString(
+            (*(borrow_mut(&mut writer)).unwrap()).out,
+            pubid as *const i8,
+        );
         if count < 0 as i32 {
             return -(1 as i32);
         }
@@ -4084,7 +4068,7 @@ pub unsafe extern "C" fn xmlTextWriterStartDTD<'a1>(
     }
     if !sysid.is_null() {
         if pubid.is_null() {
-            if (*(borrow(& writer)).unwrap()).indent != 0 {
+            if (*(borrow(&writer)).unwrap()).indent != 0 {
                 count = xmlOutputBufferWrite(
                     (*(borrow_mut(&mut writer)).unwrap()).out,
                     1 as i32,
@@ -4110,7 +4094,7 @@ pub unsafe extern "C" fn xmlTextWriterStartDTD<'a1>(
             }
             sum += count;
         } else {
-            if (*(borrow(& writer)).unwrap()).indent != 0 {
+            if (*(borrow(&writer)).unwrap()).indent != 0 {
                 count = xmlOutputBufferWriteString(
                     (*(borrow_mut(&mut writer)).unwrap()).out,
                     b"\n       \0" as *const u8 as *const i8,
@@ -4136,7 +4120,10 @@ pub unsafe extern "C" fn xmlTextWriterStartDTD<'a1>(
             return -(1 as i32);
         }
         sum += count;
-        count = xmlOutputBufferWriteString((*(borrow_mut(&mut writer)).unwrap()).out, sysid as *const i8);
+        count = xmlOutputBufferWriteString(
+            (*(borrow_mut(&mut writer)).unwrap()).out,
+            sysid as *const i8,
+        );
         if count < 0 as i32 {
             return -(1 as i32);
         }
@@ -4154,30 +4141,31 @@ pub unsafe extern "C" fn xmlTextWriterStartDTD<'a1>(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterEndDTD<'a1>(
+pub extern "C" fn xmlTextWriterEndDTD<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
 ) -> i32 {
     let mut loop_0: i32 = 0;
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = (0 as * mut crate::src::xmlwriter::_xmlTextWriterStackEntry);
-    if borrow(& writer).is_none() {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut crate::src::xmlwriter::_xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() {
         return -(1 as i32);
     }
     sum = 0 as i32;
     loop_0 = 1 as i32;
     let mut current_block_25: u64;
     while loop_0 != 0 {
-        lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+        lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
         if lk.is_null() {
             break;
         }
-        p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+        p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
         if p.is_null() {
             break;
         }
-        match (*p).state as u32 {
+        match (unsafe { (*p).state }) as u32 {
             8 => {
                 count = xmlOutputBufferWriteString(
                     (*(borrow_mut(&mut writer)).unwrap()).out,
@@ -4188,30 +4176,30 @@ pub unsafe extern "C" fn xmlTextWriterEndDTD<'a1>(
                 }
                 sum += count;
                 current_block_25 = 1862023469299908377;
-            }
+            },
             7 => {
                 current_block_25 = 1862023469299908377;
-            }
+            },
             9 | 10 => {
                 count = xmlTextWriterEndDTDElement(borrow_mut(&mut writer));
                 current_block_25 = 17500079516916021833;
-            }
+            },
             11 | 12 => {
                 count = xmlTextWriterEndDTDAttlist(borrow_mut(&mut writer));
                 current_block_25 = 17500079516916021833;
-            }
+            },
             13 | 15 | 14 => {
                 count = xmlTextWriterEndDTDEntity(borrow_mut(&mut writer));
                 current_block_25 = 17500079516916021833;
-            }
+            },
             16 => {
                 count = xmlTextWriterEndComment(borrow_mut(&mut writer));
                 current_block_25 = 17500079516916021833;
-            }
+            },
             _ => {
                 loop_0 = 0 as i32;
                 continue;
-            }
+            },
         }
         match current_block_25 {
             1862023469299908377 => {
@@ -4219,7 +4207,7 @@ pub unsafe extern "C" fn xmlTextWriterEndDTD<'a1>(
                     (*(borrow_mut(&mut writer)).unwrap()).out,
                     b">\0" as *const u8 as *const i8,
                 );
-                if (*(borrow(& writer)).unwrap()).indent != 0 {
+                if (*(borrow(&writer)).unwrap()).indent != 0 {
                     if count < 0 as i32 {
                         return -(1 as i32);
                     }
@@ -4229,9 +4217,9 @@ pub unsafe extern "C" fn xmlTextWriterEndDTD<'a1>(
                         b"\n\0" as *const u8 as *const i8,
                     );
                 }
-                xmlListPopFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
-            }
-            _ => {}
+                (unsafe { xmlListPopFront((*(borrow_mut(&mut writer)).unwrap()).nodes) });
+            },
+            _ => {},
         }
         if count < 0 as i32 {
             return -(1 as i32);
@@ -4243,10 +4231,10 @@ pub unsafe extern "C" fn xmlTextWriterEndDTD<'a1>(
 #[no_mangle]
 pub unsafe extern "C" fn xmlTextWriterWriteFormatDTD<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut name: * const u8,
-    mut pubid: * const u8,
-    mut sysid: * const u8,
-    mut format: * const i8,
+    mut name: *const u8,
+    mut pubid: *const u8,
+    mut sysid: *const u8,
+    mut format: *const i8,
     mut args: ...
 ) -> i32 {
     let mut rc: i32 = 0;
@@ -4263,17 +4251,17 @@ pub unsafe extern "C" fn xmlTextWriterWriteFormatDTD<'a1>(
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteVFormatDTD<'a1>(
+pub extern "C" fn xmlTextWriterWriteVFormatDTD<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut name: * const u8,
-    mut pubid: * const u8,
-    mut sysid: * const u8,
-    mut format: * const i8,
+    mut name: *const u8,
+    mut pubid: *const u8,
+    mut sysid: *const u8,
+    mut format: *const i8,
     mut argptr: core::ffi::VaList,
 ) -> i32 {
     let mut rc: i32 = 0;
-    let mut buf: * mut u8 = 0 as *mut xmlChar;
-    if borrow(& writer).is_none() {
+    let mut buf: *mut u8 = 0 as *mut xmlChar;
+    if borrow(&writer).is_none() {
         return -(1 as i32);
     }
     buf = xmlTextWriterVSprintf(format, argptr.as_va_list());
@@ -4281,16 +4269,16 @@ pub unsafe extern "C" fn xmlTextWriterWriteVFormatDTD<'a1>(
         return -(1 as i32);
     }
     rc = xmlTextWriterWriteDTD(borrow_mut(&mut writer), name, pubid, sysid, buf);
-    xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void) });
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteDTD<'a1>(
+pub extern "C" fn xmlTextWriterWriteDTD<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut name: * const u8,
-    mut pubid: * const u8,
-    mut sysid: * const u8,
-    mut subset: * const u8,
+    mut name: *const u8,
+    mut pubid: *const u8,
+    mut sysid: *const u8,
+    mut subset: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
@@ -4315,25 +4303,26 @@ pub unsafe extern "C" fn xmlTextWriterWriteDTD<'a1>(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterStartDTDElement<'a1>(
+pub extern "C" fn xmlTextWriterStartDTDElement<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut name: * const u8,
+    mut name: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = 0 as *mut xmlTextWriterStackEntry;
-    if borrow(& writer).is_none() || name.is_null() || *name as i32 == '\u{0}' as i32 {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() || name.is_null() || (unsafe { *name }) as i32 == '\u{0}' as i32 {
         return -(1 as i32);
     }
     sum = 0 as i32;
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
     if lk.is_null() {
         return -(1 as i32);
     }
-    p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+    p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
     if !p.is_null() {
-        match (*p).state as u32 {
+        match (unsafe { (*p).state }) as u32 {
             7 => {
                 count = xmlOutputBufferWriteString(
                     (*(borrow_mut(&mut writer)).unwrap()).out,
@@ -4343,7 +4332,7 @@ pub unsafe extern "C" fn xmlTextWriterStartDTDElement<'a1>(
                     return -(1 as i32);
                 }
                 sum += count;
-                if (*(borrow(& writer)).unwrap()).indent != 0 {
+                if (*(borrow(&writer)).unwrap()).indent != 0 {
                     count = xmlOutputBufferWriteString(
                         (*(borrow_mut(&mut writer)).unwrap()).out,
                         b"\n\0" as *const u8 as *const i8,
@@ -4353,41 +4342,40 @@ pub unsafe extern "C" fn xmlTextWriterStartDTDElement<'a1>(
                     }
                     sum += count;
                 }
-                (*p).state = XML_TEXTWRITER_DTD_TEXT;
-            }
-            8 | 0 => {}
+                (unsafe { (*p).state = XML_TEXTWRITER_DTD_TEXT });
+            },
+            8 | 0 => {},
             _ => return -(1 as i32),
         }
     }
-    p = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlTextWriterStackEntry>() as u64)
-        as *mut xmlTextWriterStackEntry;
+    p = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlTextWriterStackEntry>() as u64,
+    ) }) as *mut xmlTextWriterStackEntry;
     if p.is_null() {
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_NO_MEMORY,
-            b"xmlTextWriterStartDTDElement : out of memory!\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterStartDTDElement : out of memory!\n\0" as *const u8 as *const i8,
         );
         return -(1 as i32);
     }
-    let ref mut fresh28 = (*p).name;
+    let fresh28 = unsafe { &mut ((*p).name) };
     *fresh28 = xmlStrdup(name);
-    if ((*p).name).is_null() {
+    if (unsafe { (*p).name }).is_null() {
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_NO_MEMORY,
-            b"xmlTextWriterStartDTDElement : out of memory!\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterStartDTDElement : out of memory!\n\0" as *const u8 as *const i8,
         );
-        xmlFree.expect("non-null function pointer")(p as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(p as *mut libc::c_void) });
         return -(1 as i32);
     }
-    (*p).state = XML_TEXTWRITER_DTD_ELEM;
-    xmlListPushFront((*(borrow_mut(&mut writer)).unwrap()).nodes, p as *mut libc::c_void);
-    if (*(borrow(& writer)).unwrap()).indent != 0 {
+    (unsafe { (*p).state = XML_TEXTWRITER_DTD_ELEM });
+    (unsafe { xmlListPushFront(
+        (*(borrow_mut(&mut writer)).unwrap()).nodes,
+        p as *mut libc::c_void,
+    ) });
+    if (*(borrow(&writer)).unwrap()).indent != 0 {
         count = xmlTextWriterWriteIndent(borrow_mut(&mut writer));
         if count < 0 as i32 {
             return -(1 as i32);
@@ -4402,7 +4390,8 @@ pub unsafe extern "C" fn xmlTextWriterStartDTDElement<'a1>(
         return -(1 as i32);
     }
     sum += count;
-    count = xmlOutputBufferWriteString((*(borrow_mut(&mut writer)).unwrap()).out, name as *const i8);
+    count =
+        xmlOutputBufferWriteString((*(borrow_mut(&mut writer)).unwrap()).out, name as *const i8);
     if count < 0 as i32 {
         return -(1 as i32);
     }
@@ -4410,26 +4399,27 @@ pub unsafe extern "C" fn xmlTextWriterStartDTDElement<'a1>(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterEndDTDElement<'a1>(
+pub extern "C" fn xmlTextWriterEndDTDElement<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = (0 as * mut crate::src::xmlwriter::_xmlTextWriterStackEntry);
-    if borrow(& writer).is_none() {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut crate::src::xmlwriter::_xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() {
         return -(1 as i32);
     }
     sum = 0 as i32;
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
     if lk.is_null() {
         return -(1 as i32);
     }
-    p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+    p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
     if p.is_null() {
         return -(1 as i32);
     }
-    match (*p).state as u32 {
+    match (unsafe { (*p).state }) as u32 {
         9 | 10 => {
             count = xmlOutputBufferWriteString(
                 (*(borrow_mut(&mut writer)).unwrap()).out,
@@ -4439,10 +4429,10 @@ pub unsafe extern "C" fn xmlTextWriterEndDTDElement<'a1>(
                 return -(1 as i32);
             }
             sum += count;
-        }
+        },
         _ => return -(1 as i32),
     }
-    if (*(borrow(& writer)).unwrap()).indent != 0 {
+    if (*(borrow(&writer)).unwrap()).indent != 0 {
         count = xmlOutputBufferWriteString(
             (*(borrow_mut(&mut writer)).unwrap()).out,
             b"\n\0" as *const u8 as *const i8,
@@ -4452,32 +4442,33 @@ pub unsafe extern "C" fn xmlTextWriterEndDTDElement<'a1>(
         }
         sum += count;
     }
-    xmlListPopFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    (unsafe { xmlListPopFront((*(borrow_mut(&mut writer)).unwrap()).nodes) });
     return sum;
 }
 #[no_mangle]
 pub unsafe extern "C" fn xmlTextWriterWriteFormatDTDElement<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut name: * const u8,
-    mut format: * const i8,
+    mut name: *const u8,
+    mut format: *const i8,
     mut args: ...
 ) -> i32 {
     let mut rc: i32 = 0;
     let mut ap: core::ffi::VaListImpl;
     ap = args.clone();
-    rc = xmlTextWriterWriteVFormatDTDElement(borrow_mut(&mut writer), name, format, ap.as_va_list());
+    rc =
+        xmlTextWriterWriteVFormatDTDElement(borrow_mut(&mut writer), name, format, ap.as_va_list());
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteVFormatDTDElement<'a1>(
+pub extern "C" fn xmlTextWriterWriteVFormatDTDElement<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut name: * const u8,
-    mut format: * const i8,
+    mut name: *const u8,
+    mut format: *const i8,
     mut argptr: core::ffi::VaList,
 ) -> i32 {
     let mut rc: i32 = 0;
-    let mut buf: * mut u8 = 0 as *mut xmlChar;
-    if borrow(& writer).is_none() {
+    let mut buf: *mut u8 = 0 as *mut xmlChar;
+    if borrow(&writer).is_none() {
         return -(1 as i32);
     }
     buf = xmlTextWriterVSprintf(format, argptr.as_va_list());
@@ -4485,14 +4476,14 @@ pub unsafe extern "C" fn xmlTextWriterWriteVFormatDTDElement<'a1>(
         return -(1 as i32);
     }
     rc = xmlTextWriterWriteDTDElement(borrow_mut(&mut writer), name, buf);
-    xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void) });
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteDTDElement<'a1>(
+pub extern "C" fn xmlTextWriterWriteDTDElement<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut name: * const u8,
-    mut content: * const u8,
+    mut name: *const u8,
+    mut content: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
@@ -4518,25 +4509,26 @@ pub unsafe extern "C" fn xmlTextWriterWriteDTDElement<'a1>(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterStartDTDAttlist<'a1>(
+pub extern "C" fn xmlTextWriterStartDTDAttlist<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut name: * const u8,
+    mut name: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = 0 as *mut xmlTextWriterStackEntry;
-    if borrow(& writer).is_none() || name.is_null() || *name as i32 == '\u{0}' as i32 {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() || name.is_null() || (unsafe { *name }) as i32 == '\u{0}' as i32 {
         return -(1 as i32);
     }
     sum = 0 as i32;
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
     if lk.is_null() {
         return -(1 as i32);
     }
-    p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+    p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
     if !p.is_null() {
-        match (*p).state as u32 {
+        match (unsafe { (*p).state }) as u32 {
             7 => {
                 count = xmlOutputBufferWriteString(
                     (*(borrow_mut(&mut writer)).unwrap()).out,
@@ -4546,7 +4538,7 @@ pub unsafe extern "C" fn xmlTextWriterStartDTDAttlist<'a1>(
                     return -(1 as i32);
                 }
                 sum += count;
-                if (*(borrow(& writer)).unwrap()).indent != 0 {
+                if (*(borrow(&writer)).unwrap()).indent != 0 {
                     count = xmlOutputBufferWriteString(
                         (*(borrow_mut(&mut writer)).unwrap()).out,
                         b"\n\0" as *const u8 as *const i8,
@@ -4556,41 +4548,40 @@ pub unsafe extern "C" fn xmlTextWriterStartDTDAttlist<'a1>(
                     }
                     sum += count;
                 }
-                (*p).state = XML_TEXTWRITER_DTD_TEXT;
-            }
-            8 | 0 => {}
+                (unsafe { (*p).state = XML_TEXTWRITER_DTD_TEXT });
+            },
+            8 | 0 => {},
             _ => return -(1 as i32),
         }
     }
-    p = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlTextWriterStackEntry>() as u64)
-        as *mut xmlTextWriterStackEntry;
+    p = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlTextWriterStackEntry>() as u64,
+    ) }) as *mut xmlTextWriterStackEntry;
     if p.is_null() {
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_NO_MEMORY,
-            b"xmlTextWriterStartDTDAttlist : out of memory!\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterStartDTDAttlist : out of memory!\n\0" as *const u8 as *const i8,
         );
         return -(1 as i32);
     }
-    let ref mut fresh29 = (*p).name;
+    let fresh29 = unsafe { &mut ((*p).name) };
     *fresh29 = xmlStrdup(name);
-    if ((*p).name).is_null() {
+    if (unsafe { (*p).name }).is_null() {
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_NO_MEMORY,
-            b"xmlTextWriterStartDTDAttlist : out of memory!\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterStartDTDAttlist : out of memory!\n\0" as *const u8 as *const i8,
         );
-        xmlFree.expect("non-null function pointer")(p as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(p as *mut libc::c_void) });
         return -(1 as i32);
     }
-    (*p).state = XML_TEXTWRITER_DTD_ATTL;
-    xmlListPushFront((*(borrow_mut(&mut writer)).unwrap()).nodes, p as *mut libc::c_void);
-    if (*(borrow(& writer)).unwrap()).indent != 0 {
+    (unsafe { (*p).state = XML_TEXTWRITER_DTD_ATTL });
+    (unsafe { xmlListPushFront(
+        (*(borrow_mut(&mut writer)).unwrap()).nodes,
+        p as *mut libc::c_void,
+    ) });
+    if (*(borrow(&writer)).unwrap()).indent != 0 {
         count = xmlTextWriterWriteIndent(borrow_mut(&mut writer));
         if count < 0 as i32 {
             return -(1 as i32);
@@ -4605,7 +4596,8 @@ pub unsafe extern "C" fn xmlTextWriterStartDTDAttlist<'a1>(
         return -(1 as i32);
     }
     sum += count;
-    count = xmlOutputBufferWriteString((*(borrow_mut(&mut writer)).unwrap()).out, name as *const i8);
+    count =
+        xmlOutputBufferWriteString((*(borrow_mut(&mut writer)).unwrap()).out, name as *const i8);
     if count < 0 as i32 {
         return -(1 as i32);
     }
@@ -4613,26 +4605,27 @@ pub unsafe extern "C" fn xmlTextWriterStartDTDAttlist<'a1>(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterEndDTDAttlist<'a1>(
+pub extern "C" fn xmlTextWriterEndDTDAttlist<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = (0 as * mut crate::src::xmlwriter::_xmlTextWriterStackEntry);
-    if borrow(& writer).is_none() {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut crate::src::xmlwriter::_xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() {
         return -(1 as i32);
     }
     sum = 0 as i32;
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
     if lk.is_null() {
         return -(1 as i32);
     }
-    p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+    p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
     if p.is_null() {
         return -(1 as i32);
     }
-    match (*p).state as u32 {
+    match (unsafe { (*p).state }) as u32 {
         11 | 12 => {
             count = xmlOutputBufferWriteString(
                 (*(borrow_mut(&mut writer)).unwrap()).out,
@@ -4642,10 +4635,10 @@ pub unsafe extern "C" fn xmlTextWriterEndDTDAttlist<'a1>(
                 return -(1 as i32);
             }
             sum += count;
-        }
+        },
         _ => return -(1 as i32),
     }
-    if (*(borrow(& writer)).unwrap()).indent != 0 {
+    if (*(borrow(&writer)).unwrap()).indent != 0 {
         count = xmlOutputBufferWriteString(
             (*(borrow_mut(&mut writer)).unwrap()).out,
             b"\n\0" as *const u8 as *const i8,
@@ -4655,32 +4648,33 @@ pub unsafe extern "C" fn xmlTextWriterEndDTDAttlist<'a1>(
         }
         sum += count;
     }
-    xmlListPopFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    (unsafe { xmlListPopFront((*(borrow_mut(&mut writer)).unwrap()).nodes) });
     return sum;
 }
 #[no_mangle]
 pub unsafe extern "C" fn xmlTextWriterWriteFormatDTDAttlist<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut name: * const u8,
-    mut format: * const i8,
+    mut name: *const u8,
+    mut format: *const i8,
     mut args: ...
 ) -> i32 {
     let mut rc: i32 = 0;
     let mut ap: core::ffi::VaListImpl;
     ap = args.clone();
-    rc = xmlTextWriterWriteVFormatDTDAttlist(borrow_mut(&mut writer), name, format, ap.as_va_list());
+    rc =
+        xmlTextWriterWriteVFormatDTDAttlist(borrow_mut(&mut writer), name, format, ap.as_va_list());
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteVFormatDTDAttlist<'a1>(
+pub extern "C" fn xmlTextWriterWriteVFormatDTDAttlist<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut name: * const u8,
-    mut format: * const i8,
+    mut name: *const u8,
+    mut format: *const i8,
     mut argptr: core::ffi::VaList,
 ) -> i32 {
     let mut rc: i32 = 0;
-    let mut buf: * mut u8 = 0 as *mut xmlChar;
-    if borrow(& writer).is_none() {
+    let mut buf: *mut u8 = 0 as *mut xmlChar;
+    if borrow(&writer).is_none() {
         return -(1 as i32);
     }
     buf = xmlTextWriterVSprintf(format, argptr.as_va_list());
@@ -4688,14 +4682,14 @@ pub unsafe extern "C" fn xmlTextWriterWriteVFormatDTDAttlist<'a1>(
         return -(1 as i32);
     }
     rc = xmlTextWriterWriteDTDAttlist(borrow_mut(&mut writer), name, buf);
-    xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void) });
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteDTDAttlist<'a1>(
+pub extern "C" fn xmlTextWriterWriteDTDAttlist<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut name: * const u8,
-    mut content: * const u8,
+    mut name: *const u8,
+    mut content: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
@@ -4721,24 +4715,25 @@ pub unsafe extern "C" fn xmlTextWriterWriteDTDAttlist<'a1>(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterStartDTDEntity<'a1>(
+pub extern "C" fn xmlTextWriterStartDTDEntity<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
     mut pe: i32,
-    mut name: * const u8,
+    mut name: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = 0 as *mut xmlTextWriterStackEntry;
-    if borrow(& writer).is_none() || name.is_null() || *name as i32 == '\u{0}' as i32 {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() || name.is_null() || (unsafe { *name }) as i32 == '\u{0}' as i32 {
         return -(1 as i32);
     }
     sum = 0 as i32;
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
     if !lk.is_null() {
-        p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+        p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
         if !p.is_null() {
-            match (*p).state as u32 {
+            match (unsafe { (*p).state }) as u32 {
                 7 => {
                     count = xmlOutputBufferWriteString(
                         (*(borrow_mut(&mut writer)).unwrap()).out,
@@ -4748,7 +4743,7 @@ pub unsafe extern "C" fn xmlTextWriterStartDTDEntity<'a1>(
                         return -(1 as i32);
                     }
                     sum += count;
-                    if (*(borrow(& writer)).unwrap()).indent != 0 {
+                    if (*(borrow(&writer)).unwrap()).indent != 0 {
                         count = xmlOutputBufferWriteString(
                             (*(borrow_mut(&mut writer)).unwrap()).out,
                             b"\n\0" as *const u8 as *const i8,
@@ -4758,46 +4753,45 @@ pub unsafe extern "C" fn xmlTextWriterStartDTDEntity<'a1>(
                         }
                         sum += count;
                     }
-                    (*p).state = XML_TEXTWRITER_DTD_TEXT;
-                }
-                8 | 0 => {}
+                    (unsafe { (*p).state = XML_TEXTWRITER_DTD_TEXT });
+                },
+                8 | 0 => {},
                 _ => return -(1 as i32),
             }
         }
     }
-    p = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlTextWriterStackEntry>() as u64)
-        as *mut xmlTextWriterStackEntry;
+    p = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlTextWriterStackEntry>() as u64,
+    ) }) as *mut xmlTextWriterStackEntry;
     if p.is_null() {
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_NO_MEMORY,
-            b"xmlTextWriterStartDTDElement : out of memory!\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterStartDTDElement : out of memory!\n\0" as *const u8 as *const i8,
         );
         return -(1 as i32);
     }
-    let ref mut fresh30 = (*p).name;
+    let fresh30 = unsafe { &mut ((*p).name) };
     *fresh30 = xmlStrdup(name);
-    if ((*p).name).is_null() {
+    if (unsafe { (*p).name }).is_null() {
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_NO_MEMORY,
-            b"xmlTextWriterStartDTDElement : out of memory!\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterStartDTDElement : out of memory!\n\0" as *const u8 as *const i8,
         );
-        xmlFree.expect("non-null function pointer")(p as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(p as *mut libc::c_void) });
         return -(1 as i32);
     }
     if pe != 0 as i32 {
-        (*p).state = XML_TEXTWRITER_DTD_PENT;
+        (unsafe { (*p).state = XML_TEXTWRITER_DTD_PENT });
     } else {
-        (*p).state = XML_TEXTWRITER_DTD_ENTY;
+        (unsafe { (*p).state = XML_TEXTWRITER_DTD_ENTY });
     }
-    xmlListPushFront((*(borrow_mut(&mut writer)).unwrap()).nodes, p as *mut libc::c_void);
-    if (*(borrow(& writer)).unwrap()).indent != 0 {
+    (unsafe { xmlListPushFront(
+        (*(borrow_mut(&mut writer)).unwrap()).nodes,
+        p as *mut libc::c_void,
+    ) });
+    if (*(borrow(&writer)).unwrap()).indent != 0 {
         count = xmlTextWriterWriteIndent(borrow_mut(&mut writer));
         if count < 0 as i32 {
             return -(1 as i32);
@@ -4822,7 +4816,8 @@ pub unsafe extern "C" fn xmlTextWriterStartDTDEntity<'a1>(
         }
         sum += count;
     }
-    count = xmlOutputBufferWriteString((*(borrow_mut(&mut writer)).unwrap()).out, name as *const i8);
+    count =
+        xmlOutputBufferWriteString((*(borrow_mut(&mut writer)).unwrap()).out, name as *const i8);
     if count < 0 as i32 {
         return -(1 as i32);
     }
@@ -4830,26 +4825,27 @@ pub unsafe extern "C" fn xmlTextWriterStartDTDEntity<'a1>(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterEndDTDEntity<'a1>(
+pub extern "C" fn xmlTextWriterEndDTDEntity<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = (0 as * mut crate::src::xmlwriter::_xmlTextWriterStackEntry);
-    if borrow(& writer).is_none() {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut crate::src::xmlwriter::_xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() {
         return -(1 as i32);
     }
     sum = 0 as i32;
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
     if lk.is_null() {
         return -(1 as i32);
     }
-    p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+    p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
     if p.is_null() {
         return -(1 as i32);
     }
-    match (*p).state as u32 {
+    match (unsafe { (*p).state }) as u32 {
         14 => {
             count = xmlOutputBufferWrite(
                 (*(borrow_mut(&mut writer)).unwrap()).out,
@@ -4860,8 +4856,8 @@ pub unsafe extern "C" fn xmlTextWriterEndDTDEntity<'a1>(
                 return -(1 as i32);
             }
             sum += count;
-        }
-        13 | 15 => {}
+        },
+        13 | 15 => {},
         _ => return -(1 as i32),
     }
     count = xmlOutputBufferWriteString(
@@ -4872,7 +4868,7 @@ pub unsafe extern "C" fn xmlTextWriterEndDTDEntity<'a1>(
         return -(1 as i32);
     }
     sum += count;
-    if (*(borrow(& writer)).unwrap()).indent != 0 {
+    if (*(borrow(&writer)).unwrap()).indent != 0 {
         count = xmlOutputBufferWriteString(
             (*(borrow_mut(&mut writer)).unwrap()).out,
             b"\n\0" as *const u8 as *const i8,
@@ -4882,15 +4878,15 @@ pub unsafe extern "C" fn xmlTextWriterEndDTDEntity<'a1>(
         }
         sum += count;
     }
-    xmlListPopFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    (unsafe { xmlListPopFront((*(borrow_mut(&mut writer)).unwrap()).nodes) });
     return sum;
 }
 #[no_mangle]
 pub unsafe extern "C" fn xmlTextWriterWriteFormatDTDInternalEntity<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
     mut pe: i32,
-    mut name: * const u8,
-    mut format: * const i8,
+    mut name: *const u8,
+    mut format: *const i8,
     mut args: ...
 ) -> i32 {
     let mut rc: i32 = 0;
@@ -4906,16 +4902,16 @@ pub unsafe extern "C" fn xmlTextWriterWriteFormatDTDInternalEntity<'a1>(
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteVFormatDTDInternalEntity<'a1>(
+pub extern "C" fn xmlTextWriterWriteVFormatDTDInternalEntity<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
     mut pe: i32,
-    mut name: * const u8,
-    mut format: * const i8,
+    mut name: *const u8,
+    mut format: *const i8,
     mut argptr: core::ffi::VaList,
 ) -> i32 {
     let mut rc: i32 = 0;
-    let mut buf: * mut u8 = 0 as *mut xmlChar;
-    if borrow(& writer).is_none() {
+    let mut buf: *mut u8 = 0 as *mut xmlChar;
+    if borrow(&writer).is_none() {
         return -(1 as i32);
     }
     buf = xmlTextWriterVSprintf(format, argptr.as_va_list());
@@ -4923,18 +4919,18 @@ pub unsafe extern "C" fn xmlTextWriterWriteVFormatDTDInternalEntity<'a1>(
         return -(1 as i32);
     }
     rc = xmlTextWriterWriteDTDInternalEntity(borrow_mut(&mut writer), pe, name, buf);
-    xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void) });
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteDTDEntity<'a1>(
+pub extern "C" fn xmlTextWriterWriteDTDEntity<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
     mut pe: i32,
-    mut name: * const u8,
-    mut pubid: * const u8,
-    mut sysid: * const u8,
-    mut ndataid: * const u8,
-    mut content: * const u8,
+    mut name: *const u8,
+    mut pubid: *const u8,
+    mut sysid: *const u8,
+    mut ndataid: *const u8,
+    mut content: *const u8,
 ) -> i32 {
     if content.is_null() && pubid.is_null() && sysid.is_null() {
         return -(1 as i32);
@@ -4945,18 +4941,25 @@ pub unsafe extern "C" fn xmlTextWriterWriteDTDEntity<'a1>(
     if pubid.is_null() && sysid.is_null() {
         return xmlTextWriterWriteDTDInternalEntity(borrow_mut(&mut writer), pe, name, content);
     }
-    return xmlTextWriterWriteDTDExternalEntity(borrow_mut(&mut writer), pe, name, pubid, sysid, ndataid);
+    return xmlTextWriterWriteDTDExternalEntity(
+        borrow_mut(&mut writer),
+        pe,
+        name,
+        pubid,
+        sysid,
+        ndataid,
+    );
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteDTDInternalEntity<'a1>(
+pub extern "C" fn xmlTextWriterWriteDTDInternalEntity<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
     mut pe: i32,
-    mut name: * const u8,
-    mut content: * const u8,
+    mut name: *const u8,
+    mut content: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    if name.is_null() || *name as i32 == '\u{0}' as i32 || content.is_null() {
+    if name.is_null() || (unsafe { *name }) as i32 == '\u{0}' as i32 || content.is_null() {
         return -(1 as i32);
     }
     sum = 0 as i32;
@@ -4978,13 +4981,13 @@ pub unsafe extern "C" fn xmlTextWriterWriteDTDInternalEntity<'a1>(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteDTDExternalEntity<'a1>(
+pub extern "C" fn xmlTextWriterWriteDTDExternalEntity<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
     mut pe: i32,
-    mut name: * const u8,
-    mut pubid: * const u8,
-    mut sysid: * const u8,
-    mut ndataid: * const u8,
+    mut name: *const u8,
+    mut pubid: *const u8,
+    mut sysid: *const u8,
+    mut ndataid: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
@@ -5000,7 +5003,8 @@ pub unsafe extern "C" fn xmlTextWriterWriteDTDExternalEntity<'a1>(
         return -(1 as i32);
     }
     sum += count;
-    count = xmlTextWriterWriteDTDExternalEntityContents(borrow_mut(&mut writer), pubid, sysid, ndataid);
+    count =
+        xmlTextWriterWriteDTDExternalEntityContents(borrow_mut(&mut writer), pubid, sysid, ndataid);
     if count < 0 as i32 {
         return -(1 as i32);
     }
@@ -5013,17 +5017,18 @@ pub unsafe extern "C" fn xmlTextWriterWriteDTDExternalEntity<'a1>(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteDTDExternalEntityContents<'a1>(
+pub extern "C" fn xmlTextWriterWriteDTDExternalEntityContents<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut pubid: * const u8,
-    mut sysid: * const u8,
-    mut ndataid: * const u8,
+    mut pubid: *const u8,
+    mut sysid: *const u8,
+    mut ndataid: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = (0 as * mut crate::src::xmlwriter::_xmlTextWriterStackEntry);
-    if borrow(& writer).is_none() {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut crate::src::xmlwriter::_xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() {
         xmlWriterErrMsg(
             borrow_mut(&mut writer),
             XML_ERR_INTERNAL_ERROR,
@@ -5033,42 +5038,27 @@ pub unsafe extern "C" fn xmlTextWriterWriteDTDExternalEntityContents<'a1>(
         return -(1 as i32);
     }
     sum = 0 as i32;
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
     if lk.is_null() {
-        xmlWriterErrMsg(
-            borrow_mut(&mut writer),
-            XML_ERR_INTERNAL_ERROR,
-            b"xmlTextWriterWriteDTDExternalEntityContents: you must call xmlTextWriterStartDTDEntity before the call to this function!\n\0"
-                as *const u8 as *const i8,
-        );
+        xmlWriterErrMsg (borrow_mut (& mut writer) , XML_ERR_INTERNAL_ERROR , b"xmlTextWriterWriteDTDExternalEntityContents: you must call xmlTextWriterStartDTDEntity before the call to this function!\n\0" as * const u8 as * const i8 ,) ;
         return -(1 as i32);
     }
-    p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+    p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
     if p.is_null() {
         return -(1 as i32);
     }
-    match (*p).state as u32 {
-        13 => {}
+    match (unsafe { (*p).state }) as u32 {
+        13 => {},
         15 => {
             if !ndataid.is_null() {
-                xmlWriterErrMsg(
-                    borrow_mut(&mut writer),
-                    XML_ERR_INTERNAL_ERROR,
-                    b"xmlTextWriterWriteDTDExternalEntityContents: notation not allowed with parameter entities!\n\0"
-                        as *const u8 as *const i8,
-                );
+                xmlWriterErrMsg (borrow_mut (& mut writer) , XML_ERR_INTERNAL_ERROR , b"xmlTextWriterWriteDTDExternalEntityContents: notation not allowed with parameter entities!\n\0" as * const u8 as * const i8 ,) ;
                 return -(1 as i32);
             }
-        }
+        },
         _ => {
-            xmlWriterErrMsg(
-                borrow_mut(&mut writer),
-                XML_ERR_INTERNAL_ERROR,
-                b"xmlTextWriterWriteDTDExternalEntityContents: you must call xmlTextWriterStartDTDEntity before the call to this function!\n\0"
-                    as *const u8 as *const i8,
-            );
+            xmlWriterErrMsg (borrow_mut (& mut writer) , XML_ERR_INTERNAL_ERROR , b"xmlTextWriterWriteDTDExternalEntityContents: you must call xmlTextWriterStartDTDEntity before the call to this function!\n\0" as * const u8 as * const i8 ,) ;
             return -(1 as i32);
-        }
+        },
     }
     if !pubid.is_null() {
         if sysid.is_null() {
@@ -5097,7 +5087,10 @@ pub unsafe extern "C" fn xmlTextWriterWriteDTDExternalEntityContents<'a1>(
             return -(1 as i32);
         }
         sum += count;
-        count = xmlOutputBufferWriteString((*(borrow_mut(&mut writer)).unwrap()).out, pubid as *const i8);
+        count = xmlOutputBufferWriteString(
+            (*(borrow_mut(&mut writer)).unwrap()).out,
+            pubid as *const i8,
+        );
         if count < 0 as i32 {
             return -(1 as i32);
         }
@@ -5140,7 +5133,10 @@ pub unsafe extern "C" fn xmlTextWriterWriteDTDExternalEntityContents<'a1>(
             return -(1 as i32);
         }
         sum += count;
-        count = xmlOutputBufferWriteString((*(borrow_mut(&mut writer)).unwrap()).out, sysid as *const i8);
+        count = xmlOutputBufferWriteString(
+            (*(borrow_mut(&mut writer)).unwrap()).out,
+            sysid as *const i8,
+        );
         if count < 0 as i32 {
             return -(1 as i32);
         }
@@ -5176,27 +5172,28 @@ pub unsafe extern "C" fn xmlTextWriterWriteDTDExternalEntityContents<'a1>(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterWriteDTDNotation<'a1>(
+pub extern "C" fn xmlTextWriterWriteDTDNotation<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut name: * const u8,
-    mut pubid: * const u8,
-    mut sysid: * const u8,
+    mut name: *const u8,
+    mut pubid: *const u8,
+    mut sysid: *const u8,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = (0 as * mut crate::src::xmlwriter::_xmlTextWriterStackEntry);
-    if borrow(& writer).is_none() || name.is_null() || *name as i32 == '\u{0}' as i32 {
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut crate::src::xmlwriter::_xmlTextWriterStackEntry;
+    if borrow(&writer).is_none() || name.is_null() || (unsafe { *name }) as i32 == '\u{0}' as i32 {
         return -(1 as i32);
     }
     sum = 0 as i32;
-    lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nodes) };
     if lk.is_null() {
         return -(1 as i32);
     }
-    p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+    p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
     if !p.is_null() {
-        match (*p).state as u32 {
+        match (unsafe { (*p).state }) as u32 {
             7 => {
                 count = xmlOutputBufferWriteString(
                     (*(borrow_mut(&mut writer)).unwrap()).out,
@@ -5206,7 +5203,7 @@ pub unsafe extern "C" fn xmlTextWriterWriteDTDNotation<'a1>(
                     return -(1 as i32);
                 }
                 sum += count;
-                if (*(borrow(& writer)).unwrap()).indent != 0 {
+                if (*(borrow(&writer)).unwrap()).indent != 0 {
                     count = xmlOutputBufferWriteString(
                         (*(borrow_mut(&mut writer)).unwrap()).out,
                         b"\n\0" as *const u8 as *const i8,
@@ -5216,13 +5213,13 @@ pub unsafe extern "C" fn xmlTextWriterWriteDTDNotation<'a1>(
                     }
                     sum += count;
                 }
-                (*p).state = XML_TEXTWRITER_DTD_TEXT;
-            }
-            8 => {}
+                (unsafe { (*p).state = XML_TEXTWRITER_DTD_TEXT });
+            },
+            8 => {},
             _ => return -(1 as i32),
         }
     }
-    if (*(borrow(& writer)).unwrap()).indent != 0 {
+    if (*(borrow(&writer)).unwrap()).indent != 0 {
         count = xmlTextWriterWriteIndent(borrow_mut(&mut writer));
         if count < 0 as i32 {
             return -(1 as i32);
@@ -5237,7 +5234,8 @@ pub unsafe extern "C" fn xmlTextWriterWriteDTDNotation<'a1>(
         return -(1 as i32);
     }
     sum += count;
-    count = xmlOutputBufferWriteString((*(borrow_mut(&mut writer)).unwrap()).out, name as *const i8);
+    count =
+        xmlOutputBufferWriteString((*(borrow_mut(&mut writer)).unwrap()).out, name as *const i8);
     if count < 0 as i32 {
         return -(1 as i32);
     }
@@ -5260,7 +5258,10 @@ pub unsafe extern "C" fn xmlTextWriterWriteDTDNotation<'a1>(
             return -(1 as i32);
         }
         sum += count;
-        count = xmlOutputBufferWriteString((*(borrow_mut(&mut writer)).unwrap()).out, pubid as *const i8);
+        count = xmlOutputBufferWriteString(
+            (*(borrow_mut(&mut writer)).unwrap()).out,
+            pubid as *const i8,
+        );
         if count < 0 as i32 {
             return -(1 as i32);
         }
@@ -5303,7 +5304,10 @@ pub unsafe extern "C" fn xmlTextWriterWriteDTDNotation<'a1>(
             return -(1 as i32);
         }
         sum += count;
-        count = xmlOutputBufferWriteString((*(borrow_mut(&mut writer)).unwrap()).out, sysid as *const i8);
+        count = xmlOutputBufferWriteString(
+            (*(borrow_mut(&mut writer)).unwrap()).out,
+            sysid as *const i8,
+        );
         if count < 0 as i32 {
             return -(1 as i32);
         }
@@ -5329,11 +5333,11 @@ pub unsafe extern "C" fn xmlTextWriterWriteDTDNotation<'a1>(
     return sum;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterFlush<'a1>(
+pub extern "C" fn xmlTextWriterFlush<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
 ) -> i32 {
     let mut count: i32 = 0;
-    if borrow(& writer).is_none() {
+    if borrow(&writer).is_none() {
         return -(1 as i32);
     }
     if ((*(borrow_mut(&mut writer)).unwrap()).out).is_null() {
@@ -5343,23 +5347,26 @@ pub unsafe extern "C" fn xmlTextWriterFlush<'a1>(
     }
     return count;
 }
-unsafe extern "C" fn xmlFreeTextWriterStackEntry(mut lk: * mut crate::src::valid::_xmlLink) {
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = 0 as *mut xmlTextWriterStackEntry;
-    p = xmlLinkGetData(lk) as *mut xmlTextWriterStackEntry;
+extern "C" fn xmlFreeTextWriterStackEntry(mut lk: *mut crate::src::valid::_xmlLink) {
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut xmlTextWriterStackEntry;
+    p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterStackEntry;
     if p.is_null() {
         return;
     }
-    if !((*p).name).is_null() {
-        xmlFree.expect("non-null function pointer")((*p).name as *mut libc::c_void);
+    if !(unsafe { (*p).name }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*p).name as *mut libc::c_void) });
     }
-    xmlFree.expect("non-null function pointer")(p as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(p as *mut libc::c_void) });
 }
-unsafe extern "C" fn xmlCmpTextWriterStackEntry(
-    mut data0: * const core::ffi::c_void,
-    mut data1: * const core::ffi::c_void,
+extern "C" fn xmlCmpTextWriterStackEntry(
+    mut data0: *const core::ffi::c_void,
+    mut data1: *const core::ffi::c_void,
 ) -> i32 {
-    let mut p0: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = (0 as * mut crate::src::xmlwriter::_xmlTextWriterStackEntry);
-    let mut p1: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry = (0 as * mut crate::src::xmlwriter::_xmlTextWriterStackEntry);
+    let mut p0: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut crate::src::xmlwriter::_xmlTextWriterStackEntry;
+    let mut p1: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry =
+        0 as *mut crate::src::xmlwriter::_xmlTextWriterStackEntry;
     if data0 == data1 {
         return 0 as i32;
     }
@@ -5371,34 +5378,34 @@ unsafe extern "C" fn xmlCmpTextWriterStackEntry(
     }
     p0 = data0 as *mut xmlTextWriterStackEntry;
     p1 = data1 as *mut xmlTextWriterStackEntry;
-    return xmlStrcmp((*p0).name, (*p1).name);
+    return xmlStrcmp(unsafe { (*p0).name }, unsafe { (*p1).name });
 }
-unsafe extern "C" fn xmlTextWriterOutputNSDecl<'a1>(
+extern "C" fn xmlTextWriterOutputNSDecl<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
 ) -> i32 {
-    let mut lk: * mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
-    let mut np: * mut crate::src::xmlwriter::_xmlTextWriterNsStackEntry = (0 as * mut crate::src::xmlwriter::_xmlTextWriterNsStackEntry);
+    let mut lk: *mut crate::src::valid::_xmlLink = 0 as *mut xmlLink;
+    let mut np: *mut crate::src::xmlwriter::_xmlTextWriterNsStackEntry =
+        0 as *mut crate::src::xmlwriter::_xmlTextWriterNsStackEntry;
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
     sum = 0 as i32;
-    while xmlListEmpty((*(borrow_mut(&mut writer)).unwrap()).nsstack) == 0 {
-        let mut namespaceURI: * mut u8 = 0 as *mut xmlChar;
-        let mut prefix: * mut u8 = 0 as *mut xmlChar;
-        lk = xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nsstack);
-        np = xmlLinkGetData(lk) as *mut xmlTextWriterNsStackEntry;
+    while (unsafe { xmlListEmpty((*(borrow_mut(&mut writer)).unwrap()).nsstack) }) == 0 {
+        let mut namespaceURI: *mut u8 = 0 as *mut xmlChar;
+        let mut prefix: *mut u8 = 0 as *mut xmlChar;
+        lk = unsafe { xmlListFront((*(borrow_mut(&mut writer)).unwrap()).nsstack) };
+        np = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterNsStackEntry;
         if !np.is_null() {
-            namespaceURI = xmlStrdup((*np).uri);
-            prefix = xmlStrdup((*np).prefix);
+            namespaceURI = xmlStrdup(unsafe { (*np).uri });
+            prefix = xmlStrdup(unsafe { (*np).prefix });
         }
-        xmlListPopFront((*(borrow_mut(&mut writer)).unwrap()).nsstack);
+        (unsafe { xmlListPopFront((*(borrow_mut(&mut writer)).unwrap()).nsstack) });
         if !np.is_null() {
             count = xmlTextWriterWriteAttribute(borrow_mut(&mut writer), prefix, namespaceURI);
-            xmlFree
-                .expect("non-null function pointer")(namespaceURI as *mut libc::c_void);
-            xmlFree.expect("non-null function pointer")(prefix as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(namespaceURI as *mut libc::c_void) });
+            (unsafe { xmlFree.expect("non-null function pointer")(prefix as *mut libc::c_void) });
             if count < 0 as i32 {
-                xmlListDelete((*(borrow_mut(&mut writer)).unwrap()).nsstack);
-                let ref mut fresh31 = (*(borrow_mut(&mut writer)).unwrap()).nsstack;
+                (unsafe { xmlListDelete((*(borrow_mut(&mut writer)).unwrap()).nsstack) });
+                let fresh31 = &mut ((*(borrow_mut(&mut writer)).unwrap()).nsstack);
                 *fresh31 = 0 as xmlListPtr;
                 return -(1 as i32);
             }
@@ -5407,26 +5414,29 @@ unsafe extern "C" fn xmlTextWriterOutputNSDecl<'a1>(
     }
     return sum;
 }
-unsafe extern "C" fn xmlFreeTextWriterNsStackEntry(mut lk: * mut crate::src::valid::_xmlLink) {
-    let mut p: * mut crate::src::xmlwriter::_xmlTextWriterNsStackEntry = 0 as *mut xmlTextWriterNsStackEntry;
-    p = xmlLinkGetData(lk) as *mut xmlTextWriterNsStackEntry;
+extern "C" fn xmlFreeTextWriterNsStackEntry(mut lk: *mut crate::src::valid::_xmlLink) {
+    let mut p: *mut crate::src::xmlwriter::_xmlTextWriterNsStackEntry =
+        0 as *mut xmlTextWriterNsStackEntry;
+    p = (unsafe { xmlLinkGetData(lk) }) as *mut xmlTextWriterNsStackEntry;
     if p.is_null() {
         return;
     }
-    if !((*p).prefix).is_null() {
-        xmlFree.expect("non-null function pointer")((*p).prefix as *mut libc::c_void);
+    if !(unsafe { (*p).prefix }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*p).prefix as *mut libc::c_void) });
     }
-    if !((*p).uri).is_null() {
-        xmlFree.expect("non-null function pointer")((*p).uri as *mut libc::c_void);
+    if !(unsafe { (*p).uri }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*p).uri as *mut libc::c_void) });
     }
-    xmlFree.expect("non-null function pointer")(p as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(p as *mut libc::c_void) });
 }
-unsafe extern "C" fn xmlCmpTextWriterNsStackEntry(
-    mut data0: * const core::ffi::c_void,
-    mut data1: * const core::ffi::c_void,
+extern "C" fn xmlCmpTextWriterNsStackEntry(
+    mut data0: *const core::ffi::c_void,
+    mut data1: *const core::ffi::c_void,
 ) -> i32 {
-    let mut p0: * mut crate::src::xmlwriter::_xmlTextWriterNsStackEntry = (0 as * mut crate::src::xmlwriter::_xmlTextWriterNsStackEntry);
-    let mut p1: * mut crate::src::xmlwriter::_xmlTextWriterNsStackEntry = (0 as * mut crate::src::xmlwriter::_xmlTextWriterNsStackEntry);
+    let mut p0: *mut crate::src::xmlwriter::_xmlTextWriterNsStackEntry =
+        0 as *mut crate::src::xmlwriter::_xmlTextWriterNsStackEntry;
+    let mut p1: *mut crate::src::xmlwriter::_xmlTextWriterNsStackEntry =
+        0 as *mut crate::src::xmlwriter::_xmlTextWriterNsStackEntry;
     let mut rc: i32 = 0;
     if data0 == data1 {
         return 0 as i32;
@@ -5439,97 +5449,78 @@ unsafe extern "C" fn xmlCmpTextWriterNsStackEntry(
     }
     p0 = data0 as *mut xmlTextWriterNsStackEntry;
     p1 = data1 as *mut xmlTextWriterNsStackEntry;
-    rc = xmlStrcmp((*p0).prefix, (*p1).prefix);
-    if rc != 0 as i32 || (*p0).elem != (*p1).elem {
+    rc = xmlStrcmp(unsafe { (*p0).prefix }, unsafe { (*p1).prefix });
+    if rc != 0 as i32 || (unsafe { (*p0).elem }) != (unsafe { (*p1).elem }) {
         rc = -(1 as i32);
     }
     return rc;
 }
-unsafe extern "C" fn xmlTextWriterWriteDocCallback(
-    mut context: * mut core::ffi::c_void,
-    mut str: * const i8,
+extern "C" fn xmlTextWriterWriteDocCallback(
+    mut context: *mut core::ffi::c_void,
+    mut str: *const i8,
     mut len: i32,
 ) -> i32 {
-    let mut ctxt: * mut crate::src::tree::_xmlParserCtxt = context as xmlParserCtxtPtr;
+    let mut ctxt: *mut crate::src::tree::_xmlParserCtxt = context as xmlParserCtxtPtr;
     let mut rc: i32 = 0;
-    rc = xmlParseChunk(ctxt, str, len, 0 as i32);
+    rc = unsafe { xmlParseChunk(ctxt, str, len, 0 as i32) };
     if rc != 0 as i32 {
         xmlWriterErrMsgInt(
             Option::<&'_ mut crate::src::xmlwriter::_xmlTextWriter>::None,
             XML_ERR_INTERNAL_ERROR,
-            b"xmlTextWriterWriteDocCallback : XML error %d !\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterWriteDocCallback : XML error %d !\n\0" as *const u8 as *const i8,
             rc,
         );
         return -(1 as i32);
     }
     return len;
 }
-unsafe extern "C" fn xmlTextWriterCloseDocCallback(
-    mut context: * mut core::ffi::c_void,
-) -> i32 {
-    let mut ctxt: * mut crate::src::tree::_xmlParserCtxt = context as xmlParserCtxtPtr;
+extern "C" fn xmlTextWriterCloseDocCallback(mut context: *mut core::ffi::c_void) -> i32 {
+    let mut ctxt: *mut crate::src::tree::_xmlParserCtxt = context as xmlParserCtxtPtr;
     let mut rc: i32 = 0;
-    rc = xmlParseChunk(
-        ctxt,
-        0 as *const i8,
-        0 as i32,
-        1 as i32,
-    );
+    rc = unsafe { xmlParseChunk(ctxt, 0 as *const i8, 0 as i32, 1 as i32) };
     if rc != 0 as i32 {
         xmlWriterErrMsgInt(
             Option::<&'_ mut crate::src::xmlwriter::_xmlTextWriter>::None,
             XML_ERR_INTERNAL_ERROR,
-            b"xmlTextWriterCloseDocCallback : XML error %d !\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterCloseDocCallback : XML error %d !\n\0" as *const u8 as *const i8,
             rc,
         );
         return -(1 as i32);
     }
     return 0 as i32;
 }
-unsafe extern "C" fn xmlTextWriterVSprintf(
-    mut format: * const i8,
+extern "C" fn xmlTextWriterVSprintf(
+    mut format: *const i8,
     mut argptr: core::ffi::VaList,
-) -> * mut u8 {
+) -> *mut u8 {
     let mut size: i32 = 0;
     let mut count: i32 = 0;
-    let mut buf: * mut u8 = 0 as *mut xmlChar;
+    let mut buf: *mut u8 = 0 as *mut xmlChar;
     let mut locarg: core::ffi::VaListImpl;
     size = 8192 as i32;
-    buf = xmlMalloc.expect("non-null function pointer")(size as size_t) as *mut xmlChar;
+    buf = (unsafe { xmlMalloc.expect("non-null function pointer")(size as size_t) }) as *mut xmlChar;
     if buf.is_null() {
         xmlWriterErrMsg(
             Option::<&'_ mut crate::src::xmlwriter::_xmlTextWriter>::None,
             XML_ERR_NO_MEMORY,
-            b"xmlTextWriterVSprintf : out of memory!\n\0" as *const u8
-                as *const i8,
+            b"xmlTextWriterVSprintf : out of memory!\n\0" as *const u8 as *const i8,
         );
         return 0 as *mut xmlChar;
     }
     locarg = argptr.clone();
     loop {
-        count = vsnprintf(
-            buf as *mut i8,
-            size as u64,
-            format,
-            locarg.as_va_list(),
-        );
-        if !(count < 0 as i32 || count == size - 1 as i32
-            || count == size || count > size)
-        {
+        count = unsafe { vsnprintf(buf as *mut i8, size as u64, format, locarg.as_va_list()) };
+        if !(count < 0 as i32 || count == size - 1 as i32 || count == size || count > size) {
             break;
         }
-        xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void) });
         size += 8192 as i32;
-        buf = xmlMalloc.expect("non-null function pointer")(size as size_t)
-            as *mut xmlChar;
+        buf = (unsafe { xmlMalloc.expect("non-null function pointer")(size as size_t) }) as *mut xmlChar;
         if buf.is_null() {
             xmlWriterErrMsg(
                 Option::<&'_ mut crate::src::xmlwriter::_xmlTextWriter>::None,
                 XML_ERR_NO_MEMORY,
-                b"xmlTextWriterVSprintf : out of memory!\n\0" as *const u8
-                    as *const i8,
+                b"xmlTextWriterVSprintf : out of memory!\n\0" as *const u8 as *const i8,
             );
             return 0 as *mut xmlChar;
         }
@@ -5537,82 +5528,76 @@ unsafe extern "C" fn xmlTextWriterVSprintf(
     }
     return buf;
 }
-unsafe extern "C" fn xmlTextWriterStartDocumentCallback(mut ctx: * mut core::ffi::c_void) {
-    let mut ctxt: * mut crate::src::tree::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
-    let mut doc: * mut crate::src::threads::_xmlDoc = 0 as *mut xmlDoc;
-    if (*ctxt).html != 0 {
-        if ((*ctxt).myDoc).is_null() {
-            let ref mut fresh32 = (*ctxt).myDoc;
-            *fresh32 = htmlNewDocNoDtD(0 as *const xmlChar, 0 as *const xmlChar);
+extern "C" fn xmlTextWriterStartDocumentCallback(mut ctx: *mut core::ffi::c_void) {
+    let mut ctxt: *mut crate::src::tree::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    let mut doc: *mut crate::src::threads::_xmlDoc = 0 as *mut xmlDoc;
+    if (unsafe { (*ctxt).html }) != 0 {
+        if (unsafe { (*ctxt).myDoc }).is_null() {
+            let fresh32 = unsafe { &mut ((*ctxt).myDoc) };
+            *fresh32 = unsafe { htmlNewDocNoDtD(0 as *const xmlChar, 0 as *const xmlChar) };
         }
-        if ((*ctxt).myDoc).is_null() {
-            if !((*ctxt).sax).is_null() && ((*(*ctxt).sax).error).is_some() {
-                ((*(*ctxt).sax).error)
-                    .expect(
-                        "non-null function pointer",
-                    )(
+        if (unsafe { (*ctxt).myDoc }).is_null() {
+            if !(unsafe { (*ctxt).sax }).is_null() && (unsafe { ((*(*ctxt).sax).error).is_some() }) {
+                (unsafe { ((*(*ctxt).sax).error).expect("non-null function pointer")(
                     (*ctxt).userData,
-                    b"SAX.startDocument(): out of memory\n\0" as *const u8
-                        as *const i8,
-                );
+                    b"SAX.startDocument(): out of memory\n\0" as *const u8 as *const i8,
+                ) });
             }
-            (*ctxt).errNo = XML_ERR_NO_MEMORY as i32;
-            (*ctxt).instate = XML_PARSER_EOF;
-            (*ctxt).disableSAX = 1 as i32;
+            (unsafe { (*ctxt).errNo = XML_ERR_NO_MEMORY as i32 });
+            (unsafe { (*ctxt).instate = XML_PARSER_EOF });
+            (unsafe { (*ctxt).disableSAX = 1 as i32 });
             return;
         }
     } else {
-        doc = (*ctxt).myDoc;
+        doc = unsafe { (*ctxt).myDoc };
         if doc.is_null() {
-            let ref mut fresh33 = (*ctxt).myDoc;
-            *fresh33 = xmlNewDoc((*ctxt).version);
+            let fresh33 = unsafe { &mut ((*ctxt).myDoc) };
+            *fresh33 = xmlNewDoc(unsafe { (*ctxt).version });
             doc = *fresh33;
         }
         if !doc.is_null() {
-            if ((*doc).children).is_null() {
-                if !((*ctxt).encoding).is_null() {
-                    let ref mut fresh34 = (*doc).encoding;
-                    *fresh34 = xmlStrdup((*ctxt).encoding);
+            if (unsafe { (*doc).children }).is_null() {
+                if !(unsafe { (*ctxt).encoding }).is_null() {
+                    let fresh34 = unsafe { &mut ((*doc).encoding) };
+                    *fresh34 = xmlStrdup(unsafe { (*ctxt).encoding });
                 } else {
-                    let ref mut fresh35 = (*doc).encoding;
+                    let fresh35 = unsafe { &mut ((*doc).encoding) };
                     *fresh35 = 0 as *const xmlChar;
                 }
-                (*doc).standalone = (*ctxt).standalone;
+                (unsafe { (*doc).standalone = (*ctxt).standalone });
             }
         } else {
-            if !((*ctxt).sax).is_null() && ((*(*ctxt).sax).error).is_some() {
-                ((*(*ctxt).sax).error)
-                    .expect(
-                        "non-null function pointer",
-                    )(
+            if !(unsafe { (*ctxt).sax }).is_null() && (unsafe { ((*(*ctxt).sax).error).is_some() }) {
+                (unsafe { ((*(*ctxt).sax).error).expect("non-null function pointer")(
                     (*ctxt).userData,
-                    b"SAX.startDocument(): out of memory\n\0" as *const u8
-                        as *const i8,
-                );
+                    b"SAX.startDocument(): out of memory\n\0" as *const u8 as *const i8,
+                ) });
             }
-            (*ctxt).errNo = XML_ERR_NO_MEMORY as i32;
-            (*ctxt).instate = XML_PARSER_EOF;
-            (*ctxt).disableSAX = 1 as i32;
+            (unsafe { (*ctxt).errNo = XML_ERR_NO_MEMORY as i32 });
+            (unsafe { (*ctxt).instate = XML_PARSER_EOF });
+            (unsafe { (*ctxt).disableSAX = 1 as i32 });
             return;
         }
     }
-    if !((*ctxt).myDoc).is_null() && ((*(*ctxt).myDoc).URL).is_null()
-        && !((*ctxt).input).is_null() && !((*(*ctxt).input).filename).is_null()
+    if !(unsafe { (*ctxt).myDoc }).is_null()
+        && (unsafe { (*(*ctxt).myDoc).URL }).is_null()
+        && !(unsafe { (*ctxt).input }).is_null()
+        && !(unsafe { (*(*ctxt).input).filename }).is_null()
     {
-        let ref mut fresh36 = (*(*ctxt).myDoc).URL;
-        *fresh36 = xmlCanonicPath((*(*ctxt).input).filename as *const xmlChar);
-        if ((*(*ctxt).myDoc).URL).is_null() {
-            let ref mut fresh37 = (*(*ctxt).myDoc).URL;
-            *fresh37 = xmlStrdup((*(*ctxt).input).filename as *const xmlChar);
+        let fresh36 = unsafe { &mut ((*(*ctxt).myDoc).URL) };
+        *fresh36 = xmlCanonicPath((unsafe { (*(*ctxt).input).filename }) as *const xmlChar);
+        if (unsafe { (*(*ctxt).myDoc).URL }).is_null() {
+            let fresh37 = unsafe { &mut ((*(*ctxt).myDoc).URL) };
+            *fresh37 = xmlStrdup((unsafe { (*(*ctxt).input).filename }) as *const xmlChar);
         }
     }
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterSetIndent<'a1>(
+pub extern "C" fn xmlTextWriterSetIndent<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
     mut indent: i32,
 ) -> i32 {
-    if borrow(& writer).is_none() || indent < 0 as i32 {
+    if borrow(&writer).is_none() || indent < 0 as i32 {
         return -(1 as i32);
     }
     (*(borrow_mut(&mut writer)).unwrap()).indent = indent;
@@ -5620,46 +5605,46 @@ pub unsafe extern "C" fn xmlTextWriterSetIndent<'a1>(
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterSetIndentString<'a1>(
+pub extern "C" fn xmlTextWriterSetIndentString<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut str: * const u8,
+    mut str: *const u8,
 ) -> i32 {
-    if borrow(& writer).is_none() || str.is_null() {
+    if borrow(&writer).is_none() || str.is_null() {
         return -(1 as i32);
     }
     if !((*(borrow_mut(&mut writer)).unwrap()).ichar).is_null() {
-        xmlFree
-            .expect("non-null function pointer")((*(borrow_mut(&mut writer)).unwrap()).ichar as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(
+            (*(borrow_mut(&mut writer)).unwrap()).ichar as *mut libc::c_void,
+        ) });
     }
-    let ref mut fresh38 = (*(borrow_mut(&mut writer)).unwrap()).ichar;
+    let fresh38 = &mut ((*(borrow_mut(&mut writer)).unwrap()).ichar);
     *fresh38 = xmlStrdup(str);
     if ((*(borrow_mut(&mut writer)).unwrap()).ichar).is_null() {
-        return -(1 as i32)
+        return -(1 as i32);
     } else {
-        return 0 as i32
+        return 0 as i32;
     };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlTextWriterSetQuoteChar<'a1>(
+pub extern "C" fn xmlTextWriterSetQuoteChar<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
     mut quotechar: u8,
 ) -> i32 {
-    if borrow(& writer).is_none()
-        || quotechar as i32 != '\'' as i32
-            && quotechar as i32 != '"' as i32
+    if borrow(&writer).is_none()
+        || quotechar as i32 != '\'' as i32 && quotechar as i32 != '"' as i32
     {
         return -(1 as i32);
     }
     (*(borrow_mut(&mut writer)).unwrap()).qchar = quotechar as i8;
     return 0 as i32;
 }
-unsafe extern "C" fn xmlTextWriterWriteIndent<'a1>(
+extern "C" fn xmlTextWriterWriteIndent<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
 ) -> i32 {
     let mut lksize: i32 = 0;
     let mut i: i32 = 0;
     let mut ret: i32 = 0;
-    lksize = xmlListSize((*(borrow_mut(&mut writer)).unwrap()).nodes);
+    lksize = unsafe { xmlListSize((*(borrow_mut(&mut writer)).unwrap()).nodes) };
     if lksize < 1 as i32 {
         return -(1 as i32);
     }
@@ -5667,7 +5652,7 @@ unsafe extern "C" fn xmlTextWriterWriteIndent<'a1>(
     while i < lksize - 1 as i32 {
         ret = xmlOutputBufferWriteString(
             (*(borrow_mut(&mut writer)).unwrap()).out,
-            (*(borrow(& writer)).unwrap()).ichar as *const i8,
+            (*(borrow(&writer)).unwrap()).ichar as *const i8,
         );
         if ret == -(1 as i32) {
             return -(1 as i32);
@@ -5676,14 +5661,14 @@ unsafe extern "C" fn xmlTextWriterWriteIndent<'a1>(
     }
     return lksize - 1 as i32;
 }
-unsafe extern "C" fn xmlTextWriterHandleStateDependencies<'a1>(
+extern "C" fn xmlTextWriterHandleStateDependencies<'a1>(
     mut writer: Option<&'a1 mut crate::src::xmlwriter::_xmlTextWriter>,
-    mut p: * mut crate::src::xmlwriter::_xmlTextWriterStackEntry,
+    mut p: *mut crate::src::xmlwriter::_xmlTextWriterStackEntry,
 ) -> i32 {
     let mut count: i32 = 0;
     let mut sum: i32 = 0;
     let mut extra: [i8; 3] = [0; 3];
-    if borrow(& writer).is_none() {
+    if borrow(&writer).is_none() {
         return -(1 as i32);
     }
     if p.is_null() {
@@ -5695,7 +5680,7 @@ unsafe extern "C" fn xmlTextWriterHandleStateDependencies<'a1>(
     extra[0 as i32 as usize] = extra[1 as i32 as usize];
     if !p.is_null() {
         sum = 0 as i32;
-        match (*p).state as u32 {
+        match (unsafe { (*p).state }) as u32 {
             1 => {
                 count = xmlTextWriterOutputNSDecl(borrow_mut(&mut writer));
                 if count < 0 as i32 {
@@ -5703,35 +5688,38 @@ unsafe extern "C" fn xmlTextWriterHandleStateDependencies<'a1>(
                 }
                 sum += count;
                 extra[0 as i32 as usize] = '>' as i32 as i8;
-                (*p).state = XML_TEXTWRITER_TEXT;
-            }
+                (unsafe { (*p).state = XML_TEXTWRITER_TEXT });
+            },
             4 => {
                 extra[0 as i32 as usize] = ' ' as i32 as i8;
-                (*p).state = XML_TEXTWRITER_PI_TEXT;
-            }
+                (unsafe { (*p).state = XML_TEXTWRITER_PI_TEXT });
+            },
             7 => {
                 extra[0 as i32 as usize] = ' ' as i32 as i8;
                 extra[1 as i32 as usize] = '[' as i32 as i8;
-                (*p).state = XML_TEXTWRITER_DTD_TEXT;
-            }
+                (unsafe { (*p).state = XML_TEXTWRITER_DTD_TEXT });
+            },
             9 => {
                 extra[0 as i32 as usize] = ' ' as i32 as i8;
-                (*p).state = XML_TEXTWRITER_DTD_ELEM_TEXT;
-            }
+                (unsafe { (*p).state = XML_TEXTWRITER_DTD_ELEM_TEXT });
+            },
             11 => {
                 extra[0 as i32 as usize] = ' ' as i32 as i8;
-                (*p).state = XML_TEXTWRITER_DTD_ATTL_TEXT;
-            }
+                (unsafe { (*p).state = XML_TEXTWRITER_DTD_ATTL_TEXT });
+            },
             13 | 15 => {
                 extra[0 as i32 as usize] = ' ' as i32 as i8;
                 extra[1 as i32 as usize] = (*(borrow_mut(&mut writer)).unwrap()).qchar;
-                (*p).state = XML_TEXTWRITER_DTD_ENTY_TEXT;
-            }
-            _ => {}
+                (unsafe { (*p).state = XML_TEXTWRITER_DTD_ENTY_TEXT });
+            },
+            _ => {},
         }
     }
-    if *extra.as_mut_ptr() as i32 != '\u{0}' as i32 {
-        count = xmlOutputBufferWriteString((*(borrow_mut(&mut writer)).unwrap()).out, extra.as_mut_ptr());
+    if (unsafe { *extra.as_mut_ptr() }) as i32 != '\u{0}' as i32 {
+        count = xmlOutputBufferWriteString(
+            (*(borrow_mut(&mut writer)).unwrap()).out,
+            extra.as_mut_ptr(),
+        );
         if count < 0 as i32 {
             return -(1 as i32);
         }

@@ -118,9 +118,9 @@ pub type CURL = crate::src::lib::http2::Curl_easy;
 // #[derive(Copy, Clone)]
 
 pub type curl_slist = crate::src::lib::http2::curl_slist;
-pub type curl_seek_callback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: i64,_: i32,) -> i32>;
-pub type curl_read_callback = Option<unsafe extern "C"  fn(_: * mut i8,_: u64,_: u64,_: * mut core::ffi::c_void,) -> u64>;
-pub type curl_free_callback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
+pub type curl_seek_callback<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,_: i64,_: i32,) -> i32>;
+pub type curl_read_callback<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut i8>,_: u64,_: u64,_: Option<&'a2 mut core::ffi::c_void>,) -> u64>;
+pub type curl_free_callback<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,) -> ()>;
 pub type CURLcode = u32;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;

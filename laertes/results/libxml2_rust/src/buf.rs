@@ -1,99 +1,82 @@
-use ::libc;
+use :: libc;
 extern "C" {
-    
-    
-    
-    
-    static mut stdout: * mut crate::src::HTMLtree::_IO_FILE;
-    fn xmlStrlen(str: * const u8) -> i32;
-    fn xmlStrchr(str: * const u8, val: u8) -> * const u8;
+    static mut stdout: *mut crate::src::HTMLtree::_IO_FILE;
+    fn xmlStrlen(str: *const u8) -> i32;
+    fn xmlStrchr(str: *const u8, val: u8) -> *const u8;
     fn fwrite(
-        _: * const core::ffi::c_void,
+        _: *const core::ffi::c_void,
         _: u64,
         _: u64,
-        _: * mut crate::src::HTMLtree::_IO_FILE,
+        _: *mut crate::src::HTMLtree::_IO_FILE,
     ) -> u64;
     fn memcpy(
-        _: * mut core::ffi::c_void,
-        _: * const core::ffi::c_void,
+        _: *mut core::ffi::c_void,
+        _: *const core::ffi::c_void,
         _: u64,
-    ) -> * mut core::ffi::c_void;
+    ) -> *mut core::ffi::c_void;
     fn memmove(
-        _: * mut core::ffi::c_void,
-        _: * const core::ffi::c_void,
+        _: *mut core::ffi::c_void,
+        _: *const core::ffi::c_void,
         _: u64,
-    ) -> * mut core::ffi::c_void;
-    fn xmlBufferFree(buf: * mut crate::src::HTMLtree::_xmlBuffer);
-    
-    
-    
-    
-    
-    
-    
+    ) -> *mut core::ffi::c_void;
+    fn xmlBufferFree(buf: *mut crate::src::HTMLtree::_xmlBuffer);
 }
-pub use crate::src::error::__xmlSimpleError;
-pub use crate::src::globals::__xmlBufferAllocScheme;
-pub use crate::src::globals::__xmlDefaultBufferSize;
-pub use crate::src::HTMLtree::_IO_marker;
-pub use crate::src::catalog::_IO_wide_data;
-pub use crate::src::globals::xmlFree;
-pub use crate::src::globals::xmlMalloc;
-pub use crate::src::globals::xmlMallocAtomic;
-pub use crate::src::globals::xmlRealloc;
-pub use crate::src::relaxng::_IO_codecvt;
-pub use crate::src::dict::_xmlDict;
+pub use crate::src::{
+    catalog::_IO_wide_data,
+    dict::_xmlDict,
+    error::__xmlSimpleError,
+    globals::{
+        __xmlBufferAllocScheme, __xmlDefaultBufferSize, xmlFree, xmlMalloc, xmlMallocAtomic,
+        xmlRealloc,
+    },
+    relaxng::_IO_codecvt,
+    HTMLtree::_IO_marker,
+};
 pub type xmlChar = u8;
 pub type size_t = u64;
 pub type __off_t = i64;
 pub type __off64_t = i64;
-// #[derive(Copy, Clone)]
-
 pub type _IO_FILE = crate::src::HTMLtree::_IO_FILE;
 pub type _IO_lock_t = ();
 pub type FILE = crate::src::HTMLtree::_IO_FILE;
-// #[derive(Copy, Clone)]
-
 pub type _xmlParserInputBuffer = crate::src::HTMLparser::_xmlParserInputBuffer;
-pub type xmlBufPtr = * mut crate::src::buf::_xmlBuf;
+pub type xmlBufPtr = *mut crate::src::buf::_xmlBuf;
 pub type xmlBuf = crate::src::buf::_xmlBuf;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlBuf {
-    pub content: * mut u8,
+    pub content: *mut u8,
     pub compat_use: u32,
     pub compat_size: u32,
     pub alloc: u32,
-    pub contentIO: * mut u8,
+    pub contentIO: *mut u8,
     pub use_0: u64,
     pub size: u64,
-    pub buffer: * mut crate::src::HTMLtree::_xmlBuffer,
+    pub buffer: *mut crate::src::HTMLtree::_xmlBuffer,
     pub error: i32,
 }
 impl _xmlBuf {
     pub const fn new() -> Self {
         _xmlBuf {
-        content: (0 as * mut u8),
-        compat_use: 0,
-        compat_size: 0,
-        alloc: 0,
-        contentIO: (0 as * mut u8),
-        use_0: 0,
-        size: 0,
-        buffer: (0 as * mut crate::src::HTMLtree::_xmlBuffer),
-        error: 0
+            content: (0 as *mut u8),
+            compat_use: 0,
+            compat_size: 0,
+            alloc: 0,
+            contentIO: (0 as *mut u8),
+            use_0: 0,
+            size: 0,
+            buffer: (0 as *mut crate::src::HTMLtree::_xmlBuffer),
+            error: 0,
         }
     }
 }
-
 impl std::default::Default for _xmlBuf {
-    fn default() -> Self { _xmlBuf::new() }
+    fn default() -> Self {
+        _xmlBuf::new()
+    }
 }
-
-pub type xmlBufferPtr = * mut crate::src::HTMLtree::_xmlBuffer;
+pub type xmlBufferPtr = *mut crate::src::HTMLtree::_xmlBuffer;
 pub type xmlBuffer = crate::src::HTMLtree::_xmlBuffer;
-// #[derive(Copy, Clone)]
-
 pub type _xmlBuffer = crate::src::HTMLtree::_xmlBuffer;
 pub type xmlBufferAllocationScheme = u32;
 pub const XML_BUFFER_ALLOC_BOUNDED: xmlBufferAllocationScheme = 5;
@@ -102,36 +85,27 @@ pub const XML_BUFFER_ALLOC_IO: xmlBufferAllocationScheme = 3;
 pub const XML_BUFFER_ALLOC_IMMUTABLE: xmlBufferAllocationScheme = 2;
 pub const XML_BUFFER_ALLOC_EXACT: xmlBufferAllocationScheme = 1;
 pub const XML_BUFFER_ALLOC_DOUBLEIT: xmlBufferAllocationScheme = 0;
-pub type xmlCharEncodingHandlerPtr = * mut crate::src::HTMLparser::_xmlCharEncodingHandler;
+pub type xmlCharEncodingHandlerPtr = *mut crate::src::HTMLparser::_xmlCharEncodingHandler;
 pub type xmlCharEncodingHandler = crate::src::HTMLparser::_xmlCharEncodingHandler;
-// #[derive(Copy, Clone)]
-
 pub type _xmlCharEncodingHandler = crate::src::HTMLparser::_xmlCharEncodingHandler;
-pub type iconv_t = * mut core::ffi::c_void;
-pub type xmlCharEncodingOutputFunc = Option<unsafe extern "C"  fn(_: * mut u8,_: * mut i32,_: * const u8,_: * mut i32,) -> i32>;
-pub type xmlCharEncodingInputFunc = Option<unsafe extern "C"  fn(_: * mut u8,_: * mut i32,_: * const u8,_: * mut i32,) -> i32>;
-pub type xmlInputCloseCallback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type xmlInputReadCallback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut i8,_: i32,) -> i32>;
+pub type iconv_t = *mut core::ffi::c_void;
+pub type xmlCharEncodingOutputFunc =
+    Option<unsafe extern "C" fn(_: *mut u8, _: *mut i32, _: *const u8, _: *mut i32) -> i32>;
+pub type xmlCharEncodingInputFunc =
+    Option<unsafe extern "C" fn(_: *mut u8, _: *mut i32, _: *const u8, _: *mut i32) -> i32>;
+pub type xmlInputCloseCallback = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type xmlInputReadCallback =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *mut i8, _: i32) -> i32>;
 pub type xmlParserInputBuffer = crate::src::HTMLparser::_xmlParserInputBuffer;
-pub type xmlParserInputBufferPtr = * mut crate::src::HTMLparser::_xmlParserInputBuffer;
-// #[derive(Copy, Clone)]
-
+pub type xmlParserInputBufferPtr = *mut crate::src::HTMLparser::_xmlParserInputBuffer;
 pub type _xmlParserInput = crate::src::HTMLparser::_xmlParserInput;
-pub type xmlParserInputDeallocate = Option<unsafe extern "C"  fn(_: * mut u8,) -> ()>;
+pub type xmlParserInputDeallocate = Option<unsafe extern "C" fn(_: *mut u8) -> ()>;
 pub type xmlParserInput = crate::src::HTMLparser::_xmlParserInput;
-pub type xmlParserInputPtr = * mut crate::src::HTMLparser::_xmlParserInput;
-// #[derive(Copy, Clone)]
-
+pub type xmlParserInputPtr = *mut crate::src::HTMLparser::_xmlParserInput;
 pub type _xmlNode = crate::src::HTMLparser::_xmlNode;
 pub type xmlNs = crate::src::HTMLparser::_xmlNs;
-// #[derive(Copy, Clone)]
-
 pub type _xmlNs = crate::src::HTMLparser::_xmlNs;
-// #[derive(Copy, Clone)]
-
 pub type _xmlDoc = crate::src::HTMLparser::_xmlDoc;
-// #[derive(Copy, Clone)]
-
 pub type _xmlDtd = crate::src::HTMLparser::_xmlDtd;
 pub type xmlElementType = u32;
 pub const XML_XINCLUDE_END: xmlElementType = 20;
@@ -155,8 +129,6 @@ pub const XML_TEXT_NODE: xmlElementType = 3;
 pub const XML_ATTRIBUTE_NODE: xmlElementType = 2;
 pub const XML_ELEMENT_NODE: xmlElementType = 1;
 pub type xmlNsType = u32;
-// #[derive(Copy, Clone)]
-
 pub type _xmlAttr = crate::src::HTMLparser::_xmlAttr;
 pub type xmlAttributeType = u32;
 pub const XML_ATTRIBUTE_NOTATION: xmlAttributeType = 10;
@@ -169,11 +141,12 @@ pub const XML_ATTRIBUTE_IDREFS: xmlAttributeType = 4;
 pub const XML_ATTRIBUTE_IDREF: xmlAttributeType = 3;
 pub const XML_ATTRIBUTE_ID: xmlAttributeType = 2;
 pub const XML_ATTRIBUTE_CDATA: xmlAttributeType = 1;
-pub type xmlNodePtr = * mut crate::src::HTMLparser::_xmlNode;
+pub type xmlNodePtr = *mut crate::src::HTMLparser::_xmlNode;
 pub type xmlNode = crate::src::HTMLparser::_xmlNode;
-pub type xmlFreeFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type xmlMallocFunc = Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
-pub type xmlReallocFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: u64,) -> * mut core::ffi::c_void>;
+pub type xmlFreeFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+pub type xmlMallocFunc = Option<unsafe extern "C" fn(_: u64) -> *mut core::ffi::c_void>;
+pub type xmlReallocFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: u64) -> *mut core::ffi::c_void>;
 pub type C2RustUnnamed = u32;
 pub const XML_FROM_URI: C2RustUnnamed = 30;
 pub const XML_FROM_BUFFER: C2RustUnnamed = 29;
@@ -943,10 +916,7 @@ pub const XML_ERR_DOCUMENT_START: C2RustUnnamed_0 = 3;
 pub const XML_ERR_NO_MEMORY: C2RustUnnamed_0 = 2;
 pub const XML_ERR_INTERNAL_ERROR: C2RustUnnamed_0 = 1;
 pub const XML_ERR_OK: C2RustUnnamed_0 = 0;
-unsafe extern "C" fn xmlBufMemoryError(
-    mut buf: * mut crate::src::buf::_xmlBuf,
-    mut extra: * const i8,
-) {
+extern "C" fn xmlBufMemoryError(mut buf: *mut crate::src::buf::_xmlBuf, mut extra: *const i8) {
     __xmlSimpleError(
         XML_FROM_BUFFER as i32,
         XML_ERR_NO_MEMORY as i32,
@@ -954,14 +924,11 @@ unsafe extern "C" fn xmlBufMemoryError(
         0 as *const i8,
         extra,
     );
-    if !buf.is_null() && (*buf).error == 0 as i32 {
-        (*buf).error = XML_ERR_NO_MEMORY as i32;
+    if !buf.is_null() && (unsafe { (*buf).error }) == 0 as i32 {
+        (unsafe { (*buf).error = XML_ERR_NO_MEMORY as i32 });
     }
 }
-unsafe extern "C" fn xmlBufOverflowError(
-    mut buf: * mut crate::src::buf::_xmlBuf,
-    mut extra: * const i8,
-) {
+extern "C" fn xmlBufOverflowError(mut buf: *mut crate::src::buf::_xmlBuf, mut extra: *const i8) {
     __xmlSimpleError(
         XML_FROM_BUFFER as i32,
         XML_BUF_OVERFLOW as i32,
@@ -969,17 +936,15 @@ unsafe extern "C" fn xmlBufOverflowError(
         0 as *const i8,
         extra,
     );
-    if !buf.is_null() && (*buf).error == 0 as i32 {
-        (*buf).error = XML_BUF_OVERFLOW as i32;
+    if !buf.is_null() && (unsafe { (*buf).error }) == 0 as i32 {
+        (unsafe { (*buf).error = XML_BUF_OVERFLOW as i32 });
     }
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufCreate() -> * mut crate::src::buf::_xmlBuf {
-    let mut ret: * mut crate::src::buf::_xmlBuf = 0 as *mut xmlBuf;
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlBuf>() as u64) as xmlBufPtr;
+pub extern "C" fn xmlBufCreate() -> *mut crate::src::buf::_xmlBuf {
+    let mut ret: *mut crate::src::buf::_xmlBuf = 0 as *mut xmlBuf;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(::std::mem::size_of::<xmlBuf>() as u64) })
+        as xmlBufPtr;
     if ret.is_null() {
         xmlBufMemoryError(
             0 as xmlBufPtr,
@@ -987,48 +952,44 @@ pub unsafe extern "C" fn xmlBufCreate() -> * mut crate::src::buf::_xmlBuf {
         );
         return 0 as xmlBufPtr;
     }
-    (*ret).use_0 = 0 as i32 as size_t;
-    (*ret).error = 0 as i32;
-    let ref mut fresh0 = (*ret).buffer;
+    (unsafe { (*ret).use_0 = 0 as i32 as size_t });
+    (unsafe { (*ret).error = 0 as i32 });
+    let fresh0 = unsafe { &mut ((*ret).buffer) };
     *fresh0 = 0 as xmlBufferPtr;
-    (*ret).size = *(__xmlDefaultBufferSize()).unwrap() as size_t;
-    if (*ret).size < 2147483647 as i32 as u64 {
-        (*ret).compat_size = (*ret).size as u32;
+    (unsafe { (*ret).size = *(__xmlDefaultBufferSize()).unwrap() as size_t });
+    if (unsafe { (*ret).size }) < 2147483647 as i32 as u64 {
+        (unsafe { (*ret).compat_size = (*ret).size as u32 });
     } else {
-        (*ret).compat_size = 2147483647 as i32 as u32;
+        (unsafe { (*ret).compat_size = 2147483647 as i32 as u32 });
     }
-    if (*ret).use_0 < 2147483647 as i32 as u64 {
-        (*ret).compat_use = (*ret).use_0 as u32;
+    if (unsafe { (*ret).use_0 }) < 2147483647 as i32 as u64 {
+        (unsafe { (*ret).compat_use = (*ret).use_0 as u32 });
     } else {
-        (*ret).compat_use = 2147483647 as i32 as u32;
+        (unsafe { (*ret).compat_use = 2147483647 as i32 as u32 });
     }
-    (*ret).alloc = *(__xmlBufferAllocScheme()).unwrap();
-    let ref mut fresh1 = (*ret).content;
-    *fresh1 = xmlMallocAtomic
-        .expect(
-            "non-null function pointer",
-        )(((*ret).size).wrapping_mul(::std::mem::size_of::<xmlChar>() as u64))
-        as *mut xmlChar;
-    if ((*ret).content).is_null() {
+    (unsafe { (*ret).alloc = *(__xmlBufferAllocScheme()).unwrap() });
+    let fresh1 = unsafe { &mut ((*ret).content) };
+    *fresh1 = (unsafe { xmlMallocAtomic.expect("non-null function pointer")(
+        ((*ret).size).wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
+    ) }) as *mut xmlChar;
+    if (unsafe { (*ret).content }).is_null() {
         xmlBufMemoryError(ret, b"creating buffer\0" as *const u8 as *const i8);
-        xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
         return 0 as xmlBufPtr;
     }
-    *((*ret).content).offset(0 as i32 as isize) = 0 as i32 as xmlChar;
-    let ref mut fresh2 = (*ret).contentIO;
+    (unsafe { *((*ret).content).offset(0 as i32 as isize) = 0 as i32 as xmlChar });
+    let fresh2 = unsafe { &mut ((*ret).contentIO) };
     *fresh2 = 0 as *mut xmlChar;
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufCreateSize(mut size: u64) -> * mut crate::src::buf::_xmlBuf {
-    let mut ret: * mut crate::src::buf::_xmlBuf = 0 as *mut xmlBuf;
+pub extern "C" fn xmlBufCreateSize(mut size: u64) -> *mut crate::src::buf::_xmlBuf {
+    let mut ret: *mut crate::src::buf::_xmlBuf = 0 as *mut xmlBuf;
     if size == -(1 as i32) as size_t {
         return 0 as xmlBufPtr;
     }
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlBuf>() as u64) as xmlBufPtr;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(::std::mem::size_of::<xmlBuf>() as u64) })
+        as xmlBufPtr;
     if ret.is_null() {
         xmlBufMemoryError(
             0 as xmlBufPtr,
@@ -1036,379 +997,334 @@ pub unsafe extern "C" fn xmlBufCreateSize(mut size: u64) -> * mut crate::src::bu
         );
         return 0 as xmlBufPtr;
     }
-    (*ret).use_0 = 0 as i32 as size_t;
-    (*ret).error = 0 as i32;
-    let ref mut fresh3 = (*ret).buffer;
+    (unsafe { (*ret).use_0 = 0 as i32 as size_t });
+    (unsafe { (*ret).error = 0 as i32 });
+    let fresh3 = unsafe { &mut ((*ret).buffer) };
     *fresh3 = 0 as xmlBufferPtr;
-    (*ret).alloc = *(__xmlBufferAllocScheme()).unwrap();
-    (*ret)
-        .size = if size != 0 {
+    (unsafe { (*ret).alloc = *(__xmlBufferAllocScheme()).unwrap() });
+    (unsafe { (*ret).size = if size != 0 {
         size.wrapping_add(1 as i32 as u64)
     } else {
         0 as i32 as u64
-    };
-    if (*ret).size < 2147483647 as i32 as u64 {
-        (*ret).compat_size = (*ret).size as u32;
+    } });
+    if (unsafe { (*ret).size }) < 2147483647 as i32 as u64 {
+        (unsafe { (*ret).compat_size = (*ret).size as u32 });
     } else {
-        (*ret).compat_size = 2147483647 as i32 as u32;
+        (unsafe { (*ret).compat_size = 2147483647 as i32 as u32 });
     }
-    if (*ret).use_0 < 2147483647 as i32 as u64 {
-        (*ret).compat_use = (*ret).use_0 as u32;
+    if (unsafe { (*ret).use_0 }) < 2147483647 as i32 as u64 {
+        (unsafe { (*ret).compat_use = (*ret).use_0 as u32 });
     } else {
-        (*ret).compat_use = 2147483647 as i32 as u32;
+        (unsafe { (*ret).compat_use = 2147483647 as i32 as u32 });
     }
-    if (*ret).size != 0 {
-        let ref mut fresh4 = (*ret).content;
-        *fresh4 = xmlMallocAtomic
-            .expect(
-                "non-null function pointer",
-            )(
+    if (unsafe { (*ret).size }) != 0 {
+        let fresh4 = unsafe { &mut ((*ret).content) };
+        *fresh4 = (unsafe { xmlMallocAtomic.expect("non-null function pointer")(
             ((*ret).size).wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
-        ) as *mut xmlChar;
-        if ((*ret).content).is_null() {
-            xmlBufMemoryError(
-                ret,
-                b"creating buffer\0" as *const u8 as *const i8,
-            );
-            xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+        ) }) as *mut xmlChar;
+        if (unsafe { (*ret).content }).is_null() {
+            xmlBufMemoryError(ret, b"creating buffer\0" as *const u8 as *const i8);
+            (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
             return 0 as xmlBufPtr;
         }
-        *((*ret).content)
-            .offset(0 as i32 as isize) = 0 as i32 as xmlChar;
+        (unsafe { *((*ret).content).offset(0 as i32 as isize) = 0 as i32 as xmlChar });
     } else {
-        let ref mut fresh5 = (*ret).content;
+        let fresh5 = unsafe { &mut ((*ret).content) };
         *fresh5 = 0 as *mut xmlChar;
     }
-    let ref mut fresh6 = (*ret).contentIO;
+    let fresh6 = unsafe { &mut ((*ret).contentIO) };
     *fresh6 = 0 as *mut xmlChar;
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufDetach<'a1>(mut buf: Option<&'a1 mut crate::src::buf::_xmlBuf>) -> * mut u8 {
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
-    if borrow(& buf).is_none() {
+pub extern "C" fn xmlBufDetach<'a1>(mut buf: Option<&'a1 mut crate::src::buf::_xmlBuf>) -> *mut u8 {
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
+    if borrow(&buf).is_none() {
         return 0 as *mut xmlChar;
     }
-    if (*(borrow(& buf)).unwrap()).alloc as u32
-        == XML_BUFFER_ALLOC_IMMUTABLE as i32 as u32
-    {
+    if (*(borrow(&buf)).unwrap()).alloc as u32 == XML_BUFFER_ALLOC_IMMUTABLE as i32 as u32 {
         return 0 as *mut xmlChar;
     }
     if !((*(borrow_mut(&mut buf)).unwrap()).buffer).is_null() {
         return 0 as *mut xmlChar;
     }
-    if (*(borrow(& buf)).unwrap()).error != 0 {
+    if (*(borrow(&buf)).unwrap()).error != 0 {
         return 0 as *mut xmlChar;
     }
     ret = (*(borrow_mut(&mut buf)).unwrap()).content;
-    let ref mut fresh7 = (*(borrow_mut(&mut buf)).unwrap()).content;
+    let fresh7 = &mut ((*(borrow_mut(&mut buf)).unwrap()).content);
     *fresh7 = 0 as *mut xmlChar;
     (*(borrow_mut(&mut buf)).unwrap()).size = 0 as i32 as size_t;
     (*(borrow_mut(&mut buf)).unwrap()).use_0 = 0 as i32 as size_t;
-    if (*(borrow(& buf)).unwrap()).size < 2147483647 as i32 as u64 {
-        (*(borrow_mut(&mut buf)).unwrap()).compat_size = (*(borrow_mut(&mut buf)).unwrap()).size as u32;
+    if (*(borrow(&buf)).unwrap()).size < 2147483647 as i32 as u64 {
+        (*(borrow_mut(&mut buf)).unwrap()).compat_size =
+            (*(borrow_mut(&mut buf)).unwrap()).size as u32;
     } else {
         (*(borrow_mut(&mut buf)).unwrap()).compat_size = 2147483647 as i32 as u32;
     }
-    if (*(borrow(& buf)).unwrap()).use_0 < 2147483647 as i32 as u64 {
-        (*(borrow_mut(&mut buf)).unwrap()).compat_use = (*(borrow_mut(&mut buf)).unwrap()).use_0 as u32;
+    if (*(borrow(&buf)).unwrap()).use_0 < 2147483647 as i32 as u64 {
+        (*(borrow_mut(&mut buf)).unwrap()).compat_use =
+            (*(borrow_mut(&mut buf)).unwrap()).use_0 as u32;
     } else {
         (*(borrow_mut(&mut buf)).unwrap()).compat_use = 2147483647 as i32 as u32;
     }
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufCreateStatic(
-    mut mem: * mut core::ffi::c_void,
+pub extern "C" fn xmlBufCreateStatic(
+    mut mem: *mut core::ffi::c_void,
     mut size: u64,
-) -> * mut crate::src::buf::_xmlBuf {
-    let mut ret: * mut crate::src::buf::_xmlBuf = (0 as * mut crate::src::buf::_xmlBuf);
+) -> *mut crate::src::buf::_xmlBuf {
+    let mut ret: *mut crate::src::buf::_xmlBuf = 0 as *mut crate::src::buf::_xmlBuf;
     if mem.is_null() {
-        return (0 as * mut crate::src::buf::_xmlBuf);
+        return 0 as *mut crate::src::buf::_xmlBuf;
     }
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlBuf>() as u64) as xmlBufPtr;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(::std::mem::size_of::<xmlBuf>() as u64) })
+        as xmlBufPtr;
     if ret.is_null() {
         xmlBufMemoryError(
             0 as xmlBufPtr,
             b"creating buffer\0" as *const u8 as *const i8,
         );
-        return (0 as * mut crate::src::buf::_xmlBuf);
+        return 0 as *mut crate::src::buf::_xmlBuf;
     }
-    (*ret).use_0 = size;
-    (*ret).size = size;
-    if (*ret).size < 2147483647 as i32 as u64 {
-        (*ret).compat_size = (*ret).size as u32;
+    (unsafe { (*ret).use_0 = size });
+    (unsafe { (*ret).size = size });
+    if (unsafe { (*ret).size }) < 2147483647 as i32 as u64 {
+        (unsafe { (*ret).compat_size = (*ret).size as u32 });
     } else {
-        (*ret).compat_size = 2147483647 as i32 as u32;
+        (unsafe { (*ret).compat_size = 2147483647 as i32 as u32 });
     }
-    if (*ret).use_0 < 2147483647 as i32 as u64 {
-        (*ret).compat_use = (*ret).use_0 as u32;
+    if (unsafe { (*ret).use_0 }) < 2147483647 as i32 as u64 {
+        (unsafe { (*ret).compat_use = (*ret).use_0 as u32 });
     } else {
-        (*ret).compat_use = 2147483647 as i32 as u32;
+        (unsafe { (*ret).compat_use = 2147483647 as i32 as u32 });
     }
-    (*ret).alloc = XML_BUFFER_ALLOC_IMMUTABLE;
-    let ref mut fresh8 = (*ret).content;
+    (unsafe { (*ret).alloc = XML_BUFFER_ALLOC_IMMUTABLE });
+    let fresh8 = unsafe { &mut ((*ret).content) };
     *fresh8 = mem as *mut xmlChar;
-    (*ret).error = 0 as i32;
-    let ref mut fresh9 = (*ret).buffer;
+    (unsafe { (*ret).error = 0 as i32 });
+    let fresh9 = unsafe { &mut ((*ret).buffer) };
     *fresh9 = 0 as xmlBufferPtr;
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufGetAllocationScheme(mut buf: * mut crate::src::buf::_xmlBuf) -> i32 {
+pub extern "C" fn xmlBufGetAllocationScheme(mut buf: *mut crate::src::buf::_xmlBuf) -> i32 {
     if buf.is_null() {
         return -(1 as i32);
     }
-    return (*buf).alloc as i32;
+    return (unsafe { (*buf).alloc }) as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufSetAllocationScheme(
-    mut buf: * mut crate::src::buf::_xmlBuf,
+pub extern "C" fn xmlBufSetAllocationScheme(
+    mut buf: *mut crate::src::buf::_xmlBuf,
     mut scheme: u32,
 ) -> i32 {
-    if buf.is_null() || (*buf).error != 0 as i32 {
+    if buf.is_null() || (unsafe { (*buf).error }) != 0 as i32 {
         return -(1 as i32);
     }
-    if (*buf).alloc as u32
-        == XML_BUFFER_ALLOC_IMMUTABLE as i32 as u32
-        || (*buf).alloc as u32
-            == XML_BUFFER_ALLOC_IO as i32 as u32
+    if (unsafe { (*buf).alloc }) as u32 == XML_BUFFER_ALLOC_IMMUTABLE as i32 as u32
+        || (unsafe { (*buf).alloc }) as u32 == XML_BUFFER_ALLOC_IO as i32 as u32
     {
         return -(1 as i32);
     }
     if scheme as u32 == XML_BUFFER_ALLOC_DOUBLEIT as i32 as u32
-        || scheme as u32
-            == XML_BUFFER_ALLOC_EXACT as i32 as u32
-        || scheme as u32
-            == XML_BUFFER_ALLOC_HYBRID as i32 as u32
-        || scheme as u32
-            == XML_BUFFER_ALLOC_IMMUTABLE as i32 as u32
-        || scheme as u32
-            == XML_BUFFER_ALLOC_BOUNDED as i32 as u32
+        || scheme as u32 == XML_BUFFER_ALLOC_EXACT as i32 as u32
+        || scheme as u32 == XML_BUFFER_ALLOC_HYBRID as i32 as u32
+        || scheme as u32 == XML_BUFFER_ALLOC_IMMUTABLE as i32 as u32
+        || scheme as u32 == XML_BUFFER_ALLOC_BOUNDED as i32 as u32
     {
-        (*buf).alloc = scheme;
-        if !((*buf).buffer).is_null() {
-            (*(*buf).buffer).alloc = scheme;
+        (unsafe { (*buf).alloc = scheme });
+        if !(unsafe { (*buf).buffer }).is_null() {
+            (unsafe { (*(*buf).buffer).alloc = scheme });
         }
         return 0 as i32;
     }
     if scheme as u32 == XML_BUFFER_ALLOC_IO as i32 as u32 {
-        (*buf).alloc = XML_BUFFER_ALLOC_IO;
-        let ref mut fresh10 = (*buf).contentIO;
-        *fresh10 = (*buf).content;
+        (unsafe { (*buf).alloc = XML_BUFFER_ALLOC_IO });
+        let fresh10 = unsafe { &mut ((*buf).contentIO) };
+        *fresh10 = unsafe { (*buf).content };
     }
     return -(1 as i32);
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufFree(mut buf: * mut crate::src::buf::_xmlBuf) {
+pub extern "C" fn xmlBufFree(mut buf: *mut crate::src::buf::_xmlBuf) {
     if buf.is_null() {
         return;
     }
-    if (*buf).alloc as u32 == XML_BUFFER_ALLOC_IO as i32 as u32
-        && !((*buf).contentIO).is_null()
+    if (unsafe { (*buf).alloc }) as u32 == XML_BUFFER_ALLOC_IO as i32 as u32 && !(unsafe { (*buf).contentIO }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*buf).contentIO as *mut libc::c_void) });
+    } else if !(unsafe { (*buf).content }).is_null()
+        && (unsafe { (*buf).alloc }) as u32 != XML_BUFFER_ALLOC_IMMUTABLE as i32 as u32
     {
-        xmlFree
-            .expect("non-null function pointer")((*buf).contentIO as *mut libc::c_void);
-    } else if !((*buf).content).is_null()
-            && (*buf).alloc as u32
-                != XML_BUFFER_ALLOC_IMMUTABLE as i32 as u32
-        {
-        xmlFree.expect("non-null function pointer")((*buf).content as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")((*buf).content as *mut libc::c_void) });
     }
-    xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void) });
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufEmpty(mut buf: * mut crate::src::buf::_xmlBuf) {
-    if buf.is_null() || (*buf).error != 0 as i32 {
+pub extern "C" fn xmlBufEmpty(mut buf: *mut crate::src::buf::_xmlBuf) {
+    if buf.is_null() || (unsafe { (*buf).error }) != 0 as i32 {
         return;
     }
-    if ((*buf).content).is_null() {
+    if (unsafe { (*buf).content }).is_null() {
         return;
     }
-    if (*buf).size != (*buf).compat_size as size_t {
-        if (*buf).compat_size < 2147483647 as i32 as u32 {
-            (*buf).size = (*buf).compat_size as size_t;
+    if (unsafe { (*buf).size }) != (unsafe { (*buf).compat_size }) as size_t {
+        if (unsafe { (*buf).compat_size }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).size = (*buf).compat_size as size_t });
         }
     }
-    if (*buf).use_0 != (*buf).compat_use as size_t {
-        if (*buf).compat_use < 2147483647 as i32 as u32 {
-            (*buf).use_0 = (*buf).compat_use as size_t;
+    if (unsafe { (*buf).use_0 }) != (unsafe { (*buf).compat_use }) as size_t {
+        if (unsafe { (*buf).compat_use }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).use_0 = (*buf).compat_use as size_t });
         }
     }
-    (*buf).use_0 = 0 as i32 as size_t;
-    if (*buf).alloc as u32
-        == XML_BUFFER_ALLOC_IMMUTABLE as i32 as u32
-    {
-        let ref mut fresh11 = (*buf).content;
+    (unsafe { (*buf).use_0 = 0 as i32 as size_t });
+    if (unsafe { (*buf).alloc }) as u32 == XML_BUFFER_ALLOC_IMMUTABLE as i32 as u32 {
+        let fresh11 = unsafe { &mut ((*buf).content) };
         *fresh11 = b"\0" as *const u8 as *const i8 as *mut xmlChar;
-    } else if (*buf).alloc as u32
-            == XML_BUFFER_ALLOC_IO as i32 as u32
-            && !((*buf).contentIO).is_null()
-        {
-        let mut start_buf: u64 = ((*buf).content).offset_from((*buf).contentIO)
-            as i64 as size_t;
-        let ref mut fresh12 = (*buf).size;
-        *fresh12 = (*fresh12 as u64).wrapping_add(start_buf) as size_t
-            as size_t;
-        let ref mut fresh13 = (*buf).content;
-        *fresh13 = (*buf).contentIO;
-        *((*buf).content)
-            .offset(0 as i32 as isize) = 0 as i32 as xmlChar;
+    } else if (unsafe { (*buf).alloc }) as u32 == XML_BUFFER_ALLOC_IO as i32 as u32
+        && !(unsafe { (*buf).contentIO }).is_null()
+    {
+        let mut start_buf: u64 = (unsafe { ((*buf).content).offset_from((*buf).contentIO) }) as i64 as size_t;
+        let fresh12 = unsafe { &mut ((*buf).size) };
+        *fresh12 = (*fresh12 as u64).wrapping_add(start_buf) as size_t as size_t;
+        let fresh13 = unsafe { &mut ((*buf).content) };
+        *fresh13 = unsafe { (*buf).contentIO };
+        (unsafe { *((*buf).content).offset(0 as i32 as isize) = 0 as i32 as xmlChar });
     } else {
-        *((*buf).content)
-            .offset(0 as i32 as isize) = 0 as i32 as xmlChar;
+        (unsafe { *((*buf).content).offset(0 as i32 as isize) = 0 as i32 as xmlChar });
     }
-    if (*buf).size < 2147483647 as i32 as u64 {
-        (*buf).compat_size = (*buf).size as u32;
+    if (unsafe { (*buf).size }) < 2147483647 as i32 as u64 {
+        (unsafe { (*buf).compat_size = (*buf).size as u32 });
     } else {
-        (*buf).compat_size = 2147483647 as i32 as u32;
+        (unsafe { (*buf).compat_size = 2147483647 as i32 as u32 });
     }
-    if (*buf).use_0 < 2147483647 as i32 as u64 {
-        (*buf).compat_use = (*buf).use_0 as u32;
+    if (unsafe { (*buf).use_0 }) < 2147483647 as i32 as u64 {
+        (unsafe { (*buf).compat_use = (*buf).use_0 as u32 });
     } else {
-        (*buf).compat_use = 2147483647 as i32 as u32;
+        (unsafe { (*buf).compat_use = 2147483647 as i32 as u32 });
     };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufShrink(mut buf: * mut crate::src::buf::_xmlBuf, mut len: u64) -> u64 {
-    if buf.is_null() || (*buf).error != 0 as i32 {
+pub extern "C" fn xmlBufShrink(mut buf: *mut crate::src::buf::_xmlBuf, mut len: u64) -> u64 {
+    if buf.is_null() || (unsafe { (*buf).error }) != 0 as i32 {
         return 0 as i32 as size_t;
     }
-    if (*buf).size != (*buf).compat_size as size_t {
-        if (*buf).compat_size < 2147483647 as i32 as u32 {
-            (*buf).size = (*buf).compat_size as size_t;
+    if (unsafe { (*buf).size }) != (unsafe { (*buf).compat_size }) as size_t {
+        if (unsafe { (*buf).compat_size }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).size = (*buf).compat_size as size_t });
         }
     }
-    if (*buf).use_0 != (*buf).compat_use as size_t {
-        if (*buf).compat_use < 2147483647 as i32 as u32 {
-            (*buf).use_0 = (*buf).compat_use as size_t;
+    if (unsafe { (*buf).use_0 }) != (unsafe { (*buf).compat_use }) as size_t {
+        if (unsafe { (*buf).compat_use }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).use_0 = (*buf).compat_use as size_t });
         }
     }
     if len == 0 as i32 as u64 {
         return 0 as i32 as size_t;
     }
-    if len > (*buf).use_0 {
+    if len > (unsafe { (*buf).use_0 }) {
         return 0 as i32 as size_t;
     }
-    let ref mut fresh14 = (*buf).use_0;
+    let fresh14 = unsafe { &mut ((*buf).use_0) };
     *fresh14 = (*fresh14 as u64).wrapping_sub(len) as size_t as size_t;
-    if (*buf).alloc as u32
-        == XML_BUFFER_ALLOC_IMMUTABLE as i32 as u32
-        || (*buf).alloc as u32
-            == XML_BUFFER_ALLOC_IO as i32 as u32
-            && !((*buf).contentIO).is_null()
+    if (unsafe { (*buf).alloc }) as u32 == XML_BUFFER_ALLOC_IMMUTABLE as i32 as u32
+        || (unsafe { (*buf).alloc }) as u32 == XML_BUFFER_ALLOC_IO as i32 as u32 && !(unsafe { (*buf).contentIO }).is_null()
     {
-        let ref mut fresh15 = (*buf).content;
-        *fresh15 = (*fresh15).offset(len as isize);
-        let ref mut fresh16 = (*buf).size;
+        let fresh15 = unsafe { &mut ((*buf).content) };
+        *fresh15 = unsafe { (*fresh15).offset(len as isize) };
+        let fresh16 = unsafe { &mut ((*buf).size) };
         *fresh16 = (*fresh16 as u64).wrapping_sub(len) as size_t as size_t;
-        if (*buf).alloc as u32
-            == XML_BUFFER_ALLOC_IO as i32 as u32
-            && !((*buf).contentIO).is_null()
+        if (unsafe { (*buf).alloc }) as u32 == XML_BUFFER_ALLOC_IO as i32 as u32 && !(unsafe { (*buf).contentIO }).is_null()
         {
-            let mut start_buf: u64 = ((*buf).content).offset_from((*buf).contentIO)
-                as i64 as size_t;
-            if start_buf >= (*buf).size {
-                memmove(
+            let mut start_buf: u64 =
+                (unsafe { ((*buf).content).offset_from((*buf).contentIO) }) as i64 as size_t;
+            if start_buf >= (unsafe { (*buf).size }) {
+                (unsafe { memmove(
                     (*buf).contentIO as *mut libc::c_void,
-                    &mut *((*buf).content).offset(0 as i32 as isize)
-                        as *mut xmlChar as *const libc::c_void,
+                    &mut *((*buf).content).offset(0 as i32 as isize) as *mut xmlChar
+                        as *const libc::c_void,
                     (*buf).use_0,
-                );
-                let ref mut fresh17 = (*buf).content;
-                *fresh17 = (*buf).contentIO;
-                *((*buf).content)
-                    .offset((*buf).use_0 as isize) = 0 as i32 as xmlChar;
-                let ref mut fresh18 = (*buf).size;
-                *fresh18 = (*fresh18 as u64).wrapping_add(start_buf) as size_t
-                    as size_t;
+                ) });
+                let fresh17 = unsafe { &mut ((*buf).content) };
+                *fresh17 = unsafe { (*buf).contentIO };
+                (unsafe { *((*buf).content).offset((*buf).use_0 as isize) = 0 as i32 as xmlChar });
+                let fresh18 = unsafe { &mut ((*buf).size) };
+                *fresh18 = (*fresh18 as u64).wrapping_add(start_buf) as size_t as size_t;
             }
         }
     } else {
-        memmove(
+        (unsafe { memmove(
             (*buf).content as *mut libc::c_void,
-            &mut *((*buf).content).offset(len as isize) as *mut xmlChar
-                as *const libc::c_void,
+            &mut *((*buf).content).offset(len as isize) as *mut xmlChar as *const libc::c_void,
             (*buf).use_0,
-        );
-        *((*buf).content).offset((*buf).use_0 as isize) = 0 as i32 as xmlChar;
+        ) });
+        (unsafe { *((*buf).content).offset((*buf).use_0 as isize) = 0 as i32 as xmlChar });
     }
-    if (*buf).size < 2147483647 as i32 as u64 {
-        (*buf).compat_size = (*buf).size as u32;
+    if (unsafe { (*buf).size }) < 2147483647 as i32 as u64 {
+        (unsafe { (*buf).compat_size = (*buf).size as u32 });
     } else {
-        (*buf).compat_size = 2147483647 as i32 as u32;
+        (unsafe { (*buf).compat_size = 2147483647 as i32 as u32 });
     }
-    if (*buf).use_0 < 2147483647 as i32 as u64 {
-        (*buf).compat_use = (*buf).use_0 as u32;
+    if (unsafe { (*buf).use_0 }) < 2147483647 as i32 as u64 {
+        (unsafe { (*buf).compat_use = (*buf).use_0 as u32 });
     } else {
-        (*buf).compat_use = 2147483647 as i32 as u32;
+        (unsafe { (*buf).compat_use = 2147483647 as i32 as u32 });
     }
     return len;
 }
-unsafe extern "C" fn xmlBufGrowInternal(mut buf: * mut crate::src::buf::_xmlBuf, mut len: u64) -> u64 {
+extern "C" fn xmlBufGrowInternal(mut buf: *mut crate::src::buf::_xmlBuf, mut len: u64) -> u64 {
     let mut size: u64 = 0;
-    let mut newbuf: * mut u8 = 0 as *mut xmlChar;
-    if buf.is_null() || (*buf).error != 0 as i32 {
+    let mut newbuf: *mut u8 = 0 as *mut xmlChar;
+    if buf.is_null() || (unsafe { (*buf).error }) != 0 as i32 {
         return 0 as i32 as size_t;
     }
-    if (*buf).size != (*buf).compat_size as size_t {
-        if (*buf).compat_size < 2147483647 as i32 as u32 {
-            (*buf).size = (*buf).compat_size as size_t;
+    if (unsafe { (*buf).size }) != (unsafe { (*buf).compat_size }) as size_t {
+        if (unsafe { (*buf).compat_size }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).size = (*buf).compat_size as size_t });
         }
     }
-    if (*buf).use_0 != (*buf).compat_use as size_t {
-        if (*buf).compat_use < 2147483647 as i32 as u32 {
-            (*buf).use_0 = (*buf).compat_use as size_t;
+    if (unsafe { (*buf).use_0 }) != (unsafe { (*buf).compat_use }) as size_t {
+        if (unsafe { (*buf).compat_use }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).use_0 = (*buf).compat_use as size_t });
         }
     }
-    if (*buf).alloc as u32
-        == XML_BUFFER_ALLOC_IMMUTABLE as i32 as u32
-    {
+    if (unsafe { (*buf).alloc }) as u32 == XML_BUFFER_ALLOC_IMMUTABLE as i32 as u32 {
         return 0 as i32 as size_t;
     }
-    if len < ((*buf).size).wrapping_sub((*buf).use_0) {
-        return ((*buf).size)
-            .wrapping_sub((*buf).use_0)
+    if len < (unsafe { (*buf).size }).wrapping_sub(unsafe { (*buf).use_0 }) {
+        return (unsafe { (*buf).size })
+            .wrapping_sub(unsafe { (*buf).use_0 })
             .wrapping_sub(1 as i32 as u64);
     }
-    if len >= (-(1 as i32) as size_t).wrapping_sub((*buf).use_0) {
+    if len >= (-(1 as i32) as size_t).wrapping_sub(unsafe { (*buf).use_0 }) {
         xmlBufMemoryError(
             buf,
             b"growing buffer past SIZE_MAX\0" as *const u8 as *const i8,
         );
         return 0 as i32 as size_t;
     }
-    if (*buf).size > len {
-        size = if (*buf).size
-            > (-(1 as i32) as size_t)
-                .wrapping_div(2 as i32 as u64)
-        {
+    if (unsafe { (*buf).size }) > len {
+        size = if (unsafe { (*buf).size }) > (-(1 as i32) as size_t).wrapping_div(2 as i32 as u64) {
             -(1 as i32) as size_t
         } else {
-            ((*buf).size).wrapping_mul(2 as i32 as u64)
+            (unsafe { (*buf).size }).wrapping_mul(2 as i32 as u64)
         };
     } else {
-        size = ((*buf).use_0).wrapping_add(len);
-        size = if size
-            > (-(1 as i32) as size_t)
-                .wrapping_sub(100 as i32 as u64)
-        {
+        size = (unsafe { (*buf).use_0 }).wrapping_add(len);
+        size = if size > (-(1 as i32) as size_t).wrapping_sub(100 as i32 as u64) {
             -(1 as i32) as size_t
         } else {
             size.wrapping_add(100 as i32 as u64)
         };
     }
-    if (*buf).alloc as u32
-        == XML_BUFFER_ALLOC_BOUNDED as i32 as u32
-    {
-        if ((*buf).use_0)
+    if (unsafe { (*buf).alloc }) as u32 == XML_BUFFER_ALLOC_BOUNDED as i32 as u32 {
+        if (unsafe { (*buf).use_0 })
             .wrapping_add(len)
             .wrapping_add(1 as i32 as u64)
             >= 10000000 as i32 as u64
-            || (*buf).size >= 10000000 as i32 as u64
+            || (unsafe { (*buf).size }) >= 10000000 as i32 as u64
         {
             xmlBufMemoryError(
                 buf,
@@ -1420,62 +1336,49 @@ unsafe extern "C" fn xmlBufGrowInternal(mut buf: * mut crate::src::buf::_xmlBuf,
             size = 10000000 as i32 as size_t;
         }
     }
-    if (*buf).alloc as u32 == XML_BUFFER_ALLOC_IO as i32 as u32
-        && !((*buf).contentIO).is_null()
-    {
-        let mut start_buf: u64 = ((*buf).content).offset_from((*buf).contentIO)
-            as i64 as size_t;
-        newbuf = xmlRealloc
-            .expect(
-                "non-null function pointer",
-            )((*buf).contentIO as *mut libc::c_void, start_buf.wrapping_add(size))
-            as *mut xmlChar;
+    if (unsafe { (*buf).alloc }) as u32 == XML_BUFFER_ALLOC_IO as i32 as u32 && !(unsafe { (*buf).contentIO }).is_null() {
+        let mut start_buf: u64 = (unsafe { ((*buf).content).offset_from((*buf).contentIO) }) as i64 as size_t;
+        newbuf = (unsafe { xmlRealloc.expect("non-null function pointer")(
+            (*buf).contentIO as *mut libc::c_void,
+            start_buf.wrapping_add(size),
+        ) }) as *mut xmlChar;
         if newbuf.is_null() {
-            xmlBufMemoryError(
-                buf,
-                b"growing buffer\0" as *const u8 as *const i8,
-            );
+            xmlBufMemoryError(buf, b"growing buffer\0" as *const u8 as *const i8);
             return 0 as i32 as size_t;
         }
-        let ref mut fresh19 = (*buf).contentIO;
+        let fresh19 = unsafe { &mut ((*buf).contentIO) };
         *fresh19 = newbuf;
-        let ref mut fresh20 = (*buf).content;
-        *fresh20 = newbuf.offset(start_buf as isize);
+        let fresh20 = unsafe { &mut ((*buf).content) };
+        *fresh20 = unsafe { newbuf.offset(start_buf as isize) };
     } else {
-        newbuf = xmlRealloc
-            .expect(
-                "non-null function pointer",
-            )((*buf).content as *mut libc::c_void, size) as *mut xmlChar;
+        newbuf = (unsafe { xmlRealloc.expect("non-null function pointer")(
+            (*buf).content as *mut libc::c_void,
+            size,
+        ) }) as *mut xmlChar;
         if newbuf.is_null() {
-            xmlBufMemoryError(
-                buf,
-                b"growing buffer\0" as *const u8 as *const i8,
-            );
+            xmlBufMemoryError(buf, b"growing buffer\0" as *const u8 as *const i8);
             return 0 as i32 as size_t;
         }
-        let ref mut fresh21 = (*buf).content;
+        let fresh21 = unsafe { &mut ((*buf).content) };
         *fresh21 = newbuf;
     }
-    (*buf).size = size;
-    if (*buf).size < 2147483647 as i32 as u64 {
-        (*buf).compat_size = (*buf).size as u32;
+    (unsafe { (*buf).size = size });
+    if (unsafe { (*buf).size }) < 2147483647 as i32 as u64 {
+        (unsafe { (*buf).compat_size = (*buf).size as u32 });
     } else {
-        (*buf).compat_size = 2147483647 as i32 as u32;
+        (unsafe { (*buf).compat_size = 2147483647 as i32 as u32 });
     }
-    if (*buf).use_0 < 2147483647 as i32 as u64 {
-        (*buf).compat_use = (*buf).use_0 as u32;
+    if (unsafe { (*buf).use_0 }) < 2147483647 as i32 as u64 {
+        (unsafe { (*buf).compat_use = (*buf).use_0 as u32 });
     } else {
-        (*buf).compat_use = 2147483647 as i32 as u32;
+        (unsafe { (*buf).compat_use = 2147483647 as i32 as u32 });
     }
-    return ((*buf).size)
-        .wrapping_sub((*buf).use_0)
+    return (unsafe { (*buf).size })
+        .wrapping_sub(unsafe { (*buf).use_0 })
         .wrapping_sub(1 as i32 as u64);
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufGrow(
-    mut buf: * mut crate::src::buf::_xmlBuf,
-    mut len: i32,
-) -> i32 {
+pub extern "C" fn xmlBufGrow(mut buf: *mut crate::src::buf::_xmlBuf, mut len: i32) -> i32 {
     let mut ret: u64 = 0;
     if buf.is_null() || len < 0 as i32 {
         return -(1 as i32);
@@ -1484,204 +1387,199 @@ pub unsafe extern "C" fn xmlBufGrow(
         return 0 as i32;
     }
     ret = xmlBufGrowInternal(buf, len as size_t);
-    if (*buf).error != 0 as i32 {
+    if (unsafe { (*buf).error }) != 0 as i32 {
         return -(1 as i32);
     }
     return ret as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufDump<'a1>(mut file: * mut crate::src::HTMLtree::_IO_FILE, mut buf: Option<&'a1 mut crate::src::buf::_xmlBuf>) -> u64 {
+pub extern "C" fn xmlBufDump<'a1>(
+    mut file: *mut crate::src::HTMLtree::_IO_FILE,
+    mut buf: Option<&'a1 mut crate::src::buf::_xmlBuf>,
+) -> u64 {
     let mut ret: u64 = 0;
-    if borrow(& buf).is_none() || (*(borrow(& buf)).unwrap()).error != 0 as i32 {
+    if borrow(&buf).is_none() || (*(borrow(&buf)).unwrap()).error != 0 as i32 {
         return 0 as i32 as size_t;
     }
     if ((*(borrow_mut(&mut buf)).unwrap()).content).is_null() {
         return 0 as i32 as size_t;
     }
-    if (*(borrow(& buf)).unwrap()).size != (*(borrow(& buf)).unwrap()).compat_size as size_t {
-        if (*(borrow(& buf)).unwrap()).compat_size < 2147483647 as i32 as u32 {
-            (*(borrow_mut(&mut buf)).unwrap()).size = (*(borrow_mut(&mut buf)).unwrap()).compat_size as size_t;
+    if (*(borrow(&buf)).unwrap()).size != (*(borrow(&buf)).unwrap()).compat_size as size_t {
+        if (*(borrow(&buf)).unwrap()).compat_size < 2147483647 as i32 as u32 {
+            (*(borrow_mut(&mut buf)).unwrap()).size =
+                (*(borrow_mut(&mut buf)).unwrap()).compat_size as size_t;
         }
     }
-    if (*(borrow(& buf)).unwrap()).use_0 != (*(borrow(& buf)).unwrap()).compat_use as size_t {
-        if (*(borrow(& buf)).unwrap()).compat_use < 2147483647 as i32 as u32 {
-            (*(borrow_mut(&mut buf)).unwrap()).use_0 = (*(borrow_mut(&mut buf)).unwrap()).compat_use as size_t;
+    if (*(borrow(&buf)).unwrap()).use_0 != (*(borrow(&buf)).unwrap()).compat_use as size_t {
+        if (*(borrow(&buf)).unwrap()).compat_use < 2147483647 as i32 as u32 {
+            (*(borrow_mut(&mut buf)).unwrap()).use_0 =
+                (*(borrow_mut(&mut buf)).unwrap()).compat_use as size_t;
         }
     }
     if file.is_null() {
-        file = stdout;
+        file = unsafe { stdout };
     }
-    ret = fwrite(
-        (*(borrow(& buf)).unwrap()).content as *const libc::c_void,
+    ret = unsafe { fwrite(
+        (*(borrow(&buf)).unwrap()).content as *const libc::c_void,
         ::std::mem::size_of::<xmlChar>() as u64,
         (*(borrow_mut(&mut buf)).unwrap()).use_0,
         file,
-    );
+    ) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufContent(mut buf: * const crate::src::buf::_xmlBuf) -> * mut u8 {
-    if buf.is_null() || (*buf).error != 0 {
+pub extern "C" fn xmlBufContent(mut buf: *const crate::src::buf::_xmlBuf) -> *mut u8 {
+    if buf.is_null() || (unsafe { (*buf).error }) != 0 {
         return 0 as *mut xmlChar;
     }
-    return (*buf).content;
+    return unsafe { (*buf).content };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufEnd(mut buf: * mut crate::src::buf::_xmlBuf) -> * mut u8 {
-    if buf.is_null() || (*buf).error != 0 {
+pub extern "C" fn xmlBufEnd(mut buf: *mut crate::src::buf::_xmlBuf) -> *mut u8 {
+    if buf.is_null() || (unsafe { (*buf).error }) != 0 {
         return 0 as *mut xmlChar;
     }
-    if (*buf).size != (*buf).compat_size as size_t {
-        if (*buf).compat_size < 2147483647 as i32 as u32 {
-            (*buf).size = (*buf).compat_size as size_t;
+    if (unsafe { (*buf).size }) != (unsafe { (*buf).compat_size }) as size_t {
+        if (unsafe { (*buf).compat_size }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).size = (*buf).compat_size as size_t });
         }
     }
-    if (*buf).use_0 != (*buf).compat_use as size_t {
-        if (*buf).compat_use < 2147483647 as i32 as u32 {
-            (*buf).use_0 = (*buf).compat_use as size_t;
+    if (unsafe { (*buf).use_0 }) != (unsafe { (*buf).compat_use }) as size_t {
+        if (unsafe { (*buf).compat_use }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).use_0 = (*buf).compat_use as size_t });
         }
     }
-    return &mut *((*buf).content).offset((*buf).use_0 as isize) as *mut xmlChar;
+    return (unsafe { &mut *((*buf).content).offset((*buf).use_0 as isize) }) as *mut xmlChar;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufAddLen(
-    mut buf: * mut crate::src::buf::_xmlBuf,
-    mut len: u64,
-) -> i32 {
-    if buf.is_null() || (*buf).error != 0 {
+pub extern "C" fn xmlBufAddLen(mut buf: *mut crate::src::buf::_xmlBuf, mut len: u64) -> i32 {
+    if buf.is_null() || (unsafe { (*buf).error }) != 0 {
         return -(1 as i32);
     }
-    if (*buf).size != (*buf).compat_size as size_t {
-        if (*buf).compat_size < 2147483647 as i32 as u32 {
-            (*buf).size = (*buf).compat_size as size_t;
+    if (unsafe { (*buf).size }) != (unsafe { (*buf).compat_size }) as size_t {
+        if (unsafe { (*buf).compat_size }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).size = (*buf).compat_size as size_t });
         }
     }
-    if (*buf).use_0 != (*buf).compat_use as size_t {
-        if (*buf).compat_use < 2147483647 as i32 as u32 {
-            (*buf).use_0 = (*buf).compat_use as size_t;
+    if (unsafe { (*buf).use_0 }) != (unsafe { (*buf).compat_use }) as size_t {
+        if (unsafe { (*buf).compat_use }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).use_0 = (*buf).compat_use as size_t });
         }
     }
-    if len >= ((*buf).size).wrapping_sub((*buf).use_0) {
+    if len >= (unsafe { (*buf).size }).wrapping_sub(unsafe { (*buf).use_0 }) {
         return -(1 as i32);
     }
-    let ref mut fresh22 = (*buf).use_0;
+    let fresh22 = unsafe { &mut ((*buf).use_0) };
     *fresh22 = (*fresh22 as u64).wrapping_add(len) as size_t as size_t;
-    *((*buf).content).offset((*buf).use_0 as isize) = 0 as i32 as xmlChar;
-    if (*buf).size < 2147483647 as i32 as u64 {
-        (*buf).compat_size = (*buf).size as u32;
+    (unsafe { *((*buf).content).offset((*buf).use_0 as isize) = 0 as i32 as xmlChar });
+    if (unsafe { (*buf).size }) < 2147483647 as i32 as u64 {
+        (unsafe { (*buf).compat_size = (*buf).size as u32 });
     } else {
-        (*buf).compat_size = 2147483647 as i32 as u32;
+        (unsafe { (*buf).compat_size = 2147483647 as i32 as u32 });
     }
-    if (*buf).use_0 < 2147483647 as i32 as u64 {
-        (*buf).compat_use = (*buf).use_0 as u32;
+    if (unsafe { (*buf).use_0 }) < 2147483647 as i32 as u64 {
+        (unsafe { (*buf).compat_use = (*buf).use_0 as u32 });
     } else {
-        (*buf).compat_use = 2147483647 as i32 as u32;
+        (unsafe { (*buf).compat_use = 2147483647 as i32 as u32 });
     }
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufLength(buf: * mut crate::src::buf::_xmlBuf) -> u64 {
-    if buf.is_null() || (*buf).error != 0 {
+pub extern "C" fn xmlBufLength(buf: *mut crate::src::buf::_xmlBuf) -> u64 {
+    if buf.is_null() || (unsafe { (*buf).error }) != 0 {
         return 0 as i32 as size_t;
     }
-    if (*buf).size != (*buf).compat_size as size_t {
-        if (*buf).compat_size < 2147483647 as i32 as u32 {
-            (*buf).size = (*buf).compat_size as size_t;
+    if (unsafe { (*buf).size }) != (unsafe { (*buf).compat_size }) as size_t {
+        if (unsafe { (*buf).compat_size }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).size = (*buf).compat_size as size_t });
         }
     }
-    if (*buf).use_0 != (*buf).compat_use as size_t {
-        if (*buf).compat_use < 2147483647 as i32 as u32 {
-            (*buf).use_0 = (*buf).compat_use as size_t;
+    if (unsafe { (*buf).use_0 }) != (unsafe { (*buf).compat_use }) as size_t {
+        if (unsafe { (*buf).compat_use }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).use_0 = (*buf).compat_use as size_t });
         }
     }
-    return (*buf).use_0;
+    return unsafe { (*buf).use_0 };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufUse(buf: * mut crate::src::buf::_xmlBuf) -> u64 {
-    if buf.is_null() || (*buf).error != 0 {
+pub extern "C" fn xmlBufUse(buf: *mut crate::src::buf::_xmlBuf) -> u64 {
+    if buf.is_null() || (unsafe { (*buf).error }) != 0 {
         return 0 as i32 as size_t;
     }
-    if (*buf).size != (*buf).compat_size as size_t {
-        if (*buf).compat_size < 2147483647 as i32 as u32 {
-            (*buf).size = (*buf).compat_size as size_t;
+    if (unsafe { (*buf).size }) != (unsafe { (*buf).compat_size }) as size_t {
+        if (unsafe { (*buf).compat_size }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).size = (*buf).compat_size as size_t });
         }
     }
-    if (*buf).use_0 != (*buf).compat_use as size_t {
-        if (*buf).compat_use < 2147483647 as i32 as u32 {
-            (*buf).use_0 = (*buf).compat_use as size_t;
+    if (unsafe { (*buf).use_0 }) != (unsafe { (*buf).compat_use }) as size_t {
+        if (unsafe { (*buf).compat_use }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).use_0 = (*buf).compat_use as size_t });
         }
     }
-    return (*buf).use_0;
+    return unsafe { (*buf).use_0 };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufAvail(buf: * mut crate::src::buf::_xmlBuf) -> u64 {
-    if buf.is_null() || (*buf).error != 0 {
+pub extern "C" fn xmlBufAvail(buf: *mut crate::src::buf::_xmlBuf) -> u64 {
+    if buf.is_null() || (unsafe { (*buf).error }) != 0 {
         return 0 as i32 as size_t;
     }
-    if (*buf).size != (*buf).compat_size as size_t {
-        if (*buf).compat_size < 2147483647 as i32 as u32 {
-            (*buf).size = (*buf).compat_size as size_t;
+    if (unsafe { (*buf).size }) != (unsafe { (*buf).compat_size }) as size_t {
+        if (unsafe { (*buf).compat_size }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).size = (*buf).compat_size as size_t });
         }
     }
-    if (*buf).use_0 != (*buf).compat_use as size_t {
-        if (*buf).compat_use < 2147483647 as i32 as u32 {
-            (*buf).use_0 = (*buf).compat_use as size_t;
+    if (unsafe { (*buf).use_0 }) != (unsafe { (*buf).compat_use }) as size_t {
+        if (unsafe { (*buf).compat_use }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).use_0 = (*buf).compat_use as size_t });
         }
     }
-    return if (*buf).size > (*buf).use_0 {
-        ((*buf).size)
-            .wrapping_sub((*buf).use_0)
+    return if (unsafe { (*buf).size }) > (unsafe { (*buf).use_0 }) {
+        (unsafe { (*buf).size })
+            .wrapping_sub(unsafe { (*buf).use_0 })
             .wrapping_sub(1 as i32 as u64)
     } else {
         0 as i32 as u64
     };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufIsEmpty(buf: * mut crate::src::buf::_xmlBuf) -> i32 {
-    if buf.is_null() || (*buf).error != 0 {
+pub extern "C" fn xmlBufIsEmpty(buf: *mut crate::src::buf::_xmlBuf) -> i32 {
+    if buf.is_null() || (unsafe { (*buf).error }) != 0 {
         return -(1 as i32);
     }
-    if (*buf).size != (*buf).compat_size as size_t {
-        if (*buf).compat_size < 2147483647 as i32 as u32 {
-            (*buf).size = (*buf).compat_size as size_t;
+    if (unsafe { (*buf).size }) != (unsafe { (*buf).compat_size }) as size_t {
+        if (unsafe { (*buf).compat_size }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).size = (*buf).compat_size as size_t });
         }
     }
-    if (*buf).use_0 != (*buf).compat_use as size_t {
-        if (*buf).compat_use < 2147483647 as i32 as u32 {
-            (*buf).use_0 = (*buf).compat_use as size_t;
+    if (unsafe { (*buf).use_0 }) != (unsafe { (*buf).compat_use }) as size_t {
+        if (unsafe { (*buf).compat_use }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).use_0 = (*buf).compat_use as size_t });
         }
     }
-    return ((*buf).use_0 == 0 as i32 as u64) as i32;
+    return ((unsafe { (*buf).use_0 }) == 0 as i32 as u64) as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufResize(
-    mut buf: * mut crate::src::buf::_xmlBuf,
-    mut size: u64,
-) -> i32 {
+pub extern "C" fn xmlBufResize(mut buf: *mut crate::src::buf::_xmlBuf, mut size: u64) -> i32 {
     let mut newSize: u64 = 0;
-    let mut rebuf: * mut u8 = 0 as *mut xmlChar;
+    let mut rebuf: *mut u8 = 0 as *mut xmlChar;
     let mut start_buf: u64 = 0;
-    if buf.is_null() || (*buf).error != 0 {
+    if buf.is_null() || (unsafe { (*buf).error }) != 0 {
         return 0 as i32;
     }
-    if (*buf).size != (*buf).compat_size as size_t {
-        if (*buf).compat_size < 2147483647 as i32 as u32 {
-            (*buf).size = (*buf).compat_size as size_t;
+    if (unsafe { (*buf).size }) != (unsafe { (*buf).compat_size }) as size_t {
+        if (unsafe { (*buf).compat_size }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).size = (*buf).compat_size as size_t });
         }
     }
-    if (*buf).use_0 != (*buf).compat_use as size_t {
-        if (*buf).compat_use < 2147483647 as i32 as u32 {
-            (*buf).use_0 = (*buf).compat_use as size_t;
+    if (unsafe { (*buf).use_0 }) != (unsafe { (*buf).compat_use }) as size_t {
+        if (unsafe { (*buf).compat_use }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).use_0 = (*buf).compat_use as size_t });
         }
     }
-    if (*buf).alloc as u32
-        == XML_BUFFER_ALLOC_IMMUTABLE as i32 as u32
-    {
+    if (unsafe { (*buf).alloc }) as u32 == XML_BUFFER_ALLOC_IMMUTABLE as i32 as u32 {
         return 0 as i32;
     }
-    if (*buf).alloc as u32
-        == XML_BUFFER_ALLOC_BOUNDED as i32 as u32
-    {
+    if (unsafe { (*buf).alloc }) as u32 == XML_BUFFER_ALLOC_BOUNDED as i32 as u32 {
         if size >= 10000000 as i32 as u64 {
             xmlBufMemoryError(
                 buf,
@@ -1690,192 +1588,147 @@ pub unsafe extern "C" fn xmlBufResize(
             return 0 as i32;
         }
     }
-    if size < (*buf).size {
+    if size < (unsafe { (*buf).size }) {
         return 1 as i32;
     }
-    match (*buf).alloc as u32 {
+    match (unsafe { (*buf).alloc }) as u32 {
         3 | 0 => {
-            if (*buf).size == 0 as i32 as u64 {
-                newSize = if size
-                    > (-(1 as i32) as size_t)
-                        .wrapping_sub(10 as i32 as u64)
-                {
+            if (unsafe { (*buf).size }) == 0 as i32 as u64 {
+                newSize = if size > (-(1 as i32) as size_t).wrapping_sub(10 as i32 as u64) {
                     -(1 as i32) as size_t
                 } else {
                     size.wrapping_add(10 as i32 as u64)
                 };
             } else {
-                newSize = (*buf).size;
+                newSize = unsafe { (*buf).size };
             }
             while size > newSize {
-                if newSize
-                    > (-(1 as i32) as size_t)
-                        .wrapping_div(2 as i32 as u64)
-                {
-                    xmlBufMemoryError(
-                        buf,
-                        b"growing buffer\0" as *const u8 as *const i8,
-                    );
+                if newSize > (-(1 as i32) as size_t).wrapping_div(2 as i32 as u64) {
+                    xmlBufMemoryError(buf, b"growing buffer\0" as *const u8 as *const i8);
                     return 0 as i32;
                 }
-                newSize = (newSize as u64)
-                    .wrapping_mul(2 as i32 as u64) as size_t as size_t;
+                newSize = (newSize as u64).wrapping_mul(2 as i32 as u64) as size_t as size_t;
             }
-        }
+        },
         1 => {
-            newSize = if size
-                > (-(1 as i32) as size_t)
-                    .wrapping_sub(10 as i32 as u64)
-            {
+            newSize = if size > (-(1 as i32) as size_t).wrapping_sub(10 as i32 as u64) {
                 -(1 as i32) as size_t
             } else {
                 size.wrapping_add(10 as i32 as u64)
             };
-        }
+        },
         4 => {
-            if (*buf).use_0 < 4096 as i32 as u64 {
+            if (unsafe { (*buf).use_0 }) < 4096 as i32 as u64 {
                 newSize = size;
             } else {
-                newSize = (*buf).size;
+                newSize = unsafe { (*buf).size };
                 while size > newSize {
-                    if newSize
-                        > (-(1 as i32) as size_t)
-                            .wrapping_div(2 as i32 as u64)
-                    {
-                        xmlBufMemoryError(
-                            buf,
-                            b"growing buffer\0" as *const u8 as *const i8,
-                        );
+                    if newSize > (-(1 as i32) as size_t).wrapping_div(2 as i32 as u64) {
+                        xmlBufMemoryError(buf, b"growing buffer\0" as *const u8 as *const i8);
                         return 0 as i32;
                     }
-                    newSize = (newSize as u64)
-                        .wrapping_mul(2 as i32 as u64) as size_t
-                        as size_t;
+                    newSize = (newSize as u64).wrapping_mul(2 as i32 as u64) as size_t as size_t;
                 }
             }
-        }
+        },
         _ => {
-            newSize = if size
-                > (-(1 as i32) as size_t)
-                    .wrapping_sub(10 as i32 as u64)
-            {
+            newSize = if size > (-(1 as i32) as size_t).wrapping_sub(10 as i32 as u64) {
                 -(1 as i32) as size_t
             } else {
                 size.wrapping_add(10 as i32 as u64)
             };
-        }
+        },
     }
-    if (*buf).alloc as u32 == XML_BUFFER_ALLOC_IO as i32 as u32
-        && !((*buf).contentIO).is_null()
-    {
-        start_buf = ((*buf).content).offset_from((*buf).contentIO) as i64
-            as size_t;
+    if (unsafe { (*buf).alloc }) as u32 == XML_BUFFER_ALLOC_IO as i32 as u32 && !(unsafe { (*buf).contentIO }).is_null() {
+        start_buf = (unsafe { ((*buf).content).offset_from((*buf).contentIO) }) as i64 as size_t;
         if start_buf > newSize {
-            memmove(
+            (unsafe { memmove(
                 (*buf).contentIO as *mut libc::c_void,
                 (*buf).content as *const libc::c_void,
                 (*buf).use_0,
-            );
-            let ref mut fresh23 = (*buf).content;
-            *fresh23 = (*buf).contentIO;
-            *((*buf).content)
-                .offset((*buf).use_0 as isize) = 0 as i32 as xmlChar;
-            let ref mut fresh24 = (*buf).size;
-            *fresh24 = (*fresh24 as u64).wrapping_add(start_buf) as size_t
-                as size_t;
+            ) });
+            let fresh23 = unsafe { &mut ((*buf).content) };
+            *fresh23 = unsafe { (*buf).contentIO };
+            (unsafe { *((*buf).content).offset((*buf).use_0 as isize) = 0 as i32 as xmlChar });
+            let fresh24 = unsafe { &mut ((*buf).size) };
+            *fresh24 = (*fresh24 as u64).wrapping_add(start_buf) as size_t as size_t;
         } else {
-            rebuf = xmlRealloc
-                .expect(
-                    "non-null function pointer",
-                )((*buf).contentIO as *mut libc::c_void, start_buf.wrapping_add(newSize))
-                as *mut xmlChar;
+            rebuf = (unsafe { xmlRealloc.expect("non-null function pointer")(
+                (*buf).contentIO as *mut libc::c_void,
+                start_buf.wrapping_add(newSize),
+            ) }) as *mut xmlChar;
             if rebuf.is_null() {
-                xmlBufMemoryError(
-                    buf,
-                    b"growing buffer\0" as *const u8 as *const i8,
-                );
+                xmlBufMemoryError(buf, b"growing buffer\0" as *const u8 as *const i8);
                 return 0 as i32;
             }
-            let ref mut fresh25 = (*buf).contentIO;
+            let fresh25 = unsafe { &mut ((*buf).contentIO) };
             *fresh25 = rebuf;
-            let ref mut fresh26 = (*buf).content;
-            *fresh26 = rebuf.offset(start_buf as isize);
+            let fresh26 = unsafe { &mut ((*buf).content) };
+            *fresh26 = unsafe { rebuf.offset(start_buf as isize) };
         }
     } else {
-        if ((*buf).content).is_null() {
-            rebuf = xmlMallocAtomic.expect("non-null function pointer")(newSize)
-                as *mut xmlChar;
-            (*buf).use_0 = 0 as i32 as size_t;
-            *rebuf.offset((*buf).use_0 as isize) = 0 as i32 as xmlChar;
-        } else if ((*buf).size).wrapping_sub((*buf).use_0)
-                < 100 as i32 as u64
-            {
-            rebuf = xmlRealloc
-                .expect(
-                    "non-null function pointer",
-                )((*buf).content as *mut libc::c_void, newSize) as *mut xmlChar;
+        if (unsafe { (*buf).content }).is_null() {
+            rebuf = (unsafe { xmlMallocAtomic.expect("non-null function pointer")(newSize) }) as *mut xmlChar;
+            (unsafe { (*buf).use_0 = 0 as i32 as size_t });
+            (unsafe { *rebuf.offset((*buf).use_0 as isize) = 0 as i32 as xmlChar });
+        } else if (unsafe { (*buf).size }).wrapping_sub(unsafe { (*buf).use_0 }) < 100 as i32 as u64 {
+            rebuf = (unsafe { xmlRealloc.expect("non-null function pointer")(
+                (*buf).content as *mut libc::c_void,
+                newSize,
+            ) }) as *mut xmlChar;
         } else {
-            rebuf = xmlMallocAtomic.expect("non-null function pointer")(newSize)
-                as *mut xmlChar;
+            rebuf = (unsafe { xmlMallocAtomic.expect("non-null function pointer")(newSize) }) as *mut xmlChar;
             if !rebuf.is_null() {
-                memcpy(
+                (unsafe { memcpy(
                     rebuf as *mut libc::c_void,
                     (*buf).content as *const libc::c_void,
                     (*buf).use_0,
-                );
-                xmlFree
-                    .expect(
-                        "non-null function pointer",
-                    )((*buf).content as *mut libc::c_void);
-                *rebuf.offset((*buf).use_0 as isize) = 0 as i32 as xmlChar;
+                ) });
+                (unsafe { xmlFree.expect("non-null function pointer")((*buf).content as *mut libc::c_void) });
+                (unsafe { *rebuf.offset((*buf).use_0 as isize) = 0 as i32 as xmlChar });
             }
         }
         if rebuf.is_null() {
-            xmlBufMemoryError(
-                buf,
-                b"growing buffer\0" as *const u8 as *const i8,
-            );
+            xmlBufMemoryError(buf, b"growing buffer\0" as *const u8 as *const i8);
             return 0 as i32;
         }
-        let ref mut fresh27 = (*buf).content;
+        let fresh27 = unsafe { &mut ((*buf).content) };
         *fresh27 = rebuf;
     }
-    (*buf).size = newSize;
-    if (*buf).size < 2147483647 as i32 as u64 {
-        (*buf).compat_size = (*buf).size as u32;
+    (unsafe { (*buf).size = newSize });
+    if (unsafe { (*buf).size }) < 2147483647 as i32 as u64 {
+        (unsafe { (*buf).compat_size = (*buf).size as u32 });
     } else {
-        (*buf).compat_size = 2147483647 as i32 as u32;
+        (unsafe { (*buf).compat_size = 2147483647 as i32 as u32 });
     }
-    if (*buf).use_0 < 2147483647 as i32 as u64 {
-        (*buf).compat_use = (*buf).use_0 as u32;
+    if (unsafe { (*buf).use_0 }) < 2147483647 as i32 as u64 {
+        (unsafe { (*buf).compat_use = (*buf).use_0 as u32 });
     } else {
-        (*buf).compat_use = 2147483647 as i32 as u32;
+        (unsafe { (*buf).compat_use = 2147483647 as i32 as u32 });
     }
     return 1 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufAdd(
-    mut buf: * mut crate::src::buf::_xmlBuf,
-    mut str: * const u8,
+pub extern "C" fn xmlBufAdd(
+    mut buf: *mut crate::src::buf::_xmlBuf,
+    mut str: *const u8,
     mut len: i32,
 ) -> i32 {
     let mut needSize: u64 = 0;
-    if str.is_null() || buf.is_null() || (*buf).error != 0 {
+    if str.is_null() || buf.is_null() || (unsafe { (*buf).error }) != 0 {
         return -(1 as i32);
     }
-    if (*buf).size != (*buf).compat_size as size_t {
-        if (*buf).compat_size < 2147483647 as i32 as u32 {
-            (*buf).size = (*buf).compat_size as size_t;
+    if (unsafe { (*buf).size }) != (unsafe { (*buf).compat_size }) as size_t {
+        if (unsafe { (*buf).compat_size }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).size = (*buf).compat_size as size_t });
         }
     }
-    if (*buf).use_0 != (*buf).compat_use as size_t {
-        if (*buf).compat_use < 2147483647 as i32 as u32 {
-            (*buf).use_0 = (*buf).compat_use as size_t;
+    if (unsafe { (*buf).use_0 }) != (unsafe { (*buf).compat_use }) as size_t {
+        if (unsafe { (*buf).compat_use }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).use_0 = (*buf).compat_use as size_t });
         }
     }
-    if (*buf).alloc as u32
-        == XML_BUFFER_ALLOC_IMMUTABLE as i32 as u32
-    {
+    if (unsafe { (*buf).alloc }) as u32 == XML_BUFFER_ALLOC_IMMUTABLE as i32 as u32 {
         return -(1 as i32);
     }
     if len < -(1 as i32) {
@@ -1885,7 +1738,7 @@ pub unsafe extern "C" fn xmlBufAdd(
         return 0 as i32;
     }
     if len < 0 as i32 {
-        len = xmlStrlen(str);
+        len = unsafe { xmlStrlen(str) };
     }
     if len < 0 as i32 {
         return -(1 as i32);
@@ -1893,81 +1746,67 @@ pub unsafe extern "C" fn xmlBufAdd(
     if len == 0 as i32 {
         return 0 as i32;
     }
-    if len as size_t >= ((*buf).size).wrapping_sub((*buf).use_0) {
-        if len as size_t >= (-(1 as i32) as size_t).wrapping_sub((*buf).use_0) {
+    if len as size_t >= (unsafe { (*buf).size }).wrapping_sub(unsafe { (*buf).use_0 }) {
+        if len as size_t >= (-(1 as i32) as size_t).wrapping_sub(unsafe { (*buf).use_0 }) {
             xmlBufMemoryError(
                 buf,
                 b"growing buffer past SIZE_MAX\0" as *const u8 as *const i8,
             );
             return -(1 as i32);
         }
-        needSize = ((*buf).use_0)
+        needSize = (unsafe { (*buf).use_0 })
             .wrapping_add(len as u64)
             .wrapping_add(1 as i32 as u64);
-        if (*buf).alloc as u32
-            == XML_BUFFER_ALLOC_BOUNDED as i32 as u32
-        {
+        if (unsafe { (*buf).alloc }) as u32 == XML_BUFFER_ALLOC_BOUNDED as i32 as u32 {
             if needSize >= 10000000 as i32 as u64 {
                 xmlBufMemoryError(
                     buf,
-                    b"buffer error: text too long\n\0" as *const u8
-                        as *const i8,
+                    b"buffer error: text too long\n\0" as *const u8 as *const i8,
                 );
                 return -(1 as i32);
             }
         }
         if xmlBufResize(buf, needSize) == 0 {
-            xmlBufMemoryError(
-                buf,
-                b"growing buffer\0" as *const u8 as *const i8,
-            );
+            xmlBufMemoryError(buf, b"growing buffer\0" as *const u8 as *const i8);
             return XML_ERR_NO_MEMORY as i32;
         }
     }
-    memmove(
-        &mut *((*buf).content).offset((*buf).use_0 as isize) as *mut xmlChar
-            as *mut libc::c_void,
+    (unsafe { memmove(
+        &mut *((*buf).content).offset((*buf).use_0 as isize) as *mut xmlChar as *mut libc::c_void,
         str as *const libc::c_void,
-        (len as u64)
-            .wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
-    );
-    let ref mut fresh28 = (*buf).use_0;
-    *fresh28 = (*fresh28 as u64).wrapping_add(len as u64) as size_t
-        as size_t;
-    *((*buf).content).offset((*buf).use_0 as isize) = 0 as i32 as xmlChar;
-    if (*buf).size < 2147483647 as i32 as u64 {
-        (*buf).compat_size = (*buf).size as u32;
+        (len as u64).wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
+    ) });
+    let fresh28 = unsafe { &mut ((*buf).use_0) };
+    *fresh28 = (*fresh28 as u64).wrapping_add(len as u64) as size_t as size_t;
+    (unsafe { *((*buf).content).offset((*buf).use_0 as isize) = 0 as i32 as xmlChar });
+    if (unsafe { (*buf).size }) < 2147483647 as i32 as u64 {
+        (unsafe { (*buf).compat_size = (*buf).size as u32 });
     } else {
-        (*buf).compat_size = 2147483647 as i32 as u32;
+        (unsafe { (*buf).compat_size = 2147483647 as i32 as u32 });
     }
-    if (*buf).use_0 < 2147483647 as i32 as u64 {
-        (*buf).compat_use = (*buf).use_0 as u32;
+    if (unsafe { (*buf).use_0 }) < 2147483647 as i32 as u64 {
+        (unsafe { (*buf).compat_use = (*buf).use_0 as u32 });
     } else {
-        (*buf).compat_use = 2147483647 as i32 as u32;
+        (unsafe { (*buf).compat_use = 2147483647 as i32 as u32 });
     }
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufCat(
-    mut buf: * mut crate::src::buf::_xmlBuf,
-    mut str: * const u8,
-) -> i32 {
-    if buf.is_null() || (*buf).error != 0 {
+pub extern "C" fn xmlBufCat(mut buf: *mut crate::src::buf::_xmlBuf, mut str: *const u8) -> i32 {
+    if buf.is_null() || (unsafe { (*buf).error }) != 0 {
         return -(1 as i32);
     }
-    if (*buf).size != (*buf).compat_size as size_t {
-        if (*buf).compat_size < 2147483647 as i32 as u32 {
-            (*buf).size = (*buf).compat_size as size_t;
+    if (unsafe { (*buf).size }) != (unsafe { (*buf).compat_size }) as size_t {
+        if (unsafe { (*buf).compat_size }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).size = (*buf).compat_size as size_t });
         }
     }
-    if (*buf).use_0 != (*buf).compat_use as size_t {
-        if (*buf).compat_use < 2147483647 as i32 as u32 {
-            (*buf).use_0 = (*buf).compat_use as size_t;
+    if (unsafe { (*buf).use_0 }) != (unsafe { (*buf).compat_use }) as size_t {
+        if (unsafe { (*buf).compat_use }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).use_0 = (*buf).compat_use as size_t });
         }
     }
-    if (*buf).alloc as u32
-        == XML_BUFFER_ALLOC_IMMUTABLE as i32 as u32
-    {
+    if (unsafe { (*buf).alloc }) as u32 == XML_BUFFER_ALLOC_IMMUTABLE as i32 as u32 {
         return -(1 as i32);
     }
     if str.is_null() {
@@ -1976,68 +1815,55 @@ pub unsafe extern "C" fn xmlBufCat(
     return xmlBufAdd(buf, str, -(1 as i32));
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufCCat(
-    mut buf: * mut crate::src::buf::_xmlBuf,
-    mut str: * const i8,
-) -> i32 {
+pub extern "C" fn xmlBufCCat(mut buf: *mut crate::src::buf::_xmlBuf, mut str: *const i8) -> i32 {
     return xmlBufCat(buf, str as *const xmlChar);
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufWriteQuotedString(
-    mut buf: * mut crate::src::buf::_xmlBuf,
-    mut string: * const u8,
+pub extern "C" fn xmlBufWriteQuotedString(
+    mut buf: *mut crate::src::buf::_xmlBuf,
+    mut string: *const u8,
 ) -> i32 {
-    let mut cur: * const u8 = 0 as *const xmlChar;
-    let mut base: * const u8 = 0 as *const xmlChar;
-    if buf.is_null() || (*buf).error != 0 {
+    let mut cur: *const u8 = 0 as *const xmlChar;
+    let mut base: *const u8 = 0 as *const xmlChar;
+    if buf.is_null() || (unsafe { (*buf).error }) != 0 {
         return -(1 as i32);
     }
-    if (*buf).size != (*buf).compat_size as size_t {
-        if (*buf).compat_size < 2147483647 as i32 as u32 {
-            (*buf).size = (*buf).compat_size as size_t;
+    if (unsafe { (*buf).size }) != (unsafe { (*buf).compat_size }) as size_t {
+        if (unsafe { (*buf).compat_size }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).size = (*buf).compat_size as size_t });
         }
     }
-    if (*buf).use_0 != (*buf).compat_use as size_t {
-        if (*buf).compat_use < 2147483647 as i32 as u32 {
-            (*buf).use_0 = (*buf).compat_use as size_t;
+    if (unsafe { (*buf).use_0 }) != (unsafe { (*buf).compat_use }) as size_t {
+        if (unsafe { (*buf).compat_use }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).use_0 = (*buf).compat_use as size_t });
         }
     }
-    if (*buf).alloc as u32
-        == XML_BUFFER_ALLOC_IMMUTABLE as i32 as u32
-    {
+    if (unsafe { (*buf).alloc }) as u32 == XML_BUFFER_ALLOC_IMMUTABLE as i32 as u32 {
         return -(1 as i32);
     }
-    if !(xmlStrchr(string, '"' as i32 as xmlChar)).is_null() {
-        if !(xmlStrchr(string, '\'' as i32 as xmlChar)).is_null() {
+    if !(unsafe { xmlStrchr(string, '"' as i32 as xmlChar) }).is_null() {
+        if !(unsafe { xmlStrchr(string, '\'' as i32 as xmlChar) }).is_null() {
             xmlBufCCat(buf, b"\"\0" as *const u8 as *const i8);
             cur = string;
             base = cur;
-            while *cur as i32 != 0 as i32 {
-                if *cur as i32 == '"' as i32 {
+            while (unsafe { *cur }) as i32 != 0 as i32 {
+                if (unsafe { *cur }) as i32 == '"' as i32 {
                     if base != cur {
-                        xmlBufAdd(
-                            buf,
-                            base,
-                            cur.offset_from(base) as i64 as i32,
-                        );
+                        xmlBufAdd(buf, base, (unsafe { cur.offset_from(base) }) as i64 as i32);
                     }
                     xmlBufAdd(
                         buf,
                         b"&quot;\0" as *const u8 as *const i8 as *mut xmlChar,
                         6 as i32,
                     );
-                    cur = cur.offset(1);
+                    cur = unsafe { cur.offset(1) };
                     base = cur;
                 } else {
-                    cur = cur.offset(1);
+                    cur = unsafe { cur.offset(1) };
                 }
             }
             if base != cur {
-                xmlBufAdd(
-                    buf,
-                    base,
-                    cur.offset_from(base) as i64 as i32,
-                );
+                xmlBufAdd(buf, base, (unsafe { cur.offset_from(base) }) as i64 as i32);
             }
             xmlBufCCat(buf, b"\"\0" as *const u8 as *const i8);
         } else {
@@ -2053,15 +1879,15 @@ pub unsafe extern "C" fn xmlBufWriteQuotedString(
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufFromBuffer(mut buffer: * mut crate::src::HTMLtree::_xmlBuffer) -> * mut crate::src::buf::_xmlBuf {
-    let mut ret: * mut crate::src::buf::_xmlBuf = 0 as *mut xmlBuf;
+pub extern "C" fn xmlBufFromBuffer(
+    mut buffer: *mut crate::src::HTMLtree::_xmlBuffer,
+) -> *mut crate::src::buf::_xmlBuf {
+    let mut ret: *mut crate::src::buf::_xmlBuf = 0 as *mut xmlBuf;
     if buffer.is_null() {
         return 0 as xmlBufPtr;
     }
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlBuf>() as u64) as xmlBufPtr;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(::std::mem::size_of::<xmlBuf>() as u64) })
+        as xmlBufPtr;
     if ret.is_null() {
         xmlBufMemoryError(
             0 as xmlBufPtr,
@@ -2069,194 +1895,193 @@ pub unsafe extern "C" fn xmlBufFromBuffer(mut buffer: * mut crate::src::HTMLtree
         );
         return 0 as xmlBufPtr;
     }
-    (*ret).use_0 = (*buffer).use_0 as size_t;
-    (*ret).size = (*buffer).size as size_t;
-    if (*ret).size < 2147483647 as i32 as u64 {
-        (*ret).compat_size = (*ret).size as u32;
+    (unsafe { (*ret).use_0 = (*buffer).use_0 as size_t });
+    (unsafe { (*ret).size = (*buffer).size as size_t });
+    if (unsafe { (*ret).size }) < 2147483647 as i32 as u64 {
+        (unsafe { (*ret).compat_size = (*ret).size as u32 });
     } else {
-        (*ret).compat_size = 2147483647 as i32 as u32;
+        (unsafe { (*ret).compat_size = 2147483647 as i32 as u32 });
     }
-    if (*ret).use_0 < 2147483647 as i32 as u64 {
-        (*ret).compat_use = (*ret).use_0 as u32;
+    if (unsafe { (*ret).use_0 }) < 2147483647 as i32 as u64 {
+        (unsafe { (*ret).compat_use = (*ret).use_0 as u32 });
     } else {
-        (*ret).compat_use = 2147483647 as i32 as u32;
+        (unsafe { (*ret).compat_use = 2147483647 as i32 as u32 });
     }
-    (*ret).error = 0 as i32;
-    let ref mut fresh29 = (*ret).buffer;
+    (unsafe { (*ret).error = 0 as i32 });
+    let fresh29 = unsafe { &mut ((*ret).buffer) };
     *fresh29 = buffer;
-    (*ret).alloc = (*buffer).alloc;
-    let ref mut fresh30 = (*ret).content;
-    *fresh30 = (*buffer).content;
-    let ref mut fresh31 = (*ret).contentIO;
-    *fresh31 = (*buffer).contentIO;
+    (unsafe { (*ret).alloc = (*buffer).alloc });
+    let fresh30 = unsafe { &mut ((*ret).content) };
+    *fresh30 = unsafe { (*buffer).content };
+    let fresh31 = unsafe { &mut ((*ret).contentIO) };
+    *fresh31 = unsafe { (*buffer).contentIO };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufBackToBuffer(mut buf: * mut crate::src::buf::_xmlBuf) -> * mut crate::src::HTMLtree::_xmlBuffer {
-    let mut ret: * mut crate::src::HTMLtree::_xmlBuffer = 0 as *mut xmlBuffer;
+pub extern "C" fn xmlBufBackToBuffer(
+    mut buf: *mut crate::src::buf::_xmlBuf,
+) -> *mut crate::src::HTMLtree::_xmlBuffer {
+    let mut ret: *mut crate::src::HTMLtree::_xmlBuffer = 0 as *mut xmlBuffer;
     if buf.is_null() {
         return 0 as xmlBufferPtr;
     }
-    if (*buf).size != (*buf).compat_size as size_t {
-        if (*buf).compat_size < 2147483647 as i32 as u32 {
-            (*buf).size = (*buf).compat_size as size_t;
+    if (unsafe { (*buf).size }) != (unsafe { (*buf).compat_size }) as size_t {
+        if (unsafe { (*buf).compat_size }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).size = (*buf).compat_size as size_t });
         }
     }
-    if (*buf).use_0 != (*buf).compat_use as size_t {
-        if (*buf).compat_use < 2147483647 as i32 as u32 {
-            (*buf).use_0 = (*buf).compat_use as size_t;
+    if (unsafe { (*buf).use_0 }) != (unsafe { (*buf).compat_use }) as size_t {
+        if (unsafe { (*buf).compat_use }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).use_0 = (*buf).compat_use as size_t });
         }
     }
-    if (*buf).error != 0 || ((*buf).buffer).is_null() {
+    if (unsafe { (*buf).error }) != 0 || (unsafe { (*buf).buffer }).is_null() {
         xmlBufFree(buf);
         return 0 as xmlBufferPtr;
     }
-    ret = (*buf).buffer;
-    if (*buf).use_0 > 2147483647 as i32 as u64 {
+    ret = unsafe { (*buf).buffer };
+    if (unsafe { (*buf).use_0 }) > 2147483647 as i32 as u64 {
         xmlBufOverflowError(
             buf,
             b"Used size too big for xmlBuffer\0" as *const u8 as *const i8,
         );
-        (*ret).use_0 = 2147483647 as i32 as u32;
-        (*ret).size = 2147483647 as i32 as u32;
-    } else if (*buf).size > 2147483647 as i32 as u64 {
+        (unsafe { (*ret).use_0 = 2147483647 as i32 as u32 });
+        (unsafe { (*ret).size = 2147483647 as i32 as u32 });
+    } else if (unsafe { (*buf).size }) > 2147483647 as i32 as u64 {
         xmlBufOverflowError(
             buf,
             b"Allocated size too big for xmlBuffer\0" as *const u8 as *const i8,
         );
-        (*ret).use_0 = (*buf).use_0 as i32 as u32;
-        (*ret).size = 2147483647 as i32 as u32;
+        (unsafe { (*ret).use_0 = (*buf).use_0 as i32 as u32 });
+        (unsafe { (*ret).size = 2147483647 as i32 as u32 });
     } else {
-        (*ret).use_0 = (*buf).use_0 as i32 as u32;
-        (*ret).size = (*buf).size as i32 as u32;
+        (unsafe { (*ret).use_0 = (*buf).use_0 as i32 as u32 });
+        (unsafe { (*ret).size = (*buf).size as i32 as u32 });
     }
-    (*ret).alloc = (*buf).alloc;
-    let ref mut fresh32 = (*ret).content;
-    *fresh32 = (*buf).content;
-    let ref mut fresh33 = (*ret).contentIO;
-    *fresh33 = (*buf).contentIO;
-    xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void);
+    (unsafe { (*ret).alloc = (*buf).alloc });
+    let fresh32 = unsafe { &mut ((*ret).content) };
+    *fresh32 = unsafe { (*buf).content };
+    let fresh33 = unsafe { &mut ((*ret).contentIO) };
+    *fresh33 = unsafe { (*buf).contentIO };
+    (unsafe { xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void) });
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufMergeBuffer(
-    mut buf: * mut crate::src::buf::_xmlBuf,
-    mut buffer: * mut crate::src::HTMLtree::_xmlBuffer,
+pub extern "C" fn xmlBufMergeBuffer(
+    mut buf: *mut crate::src::buf::_xmlBuf,
+    mut buffer: *mut crate::src::HTMLtree::_xmlBuffer,
 ) -> i32 {
     let mut ret: i32 = 0 as i32;
-    if buf.is_null() || (*buf).error != 0 {
-        xmlBufferFree(buffer);
+    if buf.is_null() || (unsafe { (*buf).error }) != 0 {
+        (unsafe { xmlBufferFree(buffer) });
         return -(1 as i32);
     }
-    if (*buf).size != (*buf).compat_size as size_t {
-        if (*buf).compat_size < 2147483647 as i32 as u32 {
-            (*buf).size = (*buf).compat_size as size_t;
+    if (unsafe { (*buf).size }) != (unsafe { (*buf).compat_size }) as size_t {
+        if (unsafe { (*buf).compat_size }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).size = (*buf).compat_size as size_t });
         }
     }
-    if (*buf).use_0 != (*buf).compat_use as size_t {
-        if (*buf).compat_use < 2147483647 as i32 as u32 {
-            (*buf).use_0 = (*buf).compat_use as size_t;
+    if (unsafe { (*buf).use_0 }) != (unsafe { (*buf).compat_use }) as size_t {
+        if (unsafe { (*buf).compat_use }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).use_0 = (*buf).compat_use as size_t });
         }
     }
-    if !buffer.is_null() && !((*buffer).content).is_null()
-        && (*buffer).use_0 > 0 as i32 as u32
-    {
-        ret = xmlBufAdd(buf, (*buffer).content, (*buffer).use_0 as i32);
+    if !buffer.is_null() && !(unsafe { (*buffer).content }).is_null() && (unsafe { (*buffer).use_0 }) > 0 as i32 as u32 {
+        ret = xmlBufAdd(buf, unsafe { (*buffer).content }, (unsafe { (*buffer).use_0 }) as i32);
     }
-    xmlBufferFree(buffer);
+    (unsafe { xmlBufferFree(buffer) });
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufResetInput(
-    mut buf: * mut crate::src::buf::_xmlBuf,
-    mut input: * mut crate::src::HTMLparser::_xmlParserInput,
+pub extern "C" fn xmlBufResetInput(
+    mut buf: *mut crate::src::buf::_xmlBuf,
+    mut input: *mut crate::src::HTMLparser::_xmlParserInput,
 ) -> i32 {
-    if input.is_null() || buf.is_null() || (*buf).error != 0 {
+    if input.is_null() || buf.is_null() || (unsafe { (*buf).error }) != 0 {
         return -(1 as i32);
     }
-    if (*buf).size != (*buf).compat_size as size_t {
-        if (*buf).compat_size < 2147483647 as i32 as u32 {
-            (*buf).size = (*buf).compat_size as size_t;
+    if (unsafe { (*buf).size }) != (unsafe { (*buf).compat_size }) as size_t {
+        if (unsafe { (*buf).compat_size }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).size = (*buf).compat_size as size_t });
         }
     }
-    if (*buf).use_0 != (*buf).compat_use as size_t {
-        if (*buf).compat_use < 2147483647 as i32 as u32 {
-            (*buf).use_0 = (*buf).compat_use as size_t;
+    if (unsafe { (*buf).use_0 }) != (unsafe { (*buf).compat_use }) as size_t {
+        if (unsafe { (*buf).compat_use }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).use_0 = (*buf).compat_use as size_t });
         }
     }
-    let ref mut fresh34 = (*input).cur;
-    *fresh34 = (*buf).content;
-    let ref mut fresh35 = (*input).base;
+    let fresh34 = unsafe { &mut ((*input).cur) };
+    *fresh34 = unsafe { (*buf).content };
+    let fresh35 = unsafe { &mut ((*input).base) };
     *fresh35 = *fresh34;
-    let ref mut fresh36 = (*input).end;
-    *fresh36 = &mut *((*buf).content).offset((*buf).use_0 as isize) as *mut xmlChar;
+    let fresh36 = unsafe { &mut ((*input).end) };
+    *fresh36 = (unsafe { &mut *((*buf).content).offset((*buf).use_0 as isize) }) as *mut xmlChar;
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufGetInputBase(
-    mut buf: * mut crate::src::buf::_xmlBuf,
-    mut input: * mut crate::src::HTMLparser::_xmlParserInput,
+pub extern "C" fn xmlBufGetInputBase(
+    mut buf: *mut crate::src::buf::_xmlBuf,
+    mut input: *mut crate::src::HTMLparser::_xmlParserInput,
 ) -> u64 {
     let mut base: u64 = 0;
-    if input.is_null() || buf.is_null() || (*buf).error != 0 {
+    if input.is_null() || buf.is_null() || (unsafe { (*buf).error }) != 0 {
         return -(1 as i32) as size_t;
     }
-    if (*buf).size != (*buf).compat_size as size_t {
-        if (*buf).compat_size < 2147483647 as i32 as u32 {
-            (*buf).size = (*buf).compat_size as size_t;
+    if (unsafe { (*buf).size }) != (unsafe { (*buf).compat_size }) as size_t {
+        if (unsafe { (*buf).compat_size }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).size = (*buf).compat_size as size_t });
         }
     }
-    if (*buf).use_0 != (*buf).compat_use as size_t {
-        if (*buf).compat_use < 2147483647 as i32 as u32 {
-            (*buf).use_0 = (*buf).compat_use as size_t;
+    if (unsafe { (*buf).use_0 }) != (unsafe { (*buf).compat_use }) as size_t {
+        if (unsafe { (*buf).compat_use }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).use_0 = (*buf).compat_use as size_t });
         }
     }
-    base = ((*input).base).offset_from((*buf).content) as i64 as size_t;
-    if base > (*buf).size {
+    base = (unsafe { ((*input).base).offset_from((*buf).content) }) as i64 as size_t;
+    if base > (unsafe { (*buf).size }) {
         xmlBufOverflowError(
             buf,
-            b"Input reference outside of the buffer\0" as *const u8
-                as *const i8,
+            b"Input reference outside of the buffer\0" as *const u8 as *const i8,
         );
         base = 0 as i32 as size_t;
     }
     return base;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBufSetInputBaseCur(
-    mut buf: * mut crate::src::buf::_xmlBuf,
-    mut input: * mut crate::src::HTMLparser::_xmlParserInput,
+pub extern "C" fn xmlBufSetInputBaseCur(
+    mut buf: *mut crate::src::buf::_xmlBuf,
+    mut input: *mut crate::src::HTMLparser::_xmlParserInput,
     mut base: u64,
     mut cur: u64,
 ) -> i32 {
     if input.is_null() {
         return -(1 as i32);
     }
-    if buf.is_null() || (*buf).error != 0 {
-        let ref mut fresh37 = (*input).end;
+    if buf.is_null() || (unsafe { (*buf).error }) != 0 {
+        let fresh37 = unsafe { &mut ((*input).end) };
         *fresh37 = b"\0" as *const u8 as *const i8 as *mut xmlChar;
-        let ref mut fresh38 = (*input).cur;
+        let fresh38 = unsafe { &mut ((*input).cur) };
         *fresh38 = *fresh37;
-        let ref mut fresh39 = (*input).base;
+        let fresh39 = unsafe { &mut ((*input).base) };
         *fresh39 = *fresh38;
         return -(1 as i32);
     }
-    if (*buf).size != (*buf).compat_size as size_t {
-        if (*buf).compat_size < 2147483647 as i32 as u32 {
-            (*buf).size = (*buf).compat_size as size_t;
+    if (unsafe { (*buf).size }) != (unsafe { (*buf).compat_size }) as size_t {
+        if (unsafe { (*buf).compat_size }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).size = (*buf).compat_size as size_t });
         }
     }
-    if (*buf).use_0 != (*buf).compat_use as size_t {
-        if (*buf).compat_use < 2147483647 as i32 as u32 {
-            (*buf).use_0 = (*buf).compat_use as size_t;
+    if (unsafe { (*buf).use_0 }) != (unsafe { (*buf).compat_use }) as size_t {
+        if (unsafe { (*buf).compat_use }) < 2147483647 as i32 as u32 {
+            (unsafe { (*buf).use_0 = (*buf).compat_use as size_t });
         }
     }
-    let ref mut fresh40 = (*input).base;
-    *fresh40 = &mut *((*buf).content).offset(base as isize) as *mut xmlChar;
-    let ref mut fresh41 = (*input).cur;
-    *fresh41 = ((*input).base).offset(cur as isize);
-    let ref mut fresh42 = (*input).end;
-    *fresh42 = &mut *((*buf).content).offset((*buf).use_0 as isize) as *mut xmlChar;
+    let fresh40 = unsafe { &mut ((*input).base) };
+    *fresh40 = (unsafe { &mut *((*buf).content).offset(base as isize) }) as *mut xmlChar;
+    let fresh41 = unsafe { &mut ((*input).cur) };
+    *fresh41 = unsafe { ((*input).base).offset(cur as isize) };
+    let fresh42 = unsafe { &mut ((*input).end) };
+    *fresh42 = (unsafe { &mut *((*buf).content).offset((*buf).use_0 as isize) }) as *mut xmlChar;
     return 0 as i32;
 }
 use crate::laertes_rt::*;

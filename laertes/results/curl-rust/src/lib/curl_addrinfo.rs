@@ -48,10 +48,10 @@ pub type sa_family_t = u16;
 
 pub type sockaddr = crate::src::lib::http2::sockaddr;
 pub type curl_socklen_t = u32;
-pub type curl_malloc_callback = Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
-pub type curl_free_callback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type curl_strdup_callback = Option<unsafe extern "C"  fn(_: * const i8,) -> * mut i8>;
-pub type curl_calloc_callback = Option<unsafe extern "C"  fn(_: u64,_: u64,) -> * mut core::ffi::c_void>;
+pub type curl_malloc_callback<'a1> = Option<unsafe extern "C"  fn(_: u64,) -> Option<&'a1 mut core::ffi::c_void>>;
+pub type curl_free_callback<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,) -> ()>;
+pub type curl_strdup_callback<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 i8>,) -> Option<&'a2 mut i8>>;
+pub type curl_calloc_callback<'a1> = Option<unsafe extern "C"  fn(_: u64,_: u64,) -> Option<&'a1 mut core::ffi::c_void>>;
 pub type CURLcode = u32;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;

@@ -1,126 +1,81 @@
-use ::libc;
+use :: libc;
 extern "C" {
-    
-    
-    
-    
-    
-    
-    
-    static mut stderr: * mut crate::src::HTMLtree::_IO_FILE;
-    fn fprintf(_: * mut crate::src::HTMLtree::_IO_FILE, _: * const i8, _: ...) -> i32;
-    fn sprintf(_: * mut i8, _: * const i8, _: ...) -> i32;
-    fn snprintf(
-        _: * mut i8,
-        _: u64,
-        _: * const i8,
-        _: ...
-    ) -> i32;
-    fn xmlStrcat(cur: * mut u8, add: * const u8) -> * mut u8;
-    fn xmlStrlen(str: * const u8) -> i32;
-    fn xmlStrEqual(str1: * const u8, str2: * const u8) -> i32;
-    fn xmlStrdup(cur: * const u8) -> * mut u8;
-    fn memset(
-        _: * mut core::ffi::c_void,
-        _: i32,
-        _: u64,
-    ) -> * mut core::ffi::c_void;
-    
-    
-    
-    
-    fn xmlFreeDoc(cur: * mut crate::src::HTMLparser::_xmlDoc);
-    fn xmlGetLineNo(node: * const crate::src::HTMLparser::_xmlNode) -> i64;
-    fn xmlGetNodePath(node: * const crate::src::HTMLparser::_xmlNode) -> * mut u8;
-    fn xmlDocGetRootElement(doc: * const crate::src::HTMLparser::_xmlDoc) -> * mut crate::src::HTMLparser::_xmlNode;
-    fn xmlGetNoNsProp(node: * const crate::src::HTMLparser::_xmlNode, name: * const u8) -> * mut u8;
-    fn xmlNodeGetContent(cur: * const crate::src::HTMLparser::_xmlNode) -> * mut u8;
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    fn malloc(_: u64) -> * mut core::ffi::c_void;
-    fn free(__ptr: * mut core::ffi::c_void);
-    fn xmlXPathFreeObject(obj: * mut crate::src::debugXML::_xmlXPathObject);
-    fn xmlXPathNewContext(doc: * mut crate::src::HTMLparser::_xmlDoc) -> * mut crate::src::debugXML::_xmlXPathContext;
-    fn xmlXPathFreeContext(ctxt: * mut crate::src::debugXML::_xmlXPathContext);
-    fn xmlXPathEval(str: * const u8, ctx: * mut crate::src::debugXML::_xmlXPathContext) -> * mut crate::src::debugXML::_xmlXPathObject;
+    static mut stderr: *mut crate::src::HTMLtree::_IO_FILE;
+    fn fprintf(_: *mut crate::src::HTMLtree::_IO_FILE, _: *const i8, _: ...) -> i32;
+    fn sprintf(_: *mut i8, _: *const i8, _: ...) -> i32;
+    fn snprintf(_: *mut i8, _: u64, _: *const i8, _: ...) -> i32;
+    fn xmlStrcat(cur: *mut u8, add: *const u8) -> *mut u8;
+    fn xmlStrlen(str: *const u8) -> i32;
+    fn xmlStrEqual(str1: *const u8, str2: *const u8) -> i32;
+    fn xmlStrdup(cur: *const u8) -> *mut u8;
+    fn memset(_: *mut core::ffi::c_void, _: i32, _: u64) -> *mut core::ffi::c_void;
+    fn xmlFreeDoc(cur: *mut crate::src::HTMLparser::_xmlDoc);
+    fn xmlGetLineNo(node: *const crate::src::HTMLparser::_xmlNode) -> i64;
+    fn xmlGetNodePath(node: *const crate::src::HTMLparser::_xmlNode) -> *mut u8;
+    fn xmlDocGetRootElement(
+        doc: *const crate::src::HTMLparser::_xmlDoc,
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
+    fn xmlGetNoNsProp(node: *const crate::src::HTMLparser::_xmlNode, name: *const u8) -> *mut u8;
+    fn xmlNodeGetContent(cur: *const crate::src::HTMLparser::_xmlNode) -> *mut u8;
+    fn malloc(_: u64) -> *mut core::ffi::c_void;
+    fn free(__ptr: *mut core::ffi::c_void);
+    fn xmlXPathFreeObject(obj: *mut crate::src::debugXML::_xmlXPathObject);
+    fn xmlXPathNewContext(
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+    ) -> *mut crate::src::debugXML::_xmlXPathContext;
+    fn xmlXPathFreeContext(ctxt: *mut crate::src::debugXML::_xmlXPathContext);
+    fn xmlXPathEval(
+        str: *const u8,
+        ctx: *mut crate::src::debugXML::_xmlXPathContext,
+    ) -> *mut crate::src::debugXML::_xmlXPathObject;
     fn xmlXPathCtxtCompile(
-        ctxt: * mut crate::src::debugXML::_xmlXPathContext,
-        str: * const u8,
-    ) -> * mut crate::src::debugXML::_xmlXPathCompExpr;
+        ctxt: *mut crate::src::debugXML::_xmlXPathContext,
+        str: *const u8,
+    ) -> *mut crate::src::debugXML::_xmlXPathCompExpr;
     fn xmlXPathCompiledEval(
-        comp: * mut crate::src::debugXML::_xmlXPathCompExpr,
-        ctx: * mut crate::src::debugXML::_xmlXPathContext,
-    ) -> * mut crate::src::debugXML::_xmlXPathObject;
-    fn xmlXPathFreeCompExpr(comp: * mut crate::src::debugXML::_xmlXPathCompExpr);
+        comp: *mut crate::src::debugXML::_xmlXPathCompExpr,
+        ctx: *mut crate::src::debugXML::_xmlXPathContext,
+    ) -> *mut crate::src::debugXML::_xmlXPathObject;
+    fn xmlXPathFreeCompExpr(comp: *mut crate::src::debugXML::_xmlXPathCompExpr);
     fn xmlXPathIsNaN(val: f64) -> i32;
     fn xmlXPathRegisterNs(
-        ctxt: * mut crate::src::debugXML::_xmlXPathContext,
-        prefix: * const u8,
-        ns_uri: * const u8,
+        ctxt: *mut crate::src::debugXML::_xmlXPathContext,
+        prefix: *const u8,
+        ns_uri: *const u8,
     ) -> i32;
     fn xmlXPathRegisterVariableNS(
-        ctxt: * mut crate::src::debugXML::_xmlXPathContext,
-        name: * const u8,
-        ns_uri: * const u8,
-        value: * mut crate::src::debugXML::_xmlXPathObject,
+        ctxt: *mut crate::src::debugXML::_xmlXPathContext,
+        name: *const u8,
+        ns_uri: *const u8,
+        value: *mut crate::src::debugXML::_xmlXPathObject,
     ) -> i32;
-    
-    
-    
 }
-pub use crate::src::dict::xmlDictCreate;
-pub use crate::src::dict::xmlDictFree;
-pub use crate::src::dict::xmlDictLookup;
-pub use crate::src::dict::xmlDictReference;
-pub use crate::src::error::__xmlRaiseError;
-pub use crate::src::error::__xmlSimpleError;
-pub use crate::src::globals::__xmlGenericError;
-pub use crate::src::globals::__xmlGenericErrorContext;
-pub use crate::src::parser::xmlReadFile;
-pub use crate::src::parser::xmlReadMemory;
-pub use crate::src::pattern::xmlFreePattern;
-pub use crate::src::pattern::xmlPatternMatch;
-pub use crate::src::pattern::xmlPatterncompile;
-pub use crate::src::dict::_xmlDict;
-pub use crate::src::hash::_xmlHashTable;
-pub use crate::src::pattern::_xmlPattern;
-pub use crate::src::HTMLtree::_IO_marker;
-pub use crate::src::catalog::_IO_wide_data;
-pub use crate::src::debugXML::_xmlXPathCompExpr;
-pub use crate::src::globals::xmlFree;
-pub use crate::src::globals::xmlMalloc;
-pub use crate::src::globals::xmlRealloc;
-pub use crate::src::relaxng::_IO_codecvt;
+pub use crate::src::{
+    catalog::_IO_wide_data,
+    debugXML::_xmlXPathCompExpr,
+    dict::{_xmlDict, xmlDictCreate, xmlDictFree, xmlDictLookup, xmlDictReference},
+    error::{__xmlRaiseError, __xmlSimpleError},
+    globals::{__xmlGenericError, __xmlGenericErrorContext, xmlFree, xmlMalloc, xmlRealloc},
+    hash::_xmlHashTable,
+    parser::{xmlReadFile, xmlReadMemory},
+    pattern::{_xmlPattern, xmlFreePattern, xmlPatternMatch, xmlPatterncompile},
+    relaxng::_IO_codecvt,
+    HTMLtree::_IO_marker,
+};
 pub type xmlChar = u8;
 pub type size_t = u64;
 pub type __off_t = i64;
 pub type __off64_t = i64;
-// #[derive(Copy, Clone)]
-
 pub type _IO_FILE = crate::src::HTMLtree::_IO_FILE;
 pub type _IO_lock_t = ();
 pub type FILE = crate::src::HTMLtree::_IO_FILE;
-pub type xmlOutputCloseCallback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type xmlOutputWriteCallback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,_: i32,) -> i32>;
-// #[derive(Copy, Clone)]
-
+pub type xmlOutputCloseCallback = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type xmlOutputWriteCallback =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, _: i32) -> i32>;
 pub type _xmlNode = crate::src::HTMLparser::_xmlNode;
 pub type xmlNs = crate::src::HTMLparser::_xmlNs;
-// #[derive(Copy, Clone)]
-
 pub type _xmlNs = crate::src::HTMLparser::_xmlNs;
-// #[derive(Copy, Clone)]
-
 pub type _xmlDoc = crate::src::HTMLparser::_xmlDoc;
-// #[derive(Copy, Clone)]
-
 pub type _xmlDtd = crate::src::HTMLparser::_xmlDtd;
 pub type xmlElementType = u32;
 pub const XML_XINCLUDE_END: xmlElementType = 20;
@@ -144,8 +99,6 @@ pub const XML_TEXT_NODE: xmlElementType = 3;
 pub const XML_ATTRIBUTE_NODE: xmlElementType = 2;
 pub const XML_ELEMENT_NODE: xmlElementType = 1;
 pub type xmlNsType = u32;
-// #[derive(Copy, Clone)]
-
 pub type _xmlAttr = crate::src::HTMLparser::_xmlAttr;
 pub type xmlAttributeType = u32;
 pub const XML_ATTRIBUTE_NOTATION: xmlAttributeType = 10;
@@ -159,24 +112,27 @@ pub const XML_ATTRIBUTE_IDREF: xmlAttributeType = 3;
 pub const XML_ATTRIBUTE_ID: xmlAttributeType = 2;
 pub const XML_ATTRIBUTE_CDATA: xmlAttributeType = 1;
 pub type xmlError = crate::src::HTMLparser::_xmlError;
-// #[derive(Copy, Clone)]
-
 pub type _xmlError = crate::src::HTMLparser::_xmlError;
 pub type xmlErrorLevel = u32;
 pub const XML_ERR_FATAL: xmlErrorLevel = 3;
 pub const XML_ERR_ERROR: xmlErrorLevel = 2;
 pub const XML_ERR_WARNING: xmlErrorLevel = 1;
 pub const XML_ERR_NONE: xmlErrorLevel = 0;
-pub type xmlNodePtr = * mut crate::src::HTMLparser::_xmlNode;
+pub type xmlNodePtr = *mut crate::src::HTMLparser::_xmlNode;
 pub type xmlNode = crate::src::HTMLparser::_xmlNode;
-pub type xmlHashTablePtr = * mut crate::src::hash::_xmlHashTable;
+pub type xmlHashTablePtr = *mut crate::src::hash::_xmlHashTable;
 pub type xmlHashTable = crate::src::hash::_xmlHashTable;
-pub type xmlDictPtr = * mut crate::src::dict::_xmlDict;
+pub type xmlDictPtr = *mut crate::src::dict::_xmlDict;
 pub type xmlDict = crate::src::dict::_xmlDict;
-pub type xmlDocPtr = * mut crate::src::HTMLparser::_xmlDoc;
+pub type xmlDocPtr = *mut crate::src::HTMLparser::_xmlDoc;
 pub type xmlDoc = crate::src::HTMLparser::_xmlDoc;
-pub type xmlStructuredErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::HTMLparser::_xmlError,) -> ()>;
-pub type xmlErrorPtr = * mut crate::src::HTMLparser::_xmlError;
+pub type xmlStructuredErrorFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *mut crate::src::HTMLparser::_xmlError,
+    ) -> (),
+>;
+pub type xmlErrorPtr = *mut crate::src::HTMLparser::_xmlError;
 pub type xmlBufferAllocationScheme = u32;
 pub const XML_BUFFER_ALLOC_BOUNDED: xmlBufferAllocationScheme = 5;
 pub const XML_BUFFER_ALLOC_HYBRID: xmlBufferAllocationScheme = 4;
@@ -184,12 +140,10 @@ pub const XML_BUFFER_ALLOC_IO: xmlBufferAllocationScheme = 3;
 pub const XML_BUFFER_ALLOC_IMMUTABLE: xmlBufferAllocationScheme = 2;
 pub const XML_BUFFER_ALLOC_EXACT: xmlBufferAllocationScheme = 1;
 pub const XML_BUFFER_ALLOC_DOUBLEIT: xmlBufferAllocationScheme = 0;
-// #[derive(Copy, Clone)]
-
 pub type _xmlBuffer = crate::src::HTMLtree::_xmlBuffer;
 pub type xmlBuffer = crate::src::HTMLtree::_xmlBuffer;
-pub type xmlBufferPtr = * mut crate::src::HTMLtree::_xmlBuffer;
-pub type xmlNsPtr = * mut crate::src::HTMLparser::_xmlNs;
+pub type xmlBufferPtr = *mut crate::src::HTMLtree::_xmlBuffer;
+pub type xmlNsPtr = *mut crate::src::HTMLparser::_xmlNs;
 pub type C2RustUnnamed = u32;
 pub const XML_FROM_URI: C2RustUnnamed = 30;
 pub const XML_FROM_BUFFER: C2RustUnnamed = 29;
@@ -959,10 +913,12 @@ pub const XML_ERR_DOCUMENT_START: C2RustUnnamed_0 = 3;
 pub const XML_ERR_NO_MEMORY: C2RustUnnamed_0 = 2;
 pub const XML_ERR_INTERNAL_ERROR: C2RustUnnamed_0 = 1;
 pub const XML_ERR_OK: C2RustUnnamed_0 = 0;
-pub type xmlGenericErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type xmlFreeFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type xmlMallocFunc = Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
-pub type xmlReallocFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: u64,) -> * mut core::ffi::c_void>;
+pub type xmlGenericErrorFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type xmlFreeFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+pub type xmlMallocFunc = Option<unsafe extern "C" fn(_: u64) -> *mut core::ffi::c_void>;
+pub type xmlReallocFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: u64) -> *mut core::ffi::c_void>;
 pub type C2RustUnnamed_1 = u32;
 pub const XML_PARSE_BIG_LINES: C2RustUnnamed_1 = 4194304;
 pub const XML_PARSE_IGNORE_ENC: C2RustUnnamed_1 = 2097152;
@@ -987,27 +943,29 @@ pub const XML_PARSE_DTDATTR: C2RustUnnamed_1 = 8;
 pub const XML_PARSE_DTDLOAD: C2RustUnnamed_1 = 4;
 pub const XML_PARSE_NOENT: C2RustUnnamed_1 = 2;
 pub const XML_PARSE_RECOVER: C2RustUnnamed_1 = 1;
-// #[derive(Copy, Clone)]
-
 pub type _xmlXPathContext = crate::src::debugXML::_xmlXPathContext;
-pub type xmlXPathFuncLookupFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,) -> Option<unsafe extern "C"  fn(_: * mut crate::src::debugXML::_xmlXPathParserContext,_: i32,) -> ()>>;
-pub type xmlXPathFunction = Option<unsafe extern "C"  fn(_: * mut crate::src::debugXML::_xmlXPathParserContext,_: i32,) -> ()>;
-pub type xmlXPathParserContextPtr = * mut crate::src::debugXML::_xmlXPathParserContext;
+pub type xmlXPathFuncLookupFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+    ) -> Option<
+        unsafe extern "C" fn(_: *mut crate::src::debugXML::_xmlXPathParserContext, _: i32) -> (),
+    >,
+>;
+pub type xmlXPathFunction = Option<
+    unsafe extern "C" fn(_: *mut crate::src::debugXML::_xmlXPathParserContext, _: i32) -> (),
+>;
+pub type xmlXPathParserContextPtr = *mut crate::src::debugXML::_xmlXPathParserContext;
 pub type xmlXPathParserContext = crate::src::debugXML::_xmlXPathParserContext;
-// #[derive(Copy, Clone)]
-
 pub type _xmlXPathParserContext = crate::src::debugXML::_xmlXPathParserContext;
-pub type xmlXPathCompExprPtr = * mut crate::src::debugXML::_xmlXPathCompExpr;
+pub type xmlXPathCompExprPtr = *mut crate::src::debugXML::_xmlXPathCompExpr;
 pub type xmlXPathCompExpr = crate::src::debugXML::_xmlXPathCompExpr;
-pub type xmlXPathObjectPtr = * mut crate::src::debugXML::_xmlXPathObject;
+pub type xmlXPathObjectPtr = *mut crate::src::debugXML::_xmlXPathObject;
 pub type xmlXPathObject = crate::src::debugXML::_xmlXPathObject;
-// #[derive(Copy, Clone)]
-
 pub type _xmlXPathObject = crate::src::debugXML::_xmlXPathObject;
-pub type xmlNodeSetPtr = * mut crate::src::c14n::_xmlNodeSet;
+pub type xmlNodeSetPtr = *mut crate::src::c14n::_xmlNodeSet;
 pub type xmlNodeSet = crate::src::c14n::_xmlNodeSet;
-// #[derive(Copy, Clone)]
-
 pub type _xmlNodeSet = crate::src::c14n::_xmlNodeSet;
 pub type xmlXPathObjectType = u32;
 pub const XPATH_XSLT_TREE: xmlXPathObjectType = 9;
@@ -1017,23 +975,31 @@ pub const XPATH_NUMBER: xmlXPathObjectType = 3;
 pub const XPATH_BOOLEAN: xmlXPathObjectType = 2;
 pub const XPATH_NODESET: xmlXPathObjectType = 1;
 pub const XPATH_UNDEFINED: xmlXPathObjectType = 0;
-pub type xmlXPathContextPtr = * mut crate::src::debugXML::_xmlXPathContext;
+pub type xmlXPathContextPtr = *mut crate::src::debugXML::_xmlXPathContext;
 pub type xmlXPathContext = crate::src::debugXML::_xmlXPathContext;
-pub type xmlXPathVariableLookupFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,) -> * mut crate::src::debugXML::_xmlXPathObject>;
-pub type xmlXPathAxisPtr = * mut crate::src::debugXML::_xmlXPathAxis;
+pub type xmlXPathVariableLookupFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+    ) -> *mut crate::src::debugXML::_xmlXPathObject,
+>;
+pub type xmlXPathAxisPtr = *mut crate::src::debugXML::_xmlXPathAxis;
 pub type xmlXPathAxis = crate::src::debugXML::_xmlXPathAxis;
-// #[derive(Copy, Clone)]
-
 pub type _xmlXPathAxis = crate::src::debugXML::_xmlXPathAxis;
-pub type xmlXPathAxisFunc = Option<unsafe extern "C"  fn(_: * mut crate::src::debugXML::_xmlXPathParserContext,_: * mut crate::src::debugXML::_xmlXPathObject,) -> * mut crate::src::debugXML::_xmlXPathObject>;
-pub type xmlXPathTypePtr = * mut crate::src::debugXML::_xmlXPathType;
+pub type xmlXPathAxisFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut crate::src::debugXML::_xmlXPathParserContext,
+        _: *mut crate::src::debugXML::_xmlXPathObject,
+    ) -> *mut crate::src::debugXML::_xmlXPathObject,
+>;
+pub type xmlXPathTypePtr = *mut crate::src::debugXML::_xmlXPathType;
 pub type xmlXPathType = crate::src::debugXML::_xmlXPathType;
-// #[derive(Copy, Clone)]
-
 pub type _xmlXPathType = crate::src::debugXML::_xmlXPathType;
-pub type xmlXPathConvertFunc = Option<unsafe extern "C"  fn(_: * mut crate::src::debugXML::_xmlXPathObject,_: i32,) -> i32>;
+pub type xmlXPathConvertFunc =
+    Option<unsafe extern "C" fn(_: *mut crate::src::debugXML::_xmlXPathObject, _: i32) -> i32>;
 pub type xmlPattern<'a> = crate::src::pattern::_xmlPattern<'a>;
-pub type xmlPatternPtr<'a> = * mut crate::src::pattern::_xmlPattern<'a>;
+pub type xmlPatternPtr<'a> = *mut crate::src::pattern::_xmlPattern<'a>;
 pub type C2RustUnnamed_2 = u32;
 pub const XML_PATTERN_XSFIELD: C2RustUnnamed_2 = 4;
 pub const XML_PATTERN_XSSEL: C2RustUnnamed_2 = 2;
@@ -1047,283 +1013,295 @@ pub const XML_SCHEMATRON_OUT_ERROR: C2RustUnnamed_3 = 8;
 pub const XML_SCHEMATRON_OUT_XML: C2RustUnnamed_3 = 4;
 pub const XML_SCHEMATRON_OUT_TEXT: C2RustUnnamed_3 = 2;
 pub const XML_SCHEMATRON_OUT_QUIET: C2RustUnnamed_3 = 1;
-// #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlSchematron<'a> {
     pub name: Option<&'a u8>,
     pub preserve: i32,
-    pub doc: * mut crate::src::HTMLparser::_xmlDoc,
+    pub doc: *mut crate::src::HTMLparser::_xmlDoc,
     pub flags: i32,
     pub _private: Option<&'a mut core::ffi::c_void>,
-    pub dict: * mut crate::src::dict::_xmlDict,
-    pub title: * const u8,
+    pub dict: *mut crate::src::dict::_xmlDict,
+    pub title: *const u8,
     pub nbNs: i32,
     pub nbPattern: i32,
-    pub patterns: * mut crate::src::schematron::_xmlSchematronPattern<'a>,
-    pub rules: * mut crate::src::schematron::_xmlSchematronRule<'a>,
+    pub patterns: *mut crate::src::schematron::_xmlSchematronPattern<'a>,
+    pub rules: *mut crate::src::schematron::_xmlSchematronRule<'a>,
     pub nbNamespaces: i32,
     pub maxNamespaces: i32,
-    pub namespaces: * mut * const u8,
+    pub namespaces: *mut *const u8,
 }
 impl<'a> _xmlSchematron<'a> {
     pub const fn new() -> Self {
         _xmlSchematron {
-        name: None,
-        preserve: 0,
-        doc: (0 as * mut crate::src::HTMLparser::_xmlDoc),
-        flags: 0,
-        _private: None,
-        dict: (0 as * mut crate::src::dict::_xmlDict),
-        title: (0 as * const u8),
-        nbNs: 0,
-        nbPattern: 0,
-        patterns: (0 as * mut crate::src::schematron::_xmlSchematronPattern<'a>),
-        rules: (0 as * mut crate::src::schematron::_xmlSchematronRule<'a>),
-        nbNamespaces: 0,
-        maxNamespaces: 0,
-        namespaces: (0 as * mut * const u8)
+            name: None,
+            preserve: 0,
+            doc: (0 as *mut crate::src::HTMLparser::_xmlDoc),
+            flags: 0,
+            _private: None,
+            dict: (0 as *mut crate::src::dict::_xmlDict),
+            title: (0 as *const u8),
+            nbNs: 0,
+            nbPattern: 0,
+            patterns: (0 as *mut crate::src::schematron::_xmlSchematronPattern<'a>),
+            rules: (0 as *mut crate::src::schematron::_xmlSchematronRule<'a>),
+            nbNamespaces: 0,
+            maxNamespaces: 0,
+            namespaces: (0 as *mut *const u8),
         }
     }
 }
-
 impl<'a> std::default::Default for _xmlSchematron<'a> {
-    fn default() -> Self { _xmlSchematron::new() }
+    fn default() -> Self {
+        _xmlSchematron::new()
+    }
 }
-
-pub type xmlSchematronRulePtr<'a> = * mut crate::src::schematron::_xmlSchematronRule<'a>;
+pub type xmlSchematronRulePtr<'a> = *mut crate::src::schematron::_xmlSchematronRule<'a>;
 pub type xmlSchematronRule<'a> = crate::src::schematron::_xmlSchematronRule<'a>;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlSchematronRule<'a> {
-    pub next: * mut crate::src::schematron::_xmlSchematronRule<'a>,
-    pub patnext: * mut crate::src::schematron::_xmlSchematronRule<'a>,
-    pub node: * mut crate::src::HTMLparser::_xmlNode,
-    pub context: * mut u8,
-    pub tests: * mut crate::src::schematron::_xmlSchematronTest,
-    pub pattern: * mut crate::src::pattern::_xmlPattern<'a>,
-    pub report: * mut u8,
-    pub lets: * mut crate::src::schematron::_xmlSchematronLet,
+    pub next: *mut crate::src::schematron::_xmlSchematronRule<'a>,
+    pub patnext: *mut crate::src::schematron::_xmlSchematronRule<'a>,
+    pub node: *mut crate::src::HTMLparser::_xmlNode,
+    pub context: *mut u8,
+    pub tests: *mut crate::src::schematron::_xmlSchematronTest,
+    pub pattern: *mut crate::src::pattern::_xmlPattern<'a>,
+    pub report: *mut u8,
+    pub lets: *mut crate::src::schematron::_xmlSchematronLet,
 }
 impl<'a> _xmlSchematronRule<'a> {
     pub const fn new() -> Self {
         _xmlSchematronRule {
-        next: (0 as * mut crate::src::schematron::_xmlSchematronRule<'a>),
-        patnext: (0 as * mut crate::src::schematron::_xmlSchematronRule<'a>),
-        node: (0 as * mut crate::src::HTMLparser::_xmlNode),
-        context: (0 as * mut u8),
-        tests: (0 as * mut crate::src::schematron::_xmlSchematronTest),
-        pattern: (0 as * mut crate::src::pattern::_xmlPattern<'a>),
-        report: (0 as * mut u8),
-        lets: (0 as * mut crate::src::schematron::_xmlSchematronLet)
+            next: (0 as *mut crate::src::schematron::_xmlSchematronRule<'a>),
+            patnext: (0 as *mut crate::src::schematron::_xmlSchematronRule<'a>),
+            node: (0 as *mut crate::src::HTMLparser::_xmlNode),
+            context: (0 as *mut u8),
+            tests: (0 as *mut crate::src::schematron::_xmlSchematronTest),
+            pattern: (0 as *mut crate::src::pattern::_xmlPattern<'a>),
+            report: (0 as *mut u8),
+            lets: (0 as *mut crate::src::schematron::_xmlSchematronLet),
         }
     }
 }
-
 impl<'a> std::default::Default for _xmlSchematronRule<'a> {
-    fn default() -> Self { _xmlSchematronRule::new() }
+    fn default() -> Self {
+        _xmlSchematronRule::new()
+    }
 }
-
-pub type xmlSchematronLetPtr = * mut crate::src::schematron::_xmlSchematronLet;
+pub type xmlSchematronLetPtr = *mut crate::src::schematron::_xmlSchematronLet;
 pub type xmlSchematronLet = crate::src::schematron::_xmlSchematronLet;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlSchematronLet {
-    pub next: * mut crate::src::schematron::_xmlSchematronLet,
-    pub name: * mut u8,
-    pub comp: * mut crate::src::debugXML::_xmlXPathCompExpr,
+    pub next: *mut crate::src::schematron::_xmlSchematronLet,
+    pub name: *mut u8,
+    pub comp: *mut crate::src::debugXML::_xmlXPathCompExpr,
 }
 impl _xmlSchematronLet {
     pub const fn new() -> Self {
         _xmlSchematronLet {
-        next: (0 as * mut crate::src::schematron::_xmlSchematronLet),
-        name: (0 as * mut u8),
-        comp: (0 as * mut crate::src::debugXML::_xmlXPathCompExpr)
+            next: (0 as *mut crate::src::schematron::_xmlSchematronLet),
+            name: (0 as *mut u8),
+            comp: (0 as *mut crate::src::debugXML::_xmlXPathCompExpr),
         }
     }
 }
-
 impl std::default::Default for _xmlSchematronLet {
-    fn default() -> Self { _xmlSchematronLet::new() }
+    fn default() -> Self {
+        _xmlSchematronLet::new()
+    }
 }
-
-pub type xmlSchematronTestPtr = * mut crate::src::schematron::_xmlSchematronTest;
+pub type xmlSchematronTestPtr = *mut crate::src::schematron::_xmlSchematronTest;
 pub type xmlSchematronTest = crate::src::schematron::_xmlSchematronTest;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlSchematronTest {
-    pub next: * mut crate::src::schematron::_xmlSchematronTest,
+    pub next: *mut crate::src::schematron::_xmlSchematronTest,
     pub type_0: u32,
-    pub node: * mut crate::src::HTMLparser::_xmlNode,
-    pub test: * mut u8,
-    pub comp: * mut crate::src::debugXML::_xmlXPathCompExpr,
-    pub report: * mut u8,
+    pub node: *mut crate::src::HTMLparser::_xmlNode,
+    pub test: *mut u8,
+    pub comp: *mut crate::src::debugXML::_xmlXPathCompExpr,
+    pub report: *mut u8,
 }
 impl _xmlSchematronTest {
     pub const fn new() -> Self {
         _xmlSchematronTest {
-        next: (0 as * mut crate::src::schematron::_xmlSchematronTest),
-        type_0: 0,
-        node: (0 as * mut crate::src::HTMLparser::_xmlNode),
-        test: (0 as * mut u8),
-        comp: (0 as * mut crate::src::debugXML::_xmlXPathCompExpr),
-        report: (0 as * mut u8)
+            next: (0 as *mut crate::src::schematron::_xmlSchematronTest),
+            type_0: 0,
+            node: (0 as *mut crate::src::HTMLparser::_xmlNode),
+            test: (0 as *mut u8),
+            comp: (0 as *mut crate::src::debugXML::_xmlXPathCompExpr),
+            report: (0 as *mut u8),
         }
     }
 }
-
 impl std::default::Default for _xmlSchematronTest {
-    fn default() -> Self { _xmlSchematronTest::new() }
+    fn default() -> Self {
+        _xmlSchematronTest::new()
+    }
 }
-
 pub type xmlSchematronTestType = u32;
 pub const XML_SCHEMATRON_REPORT: xmlSchematronTestType = 2;
 pub const XML_SCHEMATRON_ASSERT: xmlSchematronTestType = 1;
-pub type xmlSchematronPatternPtr<'a> = * mut crate::src::schematron::_xmlSchematronPattern<'a>;
+pub type xmlSchematronPatternPtr<'a> = *mut crate::src::schematron::_xmlSchematronPattern<'a>;
 pub type xmlSchematronPattern<'a> = crate::src::schematron::_xmlSchematronPattern<'a>;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlSchematronPattern<'a> {
-    pub next: * mut crate::src::schematron::_xmlSchematronPattern<'a>,
-    pub rules: * mut crate::src::schematron::_xmlSchematronRule<'a>,
-    pub name: * mut u8,
+    pub next: *mut crate::src::schematron::_xmlSchematronPattern<'a>,
+    pub rules: *mut crate::src::schematron::_xmlSchematronRule<'a>,
+    pub name: *mut u8,
 }
 impl<'a> _xmlSchematronPattern<'a> {
     pub const fn new() -> Self {
         _xmlSchematronPattern {
-        next: (0 as * mut crate::src::schematron::_xmlSchematronPattern<'a>),
-        rules: (0 as * mut crate::src::schematron::_xmlSchematronRule<'a>),
-        name: (0 as * mut u8)
+            next: (0 as *mut crate::src::schematron::_xmlSchematronPattern<'a>),
+            rules: (0 as *mut crate::src::schematron::_xmlSchematronRule<'a>),
+            name: (0 as *mut u8),
         }
     }
 }
-
 impl<'a> std::default::Default for _xmlSchematronPattern<'a> {
-    fn default() -> Self { _xmlSchematronPattern::new() }
+    fn default() -> Self {
+        _xmlSchematronPattern::new()
+    }
 }
-
 pub type xmlSchematron<'a> = crate::src::schematron::_xmlSchematron<'a>;
-pub type xmlSchematronPtr<'a> = * mut crate::src::schematron::_xmlSchematron<'a>;
-pub type xmlSchematronValidityErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type xmlSchematronValidityWarningFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-// #[derive(Copy, Clone)]
+pub type xmlSchematronPtr<'a> = *mut crate::src::schematron::_xmlSchematron<'a>;
+pub type xmlSchematronValidityErrorFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type xmlSchematronValidityWarningFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
 #[repr(C)]
 pub struct _xmlSchematronParserCtxt<'a> {
     pub type_0: i32,
-    pub URL: * const u8,
-    pub doc: * mut crate::src::HTMLparser::_xmlDoc,
+    pub URL: *const u8,
+    pub doc: *mut crate::src::HTMLparser::_xmlDoc,
     pub preserve: i32,
-    pub buffer: * const i8,
+    pub buffer: *const i8,
     pub size: i32,
-    pub dict: * mut crate::src::dict::_xmlDict,
+    pub dict: *mut crate::src::dict::_xmlDict,
     pub nberrors: i32,
     pub err: i32,
-    pub xctxt: * mut crate::src::debugXML::_xmlXPathContext,
-    pub schema: * mut crate::src::schematron::_xmlSchematron<'a>,
+    pub xctxt: *mut crate::src::debugXML::_xmlXPathContext,
+    pub schema: *mut crate::src::schematron::_xmlSchematron<'a>,
     pub nbNamespaces: i32,
     pub maxNamespaces: i32,
-    pub namespaces: * mut * const u8,
+    pub namespaces: *mut *const u8,
     pub nbIncludes: i32,
     pub maxIncludes: i32,
     pub includes: Option<&'a mut Option<&'a mut crate::src::HTMLparser::_xmlNode>>,
-    pub userData: * mut core::ffi::c_void,
-    pub error: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>,
-    pub warning: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: Option<&'a i8>,...) -> ()>,
-    pub serror: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::HTMLparser::_xmlError,) -> ()>,
+    pub userData: *mut core::ffi::c_void,
+    pub error: Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>,
+    pub warning:
+        Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: Option<&'a i8>, ...) -> ()>,
+    pub serror: Option<
+        unsafe extern "C" fn(
+            _: *mut core::ffi::c_void,
+            _: *mut crate::src::HTMLparser::_xmlError,
+        ) -> (),
+    >,
 }
 impl<'a> _xmlSchematronParserCtxt<'a> {
     pub const fn new() -> Self {
         _xmlSchematronParserCtxt {
-        type_0: 0,
-        URL: (0 as * const u8),
-        doc: (0 as * mut crate::src::HTMLparser::_xmlDoc),
-        preserve: 0,
-        buffer: (0 as * const i8),
-        size: 0,
-        dict: (0 as * mut crate::src::dict::_xmlDict),
-        nberrors: 0,
-        err: 0,
-        xctxt: (0 as * mut crate::src::debugXML::_xmlXPathContext),
-        schema: (0 as * mut crate::src::schematron::_xmlSchematron<'a>),
-        nbNamespaces: 0,
-        maxNamespaces: 0,
-        namespaces: (0 as * mut * const u8),
-        nbIncludes: 0,
-        maxIncludes: 0,
-        includes: None,
-        userData: (0 as * mut core::ffi::c_void),
-        error: None,
-        warning: None,
-        serror: None
+            type_0: 0,
+            URL: (0 as *const u8),
+            doc: (0 as *mut crate::src::HTMLparser::_xmlDoc),
+            preserve: 0,
+            buffer: (0 as *const i8),
+            size: 0,
+            dict: (0 as *mut crate::src::dict::_xmlDict),
+            nberrors: 0,
+            err: 0,
+            xctxt: (0 as *mut crate::src::debugXML::_xmlXPathContext),
+            schema: (0 as *mut crate::src::schematron::_xmlSchematron<'a>),
+            nbNamespaces: 0,
+            maxNamespaces: 0,
+            namespaces: (0 as *mut *const u8),
+            nbIncludes: 0,
+            maxIncludes: 0,
+            includes: None,
+            userData: (0 as *mut core::ffi::c_void),
+            error: None,
+            warning: None,
+            serror: None,
         }
     }
 }
-
 impl<'a> std::default::Default for _xmlSchematronParserCtxt<'a> {
-    fn default() -> Self { _xmlSchematronParserCtxt::new() }
+    fn default() -> Self {
+        _xmlSchematronParserCtxt::new()
+    }
 }
-
 pub type xmlSchematronParserCtxt<'a> = crate::src::schematron::_xmlSchematronParserCtxt<'a>;
-pub type xmlSchematronParserCtxtPtr<'a> = * mut crate::src::schematron::_xmlSchematronParserCtxt<'a>;
-// #[derive(Copy, Clone)]
+pub type xmlSchematronParserCtxtPtr<'a> = *mut crate::src::schematron::_xmlSchematronParserCtxt<'a>;
 #[repr(C)]
 pub struct _xmlSchematronValidCtxt<'a> {
     pub type_0: i32,
     pub flags: i32,
-    pub dict: * mut crate::src::dict::_xmlDict,
+    pub dict: *mut crate::src::dict::_xmlDict,
     pub nberrors: i32,
     pub err: i32,
     pub schema: Option<&'a mut crate::src::schematron::_xmlSchematron<'a>>,
-    pub xctxt: * mut crate::src::debugXML::_xmlXPathContext,
+    pub xctxt: *mut crate::src::debugXML::_xmlXPathContext,
     pub outputFile: Option<&'a mut crate::src::HTMLtree::_IO_FILE>,
     pub outputBuffer: Option<&'a mut crate::src::HTMLtree::_xmlBuffer>,
-    pub iowrite: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: Option<&'a i8>,_: i32,) -> i32>,
-    pub ioclose: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>,
+    pub iowrite:
+        Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: Option<&'a i8>, _: i32) -> i32>,
+    pub ioclose: Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>,
     pub ioctx: Option<&'a mut core::ffi::c_void>,
-    pub userData: * mut core::ffi::c_void,
-    pub error: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>,
-    pub warning: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: Option<&'a i8>,...) -> ()>,
-    pub serror: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::HTMLparser::_xmlError,) -> ()>,
+    pub userData: *mut core::ffi::c_void,
+    pub error: Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>,
+    pub warning:
+        Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: Option<&'a i8>, ...) -> ()>,
+    pub serror: Option<
+        unsafe extern "C" fn(
+            _: *mut core::ffi::c_void,
+            _: *mut crate::src::HTMLparser::_xmlError,
+        ) -> (),
+    >,
 }
 impl<'a> _xmlSchematronValidCtxt<'a> {
     pub const fn new() -> Self {
         _xmlSchematronValidCtxt {
-        type_0: 0,
-        flags: 0,
-        dict: (0 as * mut crate::src::dict::_xmlDict),
-        nberrors: 0,
-        err: 0,
-        schema: None,
-        xctxt: (0 as * mut crate::src::debugXML::_xmlXPathContext),
-        outputFile: None,
-        outputBuffer: None,
-        iowrite: None,
-        ioclose: None,
-        ioctx: None,
-        userData: (0 as * mut core::ffi::c_void),
-        error: None,
-        warning: None,
-        serror: None
+            type_0: 0,
+            flags: 0,
+            dict: (0 as *mut crate::src::dict::_xmlDict),
+            nberrors: 0,
+            err: 0,
+            schema: None,
+            xctxt: (0 as *mut crate::src::debugXML::_xmlXPathContext),
+            outputFile: None,
+            outputBuffer: None,
+            iowrite: None,
+            ioclose: None,
+            ioctx: None,
+            userData: (0 as *mut core::ffi::c_void),
+            error: None,
+            warning: None,
+            serror: None,
         }
     }
 }
-
 impl<'a> std::default::Default for _xmlSchematronValidCtxt<'a> {
-    fn default() -> Self { _xmlSchematronValidCtxt::new() }
+    fn default() -> Self {
+        _xmlSchematronValidCtxt::new()
+    }
 }
-
 pub type xmlSchematronValidCtxt<'a> = crate::src::schematron::_xmlSchematronValidCtxt<'a>;
-pub type xmlSchematronValidCtxtPtr<'a> = * mut crate::src::schematron::_xmlSchematronValidCtxt<'a>;
-static mut xmlSchematronNs: * const u8 = b"http://purl.oclc.org/dsdl/schematron\0"
-    as *const u8 as *const i8 as *mut xmlChar;
-static mut xmlOldSchematronNs: * const u8 = b"http://www.ascc.net/xml/schematron\0"
-    as *const u8 as *const i8 as *mut xmlChar;
-unsafe extern "C" fn xmlSchematronPErrMemory<'a1>(
-    mut ctxt: * mut crate::src::schematron::_xmlSchematronParserCtxt<'a1>,
-    mut extra: * const i8,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
+pub type xmlSchematronValidCtxtPtr<'a> = *mut crate::src::schematron::_xmlSchematronValidCtxt<'a>;
+static mut xmlSchematronNs: *const u8 =
+    b"http://purl.oclc.org/dsdl/schematron\0" as *const u8 as *const i8 as *mut xmlChar;
+static mut xmlOldSchematronNs: *const u8 =
+    b"http://www.ascc.net/xml/schematron\0" as *const u8 as *const i8 as *mut xmlChar;
+extern "C" fn xmlSchematronPErrMemory<'a1>(
+    mut ctxt: *mut crate::src::schematron::_xmlSchematronParserCtxt<'a1>,
+    mut extra: *const i8,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
 ) {
     if !ctxt.is_null() {
-        let ref mut fresh0 = (*ctxt).nberrors;
+        let fresh0 = unsafe { &mut ((*ctxt).nberrors) };
         *fresh0 += 1;
     }
     __xmlSimpleError(
@@ -1334,25 +1312,32 @@ unsafe extern "C" fn xmlSchematronPErrMemory<'a1>(
         extra,
     );
 }
-unsafe extern "C" fn xmlSchematronPErr<'a1>(
-    mut ctxt: * mut crate::src::schematron::_xmlSchematronParserCtxt<'a1>,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlSchematronPErr<'a1>(
+    mut ctxt: *mut crate::src::schematron::_xmlSchematronParserCtxt<'a1>,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
     mut error: i32,
-    mut msg: * const i8,
-    mut str1: * const u8,
-    mut str2: * const u8,
+    mut msg: *const i8,
+    mut str1: *const u8,
+    mut str2: *const u8,
 ) {
-    let mut channel: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()> = None;
-    let mut schannel: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::HTMLparser::_xmlError,) -> ()> = None;
-    let mut data: * mut core::ffi::c_void = 0 as *mut libc::c_void;
+    let mut channel: Option<
+        unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> (),
+    > = None;
+    let mut schannel: Option<
+        unsafe extern "C" fn(
+            _: *mut core::ffi::c_void,
+            _: *mut crate::src::HTMLparser::_xmlError,
+        ) -> (),
+    > = None;
+    let mut data: *mut core::ffi::c_void = 0 as *mut libc::c_void;
     if !ctxt.is_null() {
-        let ref mut fresh1 = (*ctxt).nberrors;
+        let fresh1 = unsafe { &mut ((*ctxt).nberrors) };
         *fresh1 += 1;
-        channel = (*ctxt).error;
-        data = (*ctxt).userData;
-        schannel = (*ctxt).serror;
+        channel = unsafe { (*ctxt).error };
+        data = unsafe { (*ctxt).userData };
+        schannel = unsafe { (*ctxt).serror };
     }
-    __xmlRaiseError(
+    (unsafe { __xmlRaiseError(
         schannel,
         channel,
         data,
@@ -1371,15 +1356,15 @@ unsafe extern "C" fn xmlSchematronPErr<'a1>(
         msg,
         str1,
         str2,
-    );
+    ) });
 }
-unsafe extern "C" fn xmlSchematronVErrMemory<'a1, 'a2>(
+extern "C" fn xmlSchematronVErrMemory<'a1, 'a2>(
     mut ctxt: Option<&'a1 mut crate::src::schematron::_xmlSchematronValidCtxt<'a2>>,
-    mut extra: * const i8,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
+    mut extra: *const i8,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
 ) {
-    if !borrow(& ctxt).is_none() {
-        let ref mut fresh2 = (*(borrow_mut(&mut ctxt)).unwrap()).nberrors;
+    if !borrow(&ctxt).is_none() {
+        let fresh2 = &mut ((*(borrow_mut(&mut ctxt)).unwrap()).nberrors);
         *fresh2 += 1;
         (*(borrow_mut(&mut ctxt)).unwrap()).err = XML_SCHEMAV_INTERNAL as i32;
     }
@@ -1391,37 +1376,34 @@ unsafe extern "C" fn xmlSchematronVErrMemory<'a1, 'a2>(
         extra,
     );
 }
-unsafe extern "C" fn xmlSchematronAddTest<'a1, 'a2>(
-    mut ctxt: * mut crate::src::schematron::_xmlSchematronParserCtxt<'a1>,
+extern "C" fn xmlSchematronAddTest<'a1, 'a2>(
+    mut ctxt: *mut crate::src::schematron::_xmlSchematronParserCtxt<'a1>,
     mut type_0: u32,
-    mut rule: * mut crate::src::schematron::_xmlSchematronRule<'a2>,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
-    mut test: * mut u8,
-    mut report: * mut u8,
-) -> * mut crate::src::schematron::_xmlSchematronTest {
-    let mut ret: * mut crate::src::schematron::_xmlSchematronTest = 0 as *mut xmlSchematronTest;
-    let mut comp: * mut crate::src::debugXML::_xmlXPathCompExpr = 0 as *mut xmlXPathCompExpr;
+    mut rule: *mut crate::src::schematron::_xmlSchematronRule<'a2>,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
+    mut test: *mut u8,
+    mut report: *mut u8,
+) -> *mut crate::src::schematron::_xmlSchematronTest {
+    let mut ret: *mut crate::src::schematron::_xmlSchematronTest = 0 as *mut xmlSchematronTest;
+    let mut comp: *mut crate::src::debugXML::_xmlXPathCompExpr = 0 as *mut xmlXPathCompExpr;
     if ctxt.is_null() || rule.is_null() || node.is_null() || test.is_null() {
         return 0 as xmlSchematronTestPtr;
     }
-    comp = xmlXPathCtxtCompile((*ctxt).xctxt, test);
+    comp = unsafe { xmlXPathCtxtCompile((*ctxt).xctxt, test) };
     if comp.is_null() {
         xmlSchematronPErr(
             ctxt,
             node,
             XML_SCHEMAP_NOROOT as i32,
-            b"Failed to compile test expression %s\0" as *const u8
-                as *const i8,
+            b"Failed to compile test expression %s\0" as *const u8 as *const i8,
             test,
             0 as *const xmlChar,
         );
         return 0 as xmlSchematronTestPtr;
     }
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlSchematronTest>() as u64)
-        as xmlSchematronTestPtr;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlSchematronTest>() as u64
+    ) }) as xmlSchematronTestPtr;
     if ret.is_null() {
         xmlSchematronPErrMemory(
             ctxt,
@@ -1430,106 +1412,104 @@ unsafe extern "C" fn xmlSchematronAddTest<'a1, 'a2>(
         );
         return 0 as xmlSchematronTestPtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlSchematronTest>() as u64,
-    );
-    (*ret).type_0 = type_0;
-    let ref mut fresh3 = (*ret).node;
+    ) });
+    (unsafe { (*ret).type_0 = type_0 });
+    let fresh3 = unsafe { &mut ((*ret).node) };
     *fresh3 = node;
-    let ref mut fresh4 = (*ret).test;
+    let fresh4 = unsafe { &mut ((*ret).test) };
     *fresh4 = test;
-    let ref mut fresh5 = (*ret).comp;
+    let fresh5 = unsafe { &mut ((*ret).comp) };
     *fresh5 = comp;
-    let ref mut fresh6 = (*ret).report;
+    let fresh6 = unsafe { &mut ((*ret).report) };
     *fresh6 = report;
-    let ref mut fresh7 = (*ret).next;
+    let fresh7 = unsafe { &mut ((*ret).next) };
     *fresh7 = 0 as xmlSchematronTestPtr;
-    if ((*rule).tests).is_null() {
-        let ref mut fresh8 = (*rule).tests;
+    if (unsafe { (*rule).tests }).is_null() {
+        let fresh8 = unsafe { &mut ((*rule).tests) };
         *fresh8 = ret;
     } else {
-        let mut prev: * mut crate::src::schematron::_xmlSchematronTest = (*rule).tests;
-        while !((*prev).next).is_null() {
-            prev = (*prev).next;
+        let mut prev: *mut crate::src::schematron::_xmlSchematronTest = unsafe { (*rule).tests };
+        while !(unsafe { (*prev).next }).is_null() {
+            prev = unsafe { (*prev).next };
         }
-        let ref mut fresh9 = (*prev).next;
+        let fresh9 = unsafe { &mut ((*prev).next) };
         *fresh9 = ret;
     }
     return ret;
 }
-unsafe extern "C" fn xmlSchematronFreeTests(mut tests: * mut crate::src::schematron::_xmlSchematronTest) {
-    let mut next: * mut crate::src::schematron::_xmlSchematronTest = 0 as *mut xmlSchematronTest;
+extern "C" fn xmlSchematronFreeTests(mut tests: *mut crate::src::schematron::_xmlSchematronTest) {
+    let mut next: *mut crate::src::schematron::_xmlSchematronTest = 0 as *mut xmlSchematronTest;
     while !tests.is_null() {
-        next = (*tests).next;
-        if !((*tests).test).is_null() {
-            xmlFree
-                .expect("non-null function pointer")((*tests).test as *mut libc::c_void);
+        next = unsafe { (*tests).next };
+        if !(unsafe { (*tests).test }).is_null() {
+            (unsafe { xmlFree.expect("non-null function pointer")((*tests).test as *mut libc::c_void) });
         }
-        if !((*tests).comp).is_null() {
-            xmlXPathFreeCompExpr((*tests).comp);
+        if !(unsafe { (*tests).comp }).is_null() {
+            (unsafe { xmlXPathFreeCompExpr((*tests).comp) });
         }
-        if !((*tests).report).is_null() {
-            xmlFree
-                .expect(
-                    "non-null function pointer",
-                )((*tests).report as *mut libc::c_void);
+        if !(unsafe { (*tests).report }).is_null() {
+            (unsafe { xmlFree.expect("non-null function pointer")((*tests).report as *mut libc::c_void) });
         }
-        xmlFree.expect("non-null function pointer")(tests as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(tests as *mut libc::c_void) });
         tests = next;
     }
 }
-unsafe extern "C" fn xmlSchematronFreeLets(mut lets: * mut crate::src::schematron::_xmlSchematronLet) {
-    let mut next: * mut crate::src::schematron::_xmlSchematronLet = 0 as *mut xmlSchematronLet;
+extern "C" fn xmlSchematronFreeLets(mut lets: *mut crate::src::schematron::_xmlSchematronLet) {
+    let mut next: *mut crate::src::schematron::_xmlSchematronLet = 0 as *mut xmlSchematronLet;
     while !lets.is_null() {
-        next = (*lets).next;
-        if !((*lets).name).is_null() {
-            xmlFree
-                .expect("non-null function pointer")((*lets).name as *mut libc::c_void);
+        next = unsafe { (*lets).next };
+        if !(unsafe { (*lets).name }).is_null() {
+            (unsafe { xmlFree.expect("non-null function pointer")((*lets).name as *mut libc::c_void) });
         }
-        if !((*lets).comp).is_null() {
-            xmlXPathFreeCompExpr((*lets).comp);
+        if !(unsafe { (*lets).comp }).is_null() {
+            (unsafe { xmlXPathFreeCompExpr((*lets).comp) });
         }
-        xmlFree.expect("non-null function pointer")(lets as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(lets as *mut libc::c_void) });
         lets = next;
     }
 }
-unsafe extern "C" fn xmlSchematronAddRule<'a1, 'a2, 'a3, 'a4>(
-    mut ctxt: * mut crate::src::schematron::_xmlSchematronParserCtxt<'a1>,
-    mut schema: * mut crate::src::schematron::_xmlSchematron<'a2>,
-    mut pat: * mut crate::src::schematron::_xmlSchematronPattern<'a3>,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
-    mut context: * mut u8,
-    mut report: * mut u8,
-) -> * mut crate::src::schematron::_xmlSchematronRule<'a4> where 'a3: 'a4, 'a4: 'a3, 'a4: 'a2, 'a2: 'a4 {
-    let mut ret: * mut crate::src::schematron::_xmlSchematronRule<'_> = 0 as *mut xmlSchematronRule;
-    let mut pattern: * mut crate::src::pattern::_xmlPattern<'_> = 0 as *mut xmlPattern;
+extern "C" fn xmlSchematronAddRule<'a1, 'a2, 'a3, 'a4>(
+    mut ctxt: *mut crate::src::schematron::_xmlSchematronParserCtxt<'a1>,
+    mut schema: *mut crate::src::schematron::_xmlSchematron<'a2>,
+    mut pat: *mut crate::src::schematron::_xmlSchematronPattern<'a3>,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
+    mut context: *mut u8,
+    mut report: *mut u8,
+) -> *mut crate::src::schematron::_xmlSchematronRule<'a4>
+where
+    'a3: 'a4,
+    'a4: 'a3,
+    'a4: 'a2,
+    'a2: 'a4,
+{
+    let mut ret: *mut crate::src::schematron::_xmlSchematronRule<'_> = 0 as *mut xmlSchematronRule;
+    let mut pattern: *mut crate::src::pattern::_xmlPattern<'_> = 0 as *mut xmlPattern;
     if ctxt.is_null() || schema.is_null() || node.is_null() || context.is_null() {
         return 0 as xmlSchematronRulePtr;
     }
     pattern = xmlPatterncompile(
         context,
-        (*ctxt).dict,
+        unsafe { (*ctxt).dict },
         XML_PATTERN_XPATH as i32,
-        (*ctxt).namespaces,
+        unsafe { (*ctxt).namespaces },
     );
     if pattern.is_null() {
         xmlSchematronPErr(
             ctxt,
             node,
             XML_SCHEMAP_NOROOT as i32,
-            b"Failed to compile context expression %s\0" as *const u8
-                as *const i8,
+            b"Failed to compile context expression %s\0" as *const u8 as *const i8,
             context,
             0 as *const xmlChar,
         );
     }
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlSchematronRule>() as u64)
-        as xmlSchematronRulePtr;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlSchematronRule>() as u64
+    ) }) as xmlSchematronRulePtr;
     if ret.is_null() {
         xmlSchematronPErrMemory(
             ctxt,
@@ -1538,93 +1518,92 @@ unsafe extern "C" fn xmlSchematronAddRule<'a1, 'a2, 'a3, 'a4>(
         );
         return 0 as xmlSchematronRulePtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlSchematronRule>() as u64,
-    );
-    let ref mut fresh10 = (*ret).node;
+    ) });
+    let fresh10 = unsafe { &mut ((*ret).node) };
     *fresh10 = node;
-    let ref mut fresh11 = (*ret).context;
+    let fresh11 = unsafe { &mut ((*ret).context) };
     *fresh11 = context;
-    let ref mut fresh12 = (*ret).pattern;
+    let fresh12 = unsafe { &mut ((*ret).pattern) };
     *fresh12 = pattern;
-    let ref mut fresh13 = (*ret).report;
+    let fresh13 = unsafe { &mut ((*ret).report) };
     *fresh13 = report;
-    let ref mut fresh14 = (*ret).next;
+    let fresh14 = unsafe { &mut ((*ret).next) };
     *fresh14 = 0 as xmlSchematronRulePtr;
-    let ref mut fresh15 = (*ret).lets;
+    let fresh15 = unsafe { &mut ((*ret).lets) };
     *fresh15 = 0 as xmlSchematronLetPtr;
-    if ((*schema).rules).is_null() {
-        let ref mut fresh16 = (*schema).rules;
+    if (unsafe { (*schema).rules }).is_null() {
+        let fresh16 = unsafe { &mut ((*schema).rules) };
         *fresh16 = ret;
     } else {
-        let mut prev: * mut crate::src::schematron::_xmlSchematronRule<'_> = (*schema).rules;
-        while !((*prev).next).is_null() {
-            prev = (*prev).next;
+        let mut prev: *mut crate::src::schematron::_xmlSchematronRule<'_> = unsafe { (*schema).rules };
+        while !(unsafe { (*prev).next }).is_null() {
+            prev = unsafe { (*prev).next };
         }
-        let ref mut fresh17 = (*prev).next;
+        let fresh17 = unsafe { &mut ((*prev).next) };
         *fresh17 = ret;
     }
-    let ref mut fresh18 = (*ret).patnext;
+    let fresh18 = unsafe { &mut ((*ret).patnext) };
     *fresh18 = 0 as xmlSchematronRulePtr;
-    if ((*pat).rules).is_null() {
-        let ref mut fresh19 = (*pat).rules;
+    if (unsafe { (*pat).rules }).is_null() {
+        let fresh19 = unsafe { &mut ((*pat).rules) };
         *fresh19 = ret;
     } else {
-        let mut prev_0: * mut crate::src::schematron::_xmlSchematronRule<'_> = (*pat).rules;
-        while !((*prev_0).patnext).is_null() {
-            prev_0 = (*prev_0).patnext;
+        let mut prev_0: *mut crate::src::schematron::_xmlSchematronRule<'_> = unsafe { (*pat).rules };
+        while !(unsafe { (*prev_0).patnext }).is_null() {
+            prev_0 = unsafe { (*prev_0).patnext };
         }
-        let ref mut fresh20 = (*prev_0).patnext;
+        let fresh20 = unsafe { &mut ((*prev_0).patnext) };
         *fresh20 = ret;
     }
     return ret;
 }
-unsafe extern "C" fn xmlSchematronFreeRules<'a1>(mut rules: * mut crate::src::schematron::_xmlSchematronRule<'a1>) {
-    let mut next: * mut crate::src::schematron::_xmlSchematronRule<'_> = 0 as *mut xmlSchematronRule;
+extern "C" fn xmlSchematronFreeRules<'a1>(
+    mut rules: *mut crate::src::schematron::_xmlSchematronRule<'a1>,
+) {
+    let mut next: *mut crate::src::schematron::_xmlSchematronRule<'_> = 0 as *mut xmlSchematronRule;
     while !rules.is_null() {
-        next = (*rules).next;
-        if !((*rules).tests).is_null() {
-            xmlSchematronFreeTests((*rules).tests);
+        next = unsafe { (*rules).next };
+        if !(unsafe { (*rules).tests }).is_null() {
+            xmlSchematronFreeTests(unsafe { (*rules).tests });
         }
-        if !((*rules).context).is_null() {
-            xmlFree
-                .expect(
-                    "non-null function pointer",
-                )((*rules).context as *mut libc::c_void);
+        if !(unsafe { (*rules).context }).is_null() {
+            (unsafe { xmlFree.expect("non-null function pointer")((*rules).context as *mut libc::c_void) });
         }
-        if !((*rules).pattern).is_null() {
-            xmlFreePattern((*rules).pattern);
+        if !(unsafe { (*rules).pattern }).is_null() {
+            xmlFreePattern(unsafe { (*rules).pattern });
         }
-        if !((*rules).report).is_null() {
-            xmlFree
-                .expect(
-                    "non-null function pointer",
-                )((*rules).report as *mut libc::c_void);
+        if !(unsafe { (*rules).report }).is_null() {
+            (unsafe { xmlFree.expect("non-null function pointer")((*rules).report as *mut libc::c_void) });
         }
-        if !((*rules).lets).is_null() {
-            xmlSchematronFreeLets((*rules).lets);
+        if !(unsafe { (*rules).lets }).is_null() {
+            xmlSchematronFreeLets(unsafe { (*rules).lets });
         }
-        xmlFree.expect("non-null function pointer")(rules as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(rules as *mut libc::c_void) });
         rules = next;
     }
 }
-unsafe extern "C" fn xmlSchematronAddPattern<'a1, 'a2, 'a3>(
-    mut ctxt: * mut crate::src::schematron::_xmlSchematronParserCtxt<'a1>,
-    mut schema: * mut crate::src::schematron::_xmlSchematron<'a2>,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
-    mut name: * mut u8,
-) -> * mut crate::src::schematron::_xmlSchematronPattern<'a3> where 'a3: 'a2, 'a2: 'a3 {
-    let mut ret: * mut crate::src::schematron::_xmlSchematronPattern<'_> = 0 as *mut xmlSchematronPattern;
+extern "C" fn xmlSchematronAddPattern<'a1, 'a2, 'a3>(
+    mut ctxt: *mut crate::src::schematron::_xmlSchematronParserCtxt<'a1>,
+    mut schema: *mut crate::src::schematron::_xmlSchematron<'a2>,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
+    mut name: *mut u8,
+) -> *mut crate::src::schematron::_xmlSchematronPattern<'a3>
+where
+    'a3: 'a2,
+    'a2: 'a3,
+{
+    let mut ret: *mut crate::src::schematron::_xmlSchematronPattern<'_> =
+        0 as *mut xmlSchematronPattern;
     if ctxt.is_null() || schema.is_null() || node.is_null() || name.is_null() {
         return 0 as xmlSchematronPatternPtr;
     }
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlSchematronPattern>() as u64)
-        as xmlSchematronPatternPtr;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlSchematronPattern>() as u64,
+    ) }) as xmlSchematronPatternPtr;
     if ret.is_null() {
         xmlSchematronPErrMemory(
             ctxt,
@@ -1633,50 +1612,49 @@ unsafe extern "C" fn xmlSchematronAddPattern<'a1, 'a2, 'a3>(
         );
         return 0 as xmlSchematronPatternPtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlSchematronPattern>() as u64,
-    );
-    let ref mut fresh21 = (*ret).name;
+    ) });
+    let fresh21 = unsafe { &mut ((*ret).name) };
     *fresh21 = name;
-    let ref mut fresh22 = (*ret).next;
+    let fresh22 = unsafe { &mut ((*ret).next) };
     *fresh22 = 0 as xmlSchematronPatternPtr;
-    if ((*schema).patterns).is_null() {
-        let ref mut fresh23 = (*schema).patterns;
+    if (unsafe { (*schema).patterns }).is_null() {
+        let fresh23 = unsafe { &mut ((*schema).patterns) };
         *fresh23 = ret;
     } else {
-        let mut prev: * mut crate::src::schematron::_xmlSchematronPattern<'_> = (*schema).patterns;
-        while !((*prev).next).is_null() {
-            prev = (*prev).next;
+        let mut prev: *mut crate::src::schematron::_xmlSchematronPattern<'_> = unsafe { (*schema).patterns };
+        while !(unsafe { (*prev).next }).is_null() {
+            prev = unsafe { (*prev).next };
         }
-        let ref mut fresh24 = (*prev).next;
+        let fresh24 = unsafe { &mut ((*prev).next) };
         *fresh24 = ret;
     }
     return ret;
 }
-unsafe extern "C" fn xmlSchematronFreePatterns<'a1>(mut patterns: * mut crate::src::schematron::_xmlSchematronPattern<'a1>) {
-    let mut next: * mut crate::src::schematron::_xmlSchematronPattern<'_> = 0 as *mut xmlSchematronPattern;
+extern "C" fn xmlSchematronFreePatterns<'a1>(
+    mut patterns: *mut crate::src::schematron::_xmlSchematronPattern<'a1>,
+) {
+    let mut next: *mut crate::src::schematron::_xmlSchematronPattern<'_> =
+        0 as *mut xmlSchematronPattern;
     while !patterns.is_null() {
-        next = (*patterns).next;
-        if !((*patterns).name).is_null() {
-            xmlFree
-                .expect(
-                    "non-null function pointer",
-                )((*patterns).name as *mut libc::c_void);
+        next = unsafe { (*patterns).next };
+        if !(unsafe { (*patterns).name }).is_null() {
+            (unsafe { xmlFree.expect("non-null function pointer")((*patterns).name as *mut libc::c_void) });
         }
-        xmlFree.expect("non-null function pointer")(patterns as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(patterns as *mut libc::c_void) });
         patterns = next;
     }
 }
-unsafe extern "C" fn xmlSchematronNewSchematron<'a1, 'a2>(
-    mut ctxt: * mut crate::src::schematron::_xmlSchematronParserCtxt<'a1>,
-) -> * mut crate::src::schematron::_xmlSchematron<'a2> {
-    let mut ret: * mut crate::src::schematron::_xmlSchematron<'_> = 0 as *mut xmlSchematron;
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlSchematron>() as u64) as xmlSchematronPtr;
+extern "C" fn xmlSchematronNewSchematron<'a1, 'a2>(
+    mut ctxt: *mut crate::src::schematron::_xmlSchematronParserCtxt<'a1>,
+) -> *mut crate::src::schematron::_xmlSchematron<'a2> {
+    let mut ret: *mut crate::src::schematron::_xmlSchematron<'_> = 0 as *mut xmlSchematron;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlSchematron>() as u64
+    ) }) as xmlSchematronPtr;
     if ret.is_null() {
         xmlSchematronPErrMemory(
             ctxt,
@@ -1685,48 +1663,48 @@ unsafe extern "C" fn xmlSchematronNewSchematron<'a1, 'a2>(
         );
         return 0 as xmlSchematronPtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlSchematron>() as u64,
-    );
-    let ref mut fresh25 = (*ret).dict;
-    *fresh25 = (*ctxt).dict;
-    xmlDictReference((*ret).dict);
+    ) });
+    let fresh25 = unsafe { &mut ((*ret).dict) };
+    *fresh25 = unsafe { (*ctxt).dict };
+    xmlDictReference(unsafe { (*ret).dict });
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSchematronFree<'a1>(mut schema: * mut crate::src::schematron::_xmlSchematron<'a1>) {
+pub extern "C" fn xmlSchematronFree<'a1>(
+    mut schema: *mut crate::src::schematron::_xmlSchematron<'a1>,
+) {
     if schema.is_null() {
         return;
     }
-    if !((*schema).doc).is_null() && (*schema).preserve == 0 {
-        xmlFreeDoc((*schema).doc);
+    if !(unsafe { (*schema).doc }).is_null() && (unsafe { (*schema).preserve }) == 0 {
+        (unsafe { xmlFreeDoc((*schema).doc) });
     }
-    if !((*schema).namespaces).is_null() {
-        xmlFree
-            .expect(
-                "non-null function pointer",
-            )((*schema).namespaces as *mut *mut i8 as *mut libc::c_void);
+    if !(unsafe { (*schema).namespaces }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")(
+            (*schema).namespaces as *mut *mut i8 as *mut libc::c_void,
+        ) });
     }
-    xmlSchematronFreeRules((*schema).rules);
-    xmlSchematronFreePatterns((*schema).patterns);
-    xmlDictFree((*schema).dict);
-    xmlFree.expect("non-null function pointer")(schema as *mut libc::c_void);
+    xmlSchematronFreeRules(unsafe { (*schema).rules });
+    xmlSchematronFreePatterns(unsafe { (*schema).patterns });
+    xmlDictFree(unsafe { (*schema).dict });
+    (unsafe { xmlFree.expect("non-null function pointer")(schema as *mut libc::c_void) });
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSchematronNewParserCtxt<'a1>(
-    mut URL: * const i8,
-) -> * mut crate::src::schematron::_xmlSchematronParserCtxt<'a1> {
-    let mut ret: * mut crate::src::schematron::_xmlSchematronParserCtxt<'_> = 0 as *mut xmlSchematronParserCtxt;
+pub extern "C" fn xmlSchematronNewParserCtxt<'a1>(
+    mut URL: *const i8,
+) -> *mut crate::src::schematron::_xmlSchematronParserCtxt<'a1> {
+    let mut ret: *mut crate::src::schematron::_xmlSchematronParserCtxt<'_> =
+        0 as *mut xmlSchematronParserCtxt;
     if URL.is_null() {
         return 0 as xmlSchematronParserCtxtPtr;
     }
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlSchematronParserCtxt>() as u64)
-        as xmlSchematronParserCtxtPtr;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlSchematronParserCtxt>() as u64,
+    ) }) as xmlSchematronParserCtxtPtr;
     if ret.is_null() {
         xmlSchematronPErrMemory(
             0 as xmlSchematronParserCtxtPtr,
@@ -1735,47 +1713,45 @@ pub unsafe extern "C" fn xmlSchematronNewParserCtxt<'a1>(
         );
         return 0 as xmlSchematronParserCtxtPtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlSchematronParserCtxt>() as u64,
-    );
-    (*ret).type_0 = 1 as i32;
-    let ref mut fresh26 = (*ret).dict;
+    ) });
+    (unsafe { (*ret).type_0 = 1 as i32 });
+    let fresh26 = unsafe { &mut ((*ret).dict) };
     *fresh26 = xmlDictCreate();
-    let ref mut fresh27 = (*ret).URL;
-    *fresh27 = xmlDictLookup((*ret).dict, URL as *const xmlChar, -(1 as i32));
-    let ref mut fresh28 = borrow_mut(&mut (*ret).includes);
+    let fresh27 = unsafe { &mut ((*ret).URL) };
+    *fresh27 = xmlDictLookup(unsafe { (*ret).dict }, URL as *const xmlChar, -(1 as i32));
+    let fresh28 = &mut (borrow_mut(unsafe { &mut (*ret).includes }));
     *fresh28 = Option::<&'_ mut Option<&'_ mut crate::src::HTMLparser::_xmlNode>>::None;
-    let ref mut fresh29 = (*ret).xctxt;
-    *fresh29 = xmlXPathNewContext(0 as xmlDocPtr);
-    if ((*ret).xctxt).is_null() {
+    let fresh29 = unsafe { &mut ((*ret).xctxt) };
+    *fresh29 = unsafe { xmlXPathNewContext(0 as xmlDocPtr) };
+    if (unsafe { (*ret).xctxt }).is_null() {
         xmlSchematronPErrMemory(
             0 as xmlSchematronParserCtxtPtr,
-            b"allocating schema parser XPath context\0" as *const u8
-                as *const i8,
+            b"allocating schema parser XPath context\0" as *const u8 as *const i8,
             0 as xmlNodePtr,
         );
         xmlSchematronFreeParserCtxt(ret);
         return 0 as xmlSchematronParserCtxtPtr;
     }
-    (*(*ret).xctxt).flags = (1 as i32) << 0 as i32;
+    (unsafe { (*(*ret).xctxt).flags = (1 as i32) << 0 as i32 });
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSchematronNewMemParserCtxt<'a1>(
-    mut buffer: * const i8,
+pub extern "C" fn xmlSchematronNewMemParserCtxt<'a1>(
+    mut buffer: *const i8,
     mut size: i32,
-) -> * mut crate::src::schematron::_xmlSchematronParserCtxt<'a1> {
-    let mut ret: * mut crate::src::schematron::_xmlSchematronParserCtxt<'_> = 0 as *mut xmlSchematronParserCtxt;
+) -> *mut crate::src::schematron::_xmlSchematronParserCtxt<'a1> {
+    let mut ret: *mut crate::src::schematron::_xmlSchematronParserCtxt<'_> =
+        0 as *mut xmlSchematronParserCtxt;
     if buffer.is_null() || size <= 0 as i32 {
         return 0 as xmlSchematronParserCtxtPtr;
     }
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlSchematronParserCtxt>() as u64)
-        as xmlSchematronParserCtxtPtr;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlSchematronParserCtxt>() as u64,
+    ) }) as xmlSchematronParserCtxtPtr;
     if ret.is_null() {
         xmlSchematronPErrMemory(
             0 as xmlSchematronParserCtxtPtr,
@@ -1784,23 +1760,22 @@ pub unsafe extern "C" fn xmlSchematronNewMemParserCtxt<'a1>(
         );
         return 0 as xmlSchematronParserCtxtPtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlSchematronParserCtxt>() as u64,
-    );
-    let ref mut fresh30 = (*ret).buffer;
+    ) });
+    let fresh30 = unsafe { &mut ((*ret).buffer) };
     *fresh30 = buffer;
-    (*ret).size = size;
-    let ref mut fresh31 = (*ret).dict;
+    (unsafe { (*ret).size = size });
+    let fresh31 = unsafe { &mut ((*ret).dict) };
     *fresh31 = xmlDictCreate();
-    let ref mut fresh32 = (*ret).xctxt;
-    *fresh32 = xmlXPathNewContext(0 as xmlDocPtr);
-    if ((*ret).xctxt).is_null() {
+    let fresh32 = unsafe { &mut ((*ret).xctxt) };
+    *fresh32 = unsafe { xmlXPathNewContext(0 as xmlDocPtr) };
+    if (unsafe { (*ret).xctxt }).is_null() {
         xmlSchematronPErrMemory(
             0 as xmlSchematronParserCtxtPtr,
-            b"allocating schema parser XPath context\0" as *const u8
-                as *const i8,
+            b"allocating schema parser XPath context\0" as *const u8 as *const i8,
             0 as xmlNodePtr,
         );
         xmlSchematronFreeParserCtxt(ret);
@@ -1809,18 +1784,17 @@ pub unsafe extern "C" fn xmlSchematronNewMemParserCtxt<'a1>(
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSchematronNewDocParserCtxt<'a1>(
-    mut doc: * mut crate::src::HTMLparser::_xmlDoc,
-) -> * mut crate::src::schematron::_xmlSchematronParserCtxt<'a1> {
-    let mut ret: * mut crate::src::schematron::_xmlSchematronParserCtxt<'_> = 0 as *mut xmlSchematronParserCtxt;
+pub extern "C" fn xmlSchematronNewDocParserCtxt<'a1>(
+    mut doc: *mut crate::src::HTMLparser::_xmlDoc,
+) -> *mut crate::src::schematron::_xmlSchematronParserCtxt<'a1> {
+    let mut ret: *mut crate::src::schematron::_xmlSchematronParserCtxt<'_> =
+        0 as *mut xmlSchematronParserCtxt;
     if doc.is_null() {
         return 0 as xmlSchematronParserCtxtPtr;
     }
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlSchematronParserCtxt>() as u64)
-        as xmlSchematronParserCtxtPtr;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlSchematronParserCtxt>() as u64,
+    ) }) as xmlSchematronParserCtxtPtr;
     if ret.is_null() {
         xmlSchematronPErrMemory(
             0 as xmlSchematronParserCtxtPtr,
@@ -1829,23 +1803,22 @@ pub unsafe extern "C" fn xmlSchematronNewDocParserCtxt<'a1>(
         );
         return 0 as xmlSchematronParserCtxtPtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlSchematronParserCtxt>() as u64,
-    );
-    let ref mut fresh33 = (*ret).doc;
+    ) });
+    let fresh33 = unsafe { &mut ((*ret).doc) };
     *fresh33 = doc;
-    let ref mut fresh34 = (*ret).dict;
+    let fresh34 = unsafe { &mut ((*ret).dict) };
     *fresh34 = xmlDictCreate();
-    (*ret).preserve = 1 as i32;
-    let ref mut fresh35 = (*ret).xctxt;
-    *fresh35 = xmlXPathNewContext(doc);
-    if ((*ret).xctxt).is_null() {
+    (unsafe { (*ret).preserve = 1 as i32 });
+    let fresh35 = unsafe { &mut ((*ret).xctxt) };
+    *fresh35 = unsafe { xmlXPathNewContext(doc) };
+    if (unsafe { (*ret).xctxt }).is_null() {
         xmlSchematronPErrMemory(
             0 as xmlSchematronParserCtxtPtr,
-            b"allocating schema parser XPath context\0" as *const u8
-                as *const i8,
+            b"allocating schema parser XPath context\0" as *const u8 as *const i8,
             0 as xmlNodePtr,
         );
         xmlSchematronFreeParserCtxt(ret);
@@ -1854,43 +1827,39 @@ pub unsafe extern "C" fn xmlSchematronNewDocParserCtxt<'a1>(
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSchematronFreeParserCtxt<'a1>(
-    mut ctxt: * mut crate::src::schematron::_xmlSchematronParserCtxt<'a1>,
+pub extern "C" fn xmlSchematronFreeParserCtxt<'a1>(
+    mut ctxt: *mut crate::src::schematron::_xmlSchematronParserCtxt<'a1>,
 ) {
     if ctxt.is_null() {
         return;
     }
-    if !((*ctxt).doc).is_null() && (*ctxt).preserve == 0 {
-        xmlFreeDoc((*ctxt).doc);
+    if !(unsafe { (*ctxt).doc }).is_null() && (unsafe { (*ctxt).preserve }) == 0 {
+        (unsafe { xmlFreeDoc((*ctxt).doc) });
     }
-    if !((*ctxt).xctxt).is_null() {
-        xmlXPathFreeContext((*ctxt).xctxt);
+    if !(unsafe { (*ctxt).xctxt }).is_null() {
+        (unsafe { xmlXPathFreeContext((*ctxt).xctxt) });
     }
-    if !((*ctxt).namespaces).is_null() {
-        xmlFree
-            .expect(
-                "non-null function pointer",
-            )((*ctxt).namespaces as *mut *mut i8 as *mut libc::c_void);
+    if !(unsafe { (*ctxt).namespaces }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")(
+            (*ctxt).namespaces as *mut *mut i8 as *mut libc::c_void,
+        ) });
     }
-    xmlDictFree((*ctxt).dict);
-    xmlFree.expect("non-null function pointer")(ctxt as *mut libc::c_void);
+    xmlDictFree(unsafe { (*ctxt).dict });
+    (unsafe { xmlFree.expect("non-null function pointer")(ctxt as *mut libc::c_void) });
 }
-unsafe extern "C" fn xmlSchematronAddNamespace<'a1>(
-    mut ctxt: * mut crate::src::schematron::_xmlSchematronParserCtxt<'a1>,
-    mut prefix: * const u8,
-    mut ns: * const u8,
+extern "C" fn xmlSchematronAddNamespace<'a1>(
+    mut ctxt: *mut crate::src::schematron::_xmlSchematronParserCtxt<'a1>,
+    mut prefix: *const u8,
+    mut ns: *const u8,
 ) {
-    if ((*ctxt).namespaces).is_null() {
-        (*ctxt).maxNamespaces = 10 as i32;
-        let ref mut fresh36 = (*ctxt).namespaces;
-        *fresh36 = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(
+    if (unsafe { (*ctxt).namespaces }).is_null() {
+        (unsafe { (*ctxt).maxNamespaces = 10 as i32 });
+        let fresh36 = unsafe { &mut ((*ctxt).namespaces) };
+        *fresh36 = (unsafe { xmlMalloc.expect("non-null function pointer")(
             (((*ctxt).maxNamespaces * 2 as i32) as u64)
                 .wrapping_mul(::std::mem::size_of::<*const xmlChar>() as u64),
-        ) as *mut *const xmlChar;
-        if ((*ctxt).namespaces).is_null() {
+        ) }) as *mut *const xmlChar;
+        if (unsafe { (*ctxt).namespaces }).is_null() {
             xmlSchematronPErrMemory(
                 0 as xmlSchematronParserCtxtPtr,
                 b"allocating parser namespaces\0" as *const u8 as *const i8,
@@ -1898,17 +1867,14 @@ unsafe extern "C" fn xmlSchematronAddNamespace<'a1>(
             );
             return;
         }
-        (*ctxt).nbNamespaces = 0 as i32;
-    } else if (*ctxt).nbNamespaces + 2 as i32 >= (*ctxt).maxNamespaces {
-        let mut tmp: * mut * const u8 = 0 as *mut *const xmlChar;
-        tmp = xmlRealloc
-            .expect(
-                "non-null function pointer",
-            )(
+        (unsafe { (*ctxt).nbNamespaces = 0 as i32 });
+    } else if (unsafe { (*ctxt).nbNamespaces }) + 2 as i32 >= (unsafe { (*ctxt).maxNamespaces }) {
+        let mut tmp: *mut *const u8 = 0 as *mut *const xmlChar;
+        tmp = (unsafe { xmlRealloc.expect("non-null function pointer")(
             (*ctxt).namespaces as *mut *mut xmlChar as *mut libc::c_void,
             (((*ctxt).maxNamespaces * 4 as i32) as u64)
                 .wrapping_mul(::std::mem::size_of::<*const xmlChar>() as u64),
-        ) as *mut *const xmlChar;
+        ) }) as *mut *const xmlChar;
         if tmp.is_null() {
             xmlSchematronPErrMemory(
                 0 as xmlSchematronParserCtxtPtr,
@@ -1917,78 +1883,70 @@ unsafe extern "C" fn xmlSchematronAddNamespace<'a1>(
             );
             return;
         }
-        let ref mut fresh37 = (*ctxt).namespaces;
+        let fresh37 = unsafe { &mut ((*ctxt).namespaces) };
         *fresh37 = tmp;
-        (*ctxt).maxNamespaces *= 2 as i32;
+        (unsafe { (*ctxt).maxNamespaces *= 2 as i32 });
     }
-    let ref mut fresh38 = *((*ctxt).namespaces)
-        .offset((2 as i32 * (*ctxt).nbNamespaces) as isize);
-    *fresh38 = xmlDictLookup((*ctxt).dict, ns, -(1 as i32));
-    let ref mut fresh39 = *((*ctxt).namespaces)
-        .offset((2 as i32 * (*ctxt).nbNamespaces + 1 as i32) as isize);
-    *fresh39 = xmlDictLookup((*ctxt).dict, prefix, -(1 as i32));
-    let ref mut fresh40 = (*ctxt).nbNamespaces;
+    let fresh38 = unsafe { &mut (*((*ctxt).namespaces).offset((2 as i32 * (*ctxt).nbNamespaces) as isize)) };
+    *fresh38 = xmlDictLookup(unsafe { (*ctxt).dict }, ns, -(1 as i32));
+    let fresh39 =
+        unsafe { &mut (*((*ctxt).namespaces).offset((2 as i32 * (*ctxt).nbNamespaces + 1 as i32) as isize)) };
+    *fresh39 = xmlDictLookup(unsafe { (*ctxt).dict }, prefix, -(1 as i32));
+    let fresh40 = unsafe { &mut ((*ctxt).nbNamespaces) };
     *fresh40 += 1;
-    let ref mut fresh41 = *((*ctxt).namespaces)
-        .offset((2 as i32 * (*ctxt).nbNamespaces) as isize);
+    let fresh41 = unsafe { &mut (*((*ctxt).namespaces).offset((2 as i32 * (*ctxt).nbNamespaces) as isize)) };
     *fresh41 = 0 as *const xmlChar;
-    let ref mut fresh42 = *((*ctxt).namespaces)
-        .offset((2 as i32 * (*ctxt).nbNamespaces + 1 as i32) as isize);
+    let fresh42 =
+        unsafe { &mut (*((*ctxt).namespaces).offset((2 as i32 * (*ctxt).nbNamespaces + 1 as i32) as isize)) };
     *fresh42 = 0 as *const xmlChar;
 }
-unsafe extern "C" fn xmlSchematronParseTestReportMsg<'a1>(
-    mut ctxt: * mut crate::src::schematron::_xmlSchematronParserCtxt<'a1>,
-    mut con: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlSchematronParseTestReportMsg<'a1>(
+    mut ctxt: *mut crate::src::schematron::_xmlSchematronParserCtxt<'a1>,
+    mut con: *mut crate::src::HTMLparser::_xmlNode,
 ) {
-    let mut child: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut comp: * mut crate::src::debugXML::_xmlXPathCompExpr = 0 as *mut xmlXPathCompExpr;
-    child = (*con).children;
+    let mut child: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut comp: *mut crate::src::debugXML::_xmlXPathCompExpr = 0 as *mut xmlXPathCompExpr;
+    child = unsafe { (*con).children };
     while !child.is_null() {
-        if !((*child).type_0 as u32
-            == XML_TEXT_NODE as i32 as u32
-            || (*child).type_0 as u32
-                == XML_CDATA_SECTION_NODE as i32 as u32)
+        if !((unsafe { (*child).type_0 }) as u32 == XML_TEXT_NODE as i32 as u32
+            || (unsafe { (*child).type_0 }) as u32 == XML_CDATA_SECTION_NODE as i32 as u32)
         {
             if !(!child.is_null()
-                && (*child).type_0 as u32
-                    == XML_ELEMENT_NODE as i32 as u32
-                && !((*child).ns).is_null()
-                && xmlStrEqual(
+                && (unsafe { (*child).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+                && !(unsafe { (*child).ns }).is_null()
+                && (unsafe { xmlStrEqual(
                     (*child).name,
                     b"name\0" as *const u8 as *const i8 as *const xmlChar,
-                ) != 0
-                && (xmlStrEqual((*(*child).ns).href, xmlSchematronNs) != 0
-                    || xmlStrEqual((*(*child).ns).href, xmlOldSchematronNs) != 0))
+                ) }) != 0
+                && ((unsafe { xmlStrEqual((*(*child).ns).href, xmlSchematronNs) }) != 0
+                    || (unsafe { xmlStrEqual((*(*child).ns).href, xmlOldSchematronNs) }) != 0))
             {
                 if !child.is_null()
-                    && (*child).type_0 as u32
-                        == XML_ELEMENT_NODE as i32 as u32
-                    && !((*child).ns).is_null()
-                    && xmlStrEqual(
+                    && (unsafe { (*child).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+                    && !(unsafe { (*child).ns }).is_null()
+                    && (unsafe { xmlStrEqual(
                         (*child).name,
-                        b"value-of\0" as *const u8 as *const i8
-                            as *const xmlChar,
-                    ) != 0
-                    && (xmlStrEqual((*(*child).ns).href, xmlSchematronNs) != 0
-                        || xmlStrEqual((*(*child).ns).href, xmlOldSchematronNs) != 0)
+                        b"value-of\0" as *const u8 as *const i8 as *const xmlChar,
+                    ) }) != 0
+                    && ((unsafe { xmlStrEqual((*(*child).ns).href, xmlSchematronNs) }) != 0
+                        || (unsafe { xmlStrEqual((*(*child).ns).href, xmlOldSchematronNs) }) != 0)
                 {
-                    let mut select: * mut u8 = 0 as *mut xmlChar;
-                    select = xmlGetNoNsProp(
+                    let mut select: *mut u8 = 0 as *mut xmlChar;
+                    select = unsafe { xmlGetNoNsProp(
                         child as *const xmlNode,
                         b"select\0" as *const u8 as *const i8 as *mut xmlChar,
-                    );
+                    ) };
                     if select.is_null() {
                         xmlSchematronPErr(
                             ctxt,
                             child,
                             XML_SCHEMAV_ATTRINVALID as i32,
-                            b"value-of has no select attribute\0" as *const u8
-                                as *const i8,
+                            b"value-of has no select attribute\0" as *const u8 as *const i8,
                             0 as *const xmlChar,
                             0 as *const xmlChar,
                         );
                     } else {
-                        comp = xmlXPathCtxtCompile((*ctxt).xctxt, select);
+                        comp = unsafe { xmlXPathCtxtCompile((*ctxt).xctxt, select) };
                         if comp.is_null() {
                             xmlSchematronPErr(
                                 ctxt,
@@ -2000,39 +1958,40 @@ unsafe extern "C" fn xmlSchematronParseTestReportMsg<'a1>(
                                 0 as *const xmlChar,
                             );
                         }
-                        xmlXPathFreeCompExpr(comp);
+                        (unsafe { xmlXPathFreeCompExpr(comp) });
                     }
-                    xmlFree
-                        .expect(
-                            "non-null function pointer",
-                        )(select as *mut libc::c_void);
+                    (unsafe { xmlFree.expect("non-null function pointer")(select as *mut libc::c_void) });
                 }
             }
         }
-        child = (*child).next;
+        child = unsafe { (*child).next };
     }
 }
-unsafe extern "C" fn xmlSchematronParseRule<'a1, 'a2>(
-    mut ctxt: * mut crate::src::schematron::_xmlSchematronParserCtxt<'a1>,
-    mut pattern: * mut crate::src::schematron::_xmlSchematronPattern<'a2>,
-    mut rule: * mut crate::src::HTMLparser::_xmlNode,
-) where 'a2: 'a1, 'a1: 'a2 {
-    let mut cur: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+extern "C" fn xmlSchematronParseRule<'a1, 'a2>(
+    mut ctxt: *mut crate::src::schematron::_xmlSchematronParserCtxt<'a1>,
+    mut pattern: *mut crate::src::schematron::_xmlSchematronPattern<'a2>,
+    mut rule: *mut crate::src::HTMLparser::_xmlNode,
+) where
+    'a2: 'a1,
+    'a1: 'a2,
+{
+    let mut cur: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
     let mut nbChecks: i32 = 0 as i32;
-    let mut test: * mut u8 = 0 as *mut xmlChar;
-    let mut context: * mut u8 = 0 as *mut xmlChar;
-    let mut report: * mut u8 = 0 as *mut xmlChar;
-    let mut name: * mut u8 = 0 as *mut xmlChar;
-    let mut value: * mut u8 = 0 as *mut xmlChar;
-    let mut ruleptr: * mut crate::src::schematron::_xmlSchematronRule<'_> = 0 as *mut xmlSchematronRule;
-    let mut testptr: * mut crate::src::schematron::_xmlSchematronTest = 0 as *mut xmlSchematronTest;
+    let mut test: *mut u8 = 0 as *mut xmlChar;
+    let mut context: *mut u8 = 0 as *mut xmlChar;
+    let mut report: *mut u8 = 0 as *mut xmlChar;
+    let mut name: *mut u8 = 0 as *mut xmlChar;
+    let mut value: *mut u8 = 0 as *mut xmlChar;
+    let mut ruleptr: *mut crate::src::schematron::_xmlSchematronRule<'_> =
+        0 as *mut xmlSchematronRule;
+    let mut testptr: *mut crate::src::schematron::_xmlSchematronTest = 0 as *mut xmlSchematronTest;
     if ctxt.is_null() || rule.is_null() {
         return;
     }
-    context = xmlGetNoNsProp(
+    context = unsafe { xmlGetNoNsProp(
         rule as *const xmlNode,
         b"context\0" as *const u8 as *const i8 as *mut xmlChar,
-    );
+    ) };
     if context.is_null() {
         xmlSchematronPErr(
             ctxt,
@@ -2044,64 +2003,62 @@ unsafe extern "C" fn xmlSchematronParseRule<'a1, 'a2>(
         );
         return;
     } else {
-        if *context.offset(0 as i32 as isize) as i32 == 0 as i32
-        {
+        if (unsafe { *context.offset(0 as i32 as isize) }) as i32 == 0 as i32 {
             xmlSchematronPErr(
                 ctxt,
                 rule,
                 XML_SCHEMAP_NOROOT as i32,
-                b"rule has an empty context attribute\0" as *const u8
-                    as *const i8,
+                b"rule has an empty context attribute\0" as *const u8 as *const i8,
                 0 as *const xmlChar,
                 0 as *const xmlChar,
             );
-            xmlFree.expect("non-null function pointer")(context as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(context as *mut libc::c_void) });
             return;
         } else {
             ruleptr = xmlSchematronAddRule(
                 ctxt,
-                (*ctxt).schema,
+                unsafe { (*ctxt).schema },
                 pattern,
                 rule,
                 context,
                 0 as *mut xmlChar,
             );
             if ruleptr.is_null() {
-                xmlFree
-                    .expect("non-null function pointer")(context as *mut libc::c_void);
+                (unsafe { xmlFree.expect("non-null function pointer")(context as *mut libc::c_void) });
                 return;
             }
         }
     }
-    cur = (*rule).children;
+    cur = unsafe { (*rule).children };
     while !cur.is_null() {
-        if (*cur).type_0 as u32
-            == XML_ELEMENT_NODE as i32 as u32 && !((*cur).ns).is_null()
-            && (xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) != 0
-                || xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) != 0)
+        if (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+            && !(unsafe { (*cur).ns }).is_null()
+            && ((unsafe { xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) }) != 0
+                || (unsafe { xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) }) != 0)
         {
             break;
         }
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
     }
     while !cur.is_null() {
         if !cur.is_null()
-            && (*cur).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && !((*cur).ns).is_null()
-            && xmlStrEqual(
+            && (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+            && !(unsafe { (*cur).ns }).is_null()
+            && (unsafe { xmlStrEqual(
                 (*cur).name,
                 b"let\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0
-            && (xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) != 0
-                || xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) != 0)
+            ) }) != 0
+            && ((unsafe { xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) }) != 0
+                || (unsafe { xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) }) != 0)
         {
-            let mut var_comp: * mut crate::src::debugXML::_xmlXPathCompExpr = 0 as *mut xmlXPathCompExpr;
-            let mut let_0: * mut crate::src::schematron::_xmlSchematronLet = 0 as *mut xmlSchematronLet;
-            name = xmlGetNoNsProp(
+            let mut var_comp: *mut crate::src::debugXML::_xmlXPathCompExpr =
+                0 as *mut xmlXPathCompExpr;
+            let mut let_0: *mut crate::src::schematron::_xmlSchematronLet =
+                0 as *mut xmlSchematronLet;
+            name = unsafe { xmlGetNoNsProp(
                 cur as *const xmlNode,
                 b"name\0" as *const u8 as *const i8 as *mut xmlChar,
-            );
+            ) };
             if name.is_null() {
                 xmlSchematronPErr(
                     ctxt,
@@ -2113,27 +2070,23 @@ unsafe extern "C" fn xmlSchematronParseRule<'a1, 'a2>(
                 );
                 return;
             } else {
-                if *name.offset(0 as i32 as isize) as i32
-                    == 0 as i32
-                {
+                if (unsafe { *name.offset(0 as i32 as isize) }) as i32 == 0 as i32 {
                     xmlSchematronPErr(
                         ctxt,
                         cur,
                         XML_SCHEMAP_NOROOT as i32,
-                        b"let has an empty name attribute\0" as *const u8
-                            as *const i8,
+                        b"let has an empty name attribute\0" as *const u8 as *const i8,
                         0 as *const xmlChar,
                         0 as *const xmlChar,
                     );
-                    xmlFree
-                        .expect("non-null function pointer")(name as *mut libc::c_void);
+                    (unsafe { xmlFree.expect("non-null function pointer")(name as *mut libc::c_void) });
                     return;
                 }
             }
-            value = xmlGetNoNsProp(
+            value = unsafe { xmlGetNoNsProp(
                 cur as *const xmlNode,
                 b"value\0" as *const u8 as *const i8 as *mut xmlChar,
-            );
+            ) };
             if value.is_null() {
                 xmlSchematronPErr(
                     ctxt,
@@ -2145,159 +2098,129 @@ unsafe extern "C" fn xmlSchematronParseRule<'a1, 'a2>(
                 );
                 return;
             } else {
-                if *value.offset(0 as i32 as isize) as i32
-                    == 0 as i32
-                {
+                if (unsafe { *value.offset(0 as i32 as isize) }) as i32 == 0 as i32 {
                     xmlSchematronPErr(
                         ctxt,
                         cur,
                         XML_SCHEMAP_NOROOT as i32,
-                        b"let has an empty value attribute\0" as *const u8
-                            as *const i8,
+                        b"let has an empty value attribute\0" as *const u8 as *const i8,
                         0 as *const xmlChar,
                         0 as *const xmlChar,
                     );
-                    xmlFree
-                        .expect("non-null function pointer")(value as *mut libc::c_void);
+                    (unsafe { xmlFree.expect("non-null function pointer")(value as *mut libc::c_void) });
                     return;
                 }
             }
-            var_comp = xmlXPathCtxtCompile((*ctxt).xctxt, value);
+            var_comp = unsafe { xmlXPathCtxtCompile((*ctxt).xctxt, value) };
             if var_comp.is_null() {
                 xmlSchematronPErr(
                     ctxt,
                     cur,
                     XML_SCHEMAP_NOROOT as i32,
-                    b"Failed to compile let expression %s\0" as *const u8
-                        as *const i8,
+                    b"Failed to compile let expression %s\0" as *const u8 as *const i8,
                     value,
                     0 as *const xmlChar,
                 );
                 return;
             }
-            let_0 = malloc(::std::mem::size_of::<xmlSchematronLet>() as u64)
-                as xmlSchematronLetPtr;
-            let ref mut fresh43 = (*let_0).name;
+            let_0 = (unsafe { malloc(::std::mem::size_of::<xmlSchematronLet>() as u64) }) as xmlSchematronLetPtr;
+            let fresh43 = unsafe { &mut ((*let_0).name) };
             *fresh43 = name;
-            let ref mut fresh44 = (*let_0).comp;
+            let fresh44 = unsafe { &mut ((*let_0).comp) };
             *fresh44 = var_comp;
-            let ref mut fresh45 = (*let_0).next;
+            let fresh45 = unsafe { &mut ((*let_0).next) };
             *fresh45 = 0 as xmlSchematronLetPtr;
-            if !((*ruleptr).lets).is_null() {
-                let ref mut fresh46 = (*let_0).next;
-                *fresh46 = (*ruleptr).lets;
+            if !(unsafe { (*ruleptr).lets }).is_null() {
+                let fresh46 = unsafe { &mut ((*let_0).next) };
+                *fresh46 = unsafe { (*ruleptr).lets };
             }
-            let ref mut fresh47 = (*ruleptr).lets;
+            let fresh47 = unsafe { &mut ((*ruleptr).lets) };
             *fresh47 = let_0;
-            xmlFree.expect("non-null function pointer")(value as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(value as *mut libc::c_void) });
         } else if !cur.is_null()
-                && (*cur).type_0 as u32
-                    == XML_ELEMENT_NODE as i32 as u32
-                && !((*cur).ns).is_null()
-                && xmlStrEqual(
-                    (*cur).name,
-                    b"assert\0" as *const u8 as *const i8 as *const xmlChar,
-                ) != 0
-                && (xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) != 0
-                    || xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) != 0)
-            {
+            && (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+            && !(unsafe { (*cur).ns }).is_null()
+            && (unsafe { xmlStrEqual(
+                (*cur).name,
+                b"assert\0" as *const u8 as *const i8 as *const xmlChar,
+            ) }) != 0
+            && ((unsafe { xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) }) != 0
+                || (unsafe { xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) }) != 0)
+        {
             nbChecks += 1;
-            test = xmlGetNoNsProp(
+            test = unsafe { xmlGetNoNsProp(
                 cur as *const xmlNode,
                 b"test\0" as *const u8 as *const i8 as *mut xmlChar,
-            );
+            ) };
             if test.is_null() {
                 xmlSchematronPErr(
                     ctxt,
                     cur,
                     XML_SCHEMAP_NOROOT as i32,
-                    b"assert has no test attribute\0" as *const u8
-                        as *const i8,
+                    b"assert has no test attribute\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
-            } else if *test.offset(0 as i32 as isize) as i32
-                    == 0 as i32
-                {
+            } else if (unsafe { *test.offset(0 as i32 as isize) }) as i32 == 0 as i32 {
                 xmlSchematronPErr(
                     ctxt,
                     cur,
                     XML_SCHEMAP_NOROOT as i32,
-                    b"assert has an empty test attribute\0" as *const u8
-                        as *const i8,
+                    b"assert has an empty test attribute\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
-                xmlFree.expect("non-null function pointer")(test as *mut libc::c_void);
+                (unsafe { xmlFree.expect("non-null function pointer")(test as *mut libc::c_void) });
             } else {
                 xmlSchematronParseTestReportMsg(ctxt, cur);
-                report = xmlNodeGetContent(cur as *const xmlNode);
-                testptr = xmlSchematronAddTest(
-                    ctxt,
-                    XML_SCHEMATRON_ASSERT,
-                    ruleptr,
-                    cur,
-                    test,
-                    report,
-                );
+                report = unsafe { xmlNodeGetContent(cur as *const xmlNode) };
+                testptr =
+                    xmlSchematronAddTest(ctxt, XML_SCHEMATRON_ASSERT, ruleptr, cur, test, report);
                 if testptr.is_null() {
-                    xmlFree
-                        .expect("non-null function pointer")(test as *mut libc::c_void);
+                    (unsafe { xmlFree.expect("non-null function pointer")(test as *mut libc::c_void) });
                 }
             }
         } else if !cur.is_null()
-                && (*cur).type_0 as u32
-                    == XML_ELEMENT_NODE as i32 as u32
-                && !((*cur).ns).is_null()
-                && xmlStrEqual(
-                    (*cur).name,
-                    b"report\0" as *const u8 as *const i8 as *const xmlChar,
-                ) != 0
-                && (xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) != 0
-                    || xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) != 0)
-            {
+            && (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+            && !(unsafe { (*cur).ns }).is_null()
+            && (unsafe { xmlStrEqual(
+                (*cur).name,
+                b"report\0" as *const u8 as *const i8 as *const xmlChar,
+            ) }) != 0
+            && ((unsafe { xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) }) != 0
+                || (unsafe { xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) }) != 0)
+        {
             nbChecks += 1;
-            test = xmlGetNoNsProp(
+            test = unsafe { xmlGetNoNsProp(
                 cur as *const xmlNode,
                 b"test\0" as *const u8 as *const i8 as *mut xmlChar,
-            );
+            ) };
             if test.is_null() {
                 xmlSchematronPErr(
                     ctxt,
                     cur,
                     XML_SCHEMAP_NOROOT as i32,
-                    b"assert has no test attribute\0" as *const u8
-                        as *const i8,
+                    b"assert has no test attribute\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
-            } else if *test.offset(0 as i32 as isize) as i32
-                    == 0 as i32
-                {
+            } else if (unsafe { *test.offset(0 as i32 as isize) }) as i32 == 0 as i32 {
                 xmlSchematronPErr(
                     ctxt,
                     cur,
                     XML_SCHEMAP_NOROOT as i32,
-                    b"assert has an empty test attribute\0" as *const u8
-                        as *const i8,
+                    b"assert has an empty test attribute\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
-                xmlFree.expect("non-null function pointer")(test as *mut libc::c_void);
+                (unsafe { xmlFree.expect("non-null function pointer")(test as *mut libc::c_void) });
             } else {
                 xmlSchematronParseTestReportMsg(ctxt, cur);
-                report = xmlNodeGetContent(cur as *const xmlNode);
-                testptr = xmlSchematronAddTest(
-                    ctxt,
-                    XML_SCHEMATRON_REPORT,
-                    ruleptr,
-                    cur,
-                    test,
-                    report,
-                );
+                report = unsafe { xmlNodeGetContent(cur as *const xmlNode) };
+                testptr =
+                    xmlSchematronAddTest(ctxt, XML_SCHEMATRON_REPORT, ruleptr, cur, test, report);
                 if testptr.is_null() {
-                    xmlFree
-                        .expect("non-null function pointer")(test as *mut libc::c_void);
+                    (unsafe { xmlFree.expect("non-null function pointer")(test as *mut libc::c_void) });
                 }
             }
         } else {
@@ -2307,21 +2230,20 @@ unsafe extern "C" fn xmlSchematronParseRule<'a1, 'a2>(
                 XML_SCHEMAP_NOROOT as i32,
                 b"Expecting an assert or a report element instead of %s\0" as *const u8
                     as *const i8,
-                (*cur).name,
+                unsafe { (*cur).name },
                 0 as *const xmlChar,
             );
         }
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
         while !cur.is_null() {
-            if (*cur).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-                && !((*cur).ns).is_null()
-                && (xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) != 0
-                    || xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) != 0)
+            if (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+                && !(unsafe { (*cur).ns }).is_null()
+                && ((unsafe { xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) }) != 0
+                    || (unsafe { xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) }) != 0)
             {
                 break;
             }
-            cur = (*cur).next;
+            cur = unsafe { (*cur).next };
         }
     }
     if nbChecks == 0 as i32 {
@@ -2329,63 +2251,62 @@ unsafe extern "C" fn xmlSchematronParseRule<'a1, 'a2>(
             ctxt,
             rule,
             XML_SCHEMAP_NOROOT as i32,
-            b"rule has no assert nor report element\0" as *const u8
-                as *const i8,
+            b"rule has no assert nor report element\0" as *const u8 as *const i8,
             0 as *const xmlChar,
             0 as *const xmlChar,
         );
     }
 }
-unsafe extern "C" fn xmlSchematronParsePattern<'a1>(
-    mut ctxt: * mut crate::src::schematron::_xmlSchematronParserCtxt<'a1>,
-    mut pat: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlSchematronParsePattern<'a1>(
+    mut ctxt: *mut crate::src::schematron::_xmlSchematronParserCtxt<'a1>,
+    mut pat: *mut crate::src::HTMLparser::_xmlNode,
 ) {
-    let mut cur: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut pattern: * mut crate::src::schematron::_xmlSchematronPattern<'_> = 0 as *mut xmlSchematronPattern;
+    let mut cur: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut pattern: *mut crate::src::schematron::_xmlSchematronPattern<'_> =
+        0 as *mut xmlSchematronPattern;
     let mut nbRules: i32 = 0 as i32;
-    let mut id: * mut u8 = 0 as *mut xmlChar;
+    let mut id: *mut u8 = 0 as *mut xmlChar;
     if ctxt.is_null() || pat.is_null() {
         return;
     }
-    id = xmlGetNoNsProp(
+    id = unsafe { xmlGetNoNsProp(
         pat as *const xmlNode,
         b"id\0" as *const u8 as *const i8 as *mut xmlChar,
-    );
+    ) };
     if id.is_null() {
-        id = xmlGetNoNsProp(
+        id = unsafe { xmlGetNoNsProp(
             pat as *const xmlNode,
             b"name\0" as *const u8 as *const i8 as *mut xmlChar,
-        );
+        ) };
     }
-    pattern = xmlSchematronAddPattern(ctxt, (*ctxt).schema, pat, id);
+    pattern = xmlSchematronAddPattern(ctxt, unsafe { (*ctxt).schema }, pat, id);
     if pattern.is_null() {
         if !id.is_null() {
-            xmlFree.expect("non-null function pointer")(id as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(id as *mut libc::c_void) });
         }
         return;
     }
-    cur = (*pat).children;
+    cur = unsafe { (*pat).children };
     while !cur.is_null() {
-        if (*cur).type_0 as u32
-            == XML_ELEMENT_NODE as i32 as u32 && !((*cur).ns).is_null()
-            && (xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) != 0
-                || xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) != 0)
+        if (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+            && !(unsafe { (*cur).ns }).is_null()
+            && ((unsafe { xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) }) != 0
+                || (unsafe { xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) }) != 0)
         {
             break;
         }
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
     }
     while !cur.is_null() {
         if !cur.is_null()
-            && (*cur).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && !((*cur).ns).is_null()
-            && xmlStrEqual(
+            && (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+            && !(unsafe { (*cur).ns }).is_null()
+            && (unsafe { xmlStrEqual(
                 (*cur).name,
                 b"rule\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0
-            && (xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) != 0
-                || xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) != 0)
+            ) }) != 0
+            && ((unsafe { xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) }) != 0
+                || (unsafe { xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) }) != 0)
         {
             xmlSchematronParseRule(ctxt, pattern, cur);
             nbRules += 1;
@@ -2394,23 +2315,21 @@ unsafe extern "C" fn xmlSchematronParsePattern<'a1>(
                 ctxt,
                 cur,
                 XML_SCHEMAP_NOROOT as i32,
-                b"Expecting a rule element instead of %s\0" as *const u8
-                    as *const i8,
-                (*cur).name,
+                b"Expecting a rule element instead of %s\0" as *const u8 as *const i8,
+                unsafe { (*cur).name },
                 0 as *const xmlChar,
             );
         }
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
         while !cur.is_null() {
-            if (*cur).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-                && !((*cur).ns).is_null()
-                && (xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) != 0
-                    || xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) != 0)
+            if (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+                && !(unsafe { (*cur).ns }).is_null()
+                && ((unsafe { xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) }) != 0
+                    || (unsafe { xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) }) != 0)
             {
                 break;
             }
-            cur = (*cur).next;
+            cur = unsafe { (*cur).next };
         }
     }
     if nbRules == 0 as i32 {
@@ -2425,21 +2344,25 @@ unsafe extern "C" fn xmlSchematronParsePattern<'a1>(
     }
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSchematronParse<'a1, 'a2>(
-    mut ctxt: * mut crate::src::schematron::_xmlSchematronParserCtxt<'a1>,
-) -> * mut crate::src::schematron::_xmlSchematron<'a2> where 'a1: 'a2, 'a2: 'a1 {
-    let mut ret: * mut crate::src::schematron::_xmlSchematron<'_> = 0 as xmlSchematronPtr;
-    let mut doc: * mut crate::src::HTMLparser::_xmlDoc = 0 as *mut xmlDoc;
-    let mut root: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut cur: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+pub extern "C" fn xmlSchematronParse<'a1, 'a2>(
+    mut ctxt: *mut crate::src::schematron::_xmlSchematronParserCtxt<'a1>,
+) -> *mut crate::src::schematron::_xmlSchematron<'a2>
+where
+    'a1: 'a2,
+    'a2: 'a1,
+{
+    let mut ret: *mut crate::src::schematron::_xmlSchematron<'_> = 0 as xmlSchematronPtr;
+    let mut doc: *mut crate::src::HTMLparser::_xmlDoc = 0 as *mut xmlDoc;
+    let mut root: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut cur: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
     let mut preserve: i32 = 0 as i32;
     if ctxt.is_null() {
         return 0 as xmlSchematronPtr;
     }
-    (*ctxt).nberrors = 0 as i32;
-    if !((*ctxt).URL).is_null() {
+    (unsafe { (*ctxt).nberrors = 0 as i32 });
+    if !(unsafe { (*ctxt).URL }).is_null() {
         doc = xmlReadFile(
-            (*ctxt).URL as *const i8,
+            (unsafe { (*ctxt).URL }) as *const i8,
             0 as *const i8,
             XML_PARSE_NOENT as i32,
         );
@@ -2448,18 +2371,17 @@ pub unsafe extern "C" fn xmlSchematronParse<'a1, 'a2>(
                 ctxt,
                 0 as xmlNodePtr,
                 XML_SCHEMAP_FAILED_LOAD as i32,
-                b"xmlSchematronParse: could not load '%s'.\n\0" as *const u8
-                    as *const i8,
-                (*ctxt).URL,
+                b"xmlSchematronParse: could not load '%s'.\n\0" as *const u8 as *const i8,
+                unsafe { (*ctxt).URL },
                 0 as *const xmlChar,
             );
             return 0 as xmlSchematronPtr;
         }
-        (*ctxt).preserve = 0 as i32;
-    } else if !((*ctxt).buffer).is_null() {
+        (unsafe { (*ctxt).preserve = 0 as i32 });
+    } else if !(unsafe { (*ctxt).buffer }).is_null() {
         doc = xmlReadMemory(
-            (*ctxt).buffer,
-            (*ctxt).size,
+            unsafe { (*ctxt).buffer },
+            unsafe { (*ctxt).size },
             0 as *const i8,
             0 as *const i8,
             XML_PARSE_NOENT as i32,
@@ -2469,146 +2391,132 @@ pub unsafe extern "C" fn xmlSchematronParse<'a1, 'a2>(
                 ctxt,
                 0 as xmlNodePtr,
                 XML_SCHEMAP_FAILED_PARSE as i32,
-                b"xmlSchematronParse: could not parse.\n\0" as *const u8
-                    as *const i8,
+                b"xmlSchematronParse: could not parse.\n\0" as *const u8 as *const i8,
                 0 as *const xmlChar,
                 0 as *const xmlChar,
             );
             return 0 as xmlSchematronPtr;
         }
-        let ref mut fresh48 = (*doc).URL;
-        *fresh48 = xmlStrdup(
-            b"in_memory_buffer\0" as *const u8 as *const i8 as *mut xmlChar,
-        );
-        let ref mut fresh49 = (*ctxt).URL;
+        let fresh48 = unsafe { &mut ((*doc).URL) };
+        *fresh48 = unsafe { xmlStrdup(b"in_memory_buffer\0" as *const u8 as *const i8 as *mut xmlChar) };
+        let fresh49 = unsafe { &mut ((*ctxt).URL) };
         *fresh49 = xmlDictLookup(
-            (*ctxt).dict,
+            unsafe { (*ctxt).dict },
             b"in_memory_buffer\0" as *const u8 as *const i8 as *mut xmlChar,
             -(1 as i32),
         );
-        (*ctxt).preserve = 0 as i32;
-    } else if !((*ctxt).doc).is_null() {
-        doc = (*ctxt).doc;
+        (unsafe { (*ctxt).preserve = 0 as i32 });
+    } else if !(unsafe { (*ctxt).doc }).is_null() {
+        doc = unsafe { (*ctxt).doc };
         preserve = 1 as i32;
-        (*ctxt).preserve = 1 as i32;
+        (unsafe { (*ctxt).preserve = 1 as i32 });
     } else {
         xmlSchematronPErr(
             ctxt,
             0 as xmlNodePtr,
             XML_SCHEMAP_NOTHING_TO_PARSE as i32,
-            b"xmlSchematronParse: could not parse.\n\0" as *const u8
-                as *const i8,
+            b"xmlSchematronParse: could not parse.\n\0" as *const u8 as *const i8,
             0 as *const xmlChar,
             0 as *const xmlChar,
         );
         return 0 as xmlSchematronPtr;
     }
-    root = xmlDocGetRootElement(doc as *const xmlDoc);
+    root = unsafe { xmlDocGetRootElement(doc as *const xmlDoc) };
     if root.is_null() {
         xmlSchematronPErr(
             ctxt,
             doc as xmlNodePtr,
             XML_SCHEMAP_NOROOT as i32,
-            b"The schema has no document element.\n\0" as *const u8
-                as *const i8,
+            b"The schema has no document element.\n\0" as *const u8 as *const i8,
             0 as *const xmlChar,
             0 as *const xmlChar,
         );
         if preserve == 0 {
-            xmlFreeDoc(doc);
+            (unsafe { xmlFreeDoc(doc) });
         }
         return 0 as xmlSchematronPtr;
     }
     if !(!root.is_null()
-        && (*root).type_0 as u32
-            == XML_ELEMENT_NODE as i32 as u32 && !((*root).ns).is_null()
-        && xmlStrEqual(
+        && (unsafe { (*root).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && !(unsafe { (*root).ns }).is_null()
+        && (unsafe { xmlStrEqual(
             (*root).name,
             b"schema\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0
-        && (xmlStrEqual((*(*root).ns).href, xmlSchematronNs) != 0
-            || xmlStrEqual((*(*root).ns).href, xmlOldSchematronNs) != 0))
+        ) }) != 0
+        && ((unsafe { xmlStrEqual((*(*root).ns).href, xmlSchematronNs) }) != 0
+            || (unsafe { xmlStrEqual((*(*root).ns).href, xmlOldSchematronNs) }) != 0))
     {
         xmlSchematronPErr(
             ctxt,
             root,
             XML_SCHEMAP_NOROOT as i32,
-            b"The XML document '%s' is not a XML schematron document\0" as *const u8
-                as *const i8,
-            (*ctxt).URL,
+            b"The XML document '%s' is not a XML schematron document\0" as *const u8 as *const i8,
+            unsafe { (*ctxt).URL },
             0 as *const xmlChar,
         );
     } else {
         ret = xmlSchematronNewSchematron(ctxt);
         if !ret.is_null() {
-            let ref mut fresh50 = (*ctxt).schema;
+            let fresh50 = unsafe { &mut ((*ctxt).schema) };
             *fresh50 = ret;
-            cur = (*root).children;
+            cur = unsafe { (*root).children };
             while !cur.is_null() {
-                if (*cur).type_0 as u32
-                    == XML_ELEMENT_NODE as i32 as u32
-                    && !((*cur).ns).is_null()
-                    && (xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) != 0
-                        || xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) != 0)
+                if (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+                    && !(unsafe { (*cur).ns }).is_null()
+                    && ((unsafe { xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) }) != 0
+                        || (unsafe { xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) }) != 0)
                 {
                     break;
                 }
-                cur = (*cur).next;
+                cur = unsafe { (*cur).next };
             }
             if !cur.is_null()
-                && (*cur).type_0 as u32
-                    == XML_ELEMENT_NODE as i32 as u32
-                && !((*cur).ns).is_null()
-                && xmlStrEqual(
+                && (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+                && !(unsafe { (*cur).ns }).is_null()
+                && (unsafe { xmlStrEqual(
                     (*cur).name,
                     b"title\0" as *const u8 as *const i8 as *const xmlChar,
-                ) != 0
-                && (xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) != 0
-                    || xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) != 0)
+                ) }) != 0
+                && ((unsafe { xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) }) != 0
+                    || (unsafe { xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) }) != 0)
             {
-                let mut title: * mut u8 = xmlNodeGetContent(cur as *const xmlNode);
+                let mut title: *mut u8 = unsafe { xmlNodeGetContent(cur as *const xmlNode) };
                 if !title.is_null() {
-                    let ref mut fresh51 = (*ret).title;
-                    *fresh51 = xmlDictLookup((*ret).dict, title, -(1 as i32));
-                    xmlFree
-                        .expect("non-null function pointer")(title as *mut libc::c_void);
+                    let fresh51 = unsafe { &mut ((*ret).title) };
+                    *fresh51 = xmlDictLookup(unsafe { (*ret).dict }, title, -(1 as i32));
+                    (unsafe { xmlFree.expect("non-null function pointer")(title as *mut libc::c_void) });
                 }
-                cur = (*cur).next;
+                cur = unsafe { (*cur).next };
                 while !cur.is_null() {
-                    if (*cur).type_0 as u32
-                        == XML_ELEMENT_NODE as i32 as u32
-                        && !((*cur).ns).is_null()
-                        && (xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) != 0
-                            || xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) != 0)
+                    if (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+                        && !(unsafe { (*cur).ns }).is_null()
+                        && ((unsafe { xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) }) != 0
+                            || (unsafe { xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) }) != 0)
                     {
                         break;
                     }
-                    cur = (*cur).next;
+                    cur = unsafe { (*cur).next };
                 }
             }
             while !cur.is_null()
-                && (*cur).type_0 as u32
-                    == XML_ELEMENT_NODE as i32 as u32
-                && !((*cur).ns).is_null()
-                && xmlStrEqual(
+                && (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+                && !(unsafe { (*cur).ns }).is_null()
+                && (unsafe { xmlStrEqual(
                     (*cur).name,
                     b"ns\0" as *const u8 as *const i8 as *const xmlChar,
-                ) != 0
-                && (xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) != 0
-                    || xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) != 0)
+                ) }) != 0
+                && ((unsafe { xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) }) != 0
+                    || (unsafe { xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) }) != 0)
             {
-                let mut prefix: * mut u8 = xmlGetNoNsProp(
+                let mut prefix: *mut u8 = unsafe { xmlGetNoNsProp(
                     cur as *const xmlNode,
                     b"prefix\0" as *const u8 as *const i8 as *mut xmlChar,
-                );
-                let mut uri: * mut u8 = xmlGetNoNsProp(
+                ) };
+                let mut uri: *mut u8 = unsafe { xmlGetNoNsProp(
                     cur as *const xmlNode,
                     b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
-                );
-                if uri.is_null()
-                    || *uri.offset(0 as i32 as isize) as i32
-                        == 0 as i32
-                {
+                ) };
+                if uri.is_null() || (unsafe { *uri.offset(0 as i32 as isize) }) as i32 == 0 as i32 {
                     xmlSchematronPErr(
                         ctxt,
                         cur,
@@ -2618,321 +2526,291 @@ pub unsafe extern "C" fn xmlSchematronParse<'a1, 'a2>(
                         0 as *const xmlChar,
                     );
                 }
-                if prefix.is_null()
-                    || *prefix.offset(0 as i32 as isize) as i32
-                        == 0 as i32
-                {
+                if prefix.is_null() || (unsafe { *prefix.offset(0 as i32 as isize) }) as i32 == 0 as i32 {
                     xmlSchematronPErr(
                         ctxt,
                         cur,
                         XML_SCHEMAP_NOROOT as i32,
-                        b"ns element has no prefix\0" as *const u8
-                            as *const i8,
+                        b"ns element has no prefix\0" as *const u8 as *const i8,
                         0 as *const xmlChar,
                         0 as *const xmlChar,
                     );
                 }
                 if !prefix.is_null() && !uri.is_null() {
-                    xmlXPathRegisterNs((*ctxt).xctxt, prefix, uri);
+                    (unsafe { xmlXPathRegisterNs((*ctxt).xctxt, prefix, uri) });
                     xmlSchematronAddNamespace(ctxt, prefix, uri);
-                    let ref mut fresh52 = (*ret).nbNs;
+                    let fresh52 = unsafe { &mut ((*ret).nbNs) };
                     *fresh52 += 1;
                 }
                 if !uri.is_null() {
-                    xmlFree
-                        .expect("non-null function pointer")(uri as *mut libc::c_void);
+                    (unsafe { xmlFree.expect("non-null function pointer")(uri as *mut libc::c_void) });
                 }
                 if !prefix.is_null() {
-                    xmlFree
-                        .expect(
-                            "non-null function pointer",
-                        )(prefix as *mut libc::c_void);
+                    (unsafe { xmlFree.expect("non-null function pointer")(prefix as *mut libc::c_void) });
                 }
-                cur = (*cur).next;
+                cur = unsafe { (*cur).next };
                 while !cur.is_null() {
-                    if (*cur).type_0 as u32
-                        == XML_ELEMENT_NODE as i32 as u32
-                        && !((*cur).ns).is_null()
-                        && (xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) != 0
-                            || xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) != 0)
+                    if (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+                        && !(unsafe { (*cur).ns }).is_null()
+                        && ((unsafe { xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) }) != 0
+                            || (unsafe { xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) }) != 0)
                     {
                         break;
                     }
-                    cur = (*cur).next;
+                    cur = unsafe { (*cur).next };
                 }
             }
             while !cur.is_null() {
                 if !cur.is_null()
-                    && (*cur).type_0 as u32
-                        == XML_ELEMENT_NODE as i32 as u32
-                    && !((*cur).ns).is_null()
-                    && xmlStrEqual(
+                    && (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+                    && !(unsafe { (*cur).ns }).is_null()
+                    && (unsafe { xmlStrEqual(
                         (*cur).name,
-                        b"pattern\0" as *const u8 as *const i8
-                            as *const xmlChar,
-                    ) != 0
-                    && (xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) != 0
-                        || xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) != 0)
+                        b"pattern\0" as *const u8 as *const i8 as *const xmlChar,
+                    ) }) != 0
+                    && ((unsafe { xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) }) != 0
+                        || (unsafe { xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) }) != 0)
                 {
                     xmlSchematronParsePattern(ctxt, cur);
-                    let ref mut fresh53 = (*ret).nbPattern;
+                    let fresh53 = unsafe { &mut ((*ret).nbPattern) };
                     *fresh53 += 1;
                 } else {
                     xmlSchematronPErr(
                         ctxt,
                         cur,
                         XML_SCHEMAP_NOROOT as i32,
-                        b"Expecting a pattern element instead of %s\0" as *const u8
-                            as *const i8,
-                        (*cur).name,
+                        b"Expecting a pattern element instead of %s\0" as *const u8 as *const i8,
+                        unsafe { (*cur).name },
                         0 as *const xmlChar,
                     );
                 }
-                cur = (*cur).next;
+                cur = unsafe { (*cur).next };
                 while !cur.is_null() {
-                    if (*cur).type_0 as u32
-                        == XML_ELEMENT_NODE as i32 as u32
-                        && !((*cur).ns).is_null()
-                        && (xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) != 0
-                            || xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) != 0)
+                    if (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+                        && !(unsafe { (*cur).ns }).is_null()
+                        && ((unsafe { xmlStrEqual((*(*cur).ns).href, xmlSchematronNs) }) != 0
+                            || (unsafe { xmlStrEqual((*(*cur).ns).href, xmlOldSchematronNs) }) != 0)
                     {
                         break;
                     }
-                    cur = (*cur).next;
+                    cur = unsafe { (*cur).next };
                 }
             }
-            if (*ret).nbPattern == 0 as i32 {
+            if (unsafe { (*ret).nbPattern }) == 0 as i32 {
                 xmlSchematronPErr(
                     ctxt,
                     root,
                     XML_SCHEMAP_NOROOT as i32,
-                    b"The schematron document '%s' has no pattern\0" as *const u8
-                        as *const i8,
-                    (*ctxt).URL,
+                    b"The schematron document '%s' has no pattern\0" as *const u8 as *const i8,
+                    unsafe { (*ctxt).URL },
                     0 as *const xmlChar,
                 );
             } else {
-                let ref mut fresh54 = (*ret).doc;
+                let fresh54 = unsafe { &mut ((*ret).doc) };
                 *fresh54 = doc;
                 if preserve != 0 {
-                    (*ret).preserve = 1 as i32;
+                    (unsafe { (*ret).preserve = 1 as i32 });
                 }
                 preserve = 1 as i32;
             }
         }
     }
     if preserve == 0 {
-        xmlFreeDoc(doc);
+        (unsafe { xmlFreeDoc(doc) });
     }
     if !ret.is_null() {
-        if (*ctxt).nberrors != 0 as i32 {
+        if (unsafe { (*ctxt).nberrors }) != 0 as i32 {
             xmlSchematronFree(ret);
             ret = 0 as xmlSchematronPtr;
         } else {
-            let ref mut fresh55 = (*ret).namespaces;
-            *fresh55 = (*ctxt).namespaces;
-            (*ret).nbNamespaces = (*ctxt).nbNamespaces;
-            let ref mut fresh56 = (*ctxt).namespaces;
+            let fresh55 = unsafe { &mut ((*ret).namespaces) };
+            *fresh55 = unsafe { (*ctxt).namespaces };
+            (unsafe { (*ret).nbNamespaces = (*ctxt).nbNamespaces });
+            let fresh56 = unsafe { &mut ((*ctxt).namespaces) };
             *fresh56 = 0 as *mut *const xmlChar;
         }
     }
     return ret;
 }
-unsafe extern "C" fn xmlSchematronGetNode<'a1, 'a2>(
+extern "C" fn xmlSchematronGetNode<'a1, 'a2>(
     mut ctxt: Option<&'a1 mut crate::src::schematron::_xmlSchematronValidCtxt<'a2>>,
-    mut cur: * mut crate::src::HTMLparser::_xmlNode,
-    mut xpath: * const u8,
-) -> * mut crate::src::HTMLparser::_xmlNode {
-    let mut node: * mut crate::src::HTMLparser::_xmlNode = 0 as xmlNodePtr;
-    let mut ret: * mut crate::src::debugXML::_xmlXPathObject = 0 as *mut xmlXPathObject;
-    if borrow(& ctxt).is_none() || cur.is_null() || xpath.is_null() {
+    mut cur: *mut crate::src::HTMLparser::_xmlNode,
+    mut xpath: *const u8,
+) -> *mut crate::src::HTMLparser::_xmlNode {
+    let mut node: *mut crate::src::HTMLparser::_xmlNode = 0 as xmlNodePtr;
+    let mut ret: *mut crate::src::debugXML::_xmlXPathObject = 0 as *mut xmlXPathObject;
+    if borrow(&ctxt).is_none() || cur.is_null() || xpath.is_null() {
         return 0 as xmlNodePtr;
     }
-    let ref mut fresh57 = (*(*(borrow_mut(&mut ctxt)).unwrap()).xctxt).doc;
-    *fresh57 = (*cur).doc;
-    let ref mut fresh58 = (*(*(borrow_mut(&mut ctxt)).unwrap()).xctxt).node;
+    let fresh57 = unsafe { &mut ((*(*(borrow_mut(&mut ctxt)).unwrap()).xctxt).doc) };
+    *fresh57 = unsafe { (*cur).doc };
+    let fresh58 = unsafe { &mut ((*(*(borrow_mut(&mut ctxt)).unwrap()).xctxt).node) };
     *fresh58 = cur;
-    ret = xmlXPathEval(xpath, (*(borrow_mut(&mut ctxt)).unwrap()).xctxt);
+    ret = unsafe { xmlXPathEval(xpath, (*(borrow_mut(&mut ctxt)).unwrap()).xctxt) };
     if ret.is_null() {
         return 0 as xmlNodePtr;
     }
-    if (*ret).type_0 as u32 == XPATH_NODESET as i32 as u32
-        && !((*ret).nodesetval).is_null()
-        && (*(*ret).nodesetval).nodeNr > 0 as i32
+    if (unsafe { (*ret).type_0 }) as u32 == XPATH_NODESET as i32 as u32
+        && !(unsafe { (*ret).nodesetval }).is_null()
+        && (unsafe { (*(*ret).nodesetval).nodeNr }) > 0 as i32
     {
-        node = *((*(*ret).nodesetval).nodeTab).offset(0 as i32 as isize);
+        node = unsafe { *((*(*ret).nodesetval).nodeTab).offset(0 as i32 as isize) };
     }
-    xmlXPathFreeObject(ret);
+    (unsafe { xmlXPathFreeObject(ret) });
     return node;
 }
-unsafe extern "C" fn xmlSchematronReportOutput<'a1, 'a2>(
-    mut ctxt: Option<&'a1 mut crate::src::schematron::_xmlSchematronValidCtxt<'a2>>,
-    mut cur: * mut crate::src::HTMLparser::_xmlNode,
-    mut msg: * const i8,
+extern "C" fn xmlSchematronReportOutput<'a1, 'a2>(
+    mut _ctxt: Option<&'a1 mut crate::src::schematron::_xmlSchematronValidCtxt<'a2>>,
+    mut _cur: *mut crate::src::HTMLparser::_xmlNode,
+    mut msg: *const i8,
 ) {
-    fprintf(stderr, b"%s\0" as *const u8 as *const i8, msg);
+    (unsafe { fprintf(stderr, b"%s\0" as *const u8 as *const i8, msg) });
 }
-unsafe extern "C" fn xmlSchematronFormatReport<'a1, 'a2>(
+extern "C" fn xmlSchematronFormatReport<'a1, 'a2>(
     mut ctxt: Option<&'a1 mut crate::src::schematron::_xmlSchematronValidCtxt<'a2>>,
-    mut test: * mut crate::src::HTMLparser::_xmlNode,
-    mut cur: * mut crate::src::HTMLparser::_xmlNode,
-) -> * mut u8 {
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
-    let mut child: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut node: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut comp: * mut crate::src::debugXML::_xmlXPathCompExpr = 0 as *mut xmlXPathCompExpr;
+    mut test: *mut crate::src::HTMLparser::_xmlNode,
+    mut cur: *mut crate::src::HTMLparser::_xmlNode,
+) -> *mut u8 {
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
+    let mut child: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut node: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut comp: *mut crate::src::debugXML::_xmlXPathCompExpr = 0 as *mut xmlXPathCompExpr;
     if test.is_null() || cur.is_null() {
         return ret;
     }
-    child = (*test).children;
+    child = unsafe { (*test).children };
     while !child.is_null() {
-        if (*child).type_0 as u32
-            == XML_TEXT_NODE as i32 as u32
-            || (*child).type_0 as u32
-                == XML_CDATA_SECTION_NODE as i32 as u32
+        if (unsafe { (*child).type_0 }) as u32 == XML_TEXT_NODE as i32 as u32
+            || (unsafe { (*child).type_0 }) as u32 == XML_CDATA_SECTION_NODE as i32 as u32
         {
-            ret = xmlStrcat(ret, (*child).content);
+            ret = unsafe { xmlStrcat(ret, (*child).content) };
         } else if !child.is_null()
-                && (*child).type_0 as u32
-                    == XML_ELEMENT_NODE as i32 as u32
-                && !((*child).ns).is_null()
-                && xmlStrEqual(
-                    (*child).name,
-                    b"name\0" as *const u8 as *const i8 as *const xmlChar,
-                ) != 0
-                && (xmlStrEqual((*(*child).ns).href, xmlSchematronNs) != 0
-                    || xmlStrEqual((*(*child).ns).href, xmlOldSchematronNs) != 0)
-            {
-            let mut path: * mut u8 = 0 as *mut xmlChar;
-            path = xmlGetNoNsProp(
+            && (unsafe { (*child).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+            && !(unsafe { (*child).ns }).is_null()
+            && (unsafe { xmlStrEqual(
+                (*child).name,
+                b"name\0" as *const u8 as *const i8 as *const xmlChar,
+            ) }) != 0
+            && ((unsafe { xmlStrEqual((*(*child).ns).href, xmlSchematronNs) }) != 0
+                || (unsafe { xmlStrEqual((*(*child).ns).href, xmlOldSchematronNs) }) != 0)
+        {
+            let mut path: *mut u8 = 0 as *mut xmlChar;
+            path = unsafe { xmlGetNoNsProp(
                 child as *const xmlNode,
                 b"path\0" as *const u8 as *const i8 as *mut xmlChar,
-            );
+            ) };
             node = cur;
             if !path.is_null() {
                 node = xmlSchematronGetNode(borrow_mut(&mut ctxt), cur, path);
                 if node.is_null() {
                     node = cur;
                 }
-                xmlFree.expect("non-null function pointer")(path as *mut libc::c_void);
+                (unsafe { xmlFree.expect("non-null function pointer")(path as *mut libc::c_void) });
             }
-            if ((*node).ns).is_null() || ((*(*node).ns).prefix).is_null() {
-                ret = xmlStrcat(ret, (*node).name);
+            if (unsafe { (*node).ns }).is_null() || (unsafe { (*(*node).ns).prefix }).is_null() {
+                ret = unsafe { xmlStrcat(ret, (*node).name) };
             } else {
-                ret = xmlStrcat(ret, (*(*node).ns).prefix);
-                ret = xmlStrcat(
-                    ret,
-                    b":\0" as *const u8 as *const i8 as *mut xmlChar,
-                );
-                ret = xmlStrcat(ret, (*node).name);
+                ret = unsafe { xmlStrcat(ret, (*(*node).ns).prefix) };
+                ret = unsafe { xmlStrcat(ret, b":\0" as *const u8 as *const i8 as *mut xmlChar) };
+                ret = unsafe { xmlStrcat(ret, (*node).name) };
             }
         } else if !child.is_null()
-                && (*child).type_0 as u32
-                    == XML_ELEMENT_NODE as i32 as u32
-                && !((*child).ns).is_null()
-                && xmlStrEqual(
-                    (*child).name,
-                    b"value-of\0" as *const u8 as *const i8 as *const xmlChar,
-                ) != 0
-                && (xmlStrEqual((*(*child).ns).href, xmlSchematronNs) != 0
-                    || xmlStrEqual((*(*child).ns).href, xmlOldSchematronNs) != 0)
-            {
-            let mut select: * mut u8 = 0 as *mut xmlChar;
-            let mut eval: * mut crate::src::debugXML::_xmlXPathObject = 0 as *mut xmlXPathObject;
-            select = xmlGetNoNsProp(
+            && (unsafe { (*child).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+            && !(unsafe { (*child).ns }).is_null()
+            && (unsafe { xmlStrEqual(
+                (*child).name,
+                b"value-of\0" as *const u8 as *const i8 as *const xmlChar,
+            ) }) != 0
+            && ((unsafe { xmlStrEqual((*(*child).ns).href, xmlSchematronNs) }) != 0
+                || (unsafe { xmlStrEqual((*(*child).ns).href, xmlOldSchematronNs) }) != 0)
+        {
+            let mut select: *mut u8 = 0 as *mut xmlChar;
+            let mut eval: *mut crate::src::debugXML::_xmlXPathObject = 0 as *mut xmlXPathObject;
+            select = unsafe { xmlGetNoNsProp(
                 child as *const xmlNode,
                 b"select\0" as *const u8 as *const i8 as *mut xmlChar,
-            );
-            comp = xmlXPathCtxtCompile((*(borrow_mut(&mut ctxt)).unwrap()).xctxt, select);
-            eval = xmlXPathCompiledEval(comp, (*(borrow_mut(&mut ctxt)).unwrap()).xctxt);
-            match (*eval).type_0 as u32 {
+            ) };
+            comp = unsafe { xmlXPathCtxtCompile((*(borrow_mut(&mut ctxt)).unwrap()).xctxt, select) };
+            eval = unsafe { xmlXPathCompiledEval(comp, (*(borrow_mut(&mut ctxt)).unwrap()).xctxt) };
+            match (unsafe { (*eval).type_0 }) as u32 {
                 1 => {
                     let mut indx: i32 = 0;
-                    let mut spacer: * mut u8 = b" \0" as *const u8
-                        as *const i8 as *mut xmlChar;
-                    if !((*eval).nodesetval).is_null() {
+                    let mut spacer: *mut u8 = b" \0" as *const u8 as *const i8 as *mut xmlChar;
+                    if !(unsafe { (*eval).nodesetval }).is_null() {
                         indx = 0 as i32;
-                        while indx < (*(*eval).nodesetval).nodeNr {
+                        while indx < (unsafe { (*(*eval).nodesetval).nodeNr }) {
                             if indx > 0 as i32 {
-                                ret = xmlStrcat(ret, spacer);
+                                ret = unsafe { xmlStrcat(ret, spacer) };
                             }
-                            ret = xmlStrcat(
+                            ret = unsafe { xmlStrcat(
                                 ret,
-                                (**((*(*eval).nodesetval).nodeTab).offset(indx as isize))
-                                    .name,
-                            );
+                                (**((*(*eval).nodesetval).nodeTab).offset(indx as isize)).name,
+                            ) };
                             indx += 1;
                         }
                     } else {
-                        (*(borrow(& __xmlGenericError())).unwrap())
-                            .expect(
-                                "non-null function pointer",
-                            )(
+                        (unsafe { (*(borrow(&__xmlGenericError())).unwrap())
+                            .expect("non-null function pointer")(
                             *(__xmlGenericErrorContext()).unwrap(),
                             b"Empty node set\n\0" as *const u8 as *const i8,
-                        );
+                        ) });
                     }
-                }
+                },
                 2 => {
-                    let mut str: * const i8 = if (*eval).boolval != 0 {
+                    let mut str: *const i8 = if (unsafe { (*eval).boolval }) != 0 {
                         b"True\0" as *const u8 as *const i8
                     } else {
                         b"False\0" as *const u8 as *const i8
                     };
-                    ret = xmlStrcat(ret, str as *mut xmlChar);
-                }
+                    ret = unsafe { xmlStrcat(ret, str as *mut xmlChar) };
+                },
                 3 => {
-                    let mut buf: * mut u8 = 0 as *mut xmlChar;
+                    let mut buf: *mut u8 = 0 as *mut xmlChar;
                     let mut size: i32 = 0;
-                    size = snprintf(
+                    size = unsafe { snprintf(
                         0 as *mut i8,
                         0 as i32 as u64,
                         b"%0g\0" as *const u8 as *const i8,
                         (*eval).floatval,
-                    );
-                    buf = malloc(
-                        (size as u64)
-                            .wrapping_mul(
-                                ::std::mem::size_of::<xmlChar>() as u64,
-                            ),
-                    ) as *mut xmlChar;
-                    sprintf(
+                    ) };
+                    buf =
+                        (unsafe { malloc((size as u64).wrapping_mul(::std::mem::size_of::<xmlChar>() as u64)) })
+                            as *mut xmlChar;
+                    (unsafe { sprintf(
                         buf as *mut i8,
                         b"%0g\0" as *const u8 as *const i8,
                         (*eval).floatval,
-                    );
-                    ret = xmlStrcat(ret, buf);
-                    free(buf as *mut libc::c_void);
-                }
+                    ) });
+                    ret = unsafe { xmlStrcat(ret, buf) };
+                    (unsafe { free(buf as *mut libc::c_void) });
+                },
                 4 => {
-                    ret = xmlStrcat(ret, (*eval).stringval);
-                }
+                    ret = unsafe { xmlStrcat(ret, (*eval).stringval) };
+                },
                 _ => {
-                    (*(borrow(& __xmlGenericError())).unwrap())
-                        .expect(
-                            "non-null function pointer",
-                        )(
+                    (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                         *(__xmlGenericErrorContext()).unwrap(),
-                        b"Unsupported XPATH Type: %d\n\0" as *const u8
-                            as *const i8,
+                        b"Unsupported XPATH Type: %d\n\0" as *const u8 as *const i8,
                         (*eval).type_0 as u32,
-                    );
-                }
+                    ) });
+                },
             }
-            xmlXPathFreeObject(eval);
-            xmlXPathFreeCompExpr(comp);
-            xmlFree.expect("non-null function pointer")(select as *mut libc::c_void);
+            (unsafe { xmlXPathFreeObject(eval) });
+            (unsafe { xmlXPathFreeCompExpr(comp) });
+            (unsafe { xmlFree.expect("non-null function pointer")(select as *mut libc::c_void) });
         } else {
-            child = (*child).next;
+            child = unsafe { (*child).next };
             continue;
         }
         if !ret.is_null() {
-            let mut len: i32 = xmlStrlen(ret);
+            let mut len: i32 = unsafe { xmlStrlen(ret) };
             let mut c: u8 = 0;
             if len > 0 as i32 {
-                c = *ret.offset((len - 1 as i32) as isize);
-                if c as i32 == ' ' as i32 || c as i32 == '\n' as i32
-                    || c as i32 == '\r' as i32 || c as i32 == '\t' as i32
+                c = unsafe { *ret.offset((len - 1 as i32) as isize) };
+                if c as i32 == ' ' as i32
+                    || c as i32 == '\n' as i32
+                    || c as i32 == '\r' as i32
+                    || c as i32 == '\t' as i32
                 {
                     while c as i32 == ' ' as i32
                         || c as i32 == '\n' as i32
@@ -2943,114 +2821,104 @@ unsafe extern "C" fn xmlSchematronFormatReport<'a1, 'a2>(
                         if len == 0 as i32 {
                             break;
                         }
-                        c = *ret.offset((len - 1 as i32) as isize);
+                        c = unsafe { *ret.offset((len - 1 as i32) as isize) };
                     }
-                    *ret.offset(len as isize) = ' ' as i32 as xmlChar;
-                    *ret
-                        .offset(
-                            (len + 1 as i32) as isize,
-                        ) = 0 as i32 as xmlChar;
+                    (unsafe { *ret.offset(len as isize) = ' ' as i32 as xmlChar });
+                    (unsafe { *ret.offset((len + 1 as i32) as isize) = 0 as i32 as xmlChar });
                 }
             }
         }
-        child = (*child).next;
+        child = unsafe { (*child).next };
     }
     return ret;
 }
-unsafe extern "C" fn xmlSchematronReportSuccess<'a1, 'a2, 'a3>(
+extern "C" fn xmlSchematronReportSuccess<'a1, 'a2, 'a3>(
     mut ctxt: Option<&'a1 mut crate::src::schematron::_xmlSchematronValidCtxt<'a2>>,
-    mut test: * mut crate::src::schematron::_xmlSchematronTest,
-    mut cur: * mut crate::src::HTMLparser::_xmlNode,
-    mut pattern: * mut crate::src::schematron::_xmlSchematronPattern<'a3>,
+    mut test: *mut crate::src::schematron::_xmlSchematronTest,
+    mut cur: *mut crate::src::HTMLparser::_xmlNode,
+    mut pattern: *mut crate::src::schematron::_xmlSchematronPattern<'a3>,
     mut success: i32,
 ) {
-    if borrow(& ctxt).is_none() || cur.is_null() || test.is_null() {
+    if borrow(&ctxt).is_none() || cur.is_null() || test.is_null() {
         return;
     }
-    if (*(borrow(& ctxt)).unwrap()).flags & XML_SCHEMATRON_OUT_QUIET as i32 != 0
-        && (*(borrow(& ctxt)).unwrap()).flags & XML_SCHEMATRON_OUT_XML as i32 == 0 as i32
-        && (*test).type_0 as u32
-            == XML_SCHEMATRON_REPORT as i32 as u32
+    if (*(borrow(&ctxt)).unwrap()).flags & XML_SCHEMATRON_OUT_QUIET as i32 != 0
+        && (*(borrow(&ctxt)).unwrap()).flags & XML_SCHEMATRON_OUT_XML as i32 == 0 as i32
+        && (unsafe { (*test).type_0 }) as u32 == XML_SCHEMATRON_REPORT as i32 as u32
     {
         return;
     }
-    if (*(borrow(& ctxt)).unwrap()).flags & XML_SCHEMATRON_OUT_XML as i32 != 0 {
-        (*(borrow(& __xmlGenericError())).unwrap())
-            .expect(
-                "non-null function pointer",
-            )(
+    if (*(borrow(&ctxt)).unwrap()).flags & XML_SCHEMATRON_OUT_XML as i32 != 0 {
+        (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
             *(__xmlGenericErrorContext()).unwrap(),
             b"Unimplemented block at %s:%d\n\0" as *const u8 as *const i8,
             b"schematron.c\0" as *const u8 as *const i8,
             1580 as i32,
-        );
+        ) });
     } else {
-        let mut path: * mut u8 = 0 as *mut xmlChar;
+        let mut path: *mut u8 = 0 as *mut xmlChar;
         let mut msg: [i8; 1000] = [0; 1000];
         let mut line: i64 = 0;
-        let mut report: * const u8 = 0 as *const xmlChar;
-        if ((*test).type_0 as u32
-            == XML_SCHEMATRON_REPORT as i32 as u32) as i32
-            & (success == 0) as i32 != 0
-            || ((*test).type_0 as u32
-                == XML_SCHEMATRON_ASSERT as i32 as u32) as i32
-                & success != 0
+        let mut report: *const u8 = 0 as *const xmlChar;
+        if ((unsafe { (*test).type_0 }) as u32 == XML_SCHEMATRON_REPORT as i32 as u32) as i32
+            & (success == 0) as i32
+            != 0
+            || ((unsafe { (*test).type_0 }) as u32 == XML_SCHEMATRON_ASSERT as i32 as u32) as i32 & success != 0
         {
             return;
         }
-        line = xmlGetLineNo(cur as *const xmlNode);
-        path = xmlGetNodePath(cur as *const xmlNode);
+        line = unsafe { xmlGetLineNo(cur as *const xmlNode) };
+        path = unsafe { xmlGetNodePath(cur as *const xmlNode) };
         if path.is_null() {
-            path = (*cur).name as *mut xmlChar;
+            path = (unsafe { (*cur).name }) as *mut xmlChar;
         }
-        if !((*test).node).is_null() {
-            report = xmlSchematronFormatReport(borrow_mut(&mut ctxt), (*test).node, cur);
+        if !(unsafe { (*test).node }).is_null() {
+            report = xmlSchematronFormatReport(borrow_mut(&mut ctxt), unsafe { (*test).node }, cur);
         }
         if report.is_null() {
-            if (*test).type_0 as u32
-                == XML_SCHEMATRON_ASSERT as i32 as u32
-            {
-                report = xmlStrdup(
-                    b"node failed assert\0" as *const u8 as *const i8
-                        as *const xmlChar,
-                );
+            if (unsafe { (*test).type_0 }) as u32 == XML_SCHEMATRON_ASSERT as i32 as u32 {
+                report =
+                    unsafe { xmlStrdup(b"node failed assert\0" as *const u8 as *const i8 as *const xmlChar) };
             } else {
-                report = xmlStrdup(
-                    b"node failed report\0" as *const u8 as *const i8
-                        as *const xmlChar,
-                );
+                report =
+                    unsafe { xmlStrdup(b"node failed report\0" as *const u8 as *const i8 as *const xmlChar) };
             }
         }
-        snprintf(
+        (unsafe { snprintf(
             msg.as_mut_ptr(),
             999 as i32 as u64,
             b"%s line %ld: %s\n\0" as *const u8 as *const i8,
             path as *const i8,
             line,
             report as *const i8,
-        );
-        if (*(borrow(& ctxt)).unwrap()).flags & XML_SCHEMATRON_OUT_ERROR as i32 != 0 {
-            let mut schannel: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::HTMLparser::_xmlError,) -> ()> = None;
-            let mut channel: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()> = None;
-            let mut data: * mut core::ffi::c_void = 0 as *mut libc::c_void;
-            if !borrow(& ctxt).is_none() {
-                if ((*(borrow(& ctxt)).unwrap()).serror).is_some() {
+        ) });
+        if (*(borrow(&ctxt)).unwrap()).flags & XML_SCHEMATRON_OUT_ERROR as i32 != 0 {
+            let mut schannel: Option<
+                unsafe extern "C" fn(
+                    _: *mut core::ffi::c_void,
+                    _: *mut crate::src::HTMLparser::_xmlError,
+                ) -> (),
+            > = None;
+            let mut channel: Option<
+                unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> (),
+            > = None;
+            let mut data: *mut core::ffi::c_void = 0 as *mut libc::c_void;
+            if !borrow(&ctxt).is_none() {
+                if ((*(borrow(&ctxt)).unwrap()).serror).is_some() {
                     schannel = (*(borrow_mut(&mut ctxt)).unwrap()).serror;
                 } else {
                     channel = (*(borrow_mut(&mut ctxt)).unwrap()).error;
                 }
                 data = (*(borrow_mut(&mut ctxt)).unwrap()).userData;
             }
-            __xmlRaiseError(
+            (unsafe { __xmlRaiseError(
                 schannel,
                 channel,
                 data,
                 0 as *mut libc::c_void,
                 cur as *mut libc::c_void,
                 XML_FROM_SCHEMATRONV as i32,
-                if (*test).type_0 as u32
-                    == XML_SCHEMATRON_ASSERT as i32 as u32
-                {
+                if (*test).type_0 as u32 == XML_SCHEMATRON_ASSERT as i32 as u32 {
                     XML_SCHEMATRONV_ASSERT as i32
                 } else {
                     XML_SCHEMATRONV_REPORT as i32
@@ -3069,93 +2937,95 @@ unsafe extern "C" fn xmlSchematronReportSuccess<'a1, 'a2, 'a3>(
                 0 as i32,
                 b"%s\0" as *const u8 as *const i8,
                 msg.as_mut_ptr(),
-            );
+            ) });
         } else {
             xmlSchematronReportOutput(
                 borrow_mut(&mut ctxt),
                 cur,
-                &mut *msg.as_mut_ptr().offset(0 as i32 as isize),
+                unsafe { &mut *msg.as_mut_ptr().offset(0 as i32 as isize) },
             );
         }
-        xmlFree
-            .expect(
-                "non-null function pointer",
-            )(report as *mut i8 as *mut libc::c_void);
-        if !path.is_null() && path != (*cur).name as *mut xmlChar {
-            xmlFree.expect("non-null function pointer")(path as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(report as *mut i8 as *mut libc::c_void) });
+        if !path.is_null() && path != (unsafe { (*cur).name }) as *mut xmlChar {
+            (unsafe { xmlFree.expect("non-null function pointer")(path as *mut libc::c_void) });
         }
     };
 }
-unsafe extern "C" fn xmlSchematronReportPattern<'a1, 'a2, 'a3>(
+extern "C" fn xmlSchematronReportPattern<'a1, 'a2, 'a3>(
     mut ctxt: Option<&'a1 mut crate::src::schematron::_xmlSchematronValidCtxt<'a2>>,
-    mut pattern: * mut crate::src::schematron::_xmlSchematronPattern<'a3>,
+    mut pattern: *mut crate::src::schematron::_xmlSchematronPattern<'a3>,
 ) {
-    if borrow(& ctxt).is_none() || pattern.is_null() {
+    if borrow(&ctxt).is_none() || pattern.is_null() {
         return;
     }
-    if (*(borrow(& ctxt)).unwrap()).flags & XML_SCHEMATRON_OUT_QUIET as i32 != 0
-        || (*(borrow(& ctxt)).unwrap()).flags & XML_SCHEMATRON_OUT_ERROR as i32 != 0
+    if (*(borrow(&ctxt)).unwrap()).flags & XML_SCHEMATRON_OUT_QUIET as i32 != 0
+        || (*(borrow(&ctxt)).unwrap()).flags & XML_SCHEMATRON_OUT_ERROR as i32 != 0
     {
         return;
     }
-    if (*(borrow(& ctxt)).unwrap()).flags & XML_SCHEMATRON_OUT_XML as i32 != 0 {
-        (*(borrow(& __xmlGenericError())).unwrap())
-            .expect(
-                "non-null function pointer",
-            )(
+    if (*(borrow(&ctxt)).unwrap()).flags & XML_SCHEMATRON_OUT_XML as i32 != 0 {
+        (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
             *(__xmlGenericErrorContext()).unwrap(),
             b"Unimplemented block at %s:%d\n\0" as *const u8 as *const i8,
             b"schematron.c\0" as *const u8 as *const i8,
             1657 as i32,
-        );
+        ) });
     } else {
         let mut msg: [i8; 1000] = [0; 1000];
-        if ((*pattern).name).is_null() {
+        if (unsafe { (*pattern).name }).is_null() {
             return;
         }
-        snprintf(
+        (unsafe { snprintf(
             msg.as_mut_ptr(),
             999 as i32 as u64,
             b"Pattern: %s\n\0" as *const u8 as *const i8,
             (*pattern).name as *const i8,
-        );
+        ) });
         xmlSchematronReportOutput(
             borrow_mut(&mut ctxt),
             0 as xmlNodePtr,
-            &mut *msg.as_mut_ptr().offset(0 as i32 as isize),
+            unsafe { &mut *msg.as_mut_ptr().offset(0 as i32 as isize) },
         );
     };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSchematronSetValidStructuredErrors<'a1, 'a2>(
+pub extern "C" fn xmlSchematronSetValidStructuredErrors<'a1, 'a2>(
     mut ctxt: Option<&'a1 mut crate::src::schematron::_xmlSchematronValidCtxt<'a2>>,
-    mut serror: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::HTMLparser::_xmlError,) -> ()>,
-    mut ctx: * mut core::ffi::c_void,
+    mut serror: Option<
+        unsafe extern "C" fn(
+            _: *mut core::ffi::c_void,
+            _: *mut crate::src::HTMLparser::_xmlError,
+        ) -> (),
+    >,
+    mut ctx: *mut core::ffi::c_void,
 ) {
-    if borrow(& ctxt).is_none() {
+    if borrow(&ctxt).is_none() {
         return;
     }
-    let ref mut fresh59 = (*(borrow_mut(&mut ctxt)).unwrap()).serror;
+    let fresh59 = &mut ((*(borrow_mut(&mut ctxt)).unwrap()).serror);
     *fresh59 = serror;
-    let ref mut fresh60 = (*(borrow_mut(&mut ctxt)).unwrap()).error;
+    let fresh60 = &mut ((*(borrow_mut(&mut ctxt)).unwrap()).error);
     *fresh60 = None;
-    let ref mut fresh61 = (*(borrow_mut(&mut ctxt)).unwrap()).warning;
+    let fresh61 = &mut ((*(borrow_mut(&mut ctxt)).unwrap()).warning);
     *fresh61 = None;
-    let ref mut fresh62 = (*(borrow_mut(&mut ctxt)).unwrap()).userData;
+    let fresh62 = &mut ((*(borrow_mut(&mut ctxt)).unwrap()).userData);
     *fresh62 = ctx;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSchematronNewValidCtxt<'a1, 'a2, 'a3>(
+pub extern "C" fn xmlSchematronNewValidCtxt<'a1, 'a2, 'a3>(
     mut schema: Option<&'a1 mut crate::src::schematron::_xmlSchematron<'a2>>,
     mut options: i32,
-) -> * mut crate::src::schematron::_xmlSchematronValidCtxt<'a3> where 'a2: 'a3, 'a3: 'a2 {
+) -> *mut crate::src::schematron::_xmlSchematronValidCtxt<'a3>
+where
+    'a2: 'a3,
+    'a3: 'a2,
+{
     let mut i: i32 = 0;
-    let mut ret: * mut crate::src::schematron::_xmlSchematronValidCtxt<'_> = 0 as *mut xmlSchematronValidCtxt;
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlSchematronValidCtxt>() as u64)
-        as xmlSchematronValidCtxtPtr;
+    let mut ret: *mut crate::src::schematron::_xmlSchematronValidCtxt<'_> =
+        0 as *mut xmlSchematronValidCtxt;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlSchematronValidCtxt>() as u64,
+    ) }) as xmlSchematronValidCtxtPtr;
     if ret.is_null() {
         xmlSchematronVErrMemory(
             Option::<&'_ mut crate::src::schematron::_xmlSchematronValidCtxt<'_>>::None,
@@ -3164,96 +3034,88 @@ pub unsafe extern "C" fn xmlSchematronNewValidCtxt<'a1, 'a2, 'a3>(
         );
         return 0 as xmlSchematronValidCtxtPtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlSchematronValidCtxt>() as u64,
-    );
-    (*ret).type_0 = 2 as i32;
-    let ref mut fresh63 = borrow_mut(&mut (*ret).schema);
+    ) });
+    (unsafe { (*ret).type_0 = 2 as i32 });
+    let fresh63 = &mut (borrow_mut(unsafe { &mut (*ret).schema }));
     *fresh63 = borrow_mut(&mut schema);
-    let ref mut fresh64 = (*ret).xctxt;
-    *fresh64 = xmlXPathNewContext(0 as xmlDocPtr);
-    (*ret).flags = options;
-    if ((*ret).xctxt).is_null() {
+    let fresh64 = unsafe { &mut ((*ret).xctxt) };
+    *fresh64 = unsafe { xmlXPathNewContext(0 as xmlDocPtr) };
+    (unsafe { (*ret).flags = options });
+    if (unsafe { (*ret).xctxt }).is_null() {
         xmlSchematronPErrMemory(
             0 as xmlSchematronParserCtxtPtr,
-            b"allocating schema parser XPath context\0" as *const u8
-                as *const i8,
+            b"allocating schema parser XPath context\0" as *const u8 as *const i8,
             0 as xmlNodePtr,
         );
         xmlSchematronFreeValidCtxt(ret);
         return 0 as xmlSchematronValidCtxtPtr;
     }
     i = 0 as i32;
-    while i < (*(borrow(& schema)).unwrap()).nbNamespaces {
-        if (*((*(borrow(& schema)).unwrap()).namespaces).offset((2 as i32 * i) as isize)).is_null()
-            || (*((*(borrow(& schema)).unwrap()).namespaces)
-                .offset((2 as i32 * i + 1 as i32) as isize))
-                .is_null()
+    while i < (*(borrow(&schema)).unwrap()).nbNamespaces {
+        if (unsafe { *((*(borrow(&schema)).unwrap()).namespaces).offset((2 as i32 * i) as isize) }).is_null()
+            || (unsafe { *((*(borrow(&schema)).unwrap()).namespaces)
+                .offset((2 as i32 * i + 1 as i32) as isize) })
+            .is_null()
         {
             break;
         }
-        xmlXPathRegisterNs(
+        (unsafe { xmlXPathRegisterNs(
             (*ret).xctxt,
-            *((*(borrow(& schema)).unwrap()).namespaces)
-                .offset((2 as i32 * i + 1 as i32) as isize),
-            *((*(borrow(& schema)).unwrap()).namespaces).offset((2 as i32 * i) as isize),
-        );
+            *((*(borrow(&schema)).unwrap()).namespaces).offset((2 as i32 * i + 1 as i32) as isize),
+            *((*(borrow(&schema)).unwrap()).namespaces).offset((2 as i32 * i) as isize),
+        ) });
         i += 1;
     }
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSchematronFreeValidCtxt<'a1>(
-    mut ctxt: * mut crate::src::schematron::_xmlSchematronValidCtxt<'a1>,
+pub extern "C" fn xmlSchematronFreeValidCtxt<'a1>(
+    mut ctxt: *mut crate::src::schematron::_xmlSchematronValidCtxt<'a1>,
 ) {
     if ctxt.is_null() {
         return;
     }
-    if !((*ctxt).xctxt).is_null() {
-        xmlXPathFreeContext((*ctxt).xctxt);
+    if !(unsafe { (*ctxt).xctxt }).is_null() {
+        (unsafe { xmlXPathFreeContext((*ctxt).xctxt) });
     }
-    if !((*ctxt).dict).is_null() {
-        xmlDictFree((*ctxt).dict);
+    if !(unsafe { (*ctxt).dict }).is_null() {
+        xmlDictFree(unsafe { (*ctxt).dict });
     }
-    xmlFree.expect("non-null function pointer")(ctxt as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(ctxt as *mut libc::c_void) });
 }
-unsafe extern "C" fn xmlSchematronNextNode(mut cur: * mut crate::src::HTMLparser::_xmlNode) -> * mut crate::src::HTMLparser::_xmlNode {
-    if !((*cur).children).is_null() {
-        if (*(*cur).children).type_0 as u32
-            != XML_ENTITY_DECL as i32 as u32
-        {
-            cur = (*cur).children;
-            if (*cur).type_0 as u32
-                != XML_DTD_NODE as i32 as u32
-            {
+extern "C" fn xmlSchematronNextNode(
+    mut cur: *mut crate::src::HTMLparser::_xmlNode,
+) -> *mut crate::src::HTMLparser::_xmlNode {
+    if !(unsafe { (*cur).children }).is_null() {
+        if (unsafe { (*(*cur).children).type_0 }) as u32 != XML_ENTITY_DECL as i32 as u32 {
+            cur = unsafe { (*cur).children };
+            if (unsafe { (*cur).type_0 }) as u32 != XML_DTD_NODE as i32 as u32 {
                 return cur;
             }
         }
     }
-    while !((*cur).next).is_null() {
-        cur = (*cur).next;
-        if (*cur).type_0 as u32
-            != XML_ENTITY_DECL as i32 as u32
-            && (*cur).type_0 as u32
-                != XML_DTD_NODE as i32 as u32
+    while !(unsafe { (*cur).next }).is_null() {
+        cur = unsafe { (*cur).next };
+        if (unsafe { (*cur).type_0 }) as u32 != XML_ENTITY_DECL as i32 as u32
+            && (unsafe { (*cur).type_0 }) as u32 != XML_DTD_NODE as i32 as u32
         {
             return cur;
         }
     }
     loop {
-        cur = (*cur).parent;
+        cur = unsafe { (*cur).parent };
         if cur.is_null() {
             break;
         }
-        if (*cur).type_0 as u32
-            == XML_DOCUMENT_NODE as i32 as u32
-        {
+        if (unsafe { (*cur).type_0 }) as u32 == XML_DOCUMENT_NODE as i32 as u32 {
             return 0 as xmlNodePtr;
         }
-        if !((*cur).next).is_null() {
-            cur = (*cur).next;
+        if !(unsafe { (*cur).next }).is_null() {
+            cur = unsafe { (*cur).next };
             return cur;
         }
         if cur.is_null() {
@@ -3262,181 +3124,165 @@ unsafe extern "C" fn xmlSchematronNextNode(mut cur: * mut crate::src::HTMLparser
     }
     return cur;
 }
-unsafe extern "C" fn xmlSchematronRunTest<'a1, 'a2, 'a3>(
+extern "C" fn xmlSchematronRunTest<'a1, 'a2, 'a3>(
     mut ctxt: Option<&'a1 mut crate::src::schematron::_xmlSchematronValidCtxt<'a2>>,
-    mut test: * mut crate::src::schematron::_xmlSchematronTest,
-    mut instance: * mut crate::src::HTMLparser::_xmlDoc,
-    mut cur: * mut crate::src::HTMLparser::_xmlNode,
-    mut pattern: * mut crate::src::schematron::_xmlSchematronPattern<'a3>,
+    mut test: *mut crate::src::schematron::_xmlSchematronTest,
+    mut instance: *mut crate::src::HTMLparser::_xmlDoc,
+    mut cur: *mut crate::src::HTMLparser::_xmlNode,
+    mut pattern: *mut crate::src::schematron::_xmlSchematronPattern<'a3>,
 ) -> i32 {
-    let mut ret: * mut crate::src::debugXML::_xmlXPathObject = 0 as *mut xmlXPathObject;
+    let mut ret: *mut crate::src::debugXML::_xmlXPathObject = 0 as *mut xmlXPathObject;
     let mut failed: i32 = 0;
     failed = 0 as i32;
-    let ref mut fresh65 = (*(*(borrow_mut(&mut ctxt)).unwrap()).xctxt).doc;
+    let fresh65 = unsafe { &mut ((*(*(borrow_mut(&mut ctxt)).unwrap()).xctxt).doc) };
     *fresh65 = instance;
-    let ref mut fresh66 = (*(*(borrow_mut(&mut ctxt)).unwrap()).xctxt).node;
+    let fresh66 = unsafe { &mut ((*(*(borrow_mut(&mut ctxt)).unwrap()).xctxt).node) };
     *fresh66 = cur;
-    ret = xmlXPathCompiledEval((*test).comp, (*(borrow_mut(&mut ctxt)).unwrap()).xctxt);
+    ret = unsafe { xmlXPathCompiledEval((*test).comp, (*(borrow_mut(&mut ctxt)).unwrap()).xctxt) };
     if ret.is_null() {
         failed = 1 as i32;
     } else {
-        match (*ret).type_0 as u32 {
+        match (unsafe { (*ret).type_0 }) as u32 {
             9 | 1 => {
-                if ((*ret).nodesetval).is_null()
-                    || (*(*ret).nodesetval).nodeNr == 0 as i32
-                {
+                if (unsafe { (*ret).nodesetval }).is_null() || (unsafe { (*(*ret).nodesetval).nodeNr }) == 0 as i32 {
                     failed = 1 as i32;
                 }
-            }
+            },
             2 => {
-                failed = ((*ret).boolval == 0) as i32;
-            }
+                failed = ((unsafe { (*ret).boolval }) == 0) as i32;
+            },
             3 => {
-                if xmlXPathIsNaN((*ret).floatval) != 0 || (*ret).floatval == 0.0f64 {
+                if (unsafe { xmlXPathIsNaN((*ret).floatval) }) != 0 || (unsafe { (*ret).floatval }) == 0.0f64 {
                     failed = 1 as i32;
                 }
-            }
+            },
             4 => {
-                if ((*ret).stringval).is_null()
-                    || *((*ret).stringval).offset(0 as i32 as isize)
-                        as i32 == 0 as i32
+                if (unsafe { (*ret).stringval }).is_null()
+                    || (unsafe { *((*ret).stringval).offset(0 as i32 as isize) }) as i32 == 0 as i32
                 {
                     failed = 1 as i32;
                 }
-            }
+            },
             0 | 8 => {
                 failed = 1 as i32;
-            }
-            _ => {}
+            },
+            _ => {},
         }
-        xmlXPathFreeObject(ret);
+        (unsafe { xmlXPathFreeObject(ret) });
     }
-    if failed != 0
-        && (*test).type_0 as u32
-            == XML_SCHEMATRON_ASSERT as i32 as u32
-    {
-        let ref mut fresh67 = (*(borrow_mut(&mut ctxt)).unwrap()).nberrors;
+    if failed != 0 && (unsafe { (*test).type_0 }) as u32 == XML_SCHEMATRON_ASSERT as i32 as u32 {
+        let fresh67 = &mut ((*(borrow_mut(&mut ctxt)).unwrap()).nberrors);
         *fresh67 += 1;
-    } else if failed == 0
-            && (*test).type_0 as u32
-                == XML_SCHEMATRON_REPORT as i32 as u32
-        {
-        let ref mut fresh68 = (*(borrow_mut(&mut ctxt)).unwrap()).nberrors;
+    } else if failed == 0 && (unsafe { (*test).type_0 }) as u32 == XML_SCHEMATRON_REPORT as i32 as u32 {
+        let fresh68 = &mut ((*(borrow_mut(&mut ctxt)).unwrap()).nberrors);
         *fresh68 += 1;
     }
-    xmlSchematronReportSuccess(borrow_mut(&mut ctxt), test, cur, pattern, (failed == 0) as i32);
+    xmlSchematronReportSuccess(
+        borrow_mut(&mut ctxt),
+        test,
+        cur,
+        pattern,
+        (failed == 0) as i32,
+    );
     return (failed == 0) as i32;
 }
-unsafe extern "C" fn xmlSchematronRegisterVariables(
-    mut ctxt: * mut crate::src::debugXML::_xmlXPathContext,
-    mut let_0: * mut crate::src::schematron::_xmlSchematronLet,
-    mut instance: * mut crate::src::HTMLparser::_xmlDoc,
-    mut cur: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlSchematronRegisterVariables(
+    mut ctxt: *mut crate::src::debugXML::_xmlXPathContext,
+    mut let_0: *mut crate::src::schematron::_xmlSchematronLet,
+    mut instance: *mut crate::src::HTMLparser::_xmlDoc,
+    mut cur: *mut crate::src::HTMLparser::_xmlNode,
 ) -> i32 {
-    let mut let_eval: * mut crate::src::debugXML::_xmlXPathObject = 0 as *mut xmlXPathObject;
-    let ref mut fresh69 = (*ctxt).doc;
+    let mut let_eval: *mut crate::src::debugXML::_xmlXPathObject = 0 as *mut xmlXPathObject;
+    let fresh69 = unsafe { &mut ((*ctxt).doc) };
     *fresh69 = instance;
-    let ref mut fresh70 = (*ctxt).node;
+    let fresh70 = unsafe { &mut ((*ctxt).node) };
     *fresh70 = cur;
     while !let_0.is_null() {
-        let_eval = xmlXPathCompiledEval((*let_0).comp, ctxt);
+        let_eval = unsafe { xmlXPathCompiledEval((*let_0).comp, ctxt) };
         if let_eval.is_null() {
-            (*(borrow(& __xmlGenericError())).unwrap())
-                .expect(
-                    "non-null function pointer",
-                )(
+            (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                 *(__xmlGenericErrorContext()).unwrap(),
-                b"Evaluation of compiled expression failed\n\0" as *const u8
-                    as *const i8,
-            );
+                b"Evaluation of compiled expression failed\n\0" as *const u8 as *const i8,
+            ) });
             return -(1 as i32);
         }
-        if xmlXPathRegisterVariableNS(ctxt, (*let_0).name, 0 as *const xmlChar, let_eval)
-            != 0
-        {
-            (*(borrow(& __xmlGenericError())).unwrap())
-                .expect(
-                    "non-null function pointer",
-                )(
+        if (unsafe { xmlXPathRegisterVariableNS(ctxt, (*let_0).name, 0 as *const xmlChar, let_eval) }) != 0 {
+            (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                 *(__xmlGenericErrorContext()).unwrap(),
-                b"Registering a let variable failed\n\0" as *const u8
-                    as *const i8,
-            );
+                b"Registering a let variable failed\n\0" as *const u8 as *const i8,
+            ) });
             return -(1 as i32);
         }
-        let_0 = (*let_0).next;
+        let_0 = unsafe { (*let_0).next };
     }
     return 0 as i32;
 }
-unsafe extern "C" fn xmlSchematronUnregisterVariables(
-    mut ctxt: * mut crate::src::debugXML::_xmlXPathContext,
-    mut let_0: * mut crate::src::schematron::_xmlSchematronLet,
+extern "C" fn xmlSchematronUnregisterVariables(
+    mut ctxt: *mut crate::src::debugXML::_xmlXPathContext,
+    mut let_0: *mut crate::src::schematron::_xmlSchematronLet,
 ) -> i32 {
     while !let_0.is_null() {
-        if xmlXPathRegisterVariableNS(
+        if (unsafe { xmlXPathRegisterVariableNS(
             ctxt,
             (*let_0).name,
             0 as *const xmlChar,
             0 as xmlXPathObjectPtr,
-        ) != 0
+        ) }) != 0
         {
-            (*(borrow(& __xmlGenericError())).unwrap())
-                .expect(
-                    "non-null function pointer",
-                )(
+            (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                 *(__xmlGenericErrorContext()).unwrap(),
-                b"Unregistering a let variable failed\n\0" as *const u8
-                    as *const i8,
-            );
+                b"Unregistering a let variable failed\n\0" as *const u8 as *const i8,
+            ) });
             return -(1 as i32);
         }
-        let_0 = (*let_0).next;
+        let_0 = unsafe { (*let_0).next };
     }
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSchematronValidateDoc<'a1, 'a2>(
+pub extern "C" fn xmlSchematronValidateDoc<'a1, 'a2>(
     mut ctxt: Option<&'a1 mut crate::src::schematron::_xmlSchematronValidCtxt<'a2>>,
-    mut instance: * mut crate::src::HTMLparser::_xmlDoc,
+    mut instance: *mut crate::src::HTMLparser::_xmlDoc,
 ) -> i32 {
-    let mut cur: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut root: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut pattern: * mut crate::src::schematron::_xmlSchematronPattern<'_> = 0 as *mut xmlSchematronPattern;
-    let mut rule: * mut crate::src::schematron::_xmlSchematronRule<'_> = 0 as *mut xmlSchematronRule;
-    let mut test: * mut crate::src::schematron::_xmlSchematronTest = 0 as *mut xmlSchematronTest;
-    if borrow(& ctxt).is_none() || borrow(& ((*(borrow(& ctxt)).unwrap()).schema)).is_none()
-        || ((*(borrow_mut(&mut (*(borrow_mut(&mut ctxt)).unwrap()).schema)).unwrap()).rules).is_null() || instance.is_null()
+    let mut cur: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut root: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut pattern: *mut crate::src::schematron::_xmlSchematronPattern<'_> =
+        0 as *mut xmlSchematronPattern;
+    let mut rule: *mut crate::src::schematron::_xmlSchematronRule<'_> = 0 as *mut xmlSchematronRule;
+    let mut test: *mut crate::src::schematron::_xmlSchematronTest = 0 as *mut xmlSchematronTest;
+    if borrow(&ctxt).is_none()
+        || borrow(&((*(borrow(&ctxt)).unwrap()).schema)).is_none()
+        || ((*(borrow_mut(&mut (*(borrow_mut(&mut ctxt)).unwrap()).schema)).unwrap()).rules)
+            .is_null()
+        || instance.is_null()
     {
         return -(1 as i32);
     }
     (*(borrow_mut(&mut ctxt)).unwrap()).nberrors = 0 as i32;
-    root = xmlDocGetRootElement(instance as *const xmlDoc);
+    root = unsafe { xmlDocGetRootElement(instance as *const xmlDoc) };
     if root.is_null() {
-        (*(borrow(& __xmlGenericError())).unwrap())
-            .expect(
-                "non-null function pointer",
-            )(
+        (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
             *(__xmlGenericErrorContext()).unwrap(),
             b"Unimplemented block at %s:%d\n\0" as *const u8 as *const i8,
             b"schematron.c\0" as *const u8 as *const i8,
             1940 as i32,
-        );
-        let ref mut fresh71 = (*(borrow_mut(&mut ctxt)).unwrap()).nberrors;
+        ) });
+        let fresh71 = &mut ((*(borrow_mut(&mut ctxt)).unwrap()).nberrors);
         *fresh71 += 1;
         return 1 as i32;
     }
-    if (*(borrow(& ctxt)).unwrap()).flags & XML_SCHEMATRON_OUT_QUIET as i32 != 0
-        || (*(borrow(& ctxt)).unwrap()).flags == 0 as i32
+    if (*(borrow(&ctxt)).unwrap()).flags & XML_SCHEMATRON_OUT_QUIET as i32 != 0
+        || (*(borrow(&ctxt)).unwrap()).flags == 0 as i32
     {
         cur = root;
         while !cur.is_null() {
             rule = (*(borrow_mut(&mut (*(borrow_mut(&mut ctxt)).unwrap()).schema)).unwrap()).rules;
             while !rule.is_null() {
-                if xmlPatternMatch((*rule).pattern, cur) == 1 as i32 {
-                    test = (*rule).tests;
+                if xmlPatternMatch(unsafe { (*rule).pattern }, cur) == 1 as i32 {
+                    test = unsafe { (*rule).tests };
                     if xmlSchematronRegisterVariables(
                         (*(borrow_mut(&mut ctxt)).unwrap()).xctxt,
-                        (*rule).lets,
+                        unsafe { (*rule).lets },
                         instance,
                         cur,
                     ) != 0
@@ -3449,48 +3295,61 @@ pub unsafe extern "C" fn xmlSchematronValidateDoc<'a1, 'a2>(
                             test,
                             instance,
                             cur,
-                            (*rule).pattern as xmlSchematronPatternPtr,
+                            (unsafe { (*rule).pattern }) as xmlSchematronPatternPtr,
                         );
-                        test = (*test).next;
+                        test = unsafe { (*test).next };
                     }
-                    if xmlSchematronUnregisterVariables((*(borrow_mut(&mut ctxt)).unwrap()).xctxt, (*rule).lets) != 0
+                    if xmlSchematronUnregisterVariables(
+                        (*(borrow_mut(&mut ctxt)).unwrap()).xctxt,
+                        unsafe { (*rule).lets },
+                    ) != 0
                     {
                         return -(1 as i32);
                     }
                 }
-                rule = (*rule).next;
+                rule = unsafe { (*rule).next };
             }
             cur = xmlSchematronNextNode(cur);
         }
     } else {
-        pattern = (*(borrow_mut(&mut (*(borrow_mut(&mut ctxt)).unwrap()).schema)).unwrap()).patterns;
+        pattern =
+            (*(borrow_mut(&mut (*(borrow_mut(&mut ctxt)).unwrap()).schema)).unwrap()).patterns;
         while !pattern.is_null() {
             xmlSchematronReportPattern(borrow_mut(&mut ctxt), pattern);
             cur = root;
             while !cur.is_null() {
-                rule = (*pattern).rules;
+                rule = unsafe { (*pattern).rules };
                 while !rule.is_null() {
-                    if xmlPatternMatch((*rule).pattern, cur) == 1 as i32 {
-                        test = (*rule).tests;
+                    if xmlPatternMatch(unsafe { (*rule).pattern }, cur) == 1 as i32 {
+                        test = unsafe { (*rule).tests };
                         xmlSchematronRegisterVariables(
                             (*(borrow_mut(&mut ctxt)).unwrap()).xctxt,
-                            (*rule).lets,
+                            unsafe { (*rule).lets },
                             instance,
                             cur,
                         );
                         while !test.is_null() {
-                            xmlSchematronRunTest(borrow_mut(&mut ctxt), test, instance, cur, pattern);
-                            test = (*test).next;
+                            xmlSchematronRunTest(
+                                borrow_mut(&mut ctxt),
+                                test,
+                                instance,
+                                cur,
+                                pattern,
+                            );
+                            test = unsafe { (*test).next };
                         }
-                        xmlSchematronUnregisterVariables((*(borrow_mut(&mut ctxt)).unwrap()).xctxt, (*rule).lets);
+                        xmlSchematronUnregisterVariables(
+                            (*(borrow_mut(&mut ctxt)).unwrap()).xctxt,
+                            unsafe { (*rule).lets },
+                        );
                     }
-                    rule = (*rule).patnext;
+                    rule = unsafe { (*rule).patnext };
                 }
                 cur = xmlSchematronNextNode(cur);
             }
-            pattern = (*pattern).next;
+            pattern = unsafe { (*pattern).next };
         }
     }
-    return (*(borrow(& ctxt)).unwrap()).nberrors;
+    return (*(borrow(&ctxt)).unwrap()).nberrors;
 }
 use crate::laertes_rt::*;

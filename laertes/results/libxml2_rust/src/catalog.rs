@@ -1,174 +1,123 @@
-use ::libc;
+use libc;
 extern "C" {
     pub type _IO_wide_data;
-    
-    
     pub type _xmlRMutex;
-    
-    
-    
-    
-    
     pub type _xmlAutomata;
-    
-    fn xmlStrncmp(
-        str1: * const u8,
-        str2: * const u8,
-        len: i32,
-    ) -> i32;
-    fn xmlStrEqual(str1: * const u8, str2: * const u8) -> i32;
-    fn xmlStrlen(str: * const u8) -> i32;
-    fn xmlStrcat(cur: * mut u8, add: * const u8) -> * mut u8;
-    fn xmlStrdup(cur: * const u8) -> * mut u8;
-    fn xmlStrndup(cur: * const u8, len: i32) -> * mut u8;
-    fn fprintf(_: * mut crate::src::HTMLtree::_IO_FILE, _: * const i8, _: ...) -> i32;
-    fn snprintf(
-        _: * mut i8,
-        _: u64,
-        _: * const i8,
-        _: ...
-    ) -> i32;
-    fn getenv(__name: * const i8) -> * mut i8;
-    fn memset(
-        _: * mut core::ffi::c_void,
-        _: i32,
-        _: u64,
-    ) -> * mut core::ffi::c_void;
+    fn xmlStrncmp(str1: *const u8, str2: *const u8, len: i32) -> i32;
+    fn xmlStrEqual(str1: *const u8, str2: *const u8) -> i32;
+    fn xmlStrlen(str: *const u8) -> i32;
+    fn xmlStrcat(cur: *mut u8, add: *const u8) -> *mut u8;
+    fn xmlStrdup(cur: *const u8) -> *mut u8;
+    fn xmlStrndup(cur: *const u8, len: i32) -> *mut u8;
+    fn fprintf(_: *mut crate::src::HTMLtree::_IO_FILE, _: *const i8, _: ...) -> i32;
+    fn snprintf(_: *mut i8, _: u64, _: *const i8, _: ...) -> i32;
+    fn getenv(__name: *const i8) -> *mut i8;
+    fn memset(_: *mut core::ffi::c_void, _: i32, _: u64) -> *mut core::ffi::c_void;
     fn __xstat(
         __ver: i32,
-        __filename: * const i8,
-        __stat_buf: * mut crate::src::catalog::stat,
+        __filename: *const i8,
+        __stat_buf: *mut crate::src::catalog::stat,
     ) -> i32;
     fn close(__fd: i32) -> i32;
-    fn read(__fd: i32, __buf: * mut core::ffi::c_void, __nbytes: u64) -> i64;
-    fn open(__file: * const i8, __oflag: i32, _: ...) -> i32;
+    fn read(__fd: i32, __buf: *mut core::ffi::c_void, __nbytes: u64) -> i64;
+    fn open(__file: *const i8, __oflag: i32, _: ...) -> i32;
     fn xmlNewDtd(
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        name: * const u8,
-        ExternalID: * const u8,
-        SystemID: * const u8,
-    ) -> * mut crate::src::HTMLparser::_xmlDtd;
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        name: *const u8,
+        ExternalID: *const u8,
+        SystemID: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlDtd;
     fn xmlNewNs(
-        node: * mut crate::src::HTMLparser::_xmlNode,
-        href: * const u8,
-        prefix: * const u8,
-    ) -> * mut crate::src::HTMLparser::_xmlNs;
-    fn xmlFreeNs(cur: * mut crate::src::HTMLparser::_xmlNs);
-    fn xmlNewDoc(version: * const u8) -> * mut crate::src::HTMLparser::_xmlDoc;
-    fn xmlFreeDoc(cur: * mut crate::src::HTMLparser::_xmlDoc);
+        node: *mut crate::src::HTMLparser::_xmlNode,
+        href: *const u8,
+        prefix: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlNs;
+    fn xmlFreeNs(cur: *mut crate::src::HTMLparser::_xmlNs);
+    fn xmlNewDoc(version: *const u8) -> *mut crate::src::HTMLparser::_xmlDoc;
+    fn xmlFreeDoc(cur: *mut crate::src::HTMLparser::_xmlDoc);
     fn xmlNewDocNode(
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        ns: * mut crate::src::HTMLparser::_xmlNs,
-        name: * const u8,
-        content: * const u8,
-    ) -> * mut crate::src::HTMLparser::_xmlNode;
-    fn xmlDocGetRootElement(doc: * const crate::src::HTMLparser::_xmlDoc) -> * mut crate::src::HTMLparser::_xmlNode;
-    fn xmlAddChild(parent: * mut crate::src::HTMLparser::_xmlNode, cur: * mut crate::src::HTMLparser::_xmlNode) -> * mut crate::src::HTMLparser::_xmlNode;
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        ns: *mut crate::src::HTMLparser::_xmlNs,
+        name: *const u8,
+        content: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
+    fn xmlDocGetRootElement(
+        doc: *const crate::src::HTMLparser::_xmlDoc,
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
+    fn xmlAddChild(
+        parent: *mut crate::src::HTMLparser::_xmlNode,
+        cur: *mut crate::src::HTMLparser::_xmlNode,
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
     fn xmlSearchNsByHref(
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        node: * mut crate::src::HTMLparser::_xmlNode,
-        href: * const u8,
-    ) -> * mut crate::src::HTMLparser::_xmlNs;
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        node: *mut crate::src::HTMLparser::_xmlNode,
+        href: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlNs;
     fn xmlSetProp(
-        node: * mut crate::src::HTMLparser::_xmlNode,
-        name: * const u8,
-        value: * const u8,
-    ) -> * mut crate::src::HTMLparser::_xmlAttr;
+        node: *mut crate::src::HTMLparser::_xmlNode,
+        name: *const u8,
+        value: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlAttr;
     fn xmlSetNsProp(
-        node: * mut crate::src::HTMLparser::_xmlNode,
-        ns: * mut crate::src::HTMLparser::_xmlNs,
-        name: * const u8,
-        value: * const u8,
-    ) -> * mut crate::src::HTMLparser::_xmlAttr;
-    fn xmlGetProp(node: * const crate::src::HTMLparser::_xmlNode, name: * const u8) -> * mut u8;
+        node: *mut crate::src::HTMLparser::_xmlNode,
+        ns: *mut crate::src::HTMLparser::_xmlNs,
+        name: *const u8,
+        value: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlAttr;
+    fn xmlGetProp(node: *const crate::src::HTMLparser::_xmlNode, name: *const u8) -> *mut u8;
     fn xmlGetNsProp(
-        node: * const crate::src::HTMLparser::_xmlNode,
-        name: * const u8,
-        nameSpace: * const u8,
-    ) -> * mut u8;
-    fn xmlNodeGetBase(doc: * const crate::src::HTMLparser::_xmlDoc, cur: * const crate::src::HTMLparser::_xmlNode) -> * mut u8;
+        node: *const crate::src::HTMLparser::_xmlNode,
+        name: *const u8,
+        nameSpace: *const u8,
+    ) -> *mut u8;
+    fn xmlNodeGetBase(
+        doc: *const crate::src::HTMLparser::_xmlDoc,
+        cur: *const crate::src::HTMLparser::_xmlNode,
+    ) -> *mut u8;
     fn xmlSaveFormatFileTo(
-        buf: * mut crate::src::HTMLtree::_xmlOutputBuffer,
-        cur: * mut crate::src::HTMLparser::_xmlDoc,
-        encoding: * const i8,
+        buf: *mut crate::src::HTMLtree::_xmlOutputBuffer,
+        cur: *mut crate::src::HTMLparser::_xmlDoc,
+        encoding: *const i8,
         format: i32,
     ) -> i32;
-    
-    
-    
-    
-    
-    
-    
-    
     fn xmlParserInputBufferCreateFilename(
-        URI: * const i8,
+        URI: *const i8,
         enc: i32,
-    ) -> * mut crate::src::HTMLparser::_xmlParserInputBuffer;
-    fn xmlFreeParserInputBuffer(in_0: * mut crate::src::HTMLparser::_xmlParserInputBuffer);
-    fn xmlParserGetDirectory(filename: * const i8) -> * mut i8;
+    ) -> *mut crate::src::HTMLparser::_xmlParserInputBuffer;
+    fn xmlFreeParserInputBuffer(in_0: *mut crate::src::HTMLparser::_xmlParserInputBuffer);
+    fn xmlParserGetDirectory(filename: *const i8) -> *mut i8;
     fn xmlOutputBufferCreateFile(
-        file: * mut crate::src::HTMLtree::_IO_FILE,
-        encoder: * mut crate::src::HTMLparser::_xmlCharEncodingHandler,
-    ) -> * mut crate::src::HTMLtree::_xmlOutputBuffer;
+        file: *mut crate::src::HTMLtree::_IO_FILE,
+        encoder: *mut crate::src::HTMLparser::_xmlCharEncodingHandler,
+    ) -> *mut crate::src::HTMLtree::_xmlOutputBuffer;
     fn xmlGetThreadId() -> i32;
-    fn xmlFreeRMutex(tok: * mut crate::src::catalog::_xmlRMutex);
-    fn xmlRMutexUnlock(tok: * mut crate::src::catalog::_xmlRMutex);
-    fn xmlRMutexLock(tok: * mut crate::src::catalog::_xmlRMutex);
-    fn xmlNewRMutex() -> * mut crate::src::catalog::_xmlRMutex;
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    fn xmlBuildURI(URI: * const u8, base: * const u8) -> * mut u8;
-    fn xmlCanonicPath(path: * const u8) -> * mut u8;
-    
-    
-    
-    
-    
-    
-    
+    fn xmlFreeRMutex(tok: *mut crate::src::catalog::_xmlRMutex);
+    fn xmlRMutexUnlock(tok: *mut crate::src::catalog::_xmlRMutex);
+    fn xmlRMutexLock(tok: *mut crate::src::catalog::_xmlRMutex);
+    fn xmlNewRMutex() -> *mut crate::src::catalog::_xmlRMutex;
+    fn xmlBuildURI(URI: *const u8, base: *const u8) -> *mut u8;
+    fn xmlCanonicPath(path: *const u8) -> *mut u8;
 }
-pub use crate::src::buf::xmlBufResetInput;
-pub use crate::src::chvalid::xmlCharInRange;
-pub use crate::src::error::__xmlRaiseError;
-pub use crate::src::globals::__xmlDefaultSAXHandler;
-pub use crate::src::globals::__xmlGenericError;
-pub use crate::src::globals::__xmlGenericErrorContext;
-pub use crate::src::hash::xmlHashAddEntry;
-pub use crate::src::hash::xmlHashCreate;
-pub use crate::src::hash::xmlHashFree;
-pub use crate::src::hash::xmlHashLookup;
-pub use crate::src::hash::xmlHashRemoveEntry;
-pub use crate::src::hash::xmlHashScan;
-pub use crate::src::hash::xmlHashSize;
-pub use crate::src::parser::inputPush;
-pub use crate::src::parser::xmlParseDocument;
-pub use crate::src::parserInternals::xmlFreeParserCtxt;
-pub use crate::src::parserInternals::xmlNewInputStream;
-pub use crate::src::parserInternals::xmlNewParserCtxt;
-pub use crate::src::buf::_xmlBuf;
-pub use crate::src::HTMLtree::_IO_marker;
-pub use crate::src::chvalid::xmlIsBaseCharGroup;
-pub use crate::src::chvalid::xmlIsDigitGroup;
-pub use crate::src::chvalid::xmlIsPubidChar_tab;
-pub use crate::src::debugXML::_xmlValidState;
-pub use crate::src::encoding::_xmlAutomataState;
-pub use crate::src::globals::xmlFree;
-pub use crate::src::globals::xmlMalloc;
-pub use crate::src::globals::xmlMallocAtomic;
-pub use crate::src::globals::xmlRealloc;
-pub use crate::src::relaxng::_IO_codecvt;
-pub use crate::src::dict::_xmlDict;
-pub use crate::src::hash::_xmlHashTable;
-pub use crate::src::parser::_xmlStartTag;
+pub use crate::src::{
+    buf::{_xmlBuf, xmlBufResetInput},
+    chvalid::{xmlCharInRange, xmlIsBaseCharGroup, xmlIsDigitGroup, xmlIsPubidChar_tab},
+    debugXML::_xmlValidState,
+    dict::_xmlDict,
+    encoding::_xmlAutomataState,
+    error::__xmlRaiseError,
+    globals::{
+        __xmlDefaultSAXHandler, __xmlGenericError, __xmlGenericErrorContext, xmlFree, xmlMalloc,
+        xmlMallocAtomic, xmlRealloc,
+    },
+    hash::{
+        _xmlHashTable, xmlHashAddEntry, xmlHashCreate, xmlHashFree, xmlHashLookup,
+        xmlHashRemoveEntry, xmlHashScan, xmlHashSize,
+    },
+    parser::{_xmlStartTag, inputPush, xmlParseDocument},
+    parserInternals::{xmlFreeParserCtxt, xmlNewInputStream, xmlNewParserCtxt},
+    relaxng::_IO_codecvt,
+    HTMLtree::_IO_marker,
+};
 pub type xmlChar = u8;
 pub type size_t = u64;
 pub type __dev_t = u64;
@@ -184,8 +133,6 @@ pub type __blksize_t = i64;
 pub type __blkcnt_t = i64;
 pub type __ssize_t = i64;
 pub type __syscall_slong_t = i64;
-// #[derive(Copy, Clone)]
-
 pub type _IO_FILE = crate::src::HTMLtree::_IO_FILE;
 pub type _IO_lock_t = ();
 pub type FILE = crate::src::HTMLtree::_IO_FILE;
@@ -199,16 +146,16 @@ pub struct timespec {
 impl timespec {
     pub const fn new() -> Self {
         timespec {
-        tv_sec: 0,
-        tv_nsec: 0
+            tv_sec: 0,
+            tv_nsec: 0,
         }
     }
 }
-
 impl std::default::Default for timespec {
-    fn default() -> Self { timespec::new() }
+    fn default() -> Self {
+        timespec::new()
+    }
 }
-
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct stat {
@@ -231,83 +178,68 @@ pub struct stat {
 impl stat {
     pub const fn new() -> Self {
         stat {
-        st_dev: 0,
-        st_ino: 0,
-        st_nlink: 0,
-        st_mode: 0,
-        st_uid: 0,
-        st_gid: 0,
-        __pad0: 0,
-        st_rdev: 0,
-        st_size: 0,
-        st_blksize: 0,
-        st_blocks: 0,
-        st_atim: crate::src::catalog::timespec::new(),
-        st_mtim: crate::src::catalog::timespec::new(),
-        st_ctim: crate::src::catalog::timespec::new(),
-        __glibc_reserved: [0,0,0,]
+            st_dev: 0,
+            st_ino: 0,
+            st_nlink: 0,
+            st_mode: 0,
+            st_uid: 0,
+            st_gid: 0,
+            __pad0: 0,
+            st_rdev: 0,
+            st_size: 0,
+            st_blksize: 0,
+            st_blocks: 0,
+            st_atim: crate::src::catalog::timespec::new(),
+            st_mtim: crate::src::catalog::timespec::new(),
+            st_ctim: crate::src::catalog::timespec::new(),
+            __glibc_reserved: [0, 0, 0],
         }
     }
 }
-
 impl std::default::Default for stat {
-    fn default() -> Self { stat::new() }
+    fn default() -> Self {
+        stat::new()
+    }
 }
-
-pub type xmlFreeFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type xmlMallocFunc = Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
-pub type xmlReallocFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: u64,) -> * mut core::ffi::c_void>;
+pub type xmlFreeFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+pub type xmlMallocFunc = Option<unsafe extern "C" fn(_: u64) -> *mut core::ffi::c_void>;
+pub type xmlReallocFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: u64) -> *mut core::ffi::c_void>;
 pub type xmlRMutex = crate::src::catalog::_xmlRMutex;
-pub type xmlRMutexPtr = * mut crate::src::catalog::_xmlRMutex;
-// #[derive(Copy, Clone)]
-
+pub type xmlRMutexPtr = *mut crate::src::catalog::_xmlRMutex;
 pub type _xmlParserInputBuffer = crate::src::HTMLparser::_xmlParserInputBuffer;
-pub type xmlBufPtr = * mut crate::src::buf::_xmlBuf;
+pub type xmlBufPtr = *mut crate::src::buf::_xmlBuf;
 pub type xmlBuf = crate::src::buf::_xmlBuf;
-pub type xmlCharEncodingHandlerPtr = * mut crate::src::HTMLparser::_xmlCharEncodingHandler;
+pub type xmlCharEncodingHandlerPtr = *mut crate::src::HTMLparser::_xmlCharEncodingHandler;
 pub type xmlCharEncodingHandler = crate::src::HTMLparser::_xmlCharEncodingHandler;
-// #[derive(Copy, Clone)]
-
 pub type _xmlCharEncodingHandler = crate::src::HTMLparser::_xmlCharEncodingHandler;
-pub type iconv_t = * mut core::ffi::c_void;
-pub type xmlCharEncodingOutputFunc = Option<unsafe extern "C"  fn(_: * mut u8,_: * mut i32,_: * const u8,_: * mut i32,) -> i32>;
-pub type xmlCharEncodingInputFunc = Option<unsafe extern "C"  fn(_: * mut u8,_: * mut i32,_: * const u8,_: * mut i32,) -> i32>;
-pub type xmlInputCloseCallback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type xmlInputReadCallback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut i8,_: i32,) -> i32>;
+pub type iconv_t = *mut core::ffi::c_void;
+pub type xmlCharEncodingOutputFunc =
+    Option<unsafe extern "C" fn(_: *mut u8, _: *mut i32, _: *const u8, _: *mut i32) -> i32>;
+pub type xmlCharEncodingInputFunc =
+    Option<unsafe extern "C" fn(_: *mut u8, _: *mut i32, _: *const u8, _: *mut i32) -> i32>;
+pub type xmlInputCloseCallback = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type xmlInputReadCallback =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *mut i8, _: i32) -> i32>;
 pub type xmlParserInputBuffer = crate::src::HTMLparser::_xmlParserInputBuffer;
-pub type xmlParserInputBufferPtr = * mut crate::src::HTMLparser::_xmlParserInputBuffer;
-// #[derive(Copy, Clone)]
-
+pub type xmlParserInputBufferPtr = *mut crate::src::HTMLparser::_xmlParserInputBuffer;
 pub type _xmlOutputBuffer = crate::src::HTMLtree::_xmlOutputBuffer;
-pub type xmlOutputCloseCallback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type xmlOutputWriteCallback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,_: i32,) -> i32>;
+pub type xmlOutputCloseCallback = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type xmlOutputWriteCallback =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, _: i32) -> i32>;
 pub type xmlOutputBuffer = crate::src::HTMLtree::_xmlOutputBuffer;
-pub type xmlOutputBufferPtr = * mut crate::src::HTMLtree::_xmlOutputBuffer;
-// #[derive(Copy, Clone)]
-
+pub type xmlOutputBufferPtr = *mut crate::src::HTMLtree::_xmlOutputBuffer;
 pub type _xmlParserInput = crate::src::HTMLparser::_xmlParserInput;
-pub type xmlParserInputDeallocate = Option<unsafe extern "C"  fn(_: * mut u8,) -> ()>;
+pub type xmlParserInputDeallocate = Option<unsafe extern "C" fn(_: *mut u8) -> ()>;
 pub type xmlParserInput = crate::src::HTMLparser::_xmlParserInput;
-pub type xmlParserInputPtr = * mut crate::src::HTMLparser::_xmlParserInput;
-// #[derive(Copy, Clone)]
-
+pub type xmlParserInputPtr = *mut crate::src::HTMLparser::_xmlParserInput;
 pub type _xmlParserCtxt = crate::src::HTMLparser::_xmlParserCtxt;
 pub type xmlParserNodeInfo = crate::src::HTMLparser::_xmlParserNodeInfo;
-// #[derive(Copy, Clone)]
-
 pub type _xmlParserNodeInfo = crate::src::HTMLparser::_xmlParserNodeInfo;
-// #[derive(Copy, Clone)]
-
 pub type _xmlNode = crate::src::HTMLparser::_xmlNode;
 pub type xmlNs = crate::src::HTMLparser::_xmlNs;
-// #[derive(Copy, Clone)]
-
 pub type _xmlNs = crate::src::HTMLparser::_xmlNs;
-// #[derive(Copy, Clone)]
-
 pub type _xmlDoc = crate::src::HTMLparser::_xmlDoc;
-// #[derive(Copy, Clone)]
-
 pub type _xmlDtd = crate::src::HTMLparser::_xmlDtd;
 pub type xmlElementType = u32;
 pub const XML_XINCLUDE_END: xmlElementType = 20;
@@ -331,8 +263,6 @@ pub const XML_TEXT_NODE: xmlElementType = 3;
 pub const XML_ATTRIBUTE_NODE: xmlElementType = 2;
 pub const XML_ELEMENT_NODE: xmlElementType = 1;
 pub type xmlNsType = u32;
-// #[derive(Copy, Clone)]
-
 pub type _xmlAttr = crate::src::HTMLparser::_xmlAttr;
 pub type xmlAttributeType = u32;
 pub const XML_ATTRIBUTE_NOTATION: xmlAttributeType = 10;
@@ -353,22 +283,20 @@ pub const XML_PARSE_SAX: xmlParserMode = 2;
 pub const XML_PARSE_DOM: xmlParserMode = 1;
 pub const XML_PARSE_UNKNOWN: xmlParserMode = 0;
 pub type xmlError = crate::src::HTMLparser::_xmlError;
-// #[derive(Copy, Clone)]
-
 pub type _xmlError = crate::src::HTMLparser::_xmlError;
 pub type xmlErrorLevel = u32;
 pub const XML_ERR_FATAL: xmlErrorLevel = 3;
 pub const XML_ERR_ERROR: xmlErrorLevel = 2;
 pub const XML_ERR_WARNING: xmlErrorLevel = 1;
 pub const XML_ERR_NONE: xmlErrorLevel = 0;
-pub type xmlAttrPtr = * mut crate::src::HTMLparser::_xmlAttr;
+pub type xmlAttrPtr = *mut crate::src::HTMLparser::_xmlAttr;
 pub type xmlAttr = crate::src::HTMLparser::_xmlAttr;
-pub type xmlNodePtr = * mut crate::src::HTMLparser::_xmlNode;
+pub type xmlNodePtr = *mut crate::src::HTMLparser::_xmlNode;
 pub type xmlNode = crate::src::HTMLparser::_xmlNode;
-pub type xmlHashTablePtr = * mut crate::src::hash::_xmlHashTable;
+pub type xmlHashTablePtr = *mut crate::src::hash::_xmlHashTable;
 pub type xmlHashTable = crate::src::hash::_xmlHashTable;
 pub type xmlStartTag = crate::src::parser::_xmlStartTag;
-pub type xmlDictPtr = * mut crate::src::dict::_xmlDict;
+pub type xmlDictPtr = *mut crate::src::dict::_xmlDict;
 pub type xmlDict = crate::src::dict::_xmlDict;
 pub type xmlParserInputState = i32;
 pub const XML_PARSER_PUBLIC_LITERAL: xmlParserInputState = 16;
@@ -390,36 +318,57 @@ pub const XML_PARSER_MISC: xmlParserInputState = 1;
 pub const XML_PARSER_START: xmlParserInputState = 0;
 pub const XML_PARSER_EOF: xmlParserInputState = -1;
 pub type xmlValidCtxt = crate::src::HTMLparser::_xmlValidCtxt;
-// #[derive(Copy, Clone)]
-
 pub type _xmlValidCtxt = crate::src::HTMLparser::_xmlValidCtxt;
-pub type xmlAutomataStatePtr = * mut crate::src::encoding::_xmlAutomataState;
+pub type xmlAutomataStatePtr = *mut crate::src::encoding::_xmlAutomataState;
 pub type xmlAutomataState = crate::src::encoding::_xmlAutomataState;
-pub type xmlAutomataPtr = * mut crate::src::catalog::_xmlAutomata;
+pub type xmlAutomataPtr = *mut crate::src::catalog::_xmlAutomata;
 pub type xmlAutomata = crate::src::catalog::_xmlAutomata;
 pub type xmlValidState = crate::src::debugXML::_xmlValidState;
-pub type xmlDocPtr = * mut crate::src::HTMLparser::_xmlDoc;
+pub type xmlDocPtr = *mut crate::src::HTMLparser::_xmlDoc;
 pub type xmlDoc = crate::src::HTMLparser::_xmlDoc;
-pub type xmlValidityWarningFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type xmlValidityErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
+pub type xmlValidityWarningFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type xmlValidityErrorFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
 pub type xmlParserNodeInfoSeq = crate::src::HTMLparser::_xmlParserNodeInfoSeq;
-// #[derive(Copy, Clone)]
-
 pub type _xmlParserNodeInfoSeq = crate::src::HTMLparser::_xmlParserNodeInfoSeq;
-// #[derive(Copy, Clone)]
-
 pub type _xmlSAXHandler = crate::src::HTMLparser::_xmlSAXHandler;
-pub type xmlStructuredErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::HTMLparser::_xmlError,) -> ()>;
-pub type xmlErrorPtr = * mut crate::src::HTMLparser::_xmlError;
-pub type endElementNsSAX2Func = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
-pub type startElementNsSAX2Func = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,_: i32,_: * mut * const u8,_: i32,_: i32,_: * mut * const u8,) -> ()>;
-pub type externalSubsetSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
-pub type cdataBlockSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,) -> ()>;
-pub type getParameterEntitySAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> * mut crate::src::HTMLparser::_xmlEntity>;
-pub type xmlEntityPtr = * mut crate::src::HTMLparser::_xmlEntity;
+pub type xmlStructuredErrorFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *mut crate::src::HTMLparser::_xmlError,
+    ) -> (),
+>;
+pub type xmlErrorPtr = *mut crate::src::HTMLparser::_xmlError;
+pub type endElementNsSAX2Func = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8, _: *const u8) -> (),
+>;
+pub type startElementNsSAX2Func = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+        _: *const u8,
+        _: i32,
+        _: *mut *const u8,
+        _: i32,
+        _: i32,
+        _: *mut *const u8,
+    ) -> (),
+>;
+pub type externalSubsetSAXFunc = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8, _: *const u8) -> (),
+>;
+pub type cdataBlockSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: i32) -> ()>;
+pub type getParameterEntitySAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlEntity,
+>;
+pub type xmlEntityPtr = *mut crate::src::HTMLparser::_xmlEntity;
 pub type xmlEntity = crate::src::HTMLparser::_xmlEntity;
-// #[derive(Copy, Clone)]
-
 pub type _xmlEntity = crate::src::HTMLparser::_xmlEntity;
 pub type xmlEntityType = u32;
 pub const XML_INTERNAL_PREDEFINED_ENTITY: xmlEntityType = 6;
@@ -428,30 +377,56 @@ pub const XML_INTERNAL_PARAMETER_ENTITY: xmlEntityType = 4;
 pub const XML_EXTERNAL_GENERAL_UNPARSED_ENTITY: xmlEntityType = 3;
 pub const XML_EXTERNAL_GENERAL_PARSED_ENTITY: xmlEntityType = 2;
 pub const XML_INTERNAL_GENERAL_ENTITY: xmlEntityType = 1;
-pub type fatalErrorSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type errorSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type warningSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type commentSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> ()>;
-pub type processingInstructionSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,) -> ()>;
-pub type ignorableWhitespaceSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,) -> ()>;
-pub type charactersSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,) -> ()>;
-pub type referenceSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> ()>;
-pub type endElementSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> ()>;
-pub type startElementSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * mut * const u8,) -> ()>;
-pub type endDocumentSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type startDocumentSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type setDocumentLocatorSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::HTMLparser::_xmlSAXLocator,) -> ()>;
-pub type xmlSAXLocatorPtr = * mut crate::src::HTMLparser::_xmlSAXLocator;
+pub type fatalErrorSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type errorSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type warningSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type commentSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8) -> ()>;
+pub type processingInstructionSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8) -> ()>;
+pub type ignorableWhitespaceSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: i32) -> ()>;
+pub type charactersSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: i32) -> ()>;
+pub type referenceSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8) -> ()>;
+pub type endElementSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8) -> ()>;
+pub type startElementSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *mut *const u8) -> ()>;
+pub type endDocumentSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+pub type startDocumentSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+pub type setDocumentLocatorSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *mut crate::src::HTMLparser::_xmlSAXLocator,
+    ) -> (),
+>;
+pub type xmlSAXLocatorPtr = *mut crate::src::HTMLparser::_xmlSAXLocator;
 pub type xmlSAXLocator = crate::src::HTMLparser::_xmlSAXLocator;
-// #[derive(Copy, Clone)]
-
 pub type _xmlSAXLocator = crate::src::HTMLparser::_xmlSAXLocator;
-pub type unparsedEntityDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
-pub type elementDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,_: * mut crate::src::HTMLparser::_xmlElementContent,) -> ()>;
-pub type xmlElementContentPtr = * mut crate::src::HTMLparser::_xmlElementContent;
+pub type unparsedEntityDeclSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+        _: *const u8,
+        _: *const u8,
+    ) -> (),
+>;
+pub type elementDeclSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: i32,
+        _: *mut crate::src::HTMLparser::_xmlElementContent,
+    ) -> (),
+>;
+pub type xmlElementContentPtr = *mut crate::src::HTMLparser::_xmlElementContent;
 pub type xmlElementContent = crate::src::HTMLparser::_xmlElementContent;
-// #[derive(Copy, Clone)]
-
 pub type _xmlElementContent = crate::src::HTMLparser::_xmlElementContent;
 pub type xmlElementContentOccur = u32;
 pub const XML_ELEMENT_CONTENT_PLUS: xmlElementContentOccur = 4;
@@ -463,27 +438,62 @@ pub const XML_ELEMENT_CONTENT_OR: xmlElementContentType = 4;
 pub const XML_ELEMENT_CONTENT_SEQ: xmlElementContentType = 3;
 pub const XML_ELEMENT_CONTENT_ELEMENT: xmlElementContentType = 2;
 pub const XML_ELEMENT_CONTENT_PCDATA: xmlElementContentType = 1;
-pub type attributeDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: i32,_: i32,_: * const u8,_: * mut crate::src::HTMLparser::_xmlEnumeration,) -> ()>;
-pub type xmlEnumerationPtr = * mut crate::src::HTMLparser::_xmlEnumeration;
+pub type attributeDeclSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+        _: i32,
+        _: i32,
+        _: *const u8,
+        _: *mut crate::src::HTMLparser::_xmlEnumeration,
+    ) -> (),
+>;
+pub type xmlEnumerationPtr = *mut crate::src::HTMLparser::_xmlEnumeration;
 pub type xmlEnumeration = crate::src::HTMLparser::_xmlEnumeration;
-// #[derive(Copy, Clone)]
-
 pub type _xmlEnumeration = crate::src::HTMLparser::_xmlEnumeration;
-pub type notationDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
-pub type entityDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,_: * const u8,_: * const u8,_: * mut u8,) -> ()>;
-pub type getEntitySAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> * mut crate::src::HTMLparser::_xmlEntity>;
-pub type resolveEntitySAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,) -> * mut crate::src::HTMLparser::_xmlParserInput>;
-pub type hasExternalSubsetSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type hasInternalSubsetSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type isStandaloneSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type internalSubsetSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
+pub type notationDeclSAXFunc = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8, _: *const u8) -> (),
+>;
+pub type entityDeclSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: i32,
+        _: *const u8,
+        _: *const u8,
+        _: *mut u8,
+    ) -> (),
+>;
+pub type getEntitySAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlEntity,
+>;
+pub type resolveEntitySAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlParserInput,
+>;
+pub type hasExternalSubsetSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type hasInternalSubsetSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type isStandaloneSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type internalSubsetSAXFunc = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8, _: *const u8) -> (),
+>;
 pub type xmlParserCtxt = crate::src::HTMLparser::_xmlParserCtxt;
-pub type xmlParserCtxtPtr = * mut crate::src::HTMLparser::_xmlParserCtxt;
-pub type xmlNsPtr = * mut crate::src::HTMLparser::_xmlNs;
+pub type xmlParserCtxtPtr = *mut crate::src::HTMLparser::_xmlParserCtxt;
+pub type xmlNsPtr = *mut crate::src::HTMLparser::_xmlNs;
 pub type xmlDtd = crate::src::HTMLparser::_xmlDtd;
-pub type xmlDtdPtr = * mut crate::src::HTMLparser::_xmlDtd;
-pub type xmlHashDeallocator = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> ()>;
-pub type xmlHashScanner = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut core::ffi::c_void,_: * const u8,) -> ()>;
+pub type xmlDtdPtr = *mut crate::src::HTMLparser::_xmlDtd;
+pub type xmlHashDeallocator =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8) -> ()>;
+pub type xmlHashScanner = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *mut core::ffi::c_void, _: *const u8) -> (),
+>;
 pub type C2RustUnnamed = u32;
 pub const XML_FROM_URI: C2RustUnnamed = 30;
 pub const XML_FROM_BUFFER: C2RustUnnamed = 29;
@@ -1253,9 +1263,8 @@ pub const XML_ERR_DOCUMENT_START: C2RustUnnamed_0 = 3;
 pub const XML_ERR_NO_MEMORY: C2RustUnnamed_0 = 2;
 pub const XML_ERR_INTERNAL_ERROR: C2RustUnnamed_0 = 1;
 pub const XML_ERR_OK: C2RustUnnamed_0 = 0;
-pub type xmlGenericErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-// #[derive(Copy, Clone)]
-
+pub type xmlGenericErrorFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
 pub type _xmlSAXHandlerV1 = crate::src::HTMLparser::_xmlSAXHandlerV1;
 pub type xmlSAXHandlerV1 = crate::src::HTMLparser::_xmlSAXHandlerV1;
 pub type xmlCharEncoding = i32;
@@ -1283,16 +1292,10 @@ pub const XML_CHAR_ENCODING_UTF16LE: xmlCharEncoding = 2;
 pub const XML_CHAR_ENCODING_UTF8: xmlCharEncoding = 1;
 pub const XML_CHAR_ENCODING_NONE: xmlCharEncoding = 0;
 pub const XML_CHAR_ENCODING_ERROR: xmlCharEncoding = -1;
-// #[derive(Copy, Clone)]
-
 pub type _xmlChSRange = crate::src::HTMLparser::_xmlChSRange;
 pub type xmlChSRange = crate::src::HTMLparser::_xmlChSRange;
-// #[derive(Copy, Clone)]
-
 pub type _xmlChLRange = crate::src::HTMLparser::_xmlChLRange;
 pub type xmlChLRange = crate::src::HTMLparser::_xmlChLRange;
-// #[derive(Copy, Clone)]
-
 pub type _xmlChRangeGroup = crate::src::HTMLparser::_xmlChRangeGroup;
 pub type xmlChRangeGroup = crate::src::HTMLparser::_xmlChRangeGroup;
 pub type xmlCatalogPrefer = u32;
@@ -1304,74 +1307,73 @@ pub const XML_CATA_ALLOW_ALL: xmlCatalogAllow = 3;
 pub const XML_CATA_ALLOW_DOCUMENT: xmlCatalogAllow = 2;
 pub const XML_CATA_ALLOW_GLOBAL: xmlCatalogAllow = 1;
 pub const XML_CATA_ALLOW_NONE: xmlCatalogAllow = 0;
-// #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlCatalog<'a> {
     pub type_0: u32,
     pub catalTab: [Option<&'a mut i8>; 10],
     pub catalNr: i32,
     pub catalMax: i32,
-    pub sgml: * mut crate::src::hash::_xmlHashTable,
+    pub sgml: *mut crate::src::hash::_xmlHashTable,
     pub prefer: u32,
-    pub xml: * mut crate::src::catalog::_xmlCatalogEntry,
+    pub xml: *mut crate::src::catalog::_xmlCatalogEntry,
 }
 impl<'a> _xmlCatalog<'a> {
     pub const fn new() -> Self {
         _xmlCatalog {
-        type_0: 0,
-        catalTab: [None,None,None,None,None,None,None,None,None,None,],
-        catalNr: 0,
-        catalMax: 0,
-        sgml: (0 as * mut crate::src::hash::_xmlHashTable),
-        prefer: 0,
-        xml: (0 as * mut crate::src::catalog::_xmlCatalogEntry)
+            type_0: 0,
+            catalTab: [None, None, None, None, None, None, None, None, None, None],
+            catalNr: 0,
+            catalMax: 0,
+            sgml: (0 as *mut crate::src::hash::_xmlHashTable),
+            prefer: 0,
+            xml: (0 as *mut crate::src::catalog::_xmlCatalogEntry),
         }
     }
 }
-
 impl<'a> std::default::Default for _xmlCatalog<'a> {
-    fn default() -> Self { _xmlCatalog::new() }
+    fn default() -> Self {
+        _xmlCatalog::new()
+    }
 }
-
-pub type xmlCatalogEntryPtr = * mut crate::src::catalog::_xmlCatalogEntry;
+pub type xmlCatalogEntryPtr = *mut crate::src::catalog::_xmlCatalogEntry;
 pub type xmlCatalogEntry = crate::src::catalog::_xmlCatalogEntry;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlCatalogEntry {
-    pub next: * mut crate::src::catalog::_xmlCatalogEntry,
-    pub parent: * mut crate::src::catalog::_xmlCatalogEntry,
-    pub children: * mut crate::src::catalog::_xmlCatalogEntry,
+    pub next: *mut crate::src::catalog::_xmlCatalogEntry,
+    pub parent: *mut crate::src::catalog::_xmlCatalogEntry,
+    pub children: *mut crate::src::catalog::_xmlCatalogEntry,
     pub type_0: i32,
-    pub name: * mut u8,
-    pub value: * mut u8,
-    pub URL: * mut u8,
+    pub name: *mut u8,
+    pub value: *mut u8,
+    pub URL: *mut u8,
     pub prefer: u32,
     pub dealloc: i32,
     pub depth: i32,
-    pub group: * mut crate::src::catalog::_xmlCatalogEntry,
+    pub group: *mut crate::src::catalog::_xmlCatalogEntry,
 }
 impl _xmlCatalogEntry {
     pub const fn new() -> Self {
         _xmlCatalogEntry {
-        next: (0 as * mut crate::src::catalog::_xmlCatalogEntry),
-        parent: (0 as * mut crate::src::catalog::_xmlCatalogEntry),
-        children: (0 as * mut crate::src::catalog::_xmlCatalogEntry),
-        type_0: 0,
-        name: (0 as * mut u8),
-        value: (0 as * mut u8),
-        URL: (0 as * mut u8),
-        prefer: 0,
-        dealloc: 0,
-        depth: 0,
-        group: (0 as * mut crate::src::catalog::_xmlCatalogEntry)
+            next: (0 as *mut crate::src::catalog::_xmlCatalogEntry),
+            parent: (0 as *mut crate::src::catalog::_xmlCatalogEntry),
+            children: (0 as *mut crate::src::catalog::_xmlCatalogEntry),
+            type_0: 0,
+            name: (0 as *mut u8),
+            value: (0 as *mut u8),
+            URL: (0 as *mut u8),
+            prefer: 0,
+            dealloc: 0,
+            depth: 0,
+            group: (0 as *mut crate::src::catalog::_xmlCatalogEntry),
         }
     }
 }
-
 impl std::default::Default for _xmlCatalogEntry {
-    fn default() -> Self { _xmlCatalogEntry::new() }
+    fn default() -> Self {
+        _xmlCatalogEntry::new()
+    }
 }
-
 pub type xmlCatalogEntryType = i32;
 pub const SGML_CATA_SGMLDECL: xmlCatalogEntryType = 24;
 pub const SGML_CATA_DOCUMENT: xmlCatalogEntryType = 23;
@@ -1403,24 +1405,23 @@ pub type xmlCatalogType = u32;
 pub const XML_SGML_CATALOG_TYPE: xmlCatalogType = 2;
 pub const XML_XML_CATALOG_TYPE: xmlCatalogType = 1;
 pub type xmlCatalog<'a> = crate::src::catalog::_xmlCatalog<'a>;
-pub type xmlCatalogPtr<'a> = * mut crate::src::catalog::_xmlCatalog<'a>;
+pub type xmlCatalogPtr<'a> = *mut crate::src::catalog::_xmlCatalog<'a>;
 #[inline]
-unsafe extern "C" fn stat(
-    mut __path: * const i8,
-    mut __statbuf: * mut crate::src::catalog::stat,
-) -> i32 {
-    return __xstat(1 as i32, __path, __statbuf);
+extern "C" fn stat(mut __path: *const i8, mut __statbuf: *mut crate::src::catalog::stat) -> i32 {
+    return unsafe { __xstat(1 as i32, __path, __statbuf) };
 }
 static mut xmlDebugCatalogs: i32 = 0 as i32;
 static mut xmlCatalogDefaultAllow: u32 = XML_CATA_ALLOW_ALL;
 static mut xmlCatalogDefaultPrefer: u32 = XML_CATA_PREFER_PUBLIC;
-static mut xmlCatalogXMLFiles: * mut crate::src::hash::_xmlHashTable = 0 as *const xmlHashTable
-    as xmlHashTablePtr;
-static mut xmlDefaultCatalog: * mut crate::src::catalog::_xmlCatalog<'static> = 0 as *const xmlCatalog as xmlCatalogPtr;
-static mut xmlCatalogMutex: * mut crate::src::catalog::_xmlRMutex = 0 as *const xmlRMutex as xmlRMutexPtr;
+static mut xmlCatalogXMLFiles: *mut crate::src::hash::_xmlHashTable =
+    0 as *const xmlHashTable as xmlHashTablePtr;
+static mut xmlDefaultCatalog: *mut crate::src::catalog::_xmlCatalog<'static> =
+    0 as *const xmlCatalog as xmlCatalogPtr;
+static mut xmlCatalogMutex: *mut crate::src::catalog::_xmlRMutex =
+    0 as *const xmlRMutex as xmlRMutexPtr;
 static mut xmlCatalogInitialized: i32 = 0 as i32;
-unsafe extern "C" fn xmlCatalogErrMemory(mut extra: * const i8) {
-    __xmlRaiseError(
+extern "C" fn xmlCatalogErrMemory(mut extra: *const i8) {
+    (unsafe { __xmlRaiseError(
         None,
         None,
         0 as *mut libc::c_void,
@@ -1438,18 +1439,18 @@ unsafe extern "C" fn xmlCatalogErrMemory(mut extra: * const i8) {
         0 as i32,
         b"Memory allocation failed : %s\n\0" as *const u8 as *const i8,
         extra,
-    );
+    ) });
 }
-unsafe extern "C" fn xmlCatalogErr(
-    mut catal: * mut crate::src::catalog::_xmlCatalogEntry,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlCatalogErr(
+    mut catal: *mut crate::src::catalog::_xmlCatalogEntry,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
     mut error: i32,
-    mut msg: * const i8,
-    mut str1: * const u8,
-    mut str2: * const u8,
-    mut str3: * const u8,
+    mut msg: *const i8,
+    mut str1: *const u8,
+    mut str2: *const u8,
+    mut str3: *const u8,
 ) {
-    __xmlRaiseError(
+    (unsafe { __xmlRaiseError(
         None,
         None,
         0 as *mut libc::c_void,
@@ -1469,42 +1470,36 @@ unsafe extern "C" fn xmlCatalogErr(
         str1,
         str2,
         str3,
-    );
+    ) });
 }
-unsafe extern "C" fn xmlNewCatalogEntry(
+extern "C" fn xmlNewCatalogEntry(
     mut type_0: i32,
-    mut name: * const u8,
-    mut value: * const u8,
-    mut URL: * const u8,
+    mut name: *const u8,
+    mut value: *const u8,
+    mut URL: *const u8,
     mut prefer: u32,
-    mut group: * mut crate::src::catalog::_xmlCatalogEntry,
-) -> * mut crate::src::catalog::_xmlCatalogEntry {
-    let mut ret: * mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
-    let mut normid: * mut u8 = 0 as *mut xmlChar;
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlCatalogEntry>() as u64)
-        as xmlCatalogEntryPtr;
+    mut group: *mut crate::src::catalog::_xmlCatalogEntry,
+) -> *mut crate::src::catalog::_xmlCatalogEntry {
+    let mut ret: *mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
+    let mut normid: *mut u8 = 0 as *mut xmlChar;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlCatalogEntry>() as u64
+    ) }) as xmlCatalogEntryPtr;
     if ret.is_null() {
-        xmlCatalogErrMemory(
-            b"allocating catalog entry\0" as *const u8 as *const i8,
-        );
+        xmlCatalogErrMemory(b"allocating catalog entry\0" as *const u8 as *const i8);
         return 0 as xmlCatalogEntryPtr;
     }
-    let ref mut fresh0 = (*ret).next;
+    let fresh0 = unsafe { &mut ((*ret).next) };
     *fresh0 = 0 as *mut _xmlCatalogEntry;
-    let ref mut fresh1 = (*ret).parent;
+    let fresh1 = unsafe { &mut ((*ret).parent) };
     *fresh1 = 0 as *mut _xmlCatalogEntry;
-    let ref mut fresh2 = (*ret).children;
+    let fresh2 = unsafe { &mut ((*ret).children) };
     *fresh2 = 0 as *mut _xmlCatalogEntry;
-    (*ret).type_0 = type_0;
-    if type_0 as i32 == XML_CATA_PUBLIC as i32
-        || type_0 as i32 == XML_CATA_DELEGATE_PUBLIC as i32
-    {
+    (unsafe { (*ret).type_0 = type_0 });
+    if type_0 as i32 == XML_CATA_PUBLIC as i32 || type_0 as i32 == XML_CATA_DELEGATE_PUBLIC as i32 {
         normid = xmlCatalogNormalizePublic(name);
         if !normid.is_null() {
-            name = if *normid as i32 != 0 as i32 {
+            name = if (unsafe { *normid }) as i32 != 0 as i32 {
                 normid
             } else {
                 0 as *mut xmlChar
@@ -1512,3438 +1507,3041 @@ unsafe extern "C" fn xmlNewCatalogEntry(
         }
     }
     if !name.is_null() {
-        let ref mut fresh3 = (*ret).name;
-        *fresh3 = xmlStrdup(name);
+        let fresh3 = unsafe { &mut ((*ret).name) };
+        *fresh3 = unsafe { xmlStrdup(name) };
     } else {
-        let ref mut fresh4 = (*ret).name;
+        let fresh4 = unsafe { &mut ((*ret).name) };
         *fresh4 = 0 as *mut xmlChar;
     }
     if !normid.is_null() {
-        xmlFree.expect("non-null function pointer")(normid as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(normid as *mut libc::c_void) });
     }
     if !value.is_null() {
-        let ref mut fresh5 = (*ret).value;
-        *fresh5 = xmlStrdup(value);
+        let fresh5 = unsafe { &mut ((*ret).value) };
+        *fresh5 = unsafe { xmlStrdup(value) };
     } else {
-        let ref mut fresh6 = (*ret).value;
+        let fresh6 = unsafe { &mut ((*ret).value) };
         *fresh6 = 0 as *mut xmlChar;
     }
     if URL.is_null() {
         URL = value;
     }
     if !URL.is_null() {
-        let ref mut fresh7 = (*ret).URL;
-        *fresh7 = xmlStrdup(URL);
+        let fresh7 = unsafe { &mut ((*ret).URL) };
+        *fresh7 = unsafe { xmlStrdup(URL) };
     } else {
-        let ref mut fresh8 = (*ret).URL;
+        let fresh8 = unsafe { &mut ((*ret).URL) };
         *fresh8 = 0 as *mut xmlChar;
     }
-    (*ret).prefer = prefer;
-    (*ret).dealloc = 0 as i32;
-    (*ret).depth = 0 as i32;
-    let ref mut fresh9 = (*ret).group;
+    (unsafe { (*ret).prefer = prefer });
+    (unsafe { (*ret).dealloc = 0 as i32 });
+    (unsafe { (*ret).depth = 0 as i32 });
+    let fresh9 = unsafe { &mut ((*ret).group) };
     *fresh9 = group;
     return ret;
 }
-unsafe extern "C" fn xmlFreeCatalogEntry(
-    mut payload: * mut core::ffi::c_void,
-    mut name: * const u8,
-) {
-    let mut ret: * mut crate::src::catalog::_xmlCatalogEntry = payload as xmlCatalogEntryPtr;
+extern "C" fn xmlFreeCatalogEntry(mut payload: *mut core::ffi::c_void, mut _name: *const u8) {
+    let mut ret: *mut crate::src::catalog::_xmlCatalogEntry = payload as xmlCatalogEntryPtr;
     if ret.is_null() {
         return;
     }
-    if (*ret).dealloc == 1 as i32 {
+    if (unsafe { (*ret).dealloc }) == 1 as i32 {
         return;
     }
-    if xmlDebugCatalogs != 0 {
-        if !((*ret).name).is_null() {
-            (*(borrow(& __xmlGenericError())).unwrap())
-                .expect(
-                    "non-null function pointer",
-                )(
+    if (unsafe { xmlDebugCatalogs }) != 0 {
+        if !(unsafe { (*ret).name }).is_null() {
+            (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                 *(__xmlGenericErrorContext()).unwrap(),
                 b"Free catalog entry %s\n\0" as *const u8 as *const i8,
                 (*ret).name,
-            );
-        } else if !((*ret).value).is_null() {
-            (*(borrow(& __xmlGenericError())).unwrap())
-                .expect(
-                    "non-null function pointer",
-                )(
+            ) });
+        } else if !(unsafe { (*ret).value }).is_null() {
+            (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                 *(__xmlGenericErrorContext()).unwrap(),
                 b"Free catalog entry %s\n\0" as *const u8 as *const i8,
                 (*ret).value,
-            );
+            ) });
         } else {
-            (*(borrow(& __xmlGenericError())).unwrap())
-                .expect(
-                    "non-null function pointer",
-                )(
+            (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                 *(__xmlGenericErrorContext()).unwrap(),
                 b"Free catalog entry\n\0" as *const u8 as *const i8,
-            );
+            ) });
         }
     }
-    if !((*ret).name).is_null() {
-        xmlFree.expect("non-null function pointer")((*ret).name as *mut libc::c_void);
+    if !(unsafe { (*ret).name }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*ret).name as *mut libc::c_void) });
     }
-    if !((*ret).value).is_null() {
-        xmlFree.expect("non-null function pointer")((*ret).value as *mut libc::c_void);
+    if !(unsafe { (*ret).value }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*ret).value as *mut libc::c_void) });
     }
-    if !((*ret).URL).is_null() {
-        xmlFree.expect("non-null function pointer")((*ret).URL as *mut libc::c_void);
+    if !(unsafe { (*ret).URL }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*ret).URL as *mut libc::c_void) });
     }
-    xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
 }
-unsafe extern "C" fn xmlFreeCatalogEntryList(mut ret: * mut crate::src::catalog::_xmlCatalogEntry) {
-    let mut next: * mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
+extern "C" fn xmlFreeCatalogEntryList(mut ret: *mut crate::src::catalog::_xmlCatalogEntry) {
+    let mut next: *mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
     while !ret.is_null() {
-        next = (*ret).next;
+        next = unsafe { (*ret).next };
         xmlFreeCatalogEntry(ret as *mut libc::c_void, 0 as *const xmlChar);
         ret = next;
     }
 }
-unsafe extern "C" fn xmlFreeCatalogHashEntryList(
-    mut payload: * mut core::ffi::c_void,
-    mut name: * const u8,
+extern "C" fn xmlFreeCatalogHashEntryList(
+    mut payload: *mut core::ffi::c_void,
+    mut _name: *const u8,
 ) {
-    let mut catal: * mut crate::src::catalog::_xmlCatalogEntry = payload as xmlCatalogEntryPtr;
-    let mut children: * mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
-    let mut next: * mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
+    let mut catal: *mut crate::src::catalog::_xmlCatalogEntry = payload as xmlCatalogEntryPtr;
+    let mut children: *mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
+    let mut next: *mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
     if catal.is_null() {
         return;
     }
-    children = (*catal).children;
+    children = unsafe { (*catal).children };
     while !children.is_null() {
-        next = (*children).next;
-        (*children).dealloc = 0 as i32;
-        let ref mut fresh10 = (*children).children;
+        next = unsafe { (*children).next };
+        (unsafe { (*children).dealloc = 0 as i32 });
+        let fresh10 = unsafe { &mut ((*children).children) };
         *fresh10 = 0 as *mut _xmlCatalogEntry;
         xmlFreeCatalogEntry(children as *mut libc::c_void, 0 as *const xmlChar);
         children = next;
     }
-    (*catal).dealloc = 0 as i32;
+    (unsafe { (*catal).dealloc = 0 as i32 });
     xmlFreeCatalogEntry(catal as *mut libc::c_void, 0 as *const xmlChar);
 }
-unsafe extern "C" fn xmlCreateNewCatalog<'a1>(
+extern "C" fn xmlCreateNewCatalog<'a1>(
     mut type_0: u32,
     mut prefer: u32,
-) -> * mut crate::src::catalog::_xmlCatalog<'a1> {
-    let mut ret: * mut crate::src::catalog::_xmlCatalog<'_> = 0 as *mut xmlCatalog;
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlCatalog>() as u64) as xmlCatalogPtr;
+) -> *mut crate::src::catalog::_xmlCatalog<'a1> {
+    let mut ret: *mut crate::src::catalog::_xmlCatalog<'_> = 0 as *mut xmlCatalog;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(::std::mem::size_of::<xmlCatalog>() as u64) })
+        as xmlCatalogPtr;
     if ret.is_null() {
         xmlCatalogErrMemory(b"allocating catalog\0" as *const u8 as *const i8);
         return 0 as xmlCatalogPtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlCatalog>() as u64,
-    );
-    (*ret).type_0 = type_0;
-    (*ret).catalNr = 0 as i32;
-    (*ret).catalMax = 10 as i32;
-    (*ret).prefer = prefer;
-    if (*ret).type_0 as u32
-        == XML_SGML_CATALOG_TYPE as i32 as u32
-    {
-        let ref mut fresh11 = (*ret).sgml;
+    ) });
+    (unsafe { (*ret).type_0 = type_0 });
+    (unsafe { (*ret).catalNr = 0 as i32 });
+    (unsafe { (*ret).catalMax = 10 as i32 });
+    (unsafe { (*ret).prefer = prefer });
+    if (unsafe { (*ret).type_0 }) as u32 == XML_SGML_CATALOG_TYPE as i32 as u32 {
+        let fresh11 = unsafe { &mut ((*ret).sgml) };
         *fresh11 = xmlHashCreate(10 as i32);
     }
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlFreeCatalog<'a1>(mut catal: * mut crate::src::catalog::_xmlCatalog<'a1>) {
+pub extern "C" fn xmlFreeCatalog<'a1>(mut catal: *mut crate::src::catalog::_xmlCatalog<'a1>) {
     if catal.is_null() {
         return;
     }
-    if !((*catal).xml).is_null() {
-        xmlFreeCatalogEntryList((*catal).xml);
+    if !(unsafe { (*catal).xml }).is_null() {
+        xmlFreeCatalogEntryList(unsafe { (*catal).xml });
     }
-    if !((*catal).sgml).is_null() {
-        xmlHashFree(
-            (*catal).sgml,
-            Some(
-                xmlFreeCatalogEntry,
-            ),
-        );
+    if !(unsafe { (*catal).sgml }).is_null() {
+        xmlHashFree(unsafe { (*catal).sgml }, Some(xmlFreeCatalogEntry));
     }
-    xmlFree.expect("non-null function pointer")(catal as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(catal as *mut libc::c_void) });
 }
-unsafe extern "C" fn xmlCatalogDumpEntry(
-    mut payload: * mut core::ffi::c_void,
-    mut data: * mut core::ffi::c_void,
-    mut name: * const u8,
+extern "C" fn xmlCatalogDumpEntry(
+    mut payload: *mut core::ffi::c_void,
+    mut data: *mut core::ffi::c_void,
+    mut _name: *const u8,
 ) {
-    let mut entry: * mut crate::src::catalog::_xmlCatalogEntry = payload as xmlCatalogEntryPtr;
-    let mut out: * mut crate::src::HTMLtree::_IO_FILE = data as *mut FILE;
+    let mut entry: *mut crate::src::catalog::_xmlCatalogEntry = payload as xmlCatalogEntryPtr;
+    let mut out: *mut crate::src::HTMLtree::_IO_FILE = data as *mut FILE;
     if entry.is_null() || out.is_null() {
         return;
     }
-    match (*entry).type_0 as i32 {
+    match (unsafe { (*entry).type_0 }) as i32 {
         15 => {
-            fprintf(out, b"ENTITY \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(out, b"ENTITY \0" as *const u8 as *const i8) });
+        },
         16 => {
-            fprintf(out, b"ENTITY %%\0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(out, b"ENTITY %%\0" as *const u8 as *const i8) });
+        },
         17 => {
-            fprintf(out, b"DOCTYPE \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(out, b"DOCTYPE \0" as *const u8 as *const i8) });
+        },
         18 => {
-            fprintf(out, b"LINKTYPE \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(out, b"LINKTYPE \0" as *const u8 as *const i8) });
+        },
         19 => {
-            fprintf(out, b"NOTATION \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(out, b"NOTATION \0" as *const u8 as *const i8) });
+        },
         14 => {
-            fprintf(out, b"PUBLIC \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(out, b"PUBLIC \0" as *const u8 as *const i8) });
+        },
         13 => {
-            fprintf(out, b"SYSTEM \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(out, b"SYSTEM \0" as *const u8 as *const i8) });
+        },
         20 => {
-            fprintf(out, b"DELEGATE \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(out, b"DELEGATE \0" as *const u8 as *const i8) });
+        },
         21 => {
-            fprintf(out, b"BASE \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(out, b"BASE \0" as *const u8 as *const i8) });
+        },
         22 => {
-            fprintf(out, b"CATALOG \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(out, b"CATALOG \0" as *const u8 as *const i8) });
+        },
         23 => {
-            fprintf(out, b"DOCUMENT \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(out, b"DOCUMENT \0" as *const u8 as *const i8) });
+        },
         24 => {
-            fprintf(out, b"SGMLDECL \0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(out, b"SGMLDECL \0" as *const u8 as *const i8) });
+        },
         _ => return,
     }
-    match (*entry).type_0 as i32 {
+    match (unsafe { (*entry).type_0 }) as i32 {
         15 | 16 | 17 | 18 | 19 => {
-            fprintf(
+            (unsafe { fprintf(
                 out,
                 b"%s\0" as *const u8 as *const i8,
                 (*entry).name as *const i8,
-            );
-        }
+            ) });
+        },
         14 | 13 | 24 | 23 | 22 | 21 | 20 => {
-            fprintf(out, b"\"%s\"\0" as *const u8 as *const i8, (*entry).name);
-        }
-        _ => {}
+            (unsafe { fprintf(out, b"\"%s\"\0" as *const u8 as *const i8, (*entry).name) });
+        },
+        _ => {},
     }
-    match (*entry).type_0 as i32 {
+    match (unsafe { (*entry).type_0 }) as i32 {
         15 | 16 | 17 | 18 | 19 | 14 | 13 | 20 => {
-            fprintf(
-                out,
-                b" \"%s\"\0" as *const u8 as *const i8,
-                (*entry).value,
-            );
-        }
-        _ => {}
+            (unsafe { fprintf(out, b" \"%s\"\0" as *const u8 as *const i8, (*entry).value) });
+        },
+        _ => {},
     }
-    fprintf(out, b"\n\0" as *const u8 as *const i8);
+    (unsafe { fprintf(out, b"\n\0" as *const u8 as *const i8) });
 }
-unsafe extern "C" fn xmlDumpXMLCatalogNode(
-    mut catal: * mut crate::src::catalog::_xmlCatalogEntry,
-    mut catalog: * mut crate::src::HTMLparser::_xmlNode,
-    mut doc: * mut crate::src::HTMLparser::_xmlDoc,
-    mut ns: * mut crate::src::HTMLparser::_xmlNs,
-    mut cgroup: * mut crate::src::catalog::_xmlCatalogEntry,
+extern "C" fn xmlDumpXMLCatalogNode(
+    mut catal: *mut crate::src::catalog::_xmlCatalogEntry,
+    mut catalog: *mut crate::src::HTMLparser::_xmlNode,
+    mut doc: *mut crate::src::HTMLparser::_xmlDoc,
+    mut ns: *mut crate::src::HTMLparser::_xmlNs,
+    mut cgroup: *mut crate::src::catalog::_xmlCatalogEntry,
 ) {
-    let mut node: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut cur: * mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
+    let mut node: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut cur: *mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
     cur = catal;
     let mut current_block_49: u64;
     while !cur.is_null() {
-        if (*cur).group == cgroup {
-            match (*cur).type_0 as i32 {
+        if (unsafe { (*cur).group }) == cgroup {
+            match (unsafe { (*cur).type_0 }) as i32 {
                 2 | 1 => {
                     current_block_49 = 15414981286075827;
                     match current_block_49 {
                         15414981286075827 => {
                             if cur == catal {
-                                cur = (*cur).children;
+                                cur = unsafe { (*cur).children };
                                 continue;
                             }
-                        }
+                        },
                         3932087857103670784 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"rewriteURI\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewriteURI\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uriStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uriStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"rewritePrefix\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewritePrefix\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         16086062102548664993 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"name\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"name\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         776782378719281040 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegateSystem\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegateSystem\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         16251997513805125340 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegatePublic\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegatePublic\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"publicIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"publicIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         12614018986753156024 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"rewriteSystem\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewriteSystem\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"rewritePrefix\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewritePrefix\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         3278478806863930313 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"system\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"system\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemId\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemId\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         2042511421509206405 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"public\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"public\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"publicId\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"publicId\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         17827901024417069171 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"group\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"group\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
                                 b"id\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            if !((*cur).value).is_null() {
-                                let mut xns: * mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
-                                xns = xmlSearchNsByHref(
+                            ) });
+                            if !(unsafe { (*cur).value }).is_null() {
+                                let mut xns: *mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
+                                xns = unsafe { xmlSearchNsByHref(
                                     doc,
                                     node,
                                     b"http://www.w3.org/XML/1998/namespace\0" as *const u8
-                                        as *const i8 as *const xmlChar,
-                                );
+                                        as *const i8
+                                        as *const xmlChar,
+                                ) };
                                 if !xns.is_null() {
-                                    xmlSetNsProp(
+                                    (unsafe { xmlSetNsProp(
                                         node,
                                         xns,
-                                        b"base\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
+                                        b"base\0" as *const u8 as *const i8 as *mut xmlChar,
                                         (*cur).value,
-                                    );
+                                    ) });
                                 }
                             }
-                            match (*cur).prefer as u32 {
+                            match (unsafe { (*cur).prefer }) as u32 {
                                 1 => {
-                                    xmlSetProp(
+                                    (unsafe { xmlSetProp(
                                         node,
-                                        b"prefer\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                        b"public\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                    );
-                                }
+                                        b"prefer\0" as *const u8 as *const i8 as *mut xmlChar,
+                                        b"public\0" as *const u8 as *const i8 as *mut xmlChar,
+                                    ) });
+                                },
                                 2 => {
-                                    xmlSetProp(
+                                    (unsafe { xmlSetProp(
                                         node,
-                                        b"prefer\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                        b"system\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                    );
-                                }
-                                0 | _ => {}
+                                        b"prefer\0" as *const u8 as *const i8 as *mut xmlChar,
+                                        b"system\0" as *const u8 as *const i8 as *mut xmlChar,
+                                    ) });
+                                },
+                                0 | _ => {},
                             }
-                            xmlDumpXMLCatalogNode((*cur).next, node, doc, ns, cur);
-                            xmlAddChild(catalog, node);
-                        }
+                            xmlDumpXMLCatalogNode(unsafe { (*cur).next }, node, doc, ns, cur);
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         5425920993883413897 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"nextCatalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"nextCatalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         _ => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegateURI\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegateURI\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uriStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uriStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                     }
-                }
+                },
                 3 => {
                     current_block_49 = 5425920993883413897;
                     match current_block_49 {
                         15414981286075827 => {
                             if cur == catal {
-                                cur = (*cur).children;
+                                cur = unsafe { (*cur).children };
                                 continue;
                             }
-                        }
+                        },
                         3932087857103670784 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"rewriteURI\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewriteURI\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uriStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uriStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"rewritePrefix\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewritePrefix\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         16086062102548664993 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"name\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"name\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         776782378719281040 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegateSystem\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegateSystem\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         16251997513805125340 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegatePublic\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegatePublic\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"publicIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"publicIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         12614018986753156024 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"rewriteSystem\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewriteSystem\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"rewritePrefix\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewritePrefix\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         3278478806863930313 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"system\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"system\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemId\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemId\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         2042511421509206405 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"public\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"public\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"publicId\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"publicId\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         17827901024417069171 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"group\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"group\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
                                 b"id\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            if !((*cur).value).is_null() {
-                                let mut xns: * mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
-                                xns = xmlSearchNsByHref(
+                            ) });
+                            if !(unsafe { (*cur).value }).is_null() {
+                                let mut xns: *mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
+                                xns = unsafe { xmlSearchNsByHref(
                                     doc,
                                     node,
                                     b"http://www.w3.org/XML/1998/namespace\0" as *const u8
-                                        as *const i8 as *const xmlChar,
-                                );
+                                        as *const i8
+                                        as *const xmlChar,
+                                ) };
                                 if !xns.is_null() {
-                                    xmlSetNsProp(
+                                    (unsafe { xmlSetNsProp(
                                         node,
                                         xns,
-                                        b"base\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
+                                        b"base\0" as *const u8 as *const i8 as *mut xmlChar,
                                         (*cur).value,
-                                    );
+                                    ) });
                                 }
                             }
-                            match (*cur).prefer as u32 {
+                            match (unsafe { (*cur).prefer }) as u32 {
                                 1 => {
-                                    xmlSetProp(
+                                    (unsafe { xmlSetProp(
                                         node,
-                                        b"prefer\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                        b"public\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                    );
-                                }
+                                        b"prefer\0" as *const u8 as *const i8 as *mut xmlChar,
+                                        b"public\0" as *const u8 as *const i8 as *mut xmlChar,
+                                    ) });
+                                },
                                 2 => {
-                                    xmlSetProp(
+                                    (unsafe { xmlSetProp(
                                         node,
-                                        b"prefer\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                        b"system\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                    );
-                                }
-                                0 | _ => {}
+                                        b"prefer\0" as *const u8 as *const i8 as *mut xmlChar,
+                                        b"system\0" as *const u8 as *const i8 as *mut xmlChar,
+                                    ) });
+                                },
+                                0 | _ => {},
                             }
-                            xmlDumpXMLCatalogNode((*cur).next, node, doc, ns, cur);
-                            xmlAddChild(catalog, node);
-                        }
+                            xmlDumpXMLCatalogNode(unsafe { (*cur).next }, node, doc, ns, cur);
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         5425920993883413897 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"nextCatalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"nextCatalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         _ => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegateURI\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegateURI\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uriStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uriStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                     }
-                }
+                },
                 4 => {
                     current_block_49 = 17827901024417069171;
                     match current_block_49 {
                         15414981286075827 => {
                             if cur == catal {
-                                cur = (*cur).children;
+                                cur = unsafe { (*cur).children };
                                 continue;
                             }
-                        }
+                        },
                         3932087857103670784 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"rewriteURI\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewriteURI\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uriStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uriStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"rewritePrefix\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewritePrefix\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         16086062102548664993 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"name\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"name\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         776782378719281040 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegateSystem\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegateSystem\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         16251997513805125340 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegatePublic\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegatePublic\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"publicIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"publicIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         12614018986753156024 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"rewriteSystem\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewriteSystem\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"rewritePrefix\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewritePrefix\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         3278478806863930313 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"system\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"system\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemId\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemId\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         2042511421509206405 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"public\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"public\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"publicId\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"publicId\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         17827901024417069171 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"group\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"group\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
                                 b"id\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            if !((*cur).value).is_null() {
-                                let mut xns: * mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
-                                xns = xmlSearchNsByHref(
+                            ) });
+                            if !(unsafe { (*cur).value }).is_null() {
+                                let mut xns: *mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
+                                xns = unsafe { xmlSearchNsByHref(
                                     doc,
                                     node,
                                     b"http://www.w3.org/XML/1998/namespace\0" as *const u8
-                                        as *const i8 as *const xmlChar,
-                                );
+                                        as *const i8
+                                        as *const xmlChar,
+                                ) };
                                 if !xns.is_null() {
-                                    xmlSetNsProp(
+                                    (unsafe { xmlSetNsProp(
                                         node,
                                         xns,
-                                        b"base\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
+                                        b"base\0" as *const u8 as *const i8 as *mut xmlChar,
                                         (*cur).value,
-                                    );
+                                    ) });
                                 }
                             }
-                            match (*cur).prefer as u32 {
+                            match (unsafe { (*cur).prefer }) as u32 {
                                 1 => {
-                                    xmlSetProp(
+                                    (unsafe { xmlSetProp(
                                         node,
-                                        b"prefer\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                        b"public\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                    );
-                                }
+                                        b"prefer\0" as *const u8 as *const i8 as *mut xmlChar,
+                                        b"public\0" as *const u8 as *const i8 as *mut xmlChar,
+                                    ) });
+                                },
                                 2 => {
-                                    xmlSetProp(
+                                    (unsafe { xmlSetProp(
                                         node,
-                                        b"prefer\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                        b"system\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                    );
-                                }
-                                0 | _ => {}
+                                        b"prefer\0" as *const u8 as *const i8 as *mut xmlChar,
+                                        b"system\0" as *const u8 as *const i8 as *mut xmlChar,
+                                    ) });
+                                },
+                                0 | _ => {},
                             }
-                            xmlDumpXMLCatalogNode((*cur).next, node, doc, ns, cur);
-                            xmlAddChild(catalog, node);
-                        }
+                            xmlDumpXMLCatalogNode(unsafe { (*cur).next }, node, doc, ns, cur);
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         5425920993883413897 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"nextCatalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"nextCatalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         _ => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegateURI\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegateURI\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uriStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uriStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                     }
-                }
+                },
                 5 => {
                     current_block_49 = 2042511421509206405;
                     match current_block_49 {
                         15414981286075827 => {
                             if cur == catal {
-                                cur = (*cur).children;
+                                cur = unsafe { (*cur).children };
                                 continue;
                             }
-                        }
+                        },
                         3932087857103670784 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"rewriteURI\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewriteURI\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uriStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uriStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"rewritePrefix\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewritePrefix\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         16086062102548664993 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"name\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"name\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         776782378719281040 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegateSystem\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegateSystem\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         16251997513805125340 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegatePublic\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegatePublic\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"publicIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"publicIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         12614018986753156024 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"rewriteSystem\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewriteSystem\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"rewritePrefix\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewritePrefix\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         3278478806863930313 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"system\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"system\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemId\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemId\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         2042511421509206405 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"public\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"public\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"publicId\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"publicId\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         17827901024417069171 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"group\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"group\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
                                 b"id\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            if !((*cur).value).is_null() {
-                                let mut xns: * mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
-                                xns = xmlSearchNsByHref(
+                            ) });
+                            if !(unsafe { (*cur).value }).is_null() {
+                                let mut xns: *mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
+                                xns = unsafe { xmlSearchNsByHref(
                                     doc,
                                     node,
                                     b"http://www.w3.org/XML/1998/namespace\0" as *const u8
-                                        as *const i8 as *const xmlChar,
-                                );
+                                        as *const i8
+                                        as *const xmlChar,
+                                ) };
                                 if !xns.is_null() {
-                                    xmlSetNsProp(
+                                    (unsafe { xmlSetNsProp(
                                         node,
                                         xns,
-                                        b"base\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
+                                        b"base\0" as *const u8 as *const i8 as *mut xmlChar,
                                         (*cur).value,
-                                    );
+                                    ) });
                                 }
                             }
-                            match (*cur).prefer as u32 {
+                            match (unsafe { (*cur).prefer }) as u32 {
                                 1 => {
-                                    xmlSetProp(
+                                    (unsafe { xmlSetProp(
                                         node,
-                                        b"prefer\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                        b"public\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                    );
-                                }
+                                        b"prefer\0" as *const u8 as *const i8 as *mut xmlChar,
+                                        b"public\0" as *const u8 as *const i8 as *mut xmlChar,
+                                    ) });
+                                },
                                 2 => {
-                                    xmlSetProp(
+                                    (unsafe { xmlSetProp(
                                         node,
-                                        b"prefer\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                        b"system\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                    );
-                                }
-                                0 | _ => {}
+                                        b"prefer\0" as *const u8 as *const i8 as *mut xmlChar,
+                                        b"system\0" as *const u8 as *const i8 as *mut xmlChar,
+                                    ) });
+                                },
+                                0 | _ => {},
                             }
-                            xmlDumpXMLCatalogNode((*cur).next, node, doc, ns, cur);
-                            xmlAddChild(catalog, node);
-                        }
+                            xmlDumpXMLCatalogNode(unsafe { (*cur).next }, node, doc, ns, cur);
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         5425920993883413897 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"nextCatalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"nextCatalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         _ => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegateURI\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegateURI\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uriStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uriStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                     }
-                }
+                },
                 6 => {
                     current_block_49 = 3278478806863930313;
                     match current_block_49 {
                         15414981286075827 => {
                             if cur == catal {
-                                cur = (*cur).children;
+                                cur = unsafe { (*cur).children };
                                 continue;
                             }
-                        }
+                        },
                         3932087857103670784 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"rewriteURI\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewriteURI\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uriStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uriStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"rewritePrefix\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewritePrefix\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         16086062102548664993 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"name\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"name\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         776782378719281040 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegateSystem\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegateSystem\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         16251997513805125340 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegatePublic\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegatePublic\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"publicIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"publicIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         12614018986753156024 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"rewriteSystem\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewriteSystem\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"rewritePrefix\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewritePrefix\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         3278478806863930313 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"system\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"system\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemId\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemId\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         2042511421509206405 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"public\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"public\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"publicId\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"publicId\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         17827901024417069171 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"group\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"group\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
                                 b"id\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            if !((*cur).value).is_null() {
-                                let mut xns: * mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
-                                xns = xmlSearchNsByHref(
+                            ) });
+                            if !(unsafe { (*cur).value }).is_null() {
+                                let mut xns: *mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
+                                xns = unsafe { xmlSearchNsByHref(
                                     doc,
                                     node,
                                     b"http://www.w3.org/XML/1998/namespace\0" as *const u8
-                                        as *const i8 as *const xmlChar,
-                                );
+                                        as *const i8
+                                        as *const xmlChar,
+                                ) };
                                 if !xns.is_null() {
-                                    xmlSetNsProp(
+                                    (unsafe { xmlSetNsProp(
                                         node,
                                         xns,
-                                        b"base\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
+                                        b"base\0" as *const u8 as *const i8 as *mut xmlChar,
                                         (*cur).value,
-                                    );
+                                    ) });
                                 }
                             }
-                            match (*cur).prefer as u32 {
+                            match (unsafe { (*cur).prefer }) as u32 {
                                 1 => {
-                                    xmlSetProp(
+                                    (unsafe { xmlSetProp(
                                         node,
-                                        b"prefer\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                        b"public\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                    );
-                                }
+                                        b"prefer\0" as *const u8 as *const i8 as *mut xmlChar,
+                                        b"public\0" as *const u8 as *const i8 as *mut xmlChar,
+                                    ) });
+                                },
                                 2 => {
-                                    xmlSetProp(
+                                    (unsafe { xmlSetProp(
                                         node,
-                                        b"prefer\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                        b"system\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                    );
-                                }
-                                0 | _ => {}
+                                        b"prefer\0" as *const u8 as *const i8 as *mut xmlChar,
+                                        b"system\0" as *const u8 as *const i8 as *mut xmlChar,
+                                    ) });
+                                },
+                                0 | _ => {},
                             }
-                            xmlDumpXMLCatalogNode((*cur).next, node, doc, ns, cur);
-                            xmlAddChild(catalog, node);
-                        }
+                            xmlDumpXMLCatalogNode(unsafe { (*cur).next }, node, doc, ns, cur);
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         5425920993883413897 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"nextCatalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"nextCatalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         _ => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegateURI\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegateURI\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uriStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uriStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                     }
-                }
+                },
                 7 => {
                     current_block_49 = 12614018986753156024;
                     match current_block_49 {
                         15414981286075827 => {
                             if cur == catal {
-                                cur = (*cur).children;
+                                cur = unsafe { (*cur).children };
                                 continue;
                             }
-                        }
+                        },
                         3932087857103670784 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"rewriteURI\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewriteURI\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uriStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uriStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"rewritePrefix\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewritePrefix\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         16086062102548664993 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"name\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"name\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         776782378719281040 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegateSystem\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegateSystem\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         16251997513805125340 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegatePublic\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegatePublic\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"publicIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"publicIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         12614018986753156024 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"rewriteSystem\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewriteSystem\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"rewritePrefix\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewritePrefix\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         3278478806863930313 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"system\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"system\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemId\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemId\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         2042511421509206405 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"public\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"public\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"publicId\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"publicId\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         17827901024417069171 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"group\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"group\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
                                 b"id\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            if !((*cur).value).is_null() {
-                                let mut xns: * mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
-                                xns = xmlSearchNsByHref(
+                            ) });
+                            if !(unsafe { (*cur).value }).is_null() {
+                                let mut xns: *mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
+                                xns = unsafe { xmlSearchNsByHref(
                                     doc,
                                     node,
                                     b"http://www.w3.org/XML/1998/namespace\0" as *const u8
-                                        as *const i8 as *const xmlChar,
-                                );
+                                        as *const i8
+                                        as *const xmlChar,
+                                ) };
                                 if !xns.is_null() {
-                                    xmlSetNsProp(
+                                    (unsafe { xmlSetNsProp(
                                         node,
                                         xns,
-                                        b"base\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
+                                        b"base\0" as *const u8 as *const i8 as *mut xmlChar,
                                         (*cur).value,
-                                    );
+                                    ) });
                                 }
                             }
-                            match (*cur).prefer as u32 {
+                            match (unsafe { (*cur).prefer }) as u32 {
                                 1 => {
-                                    xmlSetProp(
+                                    (unsafe { xmlSetProp(
                                         node,
-                                        b"prefer\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                        b"public\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                    );
-                                }
+                                        b"prefer\0" as *const u8 as *const i8 as *mut xmlChar,
+                                        b"public\0" as *const u8 as *const i8 as *mut xmlChar,
+                                    ) });
+                                },
                                 2 => {
-                                    xmlSetProp(
+                                    (unsafe { xmlSetProp(
                                         node,
-                                        b"prefer\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                        b"system\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                    );
-                                }
-                                0 | _ => {}
+                                        b"prefer\0" as *const u8 as *const i8 as *mut xmlChar,
+                                        b"system\0" as *const u8 as *const i8 as *mut xmlChar,
+                                    ) });
+                                },
+                                0 | _ => {},
                             }
-                            xmlDumpXMLCatalogNode((*cur).next, node, doc, ns, cur);
-                            xmlAddChild(catalog, node);
-                        }
+                            xmlDumpXMLCatalogNode(unsafe { (*cur).next }, node, doc, ns, cur);
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         5425920993883413897 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"nextCatalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"nextCatalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         _ => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegateURI\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegateURI\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uriStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uriStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                     }
-                }
+                },
                 8 => {
                     current_block_49 = 16251997513805125340;
                     match current_block_49 {
                         15414981286075827 => {
                             if cur == catal {
-                                cur = (*cur).children;
+                                cur = unsafe { (*cur).children };
                                 continue;
                             }
-                        }
+                        },
                         3932087857103670784 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"rewriteURI\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewriteURI\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uriStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uriStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"rewritePrefix\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewritePrefix\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         16086062102548664993 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"name\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"name\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         776782378719281040 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegateSystem\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegateSystem\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         16251997513805125340 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegatePublic\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegatePublic\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"publicIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"publicIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         12614018986753156024 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"rewriteSystem\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewriteSystem\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"rewritePrefix\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewritePrefix\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         3278478806863930313 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"system\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"system\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemId\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemId\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         2042511421509206405 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"public\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"public\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"publicId\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"publicId\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         17827901024417069171 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"group\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"group\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
                                 b"id\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            if !((*cur).value).is_null() {
-                                let mut xns: * mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
-                                xns = xmlSearchNsByHref(
+                            ) });
+                            if !(unsafe { (*cur).value }).is_null() {
+                                let mut xns: *mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
+                                xns = unsafe { xmlSearchNsByHref(
                                     doc,
                                     node,
                                     b"http://www.w3.org/XML/1998/namespace\0" as *const u8
-                                        as *const i8 as *const xmlChar,
-                                );
+                                        as *const i8
+                                        as *const xmlChar,
+                                ) };
                                 if !xns.is_null() {
-                                    xmlSetNsProp(
+                                    (unsafe { xmlSetNsProp(
                                         node,
                                         xns,
-                                        b"base\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
+                                        b"base\0" as *const u8 as *const i8 as *mut xmlChar,
                                         (*cur).value,
-                                    );
+                                    ) });
                                 }
                             }
-                            match (*cur).prefer as u32 {
+                            match (unsafe { (*cur).prefer }) as u32 {
                                 1 => {
-                                    xmlSetProp(
+                                    (unsafe { xmlSetProp(
                                         node,
-                                        b"prefer\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                        b"public\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                    );
-                                }
+                                        b"prefer\0" as *const u8 as *const i8 as *mut xmlChar,
+                                        b"public\0" as *const u8 as *const i8 as *mut xmlChar,
+                                    ) });
+                                },
                                 2 => {
-                                    xmlSetProp(
+                                    (unsafe { xmlSetProp(
                                         node,
-                                        b"prefer\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                        b"system\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                    );
-                                }
-                                0 | _ => {}
+                                        b"prefer\0" as *const u8 as *const i8 as *mut xmlChar,
+                                        b"system\0" as *const u8 as *const i8 as *mut xmlChar,
+                                    ) });
+                                },
+                                0 | _ => {},
                             }
-                            xmlDumpXMLCatalogNode((*cur).next, node, doc, ns, cur);
-                            xmlAddChild(catalog, node);
-                        }
+                            xmlDumpXMLCatalogNode(unsafe { (*cur).next }, node, doc, ns, cur);
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         5425920993883413897 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"nextCatalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"nextCatalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         _ => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegateURI\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegateURI\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uriStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uriStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                     }
-                }
+                },
                 9 => {
                     current_block_49 = 776782378719281040;
                     match current_block_49 {
                         15414981286075827 => {
                             if cur == catal {
-                                cur = (*cur).children;
+                                cur = unsafe { (*cur).children };
                                 continue;
                             }
-                        }
+                        },
                         3932087857103670784 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"rewriteURI\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewriteURI\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uriStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uriStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"rewritePrefix\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewritePrefix\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         16086062102548664993 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"name\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"name\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         776782378719281040 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegateSystem\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegateSystem\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         16251997513805125340 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegatePublic\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegatePublic\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"publicIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"publicIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         12614018986753156024 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"rewriteSystem\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewriteSystem\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"rewritePrefix\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewritePrefix\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         3278478806863930313 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"system\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"system\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemId\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemId\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         2042511421509206405 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"public\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"public\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"publicId\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"publicId\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         17827901024417069171 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"group\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"group\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
                                 b"id\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            if !((*cur).value).is_null() {
-                                let mut xns: * mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
-                                xns = xmlSearchNsByHref(
+                            ) });
+                            if !(unsafe { (*cur).value }).is_null() {
+                                let mut xns: *mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
+                                xns = unsafe { xmlSearchNsByHref(
                                     doc,
                                     node,
                                     b"http://www.w3.org/XML/1998/namespace\0" as *const u8
-                                        as *const i8 as *const xmlChar,
-                                );
+                                        as *const i8
+                                        as *const xmlChar,
+                                ) };
                                 if !xns.is_null() {
-                                    xmlSetNsProp(
+                                    (unsafe { xmlSetNsProp(
                                         node,
                                         xns,
-                                        b"base\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
+                                        b"base\0" as *const u8 as *const i8 as *mut xmlChar,
                                         (*cur).value,
-                                    );
+                                    ) });
                                 }
                             }
-                            match (*cur).prefer as u32 {
+                            match (unsafe { (*cur).prefer }) as u32 {
                                 1 => {
-                                    xmlSetProp(
+                                    (unsafe { xmlSetProp(
                                         node,
-                                        b"prefer\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                        b"public\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                    );
-                                }
+                                        b"prefer\0" as *const u8 as *const i8 as *mut xmlChar,
+                                        b"public\0" as *const u8 as *const i8 as *mut xmlChar,
+                                    ) });
+                                },
                                 2 => {
-                                    xmlSetProp(
+                                    (unsafe { xmlSetProp(
                                         node,
-                                        b"prefer\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                        b"system\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                    );
-                                }
-                                0 | _ => {}
+                                        b"prefer\0" as *const u8 as *const i8 as *mut xmlChar,
+                                        b"system\0" as *const u8 as *const i8 as *mut xmlChar,
+                                    ) });
+                                },
+                                0 | _ => {},
                             }
-                            xmlDumpXMLCatalogNode((*cur).next, node, doc, ns, cur);
-                            xmlAddChild(catalog, node);
-                        }
+                            xmlDumpXMLCatalogNode(unsafe { (*cur).next }, node, doc, ns, cur);
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         5425920993883413897 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"nextCatalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"nextCatalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         _ => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegateURI\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegateURI\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uriStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uriStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                     }
-                }
+                },
                 10 => {
                     current_block_49 = 16086062102548664993;
                     match current_block_49 {
                         15414981286075827 => {
                             if cur == catal {
-                                cur = (*cur).children;
+                                cur = unsafe { (*cur).children };
                                 continue;
                             }
-                        }
+                        },
                         3932087857103670784 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"rewriteURI\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewriteURI\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uriStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uriStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"rewritePrefix\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewritePrefix\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         16086062102548664993 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"name\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"name\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         776782378719281040 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegateSystem\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegateSystem\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         16251997513805125340 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegatePublic\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegatePublic\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"publicIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"publicIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         12614018986753156024 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"rewriteSystem\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewriteSystem\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"rewritePrefix\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewritePrefix\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         3278478806863930313 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"system\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"system\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemId\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemId\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         2042511421509206405 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"public\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"public\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"publicId\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"publicId\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         17827901024417069171 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"group\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"group\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
                                 b"id\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            if !((*cur).value).is_null() {
-                                let mut xns: * mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
-                                xns = xmlSearchNsByHref(
+                            ) });
+                            if !(unsafe { (*cur).value }).is_null() {
+                                let mut xns: *mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
+                                xns = unsafe { xmlSearchNsByHref(
                                     doc,
                                     node,
                                     b"http://www.w3.org/XML/1998/namespace\0" as *const u8
-                                        as *const i8 as *const xmlChar,
-                                );
+                                        as *const i8
+                                        as *const xmlChar,
+                                ) };
                                 if !xns.is_null() {
-                                    xmlSetNsProp(
+                                    (unsafe { xmlSetNsProp(
                                         node,
                                         xns,
-                                        b"base\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
+                                        b"base\0" as *const u8 as *const i8 as *mut xmlChar,
                                         (*cur).value,
-                                    );
+                                    ) });
                                 }
                             }
-                            match (*cur).prefer as u32 {
+                            match (unsafe { (*cur).prefer }) as u32 {
                                 1 => {
-                                    xmlSetProp(
+                                    (unsafe { xmlSetProp(
                                         node,
-                                        b"prefer\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                        b"public\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                    );
-                                }
+                                        b"prefer\0" as *const u8 as *const i8 as *mut xmlChar,
+                                        b"public\0" as *const u8 as *const i8 as *mut xmlChar,
+                                    ) });
+                                },
                                 2 => {
-                                    xmlSetProp(
+                                    (unsafe { xmlSetProp(
                                         node,
-                                        b"prefer\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                        b"system\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                    );
-                                }
-                                0 | _ => {}
+                                        b"prefer\0" as *const u8 as *const i8 as *mut xmlChar,
+                                        b"system\0" as *const u8 as *const i8 as *mut xmlChar,
+                                    ) });
+                                },
+                                0 | _ => {},
                             }
-                            xmlDumpXMLCatalogNode((*cur).next, node, doc, ns, cur);
-                            xmlAddChild(catalog, node);
-                        }
+                            xmlDumpXMLCatalogNode(unsafe { (*cur).next }, node, doc, ns, cur);
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         5425920993883413897 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"nextCatalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"nextCatalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         _ => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegateURI\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegateURI\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uriStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uriStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                     }
-                }
+                },
                 11 => {
                     current_block_49 = 3932087857103670784;
                     match current_block_49 {
                         15414981286075827 => {
                             if cur == catal {
-                                cur = (*cur).children;
+                                cur = unsafe { (*cur).children };
                                 continue;
                             }
-                        }
+                        },
                         3932087857103670784 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"rewriteURI\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewriteURI\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uriStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uriStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"rewritePrefix\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewritePrefix\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         16086062102548664993 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"name\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"name\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         776782378719281040 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegateSystem\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegateSystem\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         16251997513805125340 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegatePublic\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegatePublic\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"publicIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"publicIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         12614018986753156024 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"rewriteSystem\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewriteSystem\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"rewritePrefix\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewritePrefix\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         3278478806863930313 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"system\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"system\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemId\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemId\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         2042511421509206405 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"public\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"public\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"publicId\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"publicId\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         17827901024417069171 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"group\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"group\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
                                 b"id\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            if !((*cur).value).is_null() {
-                                let mut xns: * mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
-                                xns = xmlSearchNsByHref(
+                            ) });
+                            if !(unsafe { (*cur).value }).is_null() {
+                                let mut xns: *mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
+                                xns = unsafe { xmlSearchNsByHref(
                                     doc,
                                     node,
                                     b"http://www.w3.org/XML/1998/namespace\0" as *const u8
-                                        as *const i8 as *const xmlChar,
-                                );
+                                        as *const i8
+                                        as *const xmlChar,
+                                ) };
                                 if !xns.is_null() {
-                                    xmlSetNsProp(
+                                    (unsafe { xmlSetNsProp(
                                         node,
                                         xns,
-                                        b"base\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
+                                        b"base\0" as *const u8 as *const i8 as *mut xmlChar,
                                         (*cur).value,
-                                    );
+                                    ) });
                                 }
                             }
-                            match (*cur).prefer as u32 {
+                            match (unsafe { (*cur).prefer }) as u32 {
                                 1 => {
-                                    xmlSetProp(
+                                    (unsafe { xmlSetProp(
                                         node,
-                                        b"prefer\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                        b"public\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                    );
-                                }
+                                        b"prefer\0" as *const u8 as *const i8 as *mut xmlChar,
+                                        b"public\0" as *const u8 as *const i8 as *mut xmlChar,
+                                    ) });
+                                },
                                 2 => {
-                                    xmlSetProp(
+                                    (unsafe { xmlSetProp(
                                         node,
-                                        b"prefer\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                        b"system\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                    );
-                                }
-                                0 | _ => {}
+                                        b"prefer\0" as *const u8 as *const i8 as *mut xmlChar,
+                                        b"system\0" as *const u8 as *const i8 as *mut xmlChar,
+                                    ) });
+                                },
+                                0 | _ => {},
                             }
-                            xmlDumpXMLCatalogNode((*cur).next, node, doc, ns, cur);
-                            xmlAddChild(catalog, node);
-                        }
+                            xmlDumpXMLCatalogNode(unsafe { (*cur).next }, node, doc, ns, cur);
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         5425920993883413897 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"nextCatalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"nextCatalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         _ => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegateURI\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegateURI\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uriStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uriStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                     }
-                }
+                },
                 12 => {
                     current_block_49 = 16685025456891485352;
                     match current_block_49 {
                         15414981286075827 => {
                             if cur == catal {
-                                cur = (*cur).children;
+                                cur = unsafe { (*cur).children };
                                 continue;
                             }
-                        }
+                        },
                         3932087857103670784 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"rewriteURI\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewriteURI\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uriStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uriStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"rewritePrefix\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewritePrefix\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         16086062102548664993 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"name\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"name\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         776782378719281040 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegateSystem\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegateSystem\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         16251997513805125340 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegatePublic\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegatePublic\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"publicIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"publicIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         12614018986753156024 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"rewriteSystem\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewriteSystem\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemIdStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemIdStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"rewritePrefix\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"rewritePrefix\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         3278478806863930313 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"system\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"system\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"systemId\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"systemId\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         2042511421509206405 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"public\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"public\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"publicId\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"publicId\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uri\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         17827901024417069171 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"group\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"group\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
                                 b"id\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            if !((*cur).value).is_null() {
-                                let mut xns: * mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
-                                xns = xmlSearchNsByHref(
+                            ) });
+                            if !(unsafe { (*cur).value }).is_null() {
+                                let mut xns: *mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
+                                xns = unsafe { xmlSearchNsByHref(
                                     doc,
                                     node,
                                     b"http://www.w3.org/XML/1998/namespace\0" as *const u8
-                                        as *const i8 as *const xmlChar,
-                                );
+                                        as *const i8
+                                        as *const xmlChar,
+                                ) };
                                 if !xns.is_null() {
-                                    xmlSetNsProp(
+                                    (unsafe { xmlSetNsProp(
                                         node,
                                         xns,
-                                        b"base\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
+                                        b"base\0" as *const u8 as *const i8 as *mut xmlChar,
                                         (*cur).value,
-                                    );
+                                    ) });
                                 }
                             }
-                            match (*cur).prefer as u32 {
+                            match (unsafe { (*cur).prefer }) as u32 {
                                 1 => {
-                                    xmlSetProp(
+                                    (unsafe { xmlSetProp(
                                         node,
-                                        b"prefer\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                        b"public\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                    );
-                                }
+                                        b"prefer\0" as *const u8 as *const i8 as *mut xmlChar,
+                                        b"public\0" as *const u8 as *const i8 as *mut xmlChar,
+                                    ) });
+                                },
                                 2 => {
-                                    xmlSetProp(
+                                    (unsafe { xmlSetProp(
                                         node,
-                                        b"prefer\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                        b"system\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                    );
-                                }
-                                0 | _ => {}
+                                        b"prefer\0" as *const u8 as *const i8 as *mut xmlChar,
+                                        b"system\0" as *const u8 as *const i8 as *mut xmlChar,
+                                    ) });
+                                },
+                                0 | _ => {},
                             }
-                            xmlDumpXMLCatalogNode((*cur).next, node, doc, ns, cur);
-                            xmlAddChild(catalog, node);
-                        }
+                            xmlDumpXMLCatalogNode(unsafe { (*cur).next }, node, doc, ns, cur);
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         5425920993883413897 => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"nextCatalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"nextCatalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                         _ => {
-                            node = xmlNewDocNode(
+                            node = unsafe { xmlNewDocNode(
                                 doc,
                                 ns,
-                                b"delegateURI\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"delegateURI\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
-                            xmlSetProp(
+                            ) };
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"uriStartString\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"uriStartString\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).name,
-                            );
-                            xmlSetProp(
+                            ) });
+                            (unsafe { xmlSetProp(
                                 node,
-                                b"catalog\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
                                 (*cur).value,
-                            );
-                            xmlAddChild(catalog, node);
-                        }
+                            ) });
+                            (unsafe { xmlAddChild(catalog, node) });
+                        },
                     }
-                }
-                -1 | 0 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24
-                | _ => {}
+                },
+                -1 | 0 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | _ => {},
             }
         }
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
     }
 }
-unsafe extern "C" fn xmlDumpXMLCatalog(
-    mut out: * mut crate::src::HTMLtree::_IO_FILE,
-    mut catal: * mut crate::src::catalog::_xmlCatalogEntry,
+extern "C" fn xmlDumpXMLCatalog(
+    mut out: *mut crate::src::HTMLtree::_IO_FILE,
+    mut catal: *mut crate::src::catalog::_xmlCatalogEntry,
 ) -> i32 {
     let mut ret: i32 = 0;
-    let mut doc: * mut crate::src::HTMLparser::_xmlDoc = 0 as *mut xmlDoc;
-    let mut ns: * mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
-    let mut dtd: * mut crate::src::HTMLparser::_xmlDtd = 0 as *mut xmlDtd;
-    let mut catalog: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut buf: * mut crate::src::HTMLtree::_xmlOutputBuffer = 0 as *mut xmlOutputBuffer;
-    doc = xmlNewDoc(0 as *const xmlChar);
+    let mut doc: *mut crate::src::HTMLparser::_xmlDoc = 0 as *mut xmlDoc;
+    let mut ns: *mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
+    let mut dtd: *mut crate::src::HTMLparser::_xmlDtd = 0 as *mut xmlDtd;
+    let mut catalog: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut buf: *mut crate::src::HTMLtree::_xmlOutputBuffer = 0 as *mut xmlOutputBuffer;
+    doc = unsafe { xmlNewDoc(0 as *const xmlChar) };
     if doc.is_null() {
         return -(1 as i32);
     }
-    dtd = xmlNewDtd(
+    dtd = unsafe { xmlNewDtd(
         doc,
         b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
-        b"-//OASIS//DTD Entity Resolution XML Catalog V1.0//EN\0" as *const u8
+        b"-//OASIS//DTD Entity Resolution XML Catalog V1.0//EN\0" as *const u8 as *const i8
+            as *mut xmlChar,
+        b"http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd\0" as *const u8
             as *const i8 as *mut xmlChar,
-        b"http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd\0"
-            as *const u8 as *const i8 as *mut xmlChar,
-    );
-    xmlAddChild(doc as xmlNodePtr, dtd as xmlNodePtr);
-    ns = xmlNewNs(
+    ) };
+    (unsafe { xmlAddChild(doc as xmlNodePtr, dtd as xmlNodePtr) });
+    ns = unsafe { xmlNewNs(
         0 as xmlNodePtr,
-        b"urn:oasis:names:tc:entity:xmlns:xml:catalog\0" as *const u8
-            as *const i8 as *const xmlChar,
+        b"urn:oasis:names:tc:entity:xmlns:xml:catalog\0" as *const u8 as *const i8
+            as *const xmlChar,
         0 as *const xmlChar,
-    );
+    ) };
     if ns.is_null() {
-        xmlFreeDoc(doc);
+        (unsafe { xmlFreeDoc(doc) });
         return -(1 as i32);
     }
-    catalog = xmlNewDocNode(
+    catalog = unsafe { xmlNewDocNode(
         doc,
         ns,
         b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
         0 as *const xmlChar,
-    );
+    ) };
     if catalog.is_null() {
-        xmlFreeNs(ns);
-        xmlFreeDoc(doc);
+        (unsafe { xmlFreeNs(ns) });
+        (unsafe { xmlFreeDoc(doc) });
         return -(1 as i32);
     }
-    let ref mut fresh12 = (*catalog).nsDef;
+    let fresh12 = unsafe { &mut ((*catalog).nsDef) };
     *fresh12 = ns;
-    xmlAddChild(doc as xmlNodePtr, catalog);
+    (unsafe { xmlAddChild(doc as xmlNodePtr, catalog) });
     xmlDumpXMLCatalogNode(catal, catalog, doc, ns, 0 as xmlCatalogEntryPtr);
-    buf = xmlOutputBufferCreateFile(out, 0 as xmlCharEncodingHandlerPtr);
+    buf = unsafe { xmlOutputBufferCreateFile(out, 0 as xmlCharEncodingHandlerPtr) };
     if buf.is_null() {
-        xmlFreeDoc(doc);
+        (unsafe { xmlFreeDoc(doc) });
         return -(1 as i32);
     }
-    ret = xmlSaveFormatFileTo(buf, doc, 0 as *const i8, 1 as i32);
-    xmlFreeDoc(doc);
+    ret = unsafe { xmlSaveFormatFileTo(buf, doc, 0 as *const i8, 1 as i32) };
+    (unsafe { xmlFreeDoc(doc) });
     return ret;
 }
-unsafe extern "C" fn xmlCatalogConvertEntry(
-    mut payload: * mut core::ffi::c_void,
-    mut data: * mut core::ffi::c_void,
-    mut name: * const u8,
+extern "C" fn xmlCatalogConvertEntry(
+    mut payload: *mut core::ffi::c_void,
+    mut data: *mut core::ffi::c_void,
+    mut _name: *const u8,
 ) {
-    let mut entry: * mut crate::src::catalog::_xmlCatalogEntry = payload as xmlCatalogEntryPtr;
-    let mut catal: * mut crate::src::catalog::_xmlCatalog<'_> = data as xmlCatalogPtr;
-    if entry.is_null() || catal.is_null() || ((*catal).sgml).is_null()
-        || ((*catal).xml).is_null()
-    {
+    let mut entry: *mut crate::src::catalog::_xmlCatalogEntry = payload as xmlCatalogEntryPtr;
+    let mut catal: *mut crate::src::catalog::_xmlCatalog<'_> = data as xmlCatalogPtr;
+    if entry.is_null() || catal.is_null() || (unsafe { (*catal).sgml }).is_null() || (unsafe { (*catal).xml }).is_null() {
         return;
     }
-    match (*entry).type_0 as i32 {
+    match (unsafe { (*entry).type_0 }) as i32 {
         15 => {
-            (*entry).type_0 = XML_CATA_PUBLIC;
-        }
+            (unsafe { (*entry).type_0 = XML_CATA_PUBLIC });
+        },
         16 => {
-            (*entry).type_0 = XML_CATA_PUBLIC;
-        }
+            (unsafe { (*entry).type_0 = XML_CATA_PUBLIC });
+        },
         17 => {
-            (*entry).type_0 = XML_CATA_PUBLIC;
-        }
+            (unsafe { (*entry).type_0 = XML_CATA_PUBLIC });
+        },
         18 => {
-            (*entry).type_0 = XML_CATA_PUBLIC;
-        }
+            (unsafe { (*entry).type_0 = XML_CATA_PUBLIC });
+        },
         19 => {
-            (*entry).type_0 = XML_CATA_PUBLIC;
-        }
+            (unsafe { (*entry).type_0 = XML_CATA_PUBLIC });
+        },
         14 => {
-            (*entry).type_0 = XML_CATA_PUBLIC;
-        }
+            (unsafe { (*entry).type_0 = XML_CATA_PUBLIC });
+        },
         13 => {
-            (*entry).type_0 = XML_CATA_SYSTEM;
-        }
+            (unsafe { (*entry).type_0 = XML_CATA_SYSTEM });
+        },
         20 => {
-            (*entry).type_0 = XML_CATA_DELEGATE_PUBLIC;
-        }
+            (unsafe { (*entry).type_0 = XML_CATA_DELEGATE_PUBLIC });
+        },
         22 => {
-            (*entry).type_0 = XML_CATA_CATALOG;
-        }
+            (unsafe { (*entry).type_0 = XML_CATA_CATALOG });
+        },
         _ => {
-            xmlHashRemoveEntry(
-                (*catal).sgml,
-                (*entry).name,
-                Some(
-                    xmlFreeCatalogEntry,
-                ),
-            );
+            xmlHashRemoveEntry(unsafe { (*catal).sgml }, unsafe { (*entry).name }, Some(xmlFreeCatalogEntry));
             return;
-        }
+        },
     }
-    xmlHashRemoveEntry((*catal).sgml, (*entry).name, None);
-    let ref mut fresh13 = (*entry).parent;
-    *fresh13 = (*catal).xml;
-    let ref mut fresh14 = (*entry).next;
+    xmlHashRemoveEntry(unsafe { (*catal).sgml }, unsafe { (*entry).name }, None);
+    let fresh13 = unsafe { &mut ((*entry).parent) };
+    *fresh13 = unsafe { (*catal).xml };
+    let fresh14 = unsafe { &mut ((*entry).next) };
     *fresh14 = 0 as *mut _xmlCatalogEntry;
-    if ((*(*catal).xml).children).is_null() {
-        let ref mut fresh15 = (*(*catal).xml).children;
+    if (unsafe { (*(*catal).xml).children }).is_null() {
+        let fresh15 = unsafe { &mut ((*(*catal).xml).children) };
         *fresh15 = entry;
     } else {
-        let mut prev: * mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
-        prev = (*(*catal).xml).children;
-        while !((*prev).next).is_null() {
-            prev = (*prev).next;
+        let mut prev: *mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
+        prev = unsafe { (*(*catal).xml).children };
+        while !(unsafe { (*prev).next }).is_null() {
+            prev = unsafe { (*prev).next };
         }
-        let ref mut fresh16 = (*prev).next;
+        let fresh16 = unsafe { &mut ((*prev).next) };
         *fresh16 = entry;
     };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlConvertSGMLCatalog<'a1>(mut catal: * mut crate::src::catalog::_xmlCatalog<'a1>) -> i32 {
-    if catal.is_null()
-        || (*catal).type_0 as u32
-            != XML_SGML_CATALOG_TYPE as i32 as u32
-    {
+pub extern "C" fn xmlConvertSGMLCatalog<'a1>(
+    mut catal: *mut crate::src::catalog::_xmlCatalog<'a1>,
+) -> i32 {
+    if catal.is_null() || (unsafe { (*catal).type_0 }) as u32 != XML_SGML_CATALOG_TYPE as i32 as u32 {
         return -(1 as i32);
     }
-    if xmlDebugCatalogs != 0 {
-        (*(borrow(& __xmlGenericError())).unwrap())
-            .expect(
-                "non-null function pointer",
-            )(
+    if (unsafe { xmlDebugCatalogs }) != 0 {
+        (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
             *(__xmlGenericErrorContext()).unwrap(),
             b"Converting SGML catalog to XML\n\0" as *const u8 as *const i8,
-        );
+        ) });
     }
     xmlHashScan(
-        (*catal).sgml,
-        Some(
-            xmlCatalogConvertEntry,
-        ),
+        unsafe { (*catal).sgml },
+        Some(xmlCatalogConvertEntry),
         &mut catal as *mut xmlCatalogPtr as *mut libc::c_void,
     );
     return 0 as i32;
 }
-unsafe extern "C" fn xmlCatalogUnWrapURN(mut urn: * const u8) -> * mut u8 {
+extern "C" fn xmlCatalogUnWrapURN(mut urn: *const u8) -> *mut u8 {
     let mut result: [u8; 2000] = [0; 2000];
     let mut i: u32 = 0 as i32 as u32;
-    if xmlStrncmp(
+    if (unsafe { xmlStrncmp(
         urn,
         b"urn:publicid:\0" as *const u8 as *const i8 as *mut xmlChar,
-        (::std::mem::size_of::<[i8; 14]>() as u64)
-            .wrapping_sub(1 as i32 as u64) as i32,
-    ) != 0
+        (::std::mem::size_of::<[i8; 14]>() as u64).wrapping_sub(1 as i32 as u64) as i32,
+    ) }) != 0
     {
         return 0 as *mut xmlChar;
     }
-    urn = urn
-        .offset(
-            (::std::mem::size_of::<[i8; 14]>() as u64)
-                .wrapping_sub(1 as i32 as u64) as isize,
-        );
-    while *urn as i32 != 0 as i32 {
+    urn = unsafe { urn
+        .offset((::std::mem::size_of::<[i8; 14]>() as u64).wrapping_sub(1 as i32 as u64) as isize) };
+    while (unsafe { *urn }) as i32 != 0 as i32 {
         if i as u64
-            > (::std::mem::size_of::<[xmlChar; 2000]>() as u64)
-                .wrapping_sub(4 as i32 as u64)
+            > (::std::mem::size_of::<[xmlChar; 2000]>() as u64).wrapping_sub(4 as i32 as u64)
         {
             break;
         }
-        if *urn as i32 == '+' as i32 {
+        if (unsafe { *urn }) as i32 == '+' as i32 {
             let mut fresh17 = i;
             i = i.wrapping_add(1);
             result[fresh17 as usize] = ' ' as i32 as xmlChar;
-            urn = urn.offset(1);
-        } else if *urn as i32 == ':' as i32 {
+            urn = unsafe { urn.offset(1) };
+        } else if (unsafe { *urn }) as i32 == ':' as i32 {
             let mut fresh18 = i;
             i = i.wrapping_add(1);
             result[fresh18 as usize] = '/' as i32 as xmlChar;
             let mut fresh19 = i;
             i = i.wrapping_add(1);
             result[fresh19 as usize] = '/' as i32 as xmlChar;
-            urn = urn.offset(1);
-        } else if *urn as i32 == ';' as i32 {
+            urn = unsafe { urn.offset(1) };
+        } else if (unsafe { *urn }) as i32 == ';' as i32 {
             let mut fresh20 = i;
             i = i.wrapping_add(1);
             result[fresh20 as usize] = ':' as i32 as xmlChar;
             let mut fresh21 = i;
             i = i.wrapping_add(1);
             result[fresh21 as usize] = ':' as i32 as xmlChar;
-            urn = urn.offset(1);
-        } else if *urn as i32 == '%' as i32 {
-            if *urn.offset(1 as i32 as isize) as i32 == '2' as i32
-                && *urn.offset(2 as i32 as isize) as i32 == 'B' as i32
+            urn = unsafe { urn.offset(1) };
+        } else if (unsafe { *urn }) as i32 == '%' as i32 {
+            if (unsafe { *urn.offset(1 as i32 as isize) }) as i32 == '2' as i32
+                && (unsafe { *urn.offset(2 as i32 as isize) }) as i32 == 'B' as i32
             {
                 let mut fresh22 = i;
                 i = i.wrapping_add(1);
                 result[fresh22 as usize] = '+' as i32 as xmlChar;
-            } else if *urn.offset(1 as i32 as isize) as i32 == '3' as i32
-                    && *urn.offset(2 as i32 as isize) as i32
-                        == 'A' as i32
-                {
+            } else if (unsafe { *urn.offset(1 as i32 as isize) }) as i32 == '3' as i32
+                && (unsafe { *urn.offset(2 as i32 as isize) }) as i32 == 'A' as i32
+            {
                 let mut fresh23 = i;
                 i = i.wrapping_add(1);
                 result[fresh23 as usize] = ':' as i32 as xmlChar;
-            } else if *urn.offset(1 as i32 as isize) as i32 == '2' as i32
-                    && *urn.offset(2 as i32 as isize) as i32
-                        == 'F' as i32
-                {
+            } else if (unsafe { *urn.offset(1 as i32 as isize) }) as i32 == '2' as i32
+                && (unsafe { *urn.offset(2 as i32 as isize) }) as i32 == 'F' as i32
+            {
                 let mut fresh24 = i;
                 i = i.wrapping_add(1);
                 result[fresh24 as usize] = '/' as i32 as xmlChar;
-            } else if *urn.offset(1 as i32 as isize) as i32 == '3' as i32
-                    && *urn.offset(2 as i32 as isize) as i32
-                        == 'B' as i32
-                {
+            } else if (unsafe { *urn.offset(1 as i32 as isize) }) as i32 == '3' as i32
+                && (unsafe { *urn.offset(2 as i32 as isize) }) as i32 == 'B' as i32
+            {
                 let mut fresh25 = i;
                 i = i.wrapping_add(1);
                 result[fresh25 as usize] = ';' as i32 as xmlChar;
-            } else if *urn.offset(1 as i32 as isize) as i32 == '2' as i32
-                    && *urn.offset(2 as i32 as isize) as i32
-                        == '7' as i32
-                {
+            } else if (unsafe { *urn.offset(1 as i32 as isize) }) as i32 == '2' as i32
+                && (unsafe { *urn.offset(2 as i32 as isize) }) as i32 == '7' as i32
+            {
                 let mut fresh26 = i;
                 i = i.wrapping_add(1);
                 result[fresh26 as usize] = '\'' as i32 as xmlChar;
-            } else if *urn.offset(1 as i32 as isize) as i32 == '3' as i32
-                    && *urn.offset(2 as i32 as isize) as i32
-                        == 'F' as i32
-                {
+            } else if (unsafe { *urn.offset(1 as i32 as isize) }) as i32 == '3' as i32
+                && (unsafe { *urn.offset(2 as i32 as isize) }) as i32 == 'F' as i32
+            {
                 let mut fresh27 = i;
                 i = i.wrapping_add(1);
                 result[fresh27 as usize] = '?' as i32 as xmlChar;
-            } else if *urn.offset(1 as i32 as isize) as i32 == '2' as i32
-                    && *urn.offset(2 as i32 as isize) as i32
-                        == '3' as i32
-                {
+            } else if (unsafe { *urn.offset(1 as i32 as isize) }) as i32 == '2' as i32
+                && (unsafe { *urn.offset(2 as i32 as isize) }) as i32 == '3' as i32
+            {
                 let mut fresh28 = i;
                 i = i.wrapping_add(1);
                 result[fresh28 as usize] = '#' as i32 as xmlChar;
-            } else if *urn.offset(1 as i32 as isize) as i32 == '2' as i32
-                    && *urn.offset(2 as i32 as isize) as i32
-                        == '5' as i32
-                {
+            } else if (unsafe { *urn.offset(1 as i32 as isize) }) as i32 == '2' as i32
+                && (unsafe { *urn.offset(2 as i32 as isize) }) as i32 == '5' as i32
+            {
                 let mut fresh29 = i;
                 i = i.wrapping_add(1);
                 result[fresh29 as usize] = '%' as i32 as xmlChar;
             } else {
                 let mut fresh30 = i;
                 i = i.wrapping_add(1);
-                result[fresh30 as usize] = *urn;
-                urn = urn.offset(1);
+                result[fresh30 as usize] = unsafe { *urn };
+                urn = unsafe { urn.offset(1) };
                 continue;
             }
-            urn = urn.offset(3 as i32 as isize);
+            urn = unsafe { urn.offset(3 as i32 as isize) };
         } else {
             let mut fresh31 = i;
             i = i.wrapping_add(1);
-            result[fresh31 as usize] = *urn;
-            urn = urn.offset(1);
+            result[fresh31 as usize] = unsafe { *urn };
+            urn = unsafe { urn.offset(1) };
         }
     }
     result[i as usize] = 0 as i32 as xmlChar;
-    return xmlStrdup(result.as_mut_ptr());
+    return unsafe { xmlStrdup(result.as_mut_ptr()) };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlParseCatalogFile(
-    mut filename: * const i8,
-) -> * mut crate::src::HTMLparser::_xmlDoc {
-    let mut ret: * mut crate::src::HTMLparser::_xmlDoc = 0 as *mut xmlDoc;
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = 0 as *mut xmlParserCtxt;
-    let mut directory: * mut i8 = 0 as *mut i8;
-    let mut inputStream: * mut crate::src::HTMLparser::_xmlParserInput = 0 as *mut xmlParserInput;
-    let mut buf: * mut crate::src::HTMLparser::_xmlParserInputBuffer = 0 as *mut xmlParserInputBuffer;
+pub extern "C" fn xmlParseCatalogFile(
+    mut filename: *const i8,
+) -> *mut crate::src::HTMLparser::_xmlDoc {
+    let mut ret: *mut crate::src::HTMLparser::_xmlDoc = 0 as *mut xmlDoc;
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = 0 as *mut xmlParserCtxt;
+    let mut directory: *mut i8 = 0 as *mut i8;
+    let mut inputStream: *mut crate::src::HTMLparser::_xmlParserInput = 0 as *mut xmlParserInput;
+    let mut buf: *mut crate::src::HTMLparser::_xmlParserInputBuffer =
+        0 as *mut xmlParserInputBuffer;
     ctxt = xmlNewParserCtxt();
     if ctxt.is_null() {
-        if ((*__xmlDefaultSAXHandler()).error).is_some() {
-            ((*__xmlDefaultSAXHandler()).error)
-                .expect(
-                    "non-null function pointer",
-                )(
+        if unsafe { ((*__xmlDefaultSAXHandler()).error).is_some() } {
+            (unsafe { ((*__xmlDefaultSAXHandler()).error).expect("non-null function pointer")(
                 0 as *mut libc::c_void,
                 b"out of memory\n\0" as *const u8 as *const i8,
-            );
+            ) });
         }
         return 0 as xmlDocPtr;
     }
-    buf = xmlParserInputBufferCreateFilename(filename, XML_CHAR_ENCODING_NONE);
+    buf = unsafe { xmlParserInputBufferCreateFilename(filename, XML_CHAR_ENCODING_NONE) };
     if buf.is_null() {
         xmlFreeParserCtxt(ctxt);
         return 0 as xmlDocPtr;
     }
     inputStream = xmlNewInputStream(ctxt);
     if inputStream.is_null() {
-        xmlFreeParserInputBuffer(buf);
+        (unsafe { xmlFreeParserInputBuffer(buf) });
         xmlFreeParserCtxt(ctxt);
         return 0 as xmlDocPtr;
     }
-    let ref mut fresh32 = (*inputStream).filename;
-    *fresh32 = xmlCanonicPath(filename as *const xmlChar) as *mut i8;
-    let ref mut fresh33 = (*inputStream).buf;
+    let fresh32 = unsafe { &mut ((*inputStream).filename) };
+    *fresh32 = (unsafe { xmlCanonicPath(filename as *const xmlChar) }) as *mut i8;
+    let fresh33 = unsafe { &mut ((*inputStream).buf) };
     *fresh33 = buf;
-    xmlBufResetInput((*buf).buffer, inputStream);
+    xmlBufResetInput(unsafe { (*buf).buffer }, inputStream);
     inputPush(ctxt, inputStream);
-    if ((*ctxt).directory).is_null() {
-        directory = xmlParserGetDirectory(filename);
+    if (unsafe { (*ctxt).directory }).is_null() {
+        directory = unsafe { xmlParserGetDirectory(filename) };
     }
-    if ((*ctxt).directory).is_null() && !directory.is_null() {
-        let ref mut fresh34 = (*ctxt).directory;
+    if (unsafe { (*ctxt).directory }).is_null() && !directory.is_null() {
+        let fresh34 = unsafe { &mut ((*ctxt).directory) };
         *fresh34 = directory;
     }
-    (*ctxt).valid = 0 as i32;
-    (*ctxt).validate = 0 as i32;
-    (*ctxt).loadsubset = 0 as i32;
-    (*ctxt).pedantic = 0 as i32;
-    (*ctxt).dictNames = 1 as i32;
+    (unsafe { (*ctxt).valid = 0 as i32 });
+    (unsafe { (*ctxt).validate = 0 as i32 });
+    (unsafe { (*ctxt).loadsubset = 0 as i32 });
+    (unsafe { (*ctxt).pedantic = 0 as i32 });
+    (unsafe { (*ctxt).dictNames = 1 as i32 });
     xmlParseDocument(ctxt);
-    if (*ctxt).wellFormed != 0 {
-        ret = (*ctxt).myDoc;
+    if (unsafe { (*ctxt).wellFormed }) != 0 {
+        ret = unsafe { (*ctxt).myDoc };
     } else {
         ret = 0 as xmlDocPtr;
-        xmlFreeDoc((*ctxt).myDoc);
-        let ref mut fresh35 = (*ctxt).myDoc;
+        (unsafe { xmlFreeDoc((*ctxt).myDoc) });
+        let fresh35 = unsafe { &mut ((*ctxt).myDoc) };
         *fresh35 = 0 as xmlDocPtr;
     }
     xmlFreeParserCtxt(ctxt);
     return ret;
 }
-unsafe extern "C" fn xmlLoadFileContent(
-    mut filename: * const i8,
-) -> * mut u8 {
+extern "C" fn xmlLoadFileContent(mut filename: *const i8) -> *mut u8 {
     let mut fd: i32 = 0;
     let mut len: i32 = 0;
     let mut size: i64 = 0;
@@ -4959,82 +4557,84 @@ unsafe extern "C" fn xmlLoadFileContent(
         st_size: 0,
         st_blksize: 0,
         st_blocks: 0,
-        st_atim: timespec { tv_sec: 0, tv_nsec: 0 },
-        st_mtim: timespec { tv_sec: 0, tv_nsec: 0 },
-        st_ctim: timespec { tv_sec: 0, tv_nsec: 0 },
+        st_atim: timespec {
+            tv_sec: 0,
+            tv_nsec: 0,
+        },
+        st_mtim: timespec {
+            tv_sec: 0,
+            tv_nsec: 0,
+        },
+        st_ctim: timespec {
+            tv_sec: 0,
+            tv_nsec: 0,
+        },
         __glibc_reserved: [0; 3],
     };
-    let mut content: * mut u8 = 0 as *mut xmlChar;
+    let mut content: *mut u8 = 0 as *mut xmlChar;
     if filename.is_null() {
         return 0 as *mut xmlChar;
     }
     if stat(filename, &mut info) < 0 as i32 {
         return 0 as *mut xmlChar;
     }
-    fd = open(filename, 0 as i32);
+    fd = unsafe { open(filename, 0 as i32) };
     if fd < 0 as i32 {
         return 0 as *mut xmlChar;
     }
     size = info.st_size;
-    content = xmlMallocAtomic
-        .expect(
-            "non-null function pointer",
-        )((size + 10 as i32 as i64) as size_t) as *mut xmlChar;
+    content =
+        (unsafe { xmlMallocAtomic.expect("non-null function pointer")((size + 10 as i32 as i64) as size_t) })
+            as *mut xmlChar;
     if content.is_null() {
-        xmlCatalogErrMemory(
-            b"allocating catalog data\0" as *const u8 as *const i8,
-        );
-        close(fd);
+        xmlCatalogErrMemory(b"allocating catalog data\0" as *const u8 as *const i8);
+        (unsafe { close(fd) });
         return 0 as *mut xmlChar;
     }
-    len = read(fd, content as *mut libc::c_void, size as size_t) as i32;
-    close(fd);
+    len = (unsafe { read(fd, content as *mut libc::c_void, size as size_t) }) as i32;
+    (unsafe { close(fd) });
     if len < 0 as i32 {
-        xmlFree.expect("non-null function pointer")(content as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(content as *mut libc::c_void) });
         return 0 as *mut xmlChar;
     }
-    *content.offset(len as isize) = 0 as i32 as xmlChar;
+    (unsafe { *content.offset(len as isize) = 0 as i32 as xmlChar });
     return content;
 }
-unsafe extern "C" fn xmlCatalogNormalizePublic(
-    mut pubID: * const u8,
-) -> * mut u8 {
+extern "C" fn xmlCatalogNormalizePublic(mut pubID: *const u8) -> *mut u8 {
     let mut ok: i32 = 1 as i32;
     let mut white: i32 = 0;
-    let mut p: * const u8 = 0 as *const xmlChar;
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
-    let mut q: * mut u8 = 0 as *mut xmlChar;
+    let mut p: *const u8 = 0 as *const xmlChar;
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
+    let mut q: *mut u8 = 0 as *mut xmlChar;
     if pubID.is_null() {
         return 0 as *mut xmlChar;
     }
     white = 1 as i32;
     p = pubID;
-    while *p as i32 != 0 as i32 && ok != 0 {
-        if !(*p as i32 == 0x20 as i32
-            || 0x9 as i32 <= *p as i32
-                && *p as i32 <= 0xa as i32
-            || *p as i32 == 0xd as i32)
+    while (unsafe { *p }) as i32 != 0 as i32 && ok != 0 {
+        if !((unsafe { *p }) as i32 == 0x20 as i32
+            || 0x9 as i32 <= (unsafe { *p }) as i32 && (unsafe { *p }) as i32 <= 0xa as i32
+            || (unsafe { *p }) as i32 == 0xd as i32)
         {
             white = 0 as i32;
-        } else if *p as i32 == 0x20 as i32 && white == 0 {
+        } else if (unsafe { *p }) as i32 == 0x20 as i32 && white == 0 {
             white = 1 as i32;
         } else {
             ok = 0 as i32;
         }
-        p = p.offset(1);
+        p = unsafe { p.offset(1) };
     }
     if ok != 0 && white == 0 {
         return 0 as *mut xmlChar;
     }
-    ret = xmlStrdup(pubID);
+    ret = unsafe { xmlStrdup(pubID) };
     q = ret;
     white = 0 as i32;
     p = pubID;
-    while *p as i32 != 0 as i32 {
-        if *p as i32 == 0x20 as i32
-            || 0x9 as i32 <= *p as i32
-                && *p as i32 <= 0xa as i32
-            || *p as i32 == 0xd as i32
+    while (unsafe { *p }) as i32 != 0 as i32 {
+        if (unsafe { *p }) as i32 == 0x20 as i32
+            || 0x9 as i32 <= (unsafe { *p }) as i32 && (unsafe { *p }) as i32 <= 0xa as i32
+            || (unsafe { *p }) as i32 == 0xd as i32
         {
             if q != ret {
                 white = 1 as i32;
@@ -5042,103 +4642,97 @@ unsafe extern "C" fn xmlCatalogNormalizePublic(
         } else {
             if white != 0 {
                 let mut fresh36 = q;
-                q = q.offset(1);
-                *fresh36 = 0x20 as i32 as xmlChar;
+                q = unsafe { q.offset(1) };
+                (unsafe { *fresh36 = 0x20 as i32 as xmlChar });
                 white = 0 as i32;
             }
             let mut fresh37 = q;
-            q = q.offset(1);
-            *fresh37 = *p;
+            q = unsafe { q.offset(1) };
+            (unsafe { *fresh37 = *p });
         }
-        p = p.offset(1);
+        p = unsafe { p.offset(1) };
     }
-    *q = 0 as i32 as xmlChar;
+    (unsafe { *q = 0 as i32 as xmlChar });
     return ret;
 }
-unsafe extern "C" fn xmlGetXMLCatalogEntryType(
-    mut name: * const u8,
-) -> i32 {
+extern "C" fn xmlGetXMLCatalogEntryType(mut name: *const u8) -> i32 {
     let mut type_0: i32 = XML_CATA_NONE;
-    if xmlStrEqual(
+    if (unsafe { xmlStrEqual(
         name,
         b"system\0" as *const u8 as *const i8 as *const xmlChar,
-    ) != 0
+    ) }) != 0
     {
         type_0 = XML_CATA_SYSTEM;
-    } else if xmlStrEqual(
-            name,
-            b"public\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        name,
+        b"public\0" as *const u8 as *const i8 as *const xmlChar,
+    ) }) != 0
+    {
         type_0 = XML_CATA_PUBLIC;
-    } else if xmlStrEqual(
-            name,
-            b"rewriteSystem\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        name,
+        b"rewriteSystem\0" as *const u8 as *const i8 as *const xmlChar,
+    ) }) != 0
+    {
         type_0 = XML_CATA_REWRITE_SYSTEM;
-    } else if xmlStrEqual(
-            name,
-            b"delegatePublic\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        name,
+        b"delegatePublic\0" as *const u8 as *const i8 as *const xmlChar,
+    ) }) != 0
+    {
         type_0 = XML_CATA_DELEGATE_PUBLIC;
-    } else if xmlStrEqual(
-            name,
-            b"delegateSystem\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        name,
+        b"delegateSystem\0" as *const u8 as *const i8 as *const xmlChar,
+    ) }) != 0
+    {
         type_0 = XML_CATA_DELEGATE_SYSTEM;
-    } else if xmlStrEqual(
-            name,
-            b"uri\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(name, b"uri\0" as *const u8 as *const i8 as *const xmlChar) }) != 0 {
         type_0 = XML_CATA_URI;
-    } else if xmlStrEqual(
-            name,
-            b"rewriteURI\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        name,
+        b"rewriteURI\0" as *const u8 as *const i8 as *const xmlChar,
+    ) }) != 0
+    {
         type_0 = XML_CATA_REWRITE_URI;
-    } else if xmlStrEqual(
-            name,
-            b"delegateURI\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        name,
+        b"delegateURI\0" as *const u8 as *const i8 as *const xmlChar,
+    ) }) != 0
+    {
         type_0 = XML_CATA_DELEGATE_URI;
-    } else if xmlStrEqual(
-            name,
-            b"nextCatalog\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        name,
+        b"nextCatalog\0" as *const u8 as *const i8 as *const xmlChar,
+    ) }) != 0
+    {
         type_0 = XML_CATA_NEXT_CATALOG;
-    } else if xmlStrEqual(
-            name,
-            b"catalog\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        name,
+        b"catalog\0" as *const u8 as *const i8 as *const xmlChar,
+    ) }) != 0
+    {
         type_0 = XML_CATA_CATALOG;
     }
     return type_0;
 }
-unsafe extern "C" fn xmlParseXMLCatalogOneNode(
-    mut cur: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlParseXMLCatalogOneNode(
+    mut cur: *mut crate::src::HTMLparser::_xmlNode,
     mut type_0: i32,
-    mut name: * const u8,
-    mut attrName: * const u8,
-    mut uriAttrName: * const u8,
+    mut name: *const u8,
+    mut attrName: *const u8,
+    mut uriAttrName: *const u8,
     mut prefer: u32,
-    mut cgroup: * mut crate::src::catalog::_xmlCatalogEntry,
-) -> * mut crate::src::catalog::_xmlCatalogEntry {
+    mut cgroup: *mut crate::src::catalog::_xmlCatalogEntry,
+) -> *mut crate::src::catalog::_xmlCatalogEntry {
     let mut ok: i32 = 1 as i32;
-    let mut uriValue: * mut u8 = 0 as *mut xmlChar;
-    let mut nameValue: * mut u8 = 0 as *mut xmlChar;
-    let mut base: * mut u8 = 0 as *mut xmlChar;
-    let mut URL: * mut u8 = 0 as *mut xmlChar;
-    let mut ret: * mut crate::src::catalog::_xmlCatalogEntry = 0 as xmlCatalogEntryPtr;
+    let mut uriValue: *mut u8 = 0 as *mut xmlChar;
+    let mut nameValue: *mut u8 = 0 as *mut xmlChar;
+    let mut base: *mut u8 = 0 as *mut xmlChar;
+    let mut URL: *mut u8 = 0 as *mut xmlChar;
+    let mut ret: *mut crate::src::catalog::_xmlCatalogEntry = 0 as xmlCatalogEntryPtr;
     if !attrName.is_null() {
-        nameValue = xmlGetProp(cur as *const xmlNode, attrName);
+        nameValue = unsafe { xmlGetProp(cur as *const xmlNode, attrName) };
         if nameValue.is_null() {
             xmlCatalogErr(
                 ret,
@@ -5152,7 +4746,7 @@ unsafe extern "C" fn xmlParseXMLCatalogOneNode(
             ok = 0 as i32;
         }
     }
-    uriValue = xmlGetProp(cur as *const xmlNode, uriAttrName);
+    uriValue = unsafe { xmlGetProp(cur as *const xmlNode, uriAttrName) };
     if uriValue.is_null() {
         xmlCatalogErr(
             ret,
@@ -5167,38 +4761,32 @@ unsafe extern "C" fn xmlParseXMLCatalogOneNode(
     }
     if ok == 0 {
         if !nameValue.is_null() {
-            xmlFree.expect("non-null function pointer")(nameValue as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(nameValue as *mut libc::c_void) });
         }
         if !uriValue.is_null() {
-            xmlFree.expect("non-null function pointer")(uriValue as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(uriValue as *mut libc::c_void) });
         }
         return 0 as xmlCatalogEntryPtr;
     }
-    base = xmlNodeGetBase((*cur).doc, cur as *const xmlNode);
-    URL = xmlBuildURI(uriValue, base);
+    base = unsafe { xmlNodeGetBase((*cur).doc, cur as *const xmlNode) };
+    URL = unsafe { xmlBuildURI(uriValue, base) };
     if !URL.is_null() {
-        if xmlDebugCatalogs > 1 as i32 {
+        if (unsafe { xmlDebugCatalogs }) > 1 as i32 {
             if !nameValue.is_null() {
-                (*(borrow(& __xmlGenericError())).unwrap())
-                    .expect(
-                        "non-null function pointer",
-                    )(
+                (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                     *(__xmlGenericErrorContext()).unwrap(),
                     b"Found %s: '%s' '%s'\n\0" as *const u8 as *const i8,
                     name,
                     nameValue,
                     URL,
-                );
+                ) });
             } else {
-                (*(borrow(& __xmlGenericError())).unwrap())
-                    .expect(
-                        "non-null function pointer",
-                    )(
+                (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                     *(__xmlGenericErrorContext()).unwrap(),
                     b"Found %s: '%s'\n\0" as *const u8 as *const i8,
                     name,
                     URL,
-                );
+                ) });
             }
         }
         ret = xmlNewCatalogEntry(type_0, nameValue, uriValue, URL, prefer, cgroup);
@@ -5214,79 +4802,70 @@ unsafe extern "C" fn xmlParseXMLCatalogOneNode(
         );
     }
     if !nameValue.is_null() {
-        xmlFree.expect("non-null function pointer")(nameValue as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(nameValue as *mut libc::c_void) });
     }
     if !uriValue.is_null() {
-        xmlFree.expect("non-null function pointer")(uriValue as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(uriValue as *mut libc::c_void) });
     }
     if !base.is_null() {
-        xmlFree.expect("non-null function pointer")(base as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(base as *mut libc::c_void) });
     }
     if !URL.is_null() {
-        xmlFree.expect("non-null function pointer")(URL as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(URL as *mut libc::c_void) });
     }
     return ret;
 }
-unsafe extern "C" fn xmlParseXMLCatalogNode(
-    mut cur: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlParseXMLCatalogNode(
+    mut cur: *mut crate::src::HTMLparser::_xmlNode,
     mut prefer: u32,
-    mut parent: * mut crate::src::catalog::_xmlCatalogEntry,
-    mut cgroup: * mut crate::src::catalog::_xmlCatalogEntry,
+    mut parent: *mut crate::src::catalog::_xmlCatalogEntry,
+    mut cgroup: *mut crate::src::catalog::_xmlCatalogEntry,
 ) {
-    let mut base: * mut u8 = 0 as *mut xmlChar;
-    let mut entry: * mut crate::src::catalog::_xmlCatalogEntry = 0 as xmlCatalogEntryPtr;
+    let mut base: *mut u8 = 0 as *mut xmlChar;
+    let mut entry: *mut crate::src::catalog::_xmlCatalogEntry = 0 as xmlCatalogEntryPtr;
     if cur.is_null() {
         return;
     }
-    if xmlStrEqual(
+    if (unsafe { xmlStrEqual(
         (*cur).name,
         b"group\0" as *const u8 as *const i8 as *mut xmlChar,
-    ) != 0
+    ) }) != 0
     {
-        let mut prop: * mut u8 = 0 as *mut xmlChar;
+        let mut prop: *mut u8 = 0 as *mut xmlChar;
         let mut pref: u32 = XML_CATA_PREFER_NONE;
-        prop = xmlGetProp(
+        prop = unsafe { xmlGetProp(
             cur as *const xmlNode,
             b"prefer\0" as *const u8 as *const i8 as *mut xmlChar,
-        );
+        ) };
         if !prop.is_null() {
-            if xmlStrEqual(
-                prop,
-                b"system\0" as *const u8 as *const i8 as *mut xmlChar,
-            ) != 0
-            {
+            if (unsafe { xmlStrEqual(prop, b"system\0" as *const u8 as *const i8 as *mut xmlChar) }) != 0 {
                 prefer = XML_CATA_PREFER_SYSTEM;
-            } else if xmlStrEqual(
-                    prop,
-                    b"public\0" as *const u8 as *const i8 as *mut xmlChar,
-                ) != 0
-                {
+            } else if (unsafe { xmlStrEqual(prop, b"public\0" as *const u8 as *const i8 as *mut xmlChar) }) != 0
+            {
                 prefer = XML_CATA_PREFER_PUBLIC;
             } else {
                 xmlCatalogErr(
                     parent,
                     cur,
                     XML_CATALOG_PREFER_VALUE as i32,
-                    b"Invalid value for prefer: '%s'\n\0" as *const u8
-                        as *const i8,
+                    b"Invalid value for prefer: '%s'\n\0" as *const u8 as *const i8,
                     prop,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
             }
-            xmlFree.expect("non-null function pointer")(prop as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(prop as *mut libc::c_void) });
             pref = prefer;
         }
-        prop = xmlGetProp(
+        prop = unsafe { xmlGetProp(
             cur as *const xmlNode,
             b"id\0" as *const u8 as *const i8 as *mut xmlChar,
-        );
-        base = xmlGetNsProp(
+        ) };
+        base = unsafe { xmlGetNsProp(
             cur as *const xmlNode,
             b"base\0" as *const u8 as *const i8 as *mut xmlChar,
-            b"http://www.w3.org/XML/1998/namespace\0" as *const u8 as *const i8
-                as *const xmlChar,
-        );
+            b"http://www.w3.org/XML/1998/namespace\0" as *const u8 as *const i8 as *const xmlChar,
+        ) };
         entry = xmlNewCatalogEntry(
             XML_CATA_GROUP,
             prop,
@@ -5295,12 +4874,12 @@ unsafe extern "C" fn xmlParseXMLCatalogNode(
             pref,
             cgroup,
         );
-        xmlFree.expect("non-null function pointer")(prop as *mut libc::c_void);
-    } else if xmlStrEqual(
-            (*cur).name,
-            b"public\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) != 0
-        {
+        (unsafe { xmlFree.expect("non-null function pointer")(prop as *mut libc::c_void) });
+    } else if (unsafe { xmlStrEqual(
+        (*cur).name,
+        b"public\0" as *const u8 as *const i8 as *mut xmlChar,
+    ) }) != 0
+    {
         entry = xmlParseXMLCatalogOneNode(
             cur,
             XML_CATA_PUBLIC,
@@ -5310,11 +4889,11 @@ unsafe extern "C" fn xmlParseXMLCatalogNode(
             prefer,
             cgroup,
         );
-    } else if xmlStrEqual(
-            (*cur).name,
-            b"system\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        (*cur).name,
+        b"system\0" as *const u8 as *const i8 as *mut xmlChar,
+    ) }) != 0
+    {
         entry = xmlParseXMLCatalogOneNode(
             cur,
             XML_CATA_SYSTEM,
@@ -5324,11 +4903,11 @@ unsafe extern "C" fn xmlParseXMLCatalogNode(
             prefer,
             cgroup,
         );
-    } else if xmlStrEqual(
-            (*cur).name,
-            b"rewriteSystem\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        (*cur).name,
+        b"rewriteSystem\0" as *const u8 as *const i8 as *mut xmlChar,
+    ) }) != 0
+    {
         entry = xmlParseXMLCatalogOneNode(
             cur,
             XML_CATA_REWRITE_SYSTEM,
@@ -5338,11 +4917,11 @@ unsafe extern "C" fn xmlParseXMLCatalogNode(
             prefer,
             cgroup,
         );
-    } else if xmlStrEqual(
-            (*cur).name,
-            b"delegatePublic\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        (*cur).name,
+        b"delegatePublic\0" as *const u8 as *const i8 as *mut xmlChar,
+    ) }) != 0
+    {
         entry = xmlParseXMLCatalogOneNode(
             cur,
             XML_CATA_DELEGATE_PUBLIC,
@@ -5352,11 +4931,11 @@ unsafe extern "C" fn xmlParseXMLCatalogNode(
             prefer,
             cgroup,
         );
-    } else if xmlStrEqual(
-            (*cur).name,
-            b"delegateSystem\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        (*cur).name,
+        b"delegateSystem\0" as *const u8 as *const i8 as *mut xmlChar,
+    ) }) != 0
+    {
         entry = xmlParseXMLCatalogOneNode(
             cur,
             XML_CATA_DELEGATE_SYSTEM,
@@ -5366,11 +4945,11 @@ unsafe extern "C" fn xmlParseXMLCatalogNode(
             prefer,
             cgroup,
         );
-    } else if xmlStrEqual(
-            (*cur).name,
-            b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        (*cur).name,
+        b"uri\0" as *const u8 as *const i8 as *mut xmlChar,
+    ) }) != 0
+    {
         entry = xmlParseXMLCatalogOneNode(
             cur,
             XML_CATA_URI,
@@ -5380,11 +4959,11 @@ unsafe extern "C" fn xmlParseXMLCatalogNode(
             prefer,
             cgroup,
         );
-    } else if xmlStrEqual(
-            (*cur).name,
-            b"rewriteURI\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        (*cur).name,
+        b"rewriteURI\0" as *const u8 as *const i8 as *mut xmlChar,
+    ) }) != 0
+    {
         entry = xmlParseXMLCatalogOneNode(
             cur,
             XML_CATA_REWRITE_URI,
@@ -5394,11 +4973,11 @@ unsafe extern "C" fn xmlParseXMLCatalogNode(
             prefer,
             cgroup,
         );
-    } else if xmlStrEqual(
-            (*cur).name,
-            b"delegateURI\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        (*cur).name,
+        b"delegateURI\0" as *const u8 as *const i8 as *mut xmlChar,
+    ) }) != 0
+    {
         entry = xmlParseXMLCatalogOneNode(
             cur,
             XML_CATA_DELEGATE_URI,
@@ -5408,11 +4987,11 @@ unsafe extern "C" fn xmlParseXMLCatalogNode(
             prefer,
             cgroup,
         );
-    } else if xmlStrEqual(
-            (*cur).name,
-            b"nextCatalog\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        (*cur).name,
+        b"nextCatalog\0" as *const u8 as *const i8 as *mut xmlChar,
+    ) }) != 0
+    {
         entry = xmlParseXMLCatalogOneNode(
             cur,
             XML_CATA_NEXT_CATALOG,
@@ -5425,95 +5004,93 @@ unsafe extern "C" fn xmlParseXMLCatalogNode(
     }
     if !entry.is_null() {
         if !parent.is_null() {
-            let ref mut fresh38 = (*entry).parent;
+            let fresh38 = unsafe { &mut ((*entry).parent) };
             *fresh38 = parent;
-            if ((*parent).children).is_null() {
-                let ref mut fresh39 = (*parent).children;
+            if (unsafe { (*parent).children }).is_null() {
+                let fresh39 = unsafe { &mut ((*parent).children) };
                 *fresh39 = entry;
             } else {
-                let mut prev: * mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
-                prev = (*parent).children;
-                while !((*prev).next).is_null() {
-                    prev = (*prev).next;
+                let mut prev: *mut crate::src::catalog::_xmlCatalogEntry =
+                    0 as *mut xmlCatalogEntry;
+                prev = unsafe { (*parent).children };
+                while !(unsafe { (*prev).next }).is_null() {
+                    prev = unsafe { (*prev).next };
                 }
-                let ref mut fresh40 = (*prev).next;
+                let fresh40 = unsafe { &mut ((*prev).next) };
                 *fresh40 = entry;
             }
         }
-        if (*entry).type_0 as i32 == XML_CATA_GROUP as i32 {
-            xmlParseXMLCatalogNodeList((*cur).children, prefer, parent, entry);
+        if (unsafe { (*entry).type_0 }) as i32 == XML_CATA_GROUP as i32 {
+            xmlParseXMLCatalogNodeList(unsafe { (*cur).children }, prefer, parent, entry);
         }
     }
     if !base.is_null() {
-        xmlFree.expect("non-null function pointer")(base as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(base as *mut libc::c_void) });
     }
 }
-unsafe extern "C" fn xmlParseXMLCatalogNodeList(
-    mut cur: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlParseXMLCatalogNodeList(
+    mut cur: *mut crate::src::HTMLparser::_xmlNode,
     mut prefer: u32,
-    mut parent: * mut crate::src::catalog::_xmlCatalogEntry,
-    mut cgroup: * mut crate::src::catalog::_xmlCatalogEntry,
+    mut parent: *mut crate::src::catalog::_xmlCatalogEntry,
+    mut cgroup: *mut crate::src::catalog::_xmlCatalogEntry,
 ) {
     while !cur.is_null() {
-        if !((*cur).ns).is_null() && !((*(*cur).ns).href).is_null()
-            && xmlStrEqual(
+        if !(unsafe { (*cur).ns }).is_null()
+            && !(unsafe { (*(*cur).ns).href }).is_null()
+            && (unsafe { xmlStrEqual(
                 (*(*cur).ns).href,
-                b"urn:oasis:names:tc:entity:xmlns:xml:catalog\0" as *const u8
-                    as *const i8 as *const xmlChar,
-            ) != 0
+                b"urn:oasis:names:tc:entity:xmlns:xml:catalog\0" as *const u8 as *const i8
+                    as *const xmlChar,
+            ) }) != 0
         {
             xmlParseXMLCatalogNode(cur, prefer, parent, cgroup);
         }
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
     }
 }
-unsafe extern "C" fn xmlParseXMLCatalogFile(
+extern "C" fn xmlParseXMLCatalogFile(
     mut prefer: u32,
-    mut filename: * const u8,
-) -> * mut crate::src::catalog::_xmlCatalogEntry {
-    let mut doc: * mut crate::src::HTMLparser::_xmlDoc = 0 as *mut xmlDoc;
-    let mut cur: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut prop: * mut u8 = 0 as *mut xmlChar;
-    let mut parent: * mut crate::src::catalog::_xmlCatalogEntry = 0 as xmlCatalogEntryPtr;
+    mut filename: *const u8,
+) -> *mut crate::src::catalog::_xmlCatalogEntry {
+    let mut doc: *mut crate::src::HTMLparser::_xmlDoc = 0 as *mut xmlDoc;
+    let mut cur: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut prop: *mut u8 = 0 as *mut xmlChar;
+    let mut parent: *mut crate::src::catalog::_xmlCatalogEntry = 0 as xmlCatalogEntryPtr;
     if filename.is_null() {
         return 0 as xmlCatalogEntryPtr;
     }
     doc = xmlParseCatalogFile(filename as *const i8);
     if doc.is_null() {
-        if xmlDebugCatalogs != 0 {
-            (*(borrow(& __xmlGenericError())).unwrap())
-                .expect(
-                    "non-null function pointer",
-                )(
+        if (unsafe { xmlDebugCatalogs }) != 0 {
+            (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                 *(__xmlGenericErrorContext()).unwrap(),
                 b"Failed to parse catalog %s\n\0" as *const u8 as *const i8,
                 filename,
-            );
+            ) });
         }
         return 0 as xmlCatalogEntryPtr;
     }
-    if xmlDebugCatalogs != 0 {
-        (*(borrow(& __xmlGenericError())).unwrap())
-            .expect(
-                "non-null function pointer",
-            )(
+    if (unsafe { xmlDebugCatalogs }) != 0 {
+        (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
             *(__xmlGenericErrorContext()).unwrap(),
             b"%d Parsing catalog %s\n\0" as *const u8 as *const i8,
             xmlGetThreadId(),
             filename,
-        );
+        ) });
     }
-    cur = xmlDocGetRootElement(doc as *const xmlDoc);
+    cur = unsafe { xmlDocGetRootElement(doc as *const xmlDoc) };
     if !cur.is_null()
-        && xmlStrEqual(
+        && (unsafe { xmlStrEqual(
             (*cur).name,
             b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) != 0 && !((*cur).ns).is_null() && !((*(*cur).ns).href).is_null()
-        && xmlStrEqual(
+        ) }) != 0
+        && !(unsafe { (*cur).ns }).is_null()
+        && !(unsafe { (*(*cur).ns).href }).is_null()
+        && (unsafe { xmlStrEqual(
             (*(*cur).ns).href,
-            b"urn:oasis:names:tc:entity:xmlns:xml:catalog\0" as *const u8
-                as *const i8 as *const xmlChar,
-        ) != 0
+            b"urn:oasis:names:tc:entity:xmlns:xml:catalog\0" as *const u8 as *const i8
+                as *const xmlChar,
+        ) }) != 0
     {
         parent = xmlNewCatalogEntry(
             XML_CATA_CATALOG,
@@ -5524,41 +5101,33 @@ unsafe extern "C" fn xmlParseXMLCatalogFile(
             0 as xmlCatalogEntryPtr,
         );
         if parent.is_null() {
-            xmlFreeDoc(doc);
+            (unsafe { xmlFreeDoc(doc) });
             return 0 as xmlCatalogEntryPtr;
         }
-        prop = xmlGetProp(
+        prop = unsafe { xmlGetProp(
             cur as *const xmlNode,
             b"prefer\0" as *const u8 as *const i8 as *mut xmlChar,
-        );
+        ) };
         if !prop.is_null() {
-            if xmlStrEqual(
-                prop,
-                b"system\0" as *const u8 as *const i8 as *mut xmlChar,
-            ) != 0
-            {
+            if (unsafe { xmlStrEqual(prop, b"system\0" as *const u8 as *const i8 as *mut xmlChar) }) != 0 {
                 prefer = XML_CATA_PREFER_SYSTEM;
-            } else if xmlStrEqual(
-                    prop,
-                    b"public\0" as *const u8 as *const i8 as *mut xmlChar,
-                ) != 0
-                {
+            } else if (unsafe { xmlStrEqual(prop, b"public\0" as *const u8 as *const i8 as *mut xmlChar) }) != 0
+            {
                 prefer = XML_CATA_PREFER_PUBLIC;
             } else {
                 xmlCatalogErr(
                     0 as xmlCatalogEntryPtr,
                     cur,
                     XML_CATALOG_PREFER_VALUE as i32,
-                    b"Invalid value for prefer: '%s'\n\0" as *const u8
-                        as *const i8,
+                    b"Invalid value for prefer: '%s'\n\0" as *const u8 as *const i8,
                     prop,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
             }
-            xmlFree.expect("non-null function pointer")(prop as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(prop as *mut libc::c_void) });
         }
-        cur = (*cur).children;
+        cur = unsafe { (*cur).children };
         xmlParseXMLCatalogNodeList(cur, prefer, parent, 0 as xmlCatalogEntryPtr);
     } else {
         xmlCatalogErr(
@@ -5570,410 +5139,365 @@ unsafe extern "C" fn xmlParseXMLCatalogFile(
             0 as *const xmlChar,
             0 as *const xmlChar,
         );
-        xmlFreeDoc(doc);
+        (unsafe { xmlFreeDoc(doc) });
         return 0 as xmlCatalogEntryPtr;
     }
-    xmlFreeDoc(doc);
+    (unsafe { xmlFreeDoc(doc) });
     return parent;
 }
-unsafe extern "C" fn xmlFetchXMLCatalogFile(
-    mut catal: * mut crate::src::catalog::_xmlCatalogEntry,
-) -> i32 {
-    let mut doc: * mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
+extern "C" fn xmlFetchXMLCatalogFile(mut catal: *mut crate::src::catalog::_xmlCatalogEntry) -> i32 {
+    let mut doc: *mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
     if catal.is_null() {
         return -(1 as i32);
     }
-    if ((*catal).URL).is_null() {
+    if (unsafe { (*catal).URL }).is_null() {
         return -(1 as i32);
     }
-    xmlRMutexLock(xmlCatalogMutex);
-    if !((*catal).children).is_null() {
-        xmlRMutexUnlock(xmlCatalogMutex);
+    (unsafe { xmlRMutexLock(xmlCatalogMutex) });
+    if !(unsafe { (*catal).children }).is_null() {
+        (unsafe { xmlRMutexUnlock(xmlCatalogMutex) });
         return 0 as i32;
     }
-    if !xmlCatalogXMLFiles.is_null() {
-        doc = xmlHashLookup(xmlCatalogXMLFiles, (*catal).URL) as xmlCatalogEntryPtr;
+    if !(unsafe { xmlCatalogXMLFiles }).is_null() {
+        doc = xmlHashLookup(unsafe { xmlCatalogXMLFiles }, unsafe { (*catal).URL }) as xmlCatalogEntryPtr;
         if !doc.is_null() {
-            if xmlDebugCatalogs != 0 {
-                (*(borrow(& __xmlGenericError())).unwrap())
-                    .expect(
-                        "non-null function pointer",
-                    )(
+            if (unsafe { xmlDebugCatalogs }) != 0 {
+                (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                     *(__xmlGenericErrorContext()).unwrap(),
                     b"Found %s in file hash\n\0" as *const u8 as *const i8,
                     (*catal).URL,
-                );
+                ) });
             }
-            if (*catal).type_0 as i32 == XML_CATA_CATALOG as i32 {
-                let ref mut fresh41 = (*catal).children;
-                *fresh41 = (*doc).children;
+            if (unsafe { (*catal).type_0 }) as i32 == XML_CATA_CATALOG as i32 {
+                let fresh41 = unsafe { &mut ((*catal).children) };
+                *fresh41 = unsafe { (*doc).children };
             } else {
-                let ref mut fresh42 = (*catal).children;
+                let fresh42 = unsafe { &mut ((*catal).children) };
                 *fresh42 = doc;
             }
-            (*catal).dealloc = 0 as i32;
-            xmlRMutexUnlock(xmlCatalogMutex);
+            (unsafe { (*catal).dealloc = 0 as i32 });
+            (unsafe { xmlRMutexUnlock(xmlCatalogMutex) });
             return 0 as i32;
         }
-        if xmlDebugCatalogs != 0 {
-            (*(borrow(& __xmlGenericError())).unwrap())
-                .expect(
-                    "non-null function pointer",
-                )(
+        if (unsafe { xmlDebugCatalogs }) != 0 {
+            (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                 *(__xmlGenericErrorContext()).unwrap(),
                 b"%s not found in file hash\n\0" as *const u8 as *const i8,
                 (*catal).URL,
-            );
+            ) });
         }
     }
-    doc = xmlParseXMLCatalogFile((*catal).prefer, (*catal).URL);
+    doc = xmlParseXMLCatalogFile(unsafe { (*catal).prefer }, unsafe { (*catal).URL });
     if doc.is_null() {
-        (*catal).type_0 = XML_CATA_BROKEN_CATALOG;
-        xmlRMutexUnlock(xmlCatalogMutex);
+        (unsafe { (*catal).type_0 = XML_CATA_BROKEN_CATALOG });
+        (unsafe { xmlRMutexUnlock(xmlCatalogMutex) });
         return -(1 as i32);
     }
-    if (*catal).type_0 as i32 == XML_CATA_CATALOG as i32 {
-        let ref mut fresh43 = (*catal).children;
-        *fresh43 = (*doc).children;
+    if (unsafe { (*catal).type_0 }) as i32 == XML_CATA_CATALOG as i32 {
+        let fresh43 = unsafe { &mut ((*catal).children) };
+        *fresh43 = unsafe { (*doc).children };
     } else {
-        let ref mut fresh44 = (*catal).children;
+        let fresh44 = unsafe { &mut ((*catal).children) };
         *fresh44 = doc;
     }
-    (*doc).dealloc = 1 as i32;
-    if xmlCatalogXMLFiles.is_null() {
-        xmlCatalogXMLFiles = xmlHashCreate(10 as i32);
+    (unsafe { (*doc).dealloc = 1 as i32 });
+    if (unsafe { xmlCatalogXMLFiles }).is_null() {
+        (unsafe { xmlCatalogXMLFiles = xmlHashCreate(10 as i32) });
     }
-    if !xmlCatalogXMLFiles.is_null() {
-        if xmlDebugCatalogs != 0 {
-            (*(borrow(& __xmlGenericError())).unwrap())
-                .expect(
-                    "non-null function pointer",
-                )(
+    if !(unsafe { xmlCatalogXMLFiles }).is_null() {
+        if (unsafe { xmlDebugCatalogs }) != 0 {
+            (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                 *(__xmlGenericErrorContext()).unwrap(),
                 b"%s added to file hash\n\0" as *const u8 as *const i8,
                 (*catal).URL,
-            );
+            ) });
         }
-        xmlHashAddEntry(xmlCatalogXMLFiles, (*catal).URL, doc as *mut libc::c_void);
+        xmlHashAddEntry(unsafe { xmlCatalogXMLFiles }, unsafe { (*catal).URL }, doc as *mut libc::c_void);
     }
-    xmlRMutexUnlock(xmlCatalogMutex);
+    (unsafe { xmlRMutexUnlock(xmlCatalogMutex) });
     return 0 as i32;
 }
-unsafe extern "C" fn xmlAddXMLCatalog(
-    mut catal: * mut crate::src::catalog::_xmlCatalogEntry,
-    mut type_0: * const u8,
-    mut orig: * const u8,
-    mut replace: * const u8,
+extern "C" fn xmlAddXMLCatalog(
+    mut catal: *mut crate::src::catalog::_xmlCatalogEntry,
+    mut type_0: *const u8,
+    mut orig: *const u8,
+    mut replace: *const u8,
 ) -> i32 {
-    let mut cur: * mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
+    let mut cur: *mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
     let mut typ: i32 = XML_CATA_NONE;
     let mut doregister: i32 = 0 as i32;
     if catal.is_null()
-        || (*catal).type_0 as i32 != XML_CATA_CATALOG as i32
-            && (*catal).type_0 as i32 != XML_CATA_BROKEN_CATALOG as i32
+        || (unsafe { (*catal).type_0 }) as i32 != XML_CATA_CATALOG as i32
+            && (unsafe { (*catal).type_0 }) as i32 != XML_CATA_BROKEN_CATALOG as i32
     {
         return -(1 as i32);
     }
-    if ((*catal).children).is_null() {
+    if (unsafe { (*catal).children }).is_null() {
         xmlFetchXMLCatalogFile(catal);
     }
-    if ((*catal).children).is_null() {
+    if (unsafe { (*catal).children }).is_null() {
         doregister = 1 as i32;
     }
     typ = xmlGetXMLCatalogEntryType(type_0);
     if typ as i32 == XML_CATA_NONE as i32 {
-        if xmlDebugCatalogs != 0 {
-            (*(borrow(& __xmlGenericError())).unwrap())
-                .expect(
-                    "non-null function pointer",
-                )(
+        if (unsafe { xmlDebugCatalogs }) != 0 {
+            (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                 *(__xmlGenericErrorContext()).unwrap(),
-                b"Failed to add unknown element %s to catalog\n\0" as *const u8
-                    as *const i8,
+                b"Failed to add unknown element %s to catalog\n\0" as *const u8 as *const i8,
                 type_0,
-            );
+            ) });
         }
         return -(1 as i32);
     }
-    cur = (*catal).children;
+    cur = unsafe { (*catal).children };
     if !cur.is_null() {
         while !cur.is_null() {
-            if !orig.is_null() && (*cur).type_0 as i32 == typ as i32
-                && xmlStrEqual(orig, (*cur).name) != 0
+            if !orig.is_null()
+                && (unsafe { (*cur).type_0 }) as i32 == typ as i32
+                && (unsafe { xmlStrEqual(orig, (*cur).name) }) != 0
             {
-                if xmlDebugCatalogs != 0 {
-                    (*(borrow(& __xmlGenericError())).unwrap())
-                        .expect(
-                            "non-null function pointer",
-                        )(
+                if (unsafe { xmlDebugCatalogs }) != 0 {
+                    (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                         *(__xmlGenericErrorContext()).unwrap(),
-                        b"Updating element %s to catalog\n\0" as *const u8
-                            as *const i8,
+                        b"Updating element %s to catalog\n\0" as *const u8 as *const i8,
                         type_0,
-                    );
+                    ) });
                 }
-                if !((*cur).value).is_null() {
-                    xmlFree
-                        .expect(
-                            "non-null function pointer",
-                        )((*cur).value as *mut libc::c_void);
+                if !(unsafe { (*cur).value }).is_null() {
+                    (unsafe { xmlFree.expect("non-null function pointer")((*cur).value as *mut libc::c_void) });
                 }
-                if !((*cur).URL).is_null() {
-                    xmlFree
-                        .expect(
-                            "non-null function pointer",
-                        )((*cur).URL as *mut libc::c_void);
+                if !(unsafe { (*cur).URL }).is_null() {
+                    (unsafe { xmlFree.expect("non-null function pointer")((*cur).URL as *mut libc::c_void) });
                 }
-                let ref mut fresh45 = (*cur).value;
-                *fresh45 = xmlStrdup(replace);
-                let ref mut fresh46 = (*cur).URL;
-                *fresh46 = xmlStrdup(replace);
+                let fresh45 = unsafe { &mut ((*cur).value) };
+                *fresh45 = unsafe { xmlStrdup(replace) };
+                let fresh46 = unsafe { &mut ((*cur).URL) };
+                *fresh46 = unsafe { xmlStrdup(replace) };
                 return 0 as i32;
             }
-            if ((*cur).next).is_null() {
+            if (unsafe { (*cur).next }).is_null() {
                 break;
             }
-            cur = (*cur).next;
+            cur = unsafe { (*cur).next };
         }
     }
-    if xmlDebugCatalogs != 0 {
-        (*(borrow(& __xmlGenericError())).unwrap())
-            .expect(
-                "non-null function pointer",
-            )(
+    if (unsafe { xmlDebugCatalogs }) != 0 {
+        (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
             *(__xmlGenericErrorContext()).unwrap(),
             b"Adding element %s to catalog\n\0" as *const u8 as *const i8,
             type_0,
-        );
+        ) });
     }
     if cur.is_null() {
-        let ref mut fresh47 = (*catal).children;
+        let fresh47 = unsafe { &mut ((*catal).children) };
         *fresh47 = xmlNewCatalogEntry(
             typ,
             orig,
             replace,
             0 as *const xmlChar,
-            (*catal).prefer,
+            unsafe { (*catal).prefer },
             0 as xmlCatalogEntryPtr,
         );
     } else {
-        let ref mut fresh48 = (*cur).next;
+        let fresh48 = unsafe { &mut ((*cur).next) };
         *fresh48 = xmlNewCatalogEntry(
             typ,
             orig,
             replace,
             0 as *const xmlChar,
-            (*catal).prefer,
+            unsafe { (*catal).prefer },
             0 as xmlCatalogEntryPtr,
         );
     }
     if doregister != 0 {
-        (*catal).type_0 = XML_CATA_CATALOG;
-        cur = xmlHashLookup(xmlCatalogXMLFiles, (*catal).URL) as xmlCatalogEntryPtr;
+        (unsafe { (*catal).type_0 = XML_CATA_CATALOG });
+        cur = xmlHashLookup(unsafe { xmlCatalogXMLFiles }, unsafe { (*catal).URL }) as xmlCatalogEntryPtr;
         if !cur.is_null() {
-            let ref mut fresh49 = (*cur).children;
-            *fresh49 = (*catal).children;
+            let fresh49 = unsafe { &mut ((*cur).children) };
+            *fresh49 = unsafe { (*catal).children };
         }
     }
     return 0 as i32;
 }
-unsafe extern "C" fn xmlDelXMLCatalog(
-    mut catal: * mut crate::src::catalog::_xmlCatalogEntry,
-    mut value: * const u8,
+extern "C" fn xmlDelXMLCatalog(
+    mut catal: *mut crate::src::catalog::_xmlCatalogEntry,
+    mut value: *const u8,
 ) -> i32 {
-    let mut cur: * mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
+    let mut cur: *mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
     let mut ret: i32 = 0 as i32;
     if catal.is_null()
-        || (*catal).type_0 as i32 != XML_CATA_CATALOG as i32
-            && (*catal).type_0 as i32 != XML_CATA_BROKEN_CATALOG as i32
+        || (unsafe { (*catal).type_0 }) as i32 != XML_CATA_CATALOG as i32
+            && (unsafe { (*catal).type_0 }) as i32 != XML_CATA_BROKEN_CATALOG as i32
     {
         return -(1 as i32);
     }
     if value.is_null() {
         return -(1 as i32);
     }
-    if ((*catal).children).is_null() {
+    if (unsafe { (*catal).children }).is_null() {
         xmlFetchXMLCatalogFile(catal);
     }
-    cur = (*catal).children;
+    cur = unsafe { (*catal).children };
     while !cur.is_null() {
-        if !((*cur).name).is_null() && xmlStrEqual(value, (*cur).name) != 0
-            || xmlStrEqual(value, (*cur).value) != 0
+        if !(unsafe { (*cur).name }).is_null() && (unsafe { xmlStrEqual(value, (*cur).name) }) != 0
+            || (unsafe { xmlStrEqual(value, (*cur).value) }) != 0
         {
-            if xmlDebugCatalogs != 0 {
-                if !((*cur).name).is_null() {
-                    (*(borrow(& __xmlGenericError())).unwrap())
-                        .expect(
-                            "non-null function pointer",
-                        )(
+            if (unsafe { xmlDebugCatalogs }) != 0 {
+                if !(unsafe { (*cur).name }).is_null() {
+                    (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                         *(__xmlGenericErrorContext()).unwrap(),
-                        b"Removing element %s from catalog\n\0" as *const u8
-                            as *const i8,
+                        b"Removing element %s from catalog\n\0" as *const u8 as *const i8,
                         (*cur).name,
-                    );
+                    ) });
                 } else {
-                    (*(borrow(& __xmlGenericError())).unwrap())
-                        .expect(
-                            "non-null function pointer",
-                        )(
+                    (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                         *(__xmlGenericErrorContext()).unwrap(),
-                        b"Removing element %s from catalog\n\0" as *const u8
-                            as *const i8,
+                        b"Removing element %s from catalog\n\0" as *const u8 as *const i8,
                         (*cur).value,
-                    );
+                    ) });
                 }
             }
-            (*cur).type_0 = XML_CATA_REMOVED;
+            (unsafe { (*cur).type_0 = XML_CATA_REMOVED });
         }
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
     }
     return ret;
 }
-unsafe extern "C" fn xmlCatalogXMLResolve(
-    mut catal: * mut crate::src::catalog::_xmlCatalogEntry,
-    mut pubID: * const u8,
-    mut sysID: * const u8,
-) -> * mut u8 {
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
-    let mut cur: * mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
+extern "C" fn xmlCatalogXMLResolve(
+    mut catal: *mut crate::src::catalog::_xmlCatalogEntry,
+    mut pubID: *const u8,
+    mut sysID: *const u8,
+) -> *mut u8 {
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
+    let mut cur: *mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
     let mut haveDelegate: i32 = 0 as i32;
     let mut haveNext: i32 = 0 as i32;
-    if (*catal).depth > 50 as i32 {
+    if (unsafe { (*catal).depth }) > 50 as i32 {
         xmlCatalogErr(
             catal,
             0 as xmlNodePtr,
             XML_CATALOG_RECURSION as i32,
             b"Detected recursion in catalog %s\n\0" as *const u8 as *const i8,
-            (*catal).name,
+            unsafe { (*catal).name },
             0 as *const xmlChar,
             0 as *const xmlChar,
         );
         return 0 as *mut xmlChar;
     }
-    let ref mut fresh50 = (*catal).depth;
+    let fresh50 = unsafe { &mut ((*catal).depth) };
     *fresh50 += 1;
     if !sysID.is_null() {
-        let mut rewrite: * mut crate::src::catalog::_xmlCatalogEntry = 0 as xmlCatalogEntryPtr;
+        let mut rewrite: *mut crate::src::catalog::_xmlCatalogEntry = 0 as xmlCatalogEntryPtr;
         let mut lenrewrite: i32 = 0 as i32;
         let mut len: i32 = 0;
         cur = catal;
         haveDelegate = 0 as i32;
         while !cur.is_null() {
-            match (*cur).type_0 as i32 {
+            match (unsafe { (*cur).type_0 }) as i32 {
                 6 => {
-                    if xmlStrEqual(sysID, (*cur).name) != 0 {
-                        if xmlDebugCatalogs != 0 {
-                            (*(borrow(& __xmlGenericError())).unwrap())
-                                .expect(
-                                    "non-null function pointer",
-                                )(
+                    if (unsafe { xmlStrEqual(sysID, (*cur).name) }) != 0 {
+                        if (unsafe { xmlDebugCatalogs }) != 0 {
+                            (unsafe { (*(borrow(&__xmlGenericError())).unwrap())
+                                .expect("non-null function pointer")(
                                 *(__xmlGenericErrorContext()).unwrap(),
-                                b"Found system match %s, using %s\n\0" as *const u8
-                                    as *const i8,
+                                b"Found system match %s, using %s\n\0" as *const u8 as *const i8,
                                 (*cur).name,
                                 (*cur).URL,
-                            );
+                            ) });
                         }
-                        let ref mut fresh51 = (*catal).depth;
+                        let fresh51 = unsafe { &mut ((*catal).depth) };
                         *fresh51 -= 1;
-                        return xmlStrdup((*cur).URL);
+                        return unsafe { xmlStrdup((*cur).URL) };
                     }
-                }
+                },
                 7 => {
-                    len = xmlStrlen((*cur).name);
-                    if len > lenrewrite && xmlStrncmp(sysID, (*cur).name, len) == 0 {
+                    len = unsafe { xmlStrlen((*cur).name) };
+                    if len > lenrewrite && (unsafe { xmlStrncmp(sysID, (*cur).name, len) }) == 0 {
                         lenrewrite = len;
                         rewrite = cur;
                     }
-                }
+                },
                 9 => {
-                    if xmlStrncmp(sysID, (*cur).name, xmlStrlen((*cur).name)) == 0 {
+                    if (unsafe { xmlStrncmp(sysID, (*cur).name, xmlStrlen((*cur).name)) }) == 0 {
                         haveDelegate += 1;
                     }
-                }
+                },
                 3 => {
                     haveNext += 1;
-                }
-                _ => {}
+                },
+                _ => {},
             }
-            cur = (*cur).next;
+            cur = unsafe { (*cur).next };
         }
         if !rewrite.is_null() {
-            if xmlDebugCatalogs != 0 {
-                (*(borrow(& __xmlGenericError())).unwrap())
-                    .expect(
-                        "non-null function pointer",
-                    )(
+            if (unsafe { xmlDebugCatalogs }) != 0 {
+                (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                     *(__xmlGenericErrorContext()).unwrap(),
                     b"Using rewriting rule %s\n\0" as *const u8 as *const i8,
                     (*rewrite).name,
-                );
+                ) });
             }
-            ret = xmlStrdup((*rewrite).URL);
+            ret = unsafe { xmlStrdup((*rewrite).URL) };
             if !ret.is_null() {
-                ret = xmlStrcat(ret, &*sysID.offset(lenrewrite as isize));
+                ret = unsafe { xmlStrcat(ret, &*sysID.offset(lenrewrite as isize)) };
             }
-            let ref mut fresh52 = (*catal).depth;
+            let fresh52 = unsafe { &mut ((*catal).depth) };
             *fresh52 -= 1;
             return ret;
         }
         if haveDelegate != 0 {
-            let mut delegates: [* const u8; 50] = [0 as *const xmlChar; 50];
+            let mut delegates: [*const u8; 50] = [0 as *const xmlChar; 50];
             let mut nbList: i32 = 0 as i32;
             let mut i: i32 = 0;
             cur = catal;
             while !cur.is_null() {
-                if (*cur).type_0 as i32
-                    == XML_CATA_DELEGATE_SYSTEM as i32
-                    && xmlStrncmp(sysID, (*cur).name, xmlStrlen((*cur).name)) == 0
+                if (unsafe { (*cur).type_0 }) as i32 == XML_CATA_DELEGATE_SYSTEM as i32
+                    && (unsafe { xmlStrncmp(sysID, (*cur).name, xmlStrlen((*cur).name)) }) == 0
                 {
                     i = 0 as i32;
                     while i < nbList {
-                        if xmlStrEqual((*cur).URL, delegates[i as usize]) != 0 {
+                        if (unsafe { xmlStrEqual((*cur).URL, delegates[i as usize]) }) != 0 {
                             break;
                         }
                         i += 1;
                     }
                     if i < nbList {
-                        cur = (*cur).next;
+                        cur = unsafe { (*cur).next };
                         continue;
                     } else {
                         if nbList < 50 as i32 {
                             let mut fresh53 = nbList;
                             nbList = nbList + 1;
-                            delegates[fresh53 as usize] = (*cur).URL;
+                            delegates[fresh53 as usize] = (unsafe { (*cur).URL }) as *const u8;
                         }
-                        if ((*cur).children).is_null() {
+                        if (unsafe { (*cur).children }).is_null() {
                             xmlFetchXMLCatalogFile(cur);
                         }
-                        if !((*cur).children).is_null() {
-                            if xmlDebugCatalogs != 0 {
-                                (*(borrow(& __xmlGenericError())).unwrap())
-                                    .expect(
-                                        "non-null function pointer",
-                                    )(
+                        if !(unsafe { (*cur).children }).is_null() {
+                            if (unsafe { xmlDebugCatalogs }) != 0 {
+                                (unsafe { (*(borrow(&__xmlGenericError())).unwrap())
+                                    .expect("non-null function pointer")(
                                     *(__xmlGenericErrorContext()).unwrap(),
-                                    b"Trying system delegate %s\n\0" as *const u8
-                                        as *const i8,
+                                    b"Trying system delegate %s\n\0" as *const u8 as *const i8,
                                     (*cur).URL,
-                                );
+                                ) });
                             }
                             ret = xmlCatalogListXMLResolve(
-                                (*cur).children,
+                                unsafe { (*cur).children },
                                 0 as *const xmlChar,
                                 sysID,
                             );
                             if !ret.is_null() {
-                                let ref mut fresh54 = (*catal).depth;
+                                let fresh54 = unsafe { &mut ((*catal).depth) };
                                 *fresh54 -= 1;
                                 return ret;
                             }
                         }
                     }
                 }
-                cur = (*cur).next;
+                cur = unsafe { (*cur).next };
             }
-            let ref mut fresh55 = (*catal).depth;
+            let fresh55 = unsafe { &mut ((*catal).depth) };
             *fresh55 -= 1;
             return -(1 as i32) as *mut xmlChar;
         }
@@ -5982,101 +5506,92 @@ unsafe extern "C" fn xmlCatalogXMLResolve(
         cur = catal;
         haveDelegate = 0 as i32;
         while !cur.is_null() {
-            match (*cur).type_0 as i32 {
+            match (unsafe { (*cur).type_0 }) as i32 {
                 5 => {
-                    if xmlStrEqual(pubID, (*cur).name) != 0 {
-                        if xmlDebugCatalogs != 0 {
-                            (*(borrow(& __xmlGenericError())).unwrap())
-                                .expect(
-                                    "non-null function pointer",
-                                )(
+                    if (unsafe { xmlStrEqual(pubID, (*cur).name) }) != 0 {
+                        if (unsafe { xmlDebugCatalogs }) != 0 {
+                            (unsafe { (*(borrow(&__xmlGenericError())).unwrap())
+                                .expect("non-null function pointer")(
                                 *(__xmlGenericErrorContext()).unwrap(),
-                                b"Found public match %s\n\0" as *const u8
-                                    as *const i8,
+                                b"Found public match %s\n\0" as *const u8 as *const i8,
                                 (*cur).name,
-                            );
+                            ) });
                         }
-                        let ref mut fresh56 = (*catal).depth;
+                        let fresh56 = unsafe { &mut ((*catal).depth) };
                         *fresh56 -= 1;
-                        return xmlStrdup((*cur).URL);
+                        return unsafe { xmlStrdup((*cur).URL) };
                     }
-                }
+                },
                 8 => {
-                    if xmlStrncmp(pubID, (*cur).name, xmlStrlen((*cur).name)) == 0
-                        && (*cur).prefer as u32
-                            == XML_CATA_PREFER_PUBLIC as i32 as u32
+                    if (unsafe { xmlStrncmp(pubID, (*cur).name, xmlStrlen((*cur).name)) }) == 0
+                        && (unsafe { (*cur).prefer }) as u32 == XML_CATA_PREFER_PUBLIC as i32 as u32
                     {
                         haveDelegate += 1;
                     }
-                }
+                },
                 3 => {
                     if sysID.is_null() {
                         haveNext += 1;
                     }
-                }
-                _ => {}
+                },
+                _ => {},
             }
-            cur = (*cur).next;
+            cur = unsafe { (*cur).next };
         }
         if haveDelegate != 0 {
-            let mut delegates_0: [* const u8; 50] = [0 as *const xmlChar; 50];
+            let mut delegates_0: [*const u8; 50] = [0 as *const xmlChar; 50];
             let mut nbList_0: i32 = 0 as i32;
             let mut i_0: i32 = 0;
             cur = catal;
             while !cur.is_null() {
-                if (*cur).type_0 as i32
-                    == XML_CATA_DELEGATE_PUBLIC as i32
-                    && (*cur).prefer as u32
-                        == XML_CATA_PREFER_PUBLIC as i32 as u32
-                    && xmlStrncmp(pubID, (*cur).name, xmlStrlen((*cur).name)) == 0
+                if (unsafe { (*cur).type_0 }) as i32 == XML_CATA_DELEGATE_PUBLIC as i32
+                    && (unsafe { (*cur).prefer }) as u32 == XML_CATA_PREFER_PUBLIC as i32 as u32
+                    && (unsafe { xmlStrncmp(pubID, (*cur).name, xmlStrlen((*cur).name)) }) == 0
                 {
                     i_0 = 0 as i32;
                     while i_0 < nbList_0 {
-                        if xmlStrEqual((*cur).URL, delegates_0[i_0 as usize]) != 0 {
+                        if (unsafe { xmlStrEqual((*cur).URL, delegates_0[i_0 as usize]) }) != 0 {
                             break;
                         }
                         i_0 += 1;
                     }
                     if i_0 < nbList_0 {
-                        cur = (*cur).next;
+                        cur = unsafe { (*cur).next };
                         continue;
                     } else {
                         if nbList_0 < 50 as i32 {
                             let mut fresh57 = nbList_0;
                             nbList_0 = nbList_0 + 1;
-                            delegates_0[fresh57 as usize] = (*cur).URL;
+                            delegates_0[fresh57 as usize] = (unsafe { (*cur).URL }) as *const u8;
                         }
-                        if ((*cur).children).is_null() {
+                        if (unsafe { (*cur).children }).is_null() {
                             xmlFetchXMLCatalogFile(cur);
                         }
-                        if !((*cur).children).is_null() {
-                            if xmlDebugCatalogs != 0 {
-                                (*(borrow(& __xmlGenericError())).unwrap())
-                                    .expect(
-                                        "non-null function pointer",
-                                    )(
+                        if !(unsafe { (*cur).children }).is_null() {
+                            if (unsafe { xmlDebugCatalogs }) != 0 {
+                                (unsafe { (*(borrow(&__xmlGenericError())).unwrap())
+                                    .expect("non-null function pointer")(
                                     *(__xmlGenericErrorContext()).unwrap(),
-                                    b"Trying public delegate %s\n\0" as *const u8
-                                        as *const i8,
+                                    b"Trying public delegate %s\n\0" as *const u8 as *const i8,
                                     (*cur).URL,
-                                );
+                                ) });
                             }
                             ret = xmlCatalogListXMLResolve(
-                                (*cur).children,
+                                unsafe { (*cur).children },
                                 pubID,
                                 0 as *const xmlChar,
                             );
                             if !ret.is_null() {
-                                let ref mut fresh58 = (*catal).depth;
+                                let fresh58 = unsafe { &mut ((*catal).depth) };
                                 *fresh58 -= 1;
                                 return ret;
                             }
                         }
                     }
                 }
-                cur = (*cur).next;
+                cur = unsafe { (*cur).next };
             }
-            let ref mut fresh59 = (*catal).depth;
+            let fresh59 = unsafe { &mut ((*catal).depth) };
             *fresh59 -= 1;
             return -(1 as i32) as *mut xmlChar;
         }
@@ -6084,39 +5599,39 @@ unsafe extern "C" fn xmlCatalogXMLResolve(
     if haveNext != 0 {
         cur = catal;
         while !cur.is_null() {
-            if (*cur).type_0 as i32 == XML_CATA_NEXT_CATALOG as i32 {
-                if ((*cur).children).is_null() {
+            if (unsafe { (*cur).type_0 }) as i32 == XML_CATA_NEXT_CATALOG as i32 {
+                if (unsafe { (*cur).children }).is_null() {
                     xmlFetchXMLCatalogFile(cur);
                 }
-                if !((*cur).children).is_null() {
-                    ret = xmlCatalogListXMLResolve((*cur).children, pubID, sysID);
+                if !(unsafe { (*cur).children }).is_null() {
+                    ret = xmlCatalogListXMLResolve(unsafe { (*cur).children }, pubID, sysID);
                     if !ret.is_null() {
-                        let ref mut fresh60 = (*catal).depth;
+                        let fresh60 = unsafe { &mut ((*catal).depth) };
                         *fresh60 -= 1;
                         return ret;
                     } else {
-                        if (*catal).depth > 50 as i32 {
+                        if (unsafe { (*catal).depth }) > 50 as i32 {
                             return 0 as *mut xmlChar;
                         }
                     }
                 }
             }
-            cur = (*cur).next;
+            cur = unsafe { (*cur).next };
         }
     }
-    let ref mut fresh61 = (*catal).depth;
+    let fresh61 = unsafe { &mut ((*catal).depth) };
     *fresh61 -= 1;
     return 0 as *mut xmlChar;
 }
-unsafe extern "C" fn xmlCatalogXMLResolveURI(
-    mut catal: * mut crate::src::catalog::_xmlCatalogEntry,
-    mut URI: * const u8,
-) -> * mut u8 {
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
-    let mut cur: * mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
+extern "C" fn xmlCatalogXMLResolveURI(
+    mut catal: *mut crate::src::catalog::_xmlCatalogEntry,
+    mut URI: *const u8,
+) -> *mut u8 {
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
+    let mut cur: *mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
     let mut haveDelegate: i32 = 0 as i32;
     let mut haveNext: i32 = 0 as i32;
-    let mut rewrite: * mut crate::src::catalog::_xmlCatalogEntry = 0 as xmlCatalogEntryPtr;
+    let mut rewrite: *mut crate::src::catalog::_xmlCatalogEntry = 0 as xmlCatalogEntryPtr;
     let mut lenrewrite: i32 = 0 as i32;
     let mut len: i32 = 0;
     if catal.is_null() {
@@ -6125,13 +5640,13 @@ unsafe extern "C" fn xmlCatalogXMLResolveURI(
     if URI.is_null() {
         return 0 as *mut xmlChar;
     }
-    if (*catal).depth > 50 as i32 {
+    if (unsafe { (*catal).depth }) > 50 as i32 {
         xmlCatalogErr(
             catal,
             0 as xmlNodePtr,
             XML_CATALOG_RECURSION as i32,
             b"Detected recursion in catalog %s\n\0" as *const u8 as *const i8,
-            (*catal).name,
+            unsafe { (*catal).name },
             0 as *const xmlChar,
             0 as *const xmlChar,
         );
@@ -6140,138 +5655,129 @@ unsafe extern "C" fn xmlCatalogXMLResolveURI(
     cur = catal;
     haveDelegate = 0 as i32;
     while !cur.is_null() {
-        match (*cur).type_0 as i32 {
+        match (unsafe { (*cur).type_0 }) as i32 {
             10 => {
-                if xmlStrEqual(URI, (*cur).name) != 0 {
-                    if xmlDebugCatalogs != 0 {
-                        (*(borrow(& __xmlGenericError())).unwrap())
-                            .expect(
-                                "non-null function pointer",
-                            )(
+                if (unsafe { xmlStrEqual(URI, (*cur).name) }) != 0 {
+                    if (unsafe { xmlDebugCatalogs }) != 0 {
+                        (unsafe { (*(borrow(&__xmlGenericError())).unwrap())
+                            .expect("non-null function pointer")(
                             *(__xmlGenericErrorContext()).unwrap(),
-                            b"Found URI match %s\n\0" as *const u8
-                                as *const i8,
+                            b"Found URI match %s\n\0" as *const u8 as *const i8,
                             (*cur).name,
-                        );
+                        ) });
                     }
-                    return xmlStrdup((*cur).URL);
+                    return unsafe { xmlStrdup((*cur).URL) };
                 }
-            }
+            },
             11 => {
-                len = xmlStrlen((*cur).name);
-                if len > lenrewrite && xmlStrncmp(URI, (*cur).name, len) == 0 {
+                len = unsafe { xmlStrlen((*cur).name) };
+                if len > lenrewrite && (unsafe { xmlStrncmp(URI, (*cur).name, len) }) == 0 {
                     lenrewrite = len;
                     rewrite = cur;
                 }
-            }
+            },
             12 => {
-                if xmlStrncmp(URI, (*cur).name, xmlStrlen((*cur).name)) == 0 {
+                if (unsafe { xmlStrncmp(URI, (*cur).name, xmlStrlen((*cur).name)) }) == 0 {
                     haveDelegate += 1;
                 }
-            }
+            },
             3 => {
                 haveNext += 1;
-            }
-            _ => {}
+            },
+            _ => {},
         }
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
     }
     if !rewrite.is_null() {
-        if xmlDebugCatalogs != 0 {
-            (*(borrow(& __xmlGenericError())).unwrap())
-                .expect(
-                    "non-null function pointer",
-                )(
+        if (unsafe { xmlDebugCatalogs }) != 0 {
+            (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                 *(__xmlGenericErrorContext()).unwrap(),
                 b"Using rewriting rule %s\n\0" as *const u8 as *const i8,
                 (*rewrite).name,
-            );
+            ) });
         }
-        ret = xmlStrdup((*rewrite).URL);
+        ret = unsafe { xmlStrdup((*rewrite).URL) };
         if !ret.is_null() {
-            ret = xmlStrcat(ret, &*URI.offset(lenrewrite as isize));
+            ret = unsafe { xmlStrcat(ret, &*URI.offset(lenrewrite as isize)) };
         }
         return ret;
     }
     if haveDelegate != 0 {
-        let mut delegates: [* const u8; 50] = [0 as *const xmlChar; 50];
+        let mut delegates: [*const u8; 50] = [0 as *const xmlChar; 50];
         let mut nbList: i32 = 0 as i32;
         let mut i: i32 = 0;
         cur = catal;
         while !cur.is_null() {
-            if ((*cur).type_0 as i32 == XML_CATA_DELEGATE_SYSTEM as i32
-                || (*cur).type_0 as i32 == XML_CATA_DELEGATE_URI as i32)
-                && xmlStrncmp(URI, (*cur).name, xmlStrlen((*cur).name)) == 0
+            if ((unsafe { (*cur).type_0 }) as i32 == XML_CATA_DELEGATE_SYSTEM as i32
+                || (unsafe { (*cur).type_0 }) as i32 == XML_CATA_DELEGATE_URI as i32)
+                && (unsafe { xmlStrncmp(URI, (*cur).name, xmlStrlen((*cur).name)) }) == 0
             {
                 i = 0 as i32;
                 while i < nbList {
-                    if xmlStrEqual((*cur).URL, delegates[i as usize]) != 0 {
+                    if (unsafe { xmlStrEqual((*cur).URL, delegates[i as usize]) }) != 0 {
                         break;
                     }
                     i += 1;
                 }
                 if i < nbList {
-                    cur = (*cur).next;
+                    cur = unsafe { (*cur).next };
                     continue;
                 } else {
                     if nbList < 50 as i32 {
                         let mut fresh62 = nbList;
                         nbList = nbList + 1;
-                        delegates[fresh62 as usize] = (*cur).URL;
+                        delegates[fresh62 as usize] = (unsafe { (*cur).URL }) as *const u8;
                     }
-                    if ((*cur).children).is_null() {
+                    if (unsafe { (*cur).children }).is_null() {
                         xmlFetchXMLCatalogFile(cur);
                     }
-                    if !((*cur).children).is_null() {
-                        if xmlDebugCatalogs != 0 {
-                            (*(borrow(& __xmlGenericError())).unwrap())
-                                .expect(
-                                    "non-null function pointer",
-                                )(
+                    if !(unsafe { (*cur).children }).is_null() {
+                        if (unsafe { xmlDebugCatalogs }) != 0 {
+                            (unsafe { (*(borrow(&__xmlGenericError())).unwrap())
+                                .expect("non-null function pointer")(
                                 *(__xmlGenericErrorContext()).unwrap(),
-                                b"Trying URI delegate %s\n\0" as *const u8
-                                    as *const i8,
+                                b"Trying URI delegate %s\n\0" as *const u8 as *const i8,
                                 (*cur).URL,
-                            );
+                            ) });
                         }
-                        ret = xmlCatalogListXMLResolveURI((*cur).children, URI);
+                        ret = xmlCatalogListXMLResolveURI(unsafe { (*cur).children }, URI);
                         if !ret.is_null() {
                             return ret;
                         }
                     }
                 }
             }
-            cur = (*cur).next;
+            cur = unsafe { (*cur).next };
         }
         return -(1 as i32) as *mut xmlChar;
     }
     if haveNext != 0 {
         cur = catal;
         while !cur.is_null() {
-            if (*cur).type_0 as i32 == XML_CATA_NEXT_CATALOG as i32 {
-                if ((*cur).children).is_null() {
+            if (unsafe { (*cur).type_0 }) as i32 == XML_CATA_NEXT_CATALOG as i32 {
+                if (unsafe { (*cur).children }).is_null() {
                     xmlFetchXMLCatalogFile(cur);
                 }
-                if !((*cur).children).is_null() {
-                    ret = xmlCatalogListXMLResolveURI((*cur).children, URI);
+                if !(unsafe { (*cur).children }).is_null() {
+                    ret = xmlCatalogListXMLResolveURI(unsafe { (*cur).children }, URI);
                     if !ret.is_null() {
                         return ret;
                     }
                 }
             }
-            cur = (*cur).next;
+            cur = unsafe { (*cur).next };
         }
     }
     return 0 as *mut xmlChar;
 }
-unsafe extern "C" fn xmlCatalogListXMLResolve(
-    mut catal: * mut crate::src::catalog::_xmlCatalogEntry,
-    mut pubID: * const u8,
-    mut sysID: * const u8,
-) -> * mut u8 {
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
-    let mut urnID: * mut u8 = 0 as *mut xmlChar;
-    let mut normid: * mut u8 = 0 as *mut xmlChar;
+extern "C" fn xmlCatalogListXMLResolve(
+    mut catal: *mut crate::src::catalog::_xmlCatalogEntry,
+    mut pubID: *const u8,
+    mut sysID: *const u8,
+) -> *mut u8 {
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
+    let mut urnID: *mut u8 = 0 as *mut xmlChar;
+    let mut normid: *mut u8 = 0 as *mut xmlChar;
     if catal.is_null() {
         return 0 as *mut xmlChar;
     }
@@ -6280,308 +5786,262 @@ unsafe extern "C" fn xmlCatalogListXMLResolve(
     }
     normid = xmlCatalogNormalizePublic(pubID);
     if !normid.is_null() {
-        pubID = if *normid as i32 != 0 as i32 {
+        pubID = if (unsafe { *normid }) as i32 != 0 as i32 {
             normid
         } else {
             0 as *mut xmlChar
         };
     }
-    if xmlStrncmp(
+    if (unsafe { xmlStrncmp(
         pubID,
         b"urn:publicid:\0" as *const u8 as *const i8 as *mut xmlChar,
-        (::std::mem::size_of::<[i8; 14]>() as u64)
-            .wrapping_sub(1 as i32 as u64) as i32,
-    ) == 0
+        (::std::mem::size_of::<[i8; 14]>() as u64).wrapping_sub(1 as i32 as u64) as i32,
+    ) }) == 0
     {
         urnID = xmlCatalogUnWrapURN(pubID);
-        if xmlDebugCatalogs != 0 {
+        if (unsafe { xmlDebugCatalogs }) != 0 {
             if urnID.is_null() {
-                (*(borrow(& __xmlGenericError())).unwrap())
-                    .expect(
-                        "non-null function pointer",
-                    )(
+                (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                     *(__xmlGenericErrorContext()).unwrap(),
-                    b"Public URN ID %s expanded to NULL\n\0" as *const u8
-                        as *const i8,
+                    b"Public URN ID %s expanded to NULL\n\0" as *const u8 as *const i8,
                     pubID,
-                );
+                ) });
             } else {
-                (*(borrow(& __xmlGenericError())).unwrap())
-                    .expect(
-                        "non-null function pointer",
-                    )(
+                (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                     *(__xmlGenericErrorContext()).unwrap(),
-                    b"Public URN ID expanded to %s\n\0" as *const u8
-                        as *const i8,
+                    b"Public URN ID expanded to %s\n\0" as *const u8 as *const i8,
                     urnID,
-                );
+                ) });
             }
         }
         ret = xmlCatalogListXMLResolve(catal, urnID, sysID);
         if !urnID.is_null() {
-            xmlFree.expect("non-null function pointer")(urnID as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(urnID as *mut libc::c_void) });
         }
         if !normid.is_null() {
-            xmlFree.expect("non-null function pointer")(normid as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(normid as *mut libc::c_void) });
         }
         return ret;
     }
-    if xmlStrncmp(
+    if (unsafe { xmlStrncmp(
         sysID,
         b"urn:publicid:\0" as *const u8 as *const i8 as *mut xmlChar,
-        (::std::mem::size_of::<[i8; 14]>() as u64)
-            .wrapping_sub(1 as i32 as u64) as i32,
-    ) == 0
+        (::std::mem::size_of::<[i8; 14]>() as u64).wrapping_sub(1 as i32 as u64) as i32,
+    ) }) == 0
     {
         urnID = xmlCatalogUnWrapURN(sysID);
-        if xmlDebugCatalogs != 0 {
+        if (unsafe { xmlDebugCatalogs }) != 0 {
             if urnID.is_null() {
-                (*(borrow(& __xmlGenericError())).unwrap())
-                    .expect(
-                        "non-null function pointer",
-                    )(
+                (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                     *(__xmlGenericErrorContext()).unwrap(),
-                    b"System URN ID %s expanded to NULL\n\0" as *const u8
-                        as *const i8,
+                    b"System URN ID %s expanded to NULL\n\0" as *const u8 as *const i8,
                     sysID,
-                );
+                ) });
             } else {
-                (*(borrow(& __xmlGenericError())).unwrap())
-                    .expect(
-                        "non-null function pointer",
-                    )(
+                (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                     *(__xmlGenericErrorContext()).unwrap(),
-                    b"System URN ID expanded to %s\n\0" as *const u8
-                        as *const i8,
+                    b"System URN ID expanded to %s\n\0" as *const u8 as *const i8,
                     urnID,
-                );
+                ) });
             }
         }
         if pubID.is_null() {
             ret = xmlCatalogListXMLResolve(catal, urnID, 0 as *const xmlChar);
-        } else if xmlStrEqual(pubID, urnID) != 0 {
+        } else if (unsafe { xmlStrEqual(pubID, urnID) }) != 0 {
             ret = xmlCatalogListXMLResolve(catal, pubID, 0 as *const xmlChar);
         } else {
             ret = xmlCatalogListXMLResolve(catal, pubID, urnID);
         }
         if !urnID.is_null() {
-            xmlFree.expect("non-null function pointer")(urnID as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(urnID as *mut libc::c_void) });
         }
         if !normid.is_null() {
-            xmlFree.expect("non-null function pointer")(normid as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(normid as *mut libc::c_void) });
         }
         return ret;
     }
     while !catal.is_null() {
-        if (*catal).type_0 as i32 == XML_CATA_CATALOG as i32 {
-            if ((*catal).children).is_null() {
+        if (unsafe { (*catal).type_0 }) as i32 == XML_CATA_CATALOG as i32 {
+            if (unsafe { (*catal).children }).is_null() {
                 xmlFetchXMLCatalogFile(catal);
             }
-            if !((*catal).children).is_null() {
-                ret = xmlCatalogXMLResolve((*catal).children, pubID, sysID);
+            if !(unsafe { (*catal).children }).is_null() {
+                ret = xmlCatalogXMLResolve(unsafe { (*catal).children }, pubID, sysID);
                 if !ret.is_null() {
                     break;
                 }
-                if (*(*catal).children).depth > 50 as i32 {
+                if (unsafe { (*(*catal).children).depth }) > 50 as i32 {
                     ret = 0 as *mut xmlChar;
                     break;
                 }
             }
         }
-        catal = (*catal).next;
+        catal = unsafe { (*catal).next };
     }
     if !normid.is_null() {
-        xmlFree.expect("non-null function pointer")(normid as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(normid as *mut libc::c_void) });
     }
     return ret;
 }
-unsafe extern "C" fn xmlCatalogListXMLResolveURI(
-    mut catal: * mut crate::src::catalog::_xmlCatalogEntry,
-    mut URI: * const u8,
-) -> * mut u8 {
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
-    let mut urnID: * mut u8 = 0 as *mut xmlChar;
+extern "C" fn xmlCatalogListXMLResolveURI(
+    mut catal: *mut crate::src::catalog::_xmlCatalogEntry,
+    mut URI: *const u8,
+) -> *mut u8 {
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
+    let mut urnID: *mut u8 = 0 as *mut xmlChar;
     if catal.is_null() {
         return 0 as *mut xmlChar;
     }
     if URI.is_null() {
         return 0 as *mut xmlChar;
     }
-    if xmlStrncmp(
+    if (unsafe { xmlStrncmp(
         URI,
         b"urn:publicid:\0" as *const u8 as *const i8 as *mut xmlChar,
-        (::std::mem::size_of::<[i8; 14]>() as u64)
-            .wrapping_sub(1 as i32 as u64) as i32,
-    ) == 0
+        (::std::mem::size_of::<[i8; 14]>() as u64).wrapping_sub(1 as i32 as u64) as i32,
+    ) }) == 0
     {
         urnID = xmlCatalogUnWrapURN(URI);
-        if xmlDebugCatalogs != 0 {
+        if (unsafe { xmlDebugCatalogs }) != 0 {
             if urnID.is_null() {
-                (*(borrow(& __xmlGenericError())).unwrap())
-                    .expect(
-                        "non-null function pointer",
-                    )(
+                (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                     *(__xmlGenericErrorContext()).unwrap(),
-                    b"URN ID %s expanded to NULL\n\0" as *const u8
-                        as *const i8,
+                    b"URN ID %s expanded to NULL\n\0" as *const u8 as *const i8,
                     URI,
-                );
+                ) });
             } else {
-                (*(borrow(& __xmlGenericError())).unwrap())
-                    .expect(
-                        "non-null function pointer",
-                    )(
+                (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                     *(__xmlGenericErrorContext()).unwrap(),
                     b"URN ID expanded to %s\n\0" as *const u8 as *const i8,
                     urnID,
-                );
+                ) });
             }
         }
         ret = xmlCatalogListXMLResolve(catal, urnID, 0 as *const xmlChar);
         if !urnID.is_null() {
-            xmlFree.expect("non-null function pointer")(urnID as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(urnID as *mut libc::c_void) });
         }
         return ret;
     }
     while !catal.is_null() {
-        if (*catal).type_0 as i32 == XML_CATA_CATALOG as i32 {
-            if ((*catal).children).is_null() {
+        if (unsafe { (*catal).type_0 }) as i32 == XML_CATA_CATALOG as i32 {
+            if (unsafe { (*catal).children }).is_null() {
                 xmlFetchXMLCatalogFile(catal);
             }
-            if !((*catal).children).is_null() {
-                ret = xmlCatalogXMLResolveURI((*catal).children, URI);
+            if !(unsafe { (*catal).children }).is_null() {
+                ret = xmlCatalogXMLResolveURI(unsafe { (*catal).children }, URI);
                 if !ret.is_null() {
                     return ret;
                 }
             }
         }
-        catal = (*catal).next;
+        catal = unsafe { (*catal).next };
     }
     return ret;
 }
-unsafe extern "C" fn xmlParseSGMLCatalogComment(
-    mut cur: * const u8,
-) -> * const u8 {
-    if *cur.offset(0 as i32 as isize) as i32 != '-' as i32
-        || *cur.offset(1 as i32 as isize) as i32 != '-' as i32
+extern "C" fn xmlParseSGMLCatalogComment(mut cur: *const u8) -> *const u8 {
+    if (unsafe { *cur.offset(0 as i32 as isize) }) as i32 != '-' as i32
+        || (unsafe { *cur.offset(1 as i32 as isize) }) as i32 != '-' as i32
     {
         return cur;
     }
-    cur = cur.offset(2 as i32 as isize);
-    while *cur.offset(0 as i32 as isize) as i32 != 0 as i32
-        && (*cur.offset(0 as i32 as isize) as i32 != '-' as i32
-            || *cur.offset(1 as i32 as isize) as i32 != '-' as i32)
+    cur = unsafe { cur.offset(2 as i32 as isize) };
+    while (unsafe { *cur.offset(0 as i32 as isize) }) as i32 != 0 as i32
+        && ((unsafe { *cur.offset(0 as i32 as isize) }) as i32 != '-' as i32
+            || (unsafe { *cur.offset(1 as i32 as isize) }) as i32 != '-' as i32)
     {
-        cur = cur.offset(1);
+        cur = unsafe { cur.offset(1) };
     }
-    if *cur.offset(0 as i32 as isize) as i32 == 0 as i32 {
+    if (unsafe { *cur.offset(0 as i32 as isize) }) as i32 == 0 as i32 {
         return 0 as *const xmlChar;
     }
-    return cur.offset(2 as i32 as isize);
+    return unsafe { cur.offset(2 as i32 as isize) };
 }
-unsafe extern "C" fn xmlParseSGMLCatalogPubid<'a1>(
-    mut cur: * const u8,
-    mut id: Option<&'a1 mut * mut u8>,
-) -> * const u8 {
-    let mut buf: * mut u8 = 0 as *mut xmlChar;
-    let mut tmp: * mut u8 = 0 as *mut xmlChar;
+extern "C" fn xmlParseSGMLCatalogPubid<'a1>(
+    mut cur: *const u8,
+    mut id: Option<&'a1 mut *mut u8>,
+) -> *const u8 {
+    let mut buf: *mut u8 = 0 as *mut xmlChar;
+    let mut tmp: *mut u8 = 0 as *mut xmlChar;
     let mut len: i32 = 0 as i32;
     let mut size: i32 = 50 as i32;
     let mut stop: u8 = 0;
     let mut count: i32 = 0 as i32;
     *(borrow_mut(&mut id)).unwrap() = 0 as *mut xmlChar;
-    if *cur as i32 == '"' as i32 {
-        cur = cur.offset(1);
+    if (unsafe { *cur }) as i32 == '"' as i32 {
+        cur = unsafe { cur.offset(1) };
         stop = '"' as i32 as xmlChar;
-    } else if *cur as i32 == '\'' as i32 {
-        cur = cur.offset(1);
+    } else if (unsafe { *cur }) as i32 == '\'' as i32 {
+        cur = unsafe { cur.offset(1) };
         stop = '\'' as i32 as xmlChar;
     } else {
         stop = ' ' as i32 as xmlChar;
     }
-    buf = xmlMallocAtomic
-        .expect(
-            "non-null function pointer",
-        )(
-        (size as u64)
-            .wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
-    ) as *mut xmlChar;
+    buf = (unsafe { xmlMallocAtomic.expect("non-null function pointer")(
+        (size as u64).wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
+    ) }) as *mut xmlChar;
     if buf.is_null() {
-        xmlCatalogErrMemory(
-            b"allocating public ID\0" as *const u8 as *const i8,
-        );
+        xmlCatalogErrMemory(b"allocating public ID\0" as *const u8 as *const i8);
         return 0 as *const xmlChar;
     }
-    while xmlIsPubidChar_tab[*cur as usize] as i32 != 0
-        || *cur as i32 == '?' as i32
-    {
-        if *cur as i32 == stop as i32
-            && stop as i32 != ' ' as i32
-        {
+    while (unsafe { xmlIsPubidChar_tab[*cur as usize] }) as i32 != 0 || (unsafe { *cur }) as i32 == '?' as i32 {
+        if (unsafe { *cur }) as i32 == stop as i32 && stop as i32 != ' ' as i32 {
             break;
         }
         if stop as i32 == ' ' as i32
-            && (*cur as i32 == 0x20 as i32
-                || 0x9 as i32 <= *cur as i32
-                    && *cur as i32 <= 0xa as i32
-                || *cur as i32 == 0xd as i32)
+            && ((unsafe { *cur }) as i32 == 0x20 as i32
+                || 0x9 as i32 <= (unsafe { *cur }) as i32 && (unsafe { *cur }) as i32 <= 0xa as i32
+                || (unsafe { *cur }) as i32 == 0xd as i32)
         {
             break;
         }
         if len + 1 as i32 >= size {
             size *= 2 as i32;
-            tmp = xmlRealloc
-                .expect(
-                    "non-null function pointer",
-                )(
+            tmp = (unsafe { xmlRealloc.expect("non-null function pointer")(
                 buf as *mut libc::c_void,
-                (size as u64)
-                    .wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
-            ) as *mut xmlChar;
+                (size as u64).wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
+            ) }) as *mut xmlChar;
             if tmp.is_null() {
-                xmlCatalogErrMemory(
-                    b"allocating public ID\0" as *const u8 as *const i8,
-                );
-                xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void);
+                xmlCatalogErrMemory(b"allocating public ID\0" as *const u8 as *const i8);
+                (unsafe { xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void) });
                 return 0 as *const xmlChar;
             }
             buf = tmp;
         }
         let mut fresh63 = len;
         len = len + 1;
-        *buf.offset(fresh63 as isize) = *cur;
+        (unsafe { *buf.offset(fresh63 as isize) = *cur });
         count += 1;
-        cur = cur.offset(1);
+        cur = unsafe { cur.offset(1) };
     }
-    *buf.offset(len as isize) = 0 as i32 as xmlChar;
+    (unsafe { *buf.offset(len as isize) = 0 as i32 as xmlChar });
     if stop as i32 == ' ' as i32 {
-        if !(*cur as i32 == 0x20 as i32
-            || 0x9 as i32 <= *cur as i32
-                && *cur as i32 <= 0xa as i32
-            || *cur as i32 == 0xd as i32)
+        if !((unsafe { *cur }) as i32 == 0x20 as i32
+            || 0x9 as i32 <= (unsafe { *cur }) as i32 && (unsafe { *cur }) as i32 <= 0xa as i32
+            || (unsafe { *cur }) as i32 == 0xd as i32)
         {
-            xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void) });
             return 0 as *const xmlChar;
         }
     } else {
-        if *cur as i32 != stop as i32 {
-            xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void);
+        if (unsafe { *cur }) as i32 != stop as i32 {
+            (unsafe { xmlFree.expect("non-null function pointer")(buf as *mut libc::c_void) });
             return 0 as *const xmlChar;
         }
-        cur = cur.offset(1);
+        cur = unsafe { cur.offset(1) };
     }
     *(borrow_mut(&mut id)).unwrap() = buf;
     return cur;
 }
-unsafe extern "C" fn xmlParseSGMLCatalogName<'a1>(
-    mut cur: * const u8,
-    mut name: Option<&'a1 mut * mut u8>,
-) -> * const u8 {
+extern "C" fn xmlParseSGMLCatalogName<'a1>(
+    mut cur: *const u8,
+    mut name: Option<&'a1 mut *mut u8>,
+) -> *const u8 {
     let mut buf: [u8; 105] = [0; 105];
     let mut len: i32 = 0 as i32;
     let mut c: i32 = 0;
     *(borrow_mut(&mut name)).unwrap() = 0 as *mut xmlChar;
-    c = *cur as i32;
+    c = (unsafe { *cur }) as i32;
     if !((if c < 0x100 as i32 {
         (0x41 as i32 <= c && c <= 0x5a as i32
             || 0x61 as i32 <= c && c <= 0x7a as i32
@@ -6589,16 +6049,17 @@ unsafe extern "C" fn xmlParseSGMLCatalogName<'a1>(
             || 0xd8 as i32 <= c && c <= 0xf6 as i32
             || 0xf8 as i32 <= c) as i32
     } else {
-        xmlCharInRange(c as u32, (Some(&xmlIsBaseCharGroup)).clone())
+        xmlCharInRange(c as u32, (Some(unsafe { &xmlIsBaseCharGroup })).clone())
     }) != 0
         || (if c < 0x100 as i32 {
             0 as i32
         } else {
             (0x4e00 as i32 <= c && c <= 0x9fa5 as i32
                 || c == 0x3007 as i32
-                || 0x3021 as i32 <= c && c <= 0x3029 as i32)
-                as i32
-        }) != 0) && c != '_' as i32 && c != ':' as i32
+                || 0x3021 as i32 <= c && c <= 0x3029 as i32) as i32
+        }) != 0)
+        && c != '_' as i32
+        && c != ':' as i32
     {
         return 0 as *const xmlChar;
     }
@@ -6609,136 +6070,129 @@ unsafe extern "C" fn xmlParseSGMLCatalogName<'a1>(
             || 0xd8 as i32 <= c && c <= 0xf6 as i32
             || 0xf8 as i32 <= c) as i32
     } else {
-        xmlCharInRange(c as u32, (Some(&xmlIsBaseCharGroup)).clone())
+        xmlCharInRange(c as u32, (Some(unsafe { &xmlIsBaseCharGroup })).clone())
     }) != 0
         || (if c < 0x100 as i32 {
             0 as i32
         } else {
             (0x4e00 as i32 <= c && c <= 0x9fa5 as i32
                 || c == 0x3007 as i32
-                || 0x3021 as i32 <= c && c <= 0x3029 as i32)
-                as i32
+                || 0x3021 as i32 <= c && c <= 0x3029 as i32) as i32
         }) != 0
         || (if c < 0x100 as i32 {
             (0x30 as i32 <= c && c <= 0x39 as i32) as i32
         } else {
-            xmlCharInRange(c as u32, (Some(&xmlIsDigitGroup)).clone())
-        }) != 0 || c == '.' as i32 || c == '-' as i32 || c == '_' as i32
+            xmlCharInRange(c as u32, (Some(unsafe { &xmlIsDigitGroup })).clone())
+        }) != 0
+        || c == '.' as i32
+        || c == '-' as i32
+        || c == '_' as i32
         || c == ':' as i32
     {
         let mut fresh64 = len;
         len = len + 1;
         buf[fresh64 as usize] = c as xmlChar;
-        cur = cur.offset(1);
-        c = *cur as i32;
+        cur = unsafe { cur.offset(1) };
+        c = (unsafe { *cur }) as i32;
         if len >= 100 as i32 {
             return 0 as *const xmlChar;
         }
     }
-    *(borrow_mut(&mut name)).unwrap() = xmlStrndup(buf.as_mut_ptr(), len);
+    *(borrow_mut(&mut name)).unwrap() = unsafe { xmlStrndup(buf.as_mut_ptr(), len) };
     return cur;
 }
-unsafe extern "C" fn xmlGetSGMLCatalogEntryType(
-    mut name: * const u8,
-) -> i32 {
+extern "C" fn xmlGetSGMLCatalogEntryType(mut name: *const u8) -> i32 {
     let mut type_0: i32 = XML_CATA_NONE;
-    if xmlStrEqual(
+    if (unsafe { xmlStrEqual(
         name,
         b"SYSTEM\0" as *const u8 as *const i8 as *const xmlChar,
-    ) != 0
+    ) }) != 0
     {
         type_0 = SGML_CATA_SYSTEM;
-    } else if xmlStrEqual(
-            name,
-            b"PUBLIC\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        name,
+        b"PUBLIC\0" as *const u8 as *const i8 as *const xmlChar,
+    ) }) != 0
+    {
         type_0 = SGML_CATA_PUBLIC;
-    } else if xmlStrEqual(
-            name,
-            b"DELEGATE\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        name,
+        b"DELEGATE\0" as *const u8 as *const i8 as *const xmlChar,
+    ) }) != 0
+    {
         type_0 = SGML_CATA_DELEGATE;
-    } else if xmlStrEqual(
-            name,
-            b"ENTITY\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        name,
+        b"ENTITY\0" as *const u8 as *const i8 as *const xmlChar,
+    ) }) != 0
+    {
         type_0 = SGML_CATA_ENTITY;
-    } else if xmlStrEqual(
-            name,
-            b"DOCTYPE\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        name,
+        b"DOCTYPE\0" as *const u8 as *const i8 as *const xmlChar,
+    ) }) != 0
+    {
         type_0 = SGML_CATA_DOCTYPE;
-    } else if xmlStrEqual(
-            name,
-            b"LINKTYPE\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        name,
+        b"LINKTYPE\0" as *const u8 as *const i8 as *const xmlChar,
+    ) }) != 0
+    {
         type_0 = SGML_CATA_LINKTYPE;
-    } else if xmlStrEqual(
-            name,
-            b"NOTATION\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        name,
+        b"NOTATION\0" as *const u8 as *const i8 as *const xmlChar,
+    ) }) != 0
+    {
         type_0 = SGML_CATA_NOTATION;
-    } else if xmlStrEqual(
-            name,
-            b"SGMLDECL\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        name,
+        b"SGMLDECL\0" as *const u8 as *const i8 as *const xmlChar,
+    ) }) != 0
+    {
         type_0 = SGML_CATA_SGMLDECL;
-    } else if xmlStrEqual(
-            name,
-            b"DOCUMENT\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        name,
+        b"DOCUMENT\0" as *const u8 as *const i8 as *const xmlChar,
+    ) }) != 0
+    {
         type_0 = SGML_CATA_DOCUMENT;
-    } else if xmlStrEqual(
-            name,
-            b"CATALOG\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(
+        name,
+        b"CATALOG\0" as *const u8 as *const i8 as *const xmlChar,
+    ) }) != 0
+    {
         type_0 = SGML_CATA_CATALOG;
-    } else if xmlStrEqual(
-            name,
-            b"BASE\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0
-        {
+    } else if (unsafe { xmlStrEqual(name, b"BASE\0" as *const u8 as *const i8 as *const xmlChar) }) != 0 {
         type_0 = SGML_CATA_BASE;
     }
     return type_0;
 }
-unsafe extern "C" fn xmlParseSGMLCatalog<'a1>(
-    mut catal: * mut crate::src::catalog::_xmlCatalog<'a1>,
-    mut value: * const u8,
-    mut file: * const i8,
+extern "C" fn xmlParseSGMLCatalog<'a1>(
+    mut catal: *mut crate::src::catalog::_xmlCatalog<'a1>,
+    mut value: *const u8,
+    mut file: *const i8,
     mut super_0: i32,
 ) -> i32 {
-    let mut cur: * const u8 = value;
-    let mut base: * mut u8 = 0 as *mut xmlChar;
+    let mut cur: *const u8 = value;
+    let mut base: *mut u8 = 0 as *mut xmlChar;
     let mut res: i32 = 0;
     if cur.is_null() || file.is_null() {
         return -(1 as i32);
     }
-    base = xmlStrdup(file as *const xmlChar);
-    while !cur.is_null()
-        && *cur.offset(0 as i32 as isize) as i32 != 0 as i32
-    {
-        while *cur as i32 == 0x20 as i32
-            || 0x9 as i32 <= *cur as i32
-                && *cur as i32 <= 0xa as i32
-            || *cur as i32 == 0xd as i32
+    base = unsafe { xmlStrdup(file as *const xmlChar) };
+    while !cur.is_null() && (unsafe { *cur.offset(0 as i32 as isize) }) as i32 != 0 as i32 {
+        while (unsafe { *cur }) as i32 == 0x20 as i32
+            || 0x9 as i32 <= (unsafe { *cur }) as i32 && (unsafe { *cur }) as i32 <= 0xa as i32
+            || (unsafe { *cur }) as i32 == 0xd as i32
         {
-            cur = cur.offset(1);
+            cur = unsafe { cur.offset(1) };
         }
-        if *cur.offset(0 as i32 as isize) as i32 == 0 as i32 {
+        if (unsafe { *cur.offset(0 as i32 as isize) }) as i32 == 0 as i32 {
             break;
         }
-        if *cur.offset(0 as i32 as isize) as i32 == '-' as i32
-            && *cur.offset(1 as i32 as isize) as i32 == '-' as i32
+        if (unsafe { *cur.offset(0 as i32 as isize) }) as i32 == '-' as i32
+            && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 == '-' as i32
         {
             cur = xmlParseSGMLCatalogComment(cur);
             if !cur.is_null() {
@@ -6746,234 +6200,205 @@ unsafe extern "C" fn xmlParseSGMLCatalog<'a1>(
             }
             break;
         } else {
-            let mut sysid: * mut u8 = 0 as *mut xmlChar;
-            let mut name: * mut u8 = 0 as *mut xmlChar;
+            let mut sysid: *mut u8 = 0 as *mut xmlChar;
+            let mut name: *mut u8 = 0 as *mut xmlChar;
             let mut type_0: i32 = XML_CATA_NONE;
             cur = xmlParseSGMLCatalogName(cur, Some(&mut name));
             if cur.is_null() || name.is_null() {
                 break;
-            } else if !(*cur as i32 == 0x20 as i32
-                    || 0x9 as i32 <= *cur as i32
-                        && *cur as i32 <= 0xa as i32
-                    || *cur as i32 == 0xd as i32)
-                {
-                xmlFree.expect("non-null function pointer")(name as *mut libc::c_void);
+            } else if !((unsafe { *cur }) as i32 == 0x20 as i32
+                || 0x9 as i32 <= (unsafe { *cur }) as i32 && (unsafe { *cur }) as i32 <= 0xa as i32
+                || (unsafe { *cur }) as i32 == 0xd as i32)
+            {
+                (unsafe { xmlFree.expect("non-null function pointer")(name as *mut libc::c_void) });
                 break;
             } else {
-                while *cur as i32 == 0x20 as i32
-                    || 0x9 as i32 <= *cur as i32
-                        && *cur as i32 <= 0xa as i32
-                    || *cur as i32 == 0xd as i32
+                while (unsafe { *cur }) as i32 == 0x20 as i32
+                    || 0x9 as i32 <= (unsafe { *cur }) as i32 && (unsafe { *cur }) as i32 <= 0xa as i32
+                    || (unsafe { *cur }) as i32 == 0xd as i32
                 {
-                    cur = cur.offset(1);
+                    cur = unsafe { cur.offset(1) };
                 }
-                if xmlStrEqual(
+                if (unsafe { xmlStrEqual(
                     name,
                     b"SYSTEM\0" as *const u8 as *const i8 as *const xmlChar,
-                ) != 0
+                ) }) != 0
                 {
                     type_0 = SGML_CATA_SYSTEM;
-                } else if xmlStrEqual(
-                        name,
-                        b"PUBLIC\0" as *const u8 as *const i8 as *const xmlChar,
-                    ) != 0
-                    {
+                } else if (unsafe { xmlStrEqual(
+                    name,
+                    b"PUBLIC\0" as *const u8 as *const i8 as *const xmlChar,
+                ) }) != 0
+                {
                     type_0 = SGML_CATA_PUBLIC;
-                } else if xmlStrEqual(
-                        name,
-                        b"DELEGATE\0" as *const u8 as *const i8
-                            as *const xmlChar,
-                    ) != 0
-                    {
+                } else if (unsafe { xmlStrEqual(
+                    name,
+                    b"DELEGATE\0" as *const u8 as *const i8 as *const xmlChar,
+                ) }) != 0
+                {
                     type_0 = SGML_CATA_DELEGATE;
-                } else if xmlStrEqual(
-                        name,
-                        b"ENTITY\0" as *const u8 as *const i8 as *const xmlChar,
-                    ) != 0
-                    {
+                } else if (unsafe { xmlStrEqual(
+                    name,
+                    b"ENTITY\0" as *const u8 as *const i8 as *const xmlChar,
+                ) }) != 0
+                {
                     type_0 = SGML_CATA_ENTITY;
-                } else if xmlStrEqual(
-                        name,
-                        b"DOCTYPE\0" as *const u8 as *const i8
-                            as *const xmlChar,
-                    ) != 0
-                    {
+                } else if (unsafe { xmlStrEqual(
+                    name,
+                    b"DOCTYPE\0" as *const u8 as *const i8 as *const xmlChar,
+                ) }) != 0
+                {
                     type_0 = SGML_CATA_DOCTYPE;
-                } else if xmlStrEqual(
-                        name,
-                        b"LINKTYPE\0" as *const u8 as *const i8
-                            as *const xmlChar,
-                    ) != 0
-                    {
+                } else if (unsafe { xmlStrEqual(
+                    name,
+                    b"LINKTYPE\0" as *const u8 as *const i8 as *const xmlChar,
+                ) }) != 0
+                {
                     type_0 = SGML_CATA_LINKTYPE;
-                } else if xmlStrEqual(
-                        name,
-                        b"NOTATION\0" as *const u8 as *const i8
-                            as *const xmlChar,
-                    ) != 0
-                    {
+                } else if (unsafe { xmlStrEqual(
+                    name,
+                    b"NOTATION\0" as *const u8 as *const i8 as *const xmlChar,
+                ) }) != 0
+                {
                     type_0 = SGML_CATA_NOTATION;
-                } else if xmlStrEqual(
-                        name,
-                        b"SGMLDECL\0" as *const u8 as *const i8
-                            as *const xmlChar,
-                    ) != 0
-                    {
+                } else if (unsafe { xmlStrEqual(
+                    name,
+                    b"SGMLDECL\0" as *const u8 as *const i8 as *const xmlChar,
+                ) }) != 0
+                {
                     type_0 = SGML_CATA_SGMLDECL;
-                } else if xmlStrEqual(
-                        name,
-                        b"DOCUMENT\0" as *const u8 as *const i8
-                            as *const xmlChar,
-                    ) != 0
-                    {
+                } else if (unsafe { xmlStrEqual(
+                    name,
+                    b"DOCUMENT\0" as *const u8 as *const i8 as *const xmlChar,
+                ) }) != 0
+                {
                     type_0 = SGML_CATA_DOCUMENT;
-                } else if xmlStrEqual(
-                        name,
-                        b"CATALOG\0" as *const u8 as *const i8
-                            as *const xmlChar,
-                    ) != 0
-                    {
+                } else if (unsafe { xmlStrEqual(
+                    name,
+                    b"CATALOG\0" as *const u8 as *const i8 as *const xmlChar,
+                ) }) != 0
+                {
                     type_0 = SGML_CATA_CATALOG;
-                } else if xmlStrEqual(
-                        name,
-                        b"BASE\0" as *const u8 as *const i8 as *const xmlChar,
-                    ) != 0
-                    {
+                } else if (unsafe { xmlStrEqual(name, b"BASE\0" as *const u8 as *const i8 as *const xmlChar) })
+                    != 0
+                {
                     type_0 = SGML_CATA_BASE;
-                } else if xmlStrEqual(
-                        name,
-                        b"OVERRIDE\0" as *const u8 as *const i8
-                            as *const xmlChar,
-                    ) != 0
-                    {
-                    xmlFree
-                        .expect("non-null function pointer")(name as *mut libc::c_void);
+                } else if (unsafe { xmlStrEqual(
+                    name,
+                    b"OVERRIDE\0" as *const u8 as *const i8 as *const xmlChar,
+                ) }) != 0
+                {
+                    (unsafe { xmlFree.expect("non-null function pointer")(name as *mut libc::c_void) });
                     cur = xmlParseSGMLCatalogName(cur, Some(&mut name));
                     if name.is_null() {
                         break;
                     }
-                    xmlFree
-                        .expect("non-null function pointer")(name as *mut libc::c_void);
+                    (unsafe { xmlFree.expect("non-null function pointer")(name as *mut libc::c_void) });
                     continue;
                 }
-                xmlFree.expect("non-null function pointer")(name as *mut libc::c_void);
+                (unsafe { xmlFree.expect("non-null function pointer")(name as *mut libc::c_void) });
                 name = 0 as *mut xmlChar;
                 let mut current_block_56: u64;
                 match type_0 as i32 {
                     15 => {
-                        if *cur as i32 == '%' as i32 {
+                        if (unsafe { *cur }) as i32 == '%' as i32 {
                             type_0 = SGML_CATA_PENTITY;
                         }
                         current_block_56 = 11907492662621709349;
-                    }
+                    },
                     16 | 17 | 18 | 19 => {
                         current_block_56 = 11907492662621709349;
-                    }
+                    },
                     14 | 13 | 20 => {
                         cur = xmlParseSGMLCatalogPubid(cur, Some(&mut name));
                         if !cur.is_null() {
                             if type_0 as i32 != SGML_CATA_SYSTEM as i32 {
-                                let mut normid: * mut u8 = 0 as *mut xmlChar;
+                                let mut normid: *mut u8 = 0 as *mut xmlChar;
                                 normid = xmlCatalogNormalizePublic(name);
                                 if !normid.is_null() {
                                     if !name.is_null() {
-                                        xmlFree
-                                            .expect(
-                                                "non-null function pointer",
-                                            )(name as *mut libc::c_void);
+                                        (unsafe { xmlFree.expect("non-null function pointer")(
+                                            name as *mut libc::c_void,
+                                        ) });
                                     }
-                                    if *normid as i32 != 0 as i32 {
+                                    if (unsafe { *normid }) as i32 != 0 as i32 {
                                         name = normid;
                                     } else {
-                                        xmlFree
-                                            .expect(
-                                                "non-null function pointer",
-                                            )(normid as *mut libc::c_void);
+                                        (unsafe { xmlFree.expect("non-null function pointer")(
+                                            normid as *mut libc::c_void,
+                                        ) });
                                         name = 0 as *mut xmlChar;
                                     }
                                 }
                             }
-                            if *cur as i32 == 0x20 as i32
-                                || 0x9 as i32 <= *cur as i32
-                                    && *cur as i32 <= 0xa as i32
-                                || *cur as i32 == 0xd as i32
+                            if (unsafe { *cur }) as i32 == 0x20 as i32
+                                || 0x9 as i32 <= (unsafe { *cur }) as i32 && (unsafe { *cur }) as i32 <= 0xa as i32
+                                || (unsafe { *cur }) as i32 == 0xd as i32
                             {
-                                while *cur as i32 == 0x20 as i32
-                                    || 0x9 as i32 <= *cur as i32
-                                        && *cur as i32 <= 0xa as i32
-                                    || *cur as i32 == 0xd as i32
+                                while (unsafe { *cur }) as i32 == 0x20 as i32
+                                    || 0x9 as i32 <= (unsafe { *cur }) as i32 && (unsafe { *cur }) as i32 <= 0xa as i32
+                                    || (unsafe { *cur }) as i32 == 0xd as i32
                                 {
-                                    cur = cur.offset(1);
+                                    cur = unsafe { cur.offset(1) };
                                 }
                                 cur = xmlParseSGMLCatalogPubid(cur, Some(&mut sysid));
                                 cur.is_null();
                             }
                         }
                         current_block_56 = 6014157347423944569;
-                    }
+                    },
                     21 | 22 | 23 | 24 => {
                         cur = xmlParseSGMLCatalogPubid(cur, Some(&mut sysid));
                         cur.is_null();
                         current_block_56 = 6014157347423944569;
-                    }
+                    },
                     _ => {
                         current_block_56 = 6014157347423944569;
-                    }
+                    },
                 }
                 match current_block_56 {
                     11907492662621709349 => {
                         cur = xmlParseSGMLCatalogName(cur, Some(&mut name));
                         if !cur.is_null() {
-                            if *cur as i32 == 0x20 as i32
-                                || 0x9 as i32 <= *cur as i32
-                                    && *cur as i32 <= 0xa as i32
-                                || *cur as i32 == 0xd as i32
+                            if (unsafe { *cur }) as i32 == 0x20 as i32
+                                || 0x9 as i32 <= (unsafe { *cur }) as i32 && (unsafe { *cur }) as i32 <= 0xa as i32
+                                || (unsafe { *cur }) as i32 == 0xd as i32
                             {
-                                while *cur as i32 == 0x20 as i32
-                                    || 0x9 as i32 <= *cur as i32
-                                        && *cur as i32 <= 0xa as i32
-                                    || *cur as i32 == 0xd as i32
+                                while (unsafe { *cur }) as i32 == 0x20 as i32
+                                    || 0x9 as i32 <= (unsafe { *cur }) as i32 && (unsafe { *cur }) as i32 <= 0xa as i32
+                                    || (unsafe { *cur }) as i32 == 0xd as i32
                                 {
-                                    cur = cur.offset(1);
+                                    cur = unsafe { cur.offset(1) };
                                 }
                                 cur = xmlParseSGMLCatalogPubid(cur, Some(&mut sysid));
                                 cur.is_null();
                             }
                         }
-                    }
-                    _ => {}
+                    },
+                    _ => {},
                 }
                 if cur.is_null() {
                     if !name.is_null() {
-                        xmlFree
-                            .expect(
-                                "non-null function pointer",
-                            )(name as *mut libc::c_void);
+                        (unsafe { xmlFree.expect("non-null function pointer")(name as *mut libc::c_void) });
                     }
                     if !sysid.is_null() {
-                        xmlFree
-                            .expect(
-                                "non-null function pointer",
-                            )(sysid as *mut libc::c_void);
+                        (unsafe { xmlFree.expect("non-null function pointer")(sysid as *mut libc::c_void) });
                     }
                     break;
                 } else {
                     if type_0 as i32 == SGML_CATA_BASE as i32 {
                         if !base.is_null() {
-                            xmlFree
-                                .expect(
-                                    "non-null function pointer",
-                                )(base as *mut libc::c_void);
+                            (unsafe { xmlFree.expect("non-null function pointer")(base as *mut libc::c_void) });
                         }
-                        base = xmlStrdup(sysid);
+                        base = unsafe { xmlStrdup(sysid) };
                     } else if type_0 as i32 == SGML_CATA_PUBLIC as i32
-                            || type_0 as i32 == SGML_CATA_SYSTEM as i32
-                        {
-                        let mut filename: * mut u8 = 0 as *mut xmlChar;
-                        filename = xmlBuildURI(sysid, base);
+                        || type_0 as i32 == SGML_CATA_SYSTEM as i32
+                    {
+                        let mut filename: *mut u8 = 0 as *mut xmlChar;
+                        filename = unsafe { xmlBuildURI(sysid, base) };
                         if !filename.is_null() {
-                            let mut entry: * mut crate::src::catalog::_xmlCatalogEntry = 0
-                                as *mut xmlCatalogEntry;
+                            let mut entry: *mut crate::src::catalog::_xmlCatalogEntry =
+                                0 as *mut xmlCatalogEntry;
                             entry = xmlNewCatalogEntry(
                                 type_0,
                                 name,
@@ -6982,26 +6407,21 @@ unsafe extern "C" fn xmlParseSGMLCatalog<'a1>(
                                 XML_CATA_PREFER_NONE,
                                 0 as xmlCatalogEntryPtr,
                             );
-                            res = xmlHashAddEntry(
-                                (*catal).sgml,
-                                name,
-                                entry as *mut libc::c_void,
-                            );
+                            res = xmlHashAddEntry(unsafe { (*catal).sgml }, name, entry as *mut libc::c_void);
                             if res < 0 as i32 {
                                 xmlFreeCatalogEntry(
                                     entry as *mut libc::c_void,
                                     0 as *const xmlChar,
                                 );
                             }
-                            xmlFree
-                                .expect(
-                                    "non-null function pointer",
-                                )(filename as *mut libc::c_void);
+                            (unsafe { xmlFree.expect("non-null function pointer")(
+                                filename as *mut libc::c_void,
+                            ) });
                         }
                     } else if type_0 as i32 == SGML_CATA_CATALOG as i32 {
                         if super_0 != 0 {
-                            let mut entry_0: * mut crate::src::catalog::_xmlCatalogEntry = 0
-                                as *mut xmlCatalogEntry;
+                            let mut entry_0: *mut crate::src::catalog::_xmlCatalogEntry =
+                                0 as *mut xmlCatalogEntry;
                             entry_0 = xmlNewCatalogEntry(
                                 type_0,
                                 sysid,
@@ -7010,11 +6430,8 @@ unsafe extern "C" fn xmlParseSGMLCatalog<'a1>(
                                 XML_CATA_PREFER_NONE,
                                 0 as xmlCatalogEntryPtr,
                             );
-                            res = xmlHashAddEntry(
-                                (*catal).sgml,
-                                sysid,
-                                entry_0 as *mut libc::c_void,
-                            );
+                            res =
+                                xmlHashAddEntry(unsafe { (*catal).sgml }, sysid, entry_0 as *mut libc::c_void);
                             if res < 0 as i32 {
                                 xmlFreeCatalogEntry(
                                     entry_0 as *mut libc::c_void,
@@ -7022,53 +6439,47 @@ unsafe extern "C" fn xmlParseSGMLCatalog<'a1>(
                                 );
                             }
                         } else {
-                            let mut filename_0: * mut u8 = 0 as *mut xmlChar;
-                            filename_0 = xmlBuildURI(sysid, base);
+                            let mut filename_0: *mut u8 = 0 as *mut xmlChar;
+                            filename_0 = unsafe { xmlBuildURI(sysid, base) };
                             if !filename_0.is_null() {
                                 xmlExpandCatalog(catal, filename_0 as *const i8);
-                                xmlFree
-                                    .expect(
-                                        "non-null function pointer",
-                                    )(filename_0 as *mut libc::c_void);
+                                (unsafe { xmlFree.expect("non-null function pointer")(
+                                    filename_0 as *mut libc::c_void,
+                                ) });
                             }
                         }
                     }
                     if !name.is_null() {
-                        xmlFree
-                            .expect(
-                                "non-null function pointer",
-                            )(name as *mut libc::c_void);
+                        (unsafe { xmlFree.expect("non-null function pointer")(name as *mut libc::c_void) });
                     }
                     if !sysid.is_null() {
-                        xmlFree
-                            .expect(
-                                "non-null function pointer",
-                            )(sysid as *mut libc::c_void);
+                        (unsafe { xmlFree.expect("non-null function pointer")(sysid as *mut libc::c_void) });
                     }
                 }
             }
         }
     }
     if !base.is_null() {
-        xmlFree.expect("non-null function pointer")(base as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(base as *mut libc::c_void) });
     }
     if cur.is_null() {
         return -(1 as i32);
     }
     return 0 as i32;
 }
-unsafe extern "C" fn xmlCatalogGetSGMLPublic(
-    mut catal: * mut crate::src::hash::_xmlHashTable,
-    mut pubID: * const u8,
-) -> * const u8 {
-    let mut entry: * mut crate::src::catalog::_xmlCatalogEntry = (0 as * mut crate::src::catalog::_xmlCatalogEntry);
-    let mut normid: * mut u8 = 0 as *mut xmlChar;
+extern "C" fn xmlCatalogGetSGMLPublic(
+    mut catal: *mut crate::src::hash::_xmlHashTable,
+    mut pubID: *const u8,
+) -> *const u8 {
+    let mut entry: *mut crate::src::catalog::_xmlCatalogEntry =
+        0 as *mut crate::src::catalog::_xmlCatalogEntry;
+    let mut normid: *mut u8 = 0 as *mut xmlChar;
     if catal.is_null() {
         return 0 as *const xmlChar;
     }
     normid = xmlCatalogNormalizePublic(pubID);
     if !normid.is_null() {
-        pubID = if *normid as i32 != 0 as i32 {
+        pubID = if (unsafe { *normid }) as i32 != 0 as i32 {
             normid
         } else {
             0 as *mut xmlChar
@@ -7077,26 +6488,27 @@ unsafe extern "C" fn xmlCatalogGetSGMLPublic(
     entry = xmlHashLookup(catal, pubID) as xmlCatalogEntryPtr;
     if entry.is_null() {
         if !normid.is_null() {
-            xmlFree.expect("non-null function pointer")(normid as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(normid as *mut libc::c_void) });
         }
         return 0 as *const xmlChar;
     }
-    if (*entry).type_0 as i32 == SGML_CATA_PUBLIC as i32 {
+    if (unsafe { (*entry).type_0 }) as i32 == SGML_CATA_PUBLIC as i32 {
         if !normid.is_null() {
-            xmlFree.expect("non-null function pointer")(normid as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(normid as *mut libc::c_void) });
         }
-        return (*entry).URL;
+        return unsafe { (*entry).URL };
     }
     if !normid.is_null() {
-        xmlFree.expect("non-null function pointer")(normid as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(normid as *mut libc::c_void) });
     }
     return 0 as *const xmlChar;
 }
-unsafe extern "C" fn xmlCatalogGetSGMLSystem(
-    mut catal: * mut crate::src::hash::_xmlHashTable,
-    mut sysID: * const u8,
-) -> * const u8 {
-    let mut entry: * mut crate::src::catalog::_xmlCatalogEntry = (0 as * mut crate::src::catalog::_xmlCatalogEntry);
+extern "C" fn xmlCatalogGetSGMLSystem(
+    mut catal: *mut crate::src::hash::_xmlHashTable,
+    mut sysID: *const u8,
+) -> *const u8 {
+    let mut entry: *mut crate::src::catalog::_xmlCatalogEntry =
+        0 as *mut crate::src::catalog::_xmlCatalogEntry;
     if catal.is_null() {
         return 0 as *const xmlChar;
     }
@@ -7104,28 +6516,28 @@ unsafe extern "C" fn xmlCatalogGetSGMLSystem(
     if entry.is_null() {
         return 0 as *const xmlChar;
     }
-    if (*entry).type_0 as i32 == SGML_CATA_SYSTEM as i32 {
-        return (*entry).URL;
+    if (unsafe { (*entry).type_0 }) as i32 == SGML_CATA_SYSTEM as i32 {
+        return unsafe { (*entry).URL };
     }
     return 0 as *const xmlChar;
 }
-unsafe extern "C" fn xmlCatalogSGMLResolve<'a1>(
-    mut catal: * mut crate::src::catalog::_xmlCatalog<'a1>,
-    mut pubID: * const u8,
-    mut sysID: * const u8,
-) -> * const u8 {
-    let mut ret: * const u8 = 0 as *const xmlChar;
-    if ((*catal).sgml).is_null() {
+extern "C" fn xmlCatalogSGMLResolve<'a1>(
+    mut catal: *mut crate::src::catalog::_xmlCatalog<'a1>,
+    mut pubID: *const u8,
+    mut sysID: *const u8,
+) -> *const u8 {
+    let mut ret: *const u8 = 0 as *const xmlChar;
+    if (unsafe { (*catal).sgml }).is_null() {
         return 0 as *const xmlChar;
     }
     if !pubID.is_null() {
-        ret = xmlCatalogGetSGMLPublic((*catal).sgml, pubID);
+        ret = xmlCatalogGetSGMLPublic(unsafe { (*catal).sgml }, pubID);
     }
     if !ret.is_null() {
         return ret;
     }
     if !sysID.is_null() {
-        ret = xmlCatalogGetSGMLSystem((*catal).sgml, sysID);
+        ret = xmlCatalogGetSGMLSystem(unsafe { (*catal).sgml }, sysID);
     }
     if !ret.is_null() {
         return ret;
@@ -7133,23 +6545,23 @@ unsafe extern "C" fn xmlCatalogSGMLResolve<'a1>(
     return 0 as *const xmlChar;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlLoadSGMLSuperCatalog<'a1>(
-    mut filename: * const i8,
-) -> * mut crate::src::catalog::_xmlCatalog<'a1> {
-    let mut content: * mut u8 = 0 as *mut xmlChar;
-    let mut catal: * mut crate::src::catalog::_xmlCatalog<'_> = 0 as *mut xmlCatalog;
+pub extern "C" fn xmlLoadSGMLSuperCatalog<'a1>(
+    mut filename: *const i8,
+) -> *mut crate::src::catalog::_xmlCatalog<'a1> {
+    let mut content: *mut u8 = 0 as *mut xmlChar;
+    let mut catal: *mut crate::src::catalog::_xmlCatalog<'_> = 0 as *mut xmlCatalog;
     let mut ret: i32 = 0;
     content = xmlLoadFileContent(filename);
     if content.is_null() {
         return 0 as xmlCatalogPtr;
     }
-    catal = xmlCreateNewCatalog(XML_SGML_CATALOG_TYPE, xmlCatalogDefaultPrefer);
+    catal = xmlCreateNewCatalog(XML_SGML_CATALOG_TYPE, unsafe { xmlCatalogDefaultPrefer });
     if catal.is_null() {
-        xmlFree.expect("non-null function pointer")(content as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(content as *mut libc::c_void) });
         return 0 as xmlCatalogPtr;
     }
     ret = xmlParseSGMLCatalog(catal, content, filename, 1 as i32);
-    xmlFree.expect("non-null function pointer")(content as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(content as *mut libc::c_void) });
     if ret < 0 as i32 {
         xmlFreeCatalog(catal);
         return 0 as xmlCatalogPtr;
@@ -7157,305 +6569,274 @@ pub unsafe extern "C" fn xmlLoadSGMLSuperCatalog<'a1>(
     return catal;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlLoadACatalog<'a1>(
-    mut filename: * const i8,
-) -> * mut crate::src::catalog::_xmlCatalog<'a1> {
-    let mut content: * mut u8 = 0 as *mut xmlChar;
-    let mut first: * mut u8 = 0 as *mut xmlChar;
-    let mut catal: * mut crate::src::catalog::_xmlCatalog<'_> = 0 as *mut xmlCatalog;
+pub extern "C" fn xmlLoadACatalog<'a1>(
+    mut filename: *const i8,
+) -> *mut crate::src::catalog::_xmlCatalog<'a1> {
+    let mut content: *mut u8 = 0 as *mut xmlChar;
+    let mut first: *mut u8 = 0 as *mut xmlChar;
+    let mut catal: *mut crate::src::catalog::_xmlCatalog<'_> = 0 as *mut xmlCatalog;
     let mut ret: i32 = 0;
     content = xmlLoadFileContent(filename);
     if content.is_null() {
         return 0 as xmlCatalogPtr;
     }
     first = content;
-    while *first as i32 != 0 as i32
-        && *first as i32 != '-' as i32 && *first as i32 != '<' as i32
-        && !(*first as i32 >= 'A' as i32 && *first as i32 <= 'Z' as i32
-            || *first as i32 >= 'a' as i32
-                && *first as i32 <= 'z' as i32)
+    while (unsafe { *first }) as i32 != 0 as i32
+        && (unsafe { *first }) as i32 != '-' as i32
+        && (unsafe { *first }) as i32 != '<' as i32
+        && !((unsafe { *first }) as i32 >= 'A' as i32 && (unsafe { *first }) as i32 <= 'Z' as i32
+            || (unsafe { *first }) as i32 >= 'a' as i32 && (unsafe { *first }) as i32 <= 'z' as i32)
     {
-        first = first.offset(1);
+        first = unsafe { first.offset(1) };
     }
-    if *first as i32 != '<' as i32 {
-        catal = xmlCreateNewCatalog(XML_SGML_CATALOG_TYPE, xmlCatalogDefaultPrefer);
+    if (unsafe { *first }) as i32 != '<' as i32 {
+        catal = xmlCreateNewCatalog(XML_SGML_CATALOG_TYPE, unsafe { xmlCatalogDefaultPrefer });
         if catal.is_null() {
-            xmlFree.expect("non-null function pointer")(content as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(content as *mut libc::c_void) });
             return 0 as xmlCatalogPtr;
         }
         ret = xmlParseSGMLCatalog(catal, content, filename, 0 as i32);
         if ret < 0 as i32 {
             xmlFreeCatalog(catal);
-            xmlFree.expect("non-null function pointer")(content as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(content as *mut libc::c_void) });
             return 0 as xmlCatalogPtr;
         }
     } else {
-        catal = xmlCreateNewCatalog(XML_XML_CATALOG_TYPE, xmlCatalogDefaultPrefer);
+        catal = xmlCreateNewCatalog(XML_XML_CATALOG_TYPE, unsafe { xmlCatalogDefaultPrefer });
         if catal.is_null() {
-            xmlFree.expect("non-null function pointer")(content as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(content as *mut libc::c_void) });
             return 0 as xmlCatalogPtr;
         }
-        let ref mut fresh65 = (*catal).xml;
+        let fresh65 = unsafe { &mut ((*catal).xml) };
         *fresh65 = xmlNewCatalogEntry(
             XML_CATA_CATALOG,
             0 as *const xmlChar,
             0 as *const xmlChar,
             filename as *mut xmlChar,
-            xmlCatalogDefaultPrefer,
+            unsafe { xmlCatalogDefaultPrefer },
             0 as xmlCatalogEntryPtr,
         );
     }
-    xmlFree.expect("non-null function pointer")(content as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(content as *mut libc::c_void) });
     return catal;
 }
-unsafe extern "C" fn xmlExpandCatalog<'a1>(
-    mut catal: * mut crate::src::catalog::_xmlCatalog<'a1>,
-    mut filename: * const i8,
+extern "C" fn xmlExpandCatalog<'a1>(
+    mut catal: *mut crate::src::catalog::_xmlCatalog<'a1>,
+    mut filename: *const i8,
 ) -> i32 {
     let mut ret: i32 = 0;
     if catal.is_null() || filename.is_null() {
         return -(1 as i32);
     }
-    if (*catal).type_0 as u32
-        == XML_SGML_CATALOG_TYPE as i32 as u32
-    {
-        let mut content: * mut u8 = 0 as *mut xmlChar;
+    if (unsafe { (*catal).type_0 }) as u32 == XML_SGML_CATALOG_TYPE as i32 as u32 {
+        let mut content: *mut u8 = 0 as *mut xmlChar;
         content = xmlLoadFileContent(filename);
         if content.is_null() {
             return -(1 as i32);
         }
         ret = xmlParseSGMLCatalog(catal, content, filename, 0 as i32);
         if ret < 0 as i32 {
-            xmlFree.expect("non-null function pointer")(content as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(content as *mut libc::c_void) });
             return -(1 as i32);
         }
-        xmlFree.expect("non-null function pointer")(content as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(content as *mut libc::c_void) });
     } else {
-        let mut tmp: * mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
-        let mut cur: * mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
+        let mut tmp: *mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
+        let mut cur: *mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
         tmp = xmlNewCatalogEntry(
             XML_CATA_CATALOG,
             0 as *const xmlChar,
             0 as *const xmlChar,
             filename as *mut xmlChar,
-            xmlCatalogDefaultPrefer,
+            unsafe { xmlCatalogDefaultPrefer },
             0 as xmlCatalogEntryPtr,
         );
-        cur = (*catal).xml;
+        cur = unsafe { (*catal).xml };
         if cur.is_null() {
-            let ref mut fresh66 = (*catal).xml;
+            let fresh66 = unsafe { &mut ((*catal).xml) };
             *fresh66 = tmp;
         } else {
-            while !((*cur).next).is_null() {
-                cur = (*cur).next;
+            while !(unsafe { (*cur).next }).is_null() {
+                cur = unsafe { (*cur).next };
             }
-            let ref mut fresh67 = (*cur).next;
+            let fresh67 = unsafe { &mut ((*cur).next) };
             *fresh67 = tmp;
         }
     }
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlACatalogResolveSystem<'a1>(
-    mut catal: * mut crate::src::catalog::_xmlCatalog<'a1>,
-    mut sysID: * const u8,
-) -> * mut u8 {
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
+pub extern "C" fn xmlACatalogResolveSystem<'a1>(
+    mut catal: *mut crate::src::catalog::_xmlCatalog<'a1>,
+    mut sysID: *const u8,
+) -> *mut u8 {
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
     if sysID.is_null() || catal.is_null() {
         return 0 as *mut xmlChar;
     }
-    if xmlDebugCatalogs != 0 {
-        (*(borrow(& __xmlGenericError())).unwrap())
-            .expect(
-                "non-null function pointer",
-            )(
+    if (unsafe { xmlDebugCatalogs }) != 0 {
+        (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
             *(__xmlGenericErrorContext()).unwrap(),
             b"Resolve sysID %s\n\0" as *const u8 as *const i8,
             sysID,
-        );
+        ) });
     }
-    if (*catal).type_0 as u32
-        == XML_XML_CATALOG_TYPE as i32 as u32
-    {
-        ret = xmlCatalogListXMLResolve((*catal).xml, 0 as *const xmlChar, sysID);
+    if (unsafe { (*catal).type_0 }) as u32 == XML_XML_CATALOG_TYPE as i32 as u32 {
+        ret = xmlCatalogListXMLResolve(unsafe { (*catal).xml }, 0 as *const xmlChar, sysID);
         if ret == -(1 as i32) as *mut xmlChar {
             ret = 0 as *mut xmlChar;
         }
     } else {
-        let mut sgml: * const u8 = 0 as *const xmlChar;
-        sgml = xmlCatalogGetSGMLSystem((*catal).sgml, sysID);
+        let mut sgml: *const u8 = 0 as *const xmlChar;
+        sgml = xmlCatalogGetSGMLSystem(unsafe { (*catal).sgml }, sysID);
         if !sgml.is_null() {
-            ret = xmlStrdup(sgml);
+            ret = unsafe { xmlStrdup(sgml) };
         }
     }
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlACatalogResolvePublic<'a1>(
-    mut catal: * mut crate::src::catalog::_xmlCatalog<'a1>,
-    mut pubID: * const u8,
-) -> * mut u8 {
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
+pub extern "C" fn xmlACatalogResolvePublic<'a1>(
+    mut catal: *mut crate::src::catalog::_xmlCatalog<'a1>,
+    mut pubID: *const u8,
+) -> *mut u8 {
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
     if pubID.is_null() || catal.is_null() {
         return 0 as *mut xmlChar;
     }
-    if xmlDebugCatalogs != 0 {
-        (*(borrow(& __xmlGenericError())).unwrap())
-            .expect(
-                "non-null function pointer",
-            )(
+    if (unsafe { xmlDebugCatalogs }) != 0 {
+        (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
             *(__xmlGenericErrorContext()).unwrap(),
             b"Resolve pubID %s\n\0" as *const u8 as *const i8,
             pubID,
-        );
+        ) });
     }
-    if (*catal).type_0 as u32
-        == XML_XML_CATALOG_TYPE as i32 as u32
-    {
-        ret = xmlCatalogListXMLResolve((*catal).xml, pubID, 0 as *const xmlChar);
+    if (unsafe { (*catal).type_0 }) as u32 == XML_XML_CATALOG_TYPE as i32 as u32 {
+        ret = xmlCatalogListXMLResolve(unsafe { (*catal).xml }, pubID, 0 as *const xmlChar);
         if ret == -(1 as i32) as *mut xmlChar {
             ret = 0 as *mut xmlChar;
         }
     } else {
-        let mut sgml: * const u8 = 0 as *const xmlChar;
-        sgml = xmlCatalogGetSGMLPublic((*catal).sgml, pubID);
+        let mut sgml: *const u8 = 0 as *const xmlChar;
+        sgml = xmlCatalogGetSGMLPublic(unsafe { (*catal).sgml }, pubID);
         if !sgml.is_null() {
-            ret = xmlStrdup(sgml);
+            ret = unsafe { xmlStrdup(sgml) };
         }
     }
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlACatalogResolve<'a1>(
-    mut catal: * mut crate::src::catalog::_xmlCatalog<'a1>,
-    mut pubID: * const u8,
-    mut sysID: * const u8,
-) -> * mut u8 {
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
+pub extern "C" fn xmlACatalogResolve<'a1>(
+    mut catal: *mut crate::src::catalog::_xmlCatalog<'a1>,
+    mut pubID: *const u8,
+    mut sysID: *const u8,
+) -> *mut u8 {
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
     if pubID.is_null() && sysID.is_null() || catal.is_null() {
         return 0 as *mut xmlChar;
     }
-    if xmlDebugCatalogs != 0 {
+    if (unsafe { xmlDebugCatalogs }) != 0 {
         if !pubID.is_null() && !sysID.is_null() {
-            (*(borrow(& __xmlGenericError())).unwrap())
-                .expect(
-                    "non-null function pointer",
-                )(
+            (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                 *(__xmlGenericErrorContext()).unwrap(),
                 b"Resolve: pubID %s sysID %s\n\0" as *const u8 as *const i8,
                 pubID,
                 sysID,
-            );
+            ) });
         } else if !pubID.is_null() {
-            (*(borrow(& __xmlGenericError())).unwrap())
-                .expect(
-                    "non-null function pointer",
-                )(
+            (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                 *(__xmlGenericErrorContext()).unwrap(),
                 b"Resolve: pubID %s\n\0" as *const u8 as *const i8,
                 pubID,
-            );
+            ) });
         } else {
-            (*(borrow(& __xmlGenericError())).unwrap())
-                .expect(
-                    "non-null function pointer",
-                )(
+            (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                 *(__xmlGenericErrorContext()).unwrap(),
                 b"Resolve: sysID %s\n\0" as *const u8 as *const i8,
                 sysID,
-            );
+            ) });
         }
     }
-    if (*catal).type_0 as u32
-        == XML_XML_CATALOG_TYPE as i32 as u32
-    {
-        ret = xmlCatalogListXMLResolve((*catal).xml, pubID, sysID);
+    if (unsafe { (*catal).type_0 }) as u32 == XML_XML_CATALOG_TYPE as i32 as u32 {
+        ret = xmlCatalogListXMLResolve(unsafe { (*catal).xml }, pubID, sysID);
         if ret == -(1 as i32) as *mut xmlChar {
             ret = 0 as *mut xmlChar;
         }
     } else {
-        let mut sgml: * const u8 = 0 as *const xmlChar;
+        let mut sgml: *const u8 = 0 as *const xmlChar;
         sgml = xmlCatalogSGMLResolve(catal, pubID, sysID);
         if !sgml.is_null() {
-            ret = xmlStrdup(sgml);
+            ret = unsafe { xmlStrdup(sgml) };
         }
     }
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlACatalogResolveURI<'a1>(
-    mut catal: * mut crate::src::catalog::_xmlCatalog<'a1>,
-    mut URI: * const u8,
-) -> * mut u8 {
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
+pub extern "C" fn xmlACatalogResolveURI<'a1>(
+    mut catal: *mut crate::src::catalog::_xmlCatalog<'a1>,
+    mut URI: *const u8,
+) -> *mut u8 {
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
     if URI.is_null() || catal.is_null() {
         return 0 as *mut xmlChar;
     }
-    if xmlDebugCatalogs != 0 {
-        (*(borrow(& __xmlGenericError())).unwrap())
-            .expect(
-                "non-null function pointer",
-            )(
+    if (unsafe { xmlDebugCatalogs }) != 0 {
+        (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
             *(__xmlGenericErrorContext()).unwrap(),
             b"Resolve URI %s\n\0" as *const u8 as *const i8,
             URI,
-        );
+        ) });
     }
-    if (*catal).type_0 as u32
-        == XML_XML_CATALOG_TYPE as i32 as u32
-    {
-        ret = xmlCatalogListXMLResolveURI((*catal).xml, URI);
+    if (unsafe { (*catal).type_0 }) as u32 == XML_XML_CATALOG_TYPE as i32 as u32 {
+        ret = xmlCatalogListXMLResolveURI(unsafe { (*catal).xml }, URI);
         if ret == -(1 as i32) as *mut xmlChar {
             ret = 0 as *mut xmlChar;
         }
     } else {
-        let mut sgml: * const u8 = 0 as *const xmlChar;
+        let mut sgml: *const u8 = 0 as *const xmlChar;
         sgml = xmlCatalogSGMLResolve(catal, 0 as *const xmlChar, URI);
         if !sgml.is_null() {
-            ret = xmlStrdup(sgml);
+            ret = unsafe { xmlStrdup(sgml) };
         }
     }
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlACatalogDump<'a1>(mut catal: * mut crate::src::catalog::_xmlCatalog<'a1>, mut out: * mut crate::src::HTMLtree::_IO_FILE) {
+pub extern "C" fn xmlACatalogDump<'a1>(
+    mut catal: *mut crate::src::catalog::_xmlCatalog<'a1>,
+    mut out: *mut crate::src::HTMLtree::_IO_FILE,
+) {
     if out.is_null() || catal.is_null() {
         return;
     }
-    if (*catal).type_0 as u32
-        == XML_XML_CATALOG_TYPE as i32 as u32
-    {
-        xmlDumpXMLCatalog(out, (*catal).xml);
+    if (unsafe { (*catal).type_0 }) as u32 == XML_XML_CATALOG_TYPE as i32 as u32 {
+        xmlDumpXMLCatalog(out, unsafe { (*catal).xml });
     } else {
         xmlHashScan(
-            (*catal).sgml,
-            Some(
-                xmlCatalogDumpEntry,
-            ),
+            unsafe { (*catal).sgml },
+            Some(xmlCatalogDumpEntry),
             out as *mut libc::c_void,
         );
     };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlACatalogAdd<'a1>(
-    mut catal: * mut crate::src::catalog::_xmlCatalog<'a1>,
-    mut type_0: * const u8,
-    mut orig: * const u8,
-    mut replace: * const u8,
+pub extern "C" fn xmlACatalogAdd<'a1>(
+    mut catal: *mut crate::src::catalog::_xmlCatalog<'a1>,
+    mut type_0: *const u8,
+    mut orig: *const u8,
+    mut replace: *const u8,
 ) -> i32 {
     let mut res: i32 = -(1 as i32);
     if catal.is_null() {
         return -(1 as i32);
     }
-    if (*catal).type_0 as u32
-        == XML_XML_CATALOG_TYPE as i32 as u32
-    {
-        res = xmlAddXMLCatalog((*catal).xml, type_0, orig, replace);
+    if (unsafe { (*catal).type_0 }) as u32 == XML_XML_CATALOG_TYPE as i32 as u32 {
+        res = xmlAddXMLCatalog(unsafe { (*catal).xml }, type_0, orig, replace);
     } else {
         let mut cattype: i32 = XML_CATA_NONE;
         cattype = xmlGetSGMLCatalogEntryType(type_0);
         if cattype as i32 != XML_CATA_NONE as i32 {
-            let mut entry: * mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
+            let mut entry: *mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
             entry = xmlNewCatalogEntry(
                 cattype,
                 orig,
@@ -7464,36 +6845,28 @@ pub unsafe extern "C" fn xmlACatalogAdd<'a1>(
                 XML_CATA_PREFER_NONE,
                 0 as xmlCatalogEntryPtr,
             );
-            if ((*catal).sgml).is_null() {
-                let ref mut fresh68 = (*catal).sgml;
+            if (unsafe { (*catal).sgml }).is_null() {
+                let fresh68 = unsafe { &mut ((*catal).sgml) };
                 *fresh68 = xmlHashCreate(10 as i32);
             }
-            res = xmlHashAddEntry((*catal).sgml, orig, entry as *mut libc::c_void);
+            res = xmlHashAddEntry(unsafe { (*catal).sgml }, orig, entry as *mut libc::c_void);
         }
     }
     return res;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlACatalogRemove<'a1>(
-    mut catal: * mut crate::src::catalog::_xmlCatalog<'a1>,
-    mut value: * const u8,
+pub extern "C" fn xmlACatalogRemove<'a1>(
+    mut catal: *mut crate::src::catalog::_xmlCatalog<'a1>,
+    mut value: *const u8,
 ) -> i32 {
     let mut res: i32 = -(1 as i32);
     if catal.is_null() || value.is_null() {
         return -(1 as i32);
     }
-    if (*catal).type_0 as u32
-        == XML_XML_CATALOG_TYPE as i32 as u32
-    {
-        res = xmlDelXMLCatalog((*catal).xml, value);
+    if (unsafe { (*catal).type_0 }) as u32 == XML_XML_CATALOG_TYPE as i32 as u32 {
+        res = xmlDelXMLCatalog(unsafe { (*catal).xml }, value);
     } else {
-        res = xmlHashRemoveEntry(
-            (*catal).sgml,
-            value,
-            Some(
-                xmlFreeCatalogEntry,
-            ),
-        );
+        res = xmlHashRemoveEntry(unsafe { (*catal).sgml }, value, Some(xmlFreeCatalogEntry));
         if res == 0 as i32 {
             res = 1 as i32;
         }
@@ -7501,37 +6874,36 @@ pub unsafe extern "C" fn xmlACatalogRemove<'a1>(
     return res;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNewCatalog<'a1>(mut sgml: i32) -> * mut crate::src::catalog::_xmlCatalog<'a1> {
-    let mut catal: * mut crate::src::catalog::_xmlCatalog<'_> = 0 as xmlCatalogPtr;
+pub extern "C" fn xmlNewCatalog<'a1>(mut sgml: i32) -> *mut crate::src::catalog::_xmlCatalog<'a1> {
+    let mut catal: *mut crate::src::catalog::_xmlCatalog<'_> = 0 as xmlCatalogPtr;
     if sgml != 0 {
-        catal = xmlCreateNewCatalog(XML_SGML_CATALOG_TYPE, xmlCatalogDefaultPrefer);
-        if !catal.is_null() && ((*catal).sgml).is_null() {
-            let ref mut fresh69 = (*catal).sgml;
+        catal = xmlCreateNewCatalog(XML_SGML_CATALOG_TYPE, unsafe { xmlCatalogDefaultPrefer });
+        if !catal.is_null() && (unsafe { (*catal).sgml }).is_null() {
+            let fresh69 = unsafe { &mut ((*catal).sgml) };
             *fresh69 = xmlHashCreate(10 as i32);
         }
     } else {
-        catal = xmlCreateNewCatalog(XML_XML_CATALOG_TYPE, xmlCatalogDefaultPrefer);
+        catal = xmlCreateNewCatalog(XML_XML_CATALOG_TYPE, unsafe { xmlCatalogDefaultPrefer });
     }
     return catal;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCatalogIsEmpty<'a1, 'a2>(mut catal: Option<&'a1 mut crate::src::catalog::_xmlCatalog<'a2>>) -> i32 {
-    if borrow(& catal).is_none() {
+pub extern "C" fn xmlCatalogIsEmpty<'a1, 'a2>(
+    mut catal: Option<&'a1 mut crate::src::catalog::_xmlCatalog<'a2>>,
+) -> i32 {
+    if borrow(&catal).is_none() {
         return -(1 as i32);
     }
-    if (*(borrow(& catal)).unwrap()).type_0 as u32
-        == XML_XML_CATALOG_TYPE as i32 as u32
-    {
+    if (*(borrow(&catal)).unwrap()).type_0 as u32 == XML_XML_CATALOG_TYPE as i32 as u32 {
         if ((*(borrow_mut(&mut catal)).unwrap()).xml).is_null() {
             return 1 as i32;
         }
-        if (*(*(borrow(& catal)).unwrap()).xml).type_0 as i32 != XML_CATA_CATALOG as i32
-            && (*(*(borrow(& catal)).unwrap()).xml).type_0 as i32
-                != XML_CATA_BROKEN_CATALOG as i32
+        if (unsafe { (*(*(borrow(&catal)).unwrap()).xml).type_0 }) as i32 != XML_CATA_CATALOG as i32
+            && (unsafe { (*(*(borrow(&catal)).unwrap()).xml).type_0 }) as i32 != XML_CATA_BROKEN_CATALOG as i32
         {
             return -(1 as i32);
         }
-        if ((*(*(borrow_mut(&mut catal)).unwrap()).xml).children).is_null() {
+        if (unsafe { (*(*(borrow_mut(&mut catal)).unwrap()).xml).children }).is_null() {
             return 1 as i32;
         }
         return 0 as i32;
@@ -7550,403 +6922,351 @@ pub unsafe extern "C" fn xmlCatalogIsEmpty<'a1, 'a2>(mut catal: Option<&'a1 mut 
     }
     return 0 as i32;
 }
-unsafe extern "C" fn xmlInitializeCatalogData() {
-    if xmlCatalogInitialized != 0 as i32 {
+extern "C" fn xmlInitializeCatalogData() {
+    if (unsafe { xmlCatalogInitialized }) != 0 as i32 {
         return;
     }
-    if !(getenv(b"XML_DEBUG_CATALOG\0" as *const u8 as *const i8)).is_null() {
-        xmlDebugCatalogs = 1 as i32;
+    if !(unsafe { getenv(b"XML_DEBUG_CATALOG\0" as *const u8 as *const i8) }).is_null() {
+        (unsafe { xmlDebugCatalogs = 1 as i32 });
     }
-    xmlCatalogMutex = xmlNewRMutex();
-    xmlCatalogInitialized = 1 as i32;
+    (unsafe { xmlCatalogMutex = xmlNewRMutex() });
+    (unsafe { xmlCatalogInitialized = 1 as i32 });
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlInitializeCatalog() {
-    if xmlCatalogInitialized != 0 as i32 {
+pub extern "C" fn xmlInitializeCatalog() {
+    if (unsafe { xmlCatalogInitialized }) != 0 as i32 {
         return;
     }
     xmlInitializeCatalogData();
-    xmlRMutexLock(xmlCatalogMutex);
-    if !(getenv(b"XML_DEBUG_CATALOG\0" as *const u8 as *const i8)).is_null() {
-        xmlDebugCatalogs = 1 as i32;
+    (unsafe { xmlRMutexLock(xmlCatalogMutex) });
+    if !(unsafe { getenv(b"XML_DEBUG_CATALOG\0" as *const u8 as *const i8) }).is_null() {
+        (unsafe { xmlDebugCatalogs = 1 as i32 });
     }
-    if xmlDefaultCatalog.is_null() {
-        let mut catalogs: * const i8 = 0 as *const i8;
-        let mut path: * mut i8 = 0 as *mut i8;
-        let mut cur: * const i8 = 0 as *const i8;
-        let mut paths: * const i8 = 0 as *const i8;
-        let mut catal: * mut crate::src::catalog::_xmlCatalog<'_> = 0 as *mut xmlCatalog;
-        let mut nextent: Option<&'_ mut * mut crate::src::catalog::_xmlCatalogEntry> = Option::<&'_ mut * mut crate::src::catalog::_xmlCatalogEntry>::None;
-        catalogs = getenv(b"XML_CATALOG_FILES\0" as *const u8 as *const i8)
-            as *const i8;
+    if (unsafe { xmlDefaultCatalog }).is_null() {
+        let mut catalogs: *const i8 = 0 as *const i8;
+        let mut path: *mut i8 = 0 as *mut i8;
+        let mut cur: *const i8 = 0 as *const i8;
+        let mut paths: *const i8 = 0 as *const i8;
+        let mut catal: *mut crate::src::catalog::_xmlCatalog<'_> = 0 as *mut xmlCatalog;
+        let mut nextent: Option<&'_ mut *mut crate::src::catalog::_xmlCatalogEntry> =
+            Option::<&'_ mut *mut crate::src::catalog::_xmlCatalogEntry>::None;
+        catalogs = (unsafe { getenv(b"XML_CATALOG_FILES\0" as *const u8 as *const i8) }) as *const i8;
         if catalogs.is_null() {
-            catalogs = b"file:///usr/local/etc/xml/catalog\0" as *const u8
-                as *const i8;
+            catalogs = b"file:///usr/local/etc/xml/catalog\0" as *const u8 as *const i8;
         }
-        catal = xmlCreateNewCatalog(XML_XML_CATALOG_TYPE, xmlCatalogDefaultPrefer);
+        catal = xmlCreateNewCatalog(XML_XML_CATALOG_TYPE, unsafe { xmlCatalogDefaultPrefer });
         if !catal.is_null() {
             cur = catalogs;
-            nextent = Some(&mut (*catal).xml);
-            while *cur as i32 != '\u{0}' as i32 {
-                while *cur as i32 == 0x20 as i32
-                    || 0x9 as i32 <= *cur as i32
-                        && *cur as i32 <= 0xa as i32
-                    || *cur as i32 == 0xd as i32
+            nextent = Some(unsafe { &mut (*catal).xml });
+            while (unsafe { *cur }) as i32 != '\u{0}' as i32 {
+                while (unsafe { *cur }) as i32 == 0x20 as i32
+                    || 0x9 as i32 <= (unsafe { *cur }) as i32 && (unsafe { *cur }) as i32 <= 0xa as i32
+                    || (unsafe { *cur }) as i32 == 0xd as i32
                 {
-                    cur = cur.offset(1);
+                    cur = unsafe { cur.offset(1) };
                 }
-                if *cur as i32 != 0 as i32 {
+                if (unsafe { *cur }) as i32 != 0 as i32 {
                     paths = cur;
-                    while *cur as i32 != 0 as i32
-                        && !(*cur as i32 == 0x20 as i32
-                            || 0x9 as i32 <= *cur as i32
-                                && *cur as i32 <= 0xa as i32
-                            || *cur as i32 == 0xd as i32)
+                    while (unsafe { *cur }) as i32 != 0 as i32
+                        && !((unsafe { *cur }) as i32 == 0x20 as i32
+                            || 0x9 as i32 <= (unsafe { *cur }) as i32 && (unsafe { *cur }) as i32 <= 0xa as i32
+                            || (unsafe { *cur }) as i32 == 0xd as i32)
                     {
-                        cur = cur.offset(1);
+                        cur = unsafe { cur.offset(1) };
                     }
-                    path = xmlStrndup(
+                    path = (unsafe { xmlStrndup(
                         paths as *const xmlChar,
                         cur.offset_from(paths) as i64 as i32,
-                    ) as *mut i8;
+                    ) }) as *mut i8;
                     if !path.is_null() {
                         *(borrow_mut(&mut nextent)).unwrap() = xmlNewCatalogEntry(
                             XML_CATA_CATALOG,
                             0 as *const xmlChar,
                             0 as *const xmlChar,
                             path as *mut xmlChar,
-                            xmlCatalogDefaultPrefer,
+                            unsafe { xmlCatalogDefaultPrefer },
                             0 as xmlCatalogEntryPtr,
                         );
                         if !(*(borrow_mut(&mut nextent)).unwrap()).is_null() {
-                            nextent = Some(&mut (**(borrow_mut(&mut nextent)).unwrap()).next);
+                            nextent = Some(unsafe { &mut (**(borrow_mut(&mut nextent)).unwrap()).next });
                         }
-                        xmlFree
-                            .expect(
-                                "non-null function pointer",
-                            )(path as *mut libc::c_void);
+                        (unsafe { xmlFree.expect("non-null function pointer")(path as *mut libc::c_void) });
                     }
                 }
             }
-            xmlDefaultCatalog = catal;
+            (unsafe { xmlDefaultCatalog = catal });
         }
     }
-    xmlRMutexUnlock(xmlCatalogMutex);
+    (unsafe { xmlRMutexUnlock(xmlCatalogMutex) });
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlLoadCatalog(
-    mut filename: * const i8,
-) -> i32 {
+pub extern "C" fn xmlLoadCatalog(mut filename: *const i8) -> i32 {
     let mut ret: i32 = 0;
-    let mut catal: * mut crate::src::catalog::_xmlCatalog<'_> = 0 as *mut xmlCatalog;
-    if xmlCatalogInitialized == 0 {
+    let mut catal: *mut crate::src::catalog::_xmlCatalog<'_> = 0 as *mut xmlCatalog;
+    if (unsafe { xmlCatalogInitialized }) == 0 {
         xmlInitializeCatalogData();
     }
-    xmlRMutexLock(xmlCatalogMutex);
-    if xmlDefaultCatalog.is_null() {
+    (unsafe { xmlRMutexLock(xmlCatalogMutex) });
+    if (unsafe { xmlDefaultCatalog }).is_null() {
         catal = xmlLoadACatalog(filename);
         if catal.is_null() {
-            xmlRMutexUnlock(xmlCatalogMutex);
+            (unsafe { xmlRMutexUnlock(xmlCatalogMutex) });
             return -(1 as i32);
         }
-        xmlDefaultCatalog = catal;
-        xmlRMutexUnlock(xmlCatalogMutex);
+        (unsafe { xmlDefaultCatalog = catal });
+        (unsafe { xmlRMutexUnlock(xmlCatalogMutex) });
         return 0 as i32;
     }
-    ret = xmlExpandCatalog(xmlDefaultCatalog, filename);
-    xmlRMutexUnlock(xmlCatalogMutex);
+    ret = xmlExpandCatalog(unsafe { xmlDefaultCatalog }, filename);
+    (unsafe { xmlRMutexUnlock(xmlCatalogMutex) });
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlLoadCatalogs(mut pathss: * const i8) {
-    let mut cur: * const i8 = 0 as *const i8;
-    let mut paths: * const i8 = 0 as *const i8;
-    let mut path: * mut u8 = 0 as *mut xmlChar;
+pub extern "C" fn xmlLoadCatalogs(mut pathss: *const i8) {
+    let mut cur: *const i8 = 0 as *const i8;
+    let mut paths: *const i8 = 0 as *const i8;
+    let mut path: *mut u8 = 0 as *mut xmlChar;
     if pathss.is_null() {
         return;
     }
     cur = pathss;
-    while *cur as i32 != 0 as i32 {
-        while *cur as i32 == 0x20 as i32
-            || 0x9 as i32 <= *cur as i32
-                && *cur as i32 <= 0xa as i32
-            || *cur as i32 == 0xd as i32
+    while (unsafe { *cur }) as i32 != 0 as i32 {
+        while (unsafe { *cur }) as i32 == 0x20 as i32
+            || 0x9 as i32 <= (unsafe { *cur }) as i32 && (unsafe { *cur }) as i32 <= 0xa as i32
+            || (unsafe { *cur }) as i32 == 0xd as i32
         {
-            cur = cur.offset(1);
+            cur = unsafe { cur.offset(1) };
         }
-        if *cur as i32 != 0 as i32 {
+        if (unsafe { *cur }) as i32 != 0 as i32 {
             paths = cur;
-            while *cur as i32 != 0 as i32
-                && *cur as i32 != ':' as i32
-                && !(*cur as i32 == 0x20 as i32
-                    || 0x9 as i32 <= *cur as i32
-                        && *cur as i32 <= 0xa as i32
-                    || *cur as i32 == 0xd as i32)
+            while (unsafe { *cur }) as i32 != 0 as i32
+                && (unsafe { *cur }) as i32 != ':' as i32
+                && !((unsafe { *cur }) as i32 == 0x20 as i32
+                    || 0x9 as i32 <= (unsafe { *cur }) as i32 && (unsafe { *cur }) as i32 <= 0xa as i32
+                    || (unsafe { *cur }) as i32 == 0xd as i32)
             {
-                cur = cur.offset(1);
+                cur = unsafe { cur.offset(1) };
             }
-            path = xmlStrndup(
+            path = unsafe { xmlStrndup(
                 paths as *const xmlChar,
                 cur.offset_from(paths) as i64 as i32,
-            );
+            ) };
             if !path.is_null() {
                 xmlLoadCatalog(path as *const i8);
-                xmlFree.expect("non-null function pointer")(path as *mut libc::c_void);
+                (unsafe { xmlFree.expect("non-null function pointer")(path as *mut libc::c_void) });
             }
         }
-        while *cur as i32 == ':' as i32 {
-            cur = cur.offset(1);
+        while (unsafe { *cur }) as i32 == ':' as i32 {
+            cur = unsafe { cur.offset(1) };
         }
     }
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCatalogCleanup() {
-    if xmlCatalogInitialized == 0 as i32 {
+pub extern "C" fn xmlCatalogCleanup() {
+    if (unsafe { xmlCatalogInitialized }) == 0 as i32 {
         return;
     }
-    xmlRMutexLock(xmlCatalogMutex);
-    if xmlDebugCatalogs != 0 {
-        (*(borrow(& __xmlGenericError())).unwrap())
-            .expect(
-                "non-null function pointer",
-            )(
+    (unsafe { xmlRMutexLock(xmlCatalogMutex) });
+    if (unsafe { xmlDebugCatalogs }) != 0 {
+        (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
             *(__xmlGenericErrorContext()).unwrap(),
             b"Catalogs cleanup\n\0" as *const u8 as *const i8,
-        );
+        ) });
     }
-    if !xmlCatalogXMLFiles.is_null() {
-        xmlHashFree(
-            xmlCatalogXMLFiles,
-            Some(
-                xmlFreeCatalogHashEntryList,
-            ),
-        );
+    if !(unsafe { xmlCatalogXMLFiles }).is_null() {
+        xmlHashFree(unsafe { xmlCatalogXMLFiles }, Some(xmlFreeCatalogHashEntryList));
     }
-    xmlCatalogXMLFiles = 0 as xmlHashTablePtr;
-    if !xmlDefaultCatalog.is_null() {
-        xmlFreeCatalog(xmlDefaultCatalog);
+    (unsafe { xmlCatalogXMLFiles = 0 as xmlHashTablePtr });
+    if !(unsafe { xmlDefaultCatalog }).is_null() {
+        xmlFreeCatalog(unsafe { xmlDefaultCatalog });
     }
-    xmlDefaultCatalog = 0 as xmlCatalogPtr;
-    xmlDebugCatalogs = 0 as i32;
-    xmlCatalogInitialized = 0 as i32;
-    xmlRMutexUnlock(xmlCatalogMutex);
-    xmlFreeRMutex(xmlCatalogMutex);
+    (unsafe { xmlDefaultCatalog = 0 as xmlCatalogPtr });
+    (unsafe { xmlDebugCatalogs = 0 as i32 });
+    (unsafe { xmlCatalogInitialized = 0 as i32 });
+    (unsafe { xmlRMutexUnlock(xmlCatalogMutex) });
+    (unsafe { xmlFreeRMutex(xmlCatalogMutex) });
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCatalogResolveSystem(
-    mut sysID: * const u8,
-) -> * mut u8 {
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
-    if xmlCatalogInitialized == 0 {
+pub extern "C" fn xmlCatalogResolveSystem(mut sysID: *const u8) -> *mut u8 {
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
+    if (unsafe { xmlCatalogInitialized }) == 0 {
         xmlInitializeCatalog();
     }
-    ret = xmlACatalogResolveSystem(xmlDefaultCatalog, sysID);
+    ret = xmlACatalogResolveSystem(unsafe { xmlDefaultCatalog }, sysID);
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCatalogResolvePublic(
-    mut pubID: * const u8,
-) -> * mut u8 {
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
-    if xmlCatalogInitialized == 0 {
+pub extern "C" fn xmlCatalogResolvePublic(mut pubID: *const u8) -> *mut u8 {
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
+    if (unsafe { xmlCatalogInitialized }) == 0 {
         xmlInitializeCatalog();
     }
-    ret = xmlACatalogResolvePublic(xmlDefaultCatalog, pubID);
+    ret = xmlACatalogResolvePublic(unsafe { xmlDefaultCatalog }, pubID);
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCatalogResolve(
-    mut pubID: * const u8,
-    mut sysID: * const u8,
-) -> * mut u8 {
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
-    if xmlCatalogInitialized == 0 {
+pub extern "C" fn xmlCatalogResolve(mut pubID: *const u8, mut sysID: *const u8) -> *mut u8 {
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
+    if (unsafe { xmlCatalogInitialized }) == 0 {
         xmlInitializeCatalog();
     }
-    ret = xmlACatalogResolve(xmlDefaultCatalog, pubID, sysID);
+    ret = xmlACatalogResolve(unsafe { xmlDefaultCatalog }, pubID, sysID);
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCatalogResolveURI(mut URI: * const u8) -> * mut u8 {
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
-    if xmlCatalogInitialized == 0 {
+pub extern "C" fn xmlCatalogResolveURI(mut URI: *const u8) -> *mut u8 {
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
+    if (unsafe { xmlCatalogInitialized }) == 0 {
         xmlInitializeCatalog();
     }
-    ret = xmlACatalogResolveURI(xmlDefaultCatalog, URI);
+    ret = xmlACatalogResolveURI(unsafe { xmlDefaultCatalog }, URI);
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCatalogDump(mut out: * mut crate::src::HTMLtree::_IO_FILE) {
+pub extern "C" fn xmlCatalogDump(mut out: *mut crate::src::HTMLtree::_IO_FILE) {
     if out.is_null() {
         return;
     }
-    if xmlCatalogInitialized == 0 {
+    if (unsafe { xmlCatalogInitialized }) == 0 {
         xmlInitializeCatalog();
     }
-    xmlACatalogDump(xmlDefaultCatalog, out);
+    xmlACatalogDump(unsafe { xmlDefaultCatalog }, out);
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCatalogAdd(
-    mut type_0: * const u8,
-    mut orig: * const u8,
-    mut replace: * const u8,
+pub extern "C" fn xmlCatalogAdd(
+    mut type_0: *const u8,
+    mut orig: *const u8,
+    mut replace: *const u8,
 ) -> i32 {
     let mut res: i32 = -(1 as i32);
-    if xmlCatalogInitialized == 0 {
+    if (unsafe { xmlCatalogInitialized }) == 0 {
         xmlInitializeCatalogData();
     }
-    xmlRMutexLock(xmlCatalogMutex);
-    if xmlDefaultCatalog.is_null()
-        && xmlStrEqual(
+    (unsafe { xmlRMutexLock(xmlCatalogMutex) });
+    if (unsafe { xmlDefaultCatalog }).is_null()
+        && (unsafe { xmlStrEqual(
             type_0,
             b"catalog\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) != 0
+        ) }) != 0
     {
-        xmlDefaultCatalog = xmlCreateNewCatalog(
-            XML_XML_CATALOG_TYPE,
-            xmlCatalogDefaultPrefer,
-        );
-        if !xmlDefaultCatalog.is_null() {
-            let ref mut fresh70 = (*xmlDefaultCatalog).xml;
+        (unsafe { xmlDefaultCatalog = xmlCreateNewCatalog(XML_XML_CATALOG_TYPE, xmlCatalogDefaultPrefer) });
+        if !(unsafe { xmlDefaultCatalog }).is_null() {
+            let fresh70 = unsafe { &mut ((*xmlDefaultCatalog).xml) };
             *fresh70 = xmlNewCatalogEntry(
                 XML_CATA_CATALOG,
                 0 as *const xmlChar,
                 orig,
                 0 as *const xmlChar,
-                xmlCatalogDefaultPrefer,
+                unsafe { xmlCatalogDefaultPrefer },
                 0 as xmlCatalogEntryPtr,
             );
         }
-        xmlRMutexUnlock(xmlCatalogMutex);
+        (unsafe { xmlRMutexUnlock(xmlCatalogMutex) });
         return 0 as i32;
     }
-    res = xmlACatalogAdd(xmlDefaultCatalog, type_0, orig, replace);
-    xmlRMutexUnlock(xmlCatalogMutex);
+    res = xmlACatalogAdd(unsafe { xmlDefaultCatalog }, type_0, orig, replace);
+    (unsafe { xmlRMutexUnlock(xmlCatalogMutex) });
     return res;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCatalogRemove(mut value: * const u8) -> i32 {
+pub extern "C" fn xmlCatalogRemove(mut value: *const u8) -> i32 {
     let mut res: i32 = 0;
-    if xmlCatalogInitialized == 0 {
+    if (unsafe { xmlCatalogInitialized }) == 0 {
         xmlInitializeCatalog();
     }
-    xmlRMutexLock(xmlCatalogMutex);
-    res = xmlACatalogRemove(xmlDefaultCatalog, value);
-    xmlRMutexUnlock(xmlCatalogMutex);
+    (unsafe { xmlRMutexLock(xmlCatalogMutex) });
+    res = xmlACatalogRemove(unsafe { xmlDefaultCatalog }, value);
+    (unsafe { xmlRMutexUnlock(xmlCatalogMutex) });
     return res;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCatalogConvert() -> i32 {
+pub extern "C" fn xmlCatalogConvert() -> i32 {
     let mut res: i32 = -(1 as i32);
-    if xmlCatalogInitialized == 0 {
+    if (unsafe { xmlCatalogInitialized }) == 0 {
         xmlInitializeCatalog();
     }
-    xmlRMutexLock(xmlCatalogMutex);
-    res = xmlConvertSGMLCatalog(xmlDefaultCatalog);
-    xmlRMutexUnlock(xmlCatalogMutex);
+    (unsafe { xmlRMutexLock(xmlCatalogMutex) });
+    res = xmlConvertSGMLCatalog(unsafe { xmlDefaultCatalog });
+    (unsafe { xmlRMutexUnlock(xmlCatalogMutex) });
     return res;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCatalogGetDefaults() -> u32 {
-    return xmlCatalogDefaultAllow;
+pub extern "C" fn xmlCatalogGetDefaults() -> u32 {
+    return unsafe { xmlCatalogDefaultAllow };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCatalogSetDefaults(mut allow: u32) {
-    if xmlDebugCatalogs != 0 {
+pub extern "C" fn xmlCatalogSetDefaults(mut allow: u32) {
+    if (unsafe { xmlDebugCatalogs }) != 0 {
         match allow as u32 {
             0 => {
-                (*(borrow(& __xmlGenericError())).unwrap())
-                    .expect(
-                        "non-null function pointer",
-                    )(
+                (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                     *(__xmlGenericErrorContext()).unwrap(),
                     b"Disabling catalog usage\n\0" as *const u8 as *const i8,
-                );
-            }
+                ) });
+            },
             1 => {
-                (*(borrow(& __xmlGenericError())).unwrap())
-                    .expect(
-                        "non-null function pointer",
-                    )(
+                (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                     *(__xmlGenericErrorContext()).unwrap(),
-                    b"Allowing only global catalogs\n\0" as *const u8
-                        as *const i8,
-                );
-            }
+                    b"Allowing only global catalogs\n\0" as *const u8 as *const i8,
+                ) });
+            },
             2 => {
-                (*(borrow(& __xmlGenericError())).unwrap())
-                    .expect(
-                        "non-null function pointer",
-                    )(
+                (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                     *(__xmlGenericErrorContext()).unwrap(),
-                    b"Allowing only catalogs from the document\n\0" as *const u8
-                        as *const i8,
-                );
-            }
+                    b"Allowing only catalogs from the document\n\0" as *const u8 as *const i8,
+                ) });
+            },
             3 => {
-                (*(borrow(& __xmlGenericError())).unwrap())
-                    .expect(
-                        "non-null function pointer",
-                    )(
+                (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                     *(__xmlGenericErrorContext()).unwrap(),
                     b"Allowing all catalogs\n\0" as *const u8 as *const i8,
-                );
-            }
-            _ => {}
+                ) });
+            },
+            _ => {},
         }
     }
-    xmlCatalogDefaultAllow = allow;
+    (unsafe { xmlCatalogDefaultAllow = allow });
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCatalogSetDefaultPrefer(
-    mut prefer: u32,
-) -> u32 {
-    let mut ret: u32 = xmlCatalogDefaultPrefer;
+pub extern "C" fn xmlCatalogSetDefaultPrefer(mut prefer: u32) -> u32 {
+    let mut ret: u32 = unsafe { xmlCatalogDefaultPrefer };
     if prefer as u32 == XML_CATA_PREFER_NONE as i32 as u32 {
         return ret;
     }
-    if xmlDebugCatalogs != 0 {
+    if (unsafe { xmlDebugCatalogs }) != 0 {
         match prefer as u32 {
             1 => {
-                (*(borrow(& __xmlGenericError())).unwrap())
-                    .expect(
-                        "non-null function pointer",
-                    )(
+                (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                     *(__xmlGenericErrorContext()).unwrap(),
-                    b"Setting catalog preference to PUBLIC\n\0" as *const u8
-                        as *const i8,
-                );
-            }
+                    b"Setting catalog preference to PUBLIC\n\0" as *const u8 as *const i8,
+                ) });
+            },
             2 => {
-                (*(borrow(& __xmlGenericError())).unwrap())
-                    .expect(
-                        "non-null function pointer",
-                    )(
+                (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                     *(__xmlGenericErrorContext()).unwrap(),
-                    b"Setting catalog preference to SYSTEM\n\0" as *const u8
-                        as *const i8,
-                );
-            }
+                    b"Setting catalog preference to SYSTEM\n\0" as *const u8 as *const i8,
+                ) });
+            },
             _ => return ret,
         }
     }
-    xmlCatalogDefaultPrefer = prefer;
+    (unsafe { xmlCatalogDefaultPrefer = prefer });
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCatalogSetDebug(mut level: i32) -> i32 {
-    let mut ret: i32 = xmlDebugCatalogs;
+pub extern "C" fn xmlCatalogSetDebug(mut level: i32) -> i32 {
+    let mut ret: i32 = unsafe { xmlDebugCatalogs };
     if level <= 0 as i32 {
-        xmlDebugCatalogs = 0 as i32;
+        (unsafe { xmlDebugCatalogs = 0 as i32 });
     } else {
-        xmlDebugCatalogs = level;
+        (unsafe { xmlDebugCatalogs = level });
     }
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCatalogFreeLocal(mut catalogs: * mut core::ffi::c_void) {
-    let mut catal: * mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
-    if xmlCatalogInitialized == 0 {
+pub extern "C" fn xmlCatalogFreeLocal(mut catalogs: *mut core::ffi::c_void) {
+    let mut catal: *mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
+    if (unsafe { xmlCatalogInitialized }) == 0 {
         xmlInitializeCatalog();
     }
     catal = catalogs as xmlCatalogEntryPtr;
@@ -7955,34 +7275,31 @@ pub unsafe extern "C" fn xmlCatalogFreeLocal(mut catalogs: * mut core::ffi::c_vo
     }
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCatalogAddLocal(
-    mut catalogs: * mut core::ffi::c_void,
-    mut URL: * const u8,
-) -> * mut core::ffi::c_void {
-    let mut catal: * mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
-    let mut add: * mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
-    if xmlCatalogInitialized == 0 {
+pub extern "C" fn xmlCatalogAddLocal(
+    mut catalogs: *mut core::ffi::c_void,
+    mut URL: *const u8,
+) -> *mut core::ffi::c_void {
+    let mut catal: *mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
+    let mut add: *mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
+    if (unsafe { xmlCatalogInitialized }) == 0 {
         xmlInitializeCatalog();
     }
     if URL.is_null() {
         return catalogs;
     }
-    if xmlDebugCatalogs != 0 {
-        (*(borrow(& __xmlGenericError())).unwrap())
-            .expect(
-                "non-null function pointer",
-            )(
+    if (unsafe { xmlDebugCatalogs }) != 0 {
+        (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
             *(__xmlGenericErrorContext()).unwrap(),
             b"Adding document catalog %s\n\0" as *const u8 as *const i8,
             URL,
-        );
+        ) });
     }
     add = xmlNewCatalogEntry(
         XML_CATA_CATALOG,
         0 as *const xmlChar,
         URL,
         0 as *const xmlChar,
-        xmlCatalogDefaultPrefer,
+        unsafe { xmlCatalogDefaultPrefer },
         0 as xmlCatalogEntryPtr,
     );
     if add.is_null() {
@@ -7992,57 +7309,47 @@ pub unsafe extern "C" fn xmlCatalogAddLocal(
     if catal.is_null() {
         return add as *mut libc::c_void;
     }
-    while !((*catal).next).is_null() {
-        catal = (*catal).next;
+    while !(unsafe { (*catal).next }).is_null() {
+        catal = unsafe { (*catal).next };
     }
-    let ref mut fresh71 = (*catal).next;
+    let fresh71 = unsafe { &mut ((*catal).next) };
     *fresh71 = add;
     return catalogs;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCatalogLocalResolve(
-    mut catalogs: * mut core::ffi::c_void,
-    mut pubID: * const u8,
-    mut sysID: * const u8,
-) -> * mut u8 {
-    let mut catal: * mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
-    if xmlCatalogInitialized == 0 {
+pub extern "C" fn xmlCatalogLocalResolve(
+    mut catalogs: *mut core::ffi::c_void,
+    mut pubID: *const u8,
+    mut sysID: *const u8,
+) -> *mut u8 {
+    let mut catal: *mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
+    if (unsafe { xmlCatalogInitialized }) == 0 {
         xmlInitializeCatalog();
     }
     if pubID.is_null() && sysID.is_null() {
         return 0 as *mut xmlChar;
     }
-    if xmlDebugCatalogs != 0 {
+    if (unsafe { xmlDebugCatalogs }) != 0 {
         if !pubID.is_null() && !sysID.is_null() {
-            (*(borrow(& __xmlGenericError())).unwrap())
-                .expect(
-                    "non-null function pointer",
-                )(
+            (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                 *(__xmlGenericErrorContext()).unwrap(),
-                b"Local Resolve: pubID %s sysID %s\n\0" as *const u8
-                    as *const i8,
+                b"Local Resolve: pubID %s sysID %s\n\0" as *const u8 as *const i8,
                 pubID,
                 sysID,
-            );
+            ) });
         } else if !pubID.is_null() {
-            (*(borrow(& __xmlGenericError())).unwrap())
-                .expect(
-                    "non-null function pointer",
-                )(
+            (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                 *(__xmlGenericErrorContext()).unwrap(),
                 b"Local Resolve: pubID %s\n\0" as *const u8 as *const i8,
                 pubID,
-            );
+            ) });
         } else {
-            (*(borrow(& __xmlGenericError())).unwrap())
-                .expect(
-                    "non-null function pointer",
-                )(
+            (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                 *(__xmlGenericErrorContext()).unwrap(),
                 b"Local Resolve: sysID %s\n\0" as *const u8 as *const i8,
                 sysID,
-            );
+            ) });
         }
     }
     catal = catalogs as xmlCatalogEntryPtr;
@@ -8056,27 +7363,24 @@ pub unsafe extern "C" fn xmlCatalogLocalResolve(
     return 0 as *mut xmlChar;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCatalogLocalResolveURI(
-    mut catalogs: * mut core::ffi::c_void,
-    mut URI: * const u8,
-) -> * mut u8 {
-    let mut catal: * mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
-    if xmlCatalogInitialized == 0 {
+pub extern "C" fn xmlCatalogLocalResolveURI(
+    mut catalogs: *mut core::ffi::c_void,
+    mut URI: *const u8,
+) -> *mut u8 {
+    let mut catal: *mut crate::src::catalog::_xmlCatalogEntry = 0 as *mut xmlCatalogEntry;
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
+    if (unsafe { xmlCatalogInitialized }) == 0 {
         xmlInitializeCatalog();
     }
     if URI.is_null() {
         return 0 as *mut xmlChar;
     }
-    if xmlDebugCatalogs != 0 {
-        (*(borrow(& __xmlGenericError())).unwrap())
-            .expect(
-                "non-null function pointer",
-            )(
+    if (unsafe { xmlDebugCatalogs }) != 0 {
+        (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
             *(__xmlGenericErrorContext()).unwrap(),
             b"Resolve URI %s\n\0" as *const u8 as *const i8,
             URI,
-        );
+        ) });
     }
     catal = catalogs as xmlCatalogEntryPtr;
     if catal.is_null() {
@@ -8089,100 +7393,76 @@ pub unsafe extern "C" fn xmlCatalogLocalResolveURI(
     return 0 as *mut xmlChar;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCatalogGetSystem(
-    mut sysID: * const u8,
-) -> * const u8 {
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
+pub extern "C" fn xmlCatalogGetSystem(mut sysID: *const u8) -> *const u8 {
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
     static mut result: [u8; 1000] = [0; 1000];
     static mut msg: i32 = 0 as i32;
-    if xmlCatalogInitialized == 0 {
+    if (unsafe { xmlCatalogInitialized }) == 0 {
         xmlInitializeCatalog();
     }
-    if msg == 0 as i32 {
-        (*(borrow(& __xmlGenericError())).unwrap())
-            .expect(
-                "non-null function pointer",
-            )(
+    if (unsafe { msg }) == 0 as i32 {
+        (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
             *(__xmlGenericErrorContext()).unwrap(),
-            b"Use of deprecated xmlCatalogGetSystem() call\n\0" as *const u8
-                as *const i8,
-        );
-        msg += 1;
+            b"Use of deprecated xmlCatalogGetSystem() call\n\0" as *const u8 as *const i8,
+        ) });
+        (unsafe { msg += 1 });
     }
     if sysID.is_null() {
         return 0 as *const xmlChar;
     }
-    if !xmlDefaultCatalog.is_null() {
-        ret = xmlCatalogListXMLResolve(
-            (*xmlDefaultCatalog).xml,
-            0 as *const xmlChar,
-            sysID,
-        );
+    if !(unsafe { xmlDefaultCatalog }).is_null() {
+        ret = xmlCatalogListXMLResolve(unsafe { (*xmlDefaultCatalog).xml }, 0 as *const xmlChar, sysID);
         if !ret.is_null() && ret != -(1 as i32) as *mut xmlChar {
-            snprintf(
+            (unsafe { snprintf(
                 result.as_mut_ptr() as *mut i8,
-                (::std::mem::size_of::<[xmlChar; 1000]>() as u64)
-                    .wrapping_sub(1 as i32 as u64),
+                (::std::mem::size_of::<[xmlChar; 1000]>() as u64).wrapping_sub(1 as i32 as u64),
                 b"%s\0" as *const u8 as *const i8,
                 ret as *mut i8,
-            );
-            result[(::std::mem::size_of::<[xmlChar; 1000]>() as u64)
-                .wrapping_sub(1 as i32 as u64)
-                as usize] = 0 as i32 as xmlChar;
-            return result.as_mut_ptr();
+            ) });
+            (unsafe { result[(::std::mem::size_of::<[xmlChar; 1000]>() as u64).wrapping_sub(1 as i32 as u64)
+                as usize] = 0 as i32 as xmlChar });
+            return unsafe { result.as_mut_ptr() };
         }
     }
-    if !xmlDefaultCatalog.is_null() {
-        return xmlCatalogGetSGMLSystem((*xmlDefaultCatalog).sgml, sysID);
+    if !(unsafe { xmlDefaultCatalog }).is_null() {
+        return xmlCatalogGetSGMLSystem(unsafe { (*xmlDefaultCatalog).sgml }, sysID);
     }
     return 0 as *const xmlChar;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCatalogGetPublic(
-    mut pubID: * const u8,
-) -> * const u8 {
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
+pub extern "C" fn xmlCatalogGetPublic(mut pubID: *const u8) -> *const u8 {
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
     static mut result: [u8; 1000] = [0; 1000];
     static mut msg: i32 = 0 as i32;
-    if xmlCatalogInitialized == 0 {
+    if (unsafe { xmlCatalogInitialized }) == 0 {
         xmlInitializeCatalog();
     }
-    if msg == 0 as i32 {
-        (*(borrow(& __xmlGenericError())).unwrap())
-            .expect(
-                "non-null function pointer",
-            )(
+    if (unsafe { msg }) == 0 as i32 {
+        (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
             *(__xmlGenericErrorContext()).unwrap(),
-            b"Use of deprecated xmlCatalogGetPublic() call\n\0" as *const u8
-                as *const i8,
-        );
-        msg += 1;
+            b"Use of deprecated xmlCatalogGetPublic() call\n\0" as *const u8 as *const i8,
+        ) });
+        (unsafe { msg += 1 });
     }
     if pubID.is_null() {
         return 0 as *const xmlChar;
     }
-    if !xmlDefaultCatalog.is_null() {
-        ret = xmlCatalogListXMLResolve(
-            (*xmlDefaultCatalog).xml,
-            pubID,
-            0 as *const xmlChar,
-        );
+    if !(unsafe { xmlDefaultCatalog }).is_null() {
+        ret = xmlCatalogListXMLResolve(unsafe { (*xmlDefaultCatalog).xml }, pubID, 0 as *const xmlChar);
         if !ret.is_null() && ret != -(1 as i32) as *mut xmlChar {
-            snprintf(
+            (unsafe { snprintf(
                 result.as_mut_ptr() as *mut i8,
-                (::std::mem::size_of::<[xmlChar; 1000]>() as u64)
-                    .wrapping_sub(1 as i32 as u64),
+                (::std::mem::size_of::<[xmlChar; 1000]>() as u64).wrapping_sub(1 as i32 as u64),
                 b"%s\0" as *const u8 as *const i8,
                 ret as *mut i8,
-            );
-            result[(::std::mem::size_of::<[xmlChar; 1000]>() as u64)
-                .wrapping_sub(1 as i32 as u64)
-                as usize] = 0 as i32 as xmlChar;
-            return result.as_mut_ptr();
+            ) });
+            (unsafe { result[(::std::mem::size_of::<[xmlChar; 1000]>() as u64).wrapping_sub(1 as i32 as u64)
+                as usize] = 0 as i32 as xmlChar });
+            return unsafe { result.as_mut_ptr() };
         }
     }
-    if !xmlDefaultCatalog.is_null() {
-        return xmlCatalogGetSGMLPublic((*xmlDefaultCatalog).sgml, pubID);
+    if !(unsafe { xmlDefaultCatalog }).is_null() {
+        return xmlCatalogGetSGMLPublic(unsafe { (*xmlDefaultCatalog).sgml }, pubID);
     }
     return 0 as *const xmlChar;
 }

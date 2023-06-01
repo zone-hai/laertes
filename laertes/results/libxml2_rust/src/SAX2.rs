@@ -1,351 +1,313 @@
-use ::libc;
+use :: libc;
 extern "C" {
-    
-    
-    
-    
-    
-    
-    
-    
-    fn xmlStrcat(cur: * mut u8, add: * const u8) -> * mut u8;
-    fn xmlStrlen(str: * const u8) -> i32;
-    fn xmlStrEqual(str1: * const u8, str2: * const u8) -> i32;
-    fn xmlStrndup(cur: * const u8, len: i32) -> * mut u8;
-    fn xmlStrdup(cur: * const u8) -> * mut u8;
+    fn xmlStrcat(cur: *mut u8, add: *const u8) -> *mut u8;
+    fn xmlStrlen(str: *const u8) -> i32;
+    fn xmlStrEqual(str1: *const u8, str2: *const u8) -> i32;
+    fn xmlStrndup(cur: *const u8, len: i32) -> *mut u8;
+    fn xmlStrdup(cur: *const u8) -> *mut u8;
     static mut __xmlRegisterCallbacks: i32;
     fn memcpy(
-        _: * mut core::ffi::c_void,
-        _: * const core::ffi::c_void,
+        _: *mut core::ffi::c_void,
+        _: *const core::ffi::c_void,
         _: u64,
-    ) -> * mut core::ffi::c_void;
-    fn memset(
-        _: * mut core::ffi::c_void,
-        _: i32,
-        _: u64,
-    ) -> * mut core::ffi::c_void;
-    fn xmlValidateNCName(value: * const u8, space: i32) -> i32;
-    fn xmlBuildQName(
-        ncname: * const u8,
-        prefix: * const u8,
-        memory: * mut u8,
-        len: i32,
-    ) -> * mut u8;
+    ) -> *mut core::ffi::c_void;
+    fn memset(_: *mut core::ffi::c_void, _: i32, _: u64) -> *mut core::ffi::c_void;
+    fn xmlValidateNCName(value: *const u8, space: i32) -> i32;
+    fn xmlBuildQName(ncname: *const u8, prefix: *const u8, memory: *mut u8, len: i32) -> *mut u8;
     fn xmlCreateIntSubset(
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        name: * const u8,
-        ExternalID: * const u8,
-        SystemID: * const u8,
-    ) -> * mut crate::src::HTMLparser::_xmlDtd;
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        name: *const u8,
+        ExternalID: *const u8,
+        SystemID: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlDtd;
     fn xmlNewDtd(
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        name: * const u8,
-        ExternalID: * const u8,
-        SystemID: * const u8,
-    ) -> * mut crate::src::HTMLparser::_xmlDtd;
-    fn xmlGetIntSubset(doc: * const crate::src::HTMLparser::_xmlDoc) -> * mut crate::src::HTMLparser::_xmlDtd;
-    fn xmlFreeDtd(cur: * mut crate::src::HTMLparser::_xmlDtd);
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        name: *const u8,
+        ExternalID: *const u8,
+        SystemID: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlDtd;
+    fn xmlGetIntSubset(
+        doc: *const crate::src::HTMLparser::_xmlDoc,
+    ) -> *mut crate::src::HTMLparser::_xmlDtd;
+    fn xmlFreeDtd(cur: *mut crate::src::HTMLparser::_xmlDtd);
     fn xmlNewNs(
-        node: * mut crate::src::HTMLparser::_xmlNode,
-        href: * const u8,
-        prefix: * const u8,
-    ) -> * mut crate::src::HTMLparser::_xmlNs;
-    fn xmlNewDoc(version: * const u8) -> * mut crate::src::HTMLparser::_xmlDoc;
+        node: *mut crate::src::HTMLparser::_xmlNode,
+        href: *const u8,
+        prefix: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlNs;
+    fn xmlNewDoc(version: *const u8) -> *mut crate::src::HTMLparser::_xmlDoc;
     fn xmlNewNsProp(
-        node: * mut crate::src::HTMLparser::_xmlNode,
-        ns: * mut crate::src::HTMLparser::_xmlNs,
-        name: * const u8,
-        value: * const u8,
-    ) -> * mut crate::src::HTMLparser::_xmlAttr;
+        node: *mut crate::src::HTMLparser::_xmlNode,
+        ns: *mut crate::src::HTMLparser::_xmlNs,
+        name: *const u8,
+        value: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlAttr;
     fn xmlNewNsPropEatName(
-        node: * mut crate::src::HTMLparser::_xmlNode,
-        ns: * mut crate::src::HTMLparser::_xmlNs,
-        name: * mut u8,
-        value: * const u8,
-    ) -> * mut crate::src::HTMLparser::_xmlAttr;
+        node: *mut crate::src::HTMLparser::_xmlNode,
+        ns: *mut crate::src::HTMLparser::_xmlNs,
+        name: *mut u8,
+        value: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlAttr;
     fn xmlNewDocNode(
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        ns: * mut crate::src::HTMLparser::_xmlNs,
-        name: * const u8,
-        content: * const u8,
-    ) -> * mut crate::src::HTMLparser::_xmlNode;
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        ns: *mut crate::src::HTMLparser::_xmlNs,
+        name: *const u8,
+        content: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
     fn xmlNewDocNodeEatName(
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        ns: * mut crate::src::HTMLparser::_xmlNs,
-        name: * mut u8,
-        content: * const u8,
-    ) -> * mut crate::src::HTMLparser::_xmlNode;
-    fn xmlNewDocText(doc: * const crate::src::HTMLparser::_xmlDoc, content: * const u8) -> * mut crate::src::HTMLparser::_xmlNode;
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        ns: *mut crate::src::HTMLparser::_xmlNs,
+        name: *mut u8,
+        content: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
+    fn xmlNewDocText(
+        doc: *const crate::src::HTMLparser::_xmlDoc,
+        content: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
     fn xmlNewDocPI(
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        name: * const u8,
-        content: * const u8,
-    ) -> * mut crate::src::HTMLparser::_xmlNode;
-    fn xmlNewDocComment(doc: * mut crate::src::HTMLparser::_xmlDoc, content: * const u8) -> * mut crate::src::HTMLparser::_xmlNode;
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        name: *const u8,
+        content: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
+    fn xmlNewDocComment(
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        content: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
     fn xmlNewCDataBlock(
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        content: * const u8,
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        content: *const u8,
         len: i32,
-    ) -> * mut crate::src::HTMLparser::_xmlNode;
-    fn xmlNewCharRef(doc: * mut crate::src::HTMLparser::_xmlDoc, name: * const u8) -> * mut crate::src::HTMLparser::_xmlNode;
-    fn xmlNewReference(doc: * const crate::src::HTMLparser::_xmlDoc, name: * const u8) -> * mut crate::src::HTMLparser::_xmlNode;
-    fn xmlAddChild(parent: * mut crate::src::HTMLparser::_xmlNode, cur: * mut crate::src::HTMLparser::_xmlNode) -> * mut crate::src::HTMLparser::_xmlNode;
-    fn xmlAddSibling(cur: * mut crate::src::HTMLparser::_xmlNode, elem: * mut crate::src::HTMLparser::_xmlNode) -> * mut crate::src::HTMLparser::_xmlNode;
-    fn xmlUnlinkNode(cur: * mut crate::src::HTMLparser::_xmlNode);
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
+    fn xmlNewCharRef(
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        name: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
+    fn xmlNewReference(
+        doc: *const crate::src::HTMLparser::_xmlDoc,
+        name: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
+    fn xmlAddChild(
+        parent: *mut crate::src::HTMLparser::_xmlNode,
+        cur: *mut crate::src::HTMLparser::_xmlNode,
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
+    fn xmlAddSibling(
+        cur: *mut crate::src::HTMLparser::_xmlNode,
+        elem: *mut crate::src::HTMLparser::_xmlNode,
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
+    fn xmlUnlinkNode(cur: *mut crate::src::HTMLparser::_xmlNode);
     fn xmlTextConcat(
-        node: * mut crate::src::HTMLparser::_xmlNode,
-        content: * const u8,
+        node: *mut crate::src::HTMLparser::_xmlNode,
+        content: *const u8,
         len: i32,
     ) -> i32;
-    fn xmlFreeNode(cur: * mut crate::src::HTMLparser::_xmlNode);
+    fn xmlFreeNode(cur: *mut crate::src::HTMLparser::_xmlNode);
     fn xmlSearchNs(
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        node: * mut crate::src::HTMLparser::_xmlNode,
-        nameSpace: * const u8,
-    ) -> * mut crate::src::HTMLparser::_xmlNs;
-    fn xmlSetNs(node: * mut crate::src::HTMLparser::_xmlNode, ns: * mut crate::src::HTMLparser::_xmlNs);
-    fn xmlStringGetNodeList(doc: * const crate::src::HTMLparser::_xmlDoc, value: * const u8) -> * mut crate::src::HTMLparser::_xmlNode;
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        node: *mut crate::src::HTMLparser::_xmlNode,
+        nameSpace: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlNs;
+    fn xmlSetNs(
+        node: *mut crate::src::HTMLparser::_xmlNode,
+        ns: *mut crate::src::HTMLparser::_xmlNs,
+    );
+    fn xmlStringGetNodeList(
+        doc: *const crate::src::HTMLparser::_xmlDoc,
+        value: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
     fn xmlStringLenGetNodeList(
-        doc: * const crate::src::HTMLparser::_xmlDoc,
-        value: * const u8,
+        doc: *const crate::src::HTMLparser::_xmlDoc,
+        value: *const u8,
         len: i32,
-    ) -> * mut crate::src::HTMLparser::_xmlNode;
-    
-    
-    
-    
-    
-    
-    
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
     fn xmlAddNotationDecl(
-        ctxt: * mut crate::src::HTMLparser::_xmlValidCtxt,
-        dtd: * mut crate::src::HTMLparser::_xmlDtd,
-        name: * const u8,
-        PublicID: * const u8,
-        SystemID: * const u8,
-    ) -> * mut crate::src::SAX2::_xmlNotation;
+        ctxt: *mut crate::src::HTMLparser::_xmlValidCtxt,
+        dtd: *mut crate::src::HTMLparser::_xmlDtd,
+        name: *const u8,
+        PublicID: *const u8,
+        SystemID: *const u8,
+    ) -> *mut crate::src::SAX2::_xmlNotation;
     fn xmlAddElementDecl(
-        ctxt: * mut crate::src::HTMLparser::_xmlValidCtxt,
-        dtd: * mut crate::src::HTMLparser::_xmlDtd,
-        name: * const u8,
+        ctxt: *mut crate::src::HTMLparser::_xmlValidCtxt,
+        dtd: *mut crate::src::HTMLparser::_xmlDtd,
+        name: *const u8,
         type_0: u32,
-        content: * mut crate::src::HTMLparser::_xmlElementContent,
-    ) -> * mut crate::src::SAX2::_xmlElement;
-    fn xmlFreeEnumeration(cur: * mut crate::src::HTMLparser::_xmlEnumeration);
+        content: *mut crate::src::HTMLparser::_xmlElementContent,
+    ) -> *mut crate::src::SAX2::_xmlElement;
+    fn xmlFreeEnumeration(cur: *mut crate::src::HTMLparser::_xmlEnumeration);
     fn xmlAddAttributeDecl(
-        ctxt: * mut crate::src::HTMLparser::_xmlValidCtxt,
-        dtd: * mut crate::src::HTMLparser::_xmlDtd,
-        elem: * const u8,
-        name: * const u8,
-        ns: * const u8,
+        ctxt: *mut crate::src::HTMLparser::_xmlValidCtxt,
+        dtd: *mut crate::src::HTMLparser::_xmlDtd,
+        elem: *const u8,
+        name: *const u8,
+        ns: *const u8,
         type_0: u32,
         def: u32,
-        defaultValue: * const u8,
-        tree: * mut crate::src::HTMLparser::_xmlEnumeration,
-    ) -> * mut crate::src::SAX2::_xmlAttribute;
+        defaultValue: *const u8,
+        tree: *mut crate::src::HTMLparser::_xmlEnumeration,
+    ) -> *mut crate::src::SAX2::_xmlAttribute;
     fn xmlAddID(
-        ctxt: * mut crate::src::HTMLparser::_xmlValidCtxt,
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        value: * const u8,
-        attr: * mut crate::src::HTMLparser::_xmlAttr,
-    ) -> * mut crate::src::SAX2::_xmlID;
-    fn xmlIsID(doc: * mut crate::src::HTMLparser::_xmlDoc, elem: * mut crate::src::HTMLparser::_xmlNode, attr: * mut crate::src::HTMLparser::_xmlAttr) -> i32;
+        ctxt: *mut crate::src::HTMLparser::_xmlValidCtxt,
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        value: *const u8,
+        attr: *mut crate::src::HTMLparser::_xmlAttr,
+    ) -> *mut crate::src::SAX2::_xmlID;
+    fn xmlIsID(
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        elem: *mut crate::src::HTMLparser::_xmlNode,
+        attr: *mut crate::src::HTMLparser::_xmlAttr,
+    ) -> i32;
     fn xmlAddRef(
-        ctxt: * mut crate::src::HTMLparser::_xmlValidCtxt,
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        value: * const u8,
-        attr: * mut crate::src::HTMLparser::_xmlAttr,
-    ) -> * mut crate::src::SAX2::_xmlRef;
-    fn xmlIsRef(doc: * mut crate::src::HTMLparser::_xmlDoc, elem: * mut crate::src::HTMLparser::_xmlNode, attr: * mut crate::src::HTMLparser::_xmlAttr) -> i32;
-    fn xmlValidateRoot(ctxt: * mut crate::src::HTMLparser::_xmlValidCtxt, doc: * mut crate::src::HTMLparser::_xmlDoc) -> i32;
+        ctxt: *mut crate::src::HTMLparser::_xmlValidCtxt,
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        value: *const u8,
+        attr: *mut crate::src::HTMLparser::_xmlAttr,
+    ) -> *mut crate::src::SAX2::_xmlRef;
+    fn xmlIsRef(
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        elem: *mut crate::src::HTMLparser::_xmlNode,
+        attr: *mut crate::src::HTMLparser::_xmlAttr,
+    ) -> i32;
+    fn xmlValidateRoot(
+        ctxt: *mut crate::src::HTMLparser::_xmlValidCtxt,
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+    ) -> i32;
     fn xmlValidateElementDecl(
-        ctxt: * mut crate::src::HTMLparser::_xmlValidCtxt,
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        elem: * mut crate::src::SAX2::_xmlElement,
+        ctxt: *mut crate::src::HTMLparser::_xmlValidCtxt,
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        elem: *mut crate::src::SAX2::_xmlElement,
     ) -> i32;
     fn xmlValidNormalizeAttributeValue(
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        elem: * mut crate::src::HTMLparser::_xmlNode,
-        name: * const u8,
-        value: * const u8,
-    ) -> * mut u8;
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        elem: *mut crate::src::HTMLparser::_xmlNode,
+        name: *const u8,
+        value: *const u8,
+    ) -> *mut u8;
     fn xmlValidCtxtNormalizeAttributeValue(
-        ctxt: * mut crate::src::HTMLparser::_xmlValidCtxt,
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        elem: * mut crate::src::HTMLparser::_xmlNode,
-        name: * const u8,
-        value: * const u8,
-    ) -> * mut u8;
+        ctxt: *mut crate::src::HTMLparser::_xmlValidCtxt,
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        elem: *mut crate::src::HTMLparser::_xmlNode,
+        name: *const u8,
+        value: *const u8,
+    ) -> *mut u8;
     fn xmlValidateAttributeDecl(
-        ctxt: * mut crate::src::HTMLparser::_xmlValidCtxt,
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        attr: * mut crate::src::SAX2::_xmlAttribute,
+        ctxt: *mut crate::src::HTMLparser::_xmlValidCtxt,
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        attr: *mut crate::src::SAX2::_xmlAttribute,
     ) -> i32;
     fn xmlValidateNotationDecl(
-        ctxt: * mut crate::src::HTMLparser::_xmlValidCtxt,
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        nota: * mut crate::src::SAX2::_xmlNotation,
+        ctxt: *mut crate::src::HTMLparser::_xmlValidCtxt,
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        nota: *mut crate::src::SAX2::_xmlNotation,
     ) -> i32;
-    fn xmlValidateDtdFinal(ctxt: * mut crate::src::HTMLparser::_xmlValidCtxt, doc: * mut crate::src::HTMLparser::_xmlDoc) -> i32;
+    fn xmlValidateDtdFinal(
+        ctxt: *mut crate::src::HTMLparser::_xmlValidCtxt,
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+    ) -> i32;
     fn xmlValidateOneElement(
-        ctxt: * mut crate::src::HTMLparser::_xmlValidCtxt,
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        elem: * mut crate::src::HTMLparser::_xmlNode,
+        ctxt: *mut crate::src::HTMLparser::_xmlValidCtxt,
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        elem: *mut crate::src::HTMLparser::_xmlNode,
     ) -> i32;
     fn xmlValidateOneAttribute(
-        ctxt: * mut crate::src::HTMLparser::_xmlValidCtxt,
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        elem: * mut crate::src::HTMLparser::_xmlNode,
-        attr: * mut crate::src::HTMLparser::_xmlAttr,
-        value: * const u8,
+        ctxt: *mut crate::src::HTMLparser::_xmlValidCtxt,
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        elem: *mut crate::src::HTMLparser::_xmlNode,
+        attr: *mut crate::src::HTMLparser::_xmlAttr,
+        value: *const u8,
     ) -> i32;
     fn xmlValidateOneNamespace(
-        ctxt: * mut crate::src::HTMLparser::_xmlValidCtxt,
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        elem: * mut crate::src::HTMLparser::_xmlNode,
-        prefix: * const u8,
-        ns: * mut crate::src::HTMLparser::_xmlNs,
-        value: * const u8,
+        ctxt: *mut crate::src::HTMLparser::_xmlValidCtxt,
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        elem: *mut crate::src::HTMLparser::_xmlNode,
+        prefix: *const u8,
+        ns: *mut crate::src::HTMLparser::_xmlNs,
+        value: *const u8,
     ) -> i32;
-    fn xmlValidateDocumentFinal(ctxt: * mut crate::src::HTMLparser::_xmlValidCtxt, doc: * mut crate::src::HTMLparser::_xmlDoc) -> i32;
+    fn xmlValidateDocumentFinal(
+        ctxt: *mut crate::src::HTMLparser::_xmlValidCtxt,
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+    ) -> i32;
     fn xmlGetDtdQAttrDesc(
-        dtd: * mut crate::src::HTMLparser::_xmlDtd,
-        elem: * const u8,
-        name: * const u8,
-        prefix: * const u8,
-    ) -> * mut crate::src::SAX2::_xmlAttribute;
+        dtd: *mut crate::src::HTMLparser::_xmlDtd,
+        elem: *const u8,
+        name: *const u8,
+        prefix: *const u8,
+    ) -> *mut crate::src::SAX2::_xmlAttribute;
     fn xmlGetDtdQElementDesc(
-        dtd: * mut crate::src::HTMLparser::_xmlDtd,
-        name: * const u8,
-        prefix: * const u8,
-    ) -> * mut crate::src::SAX2::_xmlElement;
-    
-    
+        dtd: *mut crate::src::HTMLparser::_xmlDtd,
+        name: *const u8,
+        prefix: *const u8,
+    ) -> *mut crate::src::SAX2::_xmlElement;
     fn xmlLoadExternalEntity(
-        URL: * const i8,
-        ID: * const i8,
-        ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt,
-    ) -> * mut crate::src::HTMLparser::_xmlParserInput;
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+        URL: *const i8,
+        ID: *const i8,
+        ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt,
+    ) -> *mut crate::src::HTMLparser::_xmlParserInput;
     static xmlStringText: [u8; 0];
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    fn xmlBuildURI(URI: * const u8, base: * const u8) -> * mut u8;
-    fn xmlParseURI(str: * const i8) -> * mut crate::src::SAX2::_xmlURI;
-    fn xmlFreeURI(uri: * mut crate::src::SAX2::_xmlURI);
-    fn xmlCanonicPath(path: * const u8) -> * mut u8;
-    fn xmlPathToURI(path: * const u8) -> * mut u8;
-    
-    
+    fn xmlBuildURI(URI: *const u8, base: *const u8) -> *mut u8;
+    fn xmlParseURI(str: *const i8) -> *mut crate::src::SAX2::_xmlURI;
+    fn xmlFreeURI(uri: *mut crate::src::SAX2::_xmlURI);
+    fn xmlCanonicPath(path: *const u8) -> *mut u8;
+    fn xmlPathToURI(path: *const u8) -> *mut u8;
 }
-pub use crate::src::HTMLparser::htmlNewDocNoDtD;
-pub use crate::src::HTMLtree::htmlIsBooleanAttr;
-pub use crate::src::dict::xmlDictLookup;
-pub use crate::src::dict::xmlDictOwns;
-pub use crate::src::dict::xmlDictQLookup;
-pub use crate::src::dict::xmlDictReference;
-pub use crate::src::encoding::xmlDetectCharEncoding;
-pub use crate::src::entities::xmlAddDocEntity;
-pub use crate::src::entities::xmlAddDtdEntity;
-pub use crate::src::entities::xmlGetDocEntity;
-pub use crate::src::entities::xmlGetParameterEntity;
-pub use crate::src::entities::xmlGetPredefinedEntity;
-pub use crate::src::error::__xmlRaiseError;
-pub use crate::src::error::xmlParserError;
-pub use crate::src::error::xmlParserWarning;
-pub use crate::src::globals::__htmlDefaultSAXHandler;
-pub use crate::src::globals::__xmlDefaultSAXHandler;
-pub use crate::src::globals::__xmlRegisterNodeDefaultValue;
-pub use crate::src::parser::nodePop;
-pub use crate::src::parser::nodePush;
-pub use crate::src::parser::xmlParseExternalSubset;
-pub use crate::src::parser::xmlPopInput;
-pub use crate::src::parser::xmlPushInput;
-pub use crate::src::parser::xmlSplitQName;
-pub use crate::src::parser::xmlStringDecodeEntities;
-pub use crate::src::parser::xmlStringLenDecodeEntities;
-pub use crate::src::parserInternals::xmlErrMemory;
-pub use crate::src::parserInternals::xmlFreeInputStream;
-pub use crate::src::parserInternals::xmlParserAddNodeInfo;
-pub use crate::src::parserInternals::xmlSwitchEncoding;
-pub use crate::src::catalog::_xmlAutomata;
-pub use crate::src::debugXML::_xmlRegexp;
-pub use crate::src::debugXML::_xmlValidState;
-pub use crate::src::encoding::_xmlAutomataState;
-pub use crate::src::globals::xmlFree;
-pub use crate::src::globals::xmlMalloc;
-pub use crate::src::globals::xmlRealloc;
-pub use crate::src::buf::_xmlBuf;
-pub use crate::src::dict::_xmlDict;
-pub use crate::src::hash::_xmlHashTable;
-pub use crate::src::parser::_xmlStartTag;
+pub use crate::src::{
+    buf::_xmlBuf,
+    catalog::_xmlAutomata,
+    debugXML::{_xmlRegexp, _xmlValidState},
+    dict::{_xmlDict, xmlDictLookup, xmlDictOwns, xmlDictQLookup, xmlDictReference},
+    encoding::{_xmlAutomataState, xmlDetectCharEncoding},
+    entities::{
+        xmlAddDocEntity, xmlAddDtdEntity, xmlGetDocEntity, xmlGetParameterEntity,
+        xmlGetPredefinedEntity,
+    },
+    error::{__xmlRaiseError, xmlParserError, xmlParserWarning},
+    globals::{
+        __htmlDefaultSAXHandler, __xmlDefaultSAXHandler, __xmlRegisterNodeDefaultValue, xmlFree,
+        xmlMalloc, xmlRealloc,
+    },
+    hash::_xmlHashTable,
+    parser::{
+        _xmlStartTag, nodePop, nodePush, xmlParseExternalSubset, xmlPopInput, xmlPushInput,
+        xmlSplitQName, xmlStringDecodeEntities, xmlStringLenDecodeEntities,
+    },
+    parserInternals::{xmlErrMemory, xmlFreeInputStream, xmlParserAddNodeInfo, xmlSwitchEncoding},
+    HTMLparser::htmlNewDocNoDtD,
+    HTMLtree::htmlIsBooleanAttr,
+};
 pub type xmlChar = u8;
 pub type size_t = u64;
 pub type ptrdiff_t = i64;
-pub type xmlFreeFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type xmlMallocFunc = Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
-pub type xmlReallocFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: u64,) -> * mut core::ffi::c_void>;
-// #[derive(Copy, Clone)]
-
+pub type xmlFreeFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+pub type xmlMallocFunc = Option<unsafe extern "C" fn(_: u64) -> *mut core::ffi::c_void>;
+pub type xmlReallocFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: u64) -> *mut core::ffi::c_void>;
 pub type _xmlParserInputBuffer = crate::src::HTMLparser::_xmlParserInputBuffer;
-pub type xmlBufPtr = * mut crate::src::buf::_xmlBuf;
+pub type xmlBufPtr = *mut crate::src::buf::_xmlBuf;
 pub type xmlBuf = crate::src::buf::_xmlBuf;
-pub type xmlCharEncodingHandlerPtr = * mut crate::src::HTMLparser::_xmlCharEncodingHandler;
+pub type xmlCharEncodingHandlerPtr = *mut crate::src::HTMLparser::_xmlCharEncodingHandler;
 pub type xmlCharEncodingHandler = crate::src::HTMLparser::_xmlCharEncodingHandler;
-// #[derive(Copy, Clone)]
-
 pub type _xmlCharEncodingHandler = crate::src::HTMLparser::_xmlCharEncodingHandler;
-pub type iconv_t = * mut core::ffi::c_void;
-pub type xmlCharEncodingOutputFunc = Option<unsafe extern "C"  fn(_: * mut u8,_: * mut i32,_: * const u8,_: * mut i32,) -> i32>;
-pub type xmlCharEncodingInputFunc = Option<unsafe extern "C"  fn(_: * mut u8,_: * mut i32,_: * const u8,_: * mut i32,) -> i32>;
-pub type xmlInputCloseCallback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type xmlInputReadCallback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut i8,_: i32,) -> i32>;
+pub type iconv_t = *mut core::ffi::c_void;
+pub type xmlCharEncodingOutputFunc =
+    Option<unsafe extern "C" fn(_: *mut u8, _: *mut i32, _: *const u8, _: *mut i32) -> i32>;
+pub type xmlCharEncodingInputFunc =
+    Option<unsafe extern "C" fn(_: *mut u8, _: *mut i32, _: *const u8, _: *mut i32) -> i32>;
+pub type xmlInputCloseCallback = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type xmlInputReadCallback =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *mut i8, _: i32) -> i32>;
 pub type xmlParserInputBuffer = crate::src::HTMLparser::_xmlParserInputBuffer;
-pub type xmlParserInputBufferPtr = * mut crate::src::HTMLparser::_xmlParserInputBuffer;
-// #[derive(Copy, Clone)]
-
+pub type xmlParserInputBufferPtr = *mut crate::src::HTMLparser::_xmlParserInputBuffer;
 pub type _xmlParserInput = crate::src::HTMLparser::_xmlParserInput;
-pub type xmlParserInputDeallocate = Option<unsafe extern "C"  fn(_: * mut u8,) -> ()>;
+pub type xmlParserInputDeallocate = Option<unsafe extern "C" fn(_: *mut u8) -> ()>;
 pub type xmlParserInput = crate::src::HTMLparser::_xmlParserInput;
-pub type xmlParserInputPtr = * mut crate::src::HTMLparser::_xmlParserInput;
-// #[derive(Copy, Clone)]
-
+pub type xmlParserInputPtr = *mut crate::src::HTMLparser::_xmlParserInput;
 pub type _xmlParserCtxt = crate::src::HTMLparser::_xmlParserCtxt;
 pub type xmlParserNodeInfo = crate::src::HTMLparser::_xmlParserNodeInfo;
-// #[derive(Copy, Clone)]
-
 pub type _xmlParserNodeInfo = crate::src::HTMLparser::_xmlParserNodeInfo;
-// #[derive(Copy, Clone)]
-
 pub type _xmlNode = crate::src::HTMLparser::_xmlNode;
 pub type xmlNs = crate::src::HTMLparser::_xmlNs;
-// #[derive(Copy, Clone)]
-
 pub type _xmlNs = crate::src::HTMLparser::_xmlNs;
-// #[derive(Copy, Clone)]
-
 pub type _xmlDoc = crate::src::HTMLparser::_xmlDoc;
-// #[derive(Copy, Clone)]
-
 pub type _xmlDtd = crate::src::HTMLparser::_xmlDtd;
 pub type xmlElementType = u32;
 pub const XML_XINCLUDE_END: xmlElementType = 20;
@@ -369,8 +331,6 @@ pub const XML_TEXT_NODE: xmlElementType = 3;
 pub const XML_ATTRIBUTE_NODE: xmlElementType = 2;
 pub const XML_ELEMENT_NODE: xmlElementType = 1;
 pub type xmlNsType = u32;
-// #[derive(Copy, Clone)]
-
 pub type _xmlAttr = crate::src::HTMLparser::_xmlAttr;
 pub type xmlAttributeType = u32;
 pub const XML_ATTRIBUTE_NOTATION: xmlAttributeType = 10;
@@ -391,22 +351,20 @@ pub const XML_PARSE_SAX: xmlParserMode = 2;
 pub const XML_PARSE_DOM: xmlParserMode = 1;
 pub const XML_PARSE_UNKNOWN: xmlParserMode = 0;
 pub type xmlError = crate::src::HTMLparser::_xmlError;
-// #[derive(Copy, Clone)]
-
 pub type _xmlError = crate::src::HTMLparser::_xmlError;
 pub type xmlErrorLevel = u32;
 pub const XML_ERR_FATAL: xmlErrorLevel = 3;
 pub const XML_ERR_ERROR: xmlErrorLevel = 2;
 pub const XML_ERR_WARNING: xmlErrorLevel = 1;
 pub const XML_ERR_NONE: xmlErrorLevel = 0;
-pub type xmlAttrPtr = * mut crate::src::HTMLparser::_xmlAttr;
+pub type xmlAttrPtr = *mut crate::src::HTMLparser::_xmlAttr;
 pub type xmlAttr = crate::src::HTMLparser::_xmlAttr;
-pub type xmlNodePtr = * mut crate::src::HTMLparser::_xmlNode;
+pub type xmlNodePtr = *mut crate::src::HTMLparser::_xmlNode;
 pub type xmlNode = crate::src::HTMLparser::_xmlNode;
-pub type xmlHashTablePtr = * mut crate::src::hash::_xmlHashTable;
+pub type xmlHashTablePtr = *mut crate::src::hash::_xmlHashTable;
 pub type xmlHashTable = crate::src::hash::_xmlHashTable;
 pub type xmlStartTag = crate::src::parser::_xmlStartTag;
-pub type xmlDictPtr = * mut crate::src::dict::_xmlDict;
+pub type xmlDictPtr = *mut crate::src::dict::_xmlDict;
 pub type xmlDict = crate::src::dict::_xmlDict;
 pub type xmlParserInputState = i32;
 pub const XML_PARSER_PUBLIC_LITERAL: xmlParserInputState = 16;
@@ -428,36 +386,57 @@ pub const XML_PARSER_MISC: xmlParserInputState = 1;
 pub const XML_PARSER_START: xmlParserInputState = 0;
 pub const XML_PARSER_EOF: xmlParserInputState = -1;
 pub type xmlValidCtxt = crate::src::HTMLparser::_xmlValidCtxt;
-// #[derive(Copy, Clone)]
-
 pub type _xmlValidCtxt = crate::src::HTMLparser::_xmlValidCtxt;
-pub type xmlAutomataStatePtr = * mut crate::src::encoding::_xmlAutomataState;
+pub type xmlAutomataStatePtr = *mut crate::src::encoding::_xmlAutomataState;
 pub type xmlAutomataState = crate::src::encoding::_xmlAutomataState;
-pub type xmlAutomataPtr = * mut crate::src::catalog::_xmlAutomata;
+pub type xmlAutomataPtr = *mut crate::src::catalog::_xmlAutomata;
 pub type xmlAutomata = crate::src::catalog::_xmlAutomata;
 pub type xmlValidState = crate::src::debugXML::_xmlValidState;
-pub type xmlDocPtr = * mut crate::src::HTMLparser::_xmlDoc;
+pub type xmlDocPtr = *mut crate::src::HTMLparser::_xmlDoc;
 pub type xmlDoc = crate::src::HTMLparser::_xmlDoc;
-pub type xmlValidityWarningFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type xmlValidityErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
+pub type xmlValidityWarningFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type xmlValidityErrorFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
 pub type xmlParserNodeInfoSeq = crate::src::HTMLparser::_xmlParserNodeInfoSeq;
-// #[derive(Copy, Clone)]
-
 pub type _xmlParserNodeInfoSeq = crate::src::HTMLparser::_xmlParserNodeInfoSeq;
-// #[derive(Copy, Clone)]
-
 pub type _xmlSAXHandler = crate::src::HTMLparser::_xmlSAXHandler;
-pub type xmlStructuredErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::HTMLparser::_xmlError,) -> ()>;
-pub type xmlErrorPtr = * mut crate::src::HTMLparser::_xmlError;
-pub type endElementNsSAX2Func = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
-pub type startElementNsSAX2Func = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,_: i32,_: * mut * const u8,_: i32,_: i32,_: * mut * const u8,) -> ()>;
-pub type externalSubsetSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
-pub type cdataBlockSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,) -> ()>;
-pub type getParameterEntitySAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> * mut crate::src::HTMLparser::_xmlEntity>;
-pub type xmlEntityPtr = * mut crate::src::HTMLparser::_xmlEntity;
+pub type xmlStructuredErrorFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *mut crate::src::HTMLparser::_xmlError,
+    ) -> (),
+>;
+pub type xmlErrorPtr = *mut crate::src::HTMLparser::_xmlError;
+pub type endElementNsSAX2Func = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8, _: *const u8) -> (),
+>;
+pub type startElementNsSAX2Func = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+        _: *const u8,
+        _: i32,
+        _: *mut *const u8,
+        _: i32,
+        _: i32,
+        _: *mut *const u8,
+    ) -> (),
+>;
+pub type externalSubsetSAXFunc = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8, _: *const u8) -> (),
+>;
+pub type cdataBlockSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: i32) -> ()>;
+pub type getParameterEntitySAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlEntity,
+>;
+pub type xmlEntityPtr = *mut crate::src::HTMLparser::_xmlEntity;
 pub type xmlEntity = crate::src::HTMLparser::_xmlEntity;
-// #[derive(Copy, Clone)]
-
 pub type _xmlEntity = crate::src::HTMLparser::_xmlEntity;
 pub type xmlEntityType = u32;
 pub const XML_INTERNAL_PREDEFINED_ENTITY: xmlEntityType = 6;
@@ -466,30 +445,56 @@ pub const XML_INTERNAL_PARAMETER_ENTITY: xmlEntityType = 4;
 pub const XML_EXTERNAL_GENERAL_UNPARSED_ENTITY: xmlEntityType = 3;
 pub const XML_EXTERNAL_GENERAL_PARSED_ENTITY: xmlEntityType = 2;
 pub const XML_INTERNAL_GENERAL_ENTITY: xmlEntityType = 1;
-pub type fatalErrorSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type errorSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type warningSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type commentSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> ()>;
-pub type processingInstructionSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,) -> ()>;
-pub type ignorableWhitespaceSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,) -> ()>;
-pub type charactersSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,) -> ()>;
-pub type referenceSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> ()>;
-pub type endElementSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> ()>;
-pub type startElementSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * mut * const u8,) -> ()>;
-pub type endDocumentSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type startDocumentSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type setDocumentLocatorSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::HTMLparser::_xmlSAXLocator,) -> ()>;
-pub type xmlSAXLocatorPtr = * mut crate::src::HTMLparser::_xmlSAXLocator;
+pub type fatalErrorSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type errorSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type warningSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type commentSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8) -> ()>;
+pub type processingInstructionSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8) -> ()>;
+pub type ignorableWhitespaceSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: i32) -> ()>;
+pub type charactersSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: i32) -> ()>;
+pub type referenceSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8) -> ()>;
+pub type endElementSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8) -> ()>;
+pub type startElementSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *mut *const u8) -> ()>;
+pub type endDocumentSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+pub type startDocumentSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+pub type setDocumentLocatorSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *mut crate::src::HTMLparser::_xmlSAXLocator,
+    ) -> (),
+>;
+pub type xmlSAXLocatorPtr = *mut crate::src::HTMLparser::_xmlSAXLocator;
 pub type xmlSAXLocator = crate::src::HTMLparser::_xmlSAXLocator;
-// #[derive(Copy, Clone)]
-
 pub type _xmlSAXLocator = crate::src::HTMLparser::_xmlSAXLocator;
-pub type unparsedEntityDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
-pub type elementDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,_: * mut crate::src::HTMLparser::_xmlElementContent,) -> ()>;
-pub type xmlElementContentPtr = * mut crate::src::HTMLparser::_xmlElementContent;
+pub type unparsedEntityDeclSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+        _: *const u8,
+        _: *const u8,
+    ) -> (),
+>;
+pub type elementDeclSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: i32,
+        _: *mut crate::src::HTMLparser::_xmlElementContent,
+    ) -> (),
+>;
+pub type xmlElementContentPtr = *mut crate::src::HTMLparser::_xmlElementContent;
 pub type xmlElementContent = crate::src::HTMLparser::_xmlElementContent;
-// #[derive(Copy, Clone)]
-
 pub type _xmlElementContent = crate::src::HTMLparser::_xmlElementContent;
 pub type xmlElementContentOccur = u32;
 pub const XML_ELEMENT_CONTENT_PLUS: xmlElementContentOccur = 4;
@@ -501,47 +506,79 @@ pub const XML_ELEMENT_CONTENT_OR: xmlElementContentType = 4;
 pub const XML_ELEMENT_CONTENT_SEQ: xmlElementContentType = 3;
 pub const XML_ELEMENT_CONTENT_ELEMENT: xmlElementContentType = 2;
 pub const XML_ELEMENT_CONTENT_PCDATA: xmlElementContentType = 1;
-pub type attributeDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: i32,_: i32,_: * const u8,_: * mut crate::src::HTMLparser::_xmlEnumeration,) -> ()>;
-pub type xmlEnumerationPtr = * mut crate::src::HTMLparser::_xmlEnumeration;
+pub type attributeDeclSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+        _: i32,
+        _: i32,
+        _: *const u8,
+        _: *mut crate::src::HTMLparser::_xmlEnumeration,
+    ) -> (),
+>;
+pub type xmlEnumerationPtr = *mut crate::src::HTMLparser::_xmlEnumeration;
 pub type xmlEnumeration = crate::src::HTMLparser::_xmlEnumeration;
-// #[derive(Copy, Clone)]
-
 pub type _xmlEnumeration = crate::src::HTMLparser::_xmlEnumeration;
-pub type notationDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
-pub type entityDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,_: * const u8,_: * const u8,_: * mut u8,) -> ()>;
-pub type getEntitySAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> * mut crate::src::HTMLparser::_xmlEntity>;
-pub type resolveEntitySAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,) -> * mut crate::src::HTMLparser::_xmlParserInput>;
-pub type hasExternalSubsetSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type hasInternalSubsetSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type isStandaloneSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type internalSubsetSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
+pub type notationDeclSAXFunc = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8, _: *const u8) -> (),
+>;
+pub type entityDeclSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: i32,
+        _: *const u8,
+        _: *const u8,
+        _: *mut u8,
+    ) -> (),
+>;
+pub type getEntitySAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlEntity,
+>;
+pub type resolveEntitySAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlParserInput,
+>;
+pub type hasExternalSubsetSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type hasInternalSubsetSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type isStandaloneSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type internalSubsetSAXFunc = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8, _: *const u8) -> (),
+>;
 pub type xmlParserCtxt = crate::src::HTMLparser::_xmlParserCtxt;
-pub type xmlParserCtxtPtr = * mut crate::src::HTMLparser::_xmlParserCtxt;
+pub type xmlParserCtxtPtr = *mut crate::src::HTMLparser::_xmlParserCtxt;
 pub type xmlSAXHandler = crate::src::HTMLparser::_xmlSAXHandler;
-pub type xmlSAXHandlerPtr = * mut crate::src::HTMLparser::_xmlSAXHandler;
+pub type xmlSAXHandlerPtr = *mut crate::src::HTMLparser::_xmlSAXHandler;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlNotation {
-    pub name: * const u8,
-    pub PublicID: * const u8,
-    pub SystemID: * const u8,
+    pub name: *const u8,
+    pub PublicID: *const u8,
+    pub SystemID: *const u8,
 }
 impl _xmlNotation {
     pub const fn new() -> Self {
         _xmlNotation {
-        name: (0 as * const u8),
-        PublicID: (0 as * const u8),
-        SystemID: (0 as * const u8)
+            name: (0 as *const u8),
+            PublicID: (0 as *const u8),
+            SystemID: (0 as *const u8),
         }
     }
 }
-
 impl std::default::Default for _xmlNotation {
-    fn default() -> Self { _xmlNotation::new() }
+    fn default() -> Self {
+        _xmlNotation::new()
+    }
 }
-
 pub type xmlNotation = crate::src::SAX2::_xmlNotation;
-pub type xmlNotationPtr = * mut crate::src::SAX2::_xmlNotation;
+pub type xmlNotationPtr = *mut crate::src::SAX2::_xmlNotation;
 pub type xmlAttributeDefault = u32;
 pub const XML_ATTRIBUTE_FIXED: xmlAttributeDefault = 4;
 pub const XML_ATTRIBUTE_IMPLIED: xmlAttributeDefault = 3;
@@ -550,52 +587,52 @@ pub const XML_ATTRIBUTE_NONE: xmlAttributeDefault = 1;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlAttribute {
-    pub _private: * mut core::ffi::c_void,
+    pub _private: *mut core::ffi::c_void,
     pub type_0: u32,
-    pub name: * const u8,
-    pub children: * mut crate::src::HTMLparser::_xmlNode,
-    pub last: * mut crate::src::HTMLparser::_xmlNode,
-    pub parent: * mut crate::src::HTMLparser::_xmlDtd,
-    pub next: * mut crate::src::HTMLparser::_xmlNode,
-    pub prev: * mut crate::src::HTMLparser::_xmlNode,
-    pub doc: * mut crate::src::HTMLparser::_xmlDoc,
-    pub nexth: * mut crate::src::SAX2::_xmlAttribute,
+    pub name: *const u8,
+    pub children: *mut crate::src::HTMLparser::_xmlNode,
+    pub last: *mut crate::src::HTMLparser::_xmlNode,
+    pub parent: *mut crate::src::HTMLparser::_xmlDtd,
+    pub next: *mut crate::src::HTMLparser::_xmlNode,
+    pub prev: *mut crate::src::HTMLparser::_xmlNode,
+    pub doc: *mut crate::src::HTMLparser::_xmlDoc,
+    pub nexth: *mut crate::src::SAX2::_xmlAttribute,
     pub atype: u32,
     pub def: u32,
-    pub defaultValue: * const u8,
-    pub tree: * mut crate::src::HTMLparser::_xmlEnumeration,
-    pub prefix: * const u8,
-    pub elem: * const u8,
+    pub defaultValue: *const u8,
+    pub tree: *mut crate::src::HTMLparser::_xmlEnumeration,
+    pub prefix: *const u8,
+    pub elem: *const u8,
 }
 impl _xmlAttribute {
     pub const fn new() -> Self {
         _xmlAttribute {
-        _private: (0 as * mut core::ffi::c_void),
-        type_0: 0,
-        name: (0 as * const u8),
-        children: (0 as * mut crate::src::HTMLparser::_xmlNode),
-        last: (0 as * mut crate::src::HTMLparser::_xmlNode),
-        parent: (0 as * mut crate::src::HTMLparser::_xmlDtd),
-        next: (0 as * mut crate::src::HTMLparser::_xmlNode),
-        prev: (0 as * mut crate::src::HTMLparser::_xmlNode),
-        doc: (0 as * mut crate::src::HTMLparser::_xmlDoc),
-        nexth: (0 as * mut crate::src::SAX2::_xmlAttribute),
-        atype: 0,
-        def: 0,
-        defaultValue: (0 as * const u8),
-        tree: (0 as * mut crate::src::HTMLparser::_xmlEnumeration),
-        prefix: (0 as * const u8),
-        elem: (0 as * const u8)
+            _private: (0 as *mut core::ffi::c_void),
+            type_0: 0,
+            name: (0 as *const u8),
+            children: (0 as *mut crate::src::HTMLparser::_xmlNode),
+            last: (0 as *mut crate::src::HTMLparser::_xmlNode),
+            parent: (0 as *mut crate::src::HTMLparser::_xmlDtd),
+            next: (0 as *mut crate::src::HTMLparser::_xmlNode),
+            prev: (0 as *mut crate::src::HTMLparser::_xmlNode),
+            doc: (0 as *mut crate::src::HTMLparser::_xmlDoc),
+            nexth: (0 as *mut crate::src::SAX2::_xmlAttribute),
+            atype: 0,
+            def: 0,
+            defaultValue: (0 as *const u8),
+            tree: (0 as *mut crate::src::HTMLparser::_xmlEnumeration),
+            prefix: (0 as *const u8),
+            elem: (0 as *const u8),
         }
     }
 }
-
 impl std::default::Default for _xmlAttribute {
-    fn default() -> Self { _xmlAttribute::new() }
+    fn default() -> Self {
+        _xmlAttribute::new()
+    }
 }
-
 pub type xmlAttribute = crate::src::SAX2::_xmlAttribute;
-pub type xmlAttributePtr = * mut crate::src::SAX2::_xmlAttribute;
+pub type xmlAttributePtr = *mut crate::src::SAX2::_xmlAttribute;
 pub type xmlElementTypeVal = u32;
 pub const XML_ELEMENT_TYPE_ELEMENT: xmlElementTypeVal = 4;
 pub const XML_ELEMENT_TYPE_MIXED: xmlElementTypeVal = 3;
@@ -603,111 +640,111 @@ pub const XML_ELEMENT_TYPE_ANY: xmlElementTypeVal = 2;
 pub const XML_ELEMENT_TYPE_EMPTY: xmlElementTypeVal = 1;
 pub const XML_ELEMENT_TYPE_UNDEFINED: xmlElementTypeVal = 0;
 pub type xmlRegexp = crate::src::debugXML::_xmlRegexp;
-pub type xmlRegexpPtr = * mut crate::src::debugXML::_xmlRegexp;
+pub type xmlRegexpPtr = *mut crate::src::debugXML::_xmlRegexp;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlElement {
-    pub _private: * mut core::ffi::c_void,
+    pub _private: *mut core::ffi::c_void,
     pub type_0: u32,
-    pub name: * const u8,
-    pub children: * mut crate::src::HTMLparser::_xmlNode,
-    pub last: * mut crate::src::HTMLparser::_xmlNode,
-    pub parent: * mut crate::src::HTMLparser::_xmlDtd,
-    pub next: * mut crate::src::HTMLparser::_xmlNode,
-    pub prev: * mut crate::src::HTMLparser::_xmlNode,
-    pub doc: * mut crate::src::HTMLparser::_xmlDoc,
+    pub name: *const u8,
+    pub children: *mut crate::src::HTMLparser::_xmlNode,
+    pub last: *mut crate::src::HTMLparser::_xmlNode,
+    pub parent: *mut crate::src::HTMLparser::_xmlDtd,
+    pub next: *mut crate::src::HTMLparser::_xmlNode,
+    pub prev: *mut crate::src::HTMLparser::_xmlNode,
+    pub doc: *mut crate::src::HTMLparser::_xmlDoc,
     pub etype: u32,
-    pub content: * mut crate::src::HTMLparser::_xmlElementContent,
-    pub attributes: * mut crate::src::SAX2::_xmlAttribute,
-    pub prefix: * const u8,
-    pub contModel: * mut crate::src::debugXML::_xmlRegexp,
+    pub content: *mut crate::src::HTMLparser::_xmlElementContent,
+    pub attributes: *mut crate::src::SAX2::_xmlAttribute,
+    pub prefix: *const u8,
+    pub contModel: *mut crate::src::debugXML::_xmlRegexp,
 }
 impl _xmlElement {
     pub const fn new() -> Self {
         _xmlElement {
-        _private: (0 as * mut core::ffi::c_void),
-        type_0: 0,
-        name: (0 as * const u8),
-        children: (0 as * mut crate::src::HTMLparser::_xmlNode),
-        last: (0 as * mut crate::src::HTMLparser::_xmlNode),
-        parent: (0 as * mut crate::src::HTMLparser::_xmlDtd),
-        next: (0 as * mut crate::src::HTMLparser::_xmlNode),
-        prev: (0 as * mut crate::src::HTMLparser::_xmlNode),
-        doc: (0 as * mut crate::src::HTMLparser::_xmlDoc),
-        etype: 0,
-        content: (0 as * mut crate::src::HTMLparser::_xmlElementContent),
-        attributes: (0 as * mut crate::src::SAX2::_xmlAttribute),
-        prefix: (0 as * const u8),
-        contModel: (0 as * mut crate::src::debugXML::_xmlRegexp)
+            _private: (0 as *mut core::ffi::c_void),
+            type_0: 0,
+            name: (0 as *const u8),
+            children: (0 as *mut crate::src::HTMLparser::_xmlNode),
+            last: (0 as *mut crate::src::HTMLparser::_xmlNode),
+            parent: (0 as *mut crate::src::HTMLparser::_xmlDtd),
+            next: (0 as *mut crate::src::HTMLparser::_xmlNode),
+            prev: (0 as *mut crate::src::HTMLparser::_xmlNode),
+            doc: (0 as *mut crate::src::HTMLparser::_xmlDoc),
+            etype: 0,
+            content: (0 as *mut crate::src::HTMLparser::_xmlElementContent),
+            attributes: (0 as *mut crate::src::SAX2::_xmlAttribute),
+            prefix: (0 as *const u8),
+            contModel: (0 as *mut crate::src::debugXML::_xmlRegexp),
         }
     }
 }
-
 impl std::default::Default for _xmlElement {
-    fn default() -> Self { _xmlElement::new() }
+    fn default() -> Self {
+        _xmlElement::new()
+    }
 }
-
 pub type xmlElement = crate::src::SAX2::_xmlElement;
-pub type xmlElementPtr = * mut crate::src::SAX2::_xmlElement;
-pub type xmlNsPtr = * mut crate::src::HTMLparser::_xmlNs;
+pub type xmlElementPtr = *mut crate::src::SAX2::_xmlElement;
+pub type xmlNsPtr = *mut crate::src::HTMLparser::_xmlNs;
 pub type xmlDtd = crate::src::HTMLparser::_xmlDtd;
-pub type xmlDtdPtr = * mut crate::src::HTMLparser::_xmlDtd;
+pub type xmlDtdPtr = *mut crate::src::HTMLparser::_xmlDtd;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlID {
-    pub next: * mut crate::src::SAX2::_xmlID,
-    pub value: * const u8,
-    pub attr: * mut crate::src::HTMLparser::_xmlAttr,
-    pub name: * const u8,
+    pub next: *mut crate::src::SAX2::_xmlID,
+    pub value: *const u8,
+    pub attr: *mut crate::src::HTMLparser::_xmlAttr,
+    pub name: *const u8,
     pub lineno: i32,
-    pub doc: * mut crate::src::HTMLparser::_xmlDoc,
+    pub doc: *mut crate::src::HTMLparser::_xmlDoc,
 }
 impl _xmlID {
     pub const fn new() -> Self {
         _xmlID {
-        next: (0 as * mut crate::src::SAX2::_xmlID),
-        value: (0 as * const u8),
-        attr: (0 as * mut crate::src::HTMLparser::_xmlAttr),
-        name: (0 as * const u8),
-        lineno: 0,
-        doc: (0 as * mut crate::src::HTMLparser::_xmlDoc)
+            next: (0 as *mut crate::src::SAX2::_xmlID),
+            value: (0 as *const u8),
+            attr: (0 as *mut crate::src::HTMLparser::_xmlAttr),
+            name: (0 as *const u8),
+            lineno: 0,
+            doc: (0 as *mut crate::src::HTMLparser::_xmlDoc),
         }
     }
 }
-
 impl std::default::Default for _xmlID {
-    fn default() -> Self { _xmlID::new() }
+    fn default() -> Self {
+        _xmlID::new()
+    }
 }
-
 pub type xmlID = crate::src::SAX2::_xmlID;
-pub type xmlIDPtr = * mut crate::src::SAX2::_xmlID;
+pub type xmlIDPtr = *mut crate::src::SAX2::_xmlID;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlRef {
-    pub next: * mut crate::src::SAX2::_xmlRef,
-    pub value: * const u8,
-    pub attr: * mut crate::src::HTMLparser::_xmlAttr,
-    pub name: * const u8,
+    pub next: *mut crate::src::SAX2::_xmlRef,
+    pub value: *const u8,
+    pub attr: *mut crate::src::HTMLparser::_xmlAttr,
+    pub name: *const u8,
     pub lineno: i32,
 }
 impl _xmlRef {
     pub const fn new() -> Self {
         _xmlRef {
-        next: (0 as * mut crate::src::SAX2::_xmlRef),
-        value: (0 as * const u8),
-        attr: (0 as * mut crate::src::HTMLparser::_xmlAttr),
-        name: (0 as * const u8),
-        lineno: 0
+            next: (0 as *mut crate::src::SAX2::_xmlRef),
+            value: (0 as *const u8),
+            attr: (0 as *mut crate::src::HTMLparser::_xmlAttr),
+            name: (0 as *const u8),
+            lineno: 0,
         }
     }
 }
-
 impl std::default::Default for _xmlRef {
-    fn default() -> Self { _xmlRef::new() }
+    fn default() -> Self {
+        _xmlRef::new()
+    }
 }
-
 pub type xmlRef = crate::src::SAX2::_xmlRef;
-pub type xmlRefPtr = * mut crate::src::SAX2::_xmlRef;
+pub type xmlRefPtr = *mut crate::src::SAX2::_xmlRef;
 pub type C2RustUnnamed = u32;
 pub const XML_DOC_HTML: C2RustUnnamed = 128;
 pub const XML_DOC_INTERNAL: C2RustUnnamed = 64;
@@ -1486,11 +1523,10 @@ pub const XML_ERR_DOCUMENT_START: xmlParserErrors = 3;
 pub const XML_ERR_NO_MEMORY: xmlParserErrors = 2;
 pub const XML_ERR_INTERNAL_ERROR: xmlParserErrors = 1;
 pub const XML_ERR_OK: xmlParserErrors = 0;
-pub type xmlGenericErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type xmlValidCtxtPtr = * mut crate::src::HTMLparser::_xmlValidCtxt;
-pub type xmlParserNodeInfoPtr = * mut crate::src::HTMLparser::_xmlParserNodeInfo;
-// #[derive(Copy, Clone)]
-
+pub type xmlGenericErrorFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type xmlValidCtxtPtr = *mut crate::src::HTMLparser::_xmlValidCtxt;
+pub type xmlParserNodeInfoPtr = *mut crate::src::HTMLparser::_xmlParserNodeInfo;
 pub type _xmlSAXHandlerV1 = crate::src::HTMLparser::_xmlSAXHandlerV1;
 pub type xmlSAXHandlerV1 = crate::src::HTMLparser::_xmlSAXHandlerV1;
 pub type xmlCharEncoding = i32;
@@ -1542,62 +1578,65 @@ pub const XML_PARSE_DTDATTR: C2RustUnnamed_1 = 8;
 pub const XML_PARSE_DTDLOAD: C2RustUnnamed_1 = 4;
 pub const XML_PARSE_NOENT: C2RustUnnamed_1 = 2;
 pub const XML_PARSE_RECOVER: C2RustUnnamed_1 = 1;
-pub type htmlDocPtr = * mut crate::src::HTMLparser::_xmlDoc;
-pub type xmlURIPtr = * mut crate::src::SAX2::_xmlURI;
+pub type htmlDocPtr = *mut crate::src::HTMLparser::_xmlDoc;
+pub type xmlURIPtr = *mut crate::src::SAX2::_xmlURI;
 pub type xmlURI = crate::src::SAX2::_xmlURI;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlURI {
-    pub scheme: * mut i8,
-    pub opaque: * mut i8,
-    pub authority: * mut i8,
-    pub server: * mut i8,
-    pub user: * mut i8,
+    pub scheme: *mut i8,
+    pub opaque: *mut i8,
+    pub authority: *mut i8,
+    pub server: *mut i8,
+    pub user: *mut i8,
     pub port: i32,
-    pub path: * mut i8,
-    pub query: * mut i8,
-    pub fragment: * mut i8,
+    pub path: *mut i8,
+    pub query: *mut i8,
+    pub fragment: *mut i8,
     pub cleanup: i32,
-    pub query_raw: * mut i8,
+    pub query_raw: *mut i8,
 }
 impl _xmlURI {
     pub const fn new() -> Self {
         _xmlURI {
-        scheme: (0 as * mut i8),
-        opaque: (0 as * mut i8),
-        authority: (0 as * mut i8),
-        server: (0 as * mut i8),
-        user: (0 as * mut i8),
-        port: 0,
-        path: (0 as * mut i8),
-        query: (0 as * mut i8),
-        fragment: (0 as * mut i8),
-        cleanup: 0,
-        query_raw: (0 as * mut i8)
+            scheme: (0 as *mut i8),
+            opaque: (0 as *mut i8),
+            authority: (0 as *mut i8),
+            server: (0 as *mut i8),
+            user: (0 as *mut i8),
+            port: 0,
+            path: (0 as *mut i8),
+            query: (0 as *mut i8),
+            fragment: (0 as *mut i8),
+            cleanup: 0,
+            query_raw: (0 as *mut i8),
         }
     }
 }
-
 impl std::default::Default for _xmlURI {
-    fn default() -> Self { _xmlURI::new() }
+    fn default() -> Self {
+        _xmlURI::new()
+    }
 }
-
-pub type xmlRegisterNodeFunc = Option<unsafe extern "C"  fn(_: * mut crate::src::HTMLparser::_xmlNode,) -> ()>;
-unsafe extern "C" fn xmlSAX2ErrMemory(
-    mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt,
-    mut msg: * const i8,
+pub type xmlRegisterNodeFunc =
+    Option<unsafe extern "C" fn(_: *mut crate::src::HTMLparser::_xmlNode) -> ()>;
+extern "C" fn xmlSAX2ErrMemory(
+    mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt,
+    mut msg: *const i8,
 ) {
-    let mut schannel: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::HTMLparser::_xmlError,) -> ()> = None;
-    let mut str1: * const i8 = b"out of memory\n\0" as *const u8
-        as *const i8;
+    let mut schannel: Option<
+        unsafe extern "C" fn(
+            _: *mut core::ffi::c_void,
+            _: *mut crate::src::HTMLparser::_xmlError,
+        ) -> (),
+    > = None;
+    let mut str1: *const i8 = b"out of memory\n\0" as *const u8 as *const i8;
     if !ctxt.is_null() {
-        (*ctxt).errNo = XML_ERR_NO_MEMORY as i32;
-        if !((*ctxt).sax).is_null()
-            && (*(*ctxt).sax).initialized == 0xdeedbeaf as u32
-        {
-            schannel = (*(*ctxt).sax).serror;
+        (unsafe { (*ctxt).errNo = XML_ERR_NO_MEMORY as i32 });
+        if !(unsafe { (*ctxt).sax }).is_null() && (unsafe { (*(*ctxt).sax).initialized }) == 0xdeedbeaf as u32 {
+            schannel = unsafe { (*(*ctxt).sax).serror };
         }
-        __xmlRaiseError(
+        (unsafe { __xmlRaiseError(
             schannel,
             (*ctxt).vctxt.error,
             (*ctxt).vctxt.userData,
@@ -1616,12 +1655,12 @@ unsafe extern "C" fn xmlSAX2ErrMemory(
             msg,
             str1,
             0 as *mut libc::c_void,
-        );
-        (*ctxt).errNo = XML_ERR_NO_MEMORY as i32;
-        (*ctxt).instate = XML_PARSER_EOF;
-        (*ctxt).disableSAX = 1 as i32;
+        ) });
+        (unsafe { (*ctxt).errNo = XML_ERR_NO_MEMORY as i32 });
+        (unsafe { (*ctxt).instate = XML_PARSER_EOF });
+        (unsafe { (*ctxt).disableSAX = 1 as i32 });
     } else {
-        __xmlRaiseError(
+        (unsafe { __xmlRaiseError(
             schannel,
             None,
             0 as *mut libc::c_void,
@@ -1640,30 +1679,34 @@ unsafe extern "C" fn xmlSAX2ErrMemory(
             msg,
             str1,
             0 as *mut libc::c_void,
-        );
+        ) });
     };
 }
-unsafe extern "C" fn xmlErrValid(
-    mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt,
+extern "C" fn xmlErrValid(
+    mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt,
     mut error: u32,
-    mut msg: * const i8,
-    mut str1: * const i8,
-    mut str2: * const i8,
+    mut msg: *const i8,
+    mut str1: *const i8,
+    mut str2: *const i8,
 ) {
-    let mut schannel: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::HTMLparser::_xmlError,) -> ()> = None;
-    if !ctxt.is_null() && (*ctxt).disableSAX != 0 as i32
-        && (*ctxt).instate as i32 == XML_PARSER_EOF as i32
+    let mut schannel: Option<
+        unsafe extern "C" fn(
+            _: *mut core::ffi::c_void,
+            _: *mut crate::src::HTMLparser::_xmlError,
+        ) -> (),
+    > = None;
+    if !ctxt.is_null()
+        && (unsafe { (*ctxt).disableSAX }) != 0 as i32
+        && (unsafe { (*ctxt).instate }) as i32 == XML_PARSER_EOF as i32
     {
         return;
     }
     if !ctxt.is_null() {
-        (*ctxt).errNo = error as i32;
-        if !((*ctxt).sax).is_null()
-            && (*(*ctxt).sax).initialized == 0xdeedbeaf as u32
-        {
-            schannel = (*(*ctxt).sax).serror;
+        (unsafe { (*ctxt).errNo = error as i32 });
+        if !(unsafe { (*ctxt).sax }).is_null() && (unsafe { (*(*ctxt).sax).initialized }) == 0xdeedbeaf as u32 {
+            schannel = unsafe { (*(*ctxt).sax).serror };
         }
-        __xmlRaiseError(
+        (unsafe { __xmlRaiseError(
             schannel,
             (*ctxt).vctxt.error,
             (*ctxt).vctxt.userData,
@@ -1682,10 +1725,10 @@ unsafe extern "C" fn xmlErrValid(
             msg,
             str1,
             str2,
-        );
-        (*ctxt).valid = 0 as i32;
+        ) });
+        (unsafe { (*ctxt).valid = 0 as i32 });
     } else {
-        __xmlRaiseError(
+        (unsafe { __xmlRaiseError(
             schannel,
             None,
             0 as *mut libc::c_void,
@@ -1704,25 +1747,26 @@ unsafe extern "C" fn xmlErrValid(
             msg,
             str1,
             str2,
-        );
+        ) });
     };
 }
-unsafe extern "C" fn xmlFatalErrMsg(
-    mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt,
+extern "C" fn xmlFatalErrMsg(
+    mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt,
     mut error: u32,
-    mut msg: * const i8,
-    mut str1: * const u8,
-    mut str2: * const u8,
+    mut msg: *const i8,
+    mut str1: *const u8,
+    mut str2: *const u8,
 ) {
-    if !ctxt.is_null() && (*ctxt).disableSAX != 0 as i32
-        && (*ctxt).instate as i32 == XML_PARSER_EOF as i32
+    if !ctxt.is_null()
+        && (unsafe { (*ctxt).disableSAX }) != 0 as i32
+        && (unsafe { (*ctxt).instate }) as i32 == XML_PARSER_EOF as i32
     {
         return;
     }
     if !ctxt.is_null() {
-        (*ctxt).errNo = error as i32;
+        (unsafe { (*ctxt).errNo = error as i32 });
     }
-    __xmlRaiseError(
+    (unsafe { __xmlRaiseError(
         None,
         None,
         0 as *mut libc::c_void,
@@ -1741,30 +1785,31 @@ unsafe extern "C" fn xmlFatalErrMsg(
         msg,
         str1,
         str2,
-    );
+    ) });
     if !ctxt.is_null() {
-        (*ctxt).wellFormed = 0 as i32;
-        (*ctxt).valid = 0 as i32;
-        if (*ctxt).recovery == 0 as i32 {
-            (*ctxt).disableSAX = 1 as i32;
+        (unsafe { (*ctxt).wellFormed = 0 as i32 });
+        (unsafe { (*ctxt).valid = 0 as i32 });
+        if (unsafe { (*ctxt).recovery }) == 0 as i32 {
+            (unsafe { (*ctxt).disableSAX = 1 as i32 });
         }
     }
 }
-unsafe extern "C" fn xmlWarnMsg(
-    mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt,
+extern "C" fn xmlWarnMsg(
+    mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt,
     mut error: u32,
-    mut msg: * const i8,
-    mut str1: * const u8,
+    mut msg: *const i8,
+    mut str1: *const u8,
 ) {
-    if !ctxt.is_null() && (*ctxt).disableSAX != 0 as i32
-        && (*ctxt).instate as i32 == XML_PARSER_EOF as i32
+    if !ctxt.is_null()
+        && (unsafe { (*ctxt).disableSAX }) != 0 as i32
+        && (unsafe { (*ctxt).instate }) as i32 == XML_PARSER_EOF as i32
     {
         return;
     }
     if !ctxt.is_null() {
-        (*ctxt).errNo = error as i32;
+        (unsafe { (*ctxt).errNo = error as i32 });
     }
-    __xmlRaiseError(
+    (unsafe { __xmlRaiseError(
         None,
         None,
         0 as *mut libc::c_void,
@@ -1782,24 +1827,25 @@ unsafe extern "C" fn xmlWarnMsg(
         0 as i32,
         msg,
         str1,
-    );
+    ) });
 }
-unsafe extern "C" fn xmlNsWarnMsg(
-    mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt,
+extern "C" fn xmlNsWarnMsg(
+    mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt,
     mut error: u32,
-    mut msg: * const i8,
-    mut str1: * const u8,
-    mut str2: * const u8,
+    mut msg: *const i8,
+    mut str1: *const u8,
+    mut str2: *const u8,
 ) {
-    if !ctxt.is_null() && (*ctxt).disableSAX != 0 as i32
-        && (*ctxt).instate as i32 == XML_PARSER_EOF as i32
+    if !ctxt.is_null()
+        && (unsafe { (*ctxt).disableSAX }) != 0 as i32
+        && (unsafe { (*ctxt).instate }) as i32 == XML_PARSER_EOF as i32
     {
         return;
     }
     if !ctxt.is_null() {
-        (*ctxt).errNo = error as i32;
+        (unsafe { (*ctxt).errNo = error as i32 });
     }
-    __xmlRaiseError(
+    (unsafe { __xmlRaiseError(
         None,
         None,
         0 as *mut libc::c_void,
@@ -1818,279 +1864,248 @@ unsafe extern "C" fn xmlNsWarnMsg(
         msg,
         str1,
         str2,
-    );
+    ) });
 }
 #[no_mangle]
-pub extern "C" fn xmlSAX2GetPublicId(
-    mut ctx: * mut core::ffi::c_void,
-) -> * const u8 {
+pub extern "C" fn xmlSAX2GetPublicId(mut _ctx: *mut core::ffi::c_void) -> *const u8 {
     return 0 as *const xmlChar;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2GetSystemId(
-    mut ctx: * mut core::ffi::c_void,
-) -> * const u8 {
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
-    if ctx.is_null() || ((*ctxt).input).is_null() {
+pub extern "C" fn xmlSAX2GetSystemId(mut ctx: *mut core::ffi::c_void) -> *const u8 {
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    if ctx.is_null() || (unsafe { (*ctxt).input }).is_null() {
         return 0 as *const xmlChar;
     }
-    return (*(*ctxt).input).filename as *const xmlChar;
+    return (unsafe { (*(*ctxt).input).filename }) as *const xmlChar;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2GetLineNumber(
-    mut ctx: * mut core::ffi::c_void,
-) -> i32 {
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
-    if ctx.is_null() || ((*ctxt).input).is_null() {
+pub extern "C" fn xmlSAX2GetLineNumber(mut ctx: *mut core::ffi::c_void) -> i32 {
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    if ctx.is_null() || (unsafe { (*ctxt).input }).is_null() {
         return 0 as i32;
     }
-    return (*(*ctxt).input).line;
+    return unsafe { (*(*ctxt).input).line };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2GetColumnNumber(
-    mut ctx: * mut core::ffi::c_void,
-) -> i32 {
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
-    if ctx.is_null() || ((*ctxt).input).is_null() {
+pub extern "C" fn xmlSAX2GetColumnNumber(mut ctx: *mut core::ffi::c_void) -> i32 {
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    if ctx.is_null() || (unsafe { (*ctxt).input }).is_null() {
         return 0 as i32;
     }
-    return (*(*ctxt).input).col;
+    return unsafe { (*(*ctxt).input).col };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2IsStandalone(mut ctx: * mut core::ffi::c_void) -> i32 {
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
-    if ctx.is_null() || ((*ctxt).myDoc).is_null() {
+pub extern "C" fn xmlSAX2IsStandalone(mut ctx: *mut core::ffi::c_void) -> i32 {
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    if ctx.is_null() || (unsafe { (*ctxt).myDoc }).is_null() {
         return 0 as i32;
     }
-    return ((*(*ctxt).myDoc).standalone == 1 as i32) as i32;
+    return ((unsafe { (*(*ctxt).myDoc).standalone }) == 1 as i32) as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2HasInternalSubset(
-    mut ctx: * mut core::ffi::c_void,
-) -> i32 {
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
-    if ctxt.is_null() || ((*ctxt).myDoc).is_null() {
+pub extern "C" fn xmlSAX2HasInternalSubset(mut ctx: *mut core::ffi::c_void) -> i32 {
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    if ctxt.is_null() || (unsafe { (*ctxt).myDoc }).is_null() {
         return 0 as i32;
     }
-    return ((*(*ctxt).myDoc).intSubset != 0 as *mut libc::c_void as *mut _xmlDtd)
-        as i32;
+    return ((unsafe { (*(*ctxt).myDoc).intSubset }) != 0 as *mut libc::c_void as *mut _xmlDtd) as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2HasExternalSubset(
-    mut ctx: * mut core::ffi::c_void,
-) -> i32 {
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
-    if ctxt.is_null() || ((*ctxt).myDoc).is_null() {
+pub extern "C" fn xmlSAX2HasExternalSubset(mut ctx: *mut core::ffi::c_void) -> i32 {
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    if ctxt.is_null() || (unsafe { (*ctxt).myDoc }).is_null() {
         return 0 as i32;
     }
-    return ((*(*ctxt).myDoc).extSubset != 0 as *mut libc::c_void as *mut _xmlDtd)
-        as i32;
+    return ((unsafe { (*(*ctxt).myDoc).extSubset }) != 0 as *mut libc::c_void as *mut _xmlDtd) as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2InternalSubset(
-    mut ctx: * mut core::ffi::c_void,
-    mut name: * const u8,
-    mut ExternalID: * const u8,
-    mut SystemID: * const u8,
+pub extern "C" fn xmlSAX2InternalSubset(
+    mut ctx: *mut core::ffi::c_void,
+    mut name: *const u8,
+    mut ExternalID: *const u8,
+    mut SystemID: *const u8,
 ) {
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
-    let mut dtd: * mut crate::src::HTMLparser::_xmlDtd = 0 as *mut xmlDtd;
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    let mut dtd: *mut crate::src::HTMLparser::_xmlDtd = 0 as *mut xmlDtd;
     if ctx.is_null() {
         return;
     }
-    if ((*ctxt).myDoc).is_null() {
+    if (unsafe { (*ctxt).myDoc }).is_null() {
         return;
     }
-    dtd = xmlGetIntSubset((*ctxt).myDoc as *const xmlDoc);
+    dtd = unsafe { xmlGetIntSubset((*ctxt).myDoc as *const xmlDoc) };
     if !dtd.is_null() {
-        if (*ctxt).html != 0 {
+        if (unsafe { (*ctxt).html }) != 0 {
             return;
         }
-        xmlUnlinkNode(dtd as xmlNodePtr);
-        xmlFreeDtd(dtd);
-        let ref mut fresh0 = (*(*ctxt).myDoc).intSubset;
+        (unsafe { xmlUnlinkNode(dtd as xmlNodePtr) });
+        (unsafe { xmlFreeDtd(dtd) });
+        let fresh0 = unsafe { &mut ((*(*ctxt).myDoc).intSubset) };
         *fresh0 = 0 as *mut _xmlDtd;
     }
-    let ref mut fresh1 = (*(*ctxt).myDoc).intSubset;
-    *fresh1 = xmlCreateIntSubset((*ctxt).myDoc, name, ExternalID, SystemID);
-    if ((*(*ctxt).myDoc).intSubset).is_null() {
-        xmlSAX2ErrMemory(
-            ctxt,
-            b"xmlSAX2InternalSubset\0" as *const u8 as *const i8,
-        );
+    let fresh1 = unsafe { &mut ((*(*ctxt).myDoc).intSubset) };
+    *fresh1 = unsafe { xmlCreateIntSubset((*ctxt).myDoc, name, ExternalID, SystemID) };
+    if (unsafe { (*(*ctxt).myDoc).intSubset }).is_null() {
+        xmlSAX2ErrMemory(ctxt, b"xmlSAX2InternalSubset\0" as *const u8 as *const i8);
     }
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2ExternalSubset(
-    mut ctx: * mut core::ffi::c_void,
-    mut name: * const u8,
-    mut ExternalID: * const u8,
-    mut SystemID: * const u8,
+pub extern "C" fn xmlSAX2ExternalSubset(
+    mut ctx: *mut core::ffi::c_void,
+    mut name: *const u8,
+    mut ExternalID: *const u8,
+    mut SystemID: *const u8,
 ) {
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
     if ctx.is_null() {
         return;
     }
     if (!ExternalID.is_null() || !SystemID.is_null())
-        && (((*ctxt).validate != 0 || (*ctxt).loadsubset != 0 as i32)
-            && ((*ctxt).wellFormed != 0 && !((*ctxt).myDoc).is_null()))
+        && (((unsafe { (*ctxt).validate }) != 0 || (unsafe { (*ctxt).loadsubset }) != 0 as i32)
+            && ((unsafe { (*ctxt).wellFormed }) != 0 && !(unsafe { (*ctxt).myDoc }).is_null()))
     {
-        let mut oldinput: * mut crate::src::HTMLparser::_xmlParserInput = 0 as *mut xmlParserInput;
+        let mut oldinput: *mut crate::src::HTMLparser::_xmlParserInput = 0 as *mut xmlParserInput;
         let mut oldinputNr: i32 = 0;
         let mut oldinputMax: i32 = 0;
-        let mut oldinputTab: * mut * mut crate::src::HTMLparser::_xmlParserInput = 0 as *mut xmlParserInputPtr;
-        let mut input: * mut crate::src::HTMLparser::_xmlParserInput = 0 as xmlParserInputPtr;
+        let mut oldinputTab: *mut *mut crate::src::HTMLparser::_xmlParserInput =
+            0 as *mut xmlParserInputPtr;
+        let mut input: *mut crate::src::HTMLparser::_xmlParserInput = 0 as xmlParserInputPtr;
         let mut enc: i32 = XML_CHAR_ENCODING_NONE;
         let mut oldcharset: i32 = 0;
-        let mut oldencoding: * const u8 = 0 as *const xmlChar;
-        if !((*ctxt).sax).is_null() && ((*(*ctxt).sax).resolveEntity).is_some() {
-            input = ((*(*ctxt).sax).resolveEntity)
-                .expect(
-                    "non-null function pointer",
-                )((*ctxt).userData, ExternalID, SystemID);
+        let mut oldencoding: *const u8 = 0 as *const xmlChar;
+        if !(unsafe { (*ctxt).sax }).is_null() && (unsafe { ((*(*ctxt).sax).resolveEntity).is_some() }) {
+            input = unsafe { ((*(*ctxt).sax).resolveEntity).expect("non-null function pointer")(
+                (*ctxt).userData,
+                ExternalID,
+                SystemID,
+            ) };
         }
         if input.is_null() {
             return;
         }
-        xmlNewDtd((*ctxt).myDoc, name, ExternalID, SystemID);
-        oldinput = (*ctxt).input;
-        oldinputNr = (*ctxt).inputNr;
-        oldinputMax = (*ctxt).inputMax;
-        oldinputTab = (*ctxt).inputTab;
-        oldcharset = (*ctxt).charset;
-        oldencoding = (*ctxt).encoding;
-        let ref mut fresh2 = (*ctxt).encoding;
+        (unsafe { xmlNewDtd((*ctxt).myDoc, name, ExternalID, SystemID) });
+        oldinput = unsafe { (*ctxt).input };
+        oldinputNr = unsafe { (*ctxt).inputNr };
+        oldinputMax = unsafe { (*ctxt).inputMax };
+        oldinputTab = unsafe { (*ctxt).inputTab };
+        oldcharset = unsafe { (*ctxt).charset };
+        oldencoding = unsafe { (*ctxt).encoding };
+        let fresh2 = unsafe { &mut ((*ctxt).encoding) };
         *fresh2 = 0 as *const xmlChar;
-        let ref mut fresh3 = (*ctxt).inputTab;
-        *fresh3 = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(
-            (5 as i32 as u64)
-                .wrapping_mul(
-                    ::std::mem::size_of::<xmlParserInputPtr>() as u64,
-                ),
-        ) as *mut xmlParserInputPtr;
-        if ((*ctxt).inputTab).is_null() {
-            xmlSAX2ErrMemory(
-                ctxt,
-                b"xmlSAX2ExternalSubset\0" as *const u8 as *const i8,
-            );
-            let ref mut fresh4 = (*ctxt).input;
+        let fresh3 = unsafe { &mut ((*ctxt).inputTab) };
+        *fresh3 = (unsafe { xmlMalloc.expect("non-null function pointer")(
+            (5 as i32 as u64).wrapping_mul(::std::mem::size_of::<xmlParserInputPtr>() as u64),
+        ) }) as *mut xmlParserInputPtr;
+        if (unsafe { (*ctxt).inputTab }).is_null() {
+            xmlSAX2ErrMemory(ctxt, b"xmlSAX2ExternalSubset\0" as *const u8 as *const i8);
+            let fresh4 = unsafe { &mut ((*ctxt).input) };
             *fresh4 = oldinput;
-            (*ctxt).inputNr = oldinputNr;
-            (*ctxt).inputMax = oldinputMax;
-            let ref mut fresh5 = (*ctxt).inputTab;
+            (unsafe { (*ctxt).inputNr = oldinputNr });
+            (unsafe { (*ctxt).inputMax = oldinputMax });
+            let fresh5 = unsafe { &mut ((*ctxt).inputTab) };
             *fresh5 = oldinputTab;
-            (*ctxt).charset = oldcharset;
-            let ref mut fresh6 = (*ctxt).encoding;
+            (unsafe { (*ctxt).charset = oldcharset });
+            let fresh6 = unsafe { &mut ((*ctxt).encoding) };
             *fresh6 = oldencoding;
             return;
         }
-        (*ctxt).inputNr = 0 as i32;
-        (*ctxt).inputMax = 5 as i32;
-        let ref mut fresh7 = (*ctxt).input;
+        (unsafe { (*ctxt).inputNr = 0 as i32 });
+        (unsafe { (*ctxt).inputMax = 5 as i32 });
+        let fresh7 = unsafe { &mut ((*ctxt).input) };
         *fresh7 = 0 as xmlParserInputPtr;
         xmlPushInput(ctxt, input);
-        if (*(*ctxt).input).length >= 4 as i32 {
-            enc = xmlDetectCharEncoding((*(*ctxt).input).cur, 4 as i32);
+        if (unsafe { (*(*ctxt).input).length }) >= 4 as i32 {
+            enc = xmlDetectCharEncoding(unsafe { (*(*ctxt).input).cur }, 4 as i32);
             xmlSwitchEncoding(ctxt, enc);
         }
-        if ((*input).filename).is_null() {
-            let ref mut fresh8 = (*input).filename;
-            *fresh8 = xmlCanonicPath(SystemID) as *mut i8;
+        if (unsafe { (*input).filename }).is_null() {
+            let fresh8 = unsafe { &mut ((*input).filename) };
+            *fresh8 = (unsafe { xmlCanonicPath(SystemID) }) as *mut i8;
         }
-        (*input).line = 1 as i32;
-        (*input).col = 1 as i32;
-        let ref mut fresh9 = (*input).base;
-        *fresh9 = (*(*ctxt).input).cur;
-        let ref mut fresh10 = (*input).cur;
-        *fresh10 = (*(*ctxt).input).cur;
-        let ref mut fresh11 = (*input).free;
+        (unsafe { (*input).line = 1 as i32 });
+        (unsafe { (*input).col = 1 as i32 });
+        let fresh9 = unsafe { &mut ((*input).base) };
+        *fresh9 = unsafe { (*(*ctxt).input).cur };
+        let fresh10 = unsafe { &mut ((*input).cur) };
+        *fresh10 = unsafe { (*(*ctxt).input).cur };
+        let fresh11 = unsafe { &mut ((*input).free) };
         *fresh11 = None;
         xmlParseExternalSubset(ctxt, ExternalID, SystemID);
-        while (*ctxt).inputNr > 1 as i32 {
+        while (unsafe { (*ctxt).inputNr }) > 1 as i32 {
             xmlPopInput(ctxt);
         }
-        xmlFreeInputStream((*ctxt).input);
-        xmlFree
-            .expect("non-null function pointer")((*ctxt).inputTab as *mut libc::c_void);
-        let ref mut fresh12 = (*ctxt).input;
+        xmlFreeInputStream(unsafe { (*ctxt).input });
+        (unsafe { xmlFree.expect("non-null function pointer")((*ctxt).inputTab as *mut libc::c_void) });
+        let fresh12 = unsafe { &mut ((*ctxt).input) };
         *fresh12 = oldinput;
-        (*ctxt).inputNr = oldinputNr;
-        (*ctxt).inputMax = oldinputMax;
-        let ref mut fresh13 = (*ctxt).inputTab;
+        (unsafe { (*ctxt).inputNr = oldinputNr });
+        (unsafe { (*ctxt).inputMax = oldinputMax });
+        let fresh13 = unsafe { &mut ((*ctxt).inputTab) };
         *fresh13 = oldinputTab;
-        (*ctxt).charset = oldcharset;
-        if !((*ctxt).encoding).is_null()
-            && (((*ctxt).dict).is_null()
-                || xmlDictOwns((*ctxt).dict, (*ctxt).encoding) == 0)
+        (unsafe { (*ctxt).charset = oldcharset });
+        if !(unsafe { (*ctxt).encoding }).is_null()
+            && ((unsafe { (*ctxt).dict }).is_null() || xmlDictOwns(unsafe { (*ctxt).dict }, unsafe { (*ctxt).encoding }) == 0)
         {
-            xmlFree
-                .expect(
-                    "non-null function pointer",
-                )((*ctxt).encoding as *mut xmlChar as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(
+                (*ctxt).encoding as *mut xmlChar as *mut libc::c_void,
+            ) });
         }
-        let ref mut fresh14 = (*ctxt).encoding;
+        let fresh14 = unsafe { &mut ((*ctxt).encoding) };
         *fresh14 = oldencoding;
     }
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2ResolveEntity(
-    mut ctx: * mut core::ffi::c_void,
-    mut publicId: * const u8,
-    mut systemId: * const u8,
-) -> * mut crate::src::HTMLparser::_xmlParserInput {
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
-    let mut ret: * mut crate::src::HTMLparser::_xmlParserInput = 0 as *mut xmlParserInput;
-    let mut URI: * mut u8 = 0 as *mut xmlChar;
-    let mut base: * const i8 = 0 as *const i8;
+pub extern "C" fn xmlSAX2ResolveEntity(
+    mut ctx: *mut core::ffi::c_void,
+    mut publicId: *const u8,
+    mut systemId: *const u8,
+) -> *mut crate::src::HTMLparser::_xmlParserInput {
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    let mut ret: *mut crate::src::HTMLparser::_xmlParserInput = 0 as *mut xmlParserInput;
+    let mut URI: *mut u8 = 0 as *mut xmlChar;
+    let mut base: *const i8 = 0 as *const i8;
     if ctx.is_null() {
         return 0 as xmlParserInputPtr;
     }
-    if !((*ctxt).input).is_null() {
-        base = (*(*ctxt).input).filename;
+    if !(unsafe { (*ctxt).input }).is_null() {
+        base = unsafe { (*(*ctxt).input).filename };
     }
     if base.is_null() {
-        base = (*ctxt).directory;
+        base = unsafe { (*ctxt).directory };
     }
-    URI = xmlBuildURI(systemId, base as *const xmlChar);
-    ret = xmlLoadExternalEntity(
-        URI as *const i8,
-        publicId as *const i8,
-        ctxt,
-    );
+    URI = unsafe { xmlBuildURI(systemId, base as *const xmlChar) };
+    ret = unsafe { xmlLoadExternalEntity(URI as *const i8, publicId as *const i8, ctxt) };
     if !URI.is_null() {
-        xmlFree.expect("non-null function pointer")(URI as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(URI as *mut libc::c_void) });
     }
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2GetEntity(
-    mut ctx: * mut core::ffi::c_void,
-    mut name: * const u8,
-) -> * mut crate::src::HTMLparser::_xmlEntity {
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
-    let mut ret: * mut crate::src::HTMLparser::_xmlEntity = 0 as xmlEntityPtr;
+pub extern "C" fn xmlSAX2GetEntity(
+    mut ctx: *mut core::ffi::c_void,
+    mut name: *const u8,
+) -> *mut crate::src::HTMLparser::_xmlEntity {
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    let mut ret: *mut crate::src::HTMLparser::_xmlEntity = 0 as xmlEntityPtr;
     if ctx.is_null() {
         return 0 as xmlEntityPtr;
     }
-    if (*ctxt).inSubset == 0 as i32 {
+    if (unsafe { (*ctxt).inSubset }) == 0 as i32 {
         ret = xmlGetPredefinedEntity(name);
         if !ret.is_null() {
             return ret;
         }
     }
-    if !((*ctxt).myDoc).is_null() && (*(*ctxt).myDoc).standalone == 1 as i32 {
-        if (*ctxt).inSubset == 2 as i32 {
-            (*(*ctxt).myDoc).standalone = 0 as i32;
-            ret = xmlGetDocEntity((*ctxt).myDoc as *const xmlDoc, name);
-            (*(*ctxt).myDoc).standalone = 1 as i32;
+    if !(unsafe { (*ctxt).myDoc }).is_null() && (unsafe { (*(*ctxt).myDoc).standalone }) == 1 as i32 {
+        if (unsafe { (*ctxt).inSubset }) == 2 as i32 {
+            (unsafe { (*(*ctxt).myDoc).standalone = 0 as i32 });
+            ret = xmlGetDocEntity((unsafe { (*ctxt).myDoc }) as *const xmlDoc, name);
+            (unsafe { (*(*ctxt).myDoc).standalone = 1 as i32 });
         } else {
-            ret = xmlGetDocEntity((*ctxt).myDoc as *const xmlDoc, name);
+            ret = xmlGetDocEntity((unsafe { (*ctxt).myDoc }) as *const xmlDoc, name);
             if ret.is_null() {
-                (*(*ctxt).myDoc).standalone = 0 as i32;
-                ret = xmlGetDocEntity((*ctxt).myDoc as *const xmlDoc, name);
+                (unsafe { (*(*ctxt).myDoc).standalone = 0 as i32 });
+                ret = xmlGetDocEntity((unsafe { (*ctxt).myDoc }) as *const xmlDoc, name);
                 if !ret.is_null() {
                     xmlFatalErrMsg(
                         ctxt,
@@ -2101,141 +2116,137 @@ pub unsafe extern "C" fn xmlSAX2GetEntity(
                         0 as *const xmlChar,
                     );
                 }
-                (*(*ctxt).myDoc).standalone = 1 as i32;
+                (unsafe { (*(*ctxt).myDoc).standalone = 1 as i32 });
             }
         }
     } else {
-        ret = xmlGetDocEntity((*ctxt).myDoc as *const xmlDoc, name);
+        ret = xmlGetDocEntity((unsafe { (*ctxt).myDoc }) as *const xmlDoc, name);
     }
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2GetParameterEntity(
-    mut ctx: * mut core::ffi::c_void,
-    mut name: * const u8,
-) -> * mut crate::src::HTMLparser::_xmlEntity {
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
-    let mut ret: * mut crate::src::HTMLparser::_xmlEntity = 0 as *mut xmlEntity;
+pub extern "C" fn xmlSAX2GetParameterEntity(
+    mut ctx: *mut core::ffi::c_void,
+    mut name: *const u8,
+) -> *mut crate::src::HTMLparser::_xmlEntity {
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    let mut ret: *mut crate::src::HTMLparser::_xmlEntity = 0 as *mut xmlEntity;
     if ctx.is_null() {
         return 0 as xmlEntityPtr;
     }
-    ret = xmlGetParameterEntity((*ctxt).myDoc, name);
+    ret = xmlGetParameterEntity(unsafe { (*ctxt).myDoc }, name);
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2EntityDecl(
-    mut ctx: * mut core::ffi::c_void,
-    mut name: * const u8,
+pub extern "C" fn xmlSAX2EntityDecl(
+    mut ctx: *mut core::ffi::c_void,
+    mut name: *const u8,
     mut type_0: i32,
-    mut publicId: * const u8,
-    mut systemId: * const u8,
-    mut content: * mut u8,
+    mut publicId: *const u8,
+    mut systemId: *const u8,
+    mut content: *mut u8,
 ) {
-    let mut ent: * mut crate::src::HTMLparser::_xmlEntity = 0 as *mut xmlEntity;
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    let mut ent: *mut crate::src::HTMLparser::_xmlEntity = 0 as *mut xmlEntity;
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
     if ctx.is_null() {
         return;
     }
-    if (*ctxt).inSubset == 1 as i32 {
-        ent = xmlAddDocEntity((*ctxt).myDoc, name, type_0, publicId, systemId, content);
-        if ent.is_null() && (*ctxt).pedantic != 0 {
+    if (unsafe { (*ctxt).inSubset }) == 1 as i32 {
+        ent = xmlAddDocEntity(unsafe { (*ctxt).myDoc }, name, type_0, publicId, systemId, content);
+        if ent.is_null() && (unsafe { (*ctxt).pedantic }) != 0 {
             xmlWarnMsg(
                 ctxt,
                 XML_WAR_ENTITY_REDEFINED,
-                b"Entity(%s) already defined in the internal subset\n\0" as *const u8
-                    as *const i8,
+                b"Entity(%s) already defined in the internal subset\n\0" as *const u8 as *const i8,
                 name,
             );
         }
-        if !ent.is_null() && ((*ent).URI).is_null() && !systemId.is_null() {
-            let mut URI: * mut u8 = 0 as *mut xmlChar;
-            let mut base: * const i8 = 0 as *const i8;
-            if !((*ctxt).input).is_null() {
-                base = (*(*ctxt).input).filename;
+        if !ent.is_null() && (unsafe { (*ent).URI }).is_null() && !systemId.is_null() {
+            let mut URI: *mut u8 = 0 as *mut xmlChar;
+            let mut base: *const i8 = 0 as *const i8;
+            if !(unsafe { (*ctxt).input }).is_null() {
+                base = unsafe { (*(*ctxt).input).filename };
             }
             if base.is_null() {
-                base = (*ctxt).directory;
+                base = unsafe { (*ctxt).directory };
             }
-            URI = xmlBuildURI(systemId, base as *const xmlChar);
-            let ref mut fresh15 = (*ent).URI;
+            URI = unsafe { xmlBuildURI(systemId, base as *const xmlChar) };
+            let fresh15 = unsafe { &mut ((*ent).URI) };
             *fresh15 = URI;
         }
-    } else if (*ctxt).inSubset == 2 as i32 {
-        ent = xmlAddDtdEntity((*ctxt).myDoc, name, type_0, publicId, systemId, content);
-        if ent.is_null() && (*ctxt).pedantic != 0 && !((*ctxt).sax).is_null()
-            && ((*(*ctxt).sax).warning).is_some()
+    } else if (unsafe { (*ctxt).inSubset }) == 2 as i32 {
+        ent = xmlAddDtdEntity(unsafe { (*ctxt).myDoc }, name, type_0, publicId, systemId, content);
+        if ent.is_null()
+            && (unsafe { (*ctxt).pedantic }) != 0
+            && !(unsafe { (*ctxt).sax }).is_null()
+            && (unsafe { ((*(*ctxt).sax).warning).is_some() })
         {
-            ((*(*ctxt).sax).warning)
-                .expect(
-                    "non-null function pointer",
-                )(
+            (unsafe { ((*(*ctxt).sax).warning).expect("non-null function pointer")(
                 (*ctxt).userData,
-                b"Entity(%s) already defined in the external subset\n\0" as *const u8
-                    as *const i8,
+                b"Entity(%s) already defined in the external subset\n\0" as *const u8 as *const i8,
                 name,
-            );
+            ) });
         }
-        if !ent.is_null() && ((*ent).URI).is_null() && !systemId.is_null() {
-            let mut URI_0: * mut u8 = 0 as *mut xmlChar;
-            let mut base_0: * const i8 = 0 as *const i8;
-            if !((*ctxt).input).is_null() {
-                base_0 = (*(*ctxt).input).filename;
+        if !ent.is_null() && (unsafe { (*ent).URI }).is_null() && !systemId.is_null() {
+            let mut URI_0: *mut u8 = 0 as *mut xmlChar;
+            let mut base_0: *const i8 = 0 as *const i8;
+            if !(unsafe { (*ctxt).input }).is_null() {
+                base_0 = unsafe { (*(*ctxt).input).filename };
             }
             if base_0.is_null() {
-                base_0 = (*ctxt).directory;
+                base_0 = unsafe { (*ctxt).directory };
             }
-            URI_0 = xmlBuildURI(systemId, base_0 as *const xmlChar);
-            let ref mut fresh16 = (*ent).URI;
+            URI_0 = unsafe { xmlBuildURI(systemId, base_0 as *const xmlChar) };
+            let fresh16 = unsafe { &mut ((*ent).URI) };
             *fresh16 = URI_0;
         }
     } else {
         xmlFatalErrMsg(
             ctxt,
             XML_ERR_ENTITY_PROCESSING,
-            b"SAX.xmlSAX2EntityDecl(%s) called while not in subset\n\0" as *const u8
-                as *const i8,
+            b"SAX.xmlSAX2EntityDecl(%s) called while not in subset\n\0" as *const u8 as *const i8,
             name,
             0 as *const xmlChar,
         );
     };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2AttributeDecl(
-    mut ctx: * mut core::ffi::c_void,
-    mut elem: * const u8,
-    mut fullname: * const u8,
+pub extern "C" fn xmlSAX2AttributeDecl(
+    mut ctx: *mut core::ffi::c_void,
+    mut elem: *const u8,
+    mut fullname: *const u8,
     mut type_0: i32,
     mut def: i32,
-    mut defaultValue: * const u8,
-    mut tree: * mut crate::src::HTMLparser::_xmlEnumeration,
+    mut defaultValue: *const u8,
+    mut tree: *mut crate::src::HTMLparser::_xmlEnumeration,
 ) {
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
-    let mut attr: * mut crate::src::SAX2::_xmlAttribute = 0 as *mut xmlAttribute;
-    let mut name: * mut u8 = 0 as *mut xmlChar;
-    let mut prefix: * mut u8 = 0 as *mut xmlChar;
-    if ctxt.is_null() || ((*ctxt).myDoc).is_null() {
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    let mut attr: *mut crate::src::SAX2::_xmlAttribute = 0 as *mut xmlAttribute;
+    let mut name: *mut u8 = 0 as *mut xmlChar;
+    let mut prefix: *mut u8 = 0 as *mut xmlChar;
+    if ctxt.is_null() || (unsafe { (*ctxt).myDoc }).is_null() {
         return;
     }
-    if xmlStrEqual(
+    if (unsafe { xmlStrEqual(
         fullname,
         b"xml:id\0" as *const u8 as *const i8 as *mut xmlChar,
-    ) != 0 && type_0 != XML_ATTRIBUTE_ID as i32
+    ) }) != 0
+        && type_0 != XML_ATTRIBUTE_ID as i32
     {
-        let mut tmp: i32 = (*ctxt).valid;
+        let mut tmp: i32 = unsafe { (*ctxt).valid };
         xmlErrValid(
             ctxt,
             XML_DTD_XMLID_TYPE,
-            b"xml:id : attribute type should be ID\n\0" as *const u8
-                as *const i8,
+            b"xml:id : attribute type should be ID\n\0" as *const u8 as *const i8,
             0 as *const i8,
             0 as *const i8,
         );
-        (*ctxt).valid = tmp;
+        (unsafe { (*ctxt).valid = tmp });
     }
     name = xmlSplitQName(ctxt, fullname, Some(&mut prefix));
-    (*ctxt).vctxt.valid = 1 as i32;
-    if (*ctxt).inSubset == 1 as i32 {
-        attr = xmlAddAttributeDecl(
+    (unsafe { (*ctxt).vctxt.valid = 1 as i32 });
+    if (unsafe { (*ctxt).inSubset }) == 1 as i32 {
+        attr = unsafe { xmlAddAttributeDecl(
             &mut (*ctxt).vctxt,
             (*(*ctxt).myDoc).intSubset,
             elem,
@@ -2245,9 +2256,9 @@ pub unsafe extern "C" fn xmlSAX2AttributeDecl(
             def as xmlAttributeDefault,
             defaultValue,
             tree,
-        );
-    } else if (*ctxt).inSubset == 2 as i32 {
-        attr = xmlAddAttributeDecl(
+        ) };
+    } else if (unsafe { (*ctxt).inSubset }) == 2 as i32 {
+        attr = unsafe { xmlAddAttributeDecl(
             &mut (*ctxt).vctxt,
             (*(*ctxt).myDoc).extSubset,
             elem,
@@ -2257,7 +2268,7 @@ pub unsafe extern "C" fn xmlSAX2AttributeDecl(
             def as xmlAttributeDefault,
             defaultValue,
             tree,
-        );
+        ) };
     } else {
         xmlFatalErrMsg(
             ctxt,
@@ -2267,119 +2278,121 @@ pub unsafe extern "C" fn xmlSAX2AttributeDecl(
             name,
             0 as *const xmlChar,
         );
-        xmlFree.expect("non-null function pointer")(name as *mut libc::c_void);
-        xmlFreeEnumeration(tree);
+        (unsafe { xmlFree.expect("non-null function pointer")(name as *mut libc::c_void) });
+        (unsafe { xmlFreeEnumeration(tree) });
         return;
     }
-    if (*ctxt).vctxt.valid == 0 as i32 {
-        (*ctxt).valid = 0 as i32;
+    if (unsafe { (*ctxt).vctxt.valid }) == 0 as i32 {
+        (unsafe { (*ctxt).valid = 0 as i32 });
     }
-    if !attr.is_null() && (*ctxt).validate != 0 && (*ctxt).wellFormed != 0
-        && !((*(*ctxt).myDoc).intSubset).is_null()
+    if !attr.is_null()
+        && (unsafe { (*ctxt).validate }) != 0
+        && (unsafe { (*ctxt).wellFormed }) != 0
+        && !(unsafe { (*(*ctxt).myDoc).intSubset }).is_null()
     {
-        (*ctxt).valid
-            &= xmlValidateAttributeDecl(&mut (*ctxt).vctxt, (*ctxt).myDoc, attr);
+        (unsafe { (*ctxt).valid &= xmlValidateAttributeDecl(&mut (*ctxt).vctxt, (*ctxt).myDoc, attr) });
     }
     if !prefix.is_null() {
-        xmlFree.expect("non-null function pointer")(prefix as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(prefix as *mut libc::c_void) });
     }
     if !name.is_null() {
-        xmlFree.expect("non-null function pointer")(name as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(name as *mut libc::c_void) });
     }
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2ElementDecl(
-    mut ctx: * mut core::ffi::c_void,
-    mut name: * const u8,
+pub extern "C" fn xmlSAX2ElementDecl(
+    mut ctx: *mut core::ffi::c_void,
+    mut name: *const u8,
     mut type_0: i32,
-    mut content: * mut crate::src::HTMLparser::_xmlElementContent,
+    mut content: *mut crate::src::HTMLparser::_xmlElementContent,
 ) {
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
-    let mut elem: * mut crate::src::SAX2::_xmlElement = 0 as xmlElementPtr;
-    if ctxt.is_null() || ((*ctxt).myDoc).is_null() {
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    let mut elem: *mut crate::src::SAX2::_xmlElement = 0 as xmlElementPtr;
+    if ctxt.is_null() || (unsafe { (*ctxt).myDoc }).is_null() {
         return;
     }
-    if (*ctxt).inSubset == 1 as i32 {
-        elem = xmlAddElementDecl(
+    if (unsafe { (*ctxt).inSubset }) == 1 as i32 {
+        elem = unsafe { xmlAddElementDecl(
             &mut (*ctxt).vctxt,
             (*(*ctxt).myDoc).intSubset,
             name,
             type_0 as xmlElementTypeVal,
             content,
-        );
-    } else if (*ctxt).inSubset == 2 as i32 {
-        elem = xmlAddElementDecl(
+        ) };
+    } else if (unsafe { (*ctxt).inSubset }) == 2 as i32 {
+        elem = unsafe { xmlAddElementDecl(
             &mut (*ctxt).vctxt,
             (*(*ctxt).myDoc).extSubset,
             name,
             type_0 as xmlElementTypeVal,
             content,
-        );
+        ) };
     } else {
         xmlFatalErrMsg(
             ctxt,
             XML_ERR_INTERNAL_ERROR,
-            b"SAX.xmlSAX2ElementDecl(%s) called while not in subset\n\0" as *const u8
-                as *const i8,
+            b"SAX.xmlSAX2ElementDecl(%s) called while not in subset\n\0" as *const u8 as *const i8,
             name,
             0 as *const xmlChar,
         );
         return;
     }
     if elem.is_null() {
-        (*ctxt).valid = 0 as i32;
+        (unsafe { (*ctxt).valid = 0 as i32 });
     }
-    if (*ctxt).validate != 0 && (*ctxt).wellFormed != 0 && !((*ctxt).myDoc).is_null()
-        && !((*(*ctxt).myDoc).intSubset).is_null()
+    if (unsafe { (*ctxt).validate }) != 0
+        && (unsafe { (*ctxt).wellFormed }) != 0
+        && !(unsafe { (*ctxt).myDoc }).is_null()
+        && !(unsafe { (*(*ctxt).myDoc).intSubset }).is_null()
     {
-        (*ctxt).valid &= xmlValidateElementDecl(&mut (*ctxt).vctxt, (*ctxt).myDoc, elem);
+        (unsafe { (*ctxt).valid &= xmlValidateElementDecl(&mut (*ctxt).vctxt, (*ctxt).myDoc, elem) });
     }
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2NotationDecl(
-    mut ctx: * mut core::ffi::c_void,
-    mut name: * const u8,
-    mut publicId: * const u8,
-    mut systemId: * const u8,
+pub extern "C" fn xmlSAX2NotationDecl(
+    mut ctx: *mut core::ffi::c_void,
+    mut name: *const u8,
+    mut publicId: *const u8,
+    mut systemId: *const u8,
 ) {
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
-    let mut nota: * mut crate::src::SAX2::_xmlNotation = 0 as xmlNotationPtr;
-    if ctxt.is_null() || ((*ctxt).myDoc).is_null() {
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    let mut nota: *mut crate::src::SAX2::_xmlNotation = 0 as xmlNotationPtr;
+    if ctxt.is_null() || (unsafe { (*ctxt).myDoc }).is_null() {
         return;
     }
     if publicId.is_null() && systemId.is_null() {
         xmlFatalErrMsg(
             ctxt,
             XML_ERR_NOTATION_PROCESSING,
-            b"SAX.xmlSAX2NotationDecl(%s) externalID or PublicID missing\n\0"
-                as *const u8 as *const i8,
+            b"SAX.xmlSAX2NotationDecl(%s) externalID or PublicID missing\n\0" as *const u8
+                as *const i8,
             name,
             0 as *const xmlChar,
         );
         return;
     } else {
-        if (*ctxt).inSubset == 1 as i32 {
-            nota = xmlAddNotationDecl(
+        if (unsafe { (*ctxt).inSubset }) == 1 as i32 {
+            nota = unsafe { xmlAddNotationDecl(
                 &mut (*ctxt).vctxt,
                 (*(*ctxt).myDoc).intSubset,
                 name,
                 publicId,
                 systemId,
-            );
-        } else if (*ctxt).inSubset == 2 as i32 {
-            nota = xmlAddNotationDecl(
+            ) };
+        } else if (unsafe { (*ctxt).inSubset }) == 2 as i32 {
+            nota = unsafe { xmlAddNotationDecl(
                 &mut (*ctxt).vctxt,
                 (*(*ctxt).myDoc).extSubset,
                 name,
                 publicId,
                 systemId,
-            );
+            ) };
         } else {
             xmlFatalErrMsg(
                 ctxt,
                 XML_ERR_NOTATION_PROCESSING,
-                b"SAX.xmlSAX2NotationDecl(%s) called while not in subset\n\0"
-                    as *const u8 as *const i8,
+                b"SAX.xmlSAX2NotationDecl(%s) called while not in subset\n\0" as *const u8
+                    as *const i8,
                 name,
                 0 as *const xmlChar,
             );
@@ -2387,104 +2400,97 @@ pub unsafe extern "C" fn xmlSAX2NotationDecl(
         }
     }
     if nota.is_null() {
-        (*ctxt).valid = 0 as i32;
+        (unsafe { (*ctxt).valid = 0 as i32 });
     }
-    if (*ctxt).validate != 0 && (*ctxt).wellFormed != 0
-        && !((*(*ctxt).myDoc).intSubset).is_null()
-    {
-        (*ctxt).valid
-            &= xmlValidateNotationDecl(&mut (*ctxt).vctxt, (*ctxt).myDoc, nota);
+    if (unsafe { (*ctxt).validate }) != 0 && (unsafe { (*ctxt).wellFormed }) != 0 && !(unsafe { (*(*ctxt).myDoc).intSubset }).is_null() {
+        (unsafe { (*ctxt).valid &= xmlValidateNotationDecl(&mut (*ctxt).vctxt, (*ctxt).myDoc, nota) });
     }
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2UnparsedEntityDecl(
-    mut ctx: * mut core::ffi::c_void,
-    mut name: * const u8,
-    mut publicId: * const u8,
-    mut systemId: * const u8,
-    mut notationName: * const u8,
+pub extern "C" fn xmlSAX2UnparsedEntityDecl(
+    mut ctx: *mut core::ffi::c_void,
+    mut name: *const u8,
+    mut publicId: *const u8,
+    mut systemId: *const u8,
+    mut notationName: *const u8,
 ) {
-    let mut ent: * mut crate::src::HTMLparser::_xmlEntity = 0 as *mut xmlEntity;
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    let mut ent: *mut crate::src::HTMLparser::_xmlEntity = 0 as *mut xmlEntity;
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
     if ctx.is_null() {
         return;
     }
-    if (*ctxt).inSubset == 1 as i32 {
+    if (unsafe { (*ctxt).inSubset }) == 1 as i32 {
         ent = xmlAddDocEntity(
-            (*ctxt).myDoc,
+            unsafe { (*ctxt).myDoc },
             name,
             XML_EXTERNAL_GENERAL_UNPARSED_ENTITY as i32,
             publicId,
             systemId,
             notationName,
         );
-        if ent.is_null() && (*ctxt).pedantic != 0 && !((*ctxt).sax).is_null()
-            && ((*(*ctxt).sax).warning).is_some()
+        if ent.is_null()
+            && (unsafe { (*ctxt).pedantic }) != 0
+            && !(unsafe { (*ctxt).sax }).is_null()
+            && (unsafe { ((*(*ctxt).sax).warning).is_some() })
         {
-            ((*(*ctxt).sax).warning)
-                .expect(
-                    "non-null function pointer",
-                )(
+            (unsafe { ((*(*ctxt).sax).warning).expect("non-null function pointer")(
                 (*ctxt).userData,
-                b"Entity(%s) already defined in the internal subset\n\0" as *const u8
-                    as *const i8,
+                b"Entity(%s) already defined in the internal subset\n\0" as *const u8 as *const i8,
                 name,
-            );
+            ) });
         }
-        if !ent.is_null() && ((*ent).URI).is_null() && !systemId.is_null() {
-            let mut URI: * mut u8 = 0 as *mut xmlChar;
-            let mut base: * const i8 = 0 as *const i8;
-            if !((*ctxt).input).is_null() {
-                base = (*(*ctxt).input).filename;
+        if !ent.is_null() && (unsafe { (*ent).URI }).is_null() && !systemId.is_null() {
+            let mut URI: *mut u8 = 0 as *mut xmlChar;
+            let mut base: *const i8 = 0 as *const i8;
+            if !(unsafe { (*ctxt).input }).is_null() {
+                base = unsafe { (*(*ctxt).input).filename };
             }
             if base.is_null() {
-                base = (*ctxt).directory;
+                base = unsafe { (*ctxt).directory };
             }
-            URI = xmlBuildURI(systemId, base as *const xmlChar);
-            let ref mut fresh17 = (*ent).URI;
+            URI = unsafe { xmlBuildURI(systemId, base as *const xmlChar) };
+            let fresh17 = unsafe { &mut ((*ent).URI) };
             *fresh17 = URI;
         }
-    } else if (*ctxt).inSubset == 2 as i32 {
+    } else if (unsafe { (*ctxt).inSubset }) == 2 as i32 {
         ent = xmlAddDtdEntity(
-            (*ctxt).myDoc,
+            unsafe { (*ctxt).myDoc },
             name,
             XML_EXTERNAL_GENERAL_UNPARSED_ENTITY as i32,
             publicId,
             systemId,
             notationName,
         );
-        if ent.is_null() && (*ctxt).pedantic != 0 && !((*ctxt).sax).is_null()
-            && ((*(*ctxt).sax).warning).is_some()
+        if ent.is_null()
+            && (unsafe { (*ctxt).pedantic }) != 0
+            && !(unsafe { (*ctxt).sax }).is_null()
+            && (unsafe { ((*(*ctxt).sax).warning).is_some() })
         {
-            ((*(*ctxt).sax).warning)
-                .expect(
-                    "non-null function pointer",
-                )(
+            (unsafe { ((*(*ctxt).sax).warning).expect("non-null function pointer")(
                 (*ctxt).userData,
-                b"Entity(%s) already defined in the external subset\n\0" as *const u8
-                    as *const i8,
+                b"Entity(%s) already defined in the external subset\n\0" as *const u8 as *const i8,
                 name,
-            );
+            ) });
         }
-        if !ent.is_null() && ((*ent).URI).is_null() && !systemId.is_null() {
-            let mut URI_0: * mut u8 = 0 as *mut xmlChar;
-            let mut base_0: * const i8 = 0 as *const i8;
-            if !((*ctxt).input).is_null() {
-                base_0 = (*(*ctxt).input).filename;
+        if !ent.is_null() && (unsafe { (*ent).URI }).is_null() && !systemId.is_null() {
+            let mut URI_0: *mut u8 = 0 as *mut xmlChar;
+            let mut base_0: *const i8 = 0 as *const i8;
+            if !(unsafe { (*ctxt).input }).is_null() {
+                base_0 = unsafe { (*(*ctxt).input).filename };
             }
             if base_0.is_null() {
-                base_0 = (*ctxt).directory;
+                base_0 = unsafe { (*ctxt).directory };
             }
-            URI_0 = xmlBuildURI(systemId, base_0 as *const xmlChar);
-            let ref mut fresh18 = (*ent).URI;
+            URI_0 = unsafe { xmlBuildURI(systemId, base_0 as *const xmlChar) };
+            let fresh18 = unsafe { &mut ((*ent).URI) };
             *fresh18 = URI_0;
         }
     } else {
         xmlFatalErrMsg(
             ctxt,
             XML_ERR_INTERNAL_ERROR,
-            b"SAX.xmlSAX2UnparsedEntityDecl(%s) called while not in subset\n\0"
-                as *const u8 as *const i8,
+            b"SAX.xmlSAX2UnparsedEntityDecl(%s) called while not in subset\n\0" as *const u8
+                as *const i8,
             name,
             0 as *const xmlChar,
         );
@@ -2492,126 +2498,124 @@ pub unsafe extern "C" fn xmlSAX2UnparsedEntityDecl(
 }
 #[no_mangle]
 pub extern "C" fn xmlSAX2SetDocumentLocator(
-    mut ctx: * mut core::ffi::c_void,
-    mut loc: * mut crate::src::HTMLparser::_xmlSAXLocator,
-) {}
+    mut _ctx: *mut core::ffi::c_void,
+    mut _loc: *mut crate::src::HTMLparser::_xmlSAXLocator,
+) {
+}
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2StartDocument(mut ctx: * mut core::ffi::c_void) {
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
-    let mut doc: * mut crate::src::HTMLparser::_xmlDoc = 0 as *mut xmlDoc;
+pub extern "C" fn xmlSAX2StartDocument(mut ctx: *mut core::ffi::c_void) {
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    let mut doc: *mut crate::src::HTMLparser::_xmlDoc = 0 as *mut xmlDoc;
     if ctx.is_null() {
         return;
     }
-    if (*ctxt).html != 0 {
-        if ((*ctxt).myDoc).is_null() {
-            let ref mut fresh19 = (*ctxt).myDoc;
+    if (unsafe { (*ctxt).html }) != 0 {
+        if (unsafe { (*ctxt).myDoc }).is_null() {
+            let fresh19 = unsafe { &mut ((*ctxt).myDoc) };
             *fresh19 = htmlNewDocNoDtD(0 as *const xmlChar, 0 as *const xmlChar);
         }
-        if ((*ctxt).myDoc).is_null() {
-            xmlSAX2ErrMemory(
-                ctxt,
-                b"xmlSAX2StartDocument\0" as *const u8 as *const i8,
-            );
+        if (unsafe { (*ctxt).myDoc }).is_null() {
+            xmlSAX2ErrMemory(ctxt, b"xmlSAX2StartDocument\0" as *const u8 as *const i8);
             return;
         }
-        (*(*ctxt).myDoc).properties = XML_DOC_HTML as i32;
-        (*(*ctxt).myDoc).parseFlags = (*ctxt).options;
+        (unsafe { (*(*ctxt).myDoc).properties = XML_DOC_HTML as i32 });
+        (unsafe { (*(*ctxt).myDoc).parseFlags = (*ctxt).options });
     } else {
-        let ref mut fresh20 = (*ctxt).myDoc;
-        *fresh20 = xmlNewDoc((*ctxt).version);
+        let fresh20 = unsafe { &mut ((*ctxt).myDoc) };
+        *fresh20 = unsafe { xmlNewDoc((*ctxt).version) };
         doc = *fresh20;
         if !doc.is_null() {
-            (*doc).properties = 0 as i32;
-            if (*ctxt).options & XML_PARSE_OLD10 as i32 != 0 {
-                (*doc).properties |= XML_DOC_OLD10 as i32;
+            (unsafe { (*doc).properties = 0 as i32 });
+            if (unsafe { (*ctxt).options }) & XML_PARSE_OLD10 as i32 != 0 {
+                (unsafe { (*doc).properties |= XML_DOC_OLD10 as i32 });
             }
-            (*doc).parseFlags = (*ctxt).options;
-            if !((*ctxt).encoding).is_null() {
-                let ref mut fresh21 = (*doc).encoding;
-                *fresh21 = xmlStrdup((*ctxt).encoding);
+            (unsafe { (*doc).parseFlags = (*ctxt).options });
+            if !(unsafe { (*ctxt).encoding }).is_null() {
+                let fresh21 = unsafe { &mut ((*doc).encoding) };
+                *fresh21 = unsafe { xmlStrdup((*ctxt).encoding) };
             } else {
-                let ref mut fresh22 = (*doc).encoding;
+                let fresh22 = unsafe { &mut ((*doc).encoding) };
                 *fresh22 = 0 as *const xmlChar;
             }
-            (*doc).standalone = (*ctxt).standalone;
+            (unsafe { (*doc).standalone = (*ctxt).standalone });
         } else {
-            xmlSAX2ErrMemory(
-                ctxt,
-                b"xmlSAX2StartDocument\0" as *const u8 as *const i8,
-            );
+            xmlSAX2ErrMemory(ctxt, b"xmlSAX2StartDocument\0" as *const u8 as *const i8);
             return;
         }
-        if (*ctxt).dictNames != 0 && !doc.is_null() {
-            let ref mut fresh23 = (*doc).dict;
-            *fresh23 = (*ctxt).dict;
-            xmlDictReference((*doc).dict);
+        if (unsafe { (*ctxt).dictNames }) != 0 && !doc.is_null() {
+            let fresh23 = unsafe { &mut ((*doc).dict) };
+            *fresh23 = unsafe { (*ctxt).dict };
+            xmlDictReference(unsafe { (*doc).dict });
         }
     }
-    if !((*ctxt).myDoc).is_null() && ((*(*ctxt).myDoc).URL).is_null()
-        && !((*ctxt).input).is_null() && !((*(*ctxt).input).filename).is_null()
+    if !(unsafe { (*ctxt).myDoc }).is_null()
+        && (unsafe { (*(*ctxt).myDoc).URL }).is_null()
+        && !(unsafe { (*ctxt).input }).is_null()
+        && !(unsafe { (*(*ctxt).input).filename }).is_null()
     {
-        let ref mut fresh24 = (*(*ctxt).myDoc).URL;
-        *fresh24 = xmlPathToURI((*(*ctxt).input).filename as *const xmlChar);
-        if ((*(*ctxt).myDoc).URL).is_null() {
-            xmlSAX2ErrMemory(
-                ctxt,
-                b"xmlSAX2StartDocument\0" as *const u8 as *const i8,
-            );
+        let fresh24 = unsafe { &mut ((*(*ctxt).myDoc).URL) };
+        *fresh24 = unsafe { xmlPathToURI((*(*ctxt).input).filename as *const xmlChar) };
+        if (unsafe { (*(*ctxt).myDoc).URL }).is_null() {
+            xmlSAX2ErrMemory(ctxt, b"xmlSAX2StartDocument\0" as *const u8 as *const i8);
         }
     }
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2EndDocument(mut ctx: * mut core::ffi::c_void) {
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+pub extern "C" fn xmlSAX2EndDocument(mut ctx: *mut core::ffi::c_void) {
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
     if ctx.is_null() {
         return;
     }
-    if (*ctxt).validate != 0 && (*ctxt).wellFormed != 0 && !((*ctxt).myDoc).is_null()
-        && !((*(*ctxt).myDoc).intSubset).is_null()
+    if (unsafe { (*ctxt).validate }) != 0
+        && (unsafe { (*ctxt).wellFormed }) != 0
+        && !(unsafe { (*ctxt).myDoc }).is_null()
+        && !(unsafe { (*(*ctxt).myDoc).intSubset }).is_null()
     {
-        (*ctxt).valid &= xmlValidateDocumentFinal(&mut (*ctxt).vctxt, (*ctxt).myDoc);
+        (unsafe { (*ctxt).valid &= xmlValidateDocumentFinal(&mut (*ctxt).vctxt, (*ctxt).myDoc) });
     }
-    if !((*ctxt).encoding).is_null() && !((*ctxt).myDoc).is_null()
-        && ((*(*ctxt).myDoc).encoding).is_null()
+    if !(unsafe { (*ctxt).encoding }).is_null()
+        && !(unsafe { (*ctxt).myDoc }).is_null()
+        && (unsafe { (*(*ctxt).myDoc).encoding }).is_null()
     {
-        let ref mut fresh25 = (*(*ctxt).myDoc).encoding;
-        *fresh25 = (*ctxt).encoding;
-        let ref mut fresh26 = (*ctxt).encoding;
+        let fresh25 = unsafe { &mut ((*(*ctxt).myDoc).encoding) };
+        *fresh25 = unsafe { (*ctxt).encoding };
+        let fresh26 = unsafe { &mut ((*ctxt).encoding) };
         *fresh26 = 0 as *const xmlChar;
     }
-    if !((*ctxt).inputTab).is_null() && (*ctxt).inputNr > 0 as i32
-        && !(*((*ctxt).inputTab).offset(0 as i32 as isize)).is_null()
-        && !((**((*ctxt).inputTab).offset(0 as i32 as isize)).encoding).is_null()
-        && !((*ctxt).myDoc).is_null() && ((*(*ctxt).myDoc).encoding).is_null()
+    if !(unsafe { (*ctxt).inputTab }).is_null()
+        && (unsafe { (*ctxt).inputNr }) > 0 as i32
+        && !(unsafe { *((*ctxt).inputTab).offset(0 as i32 as isize) }).is_null()
+        && !(unsafe { (**((*ctxt).inputTab).offset(0 as i32 as isize)).encoding }).is_null()
+        && !(unsafe { (*ctxt).myDoc }).is_null()
+        && (unsafe { (*(*ctxt).myDoc).encoding }).is_null()
     {
-        let ref mut fresh27 = (*(*ctxt).myDoc).encoding;
-        *fresh27 = xmlStrdup(
-            (**((*ctxt).inputTab).offset(0 as i32 as isize)).encoding,
-        );
+        let fresh27 = unsafe { &mut ((*(*ctxt).myDoc).encoding) };
+        *fresh27 = unsafe { xmlStrdup((**((*ctxt).inputTab).offset(0 as i32 as isize)).encoding) };
     }
-    if (*ctxt).charset != XML_CHAR_ENCODING_NONE as i32
-        && !((*ctxt).myDoc).is_null()
-        && (*(*ctxt).myDoc).charset == XML_CHAR_ENCODING_NONE as i32
+    if (unsafe { (*ctxt).charset }) != XML_CHAR_ENCODING_NONE as i32
+        && !(unsafe { (*ctxt).myDoc }).is_null()
+        && (unsafe { (*(*ctxt).myDoc).charset }) == XML_CHAR_ENCODING_NONE as i32
     {
-        (*(*ctxt).myDoc).charset = (*ctxt).charset;
+        (unsafe { (*(*ctxt).myDoc).charset = (*ctxt).charset });
     }
 }
-unsafe extern "C" fn xmlNsErrMsg(
-    mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt,
+extern "C" fn xmlNsErrMsg(
+    mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt,
     mut error: u32,
-    mut msg: * const i8,
-    mut str1: * const u8,
-    mut str2: * const u8,
+    mut msg: *const i8,
+    mut str1: *const u8,
+    mut str2: *const u8,
 ) {
-    if !ctxt.is_null() && (*ctxt).disableSAX != 0 as i32
-        && (*ctxt).instate as i32 == XML_PARSER_EOF as i32
+    if !ctxt.is_null()
+        && (unsafe { (*ctxt).disableSAX }) != 0 as i32
+        && (unsafe { (*ctxt).instate }) as i32 == XML_PARSER_EOF as i32
     {
         return;
     }
     if !ctxt.is_null() {
-        (*ctxt).errNo = error as i32;
+        (unsafe { (*ctxt).errNo = error as i32 });
     }
-    __xmlRaiseError(
+    (unsafe { __xmlRaiseError(
         None,
         None,
         0 as *mut libc::c_void,
@@ -2630,40 +2634,33 @@ unsafe extern "C" fn xmlNsErrMsg(
         msg,
         str1,
         str2,
-    );
+    ) });
 }
-unsafe extern "C" fn xmlSAX2AttributeInternal(
-    mut ctx: * mut core::ffi::c_void,
-    mut fullname: * const u8,
-    mut value: * const u8,
-    mut prefix: * const u8,
+extern "C" fn xmlSAX2AttributeInternal(
+    mut ctx: *mut core::ffi::c_void,
+    mut fullname: *const u8,
+    mut value: *const u8,
+    mut prefix: *const u8,
 ) {
     let mut current_block: u64;
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
-    let mut ret: * mut crate::src::HTMLparser::_xmlAttr = 0 as *mut xmlAttr;
-    let mut name: * mut u8 = 0 as *mut xmlChar;
-    let mut ns: * mut u8 = 0 as *mut xmlChar;
-    let mut nval: * mut u8 = 0 as *mut xmlChar;
-    let mut namespace: * mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
-    if (*ctxt).html != 0 {
-        name = xmlStrdup(fullname);
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    let mut ret: *mut crate::src::HTMLparser::_xmlAttr = 0 as *mut xmlAttr;
+    let mut name: *mut u8 = 0 as *mut xmlChar;
+    let mut ns: *mut u8 = 0 as *mut xmlChar;
+    let mut nval: *mut u8 = 0 as *mut xmlChar;
+    let mut namespace: *mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
+    if (unsafe { (*ctxt).html }) != 0 {
+        name = unsafe { xmlStrdup(fullname) };
         ns = 0 as *mut xmlChar;
         namespace = 0 as xmlNsPtr;
     } else {
         name = xmlSplitQName(ctxt, fullname, Some(&mut ns));
-        if !name.is_null()
-            && *name.offset(0 as i32 as isize) as i32 == 0 as i32
-        {
-            if xmlStrEqual(
-                ns,
-                b"xmlns\0" as *const u8 as *const i8 as *mut xmlChar,
-            ) != 0
-            {
+        if !name.is_null() && (unsafe { *name.offset(0 as i32 as isize) }) as i32 == 0 as i32 {
+            if (unsafe { xmlStrEqual(ns, b"xmlns\0" as *const u8 as *const i8 as *mut xmlChar) }) != 0 {
                 xmlNsErrMsg(
                     ctxt,
                     XML_ERR_NS_DECL_ERROR,
-                    b"invalid namespace declaration '%s'\n\0" as *const u8
-                        as *const i8,
+                    b"invalid namespace declaration '%s'\n\0" as *const u8 as *const i8,
                     fullname,
                     0 as *const xmlChar,
                 );
@@ -2671,61 +2668,58 @@ unsafe extern "C" fn xmlSAX2AttributeInternal(
                 xmlNsWarnMsg(
                     ctxt,
                     XML_WAR_NS_COLUMN,
-                    b"Avoid attribute ending with ':' like '%s'\n\0" as *const u8
-                        as *const i8,
+                    b"Avoid attribute ending with ':' like '%s'\n\0" as *const u8 as *const i8,
                     fullname,
                     0 as *const xmlChar,
                 );
             }
             if !ns.is_null() {
-                xmlFree.expect("non-null function pointer")(ns as *mut libc::c_void);
+                (unsafe { xmlFree.expect("non-null function pointer")(ns as *mut libc::c_void) });
             }
             ns = 0 as *mut xmlChar;
-            xmlFree.expect("non-null function pointer")(name as *mut libc::c_void);
-            name = xmlStrdup(fullname);
+            (unsafe { xmlFree.expect("non-null function pointer")(name as *mut libc::c_void) });
+            name = unsafe { xmlStrdup(fullname) };
         }
     }
     if name.is_null() {
-        xmlSAX2ErrMemory(
-            ctxt,
-            b"xmlSAX2StartElement\0" as *const u8 as *const i8,
-        );
+        xmlSAX2ErrMemory(ctxt, b"xmlSAX2StartElement\0" as *const u8 as *const i8);
         if !ns.is_null() {
-            xmlFree.expect("non-null function pointer")(ns as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(ns as *mut libc::c_void) });
         }
         return;
     }
-    if (*ctxt).html != 0 && value.is_null() && htmlIsBooleanAttr(fullname) != 0 {
-        nval = xmlStrdup(fullname);
+    if (unsafe { (*ctxt).html }) != 0 && value.is_null() && htmlIsBooleanAttr(fullname) != 0 {
+        nval = unsafe { xmlStrdup(fullname) };
         value = nval as *const xmlChar;
     } else {
-        (*ctxt).vctxt.valid = 1 as i32;
-        nval = xmlValidCtxtNormalizeAttributeValue(
+        (unsafe { (*ctxt).vctxt.valid = 1 as i32 });
+        nval = unsafe { xmlValidCtxtNormalizeAttributeValue(
             &mut (*ctxt).vctxt,
             (*ctxt).myDoc,
             (*ctxt).node,
             fullname,
             value,
-        );
-        if (*ctxt).vctxt.valid != 1 as i32 {
-            (*ctxt).valid = 0 as i32;
+        ) };
+        if (unsafe { (*ctxt).vctxt.valid }) != 1 as i32 {
+            (unsafe { (*ctxt).valid = 0 as i32 });
         }
         if !nval.is_null() {
             value = nval;
         }
     }
-    if (*ctxt).html == 0 && ns.is_null()
-        && *name.offset(0 as i32 as isize) as i32 == 'x' as i32
-        && *name.offset(1 as i32 as isize) as i32 == 'm' as i32
-        && *name.offset(2 as i32 as isize) as i32 == 'l' as i32
-        && *name.offset(3 as i32 as isize) as i32 == 'n' as i32
-        && *name.offset(4 as i32 as isize) as i32 == 's' as i32
-        && *name.offset(5 as i32 as isize) as i32 == 0 as i32
+    if (unsafe { (*ctxt).html }) == 0
+        && ns.is_null()
+        && (unsafe { *name.offset(0 as i32 as isize) }) as i32 == 'x' as i32
+        && (unsafe { *name.offset(1 as i32 as isize) }) as i32 == 'm' as i32
+        && (unsafe { *name.offset(2 as i32 as isize) }) as i32 == 'l' as i32
+        && (unsafe { *name.offset(3 as i32 as isize) }) as i32 == 'n' as i32
+        && (unsafe { *name.offset(4 as i32 as isize) }) as i32 == 's' as i32
+        && (unsafe { *name.offset(5 as i32 as isize) }) as i32 == 0 as i32
     {
-        let mut nsret: * mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
-        let mut val: * mut u8 = 0 as *mut xmlChar;
-        if (*ctxt).replaceEntities == 0 {
-            let ref mut fresh28 = (*ctxt).depth;
+        let mut nsret: *mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
+        let mut val: *mut u8 = 0 as *mut xmlChar;
+        if (unsafe { (*ctxt).replaceEntities }) == 0 {
+            let fresh28 = unsafe { &mut ((*ctxt).depth) };
             *fresh28 += 1;
             val = xmlStringDecodeEntities(
                 ctxt,
@@ -2735,95 +2729,85 @@ unsafe extern "C" fn xmlSAX2AttributeInternal(
                 0 as i32 as xmlChar,
                 0 as i32 as xmlChar,
             );
-            let ref mut fresh29 = (*ctxt).depth;
+            let fresh29 = unsafe { &mut ((*ctxt).depth) };
             *fresh29 -= 1;
             if val.is_null() {
-                xmlSAX2ErrMemory(
-                    ctxt,
-                    b"xmlSAX2StartElement\0" as *const u8 as *const i8,
-                );
+                xmlSAX2ErrMemory(ctxt, b"xmlSAX2StartElement\0" as *const u8 as *const i8);
                 if !name.is_null() {
-                    xmlFree
-                        .expect("non-null function pointer")(name as *mut libc::c_void);
+                    (unsafe { xmlFree.expect("non-null function pointer")(name as *mut libc::c_void) });
                 }
                 if !nval.is_null() {
-                    xmlFree
-                        .expect("non-null function pointer")(nval as *mut libc::c_void);
+                    (unsafe { xmlFree.expect("non-null function pointer")(nval as *mut libc::c_void) });
                 }
                 return;
             }
         } else {
             val = value as *mut xmlChar;
         }
-        if *val.offset(0 as i32 as isize) as i32 != 0 as i32 {
-            let mut uri: * mut crate::src::SAX2::_xmlURI = 0 as *mut xmlURI;
-            uri = xmlParseURI(val as *const i8);
+        if (unsafe { *val.offset(0 as i32 as isize) }) as i32 != 0 as i32 {
+            let mut uri: *mut crate::src::SAX2::_xmlURI = 0 as *mut xmlURI;
+            uri = unsafe { xmlParseURI(val as *const i8) };
             if uri.is_null() {
-                if !((*ctxt).sax).is_null() && ((*(*ctxt).sax).warning).is_some() {
-                    ((*(*ctxt).sax).warning)
-                        .expect(
-                            "non-null function pointer",
-                        )(
+                if !(unsafe { (*ctxt).sax }).is_null() && (unsafe { ((*(*ctxt).sax).warning).is_some() }) {
+                    (unsafe { ((*(*ctxt).sax).warning).expect("non-null function pointer")(
                         (*ctxt).userData,
-                        b"xmlns: %s not a valid URI\n\0" as *const u8
-                            as *const i8,
+                        b"xmlns: %s not a valid URI\n\0" as *const u8 as *const i8,
                         val,
-                    );
+                    ) });
                 }
             } else {
-                if ((*uri).scheme).is_null() {
-                    if !((*ctxt).sax).is_null() && ((*(*ctxt).sax).warning).is_some() {
-                        ((*(*ctxt).sax).warning)
-                            .expect(
-                                "non-null function pointer",
-                            )(
+                if (unsafe { (*uri).scheme }).is_null() {
+                    if !(unsafe { (*ctxt).sax }).is_null() && (unsafe { ((*(*ctxt).sax).warning).is_some() }) {
+                        (unsafe { ((*(*ctxt).sax).warning).expect("non-null function pointer")(
                             (*ctxt).userData,
-                            b"xmlns: URI %s is not absolute\n\0" as *const u8
-                                as *const i8,
+                            b"xmlns: URI %s is not absolute\n\0" as *const u8 as *const i8,
                             val,
-                        );
+                        ) });
                     }
                 }
-                xmlFreeURI(uri);
+                (unsafe { xmlFreeURI(uri) });
             }
         }
-        nsret = xmlNewNs((*ctxt).node, val, 0 as *const xmlChar);
-        if !nsret.is_null() && (*ctxt).validate != 0 && (*ctxt).wellFormed != 0
-            && !((*ctxt).myDoc).is_null() && !((*(*ctxt).myDoc).intSubset).is_null()
+        nsret = unsafe { xmlNewNs((*ctxt).node, val, 0 as *const xmlChar) };
+        if !nsret.is_null()
+            && (unsafe { (*ctxt).validate }) != 0
+            && (unsafe { (*ctxt).wellFormed }) != 0
+            && !(unsafe { (*ctxt).myDoc }).is_null()
+            && !(unsafe { (*(*ctxt).myDoc).intSubset }).is_null()
         {
-            (*ctxt).valid
-                &= xmlValidateOneNamespace(
-                    &mut (*ctxt).vctxt,
-                    (*ctxt).myDoc,
-                    (*ctxt).node,
-                    prefix,
-                    nsret,
-                    val,
-                );
+            (unsafe { (*ctxt).valid &= xmlValidateOneNamespace(
+                &mut (*ctxt).vctxt,
+                (*ctxt).myDoc,
+                (*ctxt).node,
+                prefix,
+                nsret,
+                val,
+            ) });
         }
         if !name.is_null() {
-            xmlFree.expect("non-null function pointer")(name as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(name as *mut libc::c_void) });
         }
         if !nval.is_null() {
-            xmlFree.expect("non-null function pointer")(nval as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(nval as *mut libc::c_void) });
         }
         if val != value as *mut xmlChar {
-            xmlFree.expect("non-null function pointer")(val as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(val as *mut libc::c_void) });
         }
         return;
     }
-    if (*ctxt).html == 0 && !ns.is_null()
-        && *ns.offset(0 as i32 as isize) as i32 == 'x' as i32
-        && *ns.offset(1 as i32 as isize) as i32 == 'm' as i32
-        && *ns.offset(2 as i32 as isize) as i32 == 'l' as i32
-        && *ns.offset(3 as i32 as isize) as i32 == 'n' as i32
-        && *ns.offset(4 as i32 as isize) as i32 == 's' as i32
-        && *ns.offset(5 as i32 as isize) as i32 == 0 as i32
+    if (unsafe { (*ctxt).html }) == 0
+        && !ns.is_null()
+        && (unsafe { *ns.offset(0 as i32 as isize) }) as i32 == 'x' as i32
+        && (unsafe { *ns.offset(1 as i32 as isize) }) as i32 == 'm' as i32
+        && (unsafe { *ns.offset(2 as i32 as isize) }) as i32 == 'l' as i32
+        && (unsafe { *ns.offset(3 as i32 as isize) }) as i32 == 'n' as i32
+        && (unsafe { *ns.offset(4 as i32 as isize) }) as i32 == 's' as i32
+        && (unsafe { *ns.offset(5 as i32 as isize) }) as i32 == 0 as i32
     {
-        let mut nsret_0: * mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
-        let mut val_0: * mut u8 = 0 as *mut xmlChar;
-        if (*ctxt).replaceEntities == 0 {
-            let ref mut fresh30 = (*ctxt).depth;
+        let mut nsret_0: *mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
+        let mut val_0: *mut u8 = 0 as *mut xmlChar;
+        if (unsafe { (*ctxt).replaceEntities }) == 0 {
+            let fresh30 = unsafe { &mut ((*ctxt).depth) };
             *fresh30 += 1;
             val_0 = xmlStringDecodeEntities(
                 ctxt,
@@ -2833,140 +2817,126 @@ unsafe extern "C" fn xmlSAX2AttributeInternal(
                 0 as i32 as xmlChar,
                 0 as i32 as xmlChar,
             );
-            let ref mut fresh31 = (*ctxt).depth;
+            let fresh31 = unsafe { &mut ((*ctxt).depth) };
             *fresh31 -= 1;
             if val_0.is_null() {
-                xmlSAX2ErrMemory(
-                    ctxt,
-                    b"xmlSAX2StartElement\0" as *const u8 as *const i8,
-                );
-                xmlFree.expect("non-null function pointer")(ns as *mut libc::c_void);
+                xmlSAX2ErrMemory(ctxt, b"xmlSAX2StartElement\0" as *const u8 as *const i8);
+                (unsafe { xmlFree.expect("non-null function pointer")(ns as *mut libc::c_void) });
                 if !name.is_null() {
-                    xmlFree
-                        .expect("non-null function pointer")(name as *mut libc::c_void);
+                    (unsafe { xmlFree.expect("non-null function pointer")(name as *mut libc::c_void) });
                 }
                 if !nval.is_null() {
-                    xmlFree
-                        .expect("non-null function pointer")(nval as *mut libc::c_void);
+                    (unsafe { xmlFree.expect("non-null function pointer")(nval as *mut libc::c_void) });
                 }
                 return;
             }
         } else {
             val_0 = value as *mut xmlChar;
         }
-        if *val_0.offset(0 as i32 as isize) as i32 == 0 as i32 {
+        if (unsafe { *val_0.offset(0 as i32 as isize) }) as i32 == 0 as i32 {
             xmlNsErrMsg(
                 ctxt,
                 XML_NS_ERR_EMPTY,
-                b"Empty namespace name for prefix %s\n\0" as *const u8
-                    as *const i8,
+                b"Empty namespace name for prefix %s\n\0" as *const u8 as *const i8,
                 name,
                 0 as *const xmlChar,
             );
         }
-        if (*ctxt).pedantic != 0 as i32
-            && *val_0.offset(0 as i32 as isize) as i32
-                != 0 as i32
-        {
-            let mut uri_0: * mut crate::src::SAX2::_xmlURI = 0 as *mut xmlURI;
-            uri_0 = xmlParseURI(val_0 as *const i8);
+        if (unsafe { (*ctxt).pedantic }) != 0 as i32 && (unsafe { *val_0.offset(0 as i32 as isize) }) as i32 != 0 as i32 {
+            let mut uri_0: *mut crate::src::SAX2::_xmlURI = 0 as *mut xmlURI;
+            uri_0 = unsafe { xmlParseURI(val_0 as *const i8) };
             if uri_0.is_null() {
                 xmlNsWarnMsg(
                     ctxt,
                     XML_WAR_NS_URI,
-                    b"xmlns:%s: %s not a valid URI\n\0" as *const u8
-                        as *const i8,
+                    b"xmlns:%s: %s not a valid URI\n\0" as *const u8 as *const i8,
                     name,
                     value,
                 );
             } else {
-                if ((*uri_0).scheme).is_null() {
+                if (unsafe { (*uri_0).scheme }).is_null() {
                     xmlNsWarnMsg(
                         ctxt,
                         XML_WAR_NS_URI_RELATIVE,
-                        b"xmlns:%s: URI %s is not absolute\n\0" as *const u8
-                            as *const i8,
+                        b"xmlns:%s: URI %s is not absolute\n\0" as *const u8 as *const i8,
                         name,
                         value,
                     );
                 }
-                xmlFreeURI(uri_0);
+                (unsafe { xmlFreeURI(uri_0) });
             }
         }
-        nsret_0 = xmlNewNs((*ctxt).node, val_0, name);
-        xmlFree.expect("non-null function pointer")(ns as *mut libc::c_void);
-        if !nsret_0.is_null() && (*ctxt).validate != 0 && (*ctxt).wellFormed != 0
-            && !((*ctxt).myDoc).is_null() && !((*(*ctxt).myDoc).intSubset).is_null()
+        nsret_0 = unsafe { xmlNewNs((*ctxt).node, val_0, name) };
+        (unsafe { xmlFree.expect("non-null function pointer")(ns as *mut libc::c_void) });
+        if !nsret_0.is_null()
+            && (unsafe { (*ctxt).validate }) != 0
+            && (unsafe { (*ctxt).wellFormed }) != 0
+            && !(unsafe { (*ctxt).myDoc }).is_null()
+            && !(unsafe { (*(*ctxt).myDoc).intSubset }).is_null()
         {
-            (*ctxt).valid
-                &= xmlValidateOneNamespace(
-                    &mut (*ctxt).vctxt,
-                    (*ctxt).myDoc,
-                    (*ctxt).node,
-                    prefix,
-                    nsret_0,
-                    value,
-                );
+            (unsafe { (*ctxt).valid &= xmlValidateOneNamespace(
+                &mut (*ctxt).vctxt,
+                (*ctxt).myDoc,
+                (*ctxt).node,
+                prefix,
+                nsret_0,
+                value,
+            ) });
         }
         if !name.is_null() {
-            xmlFree.expect("non-null function pointer")(name as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(name as *mut libc::c_void) });
         }
         if !nval.is_null() {
-            xmlFree.expect("non-null function pointer")(nval as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(nval as *mut libc::c_void) });
         }
         if val_0 != value as *mut xmlChar {
-            xmlFree.expect("non-null function pointer")(val_0 as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(val_0 as *mut libc::c_void) });
         }
         return;
     }
     if !ns.is_null() {
-        namespace = xmlSearchNs((*ctxt).myDoc, (*ctxt).node, ns);
+        namespace = unsafe { xmlSearchNs((*ctxt).myDoc, (*ctxt).node, ns) };
         if namespace.is_null() {
             xmlNsErrMsg(
                 ctxt,
                 XML_NS_ERR_UNDEFINED_NAMESPACE,
-                b"Namespace prefix %s of attribute %s is not defined\n\0" as *const u8
-                    as *const i8,
+                b"Namespace prefix %s of attribute %s is not defined\n\0" as *const u8 as *const i8,
                 ns,
                 name,
             );
             current_block = 13425230902034816933;
         } else {
-            let mut prop: * mut crate::src::HTMLparser::_xmlAttr = 0 as *mut xmlAttr;
-            prop = (*(*ctxt).node).properties;
+            let mut prop: *mut crate::src::HTMLparser::_xmlAttr = 0 as *mut xmlAttr;
+            prop = unsafe { (*(*ctxt).node).properties };
             loop {
                 if prop.is_null() {
                     current_block = 13425230902034816933;
                     break;
                 }
-                if !((*prop).ns).is_null() {
-                    if xmlStrEqual(name, (*prop).name) != 0
-                        && (namespace == (*prop).ns
-                            || xmlStrEqual((*namespace).href, (*(*prop).ns).href) != 0)
+                if !(unsafe { (*prop).ns }).is_null() {
+                    if (unsafe { xmlStrEqual(name, (*prop).name) }) != 0
+                        && (namespace == (unsafe { (*prop).ns })
+                            || (unsafe { xmlStrEqual((*namespace).href, (*(*prop).ns).href) }) != 0)
                     {
                         xmlNsErrMsg(
                             ctxt,
                             XML_ERR_ATTRIBUTE_REDEFINED,
-                            b"Attribute %s in %s redefined\n\0" as *const u8
-                                as *const i8,
+                            b"Attribute %s in %s redefined\n\0" as *const u8 as *const i8,
                             name,
-                            (*namespace).href,
+                            unsafe { (*namespace).href },
                         );
-                        (*ctxt).wellFormed = 0 as i32;
-                        if (*ctxt).recovery == 0 as i32 {
-                            (*ctxt).disableSAX = 1 as i32;
+                        (unsafe { (*ctxt).wellFormed = 0 as i32 });
+                        if (unsafe { (*ctxt).recovery }) == 0 as i32 {
+                            (unsafe { (*ctxt).disableSAX = 1 as i32 });
                         }
                         if !name.is_null() {
-                            xmlFree
-                                .expect(
-                                    "non-null function pointer",
-                                )(name as *mut libc::c_void);
+                            (unsafe { xmlFree.expect("non-null function pointer")(name as *mut libc::c_void) });
                         }
                         current_block = 6621008398210872980;
                         break;
                     }
                 }
-                prop = (*prop).next;
+                prop = unsafe { (*prop).next };
             }
         }
     } else {
@@ -2975,47 +2945,42 @@ unsafe extern "C" fn xmlSAX2AttributeInternal(
     }
     match current_block {
         13425230902034816933 => {
-            ret = xmlNewNsPropEatName(
-                (*ctxt).node,
-                namespace,
-                name,
-                0 as *const xmlChar,
-            );
+            ret = unsafe { xmlNewNsPropEatName((*ctxt).node, namespace, name, 0 as *const xmlChar) };
             if !ret.is_null() {
-                if (*ctxt).replaceEntities == 0 as i32 && (*ctxt).html == 0 {
-                    let mut tmp: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-                    let ref mut fresh32 = (*ret).children;
-                    *fresh32 = xmlStringGetNodeList(
-                        (*ctxt).myDoc as *const xmlDoc,
-                        value,
-                    );
-                    tmp = (*ret).children;
+                if (unsafe { (*ctxt).replaceEntities }) == 0 as i32 && (unsafe { (*ctxt).html }) == 0 {
+                    let mut tmp: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+                    let fresh32 = unsafe { &mut ((*ret).children) };
+                    *fresh32 = unsafe { xmlStringGetNodeList((*ctxt).myDoc as *const xmlDoc, value) };
+                    tmp = unsafe { (*ret).children };
                     while !tmp.is_null() {
-                        let ref mut fresh33 = (*tmp).parent;
+                        let fresh33 = unsafe { &mut ((*tmp).parent) };
                         *fresh33 = ret as xmlNodePtr;
-                        if ((*tmp).next).is_null() {
-                            let ref mut fresh34 = (*ret).last;
+                        if (unsafe { (*tmp).next }).is_null() {
+                            let fresh34 = unsafe { &mut ((*ret).last) };
                             *fresh34 = tmp;
                         }
-                        tmp = (*tmp).next;
+                        tmp = unsafe { (*tmp).next };
                     }
                 } else if !value.is_null() {
-                    let ref mut fresh35 = (*ret).children;
-                    *fresh35 = xmlNewDocText((*ctxt).myDoc as *const xmlDoc, value);
-                    let ref mut fresh36 = (*ret).last;
-                    *fresh36 = (*ret).children;
-                    if !((*ret).children).is_null() {
-                        let ref mut fresh37 = (*(*ret).children).parent;
+                    let fresh35 = unsafe { &mut ((*ret).children) };
+                    *fresh35 = unsafe { xmlNewDocText((*ctxt).myDoc as *const xmlDoc, value) };
+                    let fresh36 = unsafe { &mut ((*ret).last) };
+                    *fresh36 = unsafe { (*ret).children };
+                    if !(unsafe { (*ret).children }).is_null() {
+                        let fresh37 = unsafe { &mut ((*(*ret).children).parent) };
                         *fresh37 = ret as xmlNodePtr;
                     }
                 }
             }
-            if (*ctxt).html == 0 && (*ctxt).validate != 0 && (*ctxt).wellFormed != 0
-                && !((*ctxt).myDoc).is_null() && !((*(*ctxt).myDoc).intSubset).is_null()
+            if (unsafe { (*ctxt).html }) == 0
+                && (unsafe { (*ctxt).validate }) != 0
+                && (unsafe { (*ctxt).wellFormed }) != 0
+                && !(unsafe { (*ctxt).myDoc }).is_null()
+                && !(unsafe { (*(*ctxt).myDoc).intSubset }).is_null()
             {
-                if (*ctxt).replaceEntities == 0 {
-                    let mut val_1: * mut u8 = 0 as *mut xmlChar;
-                    let ref mut fresh38 = (*ctxt).depth;
+                if (unsafe { (*ctxt).replaceEntities }) == 0 {
+                    let mut val_1: *mut u8 = 0 as *mut xmlChar;
+                    let fresh38 = unsafe { &mut ((*ctxt).depth) };
                     *fresh38 += 1;
                     val_1 = xmlStringDecodeEntities(
                         ctxt,
@@ -3025,162 +2990,146 @@ unsafe extern "C" fn xmlSAX2AttributeInternal(
                         0 as i32 as xmlChar,
                         0 as i32 as xmlChar,
                     );
-                    let ref mut fresh39 = (*ctxt).depth;
+                    let fresh39 = unsafe { &mut ((*ctxt).depth) };
                     *fresh39 -= 1;
                     if val_1.is_null() {
-                        (*ctxt).valid
-                            &= xmlValidateOneAttribute(
-                                &mut (*ctxt).vctxt,
-                                (*ctxt).myDoc,
-                                (*ctxt).node,
-                                ret,
-                                value,
-                            );
-                    } else {
-                        let mut nvalnorm: * mut u8 = 0 as *mut xmlChar;
-                        nvalnorm = xmlValidNormalizeAttributeValue(
-                            (*ctxt).myDoc,
-                            (*ctxt).node,
-                            fullname,
-                            val_1,
-                        );
-                        if !nvalnorm.is_null() {
-                            xmlFree
-                                .expect(
-                                    "non-null function pointer",
-                                )(val_1 as *mut libc::c_void);
-                            val_1 = nvalnorm;
-                        }
-                        (*ctxt).valid
-                            &= xmlValidateOneAttribute(
-                                &mut (*ctxt).vctxt,
-                                (*ctxt).myDoc,
-                                (*ctxt).node,
-                                ret,
-                                val_1,
-                            );
-                        xmlFree
-                            .expect(
-                                "non-null function pointer",
-                            )(val_1 as *mut libc::c_void);
-                    }
-                } else {
-                    (*ctxt).valid
-                        &= xmlValidateOneAttribute(
+                        (unsafe { (*ctxt).valid &= xmlValidateOneAttribute(
                             &mut (*ctxt).vctxt,
                             (*ctxt).myDoc,
                             (*ctxt).node,
                             ret,
                             value,
-                        );
+                        ) });
+                    } else {
+                        let mut nvalnorm: *mut u8 = 0 as *mut xmlChar;
+                        nvalnorm = unsafe { xmlValidNormalizeAttributeValue(
+                            (*ctxt).myDoc,
+                            (*ctxt).node,
+                            fullname,
+                            val_1,
+                        ) };
+                        if !nvalnorm.is_null() {
+                            (unsafe { xmlFree.expect("non-null function pointer")(val_1 as *mut libc::c_void) });
+                            val_1 = nvalnorm;
+                        }
+                        (unsafe { (*ctxt).valid &= xmlValidateOneAttribute(
+                            &mut (*ctxt).vctxt,
+                            (*ctxt).myDoc,
+                            (*ctxt).node,
+                            ret,
+                            val_1,
+                        ) });
+                        (unsafe { xmlFree.expect("non-null function pointer")(val_1 as *mut libc::c_void) });
+                    }
+                } else {
+                    (unsafe { (*ctxt).valid &= xmlValidateOneAttribute(
+                        &mut (*ctxt).vctxt,
+                        (*ctxt).myDoc,
+                        (*ctxt).node,
+                        ret,
+                        value,
+                    ) });
                 }
-            } else if (*ctxt).loadsubset & 8 as i32 == 0 as i32
-                    && ((*ctxt).replaceEntities == 0 as i32
-                        && (*ctxt).external != 2 as i32
-                        || (*ctxt).replaceEntities != 0 as i32
-                            && (*ctxt).inSubset == 0 as i32)
-                    && !((*ret).children).is_null()
-                    && (*(*ret).children).type_0 as u32
-                        == XML_TEXT_NODE as i32 as u32
-                    && ((*(*ret).children).next).is_null()
-                {
-                let mut content: * mut u8 = (*(*ret).children).content;
-                if xmlStrEqual(
+            } else if (unsafe { (*ctxt).loadsubset }) & 8 as i32 == 0 as i32
+                && ((unsafe { (*ctxt).replaceEntities }) == 0 as i32 && (unsafe { (*ctxt).external }) != 2 as i32
+                    || (unsafe { (*ctxt).replaceEntities }) != 0 as i32 && (unsafe { (*ctxt).inSubset }) == 0 as i32)
+                && !(unsafe { (*ret).children }).is_null()
+                && (unsafe { (*(*ret).children).type_0 }) as u32 == XML_TEXT_NODE as i32 as u32
+                && (unsafe { (*(*ret).children).next }).is_null()
+            {
+                let mut content: *mut u8 = unsafe { (*(*ret).children).content };
+                if (unsafe { xmlStrEqual(
                     fullname,
                     b"xml:id\0" as *const u8 as *const i8 as *mut xmlChar,
-                ) != 0
+                ) }) != 0
                 {
-                    if xmlValidateNCName(content, 1 as i32) != 0 as i32 {
+                    if (unsafe { xmlValidateNCName(content, 1 as i32) }) != 0 as i32 {
                         xmlErrValid(
                             ctxt,
                             XML_DTD_XMLID_VALUE,
-                            b"xml:id : attribute value %s is not an NCName\n\0"
-                                as *const u8 as *const i8,
+                            b"xml:id : attribute value %s is not an NCName\n\0" as *const u8
+                                as *const i8,
                             content as *const i8,
                             0 as *const i8,
                         );
                     }
-                    xmlAddID(&mut (*ctxt).vctxt, (*ctxt).myDoc, content, ret);
-                } else if xmlIsID((*ctxt).myDoc, (*ctxt).node, ret) != 0 {
-                    xmlAddID(&mut (*ctxt).vctxt, (*ctxt).myDoc, content, ret);
-                } else if xmlIsRef((*ctxt).myDoc, (*ctxt).node, ret) != 0 {
-                    xmlAddRef(&mut (*ctxt).vctxt, (*ctxt).myDoc, content, ret);
+                    (unsafe { xmlAddID(&mut (*ctxt).vctxt, (*ctxt).myDoc, content, ret) });
+                } else if (unsafe { xmlIsID((*ctxt).myDoc, (*ctxt).node, ret) }) != 0 {
+                    (unsafe { xmlAddID(&mut (*ctxt).vctxt, (*ctxt).myDoc, content, ret) });
+                } else if (unsafe { xmlIsRef((*ctxt).myDoc, (*ctxt).node, ret) }) != 0 {
+                    (unsafe { xmlAddRef(&mut (*ctxt).vctxt, (*ctxt).myDoc, content, ret) });
                 }
             }
-        }
-        _ => {}
+        },
+        _ => {},
     }
     if !nval.is_null() {
-        xmlFree.expect("non-null function pointer")(nval as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(nval as *mut libc::c_void) });
     }
     if !ns.is_null() {
-        xmlFree.expect("non-null function pointer")(ns as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(ns as *mut libc::c_void) });
     }
 }
-unsafe extern "C" fn xmlCheckDefaultedAttributes(
-    mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt,
-    mut name: * const u8,
-    mut prefix: * const u8,
-    mut atts: * mut * const u8,
+extern "C" fn xmlCheckDefaultedAttributes(
+    mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt,
+    mut name: *const u8,
+    mut prefix: *const u8,
+    mut atts: *mut *const u8,
 ) {
-    let mut elemDecl: * mut crate::src::SAX2::_xmlElement = (0 as * mut crate::src::SAX2::_xmlElement);
-    let mut att: * const u8 = 0 as *const xmlChar;
+    let mut elemDecl: *mut crate::src::SAX2::_xmlElement =
+        0 as *mut crate::src::SAX2::_xmlElement;
+    let mut att: *const u8 = 0 as *const xmlChar;
     let mut internal: i32 = 1 as i32;
     let mut i: i32 = 0;
-    elemDecl = xmlGetDtdQElementDesc((*(*ctxt).myDoc).intSubset, name, prefix);
+    elemDecl = unsafe { xmlGetDtdQElementDesc((*(*ctxt).myDoc).intSubset, name, prefix) };
     if elemDecl.is_null() {
-        elemDecl = xmlGetDtdQElementDesc((*(*ctxt).myDoc).extSubset, name, prefix);
+        elemDecl = unsafe { xmlGetDtdQElementDesc((*(*ctxt).myDoc).extSubset, name, prefix) };
         internal = 0 as i32;
     }
     while !elemDecl.is_null() {
-        let mut attr: * mut crate::src::SAX2::_xmlAttribute = (*elemDecl).attributes;
-        if (*(*ctxt).myDoc).standalone == 1 as i32
-            && !((*(*ctxt).myDoc).extSubset).is_null() && (*ctxt).validate != 0
+        let mut attr: *mut crate::src::SAX2::_xmlAttribute = unsafe { (*elemDecl).attributes };
+        if (unsafe { (*(*ctxt).myDoc).standalone }) == 1 as i32
+            && !(unsafe { (*(*ctxt).myDoc).extSubset }).is_null()
+            && (unsafe { (*ctxt).validate }) != 0
         {
             while !attr.is_null() {
-                if !((*attr).defaultValue).is_null()
-                    && xmlGetDtdQAttrDesc(
+                if !(unsafe { (*attr).defaultValue }).is_null()
+                    && (unsafe { xmlGetDtdQAttrDesc(
                         (*(*ctxt).myDoc).extSubset,
                         (*attr).elem,
                         (*attr).name,
                         (*attr).prefix,
-                    ) == attr
-                    && (xmlGetDtdQAttrDesc(
+                    ) }) == attr
+                    && (unsafe { xmlGetDtdQAttrDesc(
                         (*(*ctxt).myDoc).intSubset,
                         (*attr).elem,
                         (*attr).name,
                         (*attr).prefix,
-                    ))
-                        .is_null()
+                    ) })
+                    .is_null()
                 {
-                    let mut fulln: * mut u8 = 0 as *mut xmlChar;
-                    if !((*attr).prefix).is_null() {
-                        fulln = xmlStrdup((*attr).prefix);
-                        fulln = xmlStrcat(
-                            fulln,
-                            b":\0" as *const u8 as *const i8 as *mut xmlChar,
-                        );
-                        fulln = xmlStrcat(fulln, (*attr).name);
+                    let mut fulln: *mut u8 = 0 as *mut xmlChar;
+                    if !(unsafe { (*attr).prefix }).is_null() {
+                        fulln = unsafe { xmlStrdup((*attr).prefix) };
+                        fulln = unsafe { xmlStrcat(fulln, b":\0" as *const u8 as *const i8 as *mut xmlChar) };
+                        fulln = unsafe { xmlStrcat(fulln, (*attr).name) };
                     } else {
-                        fulln = xmlStrdup((*attr).name);
+                        fulln = unsafe { xmlStrdup((*attr).name) };
                     }
                     if fulln.is_null() {
-                        xmlSAX2ErrMemory(
-                            ctxt,
-                            b"xmlSAX2StartElement\0" as *const u8 as *const i8,
-                        );
+                        xmlSAX2ErrMemory(ctxt, b"xmlSAX2StartElement\0" as *const u8 as *const i8);
                         break;
                     } else {
                         att = 0 as *const xmlChar;
                         if !atts.is_null() {
                             i = 0 as i32;
-                            att = *atts.offset(i as isize);
+                            att = unsafe { *atts.offset(i as isize) };
                             while !att.is_null() {
-                                if xmlStrEqual(att, fulln) != 0 {
+                                if (unsafe { xmlStrEqual(att, fulln) }) != 0 {
                                     break;
                                 }
                                 i += 2 as i32;
-                                att = *atts.offset(i as isize);
+                                att = unsafe { *atts.offset(i as isize) };
                             }
                         }
                         if att.is_null() {
@@ -3190,49 +3139,46 @@ unsafe extern "C" fn xmlCheckDefaultedAttributes(
                                 b"standalone: attribute %s on %s defaulted from external subset\n\0"
                                     as *const u8 as *const i8,
                                 fulln as *const i8,
-                                (*attr).elem as *const i8,
+                                (unsafe { (*attr).elem }) as *const i8,
                             );
                         }
-                        xmlFree
-                            .expect(
-                                "non-null function pointer",
-                            )(fulln as *mut libc::c_void);
+                        (unsafe { xmlFree.expect("non-null function pointer")(fulln as *mut libc::c_void) });
                     }
                 }
-                attr = (*attr).nexth;
+                attr = unsafe { (*attr).nexth };
             }
         }
-        attr = (*elemDecl).attributes;
+        attr = unsafe { (*elemDecl).attributes };
         while !attr.is_null() {
-            if !((*attr).defaultValue).is_null() {
-                if !((*attr).prefix).is_null()
-                    && xmlStrEqual(
+            if !(unsafe { (*attr).defaultValue }).is_null() {
+                if !(unsafe { (*attr).prefix }).is_null()
+                    && (unsafe { xmlStrEqual(
                         (*attr).prefix,
                         b"xmlns\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) != 0
-                    || ((*attr).prefix).is_null()
-                        && xmlStrEqual(
+                    ) }) != 0
+                    || (unsafe { (*attr).prefix }).is_null()
+                        && (unsafe { xmlStrEqual(
                             (*attr).name,
-                            b"xmlns\0" as *const u8 as *const i8
-                                as *mut xmlChar,
-                        ) != 0 || (*ctxt).loadsubset & 4 as i32 != 0
+                            b"xmlns\0" as *const u8 as *const i8 as *mut xmlChar,
+                        ) }) != 0
+                    || (unsafe { (*ctxt).loadsubset }) & 4 as i32 != 0
                 {
-                    let mut tst: * mut crate::src::SAX2::_xmlAttribute = 0 as *mut xmlAttribute;
-                    tst = xmlGetDtdQAttrDesc(
+                    let mut tst: *mut crate::src::SAX2::_xmlAttribute = 0 as *mut xmlAttribute;
+                    tst = unsafe { xmlGetDtdQAttrDesc(
                         (*(*ctxt).myDoc).intSubset,
                         (*attr).elem,
                         (*attr).name,
                         (*attr).prefix,
-                    );
+                    ) };
                     if tst == attr || tst.is_null() {
                         let mut fn_0: [u8; 50] = [0; 50];
-                        let mut fulln_0: * mut u8 = 0 as *mut xmlChar;
-                        fulln_0 = xmlBuildQName(
+                        let mut fulln_0: *mut u8 = 0 as *mut xmlChar;
+                        fulln_0 = unsafe { xmlBuildQName(
                             (*attr).name,
                             (*attr).prefix,
                             fn_0.as_mut_ptr(),
                             50 as i32,
-                        );
+                        ) };
                         if fulln_0.is_null() {
                             xmlSAX2ErrMemory(
                                 ctxt,
@@ -3243,68 +3189,66 @@ unsafe extern "C" fn xmlCheckDefaultedAttributes(
                         att = 0 as *const xmlChar;
                         if !atts.is_null() {
                             i = 0 as i32;
-                            att = *atts.offset(i as isize);
+                            att = unsafe { *atts.offset(i as isize) };
                             while !att.is_null() {
-                                if xmlStrEqual(att, fulln_0) != 0 {
+                                if (unsafe { xmlStrEqual(att, fulln_0) }) != 0 {
                                     break;
                                 }
                                 i += 2 as i32;
-                                att = *atts.offset(i as isize);
+                                att = unsafe { *atts.offset(i as isize) };
                             }
                         }
                         if att.is_null() {
                             xmlSAX2AttributeInternal(
                                 ctxt as *mut libc::c_void,
                                 fulln_0,
-                                (*attr).defaultValue,
+                                unsafe { (*attr).defaultValue },
                                 prefix,
                             );
                         }
-                        if fulln_0 != fn_0.as_mut_ptr()
-                            && fulln_0 != (*attr).name as *mut xmlChar
-                        {
-                            xmlFree
-                                .expect(
-                                    "non-null function pointer",
-                                )(fulln_0 as *mut libc::c_void);
+                        if fulln_0 != fn_0.as_mut_ptr() && fulln_0 != (unsafe { (*attr).name }) as *mut xmlChar {
+                            (unsafe { xmlFree.expect("non-null function pointer")(
+                                fulln_0 as *mut libc::c_void,
+                            ) });
                         }
                     }
                 }
             }
-            attr = (*attr).nexth;
+            attr = unsafe { (*attr).nexth };
         }
         if !(internal == 1 as i32) {
             break;
         }
-        elemDecl = xmlGetDtdQElementDesc((*(*ctxt).myDoc).extSubset, name, prefix);
+        elemDecl = unsafe { xmlGetDtdQElementDesc((*(*ctxt).myDoc).extSubset, name, prefix) };
         internal = 0 as i32;
     }
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2StartElement(
-    mut ctx: * mut core::ffi::c_void,
-    mut fullname: * const u8,
-    mut atts: * mut * const u8,
+pub extern "C" fn xmlSAX2StartElement(
+    mut ctx: *mut core::ffi::c_void,
+    mut fullname: *const u8,
+    mut atts: *mut *const u8,
 ) {
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
-    let mut ret: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut parent: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut ns: * mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
-    let mut name: * mut u8 = 0 as *mut xmlChar;
-    let mut prefix: * mut u8 = 0 as *mut xmlChar;
-    let mut att: * const u8 = 0 as *const xmlChar;
-    let mut value: * const u8 = 0 as *const xmlChar;
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    let mut ret: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut parent: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut ns: *mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
+    let mut name: *mut u8 = 0 as *mut xmlChar;
+    let mut prefix: *mut u8 = 0 as *mut xmlChar;
+    let mut att: *const u8 = 0 as *const xmlChar;
+    let mut value: *const u8 = 0 as *const xmlChar;
     let mut i: i32 = 0;
-    if ctx.is_null() || fullname.is_null() || ((*ctxt).myDoc).is_null() {
+    if ctx.is_null() || fullname.is_null() || (unsafe { (*ctxt).myDoc }).is_null() {
         return;
     }
-    parent = (*ctxt).node;
-    if (*ctxt).validate != 0 && ((*(*ctxt).myDoc).extSubset).is_null()
-        && (((*(*ctxt).myDoc).intSubset).is_null()
-            || ((*(*(*ctxt).myDoc).intSubset).notations).is_null()
-                && ((*(*(*ctxt).myDoc).intSubset).elements).is_null()
-                && ((*(*(*ctxt).myDoc).intSubset).attributes).is_null()
-                && ((*(*(*ctxt).myDoc).intSubset).entities).is_null())
+    parent = unsafe { (*ctxt).node };
+    if (unsafe { (*ctxt).validate }) != 0
+        && (unsafe { (*(*ctxt).myDoc).extSubset }).is_null()
+        && ((unsafe { (*(*ctxt).myDoc).intSubset }).is_null()
+            || (unsafe { (*(*(*ctxt).myDoc).intSubset).notations }).is_null()
+                && (unsafe { (*(*(*ctxt).myDoc).intSubset).elements }).is_null()
+                && (unsafe { (*(*(*ctxt).myDoc).intSubset).attributes }).is_null()
+                && (unsafe { (*(*(*ctxt).myDoc).intSubset).entities }).is_null())
     {
         xmlErrValid(
             ctxt,
@@ -3313,127 +3257,107 @@ pub unsafe extern "C" fn xmlSAX2StartElement(
             0 as *const i8,
             0 as *const i8,
         );
-        (*ctxt).validate = 0 as i32;
+        (unsafe { (*ctxt).validate = 0 as i32 });
     }
     name = xmlSplitQName(ctxt, fullname, Some(&mut prefix));
-    ret = xmlNewDocNodeEatName((*ctxt).myDoc, 0 as xmlNsPtr, name, 0 as *const xmlChar);
+    ret = unsafe { xmlNewDocNodeEatName((*ctxt).myDoc, 0 as xmlNsPtr, name, 0 as *const xmlChar) };
     if ret.is_null() {
         if !prefix.is_null() {
-            xmlFree.expect("non-null function pointer")(prefix as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(prefix as *mut libc::c_void) });
         }
-        xmlSAX2ErrMemory(
-            ctxt,
-            b"xmlSAX2StartElement\0" as *const u8 as *const i8,
-        );
+        xmlSAX2ErrMemory(ctxt, b"xmlSAX2StartElement\0" as *const u8 as *const i8);
         return;
     }
-    if ((*(*ctxt).myDoc).children).is_null() {
-        xmlAddChild((*ctxt).myDoc as xmlNodePtr, ret);
+    if (unsafe { (*(*ctxt).myDoc).children }).is_null() {
+        (unsafe { xmlAddChild((*ctxt).myDoc as xmlNodePtr, ret) });
     } else if parent.is_null() {
-        parent = (*(*ctxt).myDoc).children;
+        parent = unsafe { (*(*ctxt).myDoc).children };
     }
-    (*ctxt).nodemem = -(1 as i32);
-    if (*ctxt).linenumbers != 0 {
-        if !((*ctxt).input).is_null() {
-            if (*(*ctxt).input).line
-                < 32767 as i32 * 2 as i32 + 1 as i32
-            {
-                (*ret).line = (*(*ctxt).input).line as u16;
+    (unsafe { (*ctxt).nodemem = -(1 as i32) });
+    if (unsafe { (*ctxt).linenumbers }) != 0 {
+        if !(unsafe { (*ctxt).input }).is_null() {
+            if (unsafe { (*(*ctxt).input).line }) < 32767 as i32 * 2 as i32 + 1 as i32 {
+                (unsafe { (*ret).line = (*(*ctxt).input).line as u16 });
             } else {
-                (*ret)
-                    .line = (32767 as i32 * 2 as i32 + 1 as i32)
-                    as u16;
+                (unsafe { (*ret).line = (32767 as i32 * 2 as i32 + 1 as i32) as u16 });
             }
         }
     }
     if nodePush(ctxt, ret) < 0 as i32 {
-        xmlUnlinkNode(ret);
-        xmlFreeNode(ret);
+        (unsafe { xmlUnlinkNode(ret) });
+        (unsafe { xmlFreeNode(ret) });
         if !prefix.is_null() {
-            xmlFree.expect("non-null function pointer")(prefix as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(prefix as *mut libc::c_void) });
         }
         return;
     }
     if !parent.is_null() {
-        if (*parent).type_0 as u32
-            == XML_ELEMENT_NODE as i32 as u32
-        {
-            xmlAddChild(parent, ret);
+        if (unsafe { (*parent).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32 {
+            (unsafe { xmlAddChild(parent, ret) });
         } else {
-            xmlAddSibling(parent, ret);
+            (unsafe { xmlAddSibling(parent, ret) });
         }
     }
-    if (*ctxt).html == 0 {
-        if !((*(*ctxt).myDoc).intSubset).is_null()
-            || !((*(*ctxt).myDoc).extSubset).is_null()
-        {
+    if (unsafe { (*ctxt).html }) == 0 {
+        if !(unsafe { (*(*ctxt).myDoc).intSubset }).is_null() || !(unsafe { (*(*ctxt).myDoc).extSubset }).is_null() {
             xmlCheckDefaultedAttributes(ctxt, name, prefix, atts);
         }
         if !atts.is_null() {
             i = 0 as i32;
             let mut fresh40 = i;
             i = i + 1;
-            att = *atts.offset(fresh40 as isize);
+            att = unsafe { *atts.offset(fresh40 as isize) };
             let mut fresh41 = i;
             i = i + 1;
-            value = *atts.offset(fresh41 as isize);
+            value = unsafe { *atts.offset(fresh41 as isize) };
             while !att.is_null() && !value.is_null() {
-                if *att.offset(0 as i32 as isize) as i32 == 'x' as i32
-                    && *att.offset(1 as i32 as isize) as i32
-                        == 'm' as i32
-                    && *att.offset(2 as i32 as isize) as i32
-                        == 'l' as i32
-                    && *att.offset(3 as i32 as isize) as i32
-                        == 'n' as i32
-                    && *att.offset(4 as i32 as isize) as i32
-                        == 's' as i32
+                if (unsafe { *att.offset(0 as i32 as isize) }) as i32 == 'x' as i32
+                    && (unsafe { *att.offset(1 as i32 as isize) }) as i32 == 'm' as i32
+                    && (unsafe { *att.offset(2 as i32 as isize) }) as i32 == 'l' as i32
+                    && (unsafe { *att.offset(3 as i32 as isize) }) as i32 == 'n' as i32
+                    && (unsafe { *att.offset(4 as i32 as isize) }) as i32 == 's' as i32
                 {
-                    xmlSAX2AttributeInternal(
-                        ctxt as *mut libc::c_void,
-                        att,
-                        value,
-                        prefix,
-                    );
+                    xmlSAX2AttributeInternal(ctxt as *mut libc::c_void, att, value, prefix);
                 }
                 let mut fresh42 = i;
                 i = i + 1;
-                att = *atts.offset(fresh42 as isize);
+                att = unsafe { *atts.offset(fresh42 as isize) };
                 let mut fresh43 = i;
                 i = i + 1;
-                value = *atts.offset(fresh43 as isize);
+                value = unsafe { *atts.offset(fresh43 as isize) };
             }
         }
-        ns = xmlSearchNs((*ctxt).myDoc, ret, prefix);
+        ns = unsafe { xmlSearchNs((*ctxt).myDoc, ret, prefix) };
         if ns.is_null() && !parent.is_null() {
-            ns = xmlSearchNs((*ctxt).myDoc, parent, prefix);
+            ns = unsafe { xmlSearchNs((*ctxt).myDoc, parent, prefix) };
         }
         if !prefix.is_null() && ns.is_null() {
-            ns = xmlNewNs(ret, 0 as *const xmlChar, prefix);
+            ns = unsafe { xmlNewNs(ret, 0 as *const xmlChar, prefix) };
             xmlNsWarnMsg(
                 ctxt,
                 XML_NS_ERR_UNDEFINED_NAMESPACE,
-                b"Namespace prefix %s is not defined\n\0" as *const u8
-                    as *const i8,
+                b"Namespace prefix %s is not defined\n\0" as *const u8 as *const i8,
                 prefix,
                 0 as *const xmlChar,
             );
         }
-        if !ns.is_null() && !((*ns).href).is_null()
-            && (*((*ns).href).offset(0 as i32 as isize) as i32
-                != 0 as i32 || !((*ns).prefix).is_null())
+        if !ns.is_null()
+            && !(unsafe { (*ns).href }).is_null()
+            && ((unsafe { *((*ns).href).offset(0 as i32 as isize) }) as i32 != 0 as i32
+                || !(unsafe { (*ns).prefix }).is_null())
         {
-            xmlSetNs(ret, ns);
+            (unsafe { xmlSetNs(ret, ns) });
         }
     }
     if !atts.is_null() {
         i = 0 as i32;
         let mut fresh44 = i;
         i = i + 1;
-        att = *atts.offset(fresh44 as isize);
+        att = unsafe { *atts.offset(fresh44 as isize) };
         let mut fresh45 = i;
         i = i + 1;
-        value = *atts.offset(fresh45 as isize);
-        if (*ctxt).html != 0 {
+        value = unsafe { *atts.offset(fresh45 as isize) };
+        if (unsafe { (*ctxt).html }) != 0 {
             while !att.is_null() {
                 xmlSAX2AttributeInternal(
                     ctxt as *mut libc::c_void,
@@ -3443,22 +3367,18 @@ pub unsafe extern "C" fn xmlSAX2StartElement(
                 );
                 let mut fresh46 = i;
                 i = i + 1;
-                att = *atts.offset(fresh46 as isize);
+                att = unsafe { *atts.offset(fresh46 as isize) };
                 let mut fresh47 = i;
                 i = i + 1;
-                value = *atts.offset(fresh47 as isize);
+                value = unsafe { *atts.offset(fresh47 as isize) };
             }
         } else {
             while !att.is_null() && !value.is_null() {
-                if *att.offset(0 as i32 as isize) as i32 != 'x' as i32
-                    || *att.offset(1 as i32 as isize) as i32
-                        != 'm' as i32
-                    || *att.offset(2 as i32 as isize) as i32
-                        != 'l' as i32
-                    || *att.offset(3 as i32 as isize) as i32
-                        != 'n' as i32
-                    || *att.offset(4 as i32 as isize) as i32
-                        != 's' as i32
+                if (unsafe { *att.offset(0 as i32 as isize) }) as i32 != 'x' as i32
+                    || (unsafe { *att.offset(1 as i32 as isize) }) as i32 != 'm' as i32
+                    || (unsafe { *att.offset(2 as i32 as isize) }) as i32 != 'l' as i32
+                    || (unsafe { *att.offset(3 as i32 as isize) }) as i32 != 'n' as i32
+                    || (unsafe { *att.offset(4 as i32 as isize) }) as i32 != 's' as i32
                 {
                     xmlSAX2AttributeInternal(
                         ctxt as *mut libc::c_void,
@@ -3469,122 +3389,111 @@ pub unsafe extern "C" fn xmlSAX2StartElement(
                 }
                 let mut fresh48 = i;
                 i = i + 1;
-                att = *atts.offset(fresh48 as isize);
+                att = unsafe { *atts.offset(fresh48 as isize) };
                 let mut fresh49 = i;
                 i = i + 1;
-                value = *atts.offset(fresh49 as isize);
+                value = unsafe { *atts.offset(fresh49 as isize) };
             }
         }
     }
-    if (*ctxt).validate != 0
-        && (*ctxt).vctxt.flags & (1 as u32) << 0 as i32
-            == 0 as i32 as u32
-    {
+    if (unsafe { (*ctxt).validate }) != 0 && (unsafe { (*ctxt).vctxt.flags }) & (1 as u32) << 0 as i32 == 0 as i32 as u32 {
         let mut chk: i32 = 0;
-        chk = xmlValidateDtdFinal(&mut (*ctxt).vctxt, (*ctxt).myDoc);
+        chk = unsafe { xmlValidateDtdFinal(&mut (*ctxt).vctxt, (*ctxt).myDoc) };
         if chk <= 0 as i32 {
-            (*ctxt).valid = 0 as i32;
+            (unsafe { (*ctxt).valid = 0 as i32 });
         }
         if chk < 0 as i32 {
-            (*ctxt).wellFormed = 0 as i32;
+            (unsafe { (*ctxt).wellFormed = 0 as i32 });
         }
-        (*ctxt).valid &= xmlValidateRoot(&mut (*ctxt).vctxt, (*ctxt).myDoc);
-        (*ctxt).vctxt.flags |= (1 as u32) << 0 as i32;
+        (unsafe { (*ctxt).valid &= xmlValidateRoot(&mut (*ctxt).vctxt, (*ctxt).myDoc) });
+        (unsafe { (*ctxt).vctxt.flags |= (1 as u32) << 0 as i32 });
     }
     if !prefix.is_null() {
-        xmlFree.expect("non-null function pointer")(prefix as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(prefix as *mut libc::c_void) });
     }
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2EndElement(
-    mut ctx: * mut core::ffi::c_void,
-    mut name: * const u8,
-) {
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
-    let mut cur: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+pub extern "C" fn xmlSAX2EndElement(mut ctx: *mut core::ffi::c_void, mut _name: *const u8) {
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    let mut cur: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
     if ctx.is_null() {
         return;
     }
-    cur = (*ctxt).node;
-    if !cur.is_null() && (*ctxt).record_info != 0 {
-        (*(*ctxt).nodeInfo)
-            .end_pos = ((*(*ctxt).input).cur).offset_from((*(*ctxt).input).base)
-            as i64 as u64;
-        (*(*ctxt).nodeInfo).end_line = (*(*ctxt).input).line as u64;
-        let ref mut fresh50 = (*(*ctxt).nodeInfo).node;
+    cur = unsafe { (*ctxt).node };
+    if !cur.is_null() && (unsafe { (*ctxt).record_info }) != 0 {
+        (unsafe { (*(*ctxt).nodeInfo).end_pos =
+            ((*(*ctxt).input).cur).offset_from((*(*ctxt).input).base) as i64 as u64 });
+        (unsafe { (*(*ctxt).nodeInfo).end_line = (*(*ctxt).input).line as u64 });
+        let fresh50 = unsafe { &mut ((*(*ctxt).nodeInfo).node) };
         *fresh50 = cur as *const _xmlNode;
-        xmlParserAddNodeInfo(ctxt, (*ctxt).nodeInfo);
+        xmlParserAddNodeInfo(ctxt, unsafe { (*ctxt).nodeInfo });
     }
-    (*ctxt).nodemem = -(1 as i32);
-    if (*ctxt).validate != 0 && (*ctxt).wellFormed != 0 && !((*ctxt).myDoc).is_null()
-        && !((*(*ctxt).myDoc).intSubset).is_null()
+    (unsafe { (*ctxt).nodemem = -(1 as i32) });
+    if (unsafe { (*ctxt).validate }) != 0
+        && (unsafe { (*ctxt).wellFormed }) != 0
+        && !(unsafe { (*ctxt).myDoc }).is_null()
+        && !(unsafe { (*(*ctxt).myDoc).intSubset }).is_null()
     {
-        (*ctxt).valid &= xmlValidateOneElement(&mut (*ctxt).vctxt, (*ctxt).myDoc, cur);
+        (unsafe { (*ctxt).valid &= xmlValidateOneElement(&mut (*ctxt).vctxt, (*ctxt).myDoc, cur) });
     }
     nodePop(ctxt);
 }
-unsafe extern "C" fn xmlSAX2TextNode(
-    mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt,
-    mut str: * const u8,
+extern "C" fn xmlSAX2TextNode(
+    mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt,
+    mut str: *const u8,
     mut len: i32,
-) -> * mut crate::src::HTMLparser::_xmlNode {
+) -> *mut crate::src::HTMLparser::_xmlNode {
     let mut current_block: u64;
-    let mut ret: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut intern: * const u8 = 0 as *const xmlChar;
-    if !((*ctxt).freeElems).is_null() {
-        ret = (*ctxt).freeElems;
-        let ref mut fresh51 = (*ctxt).freeElems;
-        *fresh51 = (*ret).next;
-        let ref mut fresh52 = (*ctxt).freeElemsNr;
+    let mut ret: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut intern: *const u8 = 0 as *const xmlChar;
+    if !(unsafe { (*ctxt).freeElems }).is_null() {
+        ret = unsafe { (*ctxt).freeElems };
+        let fresh51 = unsafe { &mut ((*ctxt).freeElems) };
+        *fresh51 = unsafe { (*ret).next };
+        let fresh52 = unsafe { &mut ((*ctxt).freeElemsNr) };
         *fresh52 -= 1;
     } else {
-        ret = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(::std::mem::size_of::<xmlNode>() as u64) as xmlNodePtr;
+        ret = (unsafe { xmlMalloc.expect("non-null function pointer")(::std::mem::size_of::<xmlNode>() as u64) })
+            as xmlNodePtr;
     }
     if ret.is_null() {
         xmlErrMemory(ctxt, b"xmlSAX2Characters\0" as *const u8 as *const i8);
         return 0 as xmlNodePtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlNode>() as u64,
-    );
-    if (*ctxt).dictNames != 0 {
-        let mut cur: u8 = *str.offset(len as isize);
+    ) });
+    if (unsafe { (*ctxt).dictNames }) != 0 {
+        let mut cur: u8 = unsafe { *str.offset(len as isize) };
         if len
-            < (2 as i32 as u64)
-                .wrapping_mul(
-                    ::std::mem::size_of::<*mut libc::c_void>() as u64,
-                ) as i32
-            && (*ctxt).options & XML_PARSE_COMPACT as i32 != 0
+            < (2 as i32 as u64).wrapping_mul(::std::mem::size_of::<*mut libc::c_void>() as u64)
+                as i32
+            && (unsafe { (*ctxt).options }) & XML_PARSE_COMPACT as i32 != 0
         {
-            let mut tmp: * mut u8 = &mut (*ret).properties as *mut *mut _xmlAttr
-                as *mut xmlChar;
-            memcpy(
+            let mut tmp: *mut u8 = (unsafe { &mut (*ret).properties }) as *mut *mut _xmlAttr as *mut xmlChar;
+            (unsafe { memcpy(
                 tmp as *mut libc::c_void,
                 str as *const libc::c_void,
                 len as u64,
-            );
-            *tmp.offset(len as isize) = 0 as i32 as xmlChar;
+            ) });
+            (unsafe { *tmp.offset(len as isize) = 0 as i32 as xmlChar });
             intern = tmp;
         } else if len <= 3 as i32
-                && (cur as i32 == '"' as i32 || cur as i32 == '\'' as i32
-                    || cur as i32 == '<' as i32
-                        && *str.offset((len + 1 as i32) as isize) as i32
-                            != '!' as i32)
-            {
-            intern = xmlDictLookup((*ctxt).dict, str, len);
-        } else if (*str as i32 == 0x20 as i32
-                || 0x9 as i32 <= *str as i32
-                    && *str as i32 <= 0xa as i32
-                || *str as i32 == 0xd as i32) && len < 60 as i32
-                && cur as i32 == '<' as i32
-                && *str.offset((len + 1 as i32) as isize) as i32
-                    != '!' as i32
-            {
+            && (cur as i32 == '"' as i32
+                || cur as i32 == '\'' as i32
+                || cur as i32 == '<' as i32
+                    && (unsafe { *str.offset((len + 1 as i32) as isize) }) as i32 != '!' as i32)
+        {
+            intern = xmlDictLookup(unsafe { (*ctxt).dict }, str, len);
+        } else if ((unsafe { *str }) as i32 == 0x20 as i32
+            || 0x9 as i32 <= (unsafe { *str }) as i32 && (unsafe { *str }) as i32 <= 0xa as i32
+            || (unsafe { *str }) as i32 == 0xd as i32)
+            && len < 60 as i32
+            && cur as i32 == '<' as i32
+            && (unsafe { *str.offset((len + 1 as i32) as isize) }) as i32 != '!' as i32
+        {
             let mut i: i32 = 0;
             i = 1 as i32;
             loop {
@@ -3592,10 +3501,10 @@ unsafe extern "C" fn xmlSAX2TextNode(
                     current_block = 17478428563724192186;
                     break;
                 }
-                if !(*str.offset(i as isize) as i32 == 0x20 as i32
-                    || 0x9 as i32 <= *str.offset(i as isize) as i32
-                        && *str.offset(i as isize) as i32 <= 0xa as i32
-                    || *str.offset(i as isize) as i32 == 0xd as i32)
+                if !((unsafe { *str.offset(i as isize) }) as i32 == 0x20 as i32
+                    || 0x9 as i32 <= (unsafe { *str.offset(i as isize) }) as i32
+                        && (unsafe { *str.offset(i as isize) }) as i32 <= 0xa as i32
+                    || (unsafe { *str.offset(i as isize) }) as i32 == 0xd as i32)
                 {
                     current_block = 8377240654589692732;
                     break;
@@ -3603,61 +3512,58 @@ unsafe extern "C" fn xmlSAX2TextNode(
                 i += 1;
             }
             match current_block {
-                8377240654589692732 => {}
+                8377240654589692732 => {},
                 _ => {
-                    intern = xmlDictLookup((*ctxt).dict, str, len);
-                }
+                    intern = xmlDictLookup(unsafe { (*ctxt).dict }, str, len);
+                },
             }
         }
     }
-    (*ret).type_0 = XML_TEXT_NODE;
-    let ref mut fresh53 = (*ret).name;
-    *fresh53 = xmlStringText.as_ptr();
+    (unsafe { (*ret).type_0 = XML_TEXT_NODE });
+    let fresh53 = unsafe { &mut ((*ret).name) };
+    *fresh53 = unsafe { xmlStringText.as_ptr() };
     if intern.is_null() {
-        let ref mut fresh54 = (*ret).content;
-        *fresh54 = xmlStrndup(str, len);
-        if ((*ret).content).is_null() {
-            xmlSAX2ErrMemory(
-                ctxt,
-                b"xmlSAX2TextNode\0" as *const u8 as *const i8,
-            );
-            xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+        let fresh54 = unsafe { &mut ((*ret).content) };
+        *fresh54 = unsafe { xmlStrndup(str, len) };
+        if (unsafe { (*ret).content }).is_null() {
+            xmlSAX2ErrMemory(ctxt, b"xmlSAX2TextNode\0" as *const u8 as *const i8);
+            (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
             return 0 as xmlNodePtr;
         }
     } else {
-        let ref mut fresh55 = (*ret).content;
+        let fresh55 = unsafe { &mut ((*ret).content) };
         *fresh55 = intern as *mut xmlChar;
     }
-    if (*ctxt).linenumbers != 0 {
-        if !((*ctxt).input).is_null() {
-            if (*(*ctxt).input).line
-                < 32767 as i32 * 2 as i32 + 1 as i32
-            {
-                (*ret).line = (*(*ctxt).input).line as u16;
+    if (unsafe { (*ctxt).linenumbers }) != 0 {
+        if !(unsafe { (*ctxt).input }).is_null() {
+            if (unsafe { (*(*ctxt).input).line }) < 32767 as i32 * 2 as i32 + 1 as i32 {
+                (unsafe { (*ret).line = (*(*ctxt).input).line as u16 });
             } else {
-                (*ret)
-                    .line = (32767 as i32 * 2 as i32 + 1 as i32)
-                    as u16;
-                if (*ctxt).options & XML_PARSE_BIG_LINES as i32 != 0 {
-                    let ref mut fresh56 = (*ret).psvi;
-                    *fresh56 = (*(*ctxt).input).line as ptrdiff_t as *mut libc::c_void;
+                (unsafe { (*ret).line = (32767 as i32 * 2 as i32 + 1 as i32) as u16 });
+                if (unsafe { (*ctxt).options }) & XML_PARSE_BIG_LINES as i32 != 0 {
+                    let fresh56 = unsafe { &mut ((*ret).psvi) };
+                    *fresh56 = (unsafe { (*(*ctxt).input).line }) as ptrdiff_t as *mut libc::c_void;
                 }
             }
         }
     }
-    if __xmlRegisterCallbacks != 0 && (*(borrow(& __xmlRegisterNodeDefaultValue())).unwrap()).is_some() {
-        (*(borrow(& __xmlRegisterNodeDefaultValue())).unwrap()).expect("non-null function pointer")(ret);
+    if (unsafe { __xmlRegisterCallbacks }) != 0
+        && (*(borrow(&__xmlRegisterNodeDefaultValue())).unwrap()).is_some()
+    {
+        (unsafe { (*(borrow(&__xmlRegisterNodeDefaultValue())).unwrap()).expect("non-null function pointer")(
+            ret,
+        ) });
     }
     return ret;
 }
-unsafe extern "C" fn xmlSAX2DecodeAttrEntities(
-    mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt,
-    mut str: * const u8,
-    mut end: * const u8,
-) -> * mut u8 {
+extern "C" fn xmlSAX2DecodeAttrEntities(
+    mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt,
+    mut str: *const u8,
+    mut end: *const u8,
+) -> *mut u8 {
     let mut current_block: u64;
-    let mut in_0: * const u8 = 0 as *const xmlChar;
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
+    let mut in_0: *const u8 = 0 as *const xmlChar;
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
     in_0 = str;
     loop {
         if !(in_0 < end) {
@@ -3665,8 +3571,8 @@ unsafe extern "C" fn xmlSAX2DecodeAttrEntities(
             break;
         }
         let mut fresh57 = in_0;
-        in_0 = in_0.offset(1);
-        if *fresh57 as i32 == '&' as i32 {
+        in_0 = unsafe { in_0.offset(1) };
+        if (unsafe { *fresh57 }) as i32 == '&' as i32 {
             current_block = 14709023407236833147;
             break;
         }
@@ -3674,315 +3580,279 @@ unsafe extern "C" fn xmlSAX2DecodeAttrEntities(
     match current_block {
         17778012151635330486 => return 0 as *mut xmlChar,
         _ => {
-            let ref mut fresh58 = (*ctxt).depth;
+            let fresh58 = unsafe { &mut ((*ctxt).depth) };
             *fresh58 += 1;
             ret = xmlStringLenDecodeEntities(
                 ctxt,
                 str,
-                end.offset_from(str) as i64 as i32,
+                (unsafe { end.offset_from(str) }) as i64 as i32,
                 1 as i32,
                 0 as i32 as xmlChar,
                 0 as i32 as xmlChar,
                 0 as i32 as xmlChar,
             );
-            let ref mut fresh59 = (*ctxt).depth;
+            let fresh59 = unsafe { &mut ((*ctxt).depth) };
             *fresh59 -= 1;
             return ret;
-        }
+        },
     };
 }
-unsafe extern "C" fn xmlSAX2AttributeNs(
-    mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt,
-    mut localname: * const u8,
-    mut prefix: * const u8,
-    mut value: * const u8,
-    mut valueend: * const u8,
+extern "C" fn xmlSAX2AttributeNs(
+    mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt,
+    mut localname: *const u8,
+    mut prefix: *const u8,
+    mut value: *const u8,
+    mut valueend: *const u8,
 ) {
-    let mut ret: * mut crate::src::HTMLparser::_xmlAttr = 0 as *mut xmlAttr;
-    let mut namespace: * mut crate::src::HTMLparser::_xmlNs = 0 as xmlNsPtr;
-    let mut dup: * mut u8 = 0 as *mut xmlChar;
+    let mut ret: *mut crate::src::HTMLparser::_xmlAttr = 0 as *mut xmlAttr;
+    let mut namespace: *mut crate::src::HTMLparser::_xmlNs = 0 as xmlNsPtr;
+    let mut dup: *mut u8 = 0 as *mut xmlChar;
     if !prefix.is_null() {
-        namespace = xmlSearchNs((*ctxt).myDoc, (*ctxt).node, prefix);
+        namespace = unsafe { xmlSearchNs((*ctxt).myDoc, (*ctxt).node, prefix) };
     }
-    if !((*ctxt).freeAttrs).is_null() {
-        ret = (*ctxt).freeAttrs;
-        let ref mut fresh60 = (*ctxt).freeAttrs;
-        *fresh60 = (*ret).next;
-        let ref mut fresh61 = (*ctxt).freeAttrsNr;
+    if !(unsafe { (*ctxt).freeAttrs }).is_null() {
+        ret = unsafe { (*ctxt).freeAttrs };
+        let fresh60 = unsafe { &mut ((*ctxt).freeAttrs) };
+        *fresh60 = unsafe { (*ret).next };
+        let fresh61 = unsafe { &mut ((*ctxt).freeAttrsNr) };
         *fresh61 -= 1;
-        memset(
+        (unsafe { memset(
             ret as *mut libc::c_void,
             0 as i32,
             ::std::mem::size_of::<xmlAttr>() as u64,
-        );
-        (*ret).type_0 = XML_ATTRIBUTE_NODE;
-        let ref mut fresh62 = (*ret).parent;
-        *fresh62 = (*ctxt).node;
-        let ref mut fresh63 = (*ret).doc;
-        *fresh63 = (*ctxt).myDoc;
-        let ref mut fresh64 = (*ret).ns;
+        ) });
+        (unsafe { (*ret).type_0 = XML_ATTRIBUTE_NODE });
+        let fresh62 = unsafe { &mut ((*ret).parent) };
+        *fresh62 = unsafe { (*ctxt).node };
+        let fresh63 = unsafe { &mut ((*ret).doc) };
+        *fresh63 = unsafe { (*ctxt).myDoc };
+        let fresh64 = unsafe { &mut ((*ret).ns) };
         *fresh64 = namespace;
-        if (*ctxt).dictNames != 0 {
-            let ref mut fresh65 = (*ret).name;
+        if (unsafe { (*ctxt).dictNames }) != 0 {
+            let fresh65 = unsafe { &mut ((*ret).name) };
             *fresh65 = localname;
         } else {
-            let ref mut fresh66 = (*ret).name;
-            *fresh66 = xmlStrdup(localname);
+            let fresh66 = unsafe { &mut ((*ret).name) };
+            *fresh66 = unsafe { xmlStrdup(localname) };
         }
-        if ((*(*ctxt).node).properties).is_null() {
-            let ref mut fresh67 = (*(*ctxt).node).properties;
+        if (unsafe { (*(*ctxt).node).properties }).is_null() {
+            let fresh67 = unsafe { &mut ((*(*ctxt).node).properties) };
             *fresh67 = ret;
         } else {
-            let mut prev: * mut crate::src::HTMLparser::_xmlAttr = (*(*ctxt).node).properties;
-            while !((*prev).next).is_null() {
-                prev = (*prev).next;
+            let mut prev: *mut crate::src::HTMLparser::_xmlAttr = unsafe { (*(*ctxt).node).properties };
+            while !(unsafe { (*prev).next }).is_null() {
+                prev = unsafe { (*prev).next };
             }
-            let ref mut fresh68 = (*prev).next;
+            let fresh68 = unsafe { &mut ((*prev).next) };
             *fresh68 = ret;
-            let ref mut fresh69 = (*ret).prev;
+            let fresh69 = unsafe { &mut ((*ret).prev) };
             *fresh69 = prev;
         }
-        if __xmlRegisterCallbacks != 0 && (*(borrow(& __xmlRegisterNodeDefaultValue())).unwrap()).is_some() {
-            (*(borrow(& __xmlRegisterNodeDefaultValue())).unwrap())
-                .expect("non-null function pointer")(ret as xmlNodePtr);
+        if (unsafe { __xmlRegisterCallbacks }) != 0
+            && (*(borrow(&__xmlRegisterNodeDefaultValue())).unwrap()).is_some()
+        {
+            (unsafe { (*(borrow(&__xmlRegisterNodeDefaultValue())).unwrap())
+                .expect("non-null function pointer")(ret as xmlNodePtr) });
         }
     } else {
-        if (*ctxt).dictNames != 0 {
-            ret = xmlNewNsPropEatName(
+        if (unsafe { (*ctxt).dictNames }) != 0 {
+            ret = unsafe { xmlNewNsPropEatName(
                 (*ctxt).node,
                 namespace,
                 localname as *mut xmlChar,
                 0 as *const xmlChar,
-            );
+            ) };
         } else {
-            ret = xmlNewNsProp((*ctxt).node, namespace, localname, 0 as *const xmlChar);
+            ret = unsafe { xmlNewNsProp((*ctxt).node, namespace, localname, 0 as *const xmlChar) };
         }
         if ret.is_null() {
-            xmlErrMemory(
-                ctxt,
-                b"xmlSAX2AttributeNs\0" as *const u8 as *const i8,
-            );
+            xmlErrMemory(ctxt, b"xmlSAX2AttributeNs\0" as *const u8 as *const i8);
             return;
         }
     }
-    if (*ctxt).replaceEntities == 0 as i32 && (*ctxt).html == 0 {
-        let mut tmp: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-        if *valueend as i32 != 0 as i32 {
-            tmp = xmlSAX2TextNode(
-                ctxt,
-                value,
-                valueend.offset_from(value) as i64 as i32,
-            );
-            let ref mut fresh70 = (*ret).children;
+    if (unsafe { (*ctxt).replaceEntities }) == 0 as i32 && (unsafe { (*ctxt).html }) == 0 {
+        let mut tmp: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+        if (unsafe { *valueend }) as i32 != 0 as i32 {
+            tmp = xmlSAX2TextNode(ctxt, value, (unsafe { valueend.offset_from(value) }) as i64 as i32);
+            let fresh70 = unsafe { &mut ((*ret).children) };
             *fresh70 = tmp;
-            let ref mut fresh71 = (*ret).last;
+            let fresh71 = unsafe { &mut ((*ret).last) };
             *fresh71 = tmp;
             if !tmp.is_null() {
-                let ref mut fresh72 = (*tmp).doc;
-                *fresh72 = (*ret).doc;
-                let ref mut fresh73 = (*tmp).parent;
+                let fresh72 = unsafe { &mut ((*tmp).doc) };
+                *fresh72 = unsafe { (*ret).doc };
+                let fresh73 = unsafe { &mut ((*tmp).parent) };
                 *fresh73 = ret as xmlNodePtr;
             }
         } else {
-            let ref mut fresh74 = (*ret).children;
-            *fresh74 = xmlStringLenGetNodeList(
+            let fresh74 = unsafe { &mut ((*ret).children) };
+            *fresh74 = unsafe { xmlStringLenGetNodeList(
                 (*ctxt).myDoc as *const xmlDoc,
                 value,
                 valueend.offset_from(value) as i64 as i32,
-            );
-            tmp = (*ret).children;
+            ) };
+            tmp = unsafe { (*ret).children };
             while !tmp.is_null() {
-                let ref mut fresh75 = (*tmp).doc;
-                *fresh75 = (*ret).doc;
-                let ref mut fresh76 = (*tmp).parent;
+                let fresh75 = unsafe { &mut ((*tmp).doc) };
+                *fresh75 = unsafe { (*ret).doc };
+                let fresh76 = unsafe { &mut ((*tmp).parent) };
                 *fresh76 = ret as xmlNodePtr;
-                if ((*tmp).next).is_null() {
-                    let ref mut fresh77 = (*ret).last;
+                if (unsafe { (*tmp).next }).is_null() {
+                    let fresh77 = unsafe { &mut ((*ret).last) };
                     *fresh77 = tmp;
                 }
-                tmp = (*tmp).next;
+                tmp = unsafe { (*tmp).next };
             }
         }
     } else if !value.is_null() {
-        let mut tmp_0: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-        tmp_0 = xmlSAX2TextNode(
-            ctxt,
-            value,
-            valueend.offset_from(value) as i64 as i32,
-        );
-        let ref mut fresh78 = (*ret).children;
+        let mut tmp_0: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+        tmp_0 = xmlSAX2TextNode(ctxt, value, (unsafe { valueend.offset_from(value) }) as i64 as i32);
+        let fresh78 = unsafe { &mut ((*ret).children) };
         *fresh78 = tmp_0;
-        let ref mut fresh79 = (*ret).last;
+        let fresh79 = unsafe { &mut ((*ret).last) };
         *fresh79 = tmp_0;
         if !tmp_0.is_null() {
-            let ref mut fresh80 = (*tmp_0).doc;
-            *fresh80 = (*ret).doc;
-            let ref mut fresh81 = (*tmp_0).parent;
+            let fresh80 = unsafe { &mut ((*tmp_0).doc) };
+            *fresh80 = unsafe { (*ret).doc };
+            let fresh81 = unsafe { &mut ((*tmp_0).parent) };
             *fresh81 = ret as xmlNodePtr;
         }
     }
-    if (*ctxt).html == 0 && (*ctxt).validate != 0 && (*ctxt).wellFormed != 0
-        && !((*ctxt).myDoc).is_null() && !((*(*ctxt).myDoc).intSubset).is_null()
+    if (unsafe { (*ctxt).html }) == 0
+        && (unsafe { (*ctxt).validate }) != 0
+        && (unsafe { (*ctxt).wellFormed }) != 0
+        && !(unsafe { (*ctxt).myDoc }).is_null()
+        && !(unsafe { (*(*ctxt).myDoc).intSubset }).is_null()
     {
-        if (*ctxt).replaceEntities == 0 {
+        if (unsafe { (*ctxt).replaceEntities }) == 0 {
             dup = xmlSAX2DecodeAttrEntities(ctxt, value, valueend);
             if dup.is_null() {
-                if *valueend as i32 == 0 as i32 {
-                    (*ctxt).valid
-                        &= xmlValidateOneAttribute(
-                            &mut (*ctxt).vctxt,
-                            (*ctxt).myDoc,
-                            (*ctxt).node,
-                            ret,
-                            value,
-                        );
-                } else {
-                    dup = xmlStrndup(
+                if (unsafe { *valueend }) as i32 == 0 as i32 {
+                    (unsafe { (*ctxt).valid &= xmlValidateOneAttribute(
+                        &mut (*ctxt).vctxt,
+                        (*ctxt).myDoc,
+                        (*ctxt).node,
+                        ret,
                         value,
-                        valueend.offset_from(value) as i64 as i32,
-                    );
-                    (*ctxt).valid
-                        &= xmlValidateOneAttribute(
-                            &mut (*ctxt).vctxt,
-                            (*ctxt).myDoc,
-                            (*ctxt).node,
-                            ret,
-                            dup,
-                        );
-                }
-            } else {
-                if !((*ctxt).attsSpecial).is_null() {
-                    let mut nvalnorm: * mut u8 = 0 as *mut xmlChar;
-                    let mut fn_0: [u8; 50] = [0; 50];
-                    let mut fullname: * mut u8 = 0 as *mut xmlChar;
-                    fullname = xmlBuildQName(
-                        localname,
-                        prefix,
-                        fn_0.as_mut_ptr(),
-                        50 as i32,
-                    );
-                    if !fullname.is_null() {
-                        (*ctxt).vctxt.valid = 1 as i32;
-                        nvalnorm = xmlValidCtxtNormalizeAttributeValue(
-                            &mut (*ctxt).vctxt,
-                            (*ctxt).myDoc,
-                            (*ctxt).node,
-                            fullname,
-                            dup,
-                        );
-                        if (*ctxt).vctxt.valid != 1 as i32 {
-                            (*ctxt).valid = 0 as i32;
-                        }
-                        if fullname != fn_0.as_mut_ptr()
-                            && fullname != localname as *mut xmlChar
-                        {
-                            xmlFree
-                                .expect(
-                                    "non-null function pointer",
-                                )(fullname as *mut libc::c_void);
-                        }
-                        if !nvalnorm.is_null() {
-                            xmlFree
-                                .expect(
-                                    "non-null function pointer",
-                                )(dup as *mut libc::c_void);
-                            dup = nvalnorm;
-                        }
-                    }
-                }
-                (*ctxt).valid
-                    &= xmlValidateOneAttribute(
+                    ) });
+                } else {
+                    dup = unsafe { xmlStrndup(value, valueend.offset_from(value) as i64 as i32) };
+                    (unsafe { (*ctxt).valid &= xmlValidateOneAttribute(
                         &mut (*ctxt).vctxt,
                         (*ctxt).myDoc,
                         (*ctxt).node,
                         ret,
                         dup,
-                    );
-            }
-        } else {
-            dup = xmlStrndup(
-                value,
-                valueend.offset_from(value) as i64 as i32,
-            );
-            (*ctxt).valid
-                &= xmlValidateOneAttribute(
+                    ) });
+                }
+            } else {
+                if !(unsafe { (*ctxt).attsSpecial }).is_null() {
+                    let mut nvalnorm: *mut u8 = 0 as *mut xmlChar;
+                    let mut fn_0: [u8; 50] = [0; 50];
+                    let mut fullname: *mut u8 = 0 as *mut xmlChar;
+                    fullname = unsafe { xmlBuildQName(localname, prefix, fn_0.as_mut_ptr(), 50 as i32) };
+                    if !fullname.is_null() {
+                        (unsafe { (*ctxt).vctxt.valid = 1 as i32 });
+                        nvalnorm = unsafe { xmlValidCtxtNormalizeAttributeValue(
+                            &mut (*ctxt).vctxt,
+                            (*ctxt).myDoc,
+                            (*ctxt).node,
+                            fullname,
+                            dup,
+                        ) };
+                        if (unsafe { (*ctxt).vctxt.valid }) != 1 as i32 {
+                            (unsafe { (*ctxt).valid = 0 as i32 });
+                        }
+                        if fullname != fn_0.as_mut_ptr() && fullname != localname as *mut xmlChar {
+                            (unsafe { xmlFree.expect("non-null function pointer")(
+                                fullname as *mut libc::c_void,
+                            ) });
+                        }
+                        if !nvalnorm.is_null() {
+                            (unsafe { xmlFree.expect("non-null function pointer")(dup as *mut libc::c_void) });
+                            dup = nvalnorm;
+                        }
+                    }
+                }
+                (unsafe { (*ctxt).valid &= xmlValidateOneAttribute(
                     &mut (*ctxt).vctxt,
                     (*ctxt).myDoc,
                     (*ctxt).node,
                     ret,
                     dup,
-                );
+                ) });
+            }
+        } else {
+            dup = unsafe { xmlStrndup(value, valueend.offset_from(value) as i64 as i32) };
+            (unsafe { (*ctxt).valid &=
+                xmlValidateOneAttribute(&mut (*ctxt).vctxt, (*ctxt).myDoc, (*ctxt).node, ret, dup) });
         }
-    } else if (*ctxt).loadsubset & 8 as i32 == 0 as i32
-            && ((*ctxt).replaceEntities == 0 as i32
-                && (*ctxt).external != 2 as i32
-                || (*ctxt).replaceEntities != 0 as i32
-                    && (*ctxt).inSubset == 0 as i32)
-            && !((*ret).children).is_null()
-            && (*(*ret).children).type_0 as u32
-                == XML_TEXT_NODE as i32 as u32
-            && ((*(*ret).children).next).is_null()
+    } else if (unsafe { (*ctxt).loadsubset }) & 8 as i32 == 0 as i32
+        && ((unsafe { (*ctxt).replaceEntities }) == 0 as i32 && (unsafe { (*ctxt).external }) != 2 as i32
+            || (unsafe { (*ctxt).replaceEntities }) != 0 as i32 && (unsafe { (*ctxt).inSubset }) == 0 as i32)
+        && !(unsafe { (*ret).children }).is_null()
+        && (unsafe { (*(*ret).children).type_0 }) as u32 == XML_TEXT_NODE as i32 as u32
+        && (unsafe { (*(*ret).children).next }).is_null()
+    {
+        let mut content: *mut u8 = unsafe { (*(*ret).children).content };
+        if prefix == (unsafe { (*ctxt).str_xml })
+            && (unsafe { *localname.offset(0 as i32 as isize) }) as i32 == 'i' as i32
+            && (unsafe { *localname.offset(1 as i32 as isize) }) as i32 == 'd' as i32
+            && (unsafe { *localname.offset(2 as i32 as isize) }) as i32 == 0 as i32
         {
-        let mut content: * mut u8 = (*(*ret).children).content;
-        if prefix == (*ctxt).str_xml
-            && *localname.offset(0 as i32 as isize) as i32 == 'i' as i32
-            && *localname.offset(1 as i32 as isize) as i32 == 'd' as i32
-            && *localname.offset(2 as i32 as isize) as i32
-                == 0 as i32
-        {
-            if xmlValidateNCName(content, 1 as i32) != 0 as i32 {
+            if (unsafe { xmlValidateNCName(content, 1 as i32) }) != 0 as i32 {
                 xmlErrValid(
                     ctxt,
                     XML_DTD_XMLID_VALUE,
-                    b"xml:id : attribute value %s is not an NCName\n\0" as *const u8
-                        as *const i8,
+                    b"xml:id : attribute value %s is not an NCName\n\0" as *const u8 as *const i8,
                     content as *const i8,
                     0 as *const i8,
                 );
             }
-            xmlAddID(&mut (*ctxt).vctxt, (*ctxt).myDoc, content, ret);
-        } else if xmlIsID((*ctxt).myDoc, (*ctxt).node, ret) != 0 {
-            xmlAddID(&mut (*ctxt).vctxt, (*ctxt).myDoc, content, ret);
-        } else if xmlIsRef((*ctxt).myDoc, (*ctxt).node, ret) != 0 {
-            xmlAddRef(&mut (*ctxt).vctxt, (*ctxt).myDoc, content, ret);
+            (unsafe { xmlAddID(&mut (*ctxt).vctxt, (*ctxt).myDoc, content, ret) });
+        } else if (unsafe { xmlIsID((*ctxt).myDoc, (*ctxt).node, ret) }) != 0 {
+            (unsafe { xmlAddID(&mut (*ctxt).vctxt, (*ctxt).myDoc, content, ret) });
+        } else if (unsafe { xmlIsRef((*ctxt).myDoc, (*ctxt).node, ret) }) != 0 {
+            (unsafe { xmlAddRef(&mut (*ctxt).vctxt, (*ctxt).myDoc, content, ret) });
         }
     }
     if !dup.is_null() {
-        xmlFree.expect("non-null function pointer")(dup as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(dup as *mut libc::c_void) });
     }
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2StartElementNs(
-    mut ctx: * mut core::ffi::c_void,
-    mut localname: * const u8,
-    mut prefix: * const u8,
-    mut URI: * const u8,
+pub extern "C" fn xmlSAX2StartElementNs(
+    mut ctx: *mut core::ffi::c_void,
+    mut localname: *const u8,
+    mut prefix: *const u8,
+    mut URI: *const u8,
     mut nb_namespaces: i32,
-    mut namespaces: * mut * const u8,
+    mut namespaces: *mut *const u8,
     mut nb_attributes: i32,
     mut nb_defaulted: i32,
-    mut attributes: * mut * const u8,
+    mut attributes: *mut *const u8,
 ) {
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
-    let mut ret: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut parent: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut last: * mut crate::src::HTMLparser::_xmlNs = 0 as xmlNsPtr;
-    let mut ns: * mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
-    let mut uri: * const u8 = 0 as *const xmlChar;
-    let mut pref: * const u8 = 0 as *const xmlChar;
-    let mut lname: * mut u8 = 0 as *mut xmlChar;
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    let mut ret: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut parent: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut last: *mut crate::src::HTMLparser::_xmlNs = 0 as xmlNsPtr;
+    let mut ns: *mut crate::src::HTMLparser::_xmlNs = 0 as *mut xmlNs;
+    let mut uri: *const u8 = 0 as *const xmlChar;
+    let mut pref: *const u8 = 0 as *const xmlChar;
+    let mut lname: *mut u8 = 0 as *mut xmlChar;
     let mut i: i32 = 0;
     let mut j: i32 = 0;
     if ctx.is_null() {
         return;
     }
-    parent = (*ctxt).node;
-    if (*ctxt).validate != 0 && ((*(*ctxt).myDoc).extSubset).is_null()
-        && (((*(*ctxt).myDoc).intSubset).is_null()
-            || ((*(*(*ctxt).myDoc).intSubset).notations).is_null()
-                && ((*(*(*ctxt).myDoc).intSubset).elements).is_null()
-                && ((*(*(*ctxt).myDoc).intSubset).attributes).is_null()
-                && ((*(*(*ctxt).myDoc).intSubset).entities).is_null())
+    parent = unsafe { (*ctxt).node };
+    if (unsafe { (*ctxt).validate }) != 0
+        && (unsafe { (*(*ctxt).myDoc).extSubset }).is_null()
+        && ((unsafe { (*(*ctxt).myDoc).intSubset }).is_null()
+            || (unsafe { (*(*(*ctxt).myDoc).intSubset).notations }).is_null()
+                && (unsafe { (*(*(*ctxt).myDoc).intSubset).elements }).is_null()
+                && (unsafe { (*(*(*ctxt).myDoc).intSubset).attributes }).is_null()
+                && (unsafe { (*(*(*ctxt).myDoc).intSubset).entities }).is_null())
     {
         xmlErrValid(
             ctxt,
@@ -3991,194 +3861,163 @@ pub unsafe extern "C" fn xmlSAX2StartElementNs(
             0 as *const i8,
             0 as *const i8,
         );
-        (*ctxt).validate = 0 as i32;
+        (unsafe { (*ctxt).validate = 0 as i32 });
     }
     if !prefix.is_null() && URI.is_null() {
-        if (*ctxt).dictNames != 0 {
-            let mut fullname: * const u8 = 0 as *const xmlChar;
-            fullname = xmlDictQLookup((*ctxt).dict, prefix, localname);
+        if (unsafe { (*ctxt).dictNames }) != 0 {
+            let mut fullname: *const u8 = 0 as *const xmlChar;
+            fullname = xmlDictQLookup(unsafe { (*ctxt).dict }, prefix, localname);
             if !fullname.is_null() {
                 localname = fullname;
             }
         } else {
-            lname = xmlBuildQName(
-                localname,
-                prefix,
-                0 as *mut xmlChar,
-                0 as i32,
-            );
+            lname = unsafe { xmlBuildQName(localname, prefix, 0 as *mut xmlChar, 0 as i32) };
         }
     }
-    if !((*ctxt).freeElems).is_null() {
-        ret = (*ctxt).freeElems;
-        let ref mut fresh82 = (*ctxt).freeElems;
-        *fresh82 = (*ret).next;
-        let ref mut fresh83 = (*ctxt).freeElemsNr;
+    if !(unsafe { (*ctxt).freeElems }).is_null() {
+        ret = unsafe { (*ctxt).freeElems };
+        let fresh82 = unsafe { &mut ((*ctxt).freeElems) };
+        *fresh82 = unsafe { (*ret).next };
+        let fresh83 = unsafe { &mut ((*ctxt).freeElemsNr) };
         *fresh83 -= 1;
-        memset(
+        (unsafe { memset(
             ret as *mut libc::c_void,
             0 as i32,
             ::std::mem::size_of::<xmlNode>() as u64,
-        );
-        let ref mut fresh84 = (*ret).doc;
-        *fresh84 = (*ctxt).myDoc;
-        (*ret).type_0 = XML_ELEMENT_NODE;
-        if (*ctxt).dictNames != 0 {
-            let ref mut fresh85 = (*ret).name;
+        ) });
+        let fresh84 = unsafe { &mut ((*ret).doc) };
+        *fresh84 = unsafe { (*ctxt).myDoc };
+        (unsafe { (*ret).type_0 = XML_ELEMENT_NODE });
+        if (unsafe { (*ctxt).dictNames }) != 0 {
+            let fresh85 = unsafe { &mut ((*ret).name) };
             *fresh85 = localname;
         } else {
             if lname.is_null() {
-                let ref mut fresh86 = (*ret).name;
-                *fresh86 = xmlStrdup(localname);
+                let fresh86 = unsafe { &mut ((*ret).name) };
+                *fresh86 = unsafe { xmlStrdup(localname) };
             } else {
-                let ref mut fresh87 = (*ret).name;
+                let fresh87 = unsafe { &mut ((*ret).name) };
                 *fresh87 = lname;
             }
-            if ((*ret).name).is_null() {
-                xmlSAX2ErrMemory(
-                    ctxt,
-                    b"xmlSAX2StartElementNs\0" as *const u8 as *const i8,
-                );
+            if (unsafe { (*ret).name }).is_null() {
+                xmlSAX2ErrMemory(ctxt, b"xmlSAX2StartElementNs\0" as *const u8 as *const i8);
                 return;
             }
         }
-        if __xmlRegisterCallbacks != 0 && (*(borrow(& __xmlRegisterNodeDefaultValue())).unwrap()).is_some() {
-            (*(borrow(& __xmlRegisterNodeDefaultValue())).unwrap()).expect("non-null function pointer")(ret);
+        if (unsafe { __xmlRegisterCallbacks }) != 0
+            && (*(borrow(&__xmlRegisterNodeDefaultValue())).unwrap()).is_some()
+        {
+            (unsafe { (*(borrow(&__xmlRegisterNodeDefaultValue())).unwrap())
+                .expect("non-null function pointer")(ret) });
         }
     } else {
-        if (*ctxt).dictNames != 0 {
-            ret = xmlNewDocNodeEatName(
+        if (unsafe { (*ctxt).dictNames }) != 0 {
+            ret = unsafe { xmlNewDocNodeEatName(
                 (*ctxt).myDoc,
                 0 as xmlNsPtr,
                 localname as *mut xmlChar,
                 0 as *const xmlChar,
-            );
+            ) };
         } else if lname.is_null() {
-            ret = xmlNewDocNode(
-                (*ctxt).myDoc,
-                0 as xmlNsPtr,
-                localname,
-                0 as *const xmlChar,
-            );
+            ret = unsafe { xmlNewDocNode((*ctxt).myDoc, 0 as xmlNsPtr, localname, 0 as *const xmlChar) };
         } else {
-            ret = xmlNewDocNodeEatName(
-                (*ctxt).myDoc,
-                0 as xmlNsPtr,
-                lname,
-                0 as *const xmlChar,
-            );
+            ret = unsafe { xmlNewDocNodeEatName((*ctxt).myDoc, 0 as xmlNsPtr, lname, 0 as *const xmlChar) };
         }
         if ret.is_null() {
-            xmlSAX2ErrMemory(
-                ctxt,
-                b"xmlSAX2StartElementNs\0" as *const u8 as *const i8,
-            );
+            xmlSAX2ErrMemory(ctxt, b"xmlSAX2StartElementNs\0" as *const u8 as *const i8);
             return;
         }
     }
-    if (*ctxt).linenumbers != 0 {
-        if !((*ctxt).input).is_null() {
-            if (*(*ctxt).input).line
-                < 32767 as i32 * 2 as i32 + 1 as i32
-            {
-                (*ret).line = (*(*ctxt).input).line as u16;
+    if (unsafe { (*ctxt).linenumbers }) != 0 {
+        if !(unsafe { (*ctxt).input }).is_null() {
+            if (unsafe { (*(*ctxt).input).line }) < 32767 as i32 * 2 as i32 + 1 as i32 {
+                (unsafe { (*ret).line = (*(*ctxt).input).line as u16 });
             } else {
-                (*ret)
-                    .line = (32767 as i32 * 2 as i32 + 1 as i32)
-                    as u16;
+                (unsafe { (*ret).line = (32767 as i32 * 2 as i32 + 1 as i32) as u16 });
             }
         }
     }
     if parent.is_null() {
-        xmlAddChild((*ctxt).myDoc as xmlNodePtr, ret);
+        (unsafe { xmlAddChild((*ctxt).myDoc as xmlNodePtr, ret) });
     }
     i = 0 as i32;
     j = 0 as i32;
     while j < nb_namespaces {
         let mut fresh88 = i;
         i = i + 1;
-        pref = *namespaces.offset(fresh88 as isize);
+        pref = unsafe { *namespaces.offset(fresh88 as isize) };
         let mut fresh89 = i;
         i = i + 1;
-        uri = *namespaces.offset(fresh89 as isize);
-        ns = xmlNewNs(0 as xmlNodePtr, uri, pref);
+        uri = unsafe { *namespaces.offset(fresh89 as isize) };
+        ns = unsafe { xmlNewNs(0 as xmlNodePtr, uri, pref) };
         if !ns.is_null() {
             if last.is_null() {
                 last = ns;
-                let ref mut fresh90 = (*ret).nsDef;
+                let fresh90 = unsafe { &mut ((*ret).nsDef) };
                 *fresh90 = last;
             } else {
-                let ref mut fresh91 = (*last).next;
+                let fresh91 = unsafe { &mut ((*last).next) };
                 *fresh91 = ns;
                 last = ns;
             }
             if !URI.is_null() && prefix == pref {
-                let ref mut fresh92 = (*ret).ns;
+                let fresh92 = unsafe { &mut ((*ret).ns) };
                 *fresh92 = ns;
             }
-            if (*ctxt).html == 0 && (*ctxt).validate != 0 && (*ctxt).wellFormed != 0
-                && !((*ctxt).myDoc).is_null() && !((*(*ctxt).myDoc).intSubset).is_null()
+            if (unsafe { (*ctxt).html }) == 0
+                && (unsafe { (*ctxt).validate }) != 0
+                && (unsafe { (*ctxt).wellFormed }) != 0
+                && !(unsafe { (*ctxt).myDoc }).is_null()
+                && !(unsafe { (*(*ctxt).myDoc).intSubset }).is_null()
             {
-                (*ctxt).valid
-                    &= xmlValidateOneNamespace(
-                        &mut (*ctxt).vctxt,
-                        (*ctxt).myDoc,
-                        ret,
-                        prefix,
-                        ns,
-                        uri,
-                    );
+                (unsafe { (*ctxt).valid &= xmlValidateOneNamespace(
+                    &mut (*ctxt).vctxt,
+                    (*ctxt).myDoc,
+                    ret,
+                    prefix,
+                    ns,
+                    uri,
+                ) });
             }
         }
         j += 1;
     }
-    (*ctxt).nodemem = -(1 as i32);
+    (unsafe { (*ctxt).nodemem = -(1 as i32) });
     if nodePush(ctxt, ret) < 0 as i32 {
-        xmlUnlinkNode(ret);
-        xmlFreeNode(ret);
+        (unsafe { xmlUnlinkNode(ret) });
+        (unsafe { xmlFreeNode(ret) });
         return;
     }
     if !parent.is_null() {
-        if (*parent).type_0 as u32
-            == XML_ELEMENT_NODE as i32 as u32
-        {
-            xmlAddChild(parent, ret);
+        if (unsafe { (*parent).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32 {
+            (unsafe { xmlAddChild(parent, ret) });
         } else {
-            xmlAddSibling(parent, ret);
+            (unsafe { xmlAddSibling(parent, ret) });
         }
     }
-    if nb_defaulted != 0 as i32
-        && (*ctxt).loadsubset & 4 as i32 == 0 as i32
-    {
+    if nb_defaulted != 0 as i32 && (unsafe { (*ctxt).loadsubset }) & 4 as i32 == 0 as i32 {
         nb_attributes -= nb_defaulted;
     }
-    if !URI.is_null() && ((*ret).ns).is_null() {
-        let ref mut fresh93 = (*ret).ns;
-        *fresh93 = xmlSearchNs((*ctxt).myDoc, parent, prefix);
-        if ((*ret).ns).is_null()
-            && xmlStrEqual(
-                prefix,
-                b"xml\0" as *const u8 as *const i8 as *mut xmlChar,
-            ) != 0
+    if !URI.is_null() && (unsafe { (*ret).ns }).is_null() {
+        let fresh93 = unsafe { &mut ((*ret).ns) };
+        *fresh93 = unsafe { xmlSearchNs((*ctxt).myDoc, parent, prefix) };
+        if (unsafe { (*ret).ns }).is_null()
+            && (unsafe { xmlStrEqual(prefix, b"xml\0" as *const u8 as *const i8 as *mut xmlChar) }) != 0
         {
-            let ref mut fresh94 = (*ret).ns;
-            *fresh94 = xmlSearchNs((*ctxt).myDoc, ret, prefix);
+            let fresh94 = unsafe { &mut ((*ret).ns) };
+            *fresh94 = unsafe { xmlSearchNs((*ctxt).myDoc, ret, prefix) };
         }
-        if ((*ret).ns).is_null() {
-            ns = xmlNewNs(ret, 0 as *const xmlChar, prefix);
+        if (unsafe { (*ret).ns }).is_null() {
+            ns = unsafe { xmlNewNs(ret, 0 as *const xmlChar, prefix) };
             if ns.is_null() {
-                xmlSAX2ErrMemory(
-                    ctxt,
-                    b"xmlSAX2StartElementNs\0" as *const u8 as *const i8,
-                );
+                xmlSAX2ErrMemory(ctxt, b"xmlSAX2StartElementNs\0" as *const u8 as *const i8);
                 return;
             }
             if !prefix.is_null() {
                 xmlNsWarnMsg(
                     ctxt,
                     XML_NS_ERR_UNDEFINED_NAMESPACE,
-                    b"Namespace prefix %s was not found\n\0" as *const u8
-                        as *const i8,
+                    b"Namespace prefix %s was not found\n\0" as *const u8 as *const i8,
                     prefix,
                     0 as *const xmlChar,
                 );
@@ -4186,8 +4025,7 @@ pub unsafe extern "C" fn xmlSAX2StartElementNs(
                 xmlNsWarnMsg(
                     ctxt,
                     XML_NS_ERR_UNDEFINED_NAMESPACE,
-                    b"Namespace default prefix was not found\n\0" as *const u8
-                        as *const i8,
+                    b"Namespace default prefix was not found\n\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
@@ -4199,47 +4037,44 @@ pub unsafe extern "C" fn xmlSAX2StartElementNs(
         j = 0 as i32;
         i = 0 as i32;
         while i < nb_attributes {
-            if !(*attributes.offset((j + 1 as i32) as isize)).is_null()
-                && (*attributes.offset((j + 2 as i32) as isize)).is_null()
+            if !(unsafe { *attributes.offset((j + 1 as i32) as isize) }).is_null()
+                && (unsafe { *attributes.offset((j + 2 as i32) as isize) }).is_null()
             {
-                if (*ctxt).dictNames != 0 {
-                    let mut fullname_0: * const u8 = 0 as *const xmlChar;
+                if (unsafe { (*ctxt).dictNames }) != 0 {
+                    let mut fullname_0: *const u8 = 0 as *const xmlChar;
                     fullname_0 = xmlDictQLookup(
-                        (*ctxt).dict,
-                        *attributes.offset((j + 1 as i32) as isize),
-                        *attributes.offset(j as isize),
+                        unsafe { (*ctxt).dict },
+                        unsafe { *attributes.offset((j + 1 as i32) as isize) },
+                        unsafe { *attributes.offset(j as isize) },
                     );
                     if !fullname_0.is_null() {
                         xmlSAX2AttributeNs(
                             ctxt,
                             fullname_0,
                             0 as *const xmlChar,
-                            *attributes.offset((j + 3 as i32) as isize),
-                            *attributes.offset((j + 4 as i32) as isize),
+                            unsafe { *attributes.offset((j + 3 as i32) as isize) },
+                            unsafe { *attributes.offset((j + 4 as i32) as isize) },
                         );
                         current_block_110 = 13003737910779602957;
                     } else {
                         current_block_110 = 8304106758420804164;
                     }
                 } else {
-                    lname = xmlBuildQName(
+                    lname = unsafe { xmlBuildQName(
                         *attributes.offset(j as isize),
                         *attributes.offset((j + 1 as i32) as isize),
                         0 as *mut xmlChar,
                         0 as i32,
-                    );
+                    ) };
                     if !lname.is_null() {
                         xmlSAX2AttributeNs(
                             ctxt,
                             lname,
                             0 as *const xmlChar,
-                            *attributes.offset((j + 3 as i32) as isize),
-                            *attributes.offset((j + 4 as i32) as isize),
+                            unsafe { *attributes.offset((j + 3 as i32) as isize) },
+                            unsafe { *attributes.offset((j + 4 as i32) as isize) },
                         );
-                        xmlFree
-                            .expect(
-                                "non-null function pointer",
-                            )(lname as *mut libc::c_void);
+                        (unsafe { xmlFree.expect("non-null function pointer")(lname as *mut libc::c_void) });
                         current_block_110 = 13003737910779602957;
                     } else {
                         current_block_110 = 8304106758420804164;
@@ -4252,42 +4087,39 @@ pub unsafe extern "C" fn xmlSAX2StartElementNs(
                 8304106758420804164 => {
                     xmlSAX2AttributeNs(
                         ctxt,
-                        *attributes.offset(j as isize),
-                        *attributes.offset((j + 1 as i32) as isize),
-                        *attributes.offset((j + 3 as i32) as isize),
-                        *attributes.offset((j + 4 as i32) as isize),
+                        unsafe { *attributes.offset(j as isize) },
+                        unsafe { *attributes.offset((j + 1 as i32) as isize) },
+                        unsafe { *attributes.offset((j + 3 as i32) as isize) },
+                        unsafe { *attributes.offset((j + 4 as i32) as isize) },
                     );
-                }
-                _ => {}
+                },
+                _ => {},
             }
             i += 1;
             j += 5 as i32;
         }
     }
-    if (*ctxt).validate != 0
-        && (*ctxt).vctxt.flags & (1 as u32) << 0 as i32
-            == 0 as i32 as u32
-    {
+    if (unsafe { (*ctxt).validate }) != 0 && (unsafe { (*ctxt).vctxt.flags }) & (1 as u32) << 0 as i32 == 0 as i32 as u32 {
         let mut chk: i32 = 0;
-        chk = xmlValidateDtdFinal(&mut (*ctxt).vctxt, (*ctxt).myDoc);
+        chk = unsafe { xmlValidateDtdFinal(&mut (*ctxt).vctxt, (*ctxt).myDoc) };
         if chk <= 0 as i32 {
-            (*ctxt).valid = 0 as i32;
+            (unsafe { (*ctxt).valid = 0 as i32 });
         }
         if chk < 0 as i32 {
-            (*ctxt).wellFormed = 0 as i32;
+            (unsafe { (*ctxt).wellFormed = 0 as i32 });
         }
-        (*ctxt).valid &= xmlValidateRoot(&mut (*ctxt).vctxt, (*ctxt).myDoc);
-        (*ctxt).vctxt.flags |= (1 as u32) << 0 as i32;
+        (unsafe { (*ctxt).valid &= xmlValidateRoot(&mut (*ctxt).vctxt, (*ctxt).myDoc) });
+        (unsafe { (*ctxt).vctxt.flags |= (1 as u32) << 0 as i32 });
     }
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2EndElementNs(
-    mut ctx: * mut core::ffi::c_void,
-    mut localname: * const u8,
-    mut prefix: * const u8,
-    mut URI: * const u8,
+pub extern "C" fn xmlSAX2EndElementNs(
+    mut ctx: *mut core::ffi::c_void,
+    mut _localname: *const u8,
+    mut _prefix: *const u8,
+    mut _URI: *const u8,
 ) {
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
     let mut node_info: crate::src::HTMLparser::_xmlParserNodeInfo = xmlParserNodeInfo {
         node: 0 as *const _xmlNode,
         begin_pos: 0,
@@ -4295,582 +4127,461 @@ pub unsafe extern "C" fn xmlSAX2EndElementNs(
         end_pos: 0,
         end_line: 0,
     };
-    let mut cur: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut cur: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
     if ctx.is_null() {
         return;
     }
-    cur = (*ctxt).node;
-    if (*ctxt).record_info != 0 && !cur.is_null() {
-        node_info
-            .end_pos = ((*(*ctxt).input).cur).offset_from((*(*ctxt).input).base)
-            as i64 as u64;
-        node_info.end_line = (*(*ctxt).input).line as u64;
+    cur = unsafe { (*ctxt).node };
+    if (unsafe { (*ctxt).record_info }) != 0 && !cur.is_null() {
+        node_info.end_pos = (unsafe { ((*(*ctxt).input).cur).offset_from((*(*ctxt).input).base) }) as i64 as u64;
+        node_info.end_line = (unsafe { (*(*ctxt).input).line }) as u64;
         node_info.node = cur as *const _xmlNode;
         xmlParserAddNodeInfo(ctxt, &mut node_info);
     }
-    (*ctxt).nodemem = -(1 as i32);
-    if (*ctxt).validate != 0 && (*ctxt).wellFormed != 0 && !((*ctxt).myDoc).is_null()
-        && !((*(*ctxt).myDoc).intSubset).is_null()
+    (unsafe { (*ctxt).nodemem = -(1 as i32) });
+    if (unsafe { (*ctxt).validate }) != 0
+        && (unsafe { (*ctxt).wellFormed }) != 0
+        && !(unsafe { (*ctxt).myDoc }).is_null()
+        && !(unsafe { (*(*ctxt).myDoc).intSubset }).is_null()
     {
-        (*ctxt).valid &= xmlValidateOneElement(&mut (*ctxt).vctxt, (*ctxt).myDoc, cur);
+        (unsafe { (*ctxt).valid &= xmlValidateOneElement(&mut (*ctxt).vctxt, (*ctxt).myDoc, cur) });
     }
     nodePop(ctxt);
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2Reference(
-    mut ctx: * mut core::ffi::c_void,
-    mut name: * const u8,
-) {
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
-    let mut ret: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+pub extern "C" fn xmlSAX2Reference(mut ctx: *mut core::ffi::c_void, mut name: *const u8) {
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    let mut ret: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
     if ctx.is_null() {
         return;
     }
-    if *name.offset(0 as i32 as isize) as i32 == '#' as i32 {
-        ret = xmlNewCharRef((*ctxt).myDoc, name);
+    if (unsafe { *name.offset(0 as i32 as isize) }) as i32 == '#' as i32 {
+        ret = unsafe { xmlNewCharRef((*ctxt).myDoc, name) };
     } else {
-        ret = xmlNewReference((*ctxt).myDoc as *const xmlDoc, name);
+        ret = unsafe { xmlNewReference((*ctxt).myDoc as *const xmlDoc, name) };
     }
-    if (xmlAddChild((*ctxt).node, ret)).is_null() {
-        xmlFreeNode(ret);
+    if (unsafe { xmlAddChild((*ctxt).node, ret) }).is_null() {
+        (unsafe { xmlFreeNode(ret) });
     }
 }
-unsafe extern "C" fn xmlSAX2Text(
-    mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt,
-    mut ch: * const u8,
+extern "C" fn xmlSAX2Text(
+    mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt,
+    mut ch: *const u8,
     mut len: i32,
     mut type_0: u32,
 ) {
-    let mut lastChild: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut lastChild: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
     if ctxt.is_null() {
         return;
     }
-    if ((*ctxt).node).is_null() {
+    if (unsafe { (*ctxt).node }).is_null() {
         return;
     }
-    lastChild = (*(*ctxt).node).last;
+    lastChild = unsafe { (*(*ctxt).node).last };
     if lastChild.is_null() {
         if type_0 as u32 == XML_TEXT_NODE as i32 as u32 {
             lastChild = xmlSAX2TextNode(ctxt, ch, len);
         } else {
-            lastChild = xmlNewCDataBlock((*ctxt).myDoc, ch, len);
+            lastChild = unsafe { xmlNewCDataBlock((*ctxt).myDoc, ch, len) };
         }
         if !lastChild.is_null() {
-            let ref mut fresh95 = (*(*ctxt).node).children;
+            let fresh95 = unsafe { &mut ((*(*ctxt).node).children) };
             *fresh95 = lastChild;
-            let ref mut fresh96 = (*(*ctxt).node).last;
+            let fresh96 = unsafe { &mut ((*(*ctxt).node).last) };
             *fresh96 = lastChild;
-            let ref mut fresh97 = (*lastChild).parent;
-            *fresh97 = (*ctxt).node;
-            let ref mut fresh98 = (*lastChild).doc;
-            *fresh98 = (*(*ctxt).node).doc;
-            (*ctxt).nodelen = len;
-            (*ctxt).nodemem = len + 1 as i32;
+            let fresh97 = unsafe { &mut ((*lastChild).parent) };
+            *fresh97 = unsafe { (*ctxt).node };
+            let fresh98 = unsafe { &mut ((*lastChild).doc) };
+            *fresh98 = unsafe { (*(*ctxt).node).doc };
+            (unsafe { (*ctxt).nodelen = len });
+            (unsafe { (*ctxt).nodemem = len + 1 as i32 });
         } else {
-            xmlSAX2ErrMemory(
-                ctxt,
-                b"xmlSAX2Characters\0" as *const u8 as *const i8,
-            );
+            xmlSAX2ErrMemory(ctxt, b"xmlSAX2Characters\0" as *const u8 as *const i8);
             return;
         }
     } else {
         let mut coalesceText: i32 = (!lastChild.is_null()
-            && (*lastChild).type_0 as u32 == type_0 as u32
+            && (unsafe { (*lastChild).type_0 }) as u32 == type_0 as u32
             && (type_0 as u32 != XML_TEXT_NODE as i32 as u32
-                || (*lastChild).name == xmlStringText.as_ptr())) as i32;
-        if coalesceText != 0 && (*ctxt).nodemem != 0 as i32 {
-            if (*lastChild).content
-                == &mut (*lastChild).properties as *mut *mut _xmlAttr as *mut xmlChar
+                || (unsafe { (*lastChild).name }) == (unsafe { xmlStringText.as_ptr() })))
+            as i32;
+        if coalesceText != 0 && (unsafe { (*ctxt).nodemem }) != 0 as i32 {
+            if (unsafe { (*lastChild).content })
+                == (unsafe { &mut (*lastChild).properties }) as *mut *mut _xmlAttr as *mut xmlChar
             {
-                let ref mut fresh99 = (*lastChild).content;
-                *fresh99 = xmlStrdup((*lastChild).content);
-                let ref mut fresh100 = (*lastChild).properties;
+                let fresh99 = unsafe { &mut ((*lastChild).content) };
+                *fresh99 = unsafe { xmlStrdup((*lastChild).content) };
+                let fresh100 = unsafe { &mut ((*lastChild).properties) };
                 *fresh100 = 0 as *mut _xmlAttr;
-            } else if (*ctxt).nodemem == (*ctxt).nodelen + 1 as i32
-                    && xmlDictOwns((*ctxt).dict, (*lastChild).content) != 0
-                {
-                let ref mut fresh101 = (*lastChild).content;
-                *fresh101 = xmlStrdup((*lastChild).content);
+            } else if (unsafe { (*ctxt).nodemem }) == (unsafe { (*ctxt).nodelen }) + 1 as i32
+                && xmlDictOwns(unsafe { (*ctxt).dict }, unsafe { (*lastChild).content }) != 0
+            {
+                let fresh101 = unsafe { &mut ((*lastChild).content) };
+                *fresh101 = unsafe { xmlStrdup((*lastChild).content) };
             }
-            if ((*lastChild).content).is_null() {
+            if (unsafe { (*lastChild).content }).is_null() {
                 xmlSAX2ErrMemory(
                     ctxt,
-                    b"xmlSAX2Characters: xmlStrdup returned NULL\0" as *const u8
-                        as *const i8,
+                    b"xmlSAX2Characters: xmlStrdup returned NULL\0" as *const u8 as *const i8,
                 );
                 return;
             }
-            if ((*ctxt).nodelen as size_t).wrapping_add(len as size_t)
-                > 10000000 as i32 as u64
-                && (*ctxt).options & XML_PARSE_HUGE as i32 == 0 as i32
+            if ((unsafe { (*ctxt).nodelen }) as size_t).wrapping_add(len as size_t) > 10000000 as i32 as u64
+                && (unsafe { (*ctxt).options }) & XML_PARSE_HUGE as i32 == 0 as i32
             {
                 xmlSAX2ErrMemory(
                     ctxt,
-                    b"xmlSAX2Characters: huge text node\0" as *const u8
-                        as *const i8,
+                    b"xmlSAX2Characters: huge text node\0" as *const u8 as *const i8,
                 );
                 return;
             }
-            if (*ctxt).nodelen as size_t
-                > (-(1 as i32) as size_t).wrapping_sub(len as size_t)
-                || ((*ctxt).nodemem as size_t).wrapping_add(len as size_t)
-                    > (-(1 as i32) as size_t)
-                        .wrapping_div(2 as i32 as u64)
+            if (unsafe { (*ctxt).nodelen }) as size_t > (-(1 as i32) as size_t).wrapping_sub(len as size_t)
+                || ((unsafe { (*ctxt).nodemem }) as size_t).wrapping_add(len as size_t)
+                    > (-(1 as i32) as size_t).wrapping_div(2 as i32 as u64)
             {
                 xmlSAX2ErrMemory(
                     ctxt,
-                    b"xmlSAX2Characters overflow prevented\0" as *const u8
-                        as *const i8,
+                    b"xmlSAX2Characters overflow prevented\0" as *const u8 as *const i8,
                 );
                 return;
             }
-            if (*ctxt).nodelen + len >= (*ctxt).nodemem {
-                let mut newbuf: * mut u8 = 0 as *mut xmlChar;
+            if (unsafe { (*ctxt).nodelen }) + len >= (unsafe { (*ctxt).nodemem }) {
+                let mut newbuf: *mut u8 = 0 as *mut xmlChar;
                 let mut size: u64 = 0;
-                size = ((*ctxt).nodemem + len) as size_t;
-                size = (size as u64)
-                    .wrapping_mul(2 as i32 as u64) as size_t as size_t;
-                newbuf = xmlRealloc
-                    .expect(
-                        "non-null function pointer",
-                    )((*lastChild).content as *mut libc::c_void, size) as *mut xmlChar;
+                size = ((unsafe { (*ctxt).nodemem }) + len) as size_t;
+                size = (size as u64).wrapping_mul(2 as i32 as u64) as size_t as size_t;
+                newbuf = (unsafe { xmlRealloc.expect("non-null function pointer")(
+                    (*lastChild).content as *mut libc::c_void,
+                    size,
+                ) }) as *mut xmlChar;
                 if newbuf.is_null() {
-                    xmlSAX2ErrMemory(
-                        ctxt,
-                        b"xmlSAX2Characters\0" as *const u8 as *const i8,
-                    );
+                    xmlSAX2ErrMemory(ctxt, b"xmlSAX2Characters\0" as *const u8 as *const i8);
                     return;
                 }
-                (*ctxt).nodemem = size as i32;
-                let ref mut fresh102 = (*lastChild).content;
+                (unsafe { (*ctxt).nodemem = size as i32 });
+                let fresh102 = unsafe { &mut ((*lastChild).content) };
                 *fresh102 = newbuf;
             }
-            memcpy(
-                &mut *((*lastChild).content).offset((*ctxt).nodelen as isize)
-                    as *mut xmlChar as *mut libc::c_void,
+            (unsafe { memcpy(
+                &mut *((*lastChild).content).offset((*ctxt).nodelen as isize) as *mut xmlChar
+                    as *mut libc::c_void,
                 ch as *const libc::c_void,
                 len as u64,
-            );
-            (*ctxt).nodelen += len;
-            *((*lastChild).content)
-                .offset((*ctxt).nodelen as isize) = 0 as i32 as xmlChar;
+            ) });
+            (unsafe { (*ctxt).nodelen += len });
+            (unsafe { *((*lastChild).content).offset((*ctxt).nodelen as isize) = 0 as i32 as xmlChar });
         } else if coalesceText != 0 {
-            if xmlTextConcat(lastChild, ch, len) != 0 {
-                xmlSAX2ErrMemory(
-                    ctxt,
-                    b"xmlSAX2Characters\0" as *const u8 as *const i8,
-                );
+            if (unsafe { xmlTextConcat(lastChild, ch, len) }) != 0 {
+                xmlSAX2ErrMemory(ctxt, b"xmlSAX2Characters\0" as *const u8 as *const i8);
             }
-            if !((*(*ctxt).node).children).is_null() {
-                (*ctxt).nodelen = xmlStrlen((*lastChild).content);
-                (*ctxt).nodemem = (*ctxt).nodelen + 1 as i32;
+            if !(unsafe { (*(*ctxt).node).children }).is_null() {
+                (unsafe { (*ctxt).nodelen = xmlStrlen((*lastChild).content) });
+                (unsafe { (*ctxt).nodemem = (*ctxt).nodelen + 1 as i32 });
             }
         } else {
             if type_0 as u32 == XML_TEXT_NODE as i32 as u32 {
                 lastChild = xmlSAX2TextNode(ctxt, ch, len);
-                let ref mut fresh103 = (*lastChild).doc;
-                *fresh103 = (*ctxt).myDoc;
+                let fresh103 = unsafe { &mut ((*lastChild).doc) };
+                *fresh103 = unsafe { (*ctxt).myDoc };
             } else {
-                lastChild = xmlNewCDataBlock((*ctxt).myDoc, ch, len);
+                lastChild = unsafe { xmlNewCDataBlock((*ctxt).myDoc, ch, len) };
             }
             if !lastChild.is_null() {
-                xmlAddChild((*ctxt).node, lastChild);
-                if !((*(*ctxt).node).children).is_null() {
-                    (*ctxt).nodelen = len;
-                    (*ctxt).nodemem = len + 1 as i32;
+                (unsafe { xmlAddChild((*ctxt).node, lastChild) });
+                if !(unsafe { (*(*ctxt).node).children }).is_null() {
+                    (unsafe { (*ctxt).nodelen = len });
+                    (unsafe { (*ctxt).nodemem = len + 1 as i32 });
                 }
             }
         }
     };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2Characters(
-    mut ctx: * mut core::ffi::c_void,
-    mut ch: * const u8,
+pub extern "C" fn xmlSAX2Characters(
+    mut ctx: *mut core::ffi::c_void,
+    mut ch: *const u8,
     mut len: i32,
 ) {
     xmlSAX2Text(ctx as xmlParserCtxtPtr, ch, len, XML_TEXT_NODE);
 }
 #[no_mangle]
 pub extern "C" fn xmlSAX2IgnorableWhitespace(
-    mut ctx: * mut core::ffi::c_void,
-    mut ch: * const u8,
-    mut len: i32,
-) {}
-#[no_mangle]
-pub unsafe extern "C" fn xmlSAX2ProcessingInstruction(
-    mut ctx: * mut core::ffi::c_void,
-    mut target: * const u8,
-    mut data: * const u8,
+    mut _ctx: *mut core::ffi::c_void,
+    mut _ch: *const u8,
+    mut _len: i32,
 ) {
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
-    let mut ret: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut parent: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+}
+#[no_mangle]
+pub extern "C" fn xmlSAX2ProcessingInstruction(
+    mut ctx: *mut core::ffi::c_void,
+    mut target: *const u8,
+    mut data: *const u8,
+) {
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    let mut ret: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut parent: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
     if ctx.is_null() {
         return;
     }
-    parent = (*ctxt).node;
-    ret = xmlNewDocPI((*ctxt).myDoc, target, data);
+    parent = unsafe { (*ctxt).node };
+    ret = unsafe { xmlNewDocPI((*ctxt).myDoc, target, data) };
     if ret.is_null() {
         return;
     }
-    if (*ctxt).linenumbers != 0 {
-        if !((*ctxt).input).is_null() {
-            if (*(*ctxt).input).line
-                < 32767 as i32 * 2 as i32 + 1 as i32
-            {
-                (*ret).line = (*(*ctxt).input).line as u16;
+    if (unsafe { (*ctxt).linenumbers }) != 0 {
+        if !(unsafe { (*ctxt).input }).is_null() {
+            if (unsafe { (*(*ctxt).input).line }) < 32767 as i32 * 2 as i32 + 1 as i32 {
+                (unsafe { (*ret).line = (*(*ctxt).input).line as u16 });
             } else {
-                (*ret)
-                    .line = (32767 as i32 * 2 as i32 + 1 as i32)
-                    as u16;
+                (unsafe { (*ret).line = (32767 as i32 * 2 as i32 + 1 as i32) as u16 });
             }
         }
     }
-    if (*ctxt).inSubset == 1 as i32 {
-        xmlAddChild((*(*ctxt).myDoc).intSubset as xmlNodePtr, ret);
+    if (unsafe { (*ctxt).inSubset }) == 1 as i32 {
+        (unsafe { xmlAddChild((*(*ctxt).myDoc).intSubset as xmlNodePtr, ret) });
         return;
     } else {
-        if (*ctxt).inSubset == 2 as i32 {
-            xmlAddChild((*(*ctxt).myDoc).extSubset as xmlNodePtr, ret);
+        if (unsafe { (*ctxt).inSubset }) == 2 as i32 {
+            (unsafe { xmlAddChild((*(*ctxt).myDoc).extSubset as xmlNodePtr, ret) });
             return;
         }
     }
     if parent.is_null() {
-        xmlAddChild((*ctxt).myDoc as xmlNodePtr, ret);
+        (unsafe { xmlAddChild((*ctxt).myDoc as xmlNodePtr, ret) });
         return;
     }
-    if (*parent).type_0 as u32
-        == XML_ELEMENT_NODE as i32 as u32
-    {
-        xmlAddChild(parent, ret);
+    if (unsafe { (*parent).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32 {
+        (unsafe { xmlAddChild(parent, ret) });
     } else {
-        xmlAddSibling(parent, ret);
+        (unsafe { xmlAddSibling(parent, ret) });
     };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2Comment(
-    mut ctx: * mut core::ffi::c_void,
-    mut value: * const u8,
-) {
-    let mut ctxt: * mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
-    let mut ret: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut parent: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+pub extern "C" fn xmlSAX2Comment(mut ctx: *mut core::ffi::c_void, mut value: *const u8) {
+    let mut ctxt: *mut crate::src::HTMLparser::_xmlParserCtxt = ctx as xmlParserCtxtPtr;
+    let mut ret: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut parent: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
     if ctx.is_null() {
         return;
     }
-    parent = (*ctxt).node;
-    ret = xmlNewDocComment((*ctxt).myDoc, value);
+    parent = unsafe { (*ctxt).node };
+    ret = unsafe { xmlNewDocComment((*ctxt).myDoc, value) };
     if ret.is_null() {
         return;
     }
-    if (*ctxt).linenumbers != 0 {
-        if !((*ctxt).input).is_null() {
-            if (*(*ctxt).input).line
-                < 32767 as i32 * 2 as i32 + 1 as i32
-            {
-                (*ret).line = (*(*ctxt).input).line as u16;
+    if (unsafe { (*ctxt).linenumbers }) != 0 {
+        if !(unsafe { (*ctxt).input }).is_null() {
+            if (unsafe { (*(*ctxt).input).line }) < 32767 as i32 * 2 as i32 + 1 as i32 {
+                (unsafe { (*ret).line = (*(*ctxt).input).line as u16 });
             } else {
-                (*ret)
-                    .line = (32767 as i32 * 2 as i32 + 1 as i32)
-                    as u16;
+                (unsafe { (*ret).line = (32767 as i32 * 2 as i32 + 1 as i32) as u16 });
             }
         }
     }
-    if (*ctxt).inSubset == 1 as i32 {
-        xmlAddChild((*(*ctxt).myDoc).intSubset as xmlNodePtr, ret);
+    if (unsafe { (*ctxt).inSubset }) == 1 as i32 {
+        (unsafe { xmlAddChild((*(*ctxt).myDoc).intSubset as xmlNodePtr, ret) });
         return;
     } else {
-        if (*ctxt).inSubset == 2 as i32 {
-            xmlAddChild((*(*ctxt).myDoc).extSubset as xmlNodePtr, ret);
+        if (unsafe { (*ctxt).inSubset }) == 2 as i32 {
+            (unsafe { xmlAddChild((*(*ctxt).myDoc).extSubset as xmlNodePtr, ret) });
             return;
         }
     }
     if parent.is_null() {
-        xmlAddChild((*ctxt).myDoc as xmlNodePtr, ret);
+        (unsafe { xmlAddChild((*ctxt).myDoc as xmlNodePtr, ret) });
         return;
     }
-    if (*parent).type_0 as u32
-        == XML_ELEMENT_NODE as i32 as u32
-    {
-        xmlAddChild(parent, ret);
+    if (unsafe { (*parent).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32 {
+        (unsafe { xmlAddChild(parent, ret) });
     } else {
-        xmlAddSibling(parent, ret);
+        (unsafe { xmlAddSibling(parent, ret) });
     };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2CDataBlock(
-    mut ctx: * mut core::ffi::c_void,
-    mut value: * const u8,
+pub extern "C" fn xmlSAX2CDataBlock(
+    mut ctx: *mut core::ffi::c_void,
+    mut value: *const u8,
     mut len: i32,
 ) {
     xmlSAX2Text(ctx as xmlParserCtxtPtr, value, len, XML_CDATA_SECTION_NODE);
 }
 static mut xmlSAX2DefaultVersionValue: i32 = 2 as i32;
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAXDefaultVersion(mut version: i32) -> i32 {
-    let mut ret: i32 = xmlSAX2DefaultVersionValue;
+pub extern "C" fn xmlSAXDefaultVersion(mut version: i32) -> i32 {
+    let mut ret: i32 = unsafe { xmlSAX2DefaultVersionValue };
     if version != 1 as i32 && version != 2 as i32 {
         return -(1 as i32);
     }
-    xmlSAX2DefaultVersionValue = version;
+    (unsafe { xmlSAX2DefaultVersionValue = version });
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAXVersion(
-    mut hdlr: * mut crate::src::HTMLparser::_xmlSAXHandler,
+pub extern "C" fn xmlSAXVersion(
+    mut hdlr: *mut crate::src::HTMLparser::_xmlSAXHandler,
     mut version: i32,
 ) -> i32 {
     if hdlr.is_null() {
         return -(1 as i32);
     }
     if version == 2 as i32 {
-        let ref mut fresh104 = (*hdlr).startElement;
+        let fresh104 = unsafe { &mut ((*hdlr).startElement) };
         *fresh104 = None;
-        let ref mut fresh105 = (*hdlr).endElement;
+        let fresh105 = unsafe { &mut ((*hdlr).endElement) };
         *fresh105 = None;
-        let ref mut fresh106 = (*hdlr).startElementNs;
-        *fresh106 = Some(
-            xmlSAX2StartElementNs,
-        );
-        let ref mut fresh107 = (*hdlr).endElementNs;
-        *fresh107 = Some(
-            xmlSAX2EndElementNs,
-        );
-        let ref mut fresh108 = (*hdlr).serror;
+        let fresh106 = unsafe { &mut ((*hdlr).startElementNs) };
+        *fresh106 = Some(xmlSAX2StartElementNs);
+        let fresh107 = unsafe { &mut ((*hdlr).endElementNs) };
+        *fresh107 = Some(xmlSAX2EndElementNs);
+        let fresh108 = unsafe { &mut ((*hdlr).serror) };
         *fresh108 = None;
-        (*hdlr).initialized = 0xdeedbeaf as u32;
+        (unsafe { (*hdlr).initialized = 0xdeedbeaf as u32 });
     } else if version == 1 as i32 {
-        let ref mut fresh109 = (*hdlr).startElement;
-        *fresh109 = Some(
-            xmlSAX2StartElement,
-        );
-        let ref mut fresh110 = (*hdlr).endElement;
-        *fresh110 = Some(
-            xmlSAX2EndElement,
-        );
-        (*hdlr).initialized = 1 as i32 as u32;
+        let fresh109 = unsafe { &mut ((*hdlr).startElement) };
+        *fresh109 = Some(xmlSAX2StartElement);
+        let fresh110 = unsafe { &mut ((*hdlr).endElement) };
+        *fresh110 = Some(xmlSAX2EndElement);
+        (unsafe { (*hdlr).initialized = 1 as i32 as u32 });
     } else {
-        return -(1 as i32)
+        return -(1 as i32);
     }
-    let ref mut fresh111 = (*hdlr).internalSubset;
-    *fresh111 = Some(
-        xmlSAX2InternalSubset,
-    );
-    let ref mut fresh112 = (*hdlr).externalSubset;
-    *fresh112 = Some(
-        xmlSAX2ExternalSubset,
-    );
-    let ref mut fresh113 = (*hdlr).isStandalone;
-    *fresh113 = Some(
-        xmlSAX2IsStandalone,
-    );
-    let ref mut fresh114 = (*hdlr).hasInternalSubset;
-    *fresh114 = Some(
-        xmlSAX2HasInternalSubset,
-    );
-    let ref mut fresh115 = (*hdlr).hasExternalSubset;
-    *fresh115 = Some(
-        xmlSAX2HasExternalSubset,
-    );
-    let ref mut fresh116 = (*hdlr).resolveEntity;
-    *fresh116 = Some(
-        xmlSAX2ResolveEntity,
-    );
-    let ref mut fresh117 = (*hdlr).getEntity;
-    *fresh117 = Some(
-        xmlSAX2GetEntity,
-    );
-    let ref mut fresh118 = (*hdlr).getParameterEntity;
-    *fresh118 = Some(
-        xmlSAX2GetParameterEntity,
-    );
-    let ref mut fresh119 = (*hdlr).entityDecl;
-    *fresh119 = Some(
-        xmlSAX2EntityDecl,
-    );
-    let ref mut fresh120 = (*hdlr).attributeDecl;
-    *fresh120 = Some(
-        xmlSAX2AttributeDecl,
-    );
-    let ref mut fresh121 = (*hdlr).elementDecl;
-    *fresh121 = Some(
-        xmlSAX2ElementDecl,
-    );
-    let ref mut fresh122 = (*hdlr).notationDecl;
-    *fresh122 = Some(
-        xmlSAX2NotationDecl,
-    );
-    let ref mut fresh123 = (*hdlr).unparsedEntityDecl;
-    *fresh123 = Some(
-        xmlSAX2UnparsedEntityDecl,
-    );
-    let ref mut fresh124 = (*hdlr).setDocumentLocator;
-    *fresh124 = Some(
-        xmlSAX2SetDocumentLocator,
-    );
-    let ref mut fresh125 = (*hdlr).startDocument;
-    *fresh125 = Some(
-        xmlSAX2StartDocument,
-    );
-    let ref mut fresh126 = (*hdlr).endDocument;
-    *fresh126 = Some(
-        xmlSAX2EndDocument,
-    );
-    let ref mut fresh127 = (*hdlr).reference;
-    *fresh127 = Some(
-        xmlSAX2Reference,
-    );
-    let ref mut fresh128 = (*hdlr).characters;
-    *fresh128 = Some(
-        xmlSAX2Characters,
-    );
-    let ref mut fresh129 = (*hdlr).cdataBlock;
-    *fresh129 = Some(
-        xmlSAX2CDataBlock,
-    );
-    let ref mut fresh130 = (*hdlr).ignorableWhitespace;
-    *fresh130 = Some(
-        xmlSAX2Characters,
-    );
-    let ref mut fresh131 = (*hdlr).processingInstruction;
-    *fresh131 = Some(
-        xmlSAX2ProcessingInstruction,
-    );
-    let ref mut fresh132 = (*hdlr).comment;
-    *fresh132 = Some(
-        xmlSAX2Comment,
-    );
-    let ref mut fresh133 = (*hdlr).warning;
-    *fresh133 = Some(
-        xmlParserWarning,
-    );
-    let ref mut fresh134 = (*hdlr).error;
-    *fresh134 = Some(
-        xmlParserError,
-    );
-    let ref mut fresh135 = (*hdlr).fatalError;
-    *fresh135 = Some(
-        xmlParserError,
-    );
+    let fresh111 = unsafe { &mut ((*hdlr).internalSubset) };
+    *fresh111 = Some(xmlSAX2InternalSubset);
+    let fresh112 = unsafe { &mut ((*hdlr).externalSubset) };
+    *fresh112 = Some(xmlSAX2ExternalSubset);
+    let fresh113 = unsafe { &mut ((*hdlr).isStandalone) };
+    *fresh113 = Some(xmlSAX2IsStandalone);
+    let fresh114 = unsafe { &mut ((*hdlr).hasInternalSubset) };
+    *fresh114 = Some(xmlSAX2HasInternalSubset);
+    let fresh115 = unsafe { &mut ((*hdlr).hasExternalSubset) };
+    *fresh115 = Some(xmlSAX2HasExternalSubset);
+    let fresh116 = unsafe { &mut ((*hdlr).resolveEntity) };
+    *fresh116 = Some(xmlSAX2ResolveEntity);
+    let fresh117 = unsafe { &mut ((*hdlr).getEntity) };
+    *fresh117 = Some(xmlSAX2GetEntity);
+    let fresh118 = unsafe { &mut ((*hdlr).getParameterEntity) };
+    *fresh118 = Some(xmlSAX2GetParameterEntity);
+    let fresh119 = unsafe { &mut ((*hdlr).entityDecl) };
+    *fresh119 = Some(xmlSAX2EntityDecl);
+    let fresh120 = unsafe { &mut ((*hdlr).attributeDecl) };
+    *fresh120 = Some(xmlSAX2AttributeDecl);
+    let fresh121 = unsafe { &mut ((*hdlr).elementDecl) };
+    *fresh121 = Some(xmlSAX2ElementDecl);
+    let fresh122 = unsafe { &mut ((*hdlr).notationDecl) };
+    *fresh122 = Some(xmlSAX2NotationDecl);
+    let fresh123 = unsafe { &mut ((*hdlr).unparsedEntityDecl) };
+    *fresh123 = Some(xmlSAX2UnparsedEntityDecl);
+    let fresh124 = unsafe { &mut ((*hdlr).setDocumentLocator) };
+    *fresh124 = Some(xmlSAX2SetDocumentLocator);
+    let fresh125 = unsafe { &mut ((*hdlr).startDocument) };
+    *fresh125 = Some(xmlSAX2StartDocument);
+    let fresh126 = unsafe { &mut ((*hdlr).endDocument) };
+    *fresh126 = Some(xmlSAX2EndDocument);
+    let fresh127 = unsafe { &mut ((*hdlr).reference) };
+    *fresh127 = Some(xmlSAX2Reference);
+    let fresh128 = unsafe { &mut ((*hdlr).characters) };
+    *fresh128 = Some(xmlSAX2Characters);
+    let fresh129 = unsafe { &mut ((*hdlr).cdataBlock) };
+    *fresh129 = Some(xmlSAX2CDataBlock);
+    let fresh130 = unsafe { &mut ((*hdlr).ignorableWhitespace) };
+    *fresh130 = Some(xmlSAX2Characters);
+    let fresh131 = unsafe { &mut ((*hdlr).processingInstruction) };
+    *fresh131 = Some(xmlSAX2ProcessingInstruction);
+    let fresh132 = unsafe { &mut ((*hdlr).comment) };
+    *fresh132 = Some(xmlSAX2Comment);
+    let fresh133 = unsafe { &mut ((*hdlr).warning) };
+    *fresh133 = Some(xmlParserWarning);
+    let fresh134 = unsafe { &mut ((*hdlr).error) };
+    *fresh134 = Some(xmlParserError);
+    let fresh135 = unsafe { &mut ((*hdlr).fatalError) };
+    *fresh135 = Some(xmlParserError);
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2InitDefaultSAXHandler(
-    mut hdlr: * mut crate::src::HTMLparser::_xmlSAXHandler,
+pub extern "C" fn xmlSAX2InitDefaultSAXHandler(
+    mut hdlr: *mut crate::src::HTMLparser::_xmlSAXHandler,
     mut warning: i32,
 ) {
-    if hdlr.is_null() || (*hdlr).initialized != 0 as i32 as u32 {
+    if hdlr.is_null() || (unsafe { (*hdlr).initialized }) != 0 as i32 as u32 {
         return;
     }
-    xmlSAXVersion(hdlr, xmlSAX2DefaultVersionValue);
+    xmlSAXVersion(hdlr, unsafe { xmlSAX2DefaultVersionValue });
     if warning == 0 as i32 {
-        let ref mut fresh136 = (*hdlr).warning;
+        let fresh136 = unsafe { &mut ((*hdlr).warning) };
         *fresh136 = None;
     } else {
-        let ref mut fresh137 = (*hdlr).warning;
-        *fresh137 = Some(
-            xmlParserWarning,
-        );
+        let fresh137 = unsafe { &mut ((*hdlr).warning) };
+        *fresh137 = Some(xmlParserWarning);
     };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlDefaultSAXHandlerInit() {
+pub extern "C" fn xmlDefaultSAXHandlerInit() {
     xmlSAXVersion(__xmlDefaultSAXHandler() as xmlSAXHandlerPtr, 1 as i32);
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSAX2InitHtmlDefaultSAXHandler(mut hdlr: * mut crate::src::HTMLparser::_xmlSAXHandler) {
-    if hdlr.is_null() || (*hdlr).initialized != 0 as i32 as u32 {
+pub extern "C" fn xmlSAX2InitHtmlDefaultSAXHandler(
+    mut hdlr: *mut crate::src::HTMLparser::_xmlSAXHandler,
+) {
+    if hdlr.is_null() || (unsafe { (*hdlr).initialized }) != 0 as i32 as u32 {
         return;
     }
-    let ref mut fresh138 = (*hdlr).internalSubset;
-    *fresh138 = Some(
-        xmlSAX2InternalSubset,
-    );
-    let ref mut fresh139 = (*hdlr).externalSubset;
+    let fresh138 = unsafe { &mut ((*hdlr).internalSubset) };
+    *fresh138 = Some(xmlSAX2InternalSubset);
+    let fresh139 = unsafe { &mut ((*hdlr).externalSubset) };
     *fresh139 = None;
-    let ref mut fresh140 = (*hdlr).isStandalone;
+    let fresh140 = unsafe { &mut ((*hdlr).isStandalone) };
     *fresh140 = None;
-    let ref mut fresh141 = (*hdlr).hasInternalSubset;
+    let fresh141 = unsafe { &mut ((*hdlr).hasInternalSubset) };
     *fresh141 = None;
-    let ref mut fresh142 = (*hdlr).hasExternalSubset;
+    let fresh142 = unsafe { &mut ((*hdlr).hasExternalSubset) };
     *fresh142 = None;
-    let ref mut fresh143 = (*hdlr).resolveEntity;
+    let fresh143 = unsafe { &mut ((*hdlr).resolveEntity) };
     *fresh143 = None;
-    let ref mut fresh144 = (*hdlr).getEntity;
-    *fresh144 = Some(
-        xmlSAX2GetEntity,
-    );
-    let ref mut fresh145 = (*hdlr).getParameterEntity;
+    let fresh144 = unsafe { &mut ((*hdlr).getEntity) };
+    *fresh144 = Some(xmlSAX2GetEntity);
+    let fresh145 = unsafe { &mut ((*hdlr).getParameterEntity) };
     *fresh145 = None;
-    let ref mut fresh146 = (*hdlr).entityDecl;
+    let fresh146 = unsafe { &mut ((*hdlr).entityDecl) };
     *fresh146 = None;
-    let ref mut fresh147 = (*hdlr).attributeDecl;
+    let fresh147 = unsafe { &mut ((*hdlr).attributeDecl) };
     *fresh147 = None;
-    let ref mut fresh148 = (*hdlr).elementDecl;
+    let fresh148 = unsafe { &mut ((*hdlr).elementDecl) };
     *fresh148 = None;
-    let ref mut fresh149 = (*hdlr).notationDecl;
+    let fresh149 = unsafe { &mut ((*hdlr).notationDecl) };
     *fresh149 = None;
-    let ref mut fresh150 = (*hdlr).unparsedEntityDecl;
+    let fresh150 = unsafe { &mut ((*hdlr).unparsedEntityDecl) };
     *fresh150 = None;
-    let ref mut fresh151 = (*hdlr).setDocumentLocator;
-    *fresh151 = Some(
-        xmlSAX2SetDocumentLocator,
-    );
-    let ref mut fresh152 = (*hdlr).startDocument;
-    *fresh152 = Some(
-        xmlSAX2StartDocument,
-    );
-    let ref mut fresh153 = (*hdlr).endDocument;
-    *fresh153 = Some(
-        xmlSAX2EndDocument,
-    );
-    let ref mut fresh154 = (*hdlr).startElement;
-    *fresh154 = Some(
-        xmlSAX2StartElement,
-    );
-    let ref mut fresh155 = (*hdlr).endElement;
-    *fresh155 = Some(
-        xmlSAX2EndElement,
-    );
-    let ref mut fresh156 = (*hdlr).reference;
+    let fresh151 = unsafe { &mut ((*hdlr).setDocumentLocator) };
+    *fresh151 = Some(xmlSAX2SetDocumentLocator);
+    let fresh152 = unsafe { &mut ((*hdlr).startDocument) };
+    *fresh152 = Some(xmlSAX2StartDocument);
+    let fresh153 = unsafe { &mut ((*hdlr).endDocument) };
+    *fresh153 = Some(xmlSAX2EndDocument);
+    let fresh154 = unsafe { &mut ((*hdlr).startElement) };
+    *fresh154 = Some(xmlSAX2StartElement);
+    let fresh155 = unsafe { &mut ((*hdlr).endElement) };
+    *fresh155 = Some(xmlSAX2EndElement);
+    let fresh156 = unsafe { &mut ((*hdlr).reference) };
     *fresh156 = None;
-    let ref mut fresh157 = (*hdlr).characters;
-    *fresh157 = Some(
-        xmlSAX2Characters,
-    );
-    let ref mut fresh158 = (*hdlr).cdataBlock;
-    *fresh158 = Some(
-        xmlSAX2CDataBlock,
-    );
-    let ref mut fresh159 = (*hdlr).ignorableWhitespace;
-    *fresh159 = Some(
-        xmlSAX2IgnorableWhitespace,
-    );
-    let ref mut fresh160 = (*hdlr).processingInstruction;
-    *fresh160 = Some(
-        xmlSAX2ProcessingInstruction,
-    );
-    let ref mut fresh161 = (*hdlr).comment;
-    *fresh161 = Some(
-        xmlSAX2Comment,
-    );
-    let ref mut fresh162 = (*hdlr).warning;
-    *fresh162 = Some(
-        xmlParserWarning,
-    );
-    let ref mut fresh163 = (*hdlr).error;
-    *fresh163 = Some(
-        xmlParserError,
-    );
-    let ref mut fresh164 = (*hdlr).fatalError;
-    *fresh164 = Some(
-        xmlParserError,
-    );
-    (*hdlr).initialized = 1 as i32 as u32;
+    let fresh157 = unsafe { &mut ((*hdlr).characters) };
+    *fresh157 = Some(xmlSAX2Characters);
+    let fresh158 = unsafe { &mut ((*hdlr).cdataBlock) };
+    *fresh158 = Some(xmlSAX2CDataBlock);
+    let fresh159 = unsafe { &mut ((*hdlr).ignorableWhitespace) };
+    *fresh159 = Some(xmlSAX2IgnorableWhitespace);
+    let fresh160 = unsafe { &mut ((*hdlr).processingInstruction) };
+    *fresh160 = Some(xmlSAX2ProcessingInstruction);
+    let fresh161 = unsafe { &mut ((*hdlr).comment) };
+    *fresh161 = Some(xmlSAX2Comment);
+    let fresh162 = unsafe { &mut ((*hdlr).warning) };
+    *fresh162 = Some(xmlParserWarning);
+    let fresh163 = unsafe { &mut ((*hdlr).error) };
+    *fresh163 = Some(xmlParserError);
+    let fresh164 = unsafe { &mut ((*hdlr).fatalError) };
+    *fresh164 = Some(xmlParserError);
+    (unsafe { (*hdlr).initialized = 1 as i32 as u32 });
 }
 #[no_mangle]
-pub unsafe extern "C" fn htmlDefaultSAXHandlerInit() {
+pub extern "C" fn htmlDefaultSAXHandlerInit() {
     xmlSAX2InitHtmlDefaultSAXHandler(__htmlDefaultSAXHandler() as xmlSAXHandlerPtr);
 }
 use crate::laertes_rt::*;

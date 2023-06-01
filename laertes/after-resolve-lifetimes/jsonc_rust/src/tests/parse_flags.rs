@@ -1,28 +1,28 @@
-use ::libc;
+use :: libc;
 extern "C" {
-    fn printf(_: * const i8, _: ...) -> i32;
-    fn strcasecmp(_: * const i8, _: * const i8) -> i32;
+    fn printf(_: *const i8, _: ...) -> i32;
+    fn strcasecmp(_: *const i8, _: *const i8) -> i32;
     fn exit(_: i32) -> !;
 }
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct C2RustUnnamed {
-    pub arg: * const i8,
+    pub arg: *const i8,
     pub flag: i32,
 }
 impl C2RustUnnamed {
     pub const fn new() -> Self {
         C2RustUnnamed {
-        arg: (0 as * const i8),
-        flag: 0
+            arg: (0 as *const i8),
+            flag: 0,
         }
     }
 }
-
 impl std::default::Default for C2RustUnnamed {
-    fn default() -> Self { C2RustUnnamed::new() }
+    fn default() -> Self {
+        C2RustUnnamed::new()
+    }
 }
-
 static mut format_args: [crate::src::tests::parse_flags::C2RustUnnamed; 4] = [
     {
         let mut init = C2RustUnnamed {
@@ -54,10 +54,7 @@ static mut format_args: [crate::src::tests::parse_flags::C2RustUnnamed; 4] = [
     },
 ];
 #[no_mangle]
-pub unsafe extern "C" fn parse_flags(
-    mut argc: i32,
-    mut argv: * mut * mut i8,
-) -> i32 {
+pub extern "C" fn parse_flags(mut argc: i32, mut argv: *mut *mut i8) -> i32 {
     let mut arg_idx: i32 = 0;
     let mut sflags: i32 = 0 as i32;
     arg_idx = 1 as i32;
@@ -66,13 +63,11 @@ pub unsafe extern "C" fn parse_flags(
         jj = 0 as i32;
         while jj
             < (::std::mem::size_of::<[C2RustUnnamed; 4]>() as u64)
-                .wrapping_div(::std::mem::size_of::<C2RustUnnamed>() as u64)
-                as i32
+                .wrapping_div(::std::mem::size_of::<C2RustUnnamed>() as u64) as i32
         {
-            if strcasecmp(*argv.offset(arg_idx as isize), format_args[jj as usize].arg)
-                == 0 as i32
+            if (unsafe { strcasecmp(*argv.offset(arg_idx as isize), format_args[jj as usize].arg) }) == 0 as i32
             {
-                sflags |= format_args[jj as usize].flag;
+                sflags |= (unsafe { format_args[jj as usize].flag });
                 break;
             } else {
                 jj += 1;
@@ -82,11 +77,11 @@ pub unsafe extern "C" fn parse_flags(
             == (::std::mem::size_of::<[C2RustUnnamed; 4]>() as u64)
                 .wrapping_div(::std::mem::size_of::<C2RustUnnamed>() as u64)
         {
-            printf(
+            (unsafe { printf(
                 b"Unknown arg: %s\n\0" as *const u8 as *const i8,
                 *argv.offset(arg_idx as isize),
-            );
-            exit(1 as i32);
+            ) });
+            (unsafe { exit(1 as i32) });
         }
         arg_idx += 1;
     }

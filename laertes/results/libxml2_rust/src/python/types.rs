@@ -1,4 +1,4 @@
-use ::libc;
+use :: libc;
 extern "C" {
     pub type _IO_wide_data;
     pub type _IO_codecvt;
@@ -43,10 +43,7 @@ extern "C" {
         name: *const i8,
         destructor: PyCapsule_Destructor,
     ) -> *mut PyObject;
-    fn PyCapsule_GetPointer(
-        capsule: *mut PyObject,
-        name: *const i8,
-    ) -> *mut libc::c_void;
+    fn PyCapsule_GetPointer(capsule: *mut PyObject, name: *const i8) -> *mut libc::c_void;
     fn xmlStrndup(cur: *const xmlChar, len: i32) -> *mut xmlChar;
     static mut xmlFree: xmlFreeFunc;
     fn xmlXPathFreeObject(obj: xmlXPathObjectPtr);
@@ -158,25 +155,19 @@ pub struct _typeobject {
     pub tp_del: destructor,
     pub tp_version_tag: u32,
 }
-pub type destructor = Option::<unsafe extern "C" fn(*mut PyObject) -> ()>;
+pub type destructor = Option<unsafe extern "C" fn(*mut PyObject) -> ()>;
 pub type PyObject = _object;
-pub type inquiry = Option::<unsafe extern "C" fn(*mut PyObject) -> i32>;
-pub type freefunc = Option::<unsafe extern "C" fn(*mut libc::c_void) -> ()>;
-pub type newfunc = Option::<
-    unsafe extern "C" fn(*mut _typeobject, *mut PyObject, *mut PyObject) -> *mut PyObject,
->;
-pub type allocfunc = Option::<
-    unsafe extern "C" fn(*mut _typeobject, Py_ssize_t) -> *mut PyObject,
->;
-pub type initproc = Option::<
-    unsafe extern "C" fn(*mut PyObject, *mut PyObject, *mut PyObject) -> i32,
->;
-pub type descrsetfunc = Option::<
-    unsafe extern "C" fn(*mut PyObject, *mut PyObject, *mut PyObject) -> i32,
->;
-pub type descrgetfunc = Option::<
-    unsafe extern "C" fn(*mut PyObject, *mut PyObject, *mut PyObject) -> *mut PyObject,
->;
+pub type inquiry = Option<unsafe extern "C" fn(*mut PyObject) -> i32>;
+pub type freefunc = Option<unsafe extern "C" fn(*mut libc::c_void) -> ()>;
+pub type newfunc =
+    Option<unsafe extern "C" fn(*mut _typeobject, *mut PyObject, *mut PyObject) -> *mut PyObject>;
+pub type allocfunc = Option<unsafe extern "C" fn(*mut _typeobject, Py_ssize_t) -> *mut PyObject>;
+pub type initproc =
+    Option<unsafe extern "C" fn(*mut PyObject, *mut PyObject, *mut PyObject) -> i32>;
+pub type descrsetfunc =
+    Option<unsafe extern "C" fn(*mut PyObject, *mut PyObject, *mut PyObject) -> i32>;
+pub type descrgetfunc =
+    Option<unsafe extern "C" fn(*mut PyObject, *mut PyObject, *mut PyObject) -> *mut PyObject>;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct PyGetSetDef {
@@ -186,12 +177,9 @@ pub struct PyGetSetDef {
     pub doc: *mut i8,
     pub closure: *mut libc::c_void,
 }
-pub type setter = Option::<
-    unsafe extern "C" fn(*mut PyObject, *mut PyObject, *mut libc::c_void) -> i32,
->;
-pub type getter = Option::<
-    unsafe extern "C" fn(*mut PyObject, *mut libc::c_void) -> *mut PyObject,
->;
+pub type setter =
+    Option<unsafe extern "C" fn(*mut PyObject, *mut PyObject, *mut libc::c_void) -> i32>;
+pub type getter = Option<unsafe extern "C" fn(*mut PyObject, *mut libc::c_void) -> *mut PyObject>;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct PyMethodDef {
@@ -200,20 +188,14 @@ pub struct PyMethodDef {
     pub ml_flags: i32,
     pub ml_doc: *const i8,
 }
-pub type PyCFunction = Option::<
-    unsafe extern "C" fn(*mut PyObject, *mut PyObject) -> *mut PyObject,
->;
-pub type iternextfunc = Option::<unsafe extern "C" fn(*mut PyObject) -> *mut PyObject>;
-pub type getiterfunc = Option::<unsafe extern "C" fn(*mut PyObject) -> *mut PyObject>;
-pub type richcmpfunc = Option::<
-    unsafe extern "C" fn(*mut PyObject, *mut PyObject, i32) -> *mut PyObject,
->;
-pub type traverseproc = Option::<
-    unsafe extern "C" fn(*mut PyObject, visitproc, *mut libc::c_void) -> i32,
->;
-pub type visitproc = Option::<
-    unsafe extern "C" fn(*mut PyObject, *mut libc::c_void) -> i32,
->;
+pub type PyCFunction = Option<unsafe extern "C" fn(*mut PyObject, *mut PyObject) -> *mut PyObject>;
+pub type iternextfunc = Option<unsafe extern "C" fn(*mut PyObject) -> *mut PyObject>;
+pub type getiterfunc = Option<unsafe extern "C" fn(*mut PyObject) -> *mut PyObject>;
+pub type richcmpfunc =
+    Option<unsafe extern "C" fn(*mut PyObject, *mut PyObject, i32) -> *mut PyObject>;
+pub type traverseproc =
+    Option<unsafe extern "C" fn(*mut PyObject, visitproc, *mut libc::c_void) -> i32>;
+pub type visitproc = Option<unsafe extern "C" fn(*mut PyObject, *mut libc::c_void) -> i32>;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct PyBufferProcs {
@@ -224,9 +206,7 @@ pub struct PyBufferProcs {
     pub bf_getbuffer: getbufferproc,
     pub bf_releasebuffer: releasebufferproc,
 }
-pub type releasebufferproc = Option::<
-    unsafe extern "C" fn(*mut PyObject, *mut Py_buffer) -> (),
->;
+pub type releasebufferproc = Option<unsafe extern "C" fn(*mut PyObject, *mut Py_buffer) -> ()>;
 pub type Py_buffer = bufferinfo;
 #[derive(Copy, Clone)]
 #[repr(C)]
@@ -244,32 +224,21 @@ pub struct bufferinfo {
     pub smalltable: [Py_ssize_t; 2],
     pub internal: *mut libc::c_void,
 }
-pub type getbufferproc = Option::<
-    unsafe extern "C" fn(*mut PyObject, *mut Py_buffer, i32) -> i32,
->;
-pub type charbufferproc = Option::<
-    unsafe extern "C" fn(*mut PyObject, Py_ssize_t, *mut *mut i8) -> Py_ssize_t,
->;
-pub type segcountproc = Option::<
-    unsafe extern "C" fn(*mut PyObject, *mut Py_ssize_t) -> Py_ssize_t,
->;
-pub type writebufferproc = Option::<
-    unsafe extern "C" fn(*mut PyObject, Py_ssize_t, *mut *mut libc::c_void) -> Py_ssize_t,
->;
-pub type readbufferproc = Option::<
-    unsafe extern "C" fn(*mut PyObject, Py_ssize_t, *mut *mut libc::c_void) -> Py_ssize_t,
->;
-pub type setattrofunc = Option::<
-    unsafe extern "C" fn(*mut PyObject, *mut PyObject, *mut PyObject) -> i32,
->;
-pub type getattrofunc = Option::<
-    unsafe extern "C" fn(*mut PyObject, *mut PyObject) -> *mut PyObject,
->;
-pub type reprfunc = Option::<unsafe extern "C" fn(*mut PyObject) -> *mut PyObject>;
-pub type ternaryfunc = Option::<
-    unsafe extern "C" fn(*mut PyObject, *mut PyObject, *mut PyObject) -> *mut PyObject,
->;
-pub type hashfunc = Option::<unsafe extern "C" fn(*mut PyObject) -> i64>;
+pub type getbufferproc = Option<unsafe extern "C" fn(*mut PyObject, *mut Py_buffer, i32) -> i32>;
+pub type charbufferproc =
+    Option<unsafe extern "C" fn(*mut PyObject, Py_ssize_t, *mut *mut i8) -> Py_ssize_t>;
+pub type segcountproc = Option<unsafe extern "C" fn(*mut PyObject, *mut Py_ssize_t) -> Py_ssize_t>;
+pub type writebufferproc =
+    Option<unsafe extern "C" fn(*mut PyObject, Py_ssize_t, *mut *mut libc::c_void) -> Py_ssize_t>;
+pub type readbufferproc =
+    Option<unsafe extern "C" fn(*mut PyObject, Py_ssize_t, *mut *mut libc::c_void) -> Py_ssize_t>;
+pub type setattrofunc =
+    Option<unsafe extern "C" fn(*mut PyObject, *mut PyObject, *mut PyObject) -> i32>;
+pub type getattrofunc = Option<unsafe extern "C" fn(*mut PyObject, *mut PyObject) -> *mut PyObject>;
+pub type reprfunc = Option<unsafe extern "C" fn(*mut PyObject) -> *mut PyObject>;
+pub type ternaryfunc =
+    Option<unsafe extern "C" fn(*mut PyObject, *mut PyObject, *mut PyObject) -> *mut PyObject>;
+pub type hashfunc = Option<unsafe extern "C" fn(*mut PyObject) -> i64>;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct PyMappingMethods {
@@ -277,13 +246,10 @@ pub struct PyMappingMethods {
     pub mp_subscript: binaryfunc,
     pub mp_ass_subscript: objobjargproc,
 }
-pub type objobjargproc = Option::<
-    unsafe extern "C" fn(*mut PyObject, *mut PyObject, *mut PyObject) -> i32,
->;
-pub type binaryfunc = Option::<
-    unsafe extern "C" fn(*mut PyObject, *mut PyObject) -> *mut PyObject,
->;
-pub type lenfunc = Option::<unsafe extern "C" fn(*mut PyObject) -> Py_ssize_t>;
+pub type objobjargproc =
+    Option<unsafe extern "C" fn(*mut PyObject, *mut PyObject, *mut PyObject) -> i32>;
+pub type binaryfunc = Option<unsafe extern "C" fn(*mut PyObject, *mut PyObject) -> *mut PyObject>;
+pub type lenfunc = Option<unsafe extern "C" fn(*mut PyObject) -> Py_ssize_t>;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct PySequenceMethods {
@@ -298,26 +264,14 @@ pub struct PySequenceMethods {
     pub sq_inplace_concat: binaryfunc,
     pub sq_inplace_repeat: ssizeargfunc,
 }
-pub type ssizeargfunc = Option::<
-    unsafe extern "C" fn(*mut PyObject, Py_ssize_t) -> *mut PyObject,
->;
-pub type objobjproc = Option::<
-    unsafe extern "C" fn(*mut PyObject, *mut PyObject) -> i32,
->;
-pub type ssizessizeobjargproc = Option::<
-    unsafe extern "C" fn(
-        *mut PyObject,
-        Py_ssize_t,
-        Py_ssize_t,
-        *mut PyObject,
-    ) -> i32,
->;
-pub type ssizeobjargproc = Option::<
-    unsafe extern "C" fn(*mut PyObject, Py_ssize_t, *mut PyObject) -> i32,
->;
-pub type ssizessizeargfunc = Option::<
-    unsafe extern "C" fn(*mut PyObject, Py_ssize_t, Py_ssize_t) -> *mut PyObject,
->;
+pub type ssizeargfunc = Option<unsafe extern "C" fn(*mut PyObject, Py_ssize_t) -> *mut PyObject>;
+pub type objobjproc = Option<unsafe extern "C" fn(*mut PyObject, *mut PyObject) -> i32>;
+pub type ssizessizeobjargproc =
+    Option<unsafe extern "C" fn(*mut PyObject, Py_ssize_t, Py_ssize_t, *mut PyObject) -> i32>;
+pub type ssizeobjargproc =
+    Option<unsafe extern "C" fn(*mut PyObject, Py_ssize_t, *mut PyObject) -> i32>;
+pub type ssizessizeargfunc =
+    Option<unsafe extern "C" fn(*mut PyObject, Py_ssize_t, Py_ssize_t) -> *mut PyObject>;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct PyNumberMethods {
@@ -361,22 +315,12 @@ pub struct PyNumberMethods {
     pub nb_inplace_true_divide: binaryfunc,
     pub nb_index: unaryfunc,
 }
-pub type unaryfunc = Option::<unsafe extern "C" fn(*mut PyObject) -> *mut PyObject>;
-pub type coercion = Option::<
-    unsafe extern "C" fn(*mut *mut PyObject, *mut *mut PyObject) -> i32,
->;
-pub type cmpfunc = Option::<
-    unsafe extern "C" fn(*mut PyObject, *mut PyObject) -> i32,
->;
-pub type setattrfunc = Option::<
-    unsafe extern "C" fn(*mut PyObject, *mut i8, *mut PyObject) -> i32,
->;
-pub type getattrfunc = Option::<
-    unsafe extern "C" fn(*mut PyObject, *mut i8) -> *mut PyObject,
->;
-pub type printfunc = Option::<
-    unsafe extern "C" fn(*mut PyObject, *mut FILE, i32) -> i32,
->;
+pub type unaryfunc = Option<unsafe extern "C" fn(*mut PyObject) -> *mut PyObject>;
+pub type coercion = Option<unsafe extern "C" fn(*mut *mut PyObject, *mut *mut PyObject) -> i32>;
+pub type cmpfunc = Option<unsafe extern "C" fn(*mut PyObject, *mut PyObject) -> i32>;
+pub type setattrfunc = Option<unsafe extern "C" fn(*mut PyObject, *mut i8, *mut PyObject) -> i32>;
+pub type getattrfunc = Option<unsafe extern "C" fn(*mut PyObject, *mut i8) -> *mut PyObject>;
+pub type printfunc = Option<unsafe extern "C" fn(*mut PyObject, *mut FILE, i32) -> i32>;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct PyVarObject {
@@ -409,7 +353,7 @@ pub struct PyStringObject {
     pub ob_sstate: i32,
     pub ob_sval: [i8; 1],
 }
-pub type PyCapsule_Destructor = Option::<unsafe extern "C" fn(*mut PyObject) -> ()>;
+pub type PyCapsule_Destructor = Option<unsafe extern "C" fn(*mut PyObject) -> ()>;
 pub type xmlChar = u8;
 #[derive(Copy, Clone)]
 #[repr(C)]
@@ -438,32 +382,13 @@ pub struct _xmlCharEncodingHandler {
     pub iconv_out: iconv_t,
 }
 pub type iconv_t = *mut libc::c_void;
-pub type xmlCharEncodingOutputFunc = Option::<
-    unsafe extern "C" fn(
-        *mut u8,
-        *mut i32,
-        *const u8,
-        *mut i32,
-    ) -> i32,
->;
-pub type xmlCharEncodingInputFunc = Option::<
-    unsafe extern "C" fn(
-        *mut u8,
-        *mut i32,
-        *const u8,
-        *mut i32,
-    ) -> i32,
->;
-pub type xmlInputCloseCallback = Option::<
-    unsafe extern "C" fn(*mut libc::c_void) -> i32,
->;
-pub type xmlInputReadCallback = Option::<
-    unsafe extern "C" fn(
-        *mut libc::c_void,
-        *mut i8,
-        i32,
-    ) -> i32,
->;
+pub type xmlCharEncodingOutputFunc =
+    Option<unsafe extern "C" fn(*mut u8, *mut i32, *const u8, *mut i32) -> i32>;
+pub type xmlCharEncodingInputFunc =
+    Option<unsafe extern "C" fn(*mut u8, *mut i32, *const u8, *mut i32) -> i32>;
+pub type xmlInputCloseCallback = Option<unsafe extern "C" fn(*mut libc::c_void) -> i32>;
+pub type xmlInputReadCallback =
+    Option<unsafe extern "C" fn(*mut libc::c_void, *mut i8, i32) -> i32>;
 pub type xmlParserInputBuffer = _xmlParserInputBuffer;
 pub type xmlParserInputBufferPtr = *mut xmlParserInputBuffer;
 #[derive(Copy, Clone)]
@@ -478,16 +403,9 @@ pub struct _xmlOutputBuffer {
     pub written: i32,
     pub error: i32,
 }
-pub type xmlOutputCloseCallback = Option::<
-    unsafe extern "C" fn(*mut libc::c_void) -> i32,
->;
-pub type xmlOutputWriteCallback = Option::<
-    unsafe extern "C" fn(
-        *mut libc::c_void,
-        *const i8,
-        i32,
-    ) -> i32,
->;
+pub type xmlOutputCloseCallback = Option<unsafe extern "C" fn(*mut libc::c_void) -> i32>;
+pub type xmlOutputWriteCallback =
+    Option<unsafe extern "C" fn(*mut libc::c_void, *const i8, i32) -> i32>;
 pub type xmlOutputBuffer = _xmlOutputBuffer;
 pub type xmlOutputBufferPtr = *mut xmlOutputBuffer;
 #[derive(Copy, Clone)]
@@ -509,7 +427,7 @@ pub struct _xmlParserInput {
     pub standalone: i32,
     pub id: i32,
 }
-pub type xmlParserInputDeallocate = Option::<unsafe extern "C" fn(*mut xmlChar) -> ()>;
+pub type xmlParserInputDeallocate = Option<unsafe extern "C" fn(*mut xmlChar) -> ()>;
 pub type xmlParserInput = _xmlParserInput;
 pub type xmlParserInputPtr = *mut xmlParserInput;
 #[derive(Copy, Clone)]
@@ -829,12 +747,10 @@ pub type xmlAutomata = _xmlAutomata;
 pub type xmlValidState = _xmlValidState;
 pub type xmlDocPtr = *mut xmlDoc;
 pub type xmlDoc = _xmlDoc;
-pub type xmlValidityWarningFunc = Option::<
-    unsafe extern "C" fn(*mut libc::c_void, *const i8, ...) -> (),
->;
-pub type xmlValidityErrorFunc = Option::<
-    unsafe extern "C" fn(*mut libc::c_void, *const i8, ...) -> (),
->;
+pub type xmlValidityWarningFunc =
+    Option<unsafe extern "C" fn(*mut libc::c_void, *const i8, ...) -> ()>;
+pub type xmlValidityErrorFunc =
+    Option<unsafe extern "C" fn(*mut libc::c_void, *const i8, ...) -> ()>;
 pub type xmlParserNodeInfoSeq = _xmlParserNodeInfoSeq;
 #[derive(Copy, Clone)]
 #[repr(C)]
@@ -879,19 +795,13 @@ pub struct _xmlSAXHandler {
     pub endElementNs: endElementNsSAX2Func,
     pub serror: xmlStructuredErrorFunc,
 }
-pub type xmlStructuredErrorFunc = Option::<
-    unsafe extern "C" fn(*mut libc::c_void, xmlErrorPtr) -> (),
->;
+pub type xmlStructuredErrorFunc =
+    Option<unsafe extern "C" fn(*mut libc::c_void, xmlErrorPtr) -> ()>;
 pub type xmlErrorPtr = *mut xmlError;
-pub type endElementNsSAX2Func = Option::<
-    unsafe extern "C" fn(
-        *mut libc::c_void,
-        *const xmlChar,
-        *const xmlChar,
-        *const xmlChar,
-    ) -> (),
+pub type endElementNsSAX2Func = Option<
+    unsafe extern "C" fn(*mut libc::c_void, *const xmlChar, *const xmlChar, *const xmlChar) -> (),
 >;
-pub type startElementNsSAX2Func = Option::<
+pub type startElementNsSAX2Func = Option<
     unsafe extern "C" fn(
         *mut libc::c_void,
         *const xmlChar,
@@ -904,20 +814,13 @@ pub type startElementNsSAX2Func = Option::<
         *mut *const xmlChar,
     ) -> (),
 >;
-pub type externalSubsetSAXFunc = Option::<
-    unsafe extern "C" fn(
-        *mut libc::c_void,
-        *const xmlChar,
-        *const xmlChar,
-        *const xmlChar,
-    ) -> (),
+pub type externalSubsetSAXFunc = Option<
+    unsafe extern "C" fn(*mut libc::c_void, *const xmlChar, *const xmlChar, *const xmlChar) -> (),
 >;
-pub type cdataBlockSAXFunc = Option::<
-    unsafe extern "C" fn(*mut libc::c_void, *const xmlChar, i32) -> (),
->;
-pub type getParameterEntitySAXFunc = Option::<
-    unsafe extern "C" fn(*mut libc::c_void, *const xmlChar) -> xmlEntityPtr,
->;
+pub type cdataBlockSAXFunc =
+    Option<unsafe extern "C" fn(*mut libc::c_void, *const xmlChar, i32) -> ()>;
+pub type getParameterEntitySAXFunc =
+    Option<unsafe extern "C" fn(*mut libc::c_void, *const xmlChar) -> xmlEntityPtr>;
 pub type xmlEntityPtr = *mut xmlEntity;
 pub type xmlEntity = _xmlEntity;
 #[derive(Copy, Clone)]
@@ -950,54 +853,35 @@ pub const XML_INTERNAL_PARAMETER_ENTITY: xmlEntityType = 4;
 pub const XML_EXTERNAL_GENERAL_UNPARSED_ENTITY: xmlEntityType = 3;
 pub const XML_EXTERNAL_GENERAL_PARSED_ENTITY: xmlEntityType = 2;
 pub const XML_INTERNAL_GENERAL_ENTITY: xmlEntityType = 1;
-pub type fatalErrorSAXFunc = Option::<
-    unsafe extern "C" fn(*mut libc::c_void, *const i8, ...) -> (),
->;
-pub type errorSAXFunc = Option::<
-    unsafe extern "C" fn(*mut libc::c_void, *const i8, ...) -> (),
->;
-pub type warningSAXFunc = Option::<
-    unsafe extern "C" fn(*mut libc::c_void, *const i8, ...) -> (),
->;
-pub type commentSAXFunc = Option::<
-    unsafe extern "C" fn(*mut libc::c_void, *const xmlChar) -> (),
->;
-pub type processingInstructionSAXFunc = Option::<
-    unsafe extern "C" fn(*mut libc::c_void, *const xmlChar, *const xmlChar) -> (),
->;
-pub type ignorableWhitespaceSAXFunc = Option::<
-    unsafe extern "C" fn(*mut libc::c_void, *const xmlChar, i32) -> (),
->;
-pub type charactersSAXFunc = Option::<
-    unsafe extern "C" fn(*mut libc::c_void, *const xmlChar, i32) -> (),
->;
-pub type referenceSAXFunc = Option::<
-    unsafe extern "C" fn(*mut libc::c_void, *const xmlChar) -> (),
->;
-pub type endElementSAXFunc = Option::<
-    unsafe extern "C" fn(*mut libc::c_void, *const xmlChar) -> (),
->;
-pub type startElementSAXFunc = Option::<
-    unsafe extern "C" fn(*mut libc::c_void, *const xmlChar, *mut *const xmlChar) -> (),
->;
-pub type endDocumentSAXFunc = Option::<unsafe extern "C" fn(*mut libc::c_void) -> ()>;
-pub type startDocumentSAXFunc = Option::<unsafe extern "C" fn(*mut libc::c_void) -> ()>;
-pub type setDocumentLocatorSAXFunc = Option::<
-    unsafe extern "C" fn(*mut libc::c_void, xmlSAXLocatorPtr) -> (),
->;
+pub type fatalErrorSAXFunc = Option<unsafe extern "C" fn(*mut libc::c_void, *const i8, ...) -> ()>;
+pub type errorSAXFunc = Option<unsafe extern "C" fn(*mut libc::c_void, *const i8, ...) -> ()>;
+pub type warningSAXFunc = Option<unsafe extern "C" fn(*mut libc::c_void, *const i8, ...) -> ()>;
+pub type commentSAXFunc = Option<unsafe extern "C" fn(*mut libc::c_void, *const xmlChar) -> ()>;
+pub type processingInstructionSAXFunc =
+    Option<unsafe extern "C" fn(*mut libc::c_void, *const xmlChar, *const xmlChar) -> ()>;
+pub type ignorableWhitespaceSAXFunc =
+    Option<unsafe extern "C" fn(*mut libc::c_void, *const xmlChar, i32) -> ()>;
+pub type charactersSAXFunc =
+    Option<unsafe extern "C" fn(*mut libc::c_void, *const xmlChar, i32) -> ()>;
+pub type referenceSAXFunc = Option<unsafe extern "C" fn(*mut libc::c_void, *const xmlChar) -> ()>;
+pub type endElementSAXFunc = Option<unsafe extern "C" fn(*mut libc::c_void, *const xmlChar) -> ()>;
+pub type startElementSAXFunc =
+    Option<unsafe extern "C" fn(*mut libc::c_void, *const xmlChar, *mut *const xmlChar) -> ()>;
+pub type endDocumentSAXFunc = Option<unsafe extern "C" fn(*mut libc::c_void) -> ()>;
+pub type startDocumentSAXFunc = Option<unsafe extern "C" fn(*mut libc::c_void) -> ()>;
+pub type setDocumentLocatorSAXFunc =
+    Option<unsafe extern "C" fn(*mut libc::c_void, xmlSAXLocatorPtr) -> ()>;
 pub type xmlSAXLocatorPtr = *mut xmlSAXLocator;
 pub type xmlSAXLocator = _xmlSAXLocator;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlSAXLocator {
-    pub getPublicId: Option::<unsafe extern "C" fn(*mut libc::c_void) -> *const xmlChar>,
-    pub getSystemId: Option::<unsafe extern "C" fn(*mut libc::c_void) -> *const xmlChar>,
-    pub getLineNumber: Option::<unsafe extern "C" fn(*mut libc::c_void) -> i32>,
-    pub getColumnNumber: Option::<
-        unsafe extern "C" fn(*mut libc::c_void) -> i32,
-    >,
+    pub getPublicId: Option<unsafe extern "C" fn(*mut libc::c_void) -> *const xmlChar>,
+    pub getSystemId: Option<unsafe extern "C" fn(*mut libc::c_void) -> *const xmlChar>,
+    pub getLineNumber: Option<unsafe extern "C" fn(*mut libc::c_void) -> i32>,
+    pub getColumnNumber: Option<unsafe extern "C" fn(*mut libc::c_void) -> i32>,
 }
-pub type unparsedEntityDeclSAXFunc = Option::<
+pub type unparsedEntityDeclSAXFunc = Option<
     unsafe extern "C" fn(
         *mut libc::c_void,
         *const xmlChar,
@@ -1006,13 +890,8 @@ pub type unparsedEntityDeclSAXFunc = Option::<
         *const xmlChar,
     ) -> (),
 >;
-pub type elementDeclSAXFunc = Option::<
-    unsafe extern "C" fn(
-        *mut libc::c_void,
-        *const xmlChar,
-        i32,
-        xmlElementContentPtr,
-    ) -> (),
+pub type elementDeclSAXFunc = Option<
+    unsafe extern "C" fn(*mut libc::c_void, *const xmlChar, i32, xmlElementContentPtr) -> (),
 >;
 pub type xmlElementContentPtr = *mut xmlElementContent;
 pub type xmlElementContent = _xmlElementContent;
@@ -1037,7 +916,7 @@ pub const XML_ELEMENT_CONTENT_OR: xmlElementContentType = 4;
 pub const XML_ELEMENT_CONTENT_SEQ: xmlElementContentType = 3;
 pub const XML_ELEMENT_CONTENT_ELEMENT: xmlElementContentType = 2;
 pub const XML_ELEMENT_CONTENT_PCDATA: xmlElementContentType = 1;
-pub type attributeDeclSAXFunc = Option::<
+pub type attributeDeclSAXFunc = Option<
     unsafe extern "C" fn(
         *mut libc::c_void,
         *const xmlChar,
@@ -1056,15 +935,10 @@ pub struct _xmlEnumeration {
     pub next: *mut _xmlEnumeration,
     pub name: *const xmlChar,
 }
-pub type notationDeclSAXFunc = Option::<
-    unsafe extern "C" fn(
-        *mut libc::c_void,
-        *const xmlChar,
-        *const xmlChar,
-        *const xmlChar,
-    ) -> (),
+pub type notationDeclSAXFunc = Option<
+    unsafe extern "C" fn(*mut libc::c_void, *const xmlChar, *const xmlChar, *const xmlChar) -> (),
 >;
-pub type entityDeclSAXFunc = Option::<
+pub type entityDeclSAXFunc = Option<
     unsafe extern "C" fn(
         *mut libc::c_void,
         *const xmlChar,
@@ -1074,32 +948,16 @@ pub type entityDeclSAXFunc = Option::<
         *mut xmlChar,
     ) -> (),
 >;
-pub type getEntitySAXFunc = Option::<
-    unsafe extern "C" fn(*mut libc::c_void, *const xmlChar) -> xmlEntityPtr,
+pub type getEntitySAXFunc =
+    Option<unsafe extern "C" fn(*mut libc::c_void, *const xmlChar) -> xmlEntityPtr>;
+pub type resolveEntitySAXFunc = Option<
+    unsafe extern "C" fn(*mut libc::c_void, *const xmlChar, *const xmlChar) -> xmlParserInputPtr,
 >;
-pub type resolveEntitySAXFunc = Option::<
-    unsafe extern "C" fn(
-        *mut libc::c_void,
-        *const xmlChar,
-        *const xmlChar,
-    ) -> xmlParserInputPtr,
->;
-pub type hasExternalSubsetSAXFunc = Option::<
-    unsafe extern "C" fn(*mut libc::c_void) -> i32,
->;
-pub type hasInternalSubsetSAXFunc = Option::<
-    unsafe extern "C" fn(*mut libc::c_void) -> i32,
->;
-pub type isStandaloneSAXFunc = Option::<
-    unsafe extern "C" fn(*mut libc::c_void) -> i32,
->;
-pub type internalSubsetSAXFunc = Option::<
-    unsafe extern "C" fn(
-        *mut libc::c_void,
-        *const xmlChar,
-        *const xmlChar,
-        *const xmlChar,
-    ) -> (),
+pub type hasExternalSubsetSAXFunc = Option<unsafe extern "C" fn(*mut libc::c_void) -> i32>;
+pub type hasInternalSubsetSAXFunc = Option<unsafe extern "C" fn(*mut libc::c_void) -> i32>;
+pub type isStandaloneSAXFunc = Option<unsafe extern "C" fn(*mut libc::c_void) -> i32>;
+pub type internalSubsetSAXFunc = Option<
+    unsafe extern "C" fn(*mut libc::c_void, *const xmlChar, *const xmlChar, *const xmlChar) -> (),
 >;
 pub type xmlParserCtxt = _xmlParserCtxt;
 pub type xmlParserCtxtPtr = *mut xmlParserCtxt;
@@ -1159,7 +1017,7 @@ pub struct _xmlElement {
 pub type xmlElement = _xmlElement;
 pub type xmlElementPtr = *mut xmlElement;
 pub type xmlNsPtr = *mut xmlNs;
-pub type xmlFreeFunc = Option::<unsafe extern "C" fn(*mut libc::c_void) -> ()>;
+pub type xmlFreeFunc = Option<unsafe extern "C" fn(*mut libc::c_void) -> ()>;
 pub type xmlValidCtxtPtr = *mut xmlValidCtxt;
 pub type xmlCatalog = _xmlCatalog;
 pub type xmlCatalogPtr = *mut xmlCatalog;
@@ -1226,16 +1084,10 @@ pub struct _xmlXPathContext {
     pub opCount: u64,
     pub depth: i32,
 }
-pub type xmlXPathFuncLookupFunc = Option::<
-    unsafe extern "C" fn(
-        *mut libc::c_void,
-        *const xmlChar,
-        *const xmlChar,
-    ) -> xmlXPathFunction,
+pub type xmlXPathFuncLookupFunc = Option<
+    unsafe extern "C" fn(*mut libc::c_void, *const xmlChar, *const xmlChar) -> xmlXPathFunction,
 >;
-pub type xmlXPathFunction = Option::<
-    unsafe extern "C" fn(xmlXPathParserContextPtr, i32) -> (),
->;
+pub type xmlXPathFunction = Option<unsafe extern "C" fn(xmlXPathParserContextPtr, i32) -> ()>;
 pub type xmlXPathParserContextPtr = *mut xmlXPathParserContext;
 pub type xmlXPathParserContext = _xmlXPathParserContext;
 #[derive(Copy, Clone)]
@@ -1290,12 +1142,8 @@ pub const XPATH_NODESET: xmlXPathObjectType = 1;
 pub const XPATH_UNDEFINED: xmlXPathObjectType = 0;
 pub type xmlXPathContextPtr = *mut xmlXPathContext;
 pub type xmlXPathContext = _xmlXPathContext;
-pub type xmlXPathVariableLookupFunc = Option::<
-    unsafe extern "C" fn(
-        *mut libc::c_void,
-        *const xmlChar,
-        *const xmlChar,
-    ) -> xmlXPathObjectPtr,
+pub type xmlXPathVariableLookupFunc = Option<
+    unsafe extern "C" fn(*mut libc::c_void, *const xmlChar, *const xmlChar) -> xmlXPathObjectPtr,
 >;
 pub type xmlXPathAxisPtr = *mut xmlXPathAxis;
 pub type xmlXPathAxis = _xmlXPathAxis;
@@ -1305,12 +1153,8 @@ pub struct _xmlXPathAxis {
     pub name: *const xmlChar,
     pub func: xmlXPathAxisFunc,
 }
-pub type xmlXPathAxisFunc = Option::<
-    unsafe extern "C" fn(
-        xmlXPathParserContextPtr,
-        xmlXPathObjectPtr,
-    ) -> xmlXPathObjectPtr,
->;
+pub type xmlXPathAxisFunc =
+    Option<unsafe extern "C" fn(xmlXPathParserContextPtr, xmlXPathObjectPtr) -> xmlXPathObjectPtr>;
 pub type xmlXPathTypePtr = *mut xmlXPathType;
 pub type xmlXPathType = _xmlXPathType;
 #[derive(Copy, Clone)]
@@ -1319,9 +1163,7 @@ pub struct _xmlXPathType {
     pub name: *const xmlChar,
     pub func: xmlXPathConvertFunc,
 }
-pub type xmlXPathConvertFunc = Option::<
-    unsafe extern "C" fn(xmlXPathObjectPtr, i32) -> i32,
->;
+pub type xmlXPathConvertFunc = Option<unsafe extern "C" fn(xmlXPathObjectPtr, i32) -> i32>;
 pub type xmlRelaxNG = _xmlRelaxNG;
 pub type xmlRelaxNGPtr = *mut xmlRelaxNG;
 pub type xmlRelaxNGParserCtxt = _xmlRelaxNGParserCtxt;
@@ -1345,709 +1187,636 @@ pub struct PyxmlNode_Object {
     pub obj: xmlNodePtr,
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_intWrap(mut val: i32) -> *mut PyObject {
+pub extern "C" fn libxml_intWrap(mut val: i32) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
-    ret = PyInt_FromLong(val as i64);
+    ret = unsafe { PyInt_FromLong(val as i64) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_longWrap(mut val: i64) -> *mut PyObject {
+pub extern "C" fn libxml_longWrap(mut val: i64) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
-    ret = PyLong_FromLong(val);
+    ret = unsafe { PyLong_FromLong(val) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_doubleWrap(mut val: f64) -> *mut PyObject {
+pub extern "C" fn libxml_doubleWrap(mut val: f64) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
-    ret = PyFloat_FromDouble(val);
+    ret = unsafe { PyFloat_FromDouble(val) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_charPtrWrap(
-    mut str: *mut i8,
-) -> *mut PyObject {
+pub extern "C" fn libxml_charPtrWrap(mut str: *mut i8) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if str.is_null() {
-        let ref mut fresh0 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh0 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh0 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyString_FromString(str);
-    xmlFree.expect("non-null function pointer")(str as *mut libc::c_void);
+    ret = unsafe { PyString_FromString(str) };
+    (unsafe { xmlFree.expect("non-null function pointer")(str as *mut libc::c_void) });
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_charPtrConstWrap(
-    mut str: *const i8,
-) -> *mut PyObject {
+pub extern "C" fn libxml_charPtrConstWrap(mut str: *const i8) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if str.is_null() {
-        let ref mut fresh1 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh1 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh1 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyString_FromString(str);
+    ret = unsafe { PyString_FromString(str) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlCharPtrWrap(mut str: *mut xmlChar) -> *mut PyObject {
+pub extern "C" fn libxml_xmlCharPtrWrap(mut str: *mut xmlChar) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if str.is_null() {
-        let ref mut fresh2 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh2 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh2 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyString_FromString(str as *mut i8);
-    xmlFree.expect("non-null function pointer")(str as *mut libc::c_void);
+    ret = unsafe { PyString_FromString(str as *mut i8) };
+    (unsafe { xmlFree.expect("non-null function pointer")(str as *mut libc::c_void) });
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlCharPtrConstWrap(
-    mut str: *const xmlChar,
-) -> *mut PyObject {
+pub extern "C" fn libxml_xmlCharPtrConstWrap(mut str: *const xmlChar) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if str.is_null() {
-        let ref mut fresh3 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh3 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh3 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyString_FromString(str as *mut i8);
+    ret = unsafe { PyString_FromString(str as *mut i8) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_constcharPtrWrap(
-    mut str: *const i8,
-) -> *mut PyObject {
+pub extern "C" fn libxml_constcharPtrWrap(mut str: *const i8) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if str.is_null() {
-        let ref mut fresh4 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh4 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh4 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyString_FromString(str);
+    ret = unsafe { PyString_FromString(str) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_constxmlCharPtrWrap(
-    mut str: *const xmlChar,
-) -> *mut PyObject {
+pub extern "C" fn libxml_constxmlCharPtrWrap(mut str: *const xmlChar) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if str.is_null() {
-        let ref mut fresh5 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh5 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh5 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyString_FromString(str as *mut i8);
+    ret = unsafe { PyString_FromString(str as *mut i8) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlDocPtrWrap(mut doc: xmlDocPtr) -> *mut PyObject {
+pub extern "C" fn libxml_xmlDocPtrWrap(mut doc: xmlDocPtr) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if doc.is_null() {
-        let ref mut fresh6 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh6 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh6 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyCapsule_New(
+    ret = unsafe { PyCapsule_New(
         doc as *mut libc::c_void,
         b"xmlDocPtr\0" as *const u8 as *const i8 as *mut i8,
         None,
-    );
+    ) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlNodePtrWrap(mut node: xmlNodePtr) -> *mut PyObject {
+pub extern "C" fn libxml_xmlNodePtrWrap(mut node: xmlNodePtr) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if node.is_null() {
-        let ref mut fresh7 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh7 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh7 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyCapsule_New(
+    ret = unsafe { PyCapsule_New(
         node as *mut libc::c_void,
         b"xmlNodePtr\0" as *const u8 as *const i8 as *mut i8,
         None,
-    );
+    ) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlURIPtrWrap(mut uri: xmlURIPtr) -> *mut PyObject {
+pub extern "C" fn libxml_xmlURIPtrWrap(mut uri: xmlURIPtr) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if uri.is_null() {
-        let ref mut fresh8 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh8 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh8 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyCapsule_New(
+    ret = unsafe { PyCapsule_New(
         uri as *mut libc::c_void,
         b"xmlURIPtr\0" as *const u8 as *const i8 as *mut i8,
         None,
-    );
+    ) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlNsPtrWrap(mut ns: xmlNsPtr) -> *mut PyObject {
+pub extern "C" fn libxml_xmlNsPtrWrap(mut ns: xmlNsPtr) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if ns.is_null() {
-        let ref mut fresh9 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh9 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh9 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyCapsule_New(
+    ret = unsafe { PyCapsule_New(
         ns as *mut libc::c_void,
         b"xmlNsPtr\0" as *const u8 as *const i8 as *mut i8,
         None,
-    );
+    ) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlAttrPtrWrap(mut attr: xmlAttrPtr) -> *mut PyObject {
+pub extern "C" fn libxml_xmlAttrPtrWrap(mut attr: xmlAttrPtr) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if attr.is_null() {
-        let ref mut fresh10 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh10 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh10 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyCapsule_New(
+    ret = unsafe { PyCapsule_New(
         attr as *mut libc::c_void,
         b"xmlAttrPtr\0" as *const u8 as *const i8 as *mut i8,
         None,
-    );
+    ) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlAttributePtrWrap(
-    mut attr: xmlAttributePtr,
-) -> *mut PyObject {
+pub extern "C" fn libxml_xmlAttributePtrWrap(mut attr: xmlAttributePtr) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if attr.is_null() {
-        let ref mut fresh11 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh11 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh11 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyCapsule_New(
+    ret = unsafe { PyCapsule_New(
         attr as *mut libc::c_void,
         b"xmlAttributePtr\0" as *const u8 as *const i8 as *mut i8,
         None,
-    );
+    ) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlElementPtrWrap(
-    mut elem: xmlElementPtr,
-) -> *mut PyObject {
+pub extern "C" fn libxml_xmlElementPtrWrap(mut elem: xmlElementPtr) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if elem.is_null() {
-        let ref mut fresh12 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh12 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh12 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyCapsule_New(
+    ret = unsafe { PyCapsule_New(
         elem as *mut libc::c_void,
         b"xmlElementPtr\0" as *const u8 as *const i8 as *mut i8,
         None,
-    );
+    ) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlXPathContextPtrWrap(
-    mut ctxt: xmlXPathContextPtr,
-) -> *mut PyObject {
+pub extern "C" fn libxml_xmlXPathContextPtrWrap(mut ctxt: xmlXPathContextPtr) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if ctxt.is_null() {
-        let ref mut fresh13 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh13 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh13 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyCapsule_New(
+    ret = unsafe { PyCapsule_New(
         ctxt as *mut libc::c_void,
         b"xmlXPathContextPtr\0" as *const u8 as *const i8 as *mut i8,
         None,
-    );
+    ) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlXPathParserContextPtrWrap(
+pub extern "C" fn libxml_xmlXPathParserContextPtrWrap(
     mut ctxt: xmlXPathParserContextPtr,
 ) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if ctxt.is_null() {
-        let ref mut fresh14 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh14 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh14 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyCapsule_New(
+    ret = unsafe { PyCapsule_New(
         ctxt as *mut libc::c_void,
-        b"xmlXPathParserContextPtr\0" as *const u8 as *const i8
-            as *mut i8,
+        b"xmlXPathParserContextPtr\0" as *const u8 as *const i8 as *mut i8,
         None,
-    );
+    ) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlParserCtxtPtrWrap(
-    mut ctxt: xmlParserCtxtPtr,
-) -> *mut PyObject {
+pub extern "C" fn libxml_xmlParserCtxtPtrWrap(mut ctxt: xmlParserCtxtPtr) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if ctxt.is_null() {
-        let ref mut fresh15 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh15 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh15 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyCapsule_New(
+    ret = unsafe { PyCapsule_New(
         ctxt as *mut libc::c_void,
         b"xmlParserCtxtPtr\0" as *const u8 as *const i8 as *mut i8,
         None,
-    );
+    ) };
     return ret;
 }
-unsafe extern "C" fn libxml_xmlXPathDestructNsNode(mut cap: *mut PyObject) {
-    xmlXPathNodeSetFreeNs(
-        PyCapsule_GetPointer(cap, b"xmlNsPtr\0" as *const u8 as *const i8)
-            as xmlNsPtr,
-    );
+extern "C" fn libxml_xmlXPathDestructNsNode(mut cap: *mut PyObject) {
+    (unsafe { xmlXPathNodeSetFreeNs(
+        PyCapsule_GetPointer(cap, b"xmlNsPtr\0" as *const u8 as *const i8) as xmlNsPtr,
+    ) });
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlXPathObjectPtrWrap(
-    mut obj: xmlXPathObjectPtr,
-) -> *mut PyObject {
+pub extern "C" fn libxml_xmlXPathObjectPtrWrap(mut obj: xmlXPathObjectPtr) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if obj.is_null() {
-        let ref mut fresh16 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh16 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh16 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    match (*obj).type_0 as u32 {
+    match (unsafe { (*obj).type_0 }) as u32 {
         9 => {
-            if ((*obj).nodesetval).is_null()
-                || (*(*obj).nodesetval).nodeNr == 0 as i32
-                || ((*(*obj).nodesetval).nodeTab).is_null()
+            if (unsafe { (*obj).nodesetval }).is_null()
+                || (unsafe { (*(*obj).nodesetval).nodeNr }) == 0 as i32
+                || (unsafe { (*(*obj).nodesetval).nodeTab }).is_null()
             {
-                ret = PyList_New(0 as i32 as Py_ssize_t);
+                ret = unsafe { PyList_New(0 as i32 as Py_ssize_t) };
             } else {
                 let mut i: i32 = 0;
                 let mut len: i32 = 0 as i32;
                 let mut node: xmlNodePtr = 0 as *mut xmlNode;
-                node = (**((*(*obj).nodesetval).nodeTab)
-                    .offset(0 as i32 as isize))
-                    .children;
+                node = unsafe { (**((*(*obj).nodesetval).nodeTab).offset(0 as i32 as isize)).children };
                 while !node.is_null() {
                     len += 1;
-                    node = (*node).next;
+                    node = unsafe { (*node).next };
                 }
-                ret = PyList_New(len as Py_ssize_t);
-                node = (**((*(*obj).nodesetval).nodeTab)
-                    .offset(0 as i32 as isize))
-                    .children;
+                ret = unsafe { PyList_New(len as Py_ssize_t) };
+                node = unsafe { (**((*(*obj).nodesetval).nodeTab).offset(0 as i32 as isize)).children };
                 i = 0 as i32;
                 while i < len {
-                    PyList_SetItem(ret, i as Py_ssize_t, libxml_xmlNodePtrWrap(node));
-                    node = (*node).next;
+                    (unsafe { PyList_SetItem(ret, i as Py_ssize_t, libxml_xmlNodePtrWrap(node)) });
+                    node = unsafe { (*node).next };
                     i += 1;
                 }
             }
             return ret;
-        }
+        },
         1 => {
-            if ((*obj).nodesetval).is_null()
-                || (*(*obj).nodesetval).nodeNr == 0 as i32
-            {
-                ret = PyList_New(0 as i32 as Py_ssize_t);
+            if (unsafe { (*obj).nodesetval }).is_null() || (unsafe { (*(*obj).nodesetval).nodeNr }) == 0 as i32 {
+                ret = unsafe { PyList_New(0 as i32 as Py_ssize_t) };
             } else {
                 let mut i_0: i32 = 0;
                 let mut node_0: xmlNodePtr = 0 as *mut xmlNode;
-                ret = PyList_New((*(*obj).nodesetval).nodeNr as Py_ssize_t);
+                ret = unsafe { PyList_New((*(*obj).nodesetval).nodeNr as Py_ssize_t) };
                 i_0 = 0 as i32;
-                while i_0 < (*(*obj).nodesetval).nodeNr {
-                    node_0 = *((*(*obj).nodesetval).nodeTab).offset(i_0 as isize);
-                    if (*node_0).type_0 as u32
-                        == XML_NAMESPACE_DECL as i32 as u32
-                    {
-                        let mut ns: *mut PyObject = PyCapsule_New(
+                while i_0 < (unsafe { (*(*obj).nodesetval).nodeNr }) {
+                    node_0 = unsafe { *((*(*obj).nodesetval).nodeTab).offset(i_0 as isize) };
+                    if (unsafe { (*node_0).type_0 }) as u32 == XML_NAMESPACE_DECL as i32 as u32 {
+                        let mut ns: *mut PyObject = unsafe { PyCapsule_New(
                             node_0 as *mut libc::c_void,
-                            b"xmlNsPtr\0" as *const u8 as *const i8
-                                as *mut i8,
+                            b"xmlNsPtr\0" as *const u8 as *const i8 as *mut i8,
                             Some(
                                 libxml_xmlXPathDestructNsNode
                                     as unsafe extern "C" fn(*mut PyObject) -> (),
                             ),
-                        );
-                        PyList_SetItem(ret, i_0 as Py_ssize_t, ns);
-                        let ref mut fresh17 = *((*(*obj).nodesetval).nodeTab)
-                            .offset(i_0 as isize);
+                        ) };
+                        (unsafe { PyList_SetItem(ret, i_0 as Py_ssize_t, ns) });
+                        let fresh17 = unsafe { &mut (*((*(*obj).nodesetval).nodeTab).offset(i_0 as isize)) };
                         *fresh17 = 0 as xmlNodePtr;
                     } else {
-                        PyList_SetItem(
-                            ret,
-                            i_0 as Py_ssize_t,
-                            libxml_xmlNodePtrWrap(node_0),
-                        );
+                        (unsafe { PyList_SetItem(ret, i_0 as Py_ssize_t, libxml_xmlNodePtrWrap(node_0)) });
                     }
                     i_0 += 1;
                 }
             }
-        }
+        },
         2 => {
-            ret = PyInt_FromLong((*obj).boolval as i64);
-        }
+            ret = unsafe { PyInt_FromLong((*obj).boolval as i64) };
+        },
         3 => {
-            ret = PyFloat_FromDouble((*obj).floatval);
-        }
+            ret = unsafe { PyFloat_FromDouble((*obj).floatval) };
+        },
         4 => {
-            ret = PyString_FromString((*obj).stringval as *mut i8);
-        }
+            ret = unsafe { PyString_FromString((*obj).stringval as *mut i8) };
+        },
         _ => {
-            let ref mut fresh18 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+            let fresh18 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
             *fresh18 += 1;
-            ret = &mut _Py_NoneStruct;
-        }
+            ret = unsafe { &mut _Py_NoneStruct };
+        },
     }
-    xmlXPathFreeObject(obj);
+    (unsafe { xmlXPathFreeObject(obj) });
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlXPathObjectPtrConvert(
-    mut obj: *mut PyObject,
-) -> xmlXPathObjectPtr {
+pub extern "C" fn libxml_xmlXPathObjectPtrConvert(mut obj: *mut PyObject) -> xmlXPathObjectPtr {
     let mut ret: xmlXPathObjectPtr = 0 as xmlXPathObjectPtr;
     if obj.is_null() {
         return 0 as xmlXPathObjectPtr;
     }
-    if (*obj).ob_type == &mut PyFloat_Type as *mut PyTypeObject
-        || PyType_IsSubtype((*obj).ob_type, &mut PyFloat_Type) != 0
+    if (unsafe { (*obj).ob_type }) == (unsafe { &mut PyFloat_Type }) as *mut PyTypeObject
+        || (unsafe { PyType_IsSubtype((*obj).ob_type, &mut PyFloat_Type) }) != 0
     {
-        ret = xmlXPathNewFloat((*(obj as *mut PyFloatObject)).ob_fval);
-    } else if (*(*obj).ob_type).tp_flags & (1 as i64) << 24 as i32
-            != 0 as i32 as i64
-        {
-        ret = xmlXPathNewFloat((*(obj as *mut PyIntObject)).ob_ival as f64);
-    } else if (*obj).ob_type == &mut PyBool_Type as *mut PyTypeObject {
-        if obj == &mut _Py_TrueStruct as *mut PyIntObject as *mut PyObject {
-            ret = xmlXPathNewBoolean(1 as i32);
+        ret = unsafe { xmlXPathNewFloat((*(obj as *mut PyFloatObject)).ob_fval) };
+    } else if (unsafe { (*(*obj).ob_type).tp_flags }) & (1 as i64) << 24 as i32 != 0 as i32 as i64 {
+        ret = unsafe { xmlXPathNewFloat((*(obj as *mut PyIntObject)).ob_ival as f64) };
+    } else if (unsafe { (*obj).ob_type }) == (unsafe { &mut PyBool_Type }) as *mut PyTypeObject {
+        if obj == (unsafe { &mut _Py_TrueStruct }) as *mut PyIntObject as *mut PyObject {
+            ret = unsafe { xmlXPathNewBoolean(1 as i32) };
         } else {
-            ret = xmlXPathNewBoolean(0 as i32);
+            ret = unsafe { xmlXPathNewBoolean(0 as i32) };
         }
-    } else if (*(*obj).ob_type).tp_flags & (1 as i64) << 27 as i32
-            != 0 as i32 as i64
-        {
+    } else if (unsafe { (*(*obj).ob_type).tp_flags }) & (1 as i64) << 27 as i32 != 0 as i32 as i64 {
         let mut str: *mut xmlChar = 0 as *mut xmlChar;
-        str = xmlStrndup(
+        str = unsafe { xmlStrndup(
             ((*(obj as *mut PyStringObject)).ob_sval).as_mut_ptr() as *const xmlChar,
             (*(obj as *mut PyVarObject)).ob_size as i32,
-        );
-        ret = xmlXPathWrapString(str);
-    } else if (*(*obj).ob_type).tp_flags & (1 as i64) << 28 as i32
-            != 0 as i32 as i64
-        {
+        ) };
+        ret = unsafe { xmlXPathWrapString(str) };
+    } else if (unsafe { (*(*obj).ob_type).tp_flags }) & (1 as i64) << 28 as i32 != 0 as i32 as i64 {
         let mut str_0: *mut xmlChar = 0 as *mut xmlChar;
         let mut b: *mut PyObject = 0 as *mut PyObject;
-        b = PyUnicodeUCS4_AsUTF8String(obj);
+        b = unsafe { PyUnicodeUCS4_AsUTF8String(obj) };
         if !b.is_null() {
-            str_0 = xmlStrndup(
+            str_0 = unsafe { xmlStrndup(
                 ((*(b as *mut PyStringObject)).ob_sval).as_mut_ptr() as *const xmlChar,
                 (*(b as *mut PyVarObject)).ob_size as i32,
-            );
-            let ref mut fresh19 = (*b).ob_refcnt;
+            ) };
+            let fresh19 = unsafe { &mut ((*b).ob_refcnt) };
             *fresh19 -= 1;
             if !(*fresh19 != 0 as i32 as i64) {
-                (Some(((*(*b).ob_type).tp_dealloc).expect("non-null function pointer")))
-                    .expect("non-null function pointer")(b);
+                (unsafe { (Some(((*(*b).ob_type).tp_dealloc).expect("non-null function pointer")))
+                    .expect("non-null function pointer")(b) });
             }
         }
-        ret = xmlXPathWrapString(str_0);
-    } else if (*(*obj).ob_type).tp_flags & (1 as i64) << 25 as i32
-            != 0 as i32 as i64
-        {
+        ret = unsafe { xmlXPathWrapString(str_0) };
+    } else if (unsafe { (*(*obj).ob_type).tp_flags }) & (1 as i64) << 25 as i32 != 0 as i32 as i64 {
         let mut i: i32 = 0;
         let mut node: *mut PyObject = 0 as *mut PyObject;
         let mut cur: xmlNodePtr = 0 as *mut xmlNode;
         let mut set: xmlNodeSetPtr = 0 as *mut xmlNodeSet;
-        set = xmlXPathNodeSetCreate(0 as xmlNodePtr);
+        set = unsafe { xmlXPathNodeSetCreate(0 as xmlNodePtr) };
         i = 0 as i32;
-        while (i as i64) < PyList_Size(obj) {
-            node = PyList_GetItem(obj, i as Py_ssize_t);
-            if !(node.is_null() || ((*node).ob_type).is_null()) {
+        while (i as i64) < (unsafe { PyList_Size(obj) }) {
+            node = unsafe { PyList_GetItem(obj, i as Py_ssize_t) };
+            if !(node.is_null() || (unsafe { (*node).ob_type }).is_null()) {
                 cur = 0 as xmlNodePtr;
-                if (*node).ob_type == &mut PyCapsule_Type as *mut PyTypeObject {
-                    cur = if node == &mut _Py_NoneStruct as *mut PyObject {
+                if (unsafe { (*node).ob_type }) == (unsafe { &mut PyCapsule_Type }) as *mut PyTypeObject {
+                    cur = if node == (unsafe { &mut _Py_NoneStruct }) as *mut PyObject {
                         0 as xmlNodePtr
                     } else {
-                        (*(node as *mut PyxmlNode_Object)).obj
+                        unsafe { (*(node as *mut PyxmlNode_Object)).obj }
                     };
-                } else if PyObject_HasAttrString(
+                } else if (unsafe { PyObject_HasAttrString(node, b"_o\0" as *const u8 as *const i8 as *mut i8) })
+                    != 0
+                    && (unsafe { PyObject_HasAttrString(
                         node,
-                        b"_o\0" as *const u8 as *const i8 as *mut i8,
-                    ) != 0
-                        && PyObject_HasAttrString(
-                            node,
-                            b"get_doc\0" as *const u8 as *const i8
-                                as *mut i8,
-                        ) != 0
-                    {
+                        b"get_doc\0" as *const u8 as *const i8 as *mut i8,
+                    ) }) != 0
+                {
                     let mut wrapper: *mut PyObject = 0 as *mut PyObject;
-                    wrapper = PyObject_GetAttrString(
-                        node,
-                        b"_o\0" as *const u8 as *const i8 as *mut i8,
-                    );
+                    wrapper =
+                        unsafe { PyObject_GetAttrString(node, b"_o\0" as *const u8 as *const i8 as *mut i8) };
                     if !wrapper.is_null() {
-                        cur = if wrapper == &mut _Py_NoneStruct as *mut PyObject {
+                        cur = if wrapper == (unsafe { &mut _Py_NoneStruct }) as *mut PyObject {
                             0 as xmlNodePtr
                         } else {
-                            (*(wrapper as *mut PyxmlNode_Object)).obj
+                            unsafe { (*(wrapper as *mut PyxmlNode_Object)).obj }
                         };
                     }
                 }
                 if !cur.is_null() {
-                    xmlXPathNodeSetAdd(set, cur);
+                    (unsafe { xmlXPathNodeSetAdd(set, cur) });
                 }
             }
             i += 1;
         }
-        ret = xmlXPathWrapNodeSet(set);
+        ret = unsafe { xmlXPathWrapNodeSet(set) };
     }
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlValidCtxtPtrWrap(
-    mut valid: xmlValidCtxtPtr,
-) -> *mut PyObject {
+pub extern "C" fn libxml_xmlValidCtxtPtrWrap(mut valid: xmlValidCtxtPtr) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if valid.is_null() {
-        let ref mut fresh20 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh20 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh20 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyCapsule_New(
+    ret = unsafe { PyCapsule_New(
         valid as *mut libc::c_void,
         b"xmlValidCtxtPtr\0" as *const u8 as *const i8 as *mut i8,
         None,
-    );
+    ) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlCatalogPtrWrap(
-    mut catal: xmlCatalogPtr,
-) -> *mut PyObject {
+pub extern "C" fn libxml_xmlCatalogPtrWrap(mut catal: xmlCatalogPtr) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if catal.is_null() {
-        let ref mut fresh21 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh21 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh21 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyCapsule_New(
+    ret = unsafe { PyCapsule_New(
         catal as *mut libc::c_void,
         b"xmlCatalogPtr\0" as *const u8 as *const i8 as *mut i8,
         None,
-    );
+    ) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlOutputBufferPtrWrap(
-    mut buffer: xmlOutputBufferPtr,
-) -> *mut PyObject {
+pub extern "C" fn libxml_xmlOutputBufferPtrWrap(mut buffer: xmlOutputBufferPtr) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if buffer.is_null() {
-        let ref mut fresh22 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh22 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh22 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyCapsule_New(
+    ret = unsafe { PyCapsule_New(
         buffer as *mut libc::c_void,
         b"xmlOutputBufferPtr\0" as *const u8 as *const i8 as *mut i8,
         None,
-    );
+    ) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlParserInputBufferPtrWrap(
+pub extern "C" fn libxml_xmlParserInputBufferPtrWrap(
     mut buffer: xmlParserInputBufferPtr,
 ) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if buffer.is_null() {
-        let ref mut fresh23 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh23 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh23 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyCapsule_New(
+    ret = unsafe { PyCapsule_New(
         buffer as *mut libc::c_void,
-        b"xmlParserInputBufferPtr\0" as *const u8 as *const i8
-            as *mut i8,
+        b"xmlParserInputBufferPtr\0" as *const u8 as *const i8 as *mut i8,
         None,
-    );
+    ) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlRegexpPtrWrap(
-    mut regexp: xmlRegexpPtr,
-) -> *mut PyObject {
+pub extern "C" fn libxml_xmlRegexpPtrWrap(mut regexp: xmlRegexpPtr) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if regexp.is_null() {
-        let ref mut fresh24 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh24 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh24 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyCapsule_New(
+    ret = unsafe { PyCapsule_New(
         regexp as *mut libc::c_void,
         b"xmlRegexpPtr\0" as *const u8 as *const i8 as *mut i8,
         None,
-    );
+    ) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlTextReaderPtrWrap(
-    mut reader: xmlTextReaderPtr,
-) -> *mut PyObject {
+pub extern "C" fn libxml_xmlTextReaderPtrWrap(mut reader: xmlTextReaderPtr) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if reader.is_null() {
-        let ref mut fresh25 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh25 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh25 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyCapsule_New(
+    ret = unsafe { PyCapsule_New(
         reader as *mut libc::c_void,
         b"xmlTextReaderPtr\0" as *const u8 as *const i8 as *mut i8,
         None,
-    );
+    ) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlTextReaderLocatorPtrWrap(
+pub extern "C" fn libxml_xmlTextReaderLocatorPtrWrap(
     mut locator: xmlTextReaderLocatorPtr,
 ) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if locator.is_null() {
-        let ref mut fresh26 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh26 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh26 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyCapsule_New(
+    ret = unsafe { PyCapsule_New(
         locator,
-        b"xmlTextReaderLocatorPtr\0" as *const u8 as *const i8
-            as *mut i8,
+        b"xmlTextReaderLocatorPtr\0" as *const u8 as *const i8 as *mut i8,
         None,
-    );
+    ) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlRelaxNGPtrWrap(
-    mut ctxt: xmlRelaxNGPtr,
-) -> *mut PyObject {
+pub extern "C" fn libxml_xmlRelaxNGPtrWrap(mut ctxt: xmlRelaxNGPtr) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if ctxt.is_null() {
-        let ref mut fresh27 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh27 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh27 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyCapsule_New(
+    ret = unsafe { PyCapsule_New(
         ctxt as *mut libc::c_void,
         b"xmlRelaxNGPtr\0" as *const u8 as *const i8 as *mut i8,
         None,
-    );
+    ) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlRelaxNGParserCtxtPtrWrap(
+pub extern "C" fn libxml_xmlRelaxNGParserCtxtPtrWrap(
     mut ctxt: xmlRelaxNGParserCtxtPtr,
 ) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if ctxt.is_null() {
-        let ref mut fresh28 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh28 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh28 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyCapsule_New(
+    ret = unsafe { PyCapsule_New(
         ctxt as *mut libc::c_void,
-        b"xmlRelaxNGParserCtxtPtr\0" as *const u8 as *const i8
-            as *mut i8,
+        b"xmlRelaxNGParserCtxtPtr\0" as *const u8 as *const i8 as *mut i8,
         None,
-    );
+    ) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlRelaxNGValidCtxtPtrWrap(
+pub extern "C" fn libxml_xmlRelaxNGValidCtxtPtrWrap(
     mut valid: xmlRelaxNGValidCtxtPtr,
 ) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if valid.is_null() {
-        let ref mut fresh29 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh29 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh29 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyCapsule_New(
+    ret = unsafe { PyCapsule_New(
         valid as *mut libc::c_void,
-        b"xmlRelaxNGValidCtxtPtr\0" as *const u8 as *const i8
-            as *mut i8,
+        b"xmlRelaxNGValidCtxtPtr\0" as *const u8 as *const i8 as *mut i8,
         None,
-    );
+    ) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlSchemaPtrWrap(
-    mut ctxt: xmlSchemaPtr,
-) -> *mut PyObject {
+pub extern "C" fn libxml_xmlSchemaPtrWrap(mut ctxt: xmlSchemaPtr) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if ctxt.is_null() {
-        let ref mut fresh30 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh30 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh30 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyCapsule_New(
+    ret = unsafe { PyCapsule_New(
         ctxt as *mut libc::c_void,
         b"xmlSchemaPtr\0" as *const u8 as *const i8 as *mut i8,
         None,
-    );
+    ) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlSchemaParserCtxtPtrWrap(
+pub extern "C" fn libxml_xmlSchemaParserCtxtPtrWrap(
     mut ctxt: xmlSchemaParserCtxtPtr,
 ) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if ctxt.is_null() {
-        let ref mut fresh31 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh31 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh31 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyCapsule_New(
+    ret = unsafe { PyCapsule_New(
         ctxt as *mut libc::c_void,
-        b"xmlSchemaParserCtxtPtr\0" as *const u8 as *const i8
-            as *mut i8,
+        b"xmlSchemaParserCtxtPtr\0" as *const u8 as *const i8 as *mut i8,
         None,
-    );
+    ) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlSchemaValidCtxtPtrWrap(
+pub extern "C" fn libxml_xmlSchemaValidCtxtPtrWrap(
     mut valid: xmlSchemaValidCtxtPtr,
 ) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if valid.is_null() {
-        let ref mut fresh32 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh32 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh32 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyCapsule_New(
+    ret = unsafe { PyCapsule_New(
         valid as *mut libc::c_void,
-        b"xmlSchemaValidCtxtPtr\0" as *const u8 as *const i8
-            as *mut i8,
+        b"xmlSchemaValidCtxtPtr\0" as *const u8 as *const i8 as *mut i8,
         None,
-    );
+    ) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn libxml_xmlErrorPtrWrap(
-    mut error: xmlErrorPtr,
-) -> *mut PyObject {
+pub extern "C" fn libxml_xmlErrorPtrWrap(mut error: xmlErrorPtr) -> *mut PyObject {
     let mut ret: *mut PyObject = 0 as *mut PyObject;
     if error.is_null() {
-        let ref mut fresh33 = (*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt;
+        let fresh33 = unsafe { &mut ((*(&mut _Py_NoneStruct as *mut PyObject)).ob_refcnt) };
         *fresh33 += 1;
-        return &mut _Py_NoneStruct;
+        return unsafe { &mut _Py_NoneStruct };
     }
-    ret = PyCapsule_New(
+    ret = unsafe { PyCapsule_New(
         error as *mut libc::c_void,
         b"xmlErrorPtr\0" as *const u8 as *const i8 as *mut i8,
         None,
-    );
+    ) };
     return ret;
 }

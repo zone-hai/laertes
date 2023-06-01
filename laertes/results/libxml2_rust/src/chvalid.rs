@@ -1,15 +1,9 @@
-use ::libc;
-// #[derive(Copy, Clone)]
 
 pub type _xmlChSRange = crate::src::HTMLparser::_xmlChSRange;
 pub type xmlChSRange = crate::src::HTMLparser::_xmlChSRange;
-// #[derive(Copy, Clone)]
-
 pub type _xmlChLRange = crate::src::HTMLparser::_xmlChLRange;
 pub type xmlChLRange = crate::src::HTMLparser::_xmlChLRange;
-pub type xmlChLRangePtr = * mut crate::src::HTMLparser::_xmlChLRange;
-// #[derive(Copy, Clone)]
-
+pub type xmlChLRangePtr = *mut crate::src::HTMLparser::_xmlChLRange;
 pub type _xmlChRangeGroup = crate::src::HTMLparser::_xmlChRangeGroup;
 pub type xmlChRangeGroup = crate::src::HTMLparser::_xmlChRangeGroup;
 #[no_mangle]
@@ -1659,7 +1653,7 @@ pub static mut xmlIsBaseCharGroup: crate::src::HTMLparser::_xmlChRangeGroup = un
             nbShortRange: 197 as i32,
             nbLongRange: 0 as i32,
             shortRange: xmlIsBaseChar_srng.as_ptr(),
-            longRange: (0 as * const crate::src::HTMLparser::_xmlChLRange),
+            longRange: (0 as *const crate::src::HTMLparser::_xmlChLRange),
         };
         init
     }
@@ -1680,15 +1674,13 @@ static mut xmlIsChar_srng: [crate::src::HTMLparser::_xmlChSRange; 2] = [
         init
     },
 ];
-static mut xmlIsChar_lrng: [crate::src::HTMLparser::_xmlChLRange; 1] = [
-    {
-        let mut init = _xmlChLRange {
-            low: 0x10000 as i32 as u32,
-            high: 0x10ffff as i32 as u32,
-        };
-        init
-    },
-];
+static mut xmlIsChar_lrng: [crate::src::HTMLparser::_xmlChLRange; 1] = [{
+    let mut init = _xmlChLRange {
+        low: 0x10000 as i32 as u32,
+        high: 0x10ffff as i32 as u32,
+    };
+    init
+}];
 #[no_mangle]
 pub static mut xmlIsCharGroup: crate::src::HTMLparser::_xmlChRangeGroup = unsafe {
     {
@@ -2375,7 +2367,7 @@ pub static mut xmlIsCombiningGroup: crate::src::HTMLparser::_xmlChRangeGroup = u
             nbShortRange: 95 as i32,
             nbLongRange: 0 as i32,
             shortRange: xmlIsCombining_srng.as_ptr(),
-            longRange: (0 as * const crate::src::HTMLparser::_xmlChLRange),
+            longRange: (0 as *const crate::src::HTMLparser::_xmlChLRange),
         };
         init
     }
@@ -2487,7 +2479,7 @@ pub static mut xmlIsDigitGroup: crate::src::HTMLparser::_xmlChRangeGroup = unsaf
             nbShortRange: 14 as i32,
             nbLongRange: 0 as i32,
             shortRange: xmlIsDigit_srng.as_ptr(),
-            longRange: (0 as * const crate::src::HTMLparser::_xmlChLRange),
+            longRange: (0 as *const crate::src::HTMLparser::_xmlChLRange),
         };
         init
     }
@@ -2571,7 +2563,7 @@ pub static mut xmlIsExtenderGroup: crate::src::HTMLparser::_xmlChRangeGroup = un
             nbShortRange: 10 as i32,
             nbLongRange: 0 as i32,
             shortRange: xmlIsExtender_srng.as_ptr(),
-            longRange: (0 as * const crate::src::HTMLparser::_xmlChLRange),
+            longRange: (0 as *const crate::src::HTMLparser::_xmlChLRange),
         };
         init
     }
@@ -2606,21 +2598,23 @@ pub static mut xmlIsIdeographicGroup: crate::src::HTMLparser::_xmlChRangeGroup =
             nbShortRange: 3 as i32,
             nbLongRange: 0 as i32,
             shortRange: xmlIsIdeographic_srng.as_ptr(),
-            longRange: (0 as * const crate::src::HTMLparser::_xmlChLRange),
+            longRange: (0 as *const crate::src::HTMLparser::_xmlChLRange),
         };
         init
     }
 };
 #[no_mangle]
-pub unsafe extern "C" fn xmlCharInRange<'a1>(
+pub extern "C" fn xmlCharInRange<'a1>(
     mut val: u32,
     mut rptr: Option<&'a1 crate::src::HTMLparser::_xmlChRangeGroup>,
 ) -> i32 {
     let mut low: i32 = 0;
     let mut high: i32 = 0;
     let mut mid: i32 = 0;
-    let mut sptr: * const crate::src::HTMLparser::_xmlChSRange = (0 as * const crate::src::HTMLparser::_xmlChSRange);
-    let mut lptr: * const crate::src::HTMLparser::_xmlChLRange = (0 as * const crate::src::HTMLparser::_xmlChLRange);
+    let mut sptr: *const crate::src::HTMLparser::_xmlChSRange =
+        0 as *const crate::src::HTMLparser::_xmlChSRange;
+    let mut lptr: *const crate::src::HTMLparser::_xmlChLRange =
+        0 as *const crate::src::HTMLparser::_xmlChLRange;
     if (rptr).clone().is_none() {
         return 0 as i32;
     }
@@ -2633,16 +2627,12 @@ pub unsafe extern "C" fn xmlCharInRange<'a1>(
         sptr = (*((rptr).clone()).unwrap()).shortRange;
         while low <= high {
             mid = (low + high) / 2 as i32;
-            if (val as u16 as i32)
-                < (*sptr.offset(mid as isize)).low as i32
-            {
+            if (val as u16 as i32) < (unsafe { (*sptr.offset(mid as isize)).low }) as i32 {
                 high = mid - 1 as i32;
-            } else if val as u16 as i32
-                    > (*sptr.offset(mid as isize)).high as i32
-                {
+            } else if val as u16 as i32 > (unsafe { (*sptr.offset(mid as isize)).high }) as i32 {
                 low = mid + 1 as i32;
             } else {
-                return 1 as i32
+                return 1 as i32;
             }
         }
     } else {
@@ -2654,39 +2644,34 @@ pub unsafe extern "C" fn xmlCharInRange<'a1>(
         lptr = (*((rptr).clone()).unwrap()).longRange;
         while low <= high {
             mid = (low + high) / 2 as i32;
-            if val < (*lptr.offset(mid as isize)).low {
+            if val < (unsafe { (*lptr.offset(mid as isize)).low }) {
                 high = mid - 1 as i32;
-            } else if val > (*lptr.offset(mid as isize)).high {
+            } else if val > (unsafe { (*lptr.offset(mid as isize)).high }) {
                 low = mid + 1 as i32;
             } else {
-                return 1 as i32
+                return 1 as i32;
             }
         }
     }
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlIsBaseChar(mut ch: u32) -> i32 {
+pub extern "C" fn xmlIsBaseChar(mut ch: u32) -> i32 {
     return if ch < 0x100 as i32 as u32 {
-        (0x41 as i32 as u32 <= ch
-            && ch <= 0x5a as i32 as u32
-            || 0x61 as i32 as u32 <= ch
-                && ch <= 0x7a as i32 as u32
-            || 0xc0 as i32 as u32 <= ch
-                && ch <= 0xd6 as i32 as u32
-            || 0xd8 as i32 as u32 <= ch
-                && ch <= 0xf6 as i32 as u32
+        (0x41 as i32 as u32 <= ch && ch <= 0x5a as i32 as u32
+            || 0x61 as i32 as u32 <= ch && ch <= 0x7a as i32 as u32
+            || 0xc0 as i32 as u32 <= ch && ch <= 0xd6 as i32 as u32
+            || 0xd8 as i32 as u32 <= ch && ch <= 0xf6 as i32 as u32
             || 0xf8 as i32 as u32 <= ch) as i32
     } else {
-        xmlCharInRange(ch, (Some(&xmlIsBaseCharGroup)).clone())
+        xmlCharInRange(ch, (Some(unsafe { &xmlIsBaseCharGroup })).clone())
     };
 }
 #[no_mangle]
 pub extern "C" fn xmlIsBlank(mut ch: u32) -> i32 {
     return if ch < 0x100 as i32 as u32 {
         (ch == 0x20 as i32 as u32
-            || 0x9 as i32 as u32 <= ch
-                && ch <= 0xa as i32 as u32
+            || 0x9 as i32 as u32 <= ch && ch <= 0xa as i32 as u32
             || ch == 0xd as i32 as u32) as i32
     } else {
         0 as i32
@@ -2695,42 +2680,37 @@ pub extern "C" fn xmlIsBlank(mut ch: u32) -> i32 {
 #[no_mangle]
 pub extern "C" fn xmlIsChar(mut ch: u32) -> i32 {
     return if ch < 0x100 as i32 as u32 {
-        (0x9 as i32 as u32 <= ch
-            && ch <= 0xa as i32 as u32
+        (0x9 as i32 as u32 <= ch && ch <= 0xa as i32 as u32
             || ch == 0xd as i32 as u32
             || 0x20 as i32 as u32 <= ch) as i32
     } else {
-        (0x100 as i32 as u32 <= ch
-            && ch <= 0xd7ff as i32 as u32
-            || 0xe000 as i32 as u32 <= ch
-                && ch <= 0xfffd as i32 as u32
-            || 0x10000 as i32 as u32 <= ch
-                && ch <= 0x10ffff as i32 as u32) as i32
+        (0x100 as i32 as u32 <= ch && ch <= 0xd7ff as i32 as u32
+            || 0xe000 as i32 as u32 <= ch && ch <= 0xfffd as i32 as u32
+            || 0x10000 as i32 as u32 <= ch && ch <= 0x10ffff as i32 as u32) as i32
     };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlIsCombining(mut ch: u32) -> i32 {
+pub extern "C" fn xmlIsCombining(mut ch: u32) -> i32 {
     return if ch < 0x100 as i32 as u32 {
         0 as i32
     } else {
-        xmlCharInRange(ch, (Some(&xmlIsCombiningGroup)).clone())
+        xmlCharInRange(ch, (Some(unsafe { &xmlIsCombiningGroup })).clone())
     };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlIsDigit(mut ch: u32) -> i32 {
+pub extern "C" fn xmlIsDigit(mut ch: u32) -> i32 {
     return if ch < 0x100 as i32 as u32 {
-        (0x30 as i32 as u32 <= ch
-            && ch <= 0x39 as i32 as u32) as i32
+        (0x30 as i32 as u32 <= ch && ch <= 0x39 as i32 as u32) as i32
     } else {
-        xmlCharInRange(ch, (Some(&xmlIsDigitGroup)).clone())
+        xmlCharInRange(ch, (Some(unsafe { &xmlIsDigitGroup })).clone())
     };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlIsExtender(mut ch: u32) -> i32 {
+pub extern "C" fn xmlIsExtender(mut ch: u32) -> i32 {
     return if ch < 0x100 as i32 as u32 {
         (ch == 0xb7 as i32 as u32) as i32
     } else {
-        xmlCharInRange(ch, (Some(&xmlIsExtenderGroup)).clone())
+        xmlCharInRange(ch, (Some(unsafe { &xmlIsExtenderGroup })).clone())
     };
 }
 #[no_mangle]
@@ -2738,19 +2718,17 @@ pub extern "C" fn xmlIsIdeographic(mut ch: u32) -> i32 {
     return if ch < 0x100 as i32 as u32 {
         0 as i32
     } else {
-        (0x4e00 as i32 as u32 <= ch
-            && ch <= 0x9fa5 as i32 as u32
+        (0x4e00 as i32 as u32 <= ch && ch <= 0x9fa5 as i32 as u32
             || ch == 0x3007 as i32 as u32
-            || 0x3021 as i32 as u32 <= ch
-                && ch <= 0x3029 as i32 as u32) as i32
+            || 0x3021 as i32 as u32 <= ch && ch <= 0x3029 as i32 as u32) as i32
     };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlIsPubidChar(mut ch: u32) -> i32 {
+pub extern "C" fn xmlIsPubidChar(mut ch: u32) -> i32 {
     return if ch < 0x100 as i32 as u32 {
-        xmlIsPubidChar_tab[ch as usize] as i32
+        (unsafe { xmlIsPubidChar_tab[ch as usize] }) as i32
     } else {
         0 as i32
     };
 }
-use crate::laertes_rt::*;
+

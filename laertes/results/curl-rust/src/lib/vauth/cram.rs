@@ -133,9 +133,9 @@ pub type HMAC_context = crate::src::lib::hmac::HMAC_context;
 // #[derive(Copy, Clone)]
 
 pub type HMAC_params = crate::src::lib::curl_ntlm_core::HMAC_params;
-pub type HMAC_hfinal_func = Option<unsafe extern "C"  fn(_: * mut u8,_: * mut core::ffi::c_void,) -> ()>;
-pub type HMAC_hupdate_func = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: u32,) -> ()>;
-pub type HMAC_hinit_func = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
+pub type HMAC_hfinal_func<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut u8>,_: Option<&'a2 mut core::ffi::c_void>,) -> ()>;
+pub type HMAC_hupdate_func<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,_: Option<&'a2 u8>,_: u32,) -> ()>;
+pub type HMAC_hinit_func<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,) -> ()>;
 #[no_mangle]
 pub unsafe extern "C" fn Curl_auth_create_cram_md5_message<'a1, 'a2>(
     mut chlg: Option<&'a1 crate::src::lib::bufref::bufref>,

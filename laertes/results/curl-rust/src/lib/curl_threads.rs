@@ -24,8 +24,8 @@ pub union pthread_attr_t {
     pub __size: [i8; 56],
     pub __align: i64,
 }
-pub type curl_malloc_callback = Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
-pub type curl_free_callback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
+pub type curl_malloc_callback<'a1> = Option<unsafe extern "C"  fn(_: u64,) -> Option<&'a1 mut core::ffi::c_void>>;
+pub type curl_free_callback<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,) -> ()>;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct Curl_actual_call {

@@ -11,9 +11,9 @@ pub type size_t = u64;
 // #[derive(Copy, Clone)]
 
 pub type curl_slist = crate::src::lib::http2::curl_slist;
-pub type curl_malloc_callback = Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
-pub type curl_free_callback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type curl_strdup_callback = Option<unsafe extern "C"  fn(_: * const i8,) -> * mut i8>;
+pub type curl_malloc_callback<'a1> = Option<unsafe extern "C"  fn(_: u64,) -> Option<&'a1 mut core::ffi::c_void>>;
+pub type curl_free_callback<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,) -> ()>;
+pub type curl_strdup_callback<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 i8>,) -> Option<&'a2 mut i8>>;
 unsafe extern "C" fn slist_get_last(mut list: * mut crate::src::lib::http2::curl_slist) -> * mut crate::src::lib::http2::curl_slist {
     let mut item: * mut crate::src::lib::http2::curl_slist = 0 as *mut curl_slist;
     if list.is_null() {

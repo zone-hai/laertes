@@ -49,8 +49,8 @@ pub type size_t = u64;
 pub type _IO_FILE = crate::src::lib::http2::_IO_FILE;
 pub type _IO_lock_t = ();
 pub type FILE = crate::src::lib::http2::_IO_FILE;
-pub type curl_free_callback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type curl_strdup_callback = Option<unsafe extern "C"  fn(_: * const i8,) -> * mut i8>;
+pub type curl_free_callback<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,) -> ()>;
+pub type curl_strdup_callback<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 i8>,) -> Option<&'a2 mut i8>>;
 // #[derive(Copy, Clone)]
 
 pub type passwd = crate::src::lib::curl_ntlm_wb::passwd;

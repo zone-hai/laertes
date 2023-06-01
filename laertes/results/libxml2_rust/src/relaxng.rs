@@ -1,234 +1,228 @@
-use ::libc;
+use :: libc;
 extern "C" {
-    
     pub type _IO_codecvt;
-    
-    
-    
-    
-    
-    
-    
     pub type _xmlRegExecCtxt;
     pub type _xmlSchemaVal;
     pub type _xmlSchemaParserCtxt;
-    static mut stderr: * mut crate::src::HTMLtree::_IO_FILE;
-    fn fprintf(_: * mut crate::src::HTMLtree::_IO_FILE, _: * const i8, _: ...) -> i32;
-    fn snprintf(
-        _: * mut i8,
-        _: u64,
-        _: * const i8,
-        _: ...
-    ) -> i32;
-    fn xmlEscapeFormatString(msg: * mut * mut u8) -> * mut u8;
-    fn xmlCharStrdup(cur: * const i8) -> * mut u8;
-    fn xmlStrdup(cur: * const u8) -> * mut u8;
-    fn xmlStrEqual(str1: * const u8, str2: * const u8) -> i32;
-    fn xmlStrlen(str: * const u8) -> i32;
-    fn xmlStrcat(cur: * mut u8, add: * const u8) -> * mut u8;
+    static mut stderr: *mut crate::src::HTMLtree::_IO_FILE;
+    fn fprintf(_: *mut crate::src::HTMLtree::_IO_FILE, _: *const i8, _: ...) -> i32;
+    fn snprintf(_: *mut i8, _: u64, _: *const i8, _: ...) -> i32;
+    fn xmlEscapeFormatString(msg: *mut *mut u8) -> *mut u8;
+    fn xmlCharStrdup(cur: *const i8) -> *mut u8;
+    fn xmlStrdup(cur: *const u8) -> *mut u8;
+    fn xmlStrEqual(str1: *const u8, str2: *const u8) -> i32;
+    fn xmlStrlen(str: *const u8) -> i32;
+    fn xmlStrcat(cur: *mut u8, add: *const u8) -> *mut u8;
     fn memcpy(
-        _: * mut core::ffi::c_void,
-        _: * const core::ffi::c_void,
+        _: *mut core::ffi::c_void,
+        _: *const core::ffi::c_void,
         _: u64,
-    ) -> * mut core::ffi::c_void;
-    fn memset(
-        _: * mut core::ffi::c_void,
-        _: i32,
-        _: u64,
-    ) -> * mut core::ffi::c_void;
-    fn xmlRegFreeRegexp(regexp: * mut crate::src::debugXML::_xmlRegexp);
-    fn xmlRegexpIsDeterminist(comp: * mut crate::src::debugXML::_xmlRegexp) -> i32;
+    ) -> *mut core::ffi::c_void;
+    fn memset(_: *mut core::ffi::c_void, _: i32, _: u64) -> *mut core::ffi::c_void;
+    fn xmlRegFreeRegexp(regexp: *mut crate::src::debugXML::_xmlRegexp);
+    fn xmlRegexpIsDeterminist(comp: *mut crate::src::debugXML::_xmlRegexp) -> i32;
     fn xmlRegNewExecCtxt(
-        comp: * mut crate::src::debugXML::_xmlRegexp,
-        callback: Option<unsafe extern "C"  fn(_: * mut crate::src::relaxng::_xmlRegExecCtxt,_: * const u8,_: * mut core::ffi::c_void,_: * mut core::ffi::c_void,) -> ()>,
-        data: * mut core::ffi::c_void,
-    ) -> * mut crate::src::relaxng::_xmlRegExecCtxt;
-    fn xmlRegFreeExecCtxt(exec: * mut crate::src::relaxng::_xmlRegExecCtxt);
+        comp: *mut crate::src::debugXML::_xmlRegexp,
+        callback: Option<
+            unsafe extern "C" fn(
+                _: *mut crate::src::relaxng::_xmlRegExecCtxt,
+                _: *const u8,
+                _: *mut core::ffi::c_void,
+                _: *mut core::ffi::c_void,
+            ) -> (),
+        >,
+        data: *mut core::ffi::c_void,
+    ) -> *mut crate::src::relaxng::_xmlRegExecCtxt;
+    fn xmlRegFreeExecCtxt(exec: *mut crate::src::relaxng::_xmlRegExecCtxt);
     fn xmlRegExecPushString(
-        exec: * mut crate::src::relaxng::_xmlRegExecCtxt,
-        value: * const u8,
-        data: * mut core::ffi::c_void,
+        exec: *mut crate::src::relaxng::_xmlRegExecCtxt,
+        value: *const u8,
+        data: *mut core::ffi::c_void,
     ) -> i32;
     fn xmlRegExecPushString2(
-        exec: * mut crate::src::relaxng::_xmlRegExecCtxt,
-        value: * const u8,
-        value2: * const u8,
-        data: * mut core::ffi::c_void,
+        exec: *mut crate::src::relaxng::_xmlRegExecCtxt,
+        value: *const u8,
+        value2: *const u8,
+        data: *mut core::ffi::c_void,
     ) -> i32;
-    fn xmlValidateNCName(value: * const u8, space: i32) -> i32;
-    fn xmlSplitQName2(name: * const u8, prefix: * mut * mut u8) -> * mut u8;
-    fn xmlFreeDoc(cur: * mut crate::src::HTMLparser::_xmlDoc);
-    fn xmlCopyDoc(doc: * mut crate::src::HTMLparser::_xmlDoc, recursive: i32) -> * mut crate::src::HTMLparser::_xmlDoc;
+    fn xmlValidateNCName(value: *const u8, space: i32) -> i32;
+    fn xmlSplitQName2(name: *const u8, prefix: *mut *mut u8) -> *mut u8;
+    fn xmlFreeDoc(cur: *mut crate::src::HTMLparser::_xmlDoc);
+    fn xmlCopyDoc(
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        recursive: i32,
+    ) -> *mut crate::src::HTMLparser::_xmlDoc;
     fn xmlNewDocNode(
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        ns: * mut crate::src::HTMLparser::_xmlNs,
-        name: * const u8,
-        content: * const u8,
-    ) -> * mut crate::src::HTMLparser::_xmlNode;
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        ns: *mut crate::src::HTMLparser::_xmlNs,
+        name: *const u8,
+        content: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
     fn xmlNewChild(
-        parent: * mut crate::src::HTMLparser::_xmlNode,
-        ns: * mut crate::src::HTMLparser::_xmlNs,
-        name: * const u8,
-        content: * const u8,
-    ) -> * mut crate::src::HTMLparser::_xmlNode;
-    fn xmlNewDocText(doc: * const crate::src::HTMLparser::_xmlDoc, content: * const u8) -> * mut crate::src::HTMLparser::_xmlNode;
-    fn xmlDocGetRootElement(doc: * const crate::src::HTMLparser::_xmlDoc) -> * mut crate::src::HTMLparser::_xmlNode;
-    fn xmlIsBlankNode(node: * const crate::src::HTMLparser::_xmlNode) -> i32;
-    fn xmlAddChild(parent: * mut crate::src::HTMLparser::_xmlNode, cur: * mut crate::src::HTMLparser::_xmlNode) -> * mut crate::src::HTMLparser::_xmlNode;
-    fn xmlAddPrevSibling(cur: * mut crate::src::HTMLparser::_xmlNode, elem: * mut crate::src::HTMLparser::_xmlNode) -> * mut crate::src::HTMLparser::_xmlNode;
-    fn xmlAddNextSibling(cur: * mut crate::src::HTMLparser::_xmlNode, elem: * mut crate::src::HTMLparser::_xmlNode) -> * mut crate::src::HTMLparser::_xmlNode;
-    fn xmlUnlinkNode(cur: * mut crate::src::HTMLparser::_xmlNode);
-    fn xmlFreeNode(cur: * mut crate::src::HTMLparser::_xmlNode);
+        parent: *mut crate::src::HTMLparser::_xmlNode,
+        ns: *mut crate::src::HTMLparser::_xmlNs,
+        name: *const u8,
+        content: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
+    fn xmlNewDocText(
+        doc: *const crate::src::HTMLparser::_xmlDoc,
+        content: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
+    fn xmlDocGetRootElement(
+        doc: *const crate::src::HTMLparser::_xmlDoc,
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
+    fn xmlIsBlankNode(node: *const crate::src::HTMLparser::_xmlNode) -> i32;
+    fn xmlAddChild(
+        parent: *mut crate::src::HTMLparser::_xmlNode,
+        cur: *mut crate::src::HTMLparser::_xmlNode,
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
+    fn xmlAddPrevSibling(
+        cur: *mut crate::src::HTMLparser::_xmlNode,
+        elem: *mut crate::src::HTMLparser::_xmlNode,
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
+    fn xmlAddNextSibling(
+        cur: *mut crate::src::HTMLparser::_xmlNode,
+        elem: *mut crate::src::HTMLparser::_xmlNode,
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
+    fn xmlUnlinkNode(cur: *mut crate::src::HTMLparser::_xmlNode);
+    fn xmlFreeNode(cur: *mut crate::src::HTMLparser::_xmlNode);
     fn xmlSearchNs(
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        node: * mut crate::src::HTMLparser::_xmlNode,
-        nameSpace: * const u8,
-    ) -> * mut crate::src::HTMLparser::_xmlNs;
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        node: *mut crate::src::HTMLparser::_xmlNode,
+        nameSpace: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlNs;
     fn xmlSetProp(
-        node: * mut crate::src::HTMLparser::_xmlNode,
-        name: * const u8,
-        value: * const u8,
-    ) -> * mut crate::src::HTMLparser::_xmlAttr;
-    fn xmlGetProp(node: * const crate::src::HTMLparser::_xmlNode, name: * const u8) -> * mut u8;
-    fn xmlHasProp(node: * const crate::src::HTMLparser::_xmlNode, name: * const u8) -> * mut crate::src::HTMLparser::_xmlAttr;
+        node: *mut crate::src::HTMLparser::_xmlNode,
+        name: *const u8,
+        value: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlAttr;
+    fn xmlGetProp(node: *const crate::src::HTMLparser::_xmlNode, name: *const u8) -> *mut u8;
+    fn xmlHasProp(
+        node: *const crate::src::HTMLparser::_xmlNode,
+        name: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlAttr;
     fn xmlNodeListGetString(
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        list: * const crate::src::HTMLparser::_xmlNode,
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        list: *const crate::src::HTMLparser::_xmlNode,
         inLine: i32,
-    ) -> * mut u8;
-    fn xmlNodeSetContent(cur: * mut crate::src::HTMLparser::_xmlNode, content: * const u8);
-    fn xmlNodeGetContent(cur: * const crate::src::HTMLparser::_xmlNode) -> * mut u8;
-    fn xmlNodeGetBase(doc: * const crate::src::HTMLparser::_xmlDoc, cur: * const crate::src::HTMLparser::_xmlNode) -> * mut u8;
-    fn xmlUnsetProp(node: * mut crate::src::HTMLparser::_xmlNode, name: * const u8) -> i32;
-    fn xmlDocDump(f: * mut crate::src::HTMLtree::_IO_FILE, cur: * mut crate::src::HTMLparser::_xmlDoc) -> i32;
-    
-    
-    
-    
-    
-    
-    
-    
-    fn xmlNewAutomata() -> * mut crate::src::catalog::_xmlAutomata;
-    fn xmlFreeAutomata(am: * mut crate::src::catalog::_xmlAutomata);
-    fn xmlAutomataGetInitState(am: * mut crate::src::catalog::_xmlAutomata) -> * mut crate::src::encoding::_xmlAutomataState;
+    ) -> *mut u8;
+    fn xmlNodeSetContent(cur: *mut crate::src::HTMLparser::_xmlNode, content: *const u8);
+    fn xmlNodeGetContent(cur: *const crate::src::HTMLparser::_xmlNode) -> *mut u8;
+    fn xmlNodeGetBase(
+        doc: *const crate::src::HTMLparser::_xmlDoc,
+        cur: *const crate::src::HTMLparser::_xmlNode,
+    ) -> *mut u8;
+    fn xmlUnsetProp(node: *mut crate::src::HTMLparser::_xmlNode, name: *const u8) -> i32;
+    fn xmlDocDump(
+        f: *mut crate::src::HTMLtree::_IO_FILE,
+        cur: *mut crate::src::HTMLparser::_xmlDoc,
+    ) -> i32;
+    fn xmlNewAutomata() -> *mut crate::src::catalog::_xmlAutomata;
+    fn xmlFreeAutomata(am: *mut crate::src::catalog::_xmlAutomata);
+    fn xmlAutomataGetInitState(
+        am: *mut crate::src::catalog::_xmlAutomata,
+    ) -> *mut crate::src::encoding::_xmlAutomataState;
     fn xmlAutomataSetFinalState(
-        am: * mut crate::src::catalog::_xmlAutomata,
-        state: * mut crate::src::encoding::_xmlAutomataState,
+        am: *mut crate::src::catalog::_xmlAutomata,
+        state: *mut crate::src::encoding::_xmlAutomataState,
     ) -> i32;
     fn xmlAutomataNewTransition(
-        am: * mut crate::src::catalog::_xmlAutomata,
-        from: * mut crate::src::encoding::_xmlAutomataState,
-        to: * mut crate::src::encoding::_xmlAutomataState,
-        token: * const u8,
-        data: * mut core::ffi::c_void,
-    ) -> * mut crate::src::encoding::_xmlAutomataState;
+        am: *mut crate::src::catalog::_xmlAutomata,
+        from: *mut crate::src::encoding::_xmlAutomataState,
+        to: *mut crate::src::encoding::_xmlAutomataState,
+        token: *const u8,
+        data: *mut core::ffi::c_void,
+    ) -> *mut crate::src::encoding::_xmlAutomataState;
     fn xmlAutomataNewTransition2(
-        am: * mut crate::src::catalog::_xmlAutomata,
-        from: * mut crate::src::encoding::_xmlAutomataState,
-        to: * mut crate::src::encoding::_xmlAutomataState,
-        token: * const u8,
-        token2: * const u8,
-        data: * mut core::ffi::c_void,
-    ) -> * mut crate::src::encoding::_xmlAutomataState;
+        am: *mut crate::src::catalog::_xmlAutomata,
+        from: *mut crate::src::encoding::_xmlAutomataState,
+        to: *mut crate::src::encoding::_xmlAutomataState,
+        token: *const u8,
+        token2: *const u8,
+        data: *mut core::ffi::c_void,
+    ) -> *mut crate::src::encoding::_xmlAutomataState;
     fn xmlAutomataNewEpsilon(
-        am: * mut crate::src::catalog::_xmlAutomata,
-        from: * mut crate::src::encoding::_xmlAutomataState,
-        to: * mut crate::src::encoding::_xmlAutomataState,
-    ) -> * mut crate::src::encoding::_xmlAutomataState;
-    fn xmlAutomataCompile(am: * mut crate::src::catalog::_xmlAutomata) -> * mut crate::src::debugXML::_xmlRegexp;
-    fn xmlAutomataIsDeterminist(am: * mut crate::src::catalog::_xmlAutomata) -> i32;
-    fn xmlValidateDocumentFinal(ctxt: * mut crate::src::HTMLparser::_xmlValidCtxt, doc: * mut crate::src::HTMLparser::_xmlDoc) -> i32;
-    
-    
-    
-    
-    
-    
-    
-    
-    fn xmlBuildURI(URI: * const u8, base: * const u8) -> * mut u8;
-    fn xmlParseURI(str: * const i8) -> * mut crate::src::SAX2::_xmlURI;
-    fn xmlURIEscapeStr(str: * const u8, list: * const u8) -> * mut u8;
-    fn xmlFreeURI(uri: * mut crate::src::SAX2::_xmlURI);
-    fn xmlSchemaFreeValue(val: * mut crate::src::relaxng::_xmlSchemaVal);
-    fn xmlSchemaFreeFacet(facet: * mut crate::src::relaxng::_xmlSchemaFacet);
+        am: *mut crate::src::catalog::_xmlAutomata,
+        from: *mut crate::src::encoding::_xmlAutomataState,
+        to: *mut crate::src::encoding::_xmlAutomataState,
+    ) -> *mut crate::src::encoding::_xmlAutomataState;
+    fn xmlAutomataCompile(
+        am: *mut crate::src::catalog::_xmlAutomata,
+    ) -> *mut crate::src::debugXML::_xmlRegexp;
+    fn xmlAutomataIsDeterminist(am: *mut crate::src::catalog::_xmlAutomata) -> i32;
+    fn xmlValidateDocumentFinal(
+        ctxt: *mut crate::src::HTMLparser::_xmlValidCtxt,
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+    ) -> i32;
+    fn xmlBuildURI(URI: *const u8, base: *const u8) -> *mut u8;
+    fn xmlParseURI(str: *const i8) -> *mut crate::src::SAX2::_xmlURI;
+    fn xmlURIEscapeStr(str: *const u8, list: *const u8) -> *mut u8;
+    fn xmlFreeURI(uri: *mut crate::src::SAX2::_xmlURI);
+    fn xmlSchemaFreeValue(val: *mut crate::src::relaxng::_xmlSchemaVal);
+    fn xmlSchemaFreeFacet(facet: *mut crate::src::relaxng::_xmlSchemaFacet);
     fn xmlSchemaValidateFacet(
-        base: * mut crate::src::relaxng::_xmlSchemaType,
-        facet: * mut crate::src::relaxng::_xmlSchemaFacet,
-        value: * const u8,
-        val: * mut crate::src::relaxng::_xmlSchemaVal,
+        base: *mut crate::src::relaxng::_xmlSchemaType,
+        facet: *mut crate::src::relaxng::_xmlSchemaFacet,
+        value: *const u8,
+        val: *mut crate::src::relaxng::_xmlSchemaVal,
     ) -> i32;
     fn xmlSchemaCheckFacet(
-        facet: * mut crate::src::relaxng::_xmlSchemaFacet,
-        typeDecl: * mut crate::src::relaxng::_xmlSchemaType,
-        ctxt: * mut crate::src::relaxng::_xmlSchemaParserCtxt,
-        name: * const u8,
+        facet: *mut crate::src::relaxng::_xmlSchemaFacet,
+        typeDecl: *mut crate::src::relaxng::_xmlSchemaType,
+        ctxt: *mut crate::src::relaxng::_xmlSchemaParserCtxt,
+        name: *const u8,
     ) -> i32;
-    fn xmlSchemaNewFacet() -> * mut crate::src::relaxng::_xmlSchemaFacet;
+    fn xmlSchemaNewFacet() -> *mut crate::src::relaxng::_xmlSchemaFacet;
     fn xmlSchemaGetPredefinedType(
-        name: * const u8,
-        ns: * const u8,
-    ) -> * mut crate::src::relaxng::_xmlSchemaType;
-    fn xmlSchemaCompareValues(x: * mut crate::src::relaxng::_xmlSchemaVal, y: * mut crate::src::relaxng::_xmlSchemaVal) -> i32;
+        name: *const u8,
+        ns: *const u8,
+    ) -> *mut crate::src::relaxng::_xmlSchemaType;
+    fn xmlSchemaCompareValues(
+        x: *mut crate::src::relaxng::_xmlSchemaVal,
+        y: *mut crate::src::relaxng::_xmlSchemaVal,
+    ) -> i32;
     fn xmlSchemaValPredefTypeNode(
-        type_0: * mut crate::src::relaxng::_xmlSchemaType,
-        value: * const u8,
-        val: * mut * mut crate::src::relaxng::_xmlSchemaVal,
-        node: * mut crate::src::HTMLparser::_xmlNode,
+        type_0: *mut crate::src::relaxng::_xmlSchemaType,
+        value: *const u8,
+        val: *mut *mut crate::src::relaxng::_xmlSchemaVal,
+        node: *mut crate::src::HTMLparser::_xmlNode,
     ) -> i32;
     fn xmlSchemaCleanupTypes();
-    fn xmlAutomataSetFlags(am: * mut crate::src::catalog::_xmlAutomata, flags: i32);
+    fn xmlAutomataSetFlags(am: *mut crate::src::catalog::_xmlAutomata, flags: i32);
 }
-pub use crate::src::error::__xmlRaiseError;
-pub use crate::src::globals::__xmlGenericError;
-pub use crate::src::globals::__xmlGenericErrorContext;
-pub use crate::src::hash::xmlHashAddEntry;
-pub use crate::src::hash::xmlHashAddEntry2;
-pub use crate::src::hash::xmlHashCreate;
-pub use crate::src::hash::xmlHashFree;
-pub use crate::src::hash::xmlHashLookup;
-pub use crate::src::hash::xmlHashLookup2;
-pub use crate::src::hash::xmlHashScan;
-pub use crate::src::parser::xmlReadFile;
-pub use crate::src::parser::xmlReadMemory;
-pub use crate::src::dict::_xmlDict;
-pub use crate::src::hash::_xmlHashTable;
-pub use crate::src::HTMLtree::_IO_marker;
-pub use crate::src::catalog::_IO_wide_data;
-pub use crate::src::catalog::_xmlAutomata;
-pub use crate::src::debugXML::_xmlRegexp;
-pub use crate::src::debugXML::_xmlValidState;
-pub use crate::src::encoding::_xmlAutomataState;
-pub use crate::src::globals::xmlFree;
-pub use crate::src::globals::xmlMalloc;
-pub use crate::src::globals::xmlMallocAtomic;
-pub use crate::src::globals::xmlRealloc;
+pub use crate::src::{
+    catalog::{_IO_wide_data, _xmlAutomata},
+    debugXML::{_xmlRegexp, _xmlValidState},
+    dict::_xmlDict,
+    encoding::_xmlAutomataState,
+    error::__xmlRaiseError,
+    globals::{
+        __xmlGenericError, __xmlGenericErrorContext, xmlFree, xmlMalloc, xmlMallocAtomic,
+        xmlRealloc,
+    },
+    hash::{
+        _xmlHashTable, xmlHashAddEntry, xmlHashAddEntry2, xmlHashCreate, xmlHashFree,
+        xmlHashLookup, xmlHashLookup2, xmlHashScan,
+    },
+    parser::{xmlReadFile, xmlReadMemory},
+    HTMLtree::_IO_marker,
+};
 pub type xmlChar = u8;
 pub type size_t = u64;
 pub type __off_t = i64;
 pub type __off64_t = i64;
-// #[derive(Copy, Clone)]
-
 pub type _IO_FILE = crate::src::HTMLtree::_IO_FILE;
 pub type _IO_lock_t = ();
 pub type FILE = crate::src::HTMLtree::_IO_FILE;
 pub type ptrdiff_t = i64;
-pub type xmlFreeFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type xmlMallocFunc = Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
-pub type xmlReallocFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: u64,) -> * mut core::ffi::c_void>;
-// #[derive(Copy, Clone)]
-
+pub type xmlFreeFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+pub type xmlMallocFunc = Option<unsafe extern "C" fn(_: u64) -> *mut core::ffi::c_void>;
+pub type xmlReallocFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: u64) -> *mut core::ffi::c_void>;
 pub type _xmlNode = crate::src::HTMLparser::_xmlNode;
 pub type xmlNs = crate::src::HTMLparser::_xmlNs;
-// #[derive(Copy, Clone)]
-
 pub type _xmlNs = crate::src::HTMLparser::_xmlNs;
-// #[derive(Copy, Clone)]
-
 pub type _xmlDoc = crate::src::HTMLparser::_xmlDoc;
-// #[derive(Copy, Clone)]
-
 pub type _xmlDtd = crate::src::HTMLparser::_xmlDtd;
 pub type xmlElementType = u32;
 pub const XML_XINCLUDE_END: xmlElementType = 20;
@@ -252,8 +246,6 @@ pub const XML_TEXT_NODE: xmlElementType = 3;
 pub const XML_ATTRIBUTE_NODE: xmlElementType = 2;
 pub const XML_ELEMENT_NODE: xmlElementType = 1;
 pub type xmlNsType = u32;
-// #[derive(Copy, Clone)]
-
 pub type _xmlAttr = crate::src::HTMLparser::_xmlAttr;
 pub type xmlAttributeType = u32;
 pub const XML_ATTRIBUTE_NOTATION: xmlAttributeType = 10;
@@ -267,43 +259,56 @@ pub const XML_ATTRIBUTE_IDREF: xmlAttributeType = 3;
 pub const XML_ATTRIBUTE_ID: xmlAttributeType = 2;
 pub const XML_ATTRIBUTE_CDATA: xmlAttributeType = 1;
 pub type xmlError = crate::src::HTMLparser::_xmlError;
-// #[derive(Copy, Clone)]
-
 pub type _xmlError = crate::src::HTMLparser::_xmlError;
 pub type xmlErrorLevel = u32;
 pub const XML_ERR_FATAL: xmlErrorLevel = 3;
 pub const XML_ERR_ERROR: xmlErrorLevel = 2;
 pub const XML_ERR_WARNING: xmlErrorLevel = 1;
 pub const XML_ERR_NONE: xmlErrorLevel = 0;
-pub type xmlAttrPtr = * mut crate::src::HTMLparser::_xmlAttr;
+pub type xmlAttrPtr = *mut crate::src::HTMLparser::_xmlAttr;
 pub type xmlAttr = crate::src::HTMLparser::_xmlAttr;
-pub type xmlNodePtr = * mut crate::src::HTMLparser::_xmlNode;
+pub type xmlNodePtr = *mut crate::src::HTMLparser::_xmlNode;
 pub type xmlNode = crate::src::HTMLparser::_xmlNode;
-pub type xmlHashTablePtr = * mut crate::src::hash::_xmlHashTable;
+pub type xmlHashTablePtr = *mut crate::src::hash::_xmlHashTable;
 pub type xmlHashTable = crate::src::hash::_xmlHashTable;
 pub type xmlValidCtxt = crate::src::HTMLparser::_xmlValidCtxt;
-// #[derive(Copy, Clone)]
-
 pub type _xmlValidCtxt = crate::src::HTMLparser::_xmlValidCtxt;
-pub type xmlAutomataStatePtr = * mut crate::src::encoding::_xmlAutomataState;
+pub type xmlAutomataStatePtr = *mut crate::src::encoding::_xmlAutomataState;
 pub type xmlAutomataState = crate::src::encoding::_xmlAutomataState;
-pub type xmlAutomataPtr = * mut crate::src::catalog::_xmlAutomata;
+pub type xmlAutomataPtr = *mut crate::src::catalog::_xmlAutomata;
 pub type xmlAutomata = crate::src::catalog::_xmlAutomata;
 pub type xmlValidState = crate::src::debugXML::_xmlValidState;
-pub type xmlDocPtr = * mut crate::src::HTMLparser::_xmlDoc;
+pub type xmlDocPtr = *mut crate::src::HTMLparser::_xmlDoc;
 pub type xmlDoc = crate::src::HTMLparser::_xmlDoc;
-pub type xmlValidityWarningFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type xmlValidityErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type xmlStructuredErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::HTMLparser::_xmlError,) -> ()>;
-pub type xmlErrorPtr = * mut crate::src::HTMLparser::_xmlError;
+pub type xmlValidityWarningFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type xmlValidityErrorFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type xmlStructuredErrorFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *mut crate::src::HTMLparser::_xmlError,
+    ) -> (),
+>;
+pub type xmlErrorPtr = *mut crate::src::HTMLparser::_xmlError;
 pub type xmlRegexp = crate::src::debugXML::_xmlRegexp;
-pub type xmlRegexpPtr = * mut crate::src::debugXML::_xmlRegexp;
+pub type xmlRegexpPtr = *mut crate::src::debugXML::_xmlRegexp;
 pub type xmlRegExecCtxt = crate::src::relaxng::_xmlRegExecCtxt;
-pub type xmlRegExecCtxtPtr = * mut crate::src::relaxng::_xmlRegExecCtxt;
-pub type xmlRegExecCallbacks = Option<unsafe extern "C"  fn(_: * mut crate::src::relaxng::_xmlRegExecCtxt,_: * const u8,_: * mut core::ffi::c_void,_: * mut core::ffi::c_void,) -> ()>;
-pub type xmlNsPtr = * mut crate::src::HTMLparser::_xmlNs;
-pub type xmlHashDeallocator = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> ()>;
-pub type xmlHashScanner = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut core::ffi::c_void,_: * const u8,) -> ()>;
+pub type xmlRegExecCtxtPtr = *mut crate::src::relaxng::_xmlRegExecCtxt;
+pub type xmlRegExecCallbacks = Option<
+    unsafe extern "C" fn(
+        _: *mut crate::src::relaxng::_xmlRegExecCtxt,
+        _: *const u8,
+        _: *mut core::ffi::c_void,
+        _: *mut core::ffi::c_void,
+    ) -> (),
+>;
+pub type xmlNsPtr = *mut crate::src::HTMLparser::_xmlNs;
+pub type xmlHashDeallocator =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8) -> ()>;
+pub type xmlHashScanner = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *mut core::ffi::c_void, _: *const u8) -> (),
+>;
 pub type C2RustUnnamed = u32;
 pub const XML_FROM_URI: C2RustUnnamed = 30;
 pub const XML_FROM_BUFFER: C2RustUnnamed = 29;
@@ -1073,95 +1078,93 @@ pub const XML_ERR_DOCUMENT_START: C2RustUnnamed_0 = 3;
 pub const XML_ERR_NO_MEMORY: C2RustUnnamed_0 = 2;
 pub const XML_ERR_INTERNAL_ERROR: C2RustUnnamed_0 = 1;
 pub const XML_ERR_OK: C2RustUnnamed_0 = 0;
-pub type xmlGenericErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type xmlValidCtxtPtr = * mut crate::src::HTMLparser::_xmlValidCtxt;
-// #[derive(Copy, Clone)]
-
+pub type xmlGenericErrorFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type xmlValidCtxtPtr = *mut crate::src::HTMLparser::_xmlValidCtxt;
 pub type _xmlURI = crate::src::SAX2::_xmlURI;
 pub type xmlURI = crate::src::SAX2::_xmlURI;
-pub type xmlURIPtr = * mut crate::src::SAX2::_xmlURI;
-// #[derive(Copy, Clone)]
+pub type xmlURIPtr = *mut crate::src::SAX2::_xmlURI;
 #[repr(C)]
 pub struct _xmlRelaxNG<'a> {
     pub _private: Option<&'a mut core::ffi::c_void>,
-    pub topgrammar: * mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>,
-    pub doc: * mut crate::src::HTMLparser::_xmlDoc,
+    pub topgrammar: *mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>,
+    pub doc: *mut crate::src::HTMLparser::_xmlDoc,
     pub idref: i32,
     pub defs: Option<&'a mut crate::src::hash::_xmlHashTable>,
     pub refs: Option<&'a mut crate::src::hash::_xmlHashTable>,
-    pub documents: * mut crate::src::relaxng::_xmlRelaxNGDocument<'a>,
-    pub includes: * mut crate::src::relaxng::_xmlRelaxNGInclude<'a>,
+    pub documents: *mut crate::src::relaxng::_xmlRelaxNGDocument<'a>,
+    pub includes: *mut crate::src::relaxng::_xmlRelaxNGInclude<'a>,
     pub defNr: i32,
-    pub defTab: * mut * mut crate::src::relaxng::_xmlRelaxNGDefine,
+    pub defTab: *mut *mut crate::src::relaxng::_xmlRelaxNGDefine,
 }
 impl<'a> _xmlRelaxNG<'a> {
     pub const fn new() -> Self {
         _xmlRelaxNG {
-        _private: None,
-        topgrammar: (0 as * mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>),
-        doc: (0 as * mut crate::src::HTMLparser::_xmlDoc),
-        idref: 0,
-        defs: None,
-        refs: None,
-        documents: (0 as * mut crate::src::relaxng::_xmlRelaxNGDocument<'a>),
-        includes: (0 as * mut crate::src::relaxng::_xmlRelaxNGInclude<'a>),
-        defNr: 0,
-        defTab: (0 as * mut * mut crate::src::relaxng::_xmlRelaxNGDefine)
+            _private: None,
+            topgrammar: (0 as *mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>),
+            doc: (0 as *mut crate::src::HTMLparser::_xmlDoc),
+            idref: 0,
+            defs: None,
+            refs: None,
+            documents: (0 as *mut crate::src::relaxng::_xmlRelaxNGDocument<'a>),
+            includes: (0 as *mut crate::src::relaxng::_xmlRelaxNGInclude<'a>),
+            defNr: 0,
+            defTab: (0 as *mut *mut crate::src::relaxng::_xmlRelaxNGDefine),
         }
     }
 }
-
 impl<'a> std::default::Default for _xmlRelaxNG<'a> {
-    fn default() -> Self { _xmlRelaxNG::new() }
+    fn default() -> Self {
+        _xmlRelaxNG::new()
+    }
 }
-
-pub type xmlRelaxNGDefinePtr = * mut crate::src::relaxng::_xmlRelaxNGDefine;
+pub type xmlRelaxNGDefinePtr = *mut crate::src::relaxng::_xmlRelaxNGDefine;
 pub type xmlRelaxNGDefine = crate::src::relaxng::_xmlRelaxNGDefine;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlRelaxNGDefine {
     pub type_0: i32,
-    pub node: * mut crate::src::HTMLparser::_xmlNode,
-    pub name: * mut u8,
-    pub ns: * mut u8,
-    pub value: * mut u8,
-    pub data: * mut core::ffi::c_void,
-    pub content: * mut crate::src::relaxng::_xmlRelaxNGDefine,
-    pub parent: * mut crate::src::relaxng::_xmlRelaxNGDefine,
-    pub next: * mut crate::src::relaxng::_xmlRelaxNGDefine,
-    pub attrs: * mut crate::src::relaxng::_xmlRelaxNGDefine,
-    pub nameClass: * mut crate::src::relaxng::_xmlRelaxNGDefine,
-    pub nextHash: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+    pub node: *mut crate::src::HTMLparser::_xmlNode,
+    pub name: *mut u8,
+    pub ns: *mut u8,
+    pub value: *mut u8,
+    pub data: *mut core::ffi::c_void,
+    pub content: *mut crate::src::relaxng::_xmlRelaxNGDefine,
+    pub parent: *mut crate::src::relaxng::_xmlRelaxNGDefine,
+    pub next: *mut crate::src::relaxng::_xmlRelaxNGDefine,
+    pub attrs: *mut crate::src::relaxng::_xmlRelaxNGDefine,
+    pub nameClass: *mut crate::src::relaxng::_xmlRelaxNGDefine,
+    pub nextHash: *mut crate::src::relaxng::_xmlRelaxNGDefine,
     pub depth: i16,
     pub dflags: i16,
-    pub contModel: * mut crate::src::debugXML::_xmlRegexp,
+    pub contModel: *mut crate::src::debugXML::_xmlRegexp,
 }
 impl _xmlRelaxNGDefine {
     pub const fn new() -> Self {
         _xmlRelaxNGDefine {
-        type_0: 0,
-        node: (0 as * mut crate::src::HTMLparser::_xmlNode),
-        name: (0 as * mut u8),
-        ns: (0 as * mut u8),
-        value: (0 as * mut u8),
-        data: (0 as * mut core::ffi::c_void),
-        content: (0 as * mut crate::src::relaxng::_xmlRelaxNGDefine),
-        parent: (0 as * mut crate::src::relaxng::_xmlRelaxNGDefine),
-        next: (0 as * mut crate::src::relaxng::_xmlRelaxNGDefine),
-        attrs: (0 as * mut crate::src::relaxng::_xmlRelaxNGDefine),
-        nameClass: (0 as * mut crate::src::relaxng::_xmlRelaxNGDefine),
-        nextHash: (0 as * mut crate::src::relaxng::_xmlRelaxNGDefine),
-        depth: 0,
-        dflags: 0,
-        contModel: (0 as * mut crate::src::debugXML::_xmlRegexp)
+            type_0: 0,
+            node: (0 as *mut crate::src::HTMLparser::_xmlNode),
+            name: (0 as *mut u8),
+            ns: (0 as *mut u8),
+            value: (0 as *mut u8),
+            data: (0 as *mut core::ffi::c_void),
+            content: (0 as *mut crate::src::relaxng::_xmlRelaxNGDefine),
+            parent: (0 as *mut crate::src::relaxng::_xmlRelaxNGDefine),
+            next: (0 as *mut crate::src::relaxng::_xmlRelaxNGDefine),
+            attrs: (0 as *mut crate::src::relaxng::_xmlRelaxNGDefine),
+            nameClass: (0 as *mut crate::src::relaxng::_xmlRelaxNGDefine),
+            nextHash: (0 as *mut crate::src::relaxng::_xmlRelaxNGDefine),
+            depth: 0,
+            dflags: 0,
+            contModel: (0 as *mut crate::src::debugXML::_xmlRegexp),
         }
     }
 }
-
 impl std::default::Default for _xmlRelaxNGDefine {
-    fn default() -> Self { _xmlRelaxNGDefine::new() }
+    fn default() -> Self {
+        _xmlRelaxNGDefine::new()
+    }
 }
-
 pub type xmlRelaxNGType = i32;
 pub const XML_RELAXNG_START: xmlRelaxNGType = 20;
 pub const XML_RELAXNG_INTERLEAVE: xmlRelaxNGType = 19;
@@ -1185,192 +1188,196 @@ pub const XML_RELAXNG_EXCEPT: xmlRelaxNGType = 2;
 pub const XML_RELAXNG_NOT_ALLOWED: xmlRelaxNGType = 1;
 pub const XML_RELAXNG_EMPTY: xmlRelaxNGType = 0;
 pub const XML_RELAXNG_NOOP: xmlRelaxNGType = -1;
-pub type xmlRelaxNGIncludePtr<'a> = * mut crate::src::relaxng::_xmlRelaxNGInclude<'a>;
+pub type xmlRelaxNGIncludePtr<'a> = *mut crate::src::relaxng::_xmlRelaxNGInclude<'a>;
 pub type xmlRelaxNGInclude<'a> = crate::src::relaxng::_xmlRelaxNGInclude<'a>;
-// #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlRelaxNGInclude<'a> {
-    pub next: * mut crate::src::relaxng::_xmlRelaxNGInclude<'a>,
-    pub href: * mut u8,
-    pub doc: * mut crate::src::HTMLparser::_xmlDoc,
+    pub next: *mut crate::src::relaxng::_xmlRelaxNGInclude<'a>,
+    pub href: *mut u8,
+    pub doc: *mut crate::src::HTMLparser::_xmlDoc,
     pub content: Option<&'a mut crate::src::relaxng::_xmlRelaxNGDefine>,
-    pub schema: * mut crate::src::relaxng::_xmlRelaxNG<'a>,
+    pub schema: *mut crate::src::relaxng::_xmlRelaxNG<'a>,
 }
 impl<'a> _xmlRelaxNGInclude<'a> {
     pub const fn new() -> Self {
         _xmlRelaxNGInclude {
-        next: (0 as * mut crate::src::relaxng::_xmlRelaxNGInclude<'a>),
-        href: (0 as * mut u8),
-        doc: (0 as * mut crate::src::HTMLparser::_xmlDoc),
-        content: None,
-        schema: (0 as * mut crate::src::relaxng::_xmlRelaxNG<'a>)
+            next: (0 as *mut crate::src::relaxng::_xmlRelaxNGInclude<'a>),
+            href: (0 as *mut u8),
+            doc: (0 as *mut crate::src::HTMLparser::_xmlDoc),
+            content: None,
+            schema: (0 as *mut crate::src::relaxng::_xmlRelaxNG<'a>),
         }
     }
 }
-
 impl<'a> std::default::Default for _xmlRelaxNGInclude<'a> {
-    fn default() -> Self { _xmlRelaxNGInclude::new() }
+    fn default() -> Self {
+        _xmlRelaxNGInclude::new()
+    }
 }
-
-pub type xmlRelaxNGPtr<'a> = * mut crate::src::relaxng::_xmlRelaxNG<'a>;
+pub type xmlRelaxNGPtr<'a> = *mut crate::src::relaxng::_xmlRelaxNG<'a>;
 pub type xmlRelaxNG<'a> = crate::src::relaxng::_xmlRelaxNG<'a>;
-pub type xmlRelaxNGDocumentPtr<'a> = * mut crate::src::relaxng::_xmlRelaxNGDocument<'a>;
+pub type xmlRelaxNGDocumentPtr<'a> = *mut crate::src::relaxng::_xmlRelaxNGDocument<'a>;
 pub type xmlRelaxNGDocument<'a> = crate::src::relaxng::_xmlRelaxNGDocument<'a>;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlRelaxNGDocument<'a> {
-    pub next: * mut crate::src::relaxng::_xmlRelaxNGDocument<'a>,
-    pub href: * mut u8,
-    pub doc: * mut crate::src::HTMLparser::_xmlDoc,
-    pub content: * mut crate::src::relaxng::_xmlRelaxNGDefine,
-    pub schema: * mut crate::src::relaxng::_xmlRelaxNG<'a>,
+    pub next: *mut crate::src::relaxng::_xmlRelaxNGDocument<'a>,
+    pub href: *mut u8,
+    pub doc: *mut crate::src::HTMLparser::_xmlDoc,
+    pub content: *mut crate::src::relaxng::_xmlRelaxNGDefine,
+    pub schema: *mut crate::src::relaxng::_xmlRelaxNG<'a>,
     pub externalRef: i32,
 }
 impl<'a> _xmlRelaxNGDocument<'a> {
     pub const fn new() -> Self {
         _xmlRelaxNGDocument {
-        next: (0 as * mut crate::src::relaxng::_xmlRelaxNGDocument<'a>),
-        href: (0 as * mut u8),
-        doc: (0 as * mut crate::src::HTMLparser::_xmlDoc),
-        content: (0 as * mut crate::src::relaxng::_xmlRelaxNGDefine),
-        schema: (0 as * mut crate::src::relaxng::_xmlRelaxNG<'a>),
-        externalRef: 0
+            next: (0 as *mut crate::src::relaxng::_xmlRelaxNGDocument<'a>),
+            href: (0 as *mut u8),
+            doc: (0 as *mut crate::src::HTMLparser::_xmlDoc),
+            content: (0 as *mut crate::src::relaxng::_xmlRelaxNGDefine),
+            schema: (0 as *mut crate::src::relaxng::_xmlRelaxNG<'a>),
+            externalRef: 0,
         }
     }
 }
-
 impl<'a> std::default::Default for _xmlRelaxNGDocument<'a> {
-    fn default() -> Self { _xmlRelaxNGDocument::new() }
+    fn default() -> Self {
+        _xmlRelaxNGDocument::new()
+    }
 }
-
-pub type xmlRelaxNGGrammarPtr<'a> = * mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>;
+pub type xmlRelaxNGGrammarPtr<'a> = *mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>;
 pub type xmlRelaxNGGrammar<'a> = crate::src::relaxng::_xmlRelaxNGGrammar<'a>;
-// #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlRelaxNGGrammar<'a> {
-    pub parent: * mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>,
-    pub children: * mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>,
-    pub next: * mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>,
-    pub start: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+    pub parent: *mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>,
+    pub children: *mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>,
+    pub next: *mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>,
+    pub start: *mut crate::src::relaxng::_xmlRelaxNGDefine,
     pub combine: u32,
     pub startList: Option<&'a mut crate::src::relaxng::_xmlRelaxNGDefine>,
-    pub defs: * mut crate::src::hash::_xmlHashTable,
-    pub refs: * mut crate::src::hash::_xmlHashTable,
+    pub defs: *mut crate::src::hash::_xmlHashTable,
+    pub refs: *mut crate::src::hash::_xmlHashTable,
 }
 impl<'a> _xmlRelaxNGGrammar<'a> {
     pub const fn new() -> Self {
         _xmlRelaxNGGrammar {
-        parent: (0 as * mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>),
-        children: (0 as * mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>),
-        next: (0 as * mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>),
-        start: (0 as * mut crate::src::relaxng::_xmlRelaxNGDefine),
-        combine: 0,
-        startList: None,
-        defs: (0 as * mut crate::src::hash::_xmlHashTable),
-        refs: (0 as * mut crate::src::hash::_xmlHashTable)
+            parent: (0 as *mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>),
+            children: (0 as *mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>),
+            next: (0 as *mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>),
+            start: (0 as *mut crate::src::relaxng::_xmlRelaxNGDefine),
+            combine: 0,
+            startList: None,
+            defs: (0 as *mut crate::src::hash::_xmlHashTable),
+            refs: (0 as *mut crate::src::hash::_xmlHashTable),
         }
     }
 }
-
 impl<'a> std::default::Default for _xmlRelaxNGGrammar<'a> {
-    fn default() -> Self { _xmlRelaxNGGrammar::new() }
+    fn default() -> Self {
+        _xmlRelaxNGGrammar::new()
+    }
 }
-
 pub type xmlRelaxNGCombine = u32;
 pub const XML_RELAXNG_COMBINE_INTERLEAVE: xmlRelaxNGCombine = 2;
 pub const XML_RELAXNG_COMBINE_CHOICE: xmlRelaxNGCombine = 1;
 pub const XML_RELAXNG_COMBINE_UNDEFINED: xmlRelaxNGCombine = 0;
-pub type xmlRelaxNGValidityErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type xmlRelaxNGValidityWarningFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-// #[derive(Copy, Clone)]
+pub type xmlRelaxNGValidityErrorFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type xmlRelaxNGValidityWarningFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
 #[repr(C)]
 pub struct _xmlRelaxNGParserCtxt<'a> {
-    pub userData: * mut core::ffi::c_void,
-    pub error: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>,
-    pub warning: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>,
-    pub serror: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::HTMLparser::_xmlError,) -> ()>,
+    pub userData: *mut core::ffi::c_void,
+    pub error: Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>,
+    pub warning: Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>,
+    pub serror: Option<
+        unsafe extern "C" fn(
+            _: *mut core::ffi::c_void,
+            _: *mut crate::src::HTMLparser::_xmlError,
+        ) -> (),
+    >,
     pub err: u32,
     pub schema: Option<&'a mut crate::src::relaxng::_xmlRelaxNG<'a>>,
-    pub grammar: * mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>,
-    pub parentgrammar: * mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>,
+    pub grammar: *mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>,
+    pub parentgrammar: *mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>,
     pub flags: i32,
     pub nbErrors: i32,
     pub nbWarnings: i32,
-    pub define: * const u8,
-    pub def: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+    pub define: *const u8,
+    pub def: *mut crate::src::relaxng::_xmlRelaxNGDefine,
     pub nbInterleaves: i32,
-    pub interleaves: * mut crate::src::hash::_xmlHashTable,
-    pub documents: * mut crate::src::relaxng::_xmlRelaxNGDocument<'a>,
-    pub includes: * mut crate::src::relaxng::_xmlRelaxNGInclude<'a>,
-    pub URL: * mut u8,
-    pub document: * mut crate::src::HTMLparser::_xmlDoc,
+    pub interleaves: *mut crate::src::hash::_xmlHashTable,
+    pub documents: *mut crate::src::relaxng::_xmlRelaxNGDocument<'a>,
+    pub includes: *mut crate::src::relaxng::_xmlRelaxNGInclude<'a>,
+    pub URL: *mut u8,
+    pub document: *mut crate::src::HTMLparser::_xmlDoc,
     pub defNr: i32,
     pub defMax: i32,
-    pub defTab: * mut * mut crate::src::relaxng::_xmlRelaxNGDefine,
-    pub buffer: * const i8,
+    pub defTab: *mut *mut crate::src::relaxng::_xmlRelaxNGDefine,
+    pub buffer: *const i8,
     pub size: i32,
-    pub doc: * mut crate::src::relaxng::_xmlRelaxNGDocument<'a>,
+    pub doc: *mut crate::src::relaxng::_xmlRelaxNGDocument<'a>,
     pub docNr: i32,
     pub docMax: i32,
-    pub docTab: * mut * mut crate::src::relaxng::_xmlRelaxNGDocument<'a>,
-    pub inc: * mut crate::src::relaxng::_xmlRelaxNGInclude<'a>,
+    pub docTab: *mut *mut crate::src::relaxng::_xmlRelaxNGDocument<'a>,
+    pub inc: *mut crate::src::relaxng::_xmlRelaxNGInclude<'a>,
     pub incNr: i32,
     pub incMax: i32,
-    pub incTab: * mut * mut crate::src::relaxng::_xmlRelaxNGInclude<'a>,
+    pub incTab: *mut *mut crate::src::relaxng::_xmlRelaxNGInclude<'a>,
     pub idref: i32,
-    pub am: * mut crate::src::catalog::_xmlAutomata,
-    pub state: * mut crate::src::encoding::_xmlAutomataState,
+    pub am: *mut crate::src::catalog::_xmlAutomata,
+    pub state: *mut crate::src::encoding::_xmlAutomataState,
     pub crng: i32,
     pub freedoc: i32,
 }
 impl<'a> _xmlRelaxNGParserCtxt<'a> {
     pub const fn new() -> Self {
         _xmlRelaxNGParserCtxt {
-        userData: (0 as * mut core::ffi::c_void),
-        error: None,
-        warning: None,
-        serror: None,
-        err: 0,
-        schema: None,
-        grammar: (0 as * mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>),
-        parentgrammar: (0 as * mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>),
-        flags: 0,
-        nbErrors: 0,
-        nbWarnings: 0,
-        define: (0 as * const u8),
-        def: (0 as * mut crate::src::relaxng::_xmlRelaxNGDefine),
-        nbInterleaves: 0,
-        interleaves: (0 as * mut crate::src::hash::_xmlHashTable),
-        documents: (0 as * mut crate::src::relaxng::_xmlRelaxNGDocument<'a>),
-        includes: (0 as * mut crate::src::relaxng::_xmlRelaxNGInclude<'a>),
-        URL: (0 as * mut u8),
-        document: (0 as * mut crate::src::HTMLparser::_xmlDoc),
-        defNr: 0,
-        defMax: 0,
-        defTab: (0 as * mut * mut crate::src::relaxng::_xmlRelaxNGDefine),
-        buffer: (0 as * const i8),
-        size: 0,
-        doc: (0 as * mut crate::src::relaxng::_xmlRelaxNGDocument<'a>),
-        docNr: 0,
-        docMax: 0,
-        docTab: (0 as * mut * mut crate::src::relaxng::_xmlRelaxNGDocument<'a>),
-        inc: (0 as * mut crate::src::relaxng::_xmlRelaxNGInclude<'a>),
-        incNr: 0,
-        incMax: 0,
-        incTab: (0 as * mut * mut crate::src::relaxng::_xmlRelaxNGInclude<'a>),
-        idref: 0,
-        am: (0 as * mut crate::src::catalog::_xmlAutomata),
-        state: (0 as * mut crate::src::encoding::_xmlAutomataState),
-        crng: 0,
-        freedoc: 0
+            userData: (0 as *mut core::ffi::c_void),
+            error: None,
+            warning: None,
+            serror: None,
+            err: 0,
+            schema: None,
+            grammar: (0 as *mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>),
+            parentgrammar: (0 as *mut crate::src::relaxng::_xmlRelaxNGGrammar<'a>),
+            flags: 0,
+            nbErrors: 0,
+            nbWarnings: 0,
+            define: (0 as *const u8),
+            def: (0 as *mut crate::src::relaxng::_xmlRelaxNGDefine),
+            nbInterleaves: 0,
+            interleaves: (0 as *mut crate::src::hash::_xmlHashTable),
+            documents: (0 as *mut crate::src::relaxng::_xmlRelaxNGDocument<'a>),
+            includes: (0 as *mut crate::src::relaxng::_xmlRelaxNGInclude<'a>),
+            URL: (0 as *mut u8),
+            document: (0 as *mut crate::src::HTMLparser::_xmlDoc),
+            defNr: 0,
+            defMax: 0,
+            defTab: (0 as *mut *mut crate::src::relaxng::_xmlRelaxNGDefine),
+            buffer: (0 as *const i8),
+            size: 0,
+            doc: (0 as *mut crate::src::relaxng::_xmlRelaxNGDocument<'a>),
+            docNr: 0,
+            docMax: 0,
+            docTab: (0 as *mut *mut crate::src::relaxng::_xmlRelaxNGDocument<'a>),
+            inc: (0 as *mut crate::src::relaxng::_xmlRelaxNGInclude<'a>),
+            incNr: 0,
+            incMax: 0,
+            incTab: (0 as *mut *mut crate::src::relaxng::_xmlRelaxNGInclude<'a>),
+            idref: 0,
+            am: (0 as *mut crate::src::catalog::_xmlAutomata),
+            state: (0 as *mut crate::src::encoding::_xmlAutomataState),
+            crng: 0,
+            freedoc: 0,
         }
     }
 }
-
 impl<'a> std::default::Default for _xmlRelaxNGParserCtxt<'a> {
-    fn default() -> Self { _xmlRelaxNGParserCtxt::new() }
+    fn default() -> Self {
+        _xmlRelaxNGParserCtxt::new()
+    }
 }
-
 pub type xmlRelaxNGValidErr = u32;
 pub const XML_RELAXNG_ERR_TEXTWRONG: xmlRelaxNGValidErr = 39;
 pub const XML_RELAXNG_ERR_ELEMWRONG: xmlRelaxNGValidErr = 38;
@@ -1413,17 +1420,21 @@ pub const XML_RELAXNG_ERR_TYPE: xmlRelaxNGValidErr = 2;
 pub const XML_RELAXNG_ERR_MEMORY: xmlRelaxNGValidErr = 1;
 pub const XML_RELAXNG_OK: xmlRelaxNGValidErr = 0;
 pub type xmlRelaxNGParserCtxt<'a> = crate::src::relaxng::_xmlRelaxNGParserCtxt<'a>;
-pub type xmlRelaxNGParserCtxtPtr<'a> = * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a>;
-// #[derive(Copy, Clone)]
+pub type xmlRelaxNGParserCtxtPtr<'a> = *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a>;
 #[repr(C)]
 pub struct _xmlRelaxNGValidCtxt<'a> {
-    pub userData: * mut core::ffi::c_void,
-    pub error: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>,
-    pub warning: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>,
-    pub serror: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::HTMLparser::_xmlError,) -> ()>,
+    pub userData: *mut core::ffi::c_void,
+    pub error: Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>,
+    pub warning: Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>,
+    pub serror: Option<
+        unsafe extern "C" fn(
+            _: *mut core::ffi::c_void,
+            _: *mut crate::src::HTMLparser::_xmlError,
+        ) -> (),
+    >,
     pub nbErrors: i32,
-    pub schema: * mut crate::src::relaxng::_xmlRelaxNG<'a>,
-    pub doc: * mut crate::src::HTMLparser::_xmlDoc,
+    pub schema: *mut crate::src::relaxng::_xmlRelaxNG<'a>,
+    pub doc: *mut crate::src::HTMLparser::_xmlDoc,
     pub flags: i32,
     pub depth: i32,
     pub idref: i32,
@@ -1431,249 +1442,306 @@ pub struct _xmlRelaxNGValidCtxt<'a> {
     pub err: Option<&'a mut crate::src::relaxng::_xmlRelaxNGValidError>,
     pub errNr: i32,
     pub errMax: i32,
-    pub errTab: * mut crate::src::relaxng::_xmlRelaxNGValidError,
-    pub state: * mut crate::src::relaxng::_xmlRelaxNGValidState,
-    pub states: * mut crate::src::relaxng::_xmlRelaxNGStates,
-    pub freeState: * mut crate::src::relaxng::_xmlRelaxNGStates,
+    pub errTab: *mut crate::src::relaxng::_xmlRelaxNGValidError,
+    pub state: *mut crate::src::relaxng::_xmlRelaxNGValidState,
+    pub states: *mut crate::src::relaxng::_xmlRelaxNGStates,
+    pub freeState: *mut crate::src::relaxng::_xmlRelaxNGStates,
     pub freeStatesNr: i32,
     pub freeStatesMax: i32,
-    pub freeStates: * mut * mut crate::src::relaxng::_xmlRelaxNGStates,
-    pub elem: * mut crate::src::relaxng::_xmlRegExecCtxt,
+    pub freeStates: *mut *mut crate::src::relaxng::_xmlRelaxNGStates,
+    pub elem: *mut crate::src::relaxng::_xmlRegExecCtxt,
     pub elemNr: i32,
     pub elemMax: i32,
-    pub elemTab: * mut * mut crate::src::relaxng::_xmlRegExecCtxt,
+    pub elemTab: *mut *mut crate::src::relaxng::_xmlRegExecCtxt,
     pub pstate: i32,
-    pub pnode: * mut crate::src::HTMLparser::_xmlNode,
-    pub pdef: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+    pub pnode: *mut crate::src::HTMLparser::_xmlNode,
+    pub pdef: *mut crate::src::relaxng::_xmlRelaxNGDefine,
     pub perr: i32,
 }
 impl<'a> _xmlRelaxNGValidCtxt<'a> {
     pub const fn new() -> Self {
         _xmlRelaxNGValidCtxt {
-        userData: (0 as * mut core::ffi::c_void),
-        error: None,
-        warning: None,
-        serror: None,
-        nbErrors: 0,
-        schema: (0 as * mut crate::src::relaxng::_xmlRelaxNG<'a>),
-        doc: (0 as * mut crate::src::HTMLparser::_xmlDoc),
-        flags: 0,
-        depth: 0,
-        idref: 0,
-        errNo: 0,
-        err: None,
-        errNr: 0,
-        errMax: 0,
-        errTab: (0 as * mut crate::src::relaxng::_xmlRelaxNGValidError),
-        state: (0 as * mut crate::src::relaxng::_xmlRelaxNGValidState),
-        states: (0 as * mut crate::src::relaxng::_xmlRelaxNGStates),
-        freeState: (0 as * mut crate::src::relaxng::_xmlRelaxNGStates),
-        freeStatesNr: 0,
-        freeStatesMax: 0,
-        freeStates: (0 as * mut * mut crate::src::relaxng::_xmlRelaxNGStates),
-        elem: (0 as * mut crate::src::relaxng::_xmlRegExecCtxt),
-        elemNr: 0,
-        elemMax: 0,
-        elemTab: (0 as * mut * mut crate::src::relaxng::_xmlRegExecCtxt),
-        pstate: 0,
-        pnode: (0 as * mut crate::src::HTMLparser::_xmlNode),
-        pdef: (0 as * mut crate::src::relaxng::_xmlRelaxNGDefine),
-        perr: 0
+            userData: (0 as *mut core::ffi::c_void),
+            error: None,
+            warning: None,
+            serror: None,
+            nbErrors: 0,
+            schema: (0 as *mut crate::src::relaxng::_xmlRelaxNG<'a>),
+            doc: (0 as *mut crate::src::HTMLparser::_xmlDoc),
+            flags: 0,
+            depth: 0,
+            idref: 0,
+            errNo: 0,
+            err: None,
+            errNr: 0,
+            errMax: 0,
+            errTab: (0 as *mut crate::src::relaxng::_xmlRelaxNGValidError),
+            state: (0 as *mut crate::src::relaxng::_xmlRelaxNGValidState),
+            states: (0 as *mut crate::src::relaxng::_xmlRelaxNGStates),
+            freeState: (0 as *mut crate::src::relaxng::_xmlRelaxNGStates),
+            freeStatesNr: 0,
+            freeStatesMax: 0,
+            freeStates: (0 as *mut *mut crate::src::relaxng::_xmlRelaxNGStates),
+            elem: (0 as *mut crate::src::relaxng::_xmlRegExecCtxt),
+            elemNr: 0,
+            elemMax: 0,
+            elemTab: (0 as *mut *mut crate::src::relaxng::_xmlRegExecCtxt),
+            pstate: 0,
+            pnode: (0 as *mut crate::src::HTMLparser::_xmlNode),
+            pdef: (0 as *mut crate::src::relaxng::_xmlRelaxNGDefine),
+            perr: 0,
         }
     }
 }
-
 impl<'a> std::default::Default for _xmlRelaxNGValidCtxt<'a> {
-    fn default() -> Self { _xmlRelaxNGValidCtxt::new() }
+    fn default() -> Self {
+        _xmlRelaxNGValidCtxt::new()
+    }
 }
-
-pub type xmlRelaxNGStatesPtr = * mut crate::src::relaxng::_xmlRelaxNGStates;
+pub type xmlRelaxNGStatesPtr = *mut crate::src::relaxng::_xmlRelaxNGStates;
 pub type xmlRelaxNGStates = crate::src::relaxng::_xmlRelaxNGStates;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlRelaxNGStates {
     pub nbState: i32,
     pub maxState: i32,
-    pub tabState: * mut * mut crate::src::relaxng::_xmlRelaxNGValidState,
+    pub tabState: *mut *mut crate::src::relaxng::_xmlRelaxNGValidState,
 }
 impl _xmlRelaxNGStates {
     pub const fn new() -> Self {
         _xmlRelaxNGStates {
-        nbState: 0,
-        maxState: 0,
-        tabState: (0 as * mut * mut crate::src::relaxng::_xmlRelaxNGValidState)
+            nbState: 0,
+            maxState: 0,
+            tabState: (0 as *mut *mut crate::src::relaxng::_xmlRelaxNGValidState),
         }
     }
 }
-
 impl std::default::Default for _xmlRelaxNGStates {
-    fn default() -> Self { _xmlRelaxNGStates::new() }
+    fn default() -> Self {
+        _xmlRelaxNGStates::new()
+    }
 }
-
-pub type xmlRelaxNGValidStatePtr = * mut crate::src::relaxng::_xmlRelaxNGValidState;
+pub type xmlRelaxNGValidStatePtr = *mut crate::src::relaxng::_xmlRelaxNGValidState;
 pub type xmlRelaxNGValidState = crate::src::relaxng::_xmlRelaxNGValidState;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlRelaxNGValidState {
-    pub node: * mut crate::src::HTMLparser::_xmlNode,
-    pub seq: * mut crate::src::HTMLparser::_xmlNode,
+    pub node: *mut crate::src::HTMLparser::_xmlNode,
+    pub seq: *mut crate::src::HTMLparser::_xmlNode,
     pub nbAttrs: i32,
     pub maxAttrs: i32,
     pub nbAttrLeft: i32,
-    pub value: * mut u8,
-    pub endvalue: * mut u8,
-    pub attrs: * mut * mut crate::src::HTMLparser::_xmlAttr,
+    pub value: *mut u8,
+    pub endvalue: *mut u8,
+    pub attrs: *mut *mut crate::src::HTMLparser::_xmlAttr,
 }
 impl _xmlRelaxNGValidState {
     pub const fn new() -> Self {
         _xmlRelaxNGValidState {
-        node: (0 as * mut crate::src::HTMLparser::_xmlNode),
-        seq: (0 as * mut crate::src::HTMLparser::_xmlNode),
-        nbAttrs: 0,
-        maxAttrs: 0,
-        nbAttrLeft: 0,
-        value: (0 as * mut u8),
-        endvalue: (0 as * mut u8),
-        attrs: (0 as * mut * mut crate::src::HTMLparser::_xmlAttr)
+            node: (0 as *mut crate::src::HTMLparser::_xmlNode),
+            seq: (0 as *mut crate::src::HTMLparser::_xmlNode),
+            nbAttrs: 0,
+            maxAttrs: 0,
+            nbAttrLeft: 0,
+            value: (0 as *mut u8),
+            endvalue: (0 as *mut u8),
+            attrs: (0 as *mut *mut crate::src::HTMLparser::_xmlAttr),
         }
     }
 }
-
 impl std::default::Default for _xmlRelaxNGValidState {
-    fn default() -> Self { _xmlRelaxNGValidState::new() }
+    fn default() -> Self {
+        _xmlRelaxNGValidState::new()
+    }
 }
-
-pub type xmlRelaxNGValidErrorPtr = * mut crate::src::relaxng::_xmlRelaxNGValidError;
+pub type xmlRelaxNGValidErrorPtr = *mut crate::src::relaxng::_xmlRelaxNGValidError;
 pub type xmlRelaxNGValidError = crate::src::relaxng::_xmlRelaxNGValidError;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlRelaxNGValidError {
     pub err: u32,
     pub flags: i32,
-    pub node: * mut crate::src::HTMLparser::_xmlNode,
-    pub seq: * mut crate::src::HTMLparser::_xmlNode,
-    pub arg1: * const u8,
-    pub arg2: * const u8,
+    pub node: *mut crate::src::HTMLparser::_xmlNode,
+    pub seq: *mut crate::src::HTMLparser::_xmlNode,
+    pub arg1: *const u8,
+    pub arg2: *const u8,
 }
 impl _xmlRelaxNGValidError {
     pub const fn new() -> Self {
         _xmlRelaxNGValidError {
-        err: 0,
-        flags: 0,
-        node: (0 as * mut crate::src::HTMLparser::_xmlNode),
-        seq: (0 as * mut crate::src::HTMLparser::_xmlNode),
-        arg1: (0 as * const u8),
-        arg2: (0 as * const u8)
+            err: 0,
+            flags: 0,
+            node: (0 as *mut crate::src::HTMLparser::_xmlNode),
+            seq: (0 as *mut crate::src::HTMLparser::_xmlNode),
+            arg1: (0 as *const u8),
+            arg2: (0 as *const u8),
         }
     }
 }
-
 impl std::default::Default for _xmlRelaxNGValidError {
-    fn default() -> Self { _xmlRelaxNGValidError::new() }
+    fn default() -> Self {
+        _xmlRelaxNGValidError::new()
+    }
 }
-
 pub type xmlRelaxNGValidCtxt<'a> = crate::src::relaxng::_xmlRelaxNGValidCtxt<'a>;
-pub type xmlRelaxNGValidCtxtPtr<'a> = * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a>;
+pub type xmlRelaxNGValidCtxtPtr<'a> = *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a>;
 pub type C2RustUnnamed_1 = u32;
 pub const XML_RELAXNGP_CRNG: C2RustUnnamed_1 = 2;
 pub const XML_RELAXNGP_FREE_DOC: C2RustUnnamed_1 = 1;
 pub const XML_RELAXNGP_NONE: C2RustUnnamed_1 = 0;
-pub type xmlRelaxNGTypeFree = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut core::ffi::c_void,) -> ()>;
-pub type xmlRelaxNGFacetCheck = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,_: * const u8,_: * mut core::ffi::c_void,) -> i32>;
-pub type xmlRelaxNGTypeCompare = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * mut crate::src::HTMLparser::_xmlNode,_: * mut core::ffi::c_void,_: * const u8,_: * mut crate::src::HTMLparser::_xmlNode,) -> i32>;
-pub type xmlRelaxNGTypeCheck = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * mut * mut core::ffi::c_void,_: * mut crate::src::HTMLparser::_xmlNode,) -> i32>;
-pub type xmlRelaxNGTypeHave = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> i32>;
-pub type xmlRelaxNGTypeLibraryPtr = * mut crate::src::relaxng::_xmlRelaxNGTypeLibrary;
+pub type xmlRelaxNGTypeFree =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *mut core::ffi::c_void) -> ()>;
+pub type xmlRelaxNGFacetCheck = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+        _: *const u8,
+        _: *const u8,
+        _: *mut core::ffi::c_void,
+    ) -> i32,
+>;
+pub type xmlRelaxNGTypeCompare = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+        _: *mut crate::src::HTMLparser::_xmlNode,
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *mut crate::src::HTMLparser::_xmlNode,
+    ) -> i32,
+>;
+pub type xmlRelaxNGTypeCheck = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+        _: *mut *mut core::ffi::c_void,
+        _: *mut crate::src::HTMLparser::_xmlNode,
+    ) -> i32,
+>;
+pub type xmlRelaxNGTypeHave =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8) -> i32>;
+pub type xmlRelaxNGTypeLibraryPtr = *mut crate::src::relaxng::_xmlRelaxNGTypeLibrary;
 pub type xmlRelaxNGTypeLibrary = crate::src::relaxng::_xmlRelaxNGTypeLibrary;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlRelaxNGTypeLibrary {
-    pub namespace: * const u8,
-    pub data: * mut core::ffi::c_void,
-    pub have: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> i32>,
-    pub check: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * mut * mut core::ffi::c_void,_: * mut crate::src::HTMLparser::_xmlNode,) -> i32>,
-    pub comp: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * mut crate::src::HTMLparser::_xmlNode,_: * mut core::ffi::c_void,_: * const u8,_: * mut crate::src::HTMLparser::_xmlNode,) -> i32>,
-    pub facet: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,_: * const u8,_: * mut core::ffi::c_void,) -> i32>,
-    pub freef: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut core::ffi::c_void,) -> ()>,
+    pub namespace: *const u8,
+    pub data: *mut core::ffi::c_void,
+    pub have: Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8) -> i32>,
+    pub check: Option<
+        unsafe extern "C" fn(
+            _: *mut core::ffi::c_void,
+            _: *const u8,
+            _: *const u8,
+            _: *mut *mut core::ffi::c_void,
+            _: *mut crate::src::HTMLparser::_xmlNode,
+        ) -> i32,
+    >,
+    pub comp: Option<
+        unsafe extern "C" fn(
+            _: *mut core::ffi::c_void,
+            _: *const u8,
+            _: *const u8,
+            _: *mut crate::src::HTMLparser::_xmlNode,
+            _: *mut core::ffi::c_void,
+            _: *const u8,
+            _: *mut crate::src::HTMLparser::_xmlNode,
+        ) -> i32,
+    >,
+    pub facet: Option<
+        unsafe extern "C" fn(
+            _: *mut core::ffi::c_void,
+            _: *const u8,
+            _: *const u8,
+            _: *const u8,
+            _: *const u8,
+            _: *mut core::ffi::c_void,
+        ) -> i32,
+    >,
+    pub freef:
+        Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *mut core::ffi::c_void) -> ()>,
 }
 impl _xmlRelaxNGTypeLibrary {
     pub const fn new() -> Self {
         _xmlRelaxNGTypeLibrary {
-        namespace: (0 as * const u8),
-        data: (0 as * mut core::ffi::c_void),
-        have: None,
-        check: None,
-        comp: None,
-        facet: None,
-        freef: None
+            namespace: (0 as *const u8),
+            data: (0 as *mut core::ffi::c_void),
+            have: None,
+            check: None,
+            comp: None,
+            facet: None,
+            freef: None,
         }
     }
 }
-
 impl std::default::Default for _xmlRelaxNGTypeLibrary {
-    fn default() -> Self { _xmlRelaxNGTypeLibrary::new() }
+    fn default() -> Self {
+        _xmlRelaxNGTypeLibrary::new()
+    }
 }
-
-pub type xmlSchemaValPtr = * mut crate::src::relaxng::_xmlSchemaVal;
+pub type xmlSchemaValPtr = *mut crate::src::relaxng::_xmlSchemaVal;
 pub type xmlSchemaVal = crate::src::relaxng::_xmlSchemaVal;
-pub type xmlSchemaFacetPtr = * mut crate::src::relaxng::_xmlSchemaFacet;
+pub type xmlSchemaFacetPtr = *mut crate::src::relaxng::_xmlSchemaFacet;
 pub type xmlSchemaFacet = crate::src::relaxng::_xmlSchemaFacet;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlSchemaFacet {
     pub type_0: u32,
-    pub next: * mut crate::src::relaxng::_xmlSchemaFacet,
-    pub value: * const u8,
-    pub id: * const u8,
-    pub annot: * mut crate::src::relaxng::_xmlSchemaAnnot,
-    pub node: * mut crate::src::HTMLparser::_xmlNode,
+    pub next: *mut crate::src::relaxng::_xmlSchemaFacet,
+    pub value: *const u8,
+    pub id: *const u8,
+    pub annot: *mut crate::src::relaxng::_xmlSchemaAnnot,
+    pub node: *mut crate::src::HTMLparser::_xmlNode,
     pub fixed: i32,
     pub whitespace: i32,
-    pub val: * mut crate::src::relaxng::_xmlSchemaVal,
-    pub regexp: * mut crate::src::debugXML::_xmlRegexp,
+    pub val: *mut crate::src::relaxng::_xmlSchemaVal,
+    pub regexp: *mut crate::src::debugXML::_xmlRegexp,
 }
 impl _xmlSchemaFacet {
     pub const fn new() -> Self {
         _xmlSchemaFacet {
-        type_0: 0,
-        next: (0 as * mut crate::src::relaxng::_xmlSchemaFacet),
-        value: (0 as * const u8),
-        id: (0 as * const u8),
-        annot: (0 as * mut crate::src::relaxng::_xmlSchemaAnnot),
-        node: (0 as * mut crate::src::HTMLparser::_xmlNode),
-        fixed: 0,
-        whitespace: 0,
-        val: (0 as * mut crate::src::relaxng::_xmlSchemaVal),
-        regexp: (0 as * mut crate::src::debugXML::_xmlRegexp)
+            type_0: 0,
+            next: (0 as *mut crate::src::relaxng::_xmlSchemaFacet),
+            value: (0 as *const u8),
+            id: (0 as *const u8),
+            annot: (0 as *mut crate::src::relaxng::_xmlSchemaAnnot),
+            node: (0 as *mut crate::src::HTMLparser::_xmlNode),
+            fixed: 0,
+            whitespace: 0,
+            val: (0 as *mut crate::src::relaxng::_xmlSchemaVal),
+            regexp: (0 as *mut crate::src::debugXML::_xmlRegexp),
         }
     }
 }
-
 impl std::default::Default for _xmlSchemaFacet {
-    fn default() -> Self { _xmlSchemaFacet::new() }
+    fn default() -> Self {
+        _xmlSchemaFacet::new()
+    }
 }
-
-pub type xmlSchemaAnnotPtr = * mut crate::src::relaxng::_xmlSchemaAnnot;
+pub type xmlSchemaAnnotPtr = *mut crate::src::relaxng::_xmlSchemaAnnot;
 pub type xmlSchemaAnnot = crate::src::relaxng::_xmlSchemaAnnot;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlSchemaAnnot {
-    pub next: * mut crate::src::relaxng::_xmlSchemaAnnot,
-    pub content: * mut crate::src::HTMLparser::_xmlNode,
+    pub next: *mut crate::src::relaxng::_xmlSchemaAnnot,
+    pub content: *mut crate::src::HTMLparser::_xmlNode,
 }
 impl _xmlSchemaAnnot {
     pub const fn new() -> Self {
         _xmlSchemaAnnot {
-        next: (0 as * mut crate::src::relaxng::_xmlSchemaAnnot),
-        content: (0 as * mut crate::src::HTMLparser::_xmlNode)
+            next: (0 as *mut crate::src::relaxng::_xmlSchemaAnnot),
+            content: (0 as *mut crate::src::HTMLparser::_xmlNode),
         }
     }
 }
-
 impl std::default::Default for _xmlSchemaAnnot {
-    fn default() -> Self { _xmlSchemaAnnot::new() }
+    fn default() -> Self {
+        _xmlSchemaAnnot::new()
+    }
 }
-
 pub type xmlSchemaTypeType = u32;
 pub const XML_SCHEMA_EXTRA_ATTR_USE_PROHIB: xmlSchemaTypeType = 2001;
 pub const XML_SCHEMA_EXTRA_QNAMEREF: xmlSchemaTypeType = 2000;
@@ -1715,260 +1783,260 @@ pub const XML_SCHEMA_TYPE_SIMPLE: xmlSchemaTypeType = 4;
 pub const XML_SCHEMA_TYPE_FACET: xmlSchemaTypeType = 3;
 pub const XML_SCHEMA_TYPE_ANY: xmlSchemaTypeType = 2;
 pub const XML_SCHEMA_TYPE_BASIC: xmlSchemaTypeType = 1;
-pub type xmlSchemaTypePtr = * mut crate::src::relaxng::_xmlSchemaType;
+pub type xmlSchemaTypePtr = *mut crate::src::relaxng::_xmlSchemaType;
 pub type xmlSchemaType = crate::src::relaxng::_xmlSchemaType;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlSchemaType {
     pub type_0: u32,
-    pub next: * mut crate::src::relaxng::_xmlSchemaType,
-    pub name: * const u8,
-    pub id: * const u8,
-    pub ref_0: * const u8,
-    pub refNs: * const u8,
-    pub annot: * mut crate::src::relaxng::_xmlSchemaAnnot,
-    pub subtypes: * mut crate::src::relaxng::_xmlSchemaType,
-    pub attributes: * mut crate::src::relaxng::_xmlSchemaAttribute,
-    pub node: * mut crate::src::HTMLparser::_xmlNode,
+    pub next: *mut crate::src::relaxng::_xmlSchemaType,
+    pub name: *const u8,
+    pub id: *const u8,
+    pub ref_0: *const u8,
+    pub refNs: *const u8,
+    pub annot: *mut crate::src::relaxng::_xmlSchemaAnnot,
+    pub subtypes: *mut crate::src::relaxng::_xmlSchemaType,
+    pub attributes: *mut crate::src::relaxng::_xmlSchemaAttribute,
+    pub node: *mut crate::src::HTMLparser::_xmlNode,
     pub minOccurs: i32,
     pub maxOccurs: i32,
     pub flags: i32,
     pub contentType: u32,
-    pub base: * const u8,
-    pub baseNs: * const u8,
-    pub baseType: * mut crate::src::relaxng::_xmlSchemaType,
-    pub facets: * mut crate::src::relaxng::_xmlSchemaFacet,
-    pub redef: * mut crate::src::relaxng::_xmlSchemaType,
+    pub base: *const u8,
+    pub baseNs: *const u8,
+    pub baseType: *mut crate::src::relaxng::_xmlSchemaType,
+    pub facets: *mut crate::src::relaxng::_xmlSchemaFacet,
+    pub redef: *mut crate::src::relaxng::_xmlSchemaType,
     pub recurse: i32,
-    pub attributeUses: * mut * mut crate::src::relaxng::_xmlSchemaAttributeLink,
-    pub attributeWildcard: * mut crate::src::relaxng::_xmlSchemaWildcard,
+    pub attributeUses: *mut *mut crate::src::relaxng::_xmlSchemaAttributeLink,
+    pub attributeWildcard: *mut crate::src::relaxng::_xmlSchemaWildcard,
     pub builtInType: i32,
-    pub memberTypes: * mut crate::src::relaxng::_xmlSchemaTypeLink,
-    pub facetSet: * mut crate::src::relaxng::_xmlSchemaFacetLink,
-    pub refPrefix: * const u8,
-    pub contentTypeDef: * mut crate::src::relaxng::_xmlSchemaType,
-    pub contModel: * mut crate::src::debugXML::_xmlRegexp,
-    pub targetNamespace: * const u8,
-    pub attrUses: * mut core::ffi::c_void,
+    pub memberTypes: *mut crate::src::relaxng::_xmlSchemaTypeLink,
+    pub facetSet: *mut crate::src::relaxng::_xmlSchemaFacetLink,
+    pub refPrefix: *const u8,
+    pub contentTypeDef: *mut crate::src::relaxng::_xmlSchemaType,
+    pub contModel: *mut crate::src::debugXML::_xmlRegexp,
+    pub targetNamespace: *const u8,
+    pub attrUses: *mut core::ffi::c_void,
 }
 impl _xmlSchemaType {
     pub const fn new() -> Self {
         _xmlSchemaType {
-        type_0: 0,
-        next: (0 as * mut crate::src::relaxng::_xmlSchemaType),
-        name: (0 as * const u8),
-        id: (0 as * const u8),
-        ref_0: (0 as * const u8),
-        refNs: (0 as * const u8),
-        annot: (0 as * mut crate::src::relaxng::_xmlSchemaAnnot),
-        subtypes: (0 as * mut crate::src::relaxng::_xmlSchemaType),
-        attributes: (0 as * mut crate::src::relaxng::_xmlSchemaAttribute),
-        node: (0 as * mut crate::src::HTMLparser::_xmlNode),
-        minOccurs: 0,
-        maxOccurs: 0,
-        flags: 0,
-        contentType: 0,
-        base: (0 as * const u8),
-        baseNs: (0 as * const u8),
-        baseType: (0 as * mut crate::src::relaxng::_xmlSchemaType),
-        facets: (0 as * mut crate::src::relaxng::_xmlSchemaFacet),
-        redef: (0 as * mut crate::src::relaxng::_xmlSchemaType),
-        recurse: 0,
-        attributeUses: (0 as * mut * mut crate::src::relaxng::_xmlSchemaAttributeLink),
-        attributeWildcard: (0 as * mut crate::src::relaxng::_xmlSchemaWildcard),
-        builtInType: 0,
-        memberTypes: (0 as * mut crate::src::relaxng::_xmlSchemaTypeLink),
-        facetSet: (0 as * mut crate::src::relaxng::_xmlSchemaFacetLink),
-        refPrefix: (0 as * const u8),
-        contentTypeDef: (0 as * mut crate::src::relaxng::_xmlSchemaType),
-        contModel: (0 as * mut crate::src::debugXML::_xmlRegexp),
-        targetNamespace: (0 as * const u8),
-        attrUses: (0 as * mut core::ffi::c_void)
+            type_0: 0,
+            next: (0 as *mut crate::src::relaxng::_xmlSchemaType),
+            name: (0 as *const u8),
+            id: (0 as *const u8),
+            ref_0: (0 as *const u8),
+            refNs: (0 as *const u8),
+            annot: (0 as *mut crate::src::relaxng::_xmlSchemaAnnot),
+            subtypes: (0 as *mut crate::src::relaxng::_xmlSchemaType),
+            attributes: (0 as *mut crate::src::relaxng::_xmlSchemaAttribute),
+            node: (0 as *mut crate::src::HTMLparser::_xmlNode),
+            minOccurs: 0,
+            maxOccurs: 0,
+            flags: 0,
+            contentType: 0,
+            base: (0 as *const u8),
+            baseNs: (0 as *const u8),
+            baseType: (0 as *mut crate::src::relaxng::_xmlSchemaType),
+            facets: (0 as *mut crate::src::relaxng::_xmlSchemaFacet),
+            redef: (0 as *mut crate::src::relaxng::_xmlSchemaType),
+            recurse: 0,
+            attributeUses: (0 as *mut *mut crate::src::relaxng::_xmlSchemaAttributeLink),
+            attributeWildcard: (0 as *mut crate::src::relaxng::_xmlSchemaWildcard),
+            builtInType: 0,
+            memberTypes: (0 as *mut crate::src::relaxng::_xmlSchemaTypeLink),
+            facetSet: (0 as *mut crate::src::relaxng::_xmlSchemaFacetLink),
+            refPrefix: (0 as *const u8),
+            contentTypeDef: (0 as *mut crate::src::relaxng::_xmlSchemaType),
+            contModel: (0 as *mut crate::src::debugXML::_xmlRegexp),
+            targetNamespace: (0 as *const u8),
+            attrUses: (0 as *mut core::ffi::c_void),
         }
     }
 }
-
 impl std::default::Default for _xmlSchemaType {
-    fn default() -> Self { _xmlSchemaType::new() }
+    fn default() -> Self {
+        _xmlSchemaType::new()
+    }
 }
-
-pub type xmlSchemaFacetLinkPtr = * mut crate::src::relaxng::_xmlSchemaFacetLink;
+pub type xmlSchemaFacetLinkPtr = *mut crate::src::relaxng::_xmlSchemaFacetLink;
 pub type xmlSchemaFacetLink = crate::src::relaxng::_xmlSchemaFacetLink;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlSchemaFacetLink {
-    pub next: * mut crate::src::relaxng::_xmlSchemaFacetLink,
-    pub facet: * mut crate::src::relaxng::_xmlSchemaFacet,
+    pub next: *mut crate::src::relaxng::_xmlSchemaFacetLink,
+    pub facet: *mut crate::src::relaxng::_xmlSchemaFacet,
 }
 impl _xmlSchemaFacetLink {
     pub const fn new() -> Self {
         _xmlSchemaFacetLink {
-        next: (0 as * mut crate::src::relaxng::_xmlSchemaFacetLink),
-        facet: (0 as * mut crate::src::relaxng::_xmlSchemaFacet)
+            next: (0 as *mut crate::src::relaxng::_xmlSchemaFacetLink),
+            facet: (0 as *mut crate::src::relaxng::_xmlSchemaFacet),
         }
     }
 }
-
 impl std::default::Default for _xmlSchemaFacetLink {
-    fn default() -> Self { _xmlSchemaFacetLink::new() }
+    fn default() -> Self {
+        _xmlSchemaFacetLink::new()
+    }
 }
-
-pub type xmlSchemaTypeLinkPtr = * mut crate::src::relaxng::_xmlSchemaTypeLink;
+pub type xmlSchemaTypeLinkPtr = *mut crate::src::relaxng::_xmlSchemaTypeLink;
 pub type xmlSchemaTypeLink = crate::src::relaxng::_xmlSchemaTypeLink;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlSchemaTypeLink {
-    pub next: * mut crate::src::relaxng::_xmlSchemaTypeLink,
-    pub type_0: * mut crate::src::relaxng::_xmlSchemaType,
+    pub next: *mut crate::src::relaxng::_xmlSchemaTypeLink,
+    pub type_0: *mut crate::src::relaxng::_xmlSchemaType,
 }
 impl _xmlSchemaTypeLink {
     pub const fn new() -> Self {
         _xmlSchemaTypeLink {
-        next: (0 as * mut crate::src::relaxng::_xmlSchemaTypeLink),
-        type_0: (0 as * mut crate::src::relaxng::_xmlSchemaType)
+            next: (0 as *mut crate::src::relaxng::_xmlSchemaTypeLink),
+            type_0: (0 as *mut crate::src::relaxng::_xmlSchemaType),
         }
     }
 }
-
 impl std::default::Default for _xmlSchemaTypeLink {
-    fn default() -> Self { _xmlSchemaTypeLink::new() }
+    fn default() -> Self {
+        _xmlSchemaTypeLink::new()
+    }
 }
-
-pub type xmlSchemaWildcardPtr = * mut crate::src::relaxng::_xmlSchemaWildcard;
+pub type xmlSchemaWildcardPtr = *mut crate::src::relaxng::_xmlSchemaWildcard;
 pub type xmlSchemaWildcard = crate::src::relaxng::_xmlSchemaWildcard;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlSchemaWildcard {
     pub type_0: u32,
-    pub id: * const u8,
-    pub annot: * mut crate::src::relaxng::_xmlSchemaAnnot,
-    pub node: * mut crate::src::HTMLparser::_xmlNode,
+    pub id: *const u8,
+    pub annot: *mut crate::src::relaxng::_xmlSchemaAnnot,
+    pub node: *mut crate::src::HTMLparser::_xmlNode,
     pub minOccurs: i32,
     pub maxOccurs: i32,
     pub processContents: i32,
     pub any: i32,
-    pub nsSet: * mut crate::src::relaxng::_xmlSchemaWildcardNs,
-    pub negNsSet: * mut crate::src::relaxng::_xmlSchemaWildcardNs,
+    pub nsSet: *mut crate::src::relaxng::_xmlSchemaWildcardNs,
+    pub negNsSet: *mut crate::src::relaxng::_xmlSchemaWildcardNs,
     pub flags: i32,
 }
 impl _xmlSchemaWildcard {
     pub const fn new() -> Self {
         _xmlSchemaWildcard {
-        type_0: 0,
-        id: (0 as * const u8),
-        annot: (0 as * mut crate::src::relaxng::_xmlSchemaAnnot),
-        node: (0 as * mut crate::src::HTMLparser::_xmlNode),
-        minOccurs: 0,
-        maxOccurs: 0,
-        processContents: 0,
-        any: 0,
-        nsSet: (0 as * mut crate::src::relaxng::_xmlSchemaWildcardNs),
-        negNsSet: (0 as * mut crate::src::relaxng::_xmlSchemaWildcardNs),
-        flags: 0
+            type_0: 0,
+            id: (0 as *const u8),
+            annot: (0 as *mut crate::src::relaxng::_xmlSchemaAnnot),
+            node: (0 as *mut crate::src::HTMLparser::_xmlNode),
+            minOccurs: 0,
+            maxOccurs: 0,
+            processContents: 0,
+            any: 0,
+            nsSet: (0 as *mut crate::src::relaxng::_xmlSchemaWildcardNs),
+            negNsSet: (0 as *mut crate::src::relaxng::_xmlSchemaWildcardNs),
+            flags: 0,
         }
     }
 }
-
 impl std::default::Default for _xmlSchemaWildcard {
-    fn default() -> Self { _xmlSchemaWildcard::new() }
+    fn default() -> Self {
+        _xmlSchemaWildcard::new()
+    }
 }
-
-pub type xmlSchemaWildcardNsPtr = * mut crate::src::relaxng::_xmlSchemaWildcardNs;
+pub type xmlSchemaWildcardNsPtr = *mut crate::src::relaxng::_xmlSchemaWildcardNs;
 pub type xmlSchemaWildcardNs = crate::src::relaxng::_xmlSchemaWildcardNs;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlSchemaWildcardNs {
-    pub next: * mut crate::src::relaxng::_xmlSchemaWildcardNs,
-    pub value: * const u8,
+    pub next: *mut crate::src::relaxng::_xmlSchemaWildcardNs,
+    pub value: *const u8,
 }
 impl _xmlSchemaWildcardNs {
     pub const fn new() -> Self {
         _xmlSchemaWildcardNs {
-        next: (0 as * mut crate::src::relaxng::_xmlSchemaWildcardNs),
-        value: (0 as * const u8)
+            next: (0 as *mut crate::src::relaxng::_xmlSchemaWildcardNs),
+            value: (0 as *const u8),
         }
     }
 }
-
 impl std::default::Default for _xmlSchemaWildcardNs {
-    fn default() -> Self { _xmlSchemaWildcardNs::new() }
+    fn default() -> Self {
+        _xmlSchemaWildcardNs::new()
+    }
 }
-
-pub type xmlSchemaAttributeLinkPtr = * mut crate::src::relaxng::_xmlSchemaAttributeLink;
+pub type xmlSchemaAttributeLinkPtr = *mut crate::src::relaxng::_xmlSchemaAttributeLink;
 pub type xmlSchemaAttributeLink = crate::src::relaxng::_xmlSchemaAttributeLink;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlSchemaAttributeLink {
-    pub next: * mut crate::src::relaxng::_xmlSchemaAttributeLink,
-    pub attr: * mut crate::src::relaxng::_xmlSchemaAttribute,
+    pub next: *mut crate::src::relaxng::_xmlSchemaAttributeLink,
+    pub attr: *mut crate::src::relaxng::_xmlSchemaAttribute,
 }
 impl _xmlSchemaAttributeLink {
     pub const fn new() -> Self {
         _xmlSchemaAttributeLink {
-        next: (0 as * mut crate::src::relaxng::_xmlSchemaAttributeLink),
-        attr: (0 as * mut crate::src::relaxng::_xmlSchemaAttribute)
+            next: (0 as *mut crate::src::relaxng::_xmlSchemaAttributeLink),
+            attr: (0 as *mut crate::src::relaxng::_xmlSchemaAttribute),
         }
     }
 }
-
 impl std::default::Default for _xmlSchemaAttributeLink {
-    fn default() -> Self { _xmlSchemaAttributeLink::new() }
+    fn default() -> Self {
+        _xmlSchemaAttributeLink::new()
+    }
 }
-
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlSchemaAttribute {
     pub type_0: u32,
-    pub next: * mut crate::src::relaxng::_xmlSchemaAttribute,
-    pub name: * const u8,
-    pub id: * const u8,
-    pub ref_0: * const u8,
-    pub refNs: * const u8,
-    pub typeName: * const u8,
-    pub typeNs: * const u8,
-    pub annot: * mut crate::src::relaxng::_xmlSchemaAnnot,
-    pub base: * mut crate::src::relaxng::_xmlSchemaType,
+    pub next: *mut crate::src::relaxng::_xmlSchemaAttribute,
+    pub name: *const u8,
+    pub id: *const u8,
+    pub ref_0: *const u8,
+    pub refNs: *const u8,
+    pub typeName: *const u8,
+    pub typeNs: *const u8,
+    pub annot: *mut crate::src::relaxng::_xmlSchemaAnnot,
+    pub base: *mut crate::src::relaxng::_xmlSchemaType,
     pub occurs: i32,
-    pub defValue: * const u8,
-    pub subtypes: * mut crate::src::relaxng::_xmlSchemaType,
-    pub node: * mut crate::src::HTMLparser::_xmlNode,
-    pub targetNamespace: * const u8,
+    pub defValue: *const u8,
+    pub subtypes: *mut crate::src::relaxng::_xmlSchemaType,
+    pub node: *mut crate::src::HTMLparser::_xmlNode,
+    pub targetNamespace: *const u8,
     pub flags: i32,
-    pub refPrefix: * const u8,
-    pub defVal: * mut crate::src::relaxng::_xmlSchemaVal,
-    pub refDecl: * mut crate::src::relaxng::_xmlSchemaAttribute,
+    pub refPrefix: *const u8,
+    pub defVal: *mut crate::src::relaxng::_xmlSchemaVal,
+    pub refDecl: *mut crate::src::relaxng::_xmlSchemaAttribute,
 }
 impl _xmlSchemaAttribute {
     pub const fn new() -> Self {
         _xmlSchemaAttribute {
-        type_0: 0,
-        next: (0 as * mut crate::src::relaxng::_xmlSchemaAttribute),
-        name: (0 as * const u8),
-        id: (0 as * const u8),
-        ref_0: (0 as * const u8),
-        refNs: (0 as * const u8),
-        typeName: (0 as * const u8),
-        typeNs: (0 as * const u8),
-        annot: (0 as * mut crate::src::relaxng::_xmlSchemaAnnot),
-        base: (0 as * mut crate::src::relaxng::_xmlSchemaType),
-        occurs: 0,
-        defValue: (0 as * const u8),
-        subtypes: (0 as * mut crate::src::relaxng::_xmlSchemaType),
-        node: (0 as * mut crate::src::HTMLparser::_xmlNode),
-        targetNamespace: (0 as * const u8),
-        flags: 0,
-        refPrefix: (0 as * const u8),
-        defVal: (0 as * mut crate::src::relaxng::_xmlSchemaVal),
-        refDecl: (0 as * mut crate::src::relaxng::_xmlSchemaAttribute)
+            type_0: 0,
+            next: (0 as *mut crate::src::relaxng::_xmlSchemaAttribute),
+            name: (0 as *const u8),
+            id: (0 as *const u8),
+            ref_0: (0 as *const u8),
+            refNs: (0 as *const u8),
+            typeName: (0 as *const u8),
+            typeNs: (0 as *const u8),
+            annot: (0 as *mut crate::src::relaxng::_xmlSchemaAnnot),
+            base: (0 as *mut crate::src::relaxng::_xmlSchemaType),
+            occurs: 0,
+            defValue: (0 as *const u8),
+            subtypes: (0 as *mut crate::src::relaxng::_xmlSchemaType),
+            node: (0 as *mut crate::src::HTMLparser::_xmlNode),
+            targetNamespace: (0 as *const u8),
+            flags: 0,
+            refPrefix: (0 as *const u8),
+            defVal: (0 as *mut crate::src::relaxng::_xmlSchemaVal),
+            refDecl: (0 as *mut crate::src::relaxng::_xmlSchemaAttribute),
         }
     }
 }
-
 impl std::default::Default for _xmlSchemaAttribute {
-    fn default() -> Self { _xmlSchemaAttribute::new() }
+    fn default() -> Self {
+        _xmlSchemaAttribute::new()
+    }
 }
-
-pub type xmlSchemaAttributePtr = * mut crate::src::relaxng::_xmlSchemaAttribute;
+pub type xmlSchemaAttributePtr = *mut crate::src::relaxng::_xmlSchemaAttribute;
 pub type xmlSchemaAttribute = crate::src::relaxng::_xmlSchemaAttribute;
 pub type xmlSchemaContentType = u32;
 pub const XML_SCHEMA_CONTENT_ANY: xmlSchemaContentType = 7;
@@ -1979,82 +2047,89 @@ pub const XML_SCHEMA_CONTENT_MIXED: xmlSchemaContentType = 3;
 pub const XML_SCHEMA_CONTENT_ELEMENTS: xmlSchemaContentType = 2;
 pub const XML_SCHEMA_CONTENT_EMPTY: xmlSchemaContentType = 1;
 pub const XML_SCHEMA_CONTENT_UNKNOWN: xmlSchemaContentType = 0;
-pub type xmlSchemaParserCtxtPtr = * mut crate::src::relaxng::_xmlSchemaParserCtxt;
+pub type xmlSchemaParserCtxtPtr = *mut crate::src::relaxng::_xmlSchemaParserCtxt;
 pub type xmlSchemaParserCtxt = crate::src::relaxng::_xmlSchemaParserCtxt;
-pub type xmlRelaxNGPartitionPtr = * mut crate::src::relaxng::_xmlRelaxNGPartition;
+pub type xmlRelaxNGPartitionPtr = *mut crate::src::relaxng::_xmlRelaxNGPartition;
 pub type xmlRelaxNGPartition = crate::src::relaxng::_xmlRelaxNGPartition;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlRelaxNGPartition {
     pub nbgroups: i32,
-    pub triage: * mut crate::src::hash::_xmlHashTable,
+    pub triage: *mut crate::src::hash::_xmlHashTable,
     pub flags: i32,
-    pub groups: * mut * mut crate::src::relaxng::_xmlRelaxNGInterleaveGroup,
+    pub groups: *mut *mut crate::src::relaxng::_xmlRelaxNGInterleaveGroup,
 }
 impl _xmlRelaxNGPartition {
     pub const fn new() -> Self {
         _xmlRelaxNGPartition {
-        nbgroups: 0,
-        triage: (0 as * mut crate::src::hash::_xmlHashTable),
-        flags: 0,
-        groups: (0 as * mut * mut crate::src::relaxng::_xmlRelaxNGInterleaveGroup)
+            nbgroups: 0,
+            triage: (0 as *mut crate::src::hash::_xmlHashTable),
+            flags: 0,
+            groups: (0 as *mut *mut crate::src::relaxng::_xmlRelaxNGInterleaveGroup),
         }
     }
 }
-
 impl std::default::Default for _xmlRelaxNGPartition {
-    fn default() -> Self { _xmlRelaxNGPartition::new() }
+    fn default() -> Self {
+        _xmlRelaxNGPartition::new()
+    }
 }
-
-pub type xmlRelaxNGInterleaveGroupPtr = * mut crate::src::relaxng::_xmlRelaxNGInterleaveGroup;
+pub type xmlRelaxNGInterleaveGroupPtr = *mut crate::src::relaxng::_xmlRelaxNGInterleaveGroup;
 pub type xmlRelaxNGInterleaveGroup = crate::src::relaxng::_xmlRelaxNGInterleaveGroup;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlRelaxNGInterleaveGroup {
-    pub rule: * mut crate::src::relaxng::_xmlRelaxNGDefine,
-    pub defs: * mut * mut crate::src::relaxng::_xmlRelaxNGDefine,
-    pub attrs: * mut * mut crate::src::relaxng::_xmlRelaxNGDefine,
+    pub rule: *mut crate::src::relaxng::_xmlRelaxNGDefine,
+    pub defs: *mut *mut crate::src::relaxng::_xmlRelaxNGDefine,
+    pub attrs: *mut *mut crate::src::relaxng::_xmlRelaxNGDefine,
 }
 impl _xmlRelaxNGInterleaveGroup {
     pub const fn new() -> Self {
         _xmlRelaxNGInterleaveGroup {
-        rule: (0 as * mut crate::src::relaxng::_xmlRelaxNGDefine),
-        defs: (0 as * mut * mut crate::src::relaxng::_xmlRelaxNGDefine),
-        attrs: (0 as * mut * mut crate::src::relaxng::_xmlRelaxNGDefine)
+            rule: (0 as *mut crate::src::relaxng::_xmlRelaxNGDefine),
+            defs: (0 as *mut *mut crate::src::relaxng::_xmlRelaxNGDefine),
+            attrs: (0 as *mut *mut crate::src::relaxng::_xmlRelaxNGDefine),
         }
     }
 }
-
 impl std::default::Default for _xmlRelaxNGInterleaveGroup {
-    fn default() -> Self { _xmlRelaxNGInterleaveGroup::new() }
+    fn default() -> Self {
+        _xmlRelaxNGInterleaveGroup::new()
+    }
 }
-
 pub type xmlRelaxNGContentType = i32;
 pub const XML_RELAXNG_CONTENT_COMPLEX: xmlRelaxNGContentType = 2;
 pub const XML_RELAXNG_CONTENT_SIMPLE: xmlRelaxNGContentType = 1;
 pub const XML_RELAXNG_CONTENT_EMPTY: xmlRelaxNGContentType = 0;
 pub const XML_RELAXNG_CONTENT_ERROR: xmlRelaxNGContentType = -1;
-static mut xmlRelaxNGNs: * const u8 = b"http://relaxng.org/ns/structure/1.0\0"
-    as *const u8 as *const i8 as *const xmlChar;
-unsafe extern "C" fn xmlRngPErrMemory<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut extra: * const i8,
+static mut xmlRelaxNGNs: *const u8 =
+    b"http://relaxng.org/ns/structure/1.0\0" as *const u8 as *const i8 as *const xmlChar;
+extern "C" fn xmlRngPErrMemory<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut extra: *const i8,
 ) {
-    let mut schannel: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::HTMLparser::_xmlError,) -> ()> = None;
-    let mut channel: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()> = None;
-    let mut data: * mut core::ffi::c_void = 0 as *mut libc::c_void;
+    let mut schannel: Option<
+        unsafe extern "C" fn(
+            _: *mut core::ffi::c_void,
+            _: *mut crate::src::HTMLparser::_xmlError,
+        ) -> (),
+    > = None;
+    let mut channel: Option<
+        unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> (),
+    > = None;
+    let mut data: *mut core::ffi::c_void = 0 as *mut libc::c_void;
     if !ctxt.is_null() {
-        if ((*ctxt).serror).is_some() {
-            schannel = (*ctxt).serror;
+        if unsafe { ((*ctxt).serror).is_some() } {
+            schannel = unsafe { (*ctxt).serror };
         } else {
-            channel = (*ctxt).error;
+            channel = unsafe { (*ctxt).error };
         }
-        data = (*ctxt).userData;
-        let ref mut fresh0 = (*ctxt).nbErrors;
+        data = unsafe { (*ctxt).userData };
+        let fresh0 = unsafe { &mut ((*ctxt).nbErrors) };
         *fresh0 += 1;
     }
     if !extra.is_null() {
-        __xmlRaiseError(
+        (unsafe { __xmlRaiseError(
             schannel,
             channel,
             data,
@@ -2072,9 +2147,9 @@ unsafe extern "C" fn xmlRngPErrMemory<'a1>(
             0 as i32,
             b"Memory allocation failed : %s\n\0" as *const u8 as *const i8,
             extra,
-        );
+        ) });
     } else {
-        __xmlRaiseError(
+        (unsafe { __xmlRaiseError(
             schannel,
             channel,
             data,
@@ -2091,28 +2166,35 @@ unsafe extern "C" fn xmlRngPErrMemory<'a1>(
             0 as i32,
             0 as i32,
             b"Memory allocation failed\n\0" as *const u8 as *const i8,
-        );
+        ) });
     };
 }
-unsafe extern "C" fn xmlRngVErrMemory<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut extra: * const i8,
+extern "C" fn xmlRngVErrMemory<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut extra: *const i8,
 ) {
-    let mut schannel: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::HTMLparser::_xmlError,) -> ()> = None;
-    let mut channel: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()> = None;
-    let mut data: * mut core::ffi::c_void = 0 as *mut libc::c_void;
+    let mut schannel: Option<
+        unsafe extern "C" fn(
+            _: *mut core::ffi::c_void,
+            _: *mut crate::src::HTMLparser::_xmlError,
+        ) -> (),
+    > = None;
+    let mut channel: Option<
+        unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> (),
+    > = None;
+    let mut data: *mut core::ffi::c_void = 0 as *mut libc::c_void;
     if !ctxt.is_null() {
-        if ((*ctxt).serror).is_some() {
-            schannel = (*ctxt).serror;
+        if unsafe { ((*ctxt).serror).is_some() } {
+            schannel = unsafe { (*ctxt).serror };
         } else {
-            channel = (*ctxt).error;
+            channel = unsafe { (*ctxt).error };
         }
-        data = (*ctxt).userData;
-        let ref mut fresh1 = (*ctxt).nbErrors;
+        data = unsafe { (*ctxt).userData };
+        let fresh1 = unsafe { &mut ((*ctxt).nbErrors) };
         *fresh1 += 1;
     }
     if !extra.is_null() {
-        __xmlRaiseError(
+        (unsafe { __xmlRaiseError(
             schannel,
             channel,
             data,
@@ -2130,9 +2212,9 @@ unsafe extern "C" fn xmlRngVErrMemory<'a1>(
             0 as i32,
             b"Memory allocation failed : %s\n\0" as *const u8 as *const i8,
             extra,
-        );
+        ) });
     } else {
-        __xmlRaiseError(
+        (unsafe { __xmlRaiseError(
             schannel,
             channel,
             data,
@@ -2149,31 +2231,38 @@ unsafe extern "C" fn xmlRngVErrMemory<'a1>(
             0 as i32,
             0 as i32,
             b"Memory allocation failed\n\0" as *const u8 as *const i8,
-        );
+        ) });
     };
 }
-unsafe extern "C" fn xmlRngPErr<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlRngPErr<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
     mut error: i32,
-    mut msg: * const i8,
-    mut str1: * const u8,
-    mut str2: * const u8,
+    mut msg: *const i8,
+    mut str1: *const u8,
+    mut str2: *const u8,
 ) {
-    let mut schannel: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::HTMLparser::_xmlError,) -> ()> = None;
-    let mut channel: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()> = None;
-    let mut data: * mut core::ffi::c_void = 0 as *mut libc::c_void;
+    let mut schannel: Option<
+        unsafe extern "C" fn(
+            _: *mut core::ffi::c_void,
+            _: *mut crate::src::HTMLparser::_xmlError,
+        ) -> (),
+    > = None;
+    let mut channel: Option<
+        unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> (),
+    > = None;
+    let mut data: *mut core::ffi::c_void = 0 as *mut libc::c_void;
     if !ctxt.is_null() {
-        if ((*ctxt).serror).is_some() {
-            schannel = (*ctxt).serror;
+        if unsafe { ((*ctxt).serror).is_some() } {
+            schannel = unsafe { (*ctxt).serror };
         } else {
-            channel = (*ctxt).error;
+            channel = unsafe { (*ctxt).error };
         }
-        data = (*ctxt).userData;
-        let ref mut fresh2 = (*ctxt).nbErrors;
+        data = unsafe { (*ctxt).userData };
+        let fresh2 = unsafe { &mut ((*ctxt).nbErrors) };
         *fresh2 += 1;
     }
-    __xmlRaiseError(
+    (unsafe { __xmlRaiseError(
         schannel,
         channel,
         data,
@@ -2192,30 +2281,37 @@ unsafe extern "C" fn xmlRngPErr<'a1>(
         msg,
         str1,
         str2,
-    );
+    ) });
 }
-unsafe extern "C" fn xmlRngVErr<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlRngVErr<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
     mut error: i32,
-    mut msg: * const i8,
-    mut str1: * const u8,
-    mut str2: * const u8,
+    mut msg: *const i8,
+    mut str1: *const u8,
+    mut str2: *const u8,
 ) {
-    let mut schannel: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::HTMLparser::_xmlError,) -> ()> = None;
-    let mut channel: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()> = None;
-    let mut data: * mut core::ffi::c_void = 0 as *mut libc::c_void;
+    let mut schannel: Option<
+        unsafe extern "C" fn(
+            _: *mut core::ffi::c_void,
+            _: *mut crate::src::HTMLparser::_xmlError,
+        ) -> (),
+    > = None;
+    let mut channel: Option<
+        unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> (),
+    > = None;
+    let mut data: *mut core::ffi::c_void = 0 as *mut libc::c_void;
     if !ctxt.is_null() {
-        if ((*ctxt).serror).is_some() {
-            schannel = (*ctxt).serror;
+        if unsafe { ((*ctxt).serror).is_some() } {
+            schannel = unsafe { (*ctxt).serror };
         } else {
-            channel = (*ctxt).error;
+            channel = unsafe { (*ctxt).error };
         }
-        data = (*ctxt).userData;
-        let ref mut fresh3 = (*ctxt).nbErrors;
+        data = unsafe { (*ctxt).userData };
+        let fresh3 = unsafe { &mut ((*ctxt).nbErrors) };
         *fresh3 += 1;
     }
-    __xmlRaiseError(
+    (unsafe { __xmlRaiseError(
         schannel,
         channel,
         data,
@@ -2234,548 +2330,463 @@ unsafe extern "C" fn xmlRngVErr<'a1>(
         msg,
         str1,
         str2,
-    );
+    ) });
 }
-unsafe extern "C" fn xmlRelaxNGFreeDocument<'a1>(mut docu: * mut crate::src::relaxng::_xmlRelaxNGDocument<'a1>) {
+extern "C" fn xmlRelaxNGFreeDocument<'a1>(
+    mut docu: *mut crate::src::relaxng::_xmlRelaxNGDocument<'a1>,
+) {
     if docu.is_null() {
         return;
     }
-    if !((*docu).href).is_null() {
-        xmlFree.expect("non-null function pointer")((*docu).href as *mut libc::c_void);
+    if !(unsafe { (*docu).href }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*docu).href as *mut libc::c_void) });
     }
-    if !((*docu).doc).is_null() {
-        xmlFreeDoc((*docu).doc);
+    if !(unsafe { (*docu).doc }).is_null() {
+        (unsafe { xmlFreeDoc((*docu).doc) });
     }
-    if !((*docu).schema).is_null() {
-        xmlRelaxNGFreeInnerSchema((*docu).schema);
+    if !(unsafe { (*docu).schema }).is_null() {
+        xmlRelaxNGFreeInnerSchema(unsafe { (*docu).schema });
     }
-    xmlFree.expect("non-null function pointer")(docu as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(docu as *mut libc::c_void) });
 }
-unsafe extern "C" fn xmlRelaxNGFreeDocumentList<'a1>(mut docu: * mut crate::src::relaxng::_xmlRelaxNGDocument<'a1>) {
-    let mut next: * mut crate::src::relaxng::_xmlRelaxNGDocument<'_> = 0 as *mut xmlRelaxNGDocument;
+extern "C" fn xmlRelaxNGFreeDocumentList<'a1>(
+    mut docu: *mut crate::src::relaxng::_xmlRelaxNGDocument<'a1>,
+) {
+    let mut next: *mut crate::src::relaxng::_xmlRelaxNGDocument<'_> = 0 as *mut xmlRelaxNGDocument;
     while !docu.is_null() {
-        next = (*docu).next;
+        next = unsafe { (*docu).next };
         xmlRelaxNGFreeDocument(docu);
         docu = next;
     }
 }
-unsafe extern "C" fn xmlRelaxNGFreeInclude<'a1>(mut incl: * mut crate::src::relaxng::_xmlRelaxNGInclude<'a1>) {
+extern "C" fn xmlRelaxNGFreeInclude<'a1>(
+    mut incl: *mut crate::src::relaxng::_xmlRelaxNGInclude<'a1>,
+) {
     if incl.is_null() {
         return;
     }
-    if !((*incl).href).is_null() {
-        xmlFree.expect("non-null function pointer")((*incl).href as *mut libc::c_void);
+    if !(unsafe { (*incl).href }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*incl).href as *mut libc::c_void) });
     }
-    if !((*incl).doc).is_null() {
-        xmlFreeDoc((*incl).doc);
+    if !(unsafe { (*incl).doc }).is_null() {
+        (unsafe { xmlFreeDoc((*incl).doc) });
     }
-    if !((*incl).schema).is_null() {
-        xmlRelaxNGFree((*incl).schema);
+    if !(unsafe { (*incl).schema }).is_null() {
+        xmlRelaxNGFree(unsafe { (*incl).schema });
     }
-    xmlFree.expect("non-null function pointer")(incl as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(incl as *mut libc::c_void) });
 }
-unsafe extern "C" fn xmlRelaxNGFreeIncludeList<'a1>(mut incl: * mut crate::src::relaxng::_xmlRelaxNGInclude<'a1>) {
-    let mut next: * mut crate::src::relaxng::_xmlRelaxNGInclude<'_> = 0 as *mut xmlRelaxNGInclude;
+extern "C" fn xmlRelaxNGFreeIncludeList<'a1>(
+    mut incl: *mut crate::src::relaxng::_xmlRelaxNGInclude<'a1>,
+) {
+    let mut next: *mut crate::src::relaxng::_xmlRelaxNGInclude<'_> = 0 as *mut xmlRelaxNGInclude;
     while !incl.is_null() {
-        next = (*incl).next;
+        next = unsafe { (*incl).next };
         xmlRelaxNGFreeInclude(incl);
         incl = next;
     }
 }
-unsafe extern "C" fn xmlRelaxNGNewRelaxNG<'a1, 'a2>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-) -> * mut crate::src::relaxng::_xmlRelaxNG<'a2> {
-    let mut ret: * mut crate::src::relaxng::_xmlRelaxNG<'_> = 0 as *mut xmlRelaxNG;
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlRelaxNG>() as u64) as xmlRelaxNGPtr;
+extern "C" fn xmlRelaxNGNewRelaxNG<'a1, 'a2>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+) -> *mut crate::src::relaxng::_xmlRelaxNG<'a2> {
+    let mut ret: *mut crate::src::relaxng::_xmlRelaxNG<'_> = 0 as *mut xmlRelaxNG;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(::std::mem::size_of::<xmlRelaxNG>() as u64) })
+        as xmlRelaxNGPtr;
     if ret.is_null() {
         xmlRngPErrMemory(ctxt, 0 as *const i8);
         return 0 as xmlRelaxNGPtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlRelaxNG>() as u64,
-    );
+    ) });
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGFreeInnerSchema<'a1>(mut schema: * mut crate::src::relaxng::_xmlRelaxNG<'a1>) {
+extern "C" fn xmlRelaxNGFreeInnerSchema<'a1>(
+    mut schema: *mut crate::src::relaxng::_xmlRelaxNG<'a1>,
+) {
     if schema.is_null() {
         return;
     }
-    if !((*schema).doc).is_null() {
-        xmlFreeDoc((*schema).doc);
+    if !(unsafe { (*schema).doc }).is_null() {
+        (unsafe { xmlFreeDoc((*schema).doc) });
     }
-    if !((*schema).defTab).is_null() {
+    if !(unsafe { (*schema).defTab }).is_null() {
         let mut i: i32 = 0;
         i = 0 as i32;
-        while i < (*schema).defNr {
-            xmlRelaxNGFreeDefine(*((*schema).defTab).offset(i as isize));
+        while i < (unsafe { (*schema).defNr }) {
+            xmlRelaxNGFreeDefine(unsafe { *((*schema).defTab).offset(i as isize) });
             i += 1;
         }
-        xmlFree
-            .expect("non-null function pointer")((*schema).defTab as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")((*schema).defTab as *mut libc::c_void) });
     }
-    xmlFree.expect("non-null function pointer")(schema as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(schema as *mut libc::c_void) });
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRelaxNGFree<'a1>(mut schema: * mut crate::src::relaxng::_xmlRelaxNG<'a1>) {
+pub extern "C" fn xmlRelaxNGFree<'a1>(mut schema: *mut crate::src::relaxng::_xmlRelaxNG<'a1>) {
     if schema.is_null() {
         return;
     }
-    if !((*schema).topgrammar).is_null() {
-        xmlRelaxNGFreeGrammar((*schema).topgrammar);
+    if !(unsafe { (*schema).topgrammar }).is_null() {
+        xmlRelaxNGFreeGrammar(unsafe { (*schema).topgrammar });
     }
-    if !((*schema).doc).is_null() {
-        xmlFreeDoc((*schema).doc);
+    if !(unsafe { (*schema).doc }).is_null() {
+        (unsafe { xmlFreeDoc((*schema).doc) });
     }
-    if !((*schema).documents).is_null() {
-        xmlRelaxNGFreeDocumentList((*schema).documents);
+    if !(unsafe { (*schema).documents }).is_null() {
+        xmlRelaxNGFreeDocumentList(unsafe { (*schema).documents });
     }
-    if !((*schema).includes).is_null() {
-        xmlRelaxNGFreeIncludeList((*schema).includes);
+    if !(unsafe { (*schema).includes }).is_null() {
+        xmlRelaxNGFreeIncludeList(unsafe { (*schema).includes });
     }
-    if !((*schema).defTab).is_null() {
+    if !(unsafe { (*schema).defTab }).is_null() {
         let mut i: i32 = 0;
         i = 0 as i32;
-        while i < (*schema).defNr {
-            xmlRelaxNGFreeDefine(*((*schema).defTab).offset(i as isize));
+        while i < (unsafe { (*schema).defNr }) {
+            xmlRelaxNGFreeDefine(unsafe { *((*schema).defTab).offset(i as isize) });
             i += 1;
         }
-        xmlFree
-            .expect("non-null function pointer")((*schema).defTab as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")((*schema).defTab as *mut libc::c_void) });
     }
-    xmlFree.expect("non-null function pointer")(schema as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(schema as *mut libc::c_void) });
 }
-unsafe extern "C" fn xmlRelaxNGNewGrammar<'a1, 'a2>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-) -> * mut crate::src::relaxng::_xmlRelaxNGGrammar<'a2> {
-    let mut ret: * mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> = 0 as *mut xmlRelaxNGGrammar;
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlRelaxNGGrammar>() as u64)
-        as xmlRelaxNGGrammarPtr;
+extern "C" fn xmlRelaxNGNewGrammar<'a1, 'a2>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+) -> *mut crate::src::relaxng::_xmlRelaxNGGrammar<'a2> {
+    let mut ret: *mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> = 0 as *mut xmlRelaxNGGrammar;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlRelaxNGGrammar>() as u64
+    ) }) as xmlRelaxNGGrammarPtr;
     if ret.is_null() {
         xmlRngPErrMemory(ctxt, 0 as *const i8);
         return 0 as xmlRelaxNGGrammarPtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlRelaxNGGrammar>() as u64,
-    );
+    ) });
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGFreeGrammar<'a1>(mut grammar: * mut crate::src::relaxng::_xmlRelaxNGGrammar<'a1>) {
+extern "C" fn xmlRelaxNGFreeGrammar<'a1>(
+    mut grammar: *mut crate::src::relaxng::_xmlRelaxNGGrammar<'a1>,
+) {
     if grammar.is_null() {
         return;
     }
-    if !((*grammar).children).is_null() {
-        xmlRelaxNGFreeGrammar((*grammar).children);
+    if !(unsafe { (*grammar).children }).is_null() {
+        xmlRelaxNGFreeGrammar(unsafe { (*grammar).children });
     }
-    if !((*grammar).next).is_null() {
-        xmlRelaxNGFreeGrammar((*grammar).next);
+    if !(unsafe { (*grammar).next }).is_null() {
+        xmlRelaxNGFreeGrammar(unsafe { (*grammar).next });
     }
-    if !((*grammar).refs).is_null() {
-        xmlHashFree((*grammar).refs, None);
+    if !(unsafe { (*grammar).refs }).is_null() {
+        xmlHashFree(unsafe { (*grammar).refs }, None);
     }
-    if !((*grammar).defs).is_null() {
-        xmlHashFree((*grammar).defs, None);
+    if !(unsafe { (*grammar).defs }).is_null() {
+        xmlHashFree(unsafe { (*grammar).defs }, None);
     }
-    xmlFree.expect("non-null function pointer")(grammar as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(grammar as *mut libc::c_void) });
 }
-unsafe extern "C" fn xmlRelaxNGNewDefine<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
-) -> * mut crate::src::relaxng::_xmlRelaxNGDefine {
-    let mut ret: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    if (*ctxt).defMax == 0 as i32 {
-        (*ctxt).defMax = 16 as i32;
-        (*ctxt).defNr = 0 as i32;
-        let ref mut fresh4 = (*ctxt).defTab;
-        *fresh4 = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(
+extern "C" fn xmlRelaxNGNewDefine<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
+) -> *mut crate::src::relaxng::_xmlRelaxNGDefine {
+    let mut ret: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    if (unsafe { (*ctxt).defMax }) == 0 as i32 {
+        (unsafe { (*ctxt).defMax = 16 as i32 });
+        (unsafe { (*ctxt).defNr = 0 as i32 });
+        let fresh4 = unsafe { &mut ((*ctxt).defTab) };
+        *fresh4 = (unsafe { xmlMalloc.expect("non-null function pointer")(
             ((*ctxt).defMax as u64)
-                .wrapping_mul(
-                    ::std::mem::size_of::<xmlRelaxNGDefinePtr>() as u64,
-                ),
-        ) as *mut xmlRelaxNGDefinePtr;
-        if ((*ctxt).defTab).is_null() {
-            xmlRngPErrMemory(
-                ctxt,
-                b"allocating define\n\0" as *const u8 as *const i8,
-            );
+                .wrapping_mul(::std::mem::size_of::<xmlRelaxNGDefinePtr>() as u64),
+        ) }) as *mut xmlRelaxNGDefinePtr;
+        if (unsafe { (*ctxt).defTab }).is_null() {
+            xmlRngPErrMemory(ctxt, b"allocating define\n\0" as *const u8 as *const i8);
             return 0 as xmlRelaxNGDefinePtr;
         }
-    } else if (*ctxt).defMax <= (*ctxt).defNr {
-        let mut tmp: * mut * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefinePtr;
-        (*ctxt).defMax *= 2 as i32;
-        tmp = xmlRealloc
-            .expect(
-                "non-null function pointer",
-            )(
+    } else if (unsafe { (*ctxt).defMax }) <= (unsafe { (*ctxt).defNr }) {
+        let mut tmp: *mut *mut crate::src::relaxng::_xmlRelaxNGDefine =
+            0 as *mut xmlRelaxNGDefinePtr;
+        (unsafe { (*ctxt).defMax *= 2 as i32 });
+        tmp = (unsafe { xmlRealloc.expect("non-null function pointer")(
             (*ctxt).defTab as *mut libc::c_void,
             ((*ctxt).defMax as u64)
-                .wrapping_mul(
-                    ::std::mem::size_of::<xmlRelaxNGDefinePtr>() as u64,
-                ),
-        ) as *mut xmlRelaxNGDefinePtr;
+                .wrapping_mul(::std::mem::size_of::<xmlRelaxNGDefinePtr>() as u64),
+        ) }) as *mut xmlRelaxNGDefinePtr;
         if tmp.is_null() {
-            xmlRngPErrMemory(
-                ctxt,
-                b"allocating define\n\0" as *const u8 as *const i8,
-            );
+            xmlRngPErrMemory(ctxt, b"allocating define\n\0" as *const u8 as *const i8);
             return 0 as xmlRelaxNGDefinePtr;
         }
-        let ref mut fresh5 = (*ctxt).defTab;
+        let fresh5 = unsafe { &mut ((*ctxt).defTab) };
         *fresh5 = tmp;
     }
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlRelaxNGDefine>() as u64)
-        as xmlRelaxNGDefinePtr;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlRelaxNGDefine>() as u64
+    ) }) as xmlRelaxNGDefinePtr;
     if ret.is_null() {
-        xmlRngPErrMemory(
-            ctxt,
-            b"allocating define\n\0" as *const u8 as *const i8,
-        );
+        xmlRngPErrMemory(ctxt, b"allocating define\n\0" as *const u8 as *const i8);
         return 0 as xmlRelaxNGDefinePtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlRelaxNGDefine>() as u64,
-    );
-    let ref mut fresh6 = (*ctxt).defNr;
+    ) });
+    let fresh6 = unsafe { &mut ((*ctxt).defNr) };
     let mut fresh7 = *fresh6;
     *fresh6 = *fresh6 + 1;
-    let ref mut fresh8 = *((*ctxt).defTab).offset(fresh7 as isize);
+    let fresh8 = unsafe { &mut (*((*ctxt).defTab).offset(fresh7 as isize)) };
     *fresh8 = ret;
-    let ref mut fresh9 = (*ret).node;
+    let fresh9 = unsafe { &mut ((*ret).node) };
     *fresh9 = node;
-    (*ret).depth = -(1 as i32) as i16;
+    (unsafe { (*ret).depth = -(1 as i32) as i16 });
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGFreePartition(mut partitions: * mut crate::src::relaxng::_xmlRelaxNGPartition) {
-    let mut group: * mut crate::src::relaxng::_xmlRelaxNGInterleaveGroup = 0 as *mut xmlRelaxNGInterleaveGroup;
+extern "C" fn xmlRelaxNGFreePartition(
+    mut partitions: *mut crate::src::relaxng::_xmlRelaxNGPartition,
+) {
+    let mut group: *mut crate::src::relaxng::_xmlRelaxNGInterleaveGroup =
+        0 as *mut xmlRelaxNGInterleaveGroup;
     let mut j: i32 = 0;
     if !partitions.is_null() {
-        if !((*partitions).groups).is_null() {
+        if !(unsafe { (*partitions).groups }).is_null() {
             j = 0 as i32;
-            while j < (*partitions).nbgroups {
-                group = *((*partitions).groups).offset(j as isize);
+            while j < (unsafe { (*partitions).nbgroups }) {
+                group = unsafe { *((*partitions).groups).offset(j as isize) };
                 if !group.is_null() {
-                    if !((*group).defs).is_null() {
-                        xmlFree
-                            .expect(
-                                "non-null function pointer",
-                            )((*group).defs as *mut libc::c_void);
+                    if !(unsafe { (*group).defs }).is_null() {
+                        (unsafe { xmlFree.expect("non-null function pointer")(
+                            (*group).defs as *mut libc::c_void,
+                        ) });
                     }
-                    if !((*group).attrs).is_null() {
-                        xmlFree
-                            .expect(
-                                "non-null function pointer",
-                            )((*group).attrs as *mut libc::c_void);
+                    if !(unsafe { (*group).attrs }).is_null() {
+                        (unsafe { xmlFree.expect("non-null function pointer")(
+                            (*group).attrs as *mut libc::c_void,
+                        ) });
                     }
-                    xmlFree
-                        .expect("non-null function pointer")(group as *mut libc::c_void);
+                    (unsafe { xmlFree.expect("non-null function pointer")(group as *mut libc::c_void) });
                 }
                 j += 1;
             }
-            xmlFree
-                .expect(
-                    "non-null function pointer",
-                )((*partitions).groups as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")((*partitions).groups as *mut libc::c_void) });
         }
-        if !((*partitions).triage).is_null() {
-            xmlHashFree((*partitions).triage, None);
+        if !(unsafe { (*partitions).triage }).is_null() {
+            xmlHashFree(unsafe { (*partitions).triage }, None);
         }
-        xmlFree.expect("non-null function pointer")(partitions as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(partitions as *mut libc::c_void) });
     }
 }
-unsafe extern "C" fn xmlRelaxNGFreeDefine(mut define: * mut crate::src::relaxng::_xmlRelaxNGDefine) {
+extern "C" fn xmlRelaxNGFreeDefine(mut define: *mut crate::src::relaxng::_xmlRelaxNGDefine) {
     if define.is_null() {
         return;
     }
-    if (*define).type_0 as i32 == XML_RELAXNG_VALUE as i32
-        && !((*define).attrs).is_null()
-    {
-        let mut lib: * mut crate::src::relaxng::_xmlRelaxNGTypeLibrary = (0 as * mut crate::src::relaxng::_xmlRelaxNGTypeLibrary);
-        lib = (*define).data as xmlRelaxNGTypeLibraryPtr;
-        if !lib.is_null() && ((*lib).freef).is_some() {
-            ((*lib).freef)
-                .expect(
-                    "non-null function pointer",
-                )((*lib).data, (*define).attrs as *mut libc::c_void);
+    if (unsafe { (*define).type_0 }) as i32 == XML_RELAXNG_VALUE as i32 && !(unsafe { (*define).attrs }).is_null() {
+        let mut lib: *mut crate::src::relaxng::_xmlRelaxNGTypeLibrary =
+            0 as *mut crate::src::relaxng::_xmlRelaxNGTypeLibrary;
+        lib = (unsafe { (*define).data }) as xmlRelaxNGTypeLibraryPtr;
+        if !lib.is_null() && (unsafe { ((*lib).freef).is_some() }) {
+            (unsafe { ((*lib).freef).expect("non-null function pointer")(
+                (*lib).data,
+                (*define).attrs as *mut libc::c_void,
+            ) });
         }
     }
-    if !((*define).data).is_null()
-        && (*define).type_0 as i32 == XML_RELAXNG_INTERLEAVE as i32
-    {
-        xmlRelaxNGFreePartition((*define).data as xmlRelaxNGPartitionPtr);
+    if !(unsafe { (*define).data }).is_null() && (unsafe { (*define).type_0 }) as i32 == XML_RELAXNG_INTERLEAVE as i32 {
+        xmlRelaxNGFreePartition((unsafe { (*define).data }) as xmlRelaxNGPartitionPtr);
     }
-    if !((*define).data).is_null()
-        && (*define).type_0 as i32 == XML_RELAXNG_CHOICE as i32
-    {
-        xmlHashFree((*define).data as xmlHashTablePtr, None);
+    if !(unsafe { (*define).data }).is_null() && (unsafe { (*define).type_0 }) as i32 == XML_RELAXNG_CHOICE as i32 {
+        xmlHashFree((unsafe { (*define).data }) as xmlHashTablePtr, None);
     }
-    if !((*define).name).is_null() {
-        xmlFree.expect("non-null function pointer")((*define).name as *mut libc::c_void);
+    if !(unsafe { (*define).name }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*define).name as *mut libc::c_void) });
     }
-    if !((*define).ns).is_null() {
-        xmlFree.expect("non-null function pointer")((*define).ns as *mut libc::c_void);
+    if !(unsafe { (*define).ns }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*define).ns as *mut libc::c_void) });
     }
-    if !((*define).value).is_null() {
-        xmlFree
-            .expect("non-null function pointer")((*define).value as *mut libc::c_void);
+    if !(unsafe { (*define).value }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*define).value as *mut libc::c_void) });
     }
-    if !((*define).contModel).is_null() {
-        xmlRegFreeRegexp((*define).contModel);
+    if !(unsafe { (*define).contModel }).is_null() {
+        (unsafe { xmlRegFreeRegexp((*define).contModel) });
     }
-    xmlFree.expect("non-null function pointer")(define as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(define as *mut libc::c_void) });
 }
-unsafe extern "C" fn xmlRelaxNGNewStates<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+extern "C" fn xmlRelaxNGNewStates<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
     mut size: i32,
-) -> * mut crate::src::relaxng::_xmlRelaxNGStates {
-    let mut ret: * mut crate::src::relaxng::_xmlRelaxNGStates = 0 as *mut xmlRelaxNGStates;
-    if !ctxt.is_null() && !((*ctxt).freeStates).is_null()
-        && (*ctxt).freeStatesNr > 0 as i32
-    {
-        let ref mut fresh10 = (*ctxt).freeStatesNr;
+) -> *mut crate::src::relaxng::_xmlRelaxNGStates {
+    let mut ret: *mut crate::src::relaxng::_xmlRelaxNGStates = 0 as *mut xmlRelaxNGStates;
+    if !ctxt.is_null() && !(unsafe { (*ctxt).freeStates }).is_null() && (unsafe { (*ctxt).freeStatesNr }) > 0 as i32 {
+        let fresh10 = unsafe { &mut ((*ctxt).freeStatesNr) };
         *fresh10 -= 1;
-        ret = *((*ctxt).freeStates).offset((*ctxt).freeStatesNr as isize);
-        (*ret).nbState = 0 as i32;
+        ret = unsafe { *((*ctxt).freeStates).offset((*ctxt).freeStatesNr as isize) };
+        (unsafe { (*ret).nbState = 0 as i32 });
         return ret;
     }
     if size < 16 as i32 {
         size = 16 as i32;
     }
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(
-        (::std::mem::size_of::<xmlRelaxNGStates>() as u64)
-            .wrapping_add(
-                ((size - 1 as i32) as u64)
-                    .wrapping_mul(
-                        ::std::mem::size_of::<xmlRelaxNGValidStatePtr>() as u64,
-                    ),
-            ),
-    ) as xmlRelaxNGStatesPtr;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        (::std::mem::size_of::<xmlRelaxNGStates>() as u64).wrapping_add(
+            ((size - 1 as i32) as u64)
+                .wrapping_mul(::std::mem::size_of::<xmlRelaxNGValidStatePtr>() as u64),
+        ),
+    ) }) as xmlRelaxNGStatesPtr;
     if ret.is_null() {
-        xmlRngVErrMemory(
-            ctxt,
-            b"allocating states\n\0" as *const u8 as *const i8,
-        );
+        xmlRngVErrMemory(ctxt, b"allocating states\n\0" as *const u8 as *const i8);
         return 0 as xmlRelaxNGStatesPtr;
     }
-    (*ret).nbState = 0 as i32;
-    (*ret).maxState = size;
-    let ref mut fresh11 = (*ret).tabState;
-    *fresh11 = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(
-        (size as u64)
-            .wrapping_mul(
-                ::std::mem::size_of::<xmlRelaxNGValidStatePtr>() as u64,
-            ),
-    ) as *mut xmlRelaxNGValidStatePtr;
-    if ((*ret).tabState).is_null() {
-        xmlRngVErrMemory(
-            ctxt,
-            b"allocating states\n\0" as *const u8 as *const i8,
-        );
-        xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+    (unsafe { (*ret).nbState = 0 as i32 });
+    (unsafe { (*ret).maxState = size });
+    let fresh11 = unsafe { &mut ((*ret).tabState) };
+    *fresh11 = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        (size as u64).wrapping_mul(::std::mem::size_of::<xmlRelaxNGValidStatePtr>() as u64),
+    ) }) as *mut xmlRelaxNGValidStatePtr;
+    if (unsafe { (*ret).tabState }).is_null() {
+        xmlRngVErrMemory(ctxt, b"allocating states\n\0" as *const u8 as *const i8);
+        (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
         return 0 as xmlRelaxNGStatesPtr;
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGAddStatesUniq<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut states: * mut crate::src::relaxng::_xmlRelaxNGStates,
-    mut state: * mut crate::src::relaxng::_xmlRelaxNGValidState,
+extern "C" fn xmlRelaxNGAddStatesUniq<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut states: *mut crate::src::relaxng::_xmlRelaxNGStates,
+    mut state: *mut crate::src::relaxng::_xmlRelaxNGValidState,
 ) -> i32 {
     if state.is_null() {
         return -(1 as i32);
     }
-    if (*states).nbState >= (*states).maxState {
-        let mut tmp: * mut * mut crate::src::relaxng::_xmlRelaxNGValidState = 0 as *mut xmlRelaxNGValidStatePtr;
+    if (unsafe { (*states).nbState }) >= (unsafe { (*states).maxState }) {
+        let mut tmp: *mut *mut crate::src::relaxng::_xmlRelaxNGValidState =
+            0 as *mut xmlRelaxNGValidStatePtr;
         let mut size: i32 = 0;
-        size = (*states).maxState * 2 as i32;
-        tmp = xmlRealloc
-            .expect(
-                "non-null function pointer",
-            )(
+        size = (unsafe { (*states).maxState }) * 2 as i32;
+        tmp = (unsafe { xmlRealloc.expect("non-null function pointer")(
             (*states).tabState as *mut libc::c_void,
-            (size as u64)
-                .wrapping_mul(
-                    ::std::mem::size_of::<xmlRelaxNGValidStatePtr>() as u64,
-                ),
-        ) as *mut xmlRelaxNGValidStatePtr;
+            (size as u64).wrapping_mul(::std::mem::size_of::<xmlRelaxNGValidStatePtr>() as u64),
+        ) }) as *mut xmlRelaxNGValidStatePtr;
         if tmp.is_null() {
-            xmlRngVErrMemory(
-                ctxt,
-                b"adding states\n\0" as *const u8 as *const i8,
-            );
+            xmlRngVErrMemory(ctxt, b"adding states\n\0" as *const u8 as *const i8);
             return -(1 as i32);
         }
-        let ref mut fresh12 = (*states).tabState;
+        let fresh12 = unsafe { &mut ((*states).tabState) };
         *fresh12 = tmp;
-        (*states).maxState = size;
+        (unsafe { (*states).maxState = size });
     }
-    let ref mut fresh13 = (*states).nbState;
+    let fresh13 = unsafe { &mut ((*states).nbState) };
     let mut fresh14 = *fresh13;
     *fresh13 = *fresh13 + 1;
-    let ref mut fresh15 = *((*states).tabState).offset(fresh14 as isize);
+    let fresh15 = unsafe { &mut (*((*states).tabState).offset(fresh14 as isize)) };
     *fresh15 = state;
     return 1 as i32;
 }
-unsafe extern "C" fn xmlRelaxNGAddStates<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut states: * mut crate::src::relaxng::_xmlRelaxNGStates,
-    mut state: * mut crate::src::relaxng::_xmlRelaxNGValidState,
+extern "C" fn xmlRelaxNGAddStates<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut states: *mut crate::src::relaxng::_xmlRelaxNGStates,
+    mut state: *mut crate::src::relaxng::_xmlRelaxNGValidState,
 ) -> i32 {
     let mut i: i32 = 0;
     if state.is_null() || states.is_null() {
         return -(1 as i32);
     }
-    if (*states).nbState >= (*states).maxState {
-        let mut tmp: * mut * mut crate::src::relaxng::_xmlRelaxNGValidState = 0 as *mut xmlRelaxNGValidStatePtr;
+    if (unsafe { (*states).nbState }) >= (unsafe { (*states).maxState }) {
+        let mut tmp: *mut *mut crate::src::relaxng::_xmlRelaxNGValidState =
+            0 as *mut xmlRelaxNGValidStatePtr;
         let mut size: i32 = 0;
-        size = (*states).maxState * 2 as i32;
-        tmp = xmlRealloc
-            .expect(
-                "non-null function pointer",
-            )(
+        size = (unsafe { (*states).maxState }) * 2 as i32;
+        tmp = (unsafe { xmlRealloc.expect("non-null function pointer")(
             (*states).tabState as *mut libc::c_void,
-            (size as u64)
-                .wrapping_mul(
-                    ::std::mem::size_of::<xmlRelaxNGValidStatePtr>() as u64,
-                ),
-        ) as *mut xmlRelaxNGValidStatePtr;
+            (size as u64).wrapping_mul(::std::mem::size_of::<xmlRelaxNGValidStatePtr>() as u64),
+        ) }) as *mut xmlRelaxNGValidStatePtr;
         if tmp.is_null() {
-            xmlRngVErrMemory(
-                ctxt,
-                b"adding states\n\0" as *const u8 as *const i8,
-            );
+            xmlRngVErrMemory(ctxt, b"adding states\n\0" as *const u8 as *const i8);
             return -(1 as i32);
         }
-        let ref mut fresh16 = (*states).tabState;
+        let fresh16 = unsafe { &mut ((*states).tabState) };
         *fresh16 = tmp;
-        (*states).maxState = size;
+        (unsafe { (*states).maxState = size });
     }
     i = 0 as i32;
-    while i < (*states).nbState {
-        if xmlRelaxNGEqualValidState(
-            ctxt,
-            state,
-            *((*states).tabState).offset(i as isize),
-        ) != 0
-        {
+    while i < (unsafe { (*states).nbState }) {
+        if xmlRelaxNGEqualValidState(ctxt, state, unsafe { *((*states).tabState).offset(i as isize) }) != 0 {
             xmlRelaxNGFreeValidState(ctxt, state);
             return 0 as i32;
         }
         i += 1;
     }
-    let ref mut fresh17 = (*states).nbState;
+    let fresh17 = unsafe { &mut ((*states).nbState) };
     let mut fresh18 = *fresh17;
     *fresh17 = *fresh17 + 1;
-    let ref mut fresh19 = *((*states).tabState).offset(fresh18 as isize);
+    let fresh19 = unsafe { &mut (*((*states).tabState).offset(fresh18 as isize)) };
     *fresh19 = state;
     return 1 as i32;
 }
-unsafe extern "C" fn xmlRelaxNGFreeStates<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut states: * mut crate::src::relaxng::_xmlRelaxNGStates,
+extern "C" fn xmlRelaxNGFreeStates<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut states: *mut crate::src::relaxng::_xmlRelaxNGStates,
 ) {
     if states.is_null() {
         return;
     }
-    if !ctxt.is_null() && ((*ctxt).freeStates).is_null() {
-        (*ctxt).freeStatesMax = 40 as i32;
-        (*ctxt).freeStatesNr = 0 as i32;
-        let ref mut fresh20 = (*ctxt).freeStates;
-        *fresh20 = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(
+    if !ctxt.is_null() && (unsafe { (*ctxt).freeStates }).is_null() {
+        (unsafe { (*ctxt).freeStatesMax = 40 as i32 });
+        (unsafe { (*ctxt).freeStatesNr = 0 as i32 });
+        let fresh20 = unsafe { &mut ((*ctxt).freeStates) };
+        *fresh20 = (unsafe { xmlMalloc.expect("non-null function pointer")(
             ((*ctxt).freeStatesMax as u64)
-                .wrapping_mul(
-                    ::std::mem::size_of::<xmlRelaxNGStatesPtr>() as u64,
-                ),
-        ) as *mut xmlRelaxNGStatesPtr;
-        if ((*ctxt).freeStates).is_null() {
-            xmlRngVErrMemory(
-                ctxt,
-                b"storing states\n\0" as *const u8 as *const i8,
-            );
+                .wrapping_mul(::std::mem::size_of::<xmlRelaxNGStatesPtr>() as u64),
+        ) }) as *mut xmlRelaxNGStatesPtr;
+        if (unsafe { (*ctxt).freeStates }).is_null() {
+            xmlRngVErrMemory(ctxt, b"storing states\n\0" as *const u8 as *const i8);
         }
-    } else if !ctxt.is_null() && (*ctxt).freeStatesNr >= (*ctxt).freeStatesMax {
-        let mut tmp: * mut * mut crate::src::relaxng::_xmlRelaxNGStates = 0 as *mut xmlRelaxNGStatesPtr;
-        tmp = xmlRealloc
-            .expect(
-                "non-null function pointer",
-            )(
+    } else if !ctxt.is_null() && (unsafe { (*ctxt).freeStatesNr }) >= (unsafe { (*ctxt).freeStatesMax }) {
+        let mut tmp: *mut *mut crate::src::relaxng::_xmlRelaxNGStates =
+            0 as *mut xmlRelaxNGStatesPtr;
+        tmp = (unsafe { xmlRealloc.expect("non-null function pointer")(
             (*ctxt).freeStates as *mut libc::c_void,
             ((2 as i32 * (*ctxt).freeStatesMax) as u64)
-                .wrapping_mul(
-                    ::std::mem::size_of::<xmlRelaxNGStatesPtr>() as u64,
-                ),
-        ) as *mut xmlRelaxNGStatesPtr;
+                .wrapping_mul(::std::mem::size_of::<xmlRelaxNGStatesPtr>() as u64),
+        ) }) as *mut xmlRelaxNGStatesPtr;
         if tmp.is_null() {
-            xmlRngVErrMemory(
-                ctxt,
-                b"storing states\n\0" as *const u8 as *const i8,
-            );
-            xmlFree
-                .expect(
-                    "non-null function pointer",
-                )((*states).tabState as *mut libc::c_void);
-            xmlFree.expect("non-null function pointer")(states as *mut libc::c_void);
+            xmlRngVErrMemory(ctxt, b"storing states\n\0" as *const u8 as *const i8);
+            (unsafe { xmlFree.expect("non-null function pointer")((*states).tabState as *mut libc::c_void) });
+            (unsafe { xmlFree.expect("non-null function pointer")(states as *mut libc::c_void) });
             return;
         }
-        let ref mut fresh21 = (*ctxt).freeStates;
+        let fresh21 = unsafe { &mut ((*ctxt).freeStates) };
         *fresh21 = tmp;
-        (*ctxt).freeStatesMax *= 2 as i32;
+        (unsafe { (*ctxt).freeStatesMax *= 2 as i32 });
     }
-    if ctxt.is_null() || ((*ctxt).freeStates).is_null() {
-        xmlFree
-            .expect(
-                "non-null function pointer",
-            )((*states).tabState as *mut libc::c_void);
-        xmlFree.expect("non-null function pointer")(states as *mut libc::c_void);
+    if ctxt.is_null() || (unsafe { (*ctxt).freeStates }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*states).tabState as *mut libc::c_void) });
+        (unsafe { xmlFree.expect("non-null function pointer")(states as *mut libc::c_void) });
     } else {
-        let ref mut fresh22 = (*ctxt).freeStatesNr;
+        let fresh22 = unsafe { &mut ((*ctxt).freeStatesNr) };
         let mut fresh23 = *fresh22;
         *fresh22 = *fresh22 + 1;
-        let ref mut fresh24 = *((*ctxt).freeStates).offset(fresh23 as isize);
+        let fresh24 = unsafe { &mut (*((*ctxt).freeStates).offset(fresh23 as isize)) };
         *fresh24 = states;
     };
 }
-unsafe extern "C" fn xmlRelaxNGNewValidState<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
-) -> * mut crate::src::relaxng::_xmlRelaxNGValidState {
-    let mut ret: * mut crate::src::relaxng::_xmlRelaxNGValidState = 0 as *mut xmlRelaxNGValidState;
-    let mut attr: * mut crate::src::HTMLparser::_xmlAttr = 0 as *mut xmlAttr;
-    let mut attrs: [* mut crate::src::HTMLparser::_xmlAttr; 20] = [0 as *mut xmlAttr; 20];
+extern "C" fn xmlRelaxNGNewValidState<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
+) -> *mut crate::src::relaxng::_xmlRelaxNGValidState {
+    let mut ret: *mut crate::src::relaxng::_xmlRelaxNGValidState = 0 as *mut xmlRelaxNGValidState;
+    let mut attr: *mut crate::src::HTMLparser::_xmlAttr = 0 as *mut xmlAttr;
+    let mut attrs: [*mut crate::src::HTMLparser::_xmlAttr; 20] = [0 as *mut xmlAttr; 20];
     let mut nbAttrs: i32 = 0 as i32;
-    let mut root: * mut crate::src::HTMLparser::_xmlNode = 0 as xmlNodePtr;
+    let mut root: *mut crate::src::HTMLparser::_xmlNode = 0 as xmlNodePtr;
     if node.is_null() {
-        root = xmlDocGetRootElement((*ctxt).doc as *const xmlDoc);
+        root = unsafe { xmlDocGetRootElement((*ctxt).doc as *const xmlDoc) };
         if root.is_null() {
             return 0 as xmlRelaxNGValidStatePtr;
         }
     } else {
-        attr = (*node).properties;
+        attr = unsafe { (*node).properties };
         while !attr.is_null() {
             if nbAttrs < 20 as i32 {
                 let mut fresh25 = nbAttrs;
@@ -2784,215 +2795,171 @@ unsafe extern "C" fn xmlRelaxNGNewValidState<'a1>(
             } else {
                 nbAttrs += 1;
             }
-            attr = (*attr).next;
+            attr = unsafe { (*attr).next };
         }
     }
-    if !((*ctxt).freeState).is_null() && (*(*ctxt).freeState).nbState > 0 as i32
-    {
-        let ref mut fresh26 = (*(*ctxt).freeState).nbState;
+    if !(unsafe { (*ctxt).freeState }).is_null() && (unsafe { (*(*ctxt).freeState).nbState }) > 0 as i32 {
+        let fresh26 = unsafe { &mut ((*(*ctxt).freeState).nbState) };
         *fresh26 -= 1;
-        ret = *((*(*ctxt).freeState).tabState)
-            .offset((*(*ctxt).freeState).nbState as isize);
+        ret = unsafe { *((*(*ctxt).freeState).tabState).offset((*(*ctxt).freeState).nbState as isize) };
     } else {
-        ret = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(::std::mem::size_of::<xmlRelaxNGValidState>() as u64)
-            as xmlRelaxNGValidStatePtr;
+        ret = (unsafe { xmlMalloc.expect("non-null function pointer")(::std::mem::size_of::<
+            xmlRelaxNGValidState,
+        >() as u64) }) as xmlRelaxNGValidStatePtr;
         if ret.is_null() {
-            xmlRngVErrMemory(
-                ctxt,
-                b"allocating states\n\0" as *const u8 as *const i8,
-            );
+            xmlRngVErrMemory(ctxt, b"allocating states\n\0" as *const u8 as *const i8);
             return 0 as xmlRelaxNGValidStatePtr;
         }
-        memset(
+        (unsafe { memset(
             ret as *mut libc::c_void,
             0 as i32,
             ::std::mem::size_of::<xmlRelaxNGValidState>() as u64,
-        );
+        ) });
     }
-    let ref mut fresh27 = (*ret).value;
+    let fresh27 = unsafe { &mut ((*ret).value) };
     *fresh27 = 0 as *mut xmlChar;
-    let ref mut fresh28 = (*ret).endvalue;
+    let fresh28 = unsafe { &mut ((*ret).endvalue) };
     *fresh28 = 0 as *mut xmlChar;
     if node.is_null() {
-        let ref mut fresh29 = (*ret).node;
-        *fresh29 = (*ctxt).doc as xmlNodePtr;
-        let ref mut fresh30 = (*ret).seq;
+        let fresh29 = unsafe { &mut ((*ret).node) };
+        *fresh29 = (unsafe { (*ctxt).doc }) as xmlNodePtr;
+        let fresh30 = unsafe { &mut ((*ret).seq) };
         *fresh30 = root;
     } else {
-        let ref mut fresh31 = (*ret).node;
+        let fresh31 = unsafe { &mut ((*ret).node) };
         *fresh31 = node;
-        let ref mut fresh32 = (*ret).seq;
-        *fresh32 = (*node).children;
+        let fresh32 = unsafe { &mut ((*ret).seq) };
+        *fresh32 = unsafe { (*node).children };
     }
-    (*ret).nbAttrs = 0 as i32;
+    (unsafe { (*ret).nbAttrs = 0 as i32 });
     if nbAttrs > 0 as i32 {
-        if ((*ret).attrs).is_null() {
+        if (unsafe { (*ret).attrs }).is_null() {
             if nbAttrs < 4 as i32 {
-                (*ret).maxAttrs = 4 as i32;
+                (unsafe { (*ret).maxAttrs = 4 as i32 });
             } else {
-                (*ret).maxAttrs = nbAttrs;
+                (unsafe { (*ret).maxAttrs = nbAttrs });
             }
-            let ref mut fresh33 = (*ret).attrs;
-            *fresh33 = xmlMalloc
-                .expect(
-                    "non-null function pointer",
-                )(
-                ((*ret).maxAttrs as u64)
-                    .wrapping_mul(::std::mem::size_of::<xmlAttrPtr>() as u64),
-            ) as *mut xmlAttrPtr;
-            if ((*ret).attrs).is_null() {
-                xmlRngVErrMemory(
-                    ctxt,
-                    b"allocating states\n\0" as *const u8 as *const i8,
-                );
+            let fresh33 = unsafe { &mut ((*ret).attrs) };
+            *fresh33 = (unsafe { xmlMalloc.expect("non-null function pointer")(
+                ((*ret).maxAttrs as u64).wrapping_mul(::std::mem::size_of::<xmlAttrPtr>() as u64),
+            ) }) as *mut xmlAttrPtr;
+            if (unsafe { (*ret).attrs }).is_null() {
+                xmlRngVErrMemory(ctxt, b"allocating states\n\0" as *const u8 as *const i8);
                 return ret;
             }
-        } else if (*ret).maxAttrs < nbAttrs {
-            let mut tmp: * mut * mut crate::src::HTMLparser::_xmlAttr = 0 as *mut xmlAttrPtr;
-            tmp = xmlRealloc
-                .expect(
-                    "non-null function pointer",
-                )(
+        } else if (unsafe { (*ret).maxAttrs }) < nbAttrs {
+            let mut tmp: *mut *mut crate::src::HTMLparser::_xmlAttr = 0 as *mut xmlAttrPtr;
+            tmp = (unsafe { xmlRealloc.expect("non-null function pointer")(
                 (*ret).attrs as *mut libc::c_void,
-                (nbAttrs as u64)
-                    .wrapping_mul(::std::mem::size_of::<xmlAttrPtr>() as u64),
-            ) as *mut xmlAttrPtr;
+                (nbAttrs as u64).wrapping_mul(::std::mem::size_of::<xmlAttrPtr>() as u64),
+            ) }) as *mut xmlAttrPtr;
             if tmp.is_null() {
-                xmlRngVErrMemory(
-                    ctxt,
-                    b"allocating states\n\0" as *const u8 as *const i8,
-                );
+                xmlRngVErrMemory(ctxt, b"allocating states\n\0" as *const u8 as *const i8);
                 return ret;
             }
-            let ref mut fresh34 = (*ret).attrs;
+            let fresh34 = unsafe { &mut ((*ret).attrs) };
             *fresh34 = tmp;
-            (*ret).maxAttrs = nbAttrs;
+            (unsafe { (*ret).maxAttrs = nbAttrs });
         }
-        (*ret).nbAttrs = nbAttrs;
+        (unsafe { (*ret).nbAttrs = nbAttrs });
         if nbAttrs < 20 as i32 {
-            memcpy(
+            (unsafe { memcpy(
                 (*ret).attrs as *mut libc::c_void,
                 attrs.as_mut_ptr() as *const libc::c_void,
-                (::std::mem::size_of::<xmlAttrPtr>() as u64)
-                    .wrapping_mul(nbAttrs as u64),
-            );
+                (::std::mem::size_of::<xmlAttrPtr>() as u64).wrapping_mul(nbAttrs as u64),
+            ) });
         } else {
-            attr = (*node).properties;
+            attr = unsafe { (*node).properties };
             nbAttrs = 0 as i32;
             while !attr.is_null() {
                 let mut fresh35 = nbAttrs;
                 nbAttrs = nbAttrs + 1;
-                let ref mut fresh36 = *((*ret).attrs).offset(fresh35 as isize);
+                let fresh36 = unsafe { &mut (*((*ret).attrs).offset(fresh35 as isize)) };
                 *fresh36 = attr;
-                attr = (*attr).next;
+                attr = unsafe { (*attr).next };
             }
         }
     }
-    (*ret).nbAttrLeft = (*ret).nbAttrs;
+    (unsafe { (*ret).nbAttrLeft = (*ret).nbAttrs });
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGCopyValidState<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut state: * mut crate::src::relaxng::_xmlRelaxNGValidState,
-) -> * mut crate::src::relaxng::_xmlRelaxNGValidState {
-    let mut ret: * mut crate::src::relaxng::_xmlRelaxNGValidState = 0 as *mut xmlRelaxNGValidState;
+extern "C" fn xmlRelaxNGCopyValidState<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut state: *mut crate::src::relaxng::_xmlRelaxNGValidState,
+) -> *mut crate::src::relaxng::_xmlRelaxNGValidState {
+    let mut ret: *mut crate::src::relaxng::_xmlRelaxNGValidState = 0 as *mut xmlRelaxNGValidState;
     let mut maxAttrs: u32 = 0;
-    let mut attrs: * mut * mut crate::src::HTMLparser::_xmlAttr = 0 as *mut xmlAttrPtr;
+    let mut attrs: *mut *mut crate::src::HTMLparser::_xmlAttr = 0 as *mut xmlAttrPtr;
     if state.is_null() {
         return 0 as xmlRelaxNGValidStatePtr;
     }
-    if !((*ctxt).freeState).is_null() && (*(*ctxt).freeState).nbState > 0 as i32
-    {
-        let ref mut fresh37 = (*(*ctxt).freeState).nbState;
+    if !(unsafe { (*ctxt).freeState }).is_null() && (unsafe { (*(*ctxt).freeState).nbState }) > 0 as i32 {
+        let fresh37 = unsafe { &mut ((*(*ctxt).freeState).nbState) };
         *fresh37 -= 1;
-        ret = *((*(*ctxt).freeState).tabState)
-            .offset((*(*ctxt).freeState).nbState as isize);
+        ret = unsafe { *((*(*ctxt).freeState).tabState).offset((*(*ctxt).freeState).nbState as isize) };
     } else {
-        ret = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(::std::mem::size_of::<xmlRelaxNGValidState>() as u64)
-            as xmlRelaxNGValidStatePtr;
+        ret = (unsafe { xmlMalloc.expect("non-null function pointer")(::std::mem::size_of::<
+            xmlRelaxNGValidState,
+        >() as u64) }) as xmlRelaxNGValidStatePtr;
         if ret.is_null() {
-            xmlRngVErrMemory(
-                ctxt,
-                b"allocating states\n\0" as *const u8 as *const i8,
-            );
+            xmlRngVErrMemory(ctxt, b"allocating states\n\0" as *const u8 as *const i8);
             return 0 as xmlRelaxNGValidStatePtr;
         }
-        memset(
+        (unsafe { memset(
             ret as *mut libc::c_void,
             0 as i32,
             ::std::mem::size_of::<xmlRelaxNGValidState>() as u64,
-        );
+        ) });
     }
-    attrs = (*ret).attrs;
-    maxAttrs = (*ret).maxAttrs as u32;
-    memcpy(
+    attrs = unsafe { (*ret).attrs };
+    maxAttrs = (unsafe { (*ret).maxAttrs }) as u32;
+    (unsafe { memcpy(
         ret as *mut libc::c_void,
         state as *const libc::c_void,
         ::std::mem::size_of::<xmlRelaxNGValidState>() as u64,
-    );
-    let ref mut fresh38 = (*ret).attrs;
+    ) });
+    let fresh38 = unsafe { &mut ((*ret).attrs) };
     *fresh38 = attrs;
-    (*ret).maxAttrs = maxAttrs as i32;
-    if (*state).nbAttrs > 0 as i32 {
-        if ((*ret).attrs).is_null() {
-            (*ret).maxAttrs = (*state).maxAttrs;
-            let ref mut fresh39 = (*ret).attrs;
-            *fresh39 = xmlMalloc
-                .expect(
-                    "non-null function pointer",
-                )(
-                ((*ret).maxAttrs as u64)
-                    .wrapping_mul(::std::mem::size_of::<xmlAttrPtr>() as u64),
-            ) as *mut xmlAttrPtr;
-            if ((*ret).attrs).is_null() {
-                xmlRngVErrMemory(
-                    ctxt,
-                    b"allocating states\n\0" as *const u8 as *const i8,
-                );
-                (*ret).nbAttrs = 0 as i32;
+    (unsafe { (*ret).maxAttrs = maxAttrs as i32 });
+    if (unsafe { (*state).nbAttrs }) > 0 as i32 {
+        if (unsafe { (*ret).attrs }).is_null() {
+            (unsafe { (*ret).maxAttrs = (*state).maxAttrs });
+            let fresh39 = unsafe { &mut ((*ret).attrs) };
+            *fresh39 = (unsafe { xmlMalloc.expect("non-null function pointer")(
+                ((*ret).maxAttrs as u64).wrapping_mul(::std::mem::size_of::<xmlAttrPtr>() as u64),
+            ) }) as *mut xmlAttrPtr;
+            if (unsafe { (*ret).attrs }).is_null() {
+                xmlRngVErrMemory(ctxt, b"allocating states\n\0" as *const u8 as *const i8);
+                (unsafe { (*ret).nbAttrs = 0 as i32 });
                 return ret;
             }
-        } else if (*ret).maxAttrs < (*state).nbAttrs {
-            let mut tmp: * mut * mut crate::src::HTMLparser::_xmlAttr = 0 as *mut xmlAttrPtr;
-            tmp = xmlRealloc
-                .expect(
-                    "non-null function pointer",
-                )(
+        } else if (unsafe { (*ret).maxAttrs }) < (unsafe { (*state).nbAttrs }) {
+            let mut tmp: *mut *mut crate::src::HTMLparser::_xmlAttr = 0 as *mut xmlAttrPtr;
+            tmp = (unsafe { xmlRealloc.expect("non-null function pointer")(
                 (*ret).attrs as *mut libc::c_void,
-                ((*state).maxAttrs as u64)
-                    .wrapping_mul(::std::mem::size_of::<xmlAttrPtr>() as u64),
-            ) as *mut xmlAttrPtr;
+                ((*state).maxAttrs as u64).wrapping_mul(::std::mem::size_of::<xmlAttrPtr>() as u64),
+            ) }) as *mut xmlAttrPtr;
             if tmp.is_null() {
-                xmlRngVErrMemory(
-                    ctxt,
-                    b"allocating states\n\0" as *const u8 as *const i8,
-                );
-                (*ret).nbAttrs = 0 as i32;
+                xmlRngVErrMemory(ctxt, b"allocating states\n\0" as *const u8 as *const i8);
+                (unsafe { (*ret).nbAttrs = 0 as i32 });
                 return ret;
             }
-            (*ret).maxAttrs = (*state).maxAttrs;
-            let ref mut fresh40 = (*ret).attrs;
+            (unsafe { (*ret).maxAttrs = (*state).maxAttrs });
+            let fresh40 = unsafe { &mut ((*ret).attrs) };
             *fresh40 = tmp;
         }
-        memcpy(
+        (unsafe { memcpy(
             (*ret).attrs as *mut libc::c_void,
             (*state).attrs as *const libc::c_void,
-            ((*state).nbAttrs as u64)
-                .wrapping_mul(::std::mem::size_of::<xmlAttrPtr>() as u64),
-        );
+            ((*state).nbAttrs as u64).wrapping_mul(::std::mem::size_of::<xmlAttrPtr>() as u64),
+        ) });
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGEqualValidState<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut state1: * mut crate::src::relaxng::_xmlRelaxNGValidState,
-    mut state2: * mut crate::src::relaxng::_xmlRelaxNGValidState,
+extern "C" fn xmlRelaxNGEqualValidState<'a1>(
+    mut _ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut state1: *mut crate::src::relaxng::_xmlRelaxNGValidState,
+    mut state2: *mut crate::src::relaxng::_xmlRelaxNGValidState,
 ) -> i32 {
     let mut i: i32 = 0;
     if state1.is_null() || state2.is_null() {
@@ -3001,65 +2968,59 @@ unsafe extern "C" fn xmlRelaxNGEqualValidState<'a1>(
     if state1 == state2 {
         return 1 as i32;
     }
-    if (*state1).node != (*state2).node {
+    if (unsafe { (*state1).node }) != (unsafe { (*state2).node }) {
         return 0 as i32;
     }
-    if (*state1).seq != (*state2).seq {
+    if (unsafe { (*state1).seq }) != (unsafe { (*state2).seq }) {
         return 0 as i32;
     }
-    if (*state1).nbAttrLeft != (*state2).nbAttrLeft {
+    if (unsafe { (*state1).nbAttrLeft }) != (unsafe { (*state2).nbAttrLeft }) {
         return 0 as i32;
     }
-    if (*state1).nbAttrs != (*state2).nbAttrs {
+    if (unsafe { (*state1).nbAttrs }) != (unsafe { (*state2).nbAttrs }) {
         return 0 as i32;
     }
-    if (*state1).endvalue != (*state2).endvalue {
+    if (unsafe { (*state1).endvalue }) != (unsafe { (*state2).endvalue }) {
         return 0 as i32;
     }
-    if (*state1).value != (*state2).value
-        && xmlStrEqual((*state1).value, (*state2).value) == 0
-    {
+    if (unsafe { (*state1).value }) != (unsafe { (*state2).value }) && (unsafe { xmlStrEqual((*state1).value, (*state2).value) }) == 0 {
         return 0 as i32;
     }
     i = 0 as i32;
-    while i < (*state1).nbAttrs {
-        if *((*state1).attrs).offset(i as isize) != *((*state2).attrs).offset(i as isize)
-        {
+    while i < (unsafe { (*state1).nbAttrs }) {
+        if (unsafe { *((*state1).attrs).offset(i as isize) }) != (unsafe { *((*state2).attrs).offset(i as isize) }) {
             return 0 as i32;
         }
         i += 1;
     }
     return 1 as i32;
 }
-unsafe extern "C" fn xmlRelaxNGFreeValidState<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut state: * mut crate::src::relaxng::_xmlRelaxNGValidState,
+extern "C" fn xmlRelaxNGFreeValidState<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut state: *mut crate::src::relaxng::_xmlRelaxNGValidState,
 ) {
     if state.is_null() {
         return;
     }
-    if !ctxt.is_null() && ((*ctxt).freeState).is_null() {
-        let ref mut fresh41 = (*ctxt).freeState;
+    if !ctxt.is_null() && (unsafe { (*ctxt).freeState }).is_null() {
+        let fresh41 = unsafe { &mut ((*ctxt).freeState) };
         *fresh41 = xmlRelaxNGNewStates(ctxt, 40 as i32);
     }
-    if ctxt.is_null() || ((*ctxt).freeState).is_null() {
-        if !((*state).attrs).is_null() {
-            xmlFree
-                .expect(
-                    "non-null function pointer",
-                )((*state).attrs as *mut libc::c_void);
+    if ctxt.is_null() || (unsafe { (*ctxt).freeState }).is_null() {
+        if !(unsafe { (*state).attrs }).is_null() {
+            (unsafe { xmlFree.expect("non-null function pointer")((*state).attrs as *mut libc::c_void) });
         }
-        xmlFree.expect("non-null function pointer")(state as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(state as *mut libc::c_void) });
     } else {
-        xmlRelaxNGAddStatesUniq(ctxt, (*ctxt).freeState, state);
+        xmlRelaxNGAddStatesUniq(ctxt, unsafe { (*ctxt).freeState }, state);
     };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRelaxParserSetFlag<'a1, 'a2>(
+pub extern "C" fn xmlRelaxParserSetFlag<'a1, 'a2>(
     mut ctxt: Option<&'a1 mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a2>>,
     mut flags: i32,
 ) -> i32 {
-    if borrow(& ctxt).is_none() {
+    if borrow(&ctxt).is_none() {
         return -(1 as i32);
     }
     if flags & XML_RELAXNGP_FREE_DOC as i32 != 0 {
@@ -3075,151 +3036,145 @@ pub unsafe extern "C" fn xmlRelaxParserSetFlag<'a1, 'a2>(
     }
     return 0 as i32;
 }
-unsafe extern "C" fn xmlRelaxNGIncludePush<'a1, 'a2>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut value: * mut crate::src::relaxng::_xmlRelaxNGInclude<'a2>,
-) -> i32 where 'a1: 'a2, 'a2: 'a1 {
-    if ((*ctxt).incTab).is_null() {
-        (*ctxt).incMax = 4 as i32;
-        (*ctxt).incNr = 0 as i32;
-        let ref mut fresh42 = (*ctxt).incTab;
-        *fresh42 = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(
+extern "C" fn xmlRelaxNGIncludePush<'a1, 'a2>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut value: *mut crate::src::relaxng::_xmlRelaxNGInclude<'a2>,
+) -> i32
+where
+    'a1: 'a2,
+    'a2: 'a1,
+{
+    if (unsafe { (*ctxt).incTab }).is_null() {
+        (unsafe { (*ctxt).incMax = 4 as i32 });
+        (unsafe { (*ctxt).incNr = 0 as i32 });
+        let fresh42 = unsafe { &mut ((*ctxt).incTab) };
+        *fresh42 = (unsafe { xmlMalloc.expect("non-null function pointer")(
             ((*ctxt).incMax as u64)
-                .wrapping_mul(
-                    ::std::mem::size_of::<xmlRelaxNGIncludePtr>() as u64,
-                ),
-        ) as *mut xmlRelaxNGIncludePtr;
-        if ((*ctxt).incTab).is_null() {
-            xmlRngPErrMemory(
-                ctxt,
-                b"allocating include\n\0" as *const u8 as *const i8,
-            );
+                .wrapping_mul(::std::mem::size_of::<xmlRelaxNGIncludePtr>() as u64),
+        ) }) as *mut xmlRelaxNGIncludePtr;
+        if (unsafe { (*ctxt).incTab }).is_null() {
+            xmlRngPErrMemory(ctxt, b"allocating include\n\0" as *const u8 as *const i8);
             return 0 as i32;
         }
     }
-    if (*ctxt).incNr >= (*ctxt).incMax {
-        (*ctxt).incMax *= 2 as i32;
-        let ref mut fresh43 = (*ctxt).incTab;
-        *fresh43 = xmlRealloc
-            .expect(
-                "non-null function pointer",
-            )(
+    if (unsafe { (*ctxt).incNr }) >= (unsafe { (*ctxt).incMax }) {
+        (unsafe { (*ctxt).incMax *= 2 as i32 });
+        let fresh43 = unsafe { &mut ((*ctxt).incTab) };
+        *fresh43 = (unsafe { xmlRealloc.expect("non-null function pointer")(
             (*ctxt).incTab as *mut libc::c_void,
             ((*ctxt).incMax as u64)
-                .wrapping_mul(
-                    ::std::mem::size_of::<xmlRelaxNGIncludePtr>() as u64,
-                ),
-        ) as *mut xmlRelaxNGIncludePtr;
-        if ((*ctxt).incTab).is_null() {
-            xmlRngPErrMemory(
-                ctxt,
-                b"allocating include\n\0" as *const u8 as *const i8,
-            );
+                .wrapping_mul(::std::mem::size_of::<xmlRelaxNGIncludePtr>() as u64),
+        ) }) as *mut xmlRelaxNGIncludePtr;
+        if (unsafe { (*ctxt).incTab }).is_null() {
+            xmlRngPErrMemory(ctxt, b"allocating include\n\0" as *const u8 as *const i8);
             return 0 as i32;
         }
     }
-    let ref mut fresh44 = *((*ctxt).incTab).offset((*ctxt).incNr as isize);
+    let fresh44 = unsafe { &mut (*((*ctxt).incTab).offset((*ctxt).incNr as isize)) };
     *fresh44 = value;
-    let ref mut fresh45 = (*ctxt).inc;
+    let fresh45 = unsafe { &mut ((*ctxt).inc) };
     *fresh45 = value;
-    let ref mut fresh46 = (*ctxt).incNr;
+    let fresh46 = unsafe { &mut ((*ctxt).incNr) };
     let mut fresh47 = *fresh46;
     *fresh46 = *fresh46 + 1;
     return fresh47;
 }
-unsafe extern "C" fn xmlRelaxNGIncludePop<'a1, 'a2>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-) -> * mut crate::src::relaxng::_xmlRelaxNGInclude<'a2> where 'a2: 'a1, 'a1: 'a2 {
-    let mut ret: * mut crate::src::relaxng::_xmlRelaxNGInclude<'_> = 0 as *mut xmlRelaxNGInclude;
-    if (*ctxt).incNr <= 0 as i32 {
+extern "C" fn xmlRelaxNGIncludePop<'a1, 'a2>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+) -> *mut crate::src::relaxng::_xmlRelaxNGInclude<'a2>
+where
+    'a2: 'a1,
+    'a1: 'a2,
+{
+    let mut ret: *mut crate::src::relaxng::_xmlRelaxNGInclude<'_> = 0 as *mut xmlRelaxNGInclude;
+    if (unsafe { (*ctxt).incNr }) <= 0 as i32 {
         return 0 as xmlRelaxNGIncludePtr;
     }
-    let ref mut fresh48 = (*ctxt).incNr;
+    let fresh48 = unsafe { &mut ((*ctxt).incNr) };
     *fresh48 -= 1;
-    if (*ctxt).incNr > 0 as i32 {
-        let ref mut fresh49 = (*ctxt).inc;
-        *fresh49 = *((*ctxt).incTab).offset(((*ctxt).incNr - 1 as i32) as isize);
+    if (unsafe { (*ctxt).incNr }) > 0 as i32 {
+        let fresh49 = unsafe { &mut ((*ctxt).inc) };
+        *fresh49 = unsafe { *((*ctxt).incTab).offset(((*ctxt).incNr - 1 as i32) as isize) };
     } else {
-        let ref mut fresh50 = (*ctxt).inc;
+        let fresh50 = unsafe { &mut ((*ctxt).inc) };
         *fresh50 = 0 as xmlRelaxNGIncludePtr;
     }
-    ret = *((*ctxt).incTab).offset((*ctxt).incNr as isize);
-    let ref mut fresh51 = *((*ctxt).incTab).offset((*ctxt).incNr as isize);
+    ret = unsafe { *((*ctxt).incTab).offset((*ctxt).incNr as isize) };
+    let fresh51 = unsafe { &mut (*((*ctxt).incTab).offset((*ctxt).incNr as isize)) };
     *fresh51 = 0 as xmlRelaxNGIncludePtr;
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGRemoveRedefine<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut URL: * const u8,
-    mut target: * mut crate::src::HTMLparser::_xmlNode,
-    mut name: * const u8,
+extern "C" fn xmlRelaxNGRemoveRedefine<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut URL: *const u8,
+    mut target: *mut crate::src::HTMLparser::_xmlNode,
+    mut name: *const u8,
 ) -> i32 {
     let mut found: i32 = 0 as i32;
-    let mut tmp: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut tmp2: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut name2: * mut u8 = 0 as *mut xmlChar;
+    let mut tmp: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut tmp2: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut name2: *mut u8 = 0 as *mut xmlChar;
     tmp = target;
     while !tmp.is_null() {
-        tmp2 = (*tmp).next;
+        tmp2 = unsafe { (*tmp).next };
         if name.is_null()
-            && (!tmp.is_null() && !((*tmp).ns).is_null()
-                && (*tmp).type_0 as u32
-                    == XML_ELEMENT_NODE as i32 as u32
-                && xmlStrEqual(
+            && (!tmp.is_null()
+                && !(unsafe { (*tmp).ns }).is_null()
+                && (unsafe { (*tmp).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+                && (unsafe { xmlStrEqual(
                     (*tmp).name,
                     b"start\0" as *const u8 as *const i8 as *const xmlChar,
-                ) != 0 && xmlStrEqual((*(*tmp).ns).href, xmlRelaxNGNs) != 0)
+                ) }) != 0
+                && (unsafe { xmlStrEqual((*(*tmp).ns).href, xmlRelaxNGNs) }) != 0)
         {
             found = 1 as i32;
-            xmlUnlinkNode(tmp);
-            xmlFreeNode(tmp);
+            (unsafe { xmlUnlinkNode(tmp) });
+            (unsafe { xmlFreeNode(tmp) });
         } else if !name.is_null()
-                && (!tmp.is_null() && !((*tmp).ns).is_null()
-                    && (*tmp).type_0 as u32
-                        == XML_ELEMENT_NODE as i32 as u32
-                    && xmlStrEqual(
-                        (*tmp).name,
-                        b"define\0" as *const u8 as *const i8 as *const xmlChar,
-                    ) != 0 && xmlStrEqual((*(*tmp).ns).href, xmlRelaxNGNs) != 0)
-            {
-            name2 = xmlGetProp(
+            && (!tmp.is_null()
+                && !(unsafe { (*tmp).ns }).is_null()
+                && (unsafe { (*tmp).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+                && (unsafe { xmlStrEqual(
+                    (*tmp).name,
+                    b"define\0" as *const u8 as *const i8 as *const xmlChar,
+                ) }) != 0
+                && (unsafe { xmlStrEqual((*(*tmp).ns).href, xmlRelaxNGNs) }) != 0)
+        {
+            name2 = unsafe { xmlGetProp(
                 tmp as *const xmlNode,
                 b"name\0" as *const u8 as *const i8 as *mut xmlChar,
-            );
+            ) };
             xmlRelaxNGNormExtSpace(name2);
             if !name2.is_null() {
-                if xmlStrEqual(name, name2) != 0 {
+                if (unsafe { xmlStrEqual(name, name2) }) != 0 {
                     found = 1 as i32;
-                    xmlUnlinkNode(tmp);
-                    xmlFreeNode(tmp);
+                    (unsafe { xmlUnlinkNode(tmp) });
+                    (unsafe { xmlFreeNode(tmp) });
                 }
-                xmlFree.expect("non-null function pointer")(name2 as *mut libc::c_void);
+                (unsafe { xmlFree.expect("non-null function pointer")(name2 as *mut libc::c_void) });
             }
-        } else if !tmp.is_null() && !((*tmp).ns).is_null()
-                && (*tmp).type_0 as u32
-                    == XML_ELEMENT_NODE as i32 as u32
-                && xmlStrEqual(
-                    (*tmp).name,
-                    b"include\0" as *const u8 as *const i8 as *const xmlChar,
-                ) != 0 && xmlStrEqual((*(*tmp).ns).href, xmlRelaxNGNs) != 0
-            {
-            let mut href: * mut u8 = 0 as *mut xmlChar;
-            let mut inc: * mut crate::src::relaxng::_xmlRelaxNGDocument<'_> = (*tmp).psvi as xmlRelaxNGDocumentPtr;
-            if !inc.is_null() && !((*inc).doc).is_null()
-                && !((*(*inc).doc).children).is_null()
-            {
-                if xmlStrEqual(
+        } else if !tmp.is_null()
+            && !(unsafe { (*tmp).ns }).is_null()
+            && (unsafe { (*tmp).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+            && (unsafe { xmlStrEqual(
+                (*tmp).name,
+                b"include\0" as *const u8 as *const i8 as *const xmlChar,
+            ) }) != 0
+            && (unsafe { xmlStrEqual((*(*tmp).ns).href, xmlRelaxNGNs) }) != 0
+        {
+            let mut href: *mut u8 = 0 as *mut xmlChar;
+            let mut inc: *mut crate::src::relaxng::_xmlRelaxNGDocument<'_> =
+                (unsafe { (*tmp).psvi }) as xmlRelaxNGDocumentPtr;
+            if !inc.is_null() && !(unsafe { (*inc).doc }).is_null() && !(unsafe { (*(*inc).doc).children }).is_null() {
+                if (unsafe { xmlStrEqual(
                     (*(*(*inc).doc).children).name,
                     b"grammar\0" as *const u8 as *const i8 as *mut xmlChar,
-                ) != 0
+                ) }) != 0
                 {
                     if xmlRelaxNGRemoveRedefine(
                         ctxt,
                         href,
-                        (*xmlDocGetRootElement((*inc).doc as *const xmlDoc)).children,
+                        unsafe { (*xmlDocGetRootElement((*inc).doc as *const xmlDoc)).children },
                         name,
                     ) == 1 as i32
                     {
@@ -3227,9 +3182,7 @@ unsafe extern "C" fn xmlRelaxNGRemoveRedefine<'a1>(
                     }
                 }
             }
-            if xmlRelaxNGRemoveRedefine(ctxt, URL, (*tmp).children, name)
-                == 1 as i32
-            {
+            if xmlRelaxNGRemoveRedefine(ctxt, URL, unsafe { (*tmp).children }, name) == 1 as i32 {
                 found = 1 as i32;
             }
         }
@@ -3237,26 +3190,29 @@ unsafe extern "C" fn xmlRelaxNGRemoveRedefine<'a1>(
     }
     return found;
 }
-unsafe extern "C" fn xmlRelaxNGLoadInclude<'a1, 'a2>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut URL: * const u8,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
-    mut ns: * const u8,
-) -> * mut crate::src::relaxng::_xmlRelaxNGInclude<'a2> where 'a2: 'a1, 'a1: 'a2 {
-    let mut ret: * mut crate::src::relaxng::_xmlRelaxNGInclude<'_> = 0 as xmlRelaxNGIncludePtr;
-    let mut doc: * mut crate::src::HTMLparser::_xmlDoc = 0 as *mut xmlDoc;
+extern "C" fn xmlRelaxNGLoadInclude<'a1, 'a2>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut URL: *const u8,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
+    mut ns: *const u8,
+) -> *mut crate::src::relaxng::_xmlRelaxNGInclude<'a2>
+where
+    'a2: 'a1,
+    'a1: 'a2,
+{
+    let mut ret: *mut crate::src::relaxng::_xmlRelaxNGInclude<'_> = 0 as xmlRelaxNGIncludePtr;
+    let mut doc: *mut crate::src::HTMLparser::_xmlDoc = 0 as *mut xmlDoc;
     let mut i: i32 = 0;
-    let mut root: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut cur: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut root: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut cur: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
     i = 0 as i32;
-    while i < (*ctxt).incNr {
-        if xmlStrEqual((**((*ctxt).incTab).offset(i as isize)).href, URL) != 0 {
+    while i < (unsafe { (*ctxt).incNr }) {
+        if (unsafe { xmlStrEqual((**((*ctxt).incTab).offset(i as isize)).href, URL) }) != 0 {
             xmlRngPErr(
                 ctxt,
                 0 as xmlNodePtr,
                 XML_RNGP_INCLUDE_RECURSE as i32,
-                b"Detected an Include recursion for %s\n\0" as *const u8
-                    as *const i8,
+                b"Detected an Include recursion for %s\n\0" as *const u8 as *const i8,
                 URL,
                 0 as *const xmlChar,
             );
@@ -3264,11 +3220,7 @@ unsafe extern "C" fn xmlRelaxNGLoadInclude<'a1, 'a2>(
         }
         i += 1;
     }
-    doc = xmlReadFile(
-        URL as *const i8,
-        0 as *const i8,
-        0 as i32,
-    );
+    doc = xmlReadFile(URL as *const i8, 0 as *const i8, 0 as i32);
     if doc.is_null() {
         xmlRngPErr(
             ctxt,
@@ -3280,106 +3232,92 @@ unsafe extern "C" fn xmlRelaxNGLoadInclude<'a1, 'a2>(
         );
         return 0 as xmlRelaxNGIncludePtr;
     }
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlRelaxNGInclude>() as u64)
-        as xmlRelaxNGIncludePtr;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlRelaxNGInclude>() as u64
+    ) }) as xmlRelaxNGIncludePtr;
     if ret.is_null() {
-        xmlRngPErrMemory(
-            ctxt,
-            b"allocating include\n\0" as *const u8 as *const i8,
-        );
-        xmlFreeDoc(doc);
+        xmlRngPErrMemory(ctxt, b"allocating include\n\0" as *const u8 as *const i8);
+        (unsafe { xmlFreeDoc(doc) });
         return 0 as xmlRelaxNGIncludePtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlRelaxNGInclude>() as u64,
-    );
-    let ref mut fresh52 = (*ret).doc;
+    ) });
+    let fresh52 = unsafe { &mut ((*ret).doc) };
     *fresh52 = doc;
-    let ref mut fresh53 = (*ret).href;
-    *fresh53 = xmlStrdup(URL);
-    let ref mut fresh54 = (*ret).next;
-    *fresh54 = (*ctxt).includes;
-    let ref mut fresh55 = (*ctxt).includes;
+    let fresh53 = unsafe { &mut ((*ret).href) };
+    *fresh53 = unsafe { xmlStrdup(URL) };
+    let fresh54 = unsafe { &mut ((*ret).next) };
+    *fresh54 = unsafe { (*ctxt).includes };
+    let fresh55 = unsafe { &mut ((*ctxt).includes) };
     *fresh55 = ret;
     if !ns.is_null() {
-        root = xmlDocGetRootElement(doc as *const xmlDoc);
+        root = unsafe { xmlDocGetRootElement(doc as *const xmlDoc) };
         if !root.is_null() {
-            if (xmlHasProp(
+            if (unsafe { xmlHasProp(
                 root as *const xmlNode,
                 b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
-            ))
-                .is_null()
+            ) })
+            .is_null()
             {
-                xmlSetProp(
-                    root,
-                    b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ns,
-                );
+                (unsafe { xmlSetProp(root, b"ns\0" as *const u8 as *const i8 as *mut xmlChar, ns) });
             }
         }
     }
     xmlRelaxNGIncludePush(ctxt, ret);
     doc = xmlRelaxNGCleanupDoc(ctxt, doc);
     if doc.is_null() {
-        let ref mut fresh56 = (*ctxt).inc;
+        let fresh56 = unsafe { &mut ((*ctxt).inc) };
         *fresh56 = 0 as xmlRelaxNGIncludePtr;
         return 0 as xmlRelaxNGIncludePtr;
     }
     xmlRelaxNGIncludePop(ctxt);
-    root = xmlDocGetRootElement(doc as *const xmlDoc);
+    root = unsafe { xmlDocGetRootElement(doc as *const xmlDoc) };
     if root.is_null() {
         xmlRngPErr(
             ctxt,
             node,
             XML_RNGP_EMPTY as i32,
-            b"xmlRelaxNG: included document is empty %s\n\0" as *const u8
-                as *const i8,
+            b"xmlRelaxNG: included document is empty %s\n\0" as *const u8 as *const i8,
             URL,
             0 as *const xmlChar,
         );
         return 0 as xmlRelaxNGIncludePtr;
     }
-    if !(!root.is_null() && !((*root).ns).is_null()
-        && (*root).type_0 as u32
-            == XML_ELEMENT_NODE as i32 as u32
-        && xmlStrEqual(
+    if !(!root.is_null()
+        && !(unsafe { (*root).ns }).is_null()
+        && (unsafe { (*root).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
             (*root).name,
             b"grammar\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0 && xmlStrEqual((*(*root).ns).href, xmlRelaxNGNs) != 0)
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*root).ns).href, xmlRelaxNGNs) }) != 0)
     {
         xmlRngPErr(
             ctxt,
             node,
             XML_RNGP_GRAMMAR_MISSING as i32,
-            b"xmlRelaxNG: included document %s root is not a grammar\n\0" as *const u8
-                as *const i8,
+            b"xmlRelaxNG: included document %s root is not a grammar\n\0" as *const u8 as *const i8,
             URL,
             0 as *const xmlChar,
         );
         return 0 as xmlRelaxNGIncludePtr;
     }
-    cur = (*node).children;
+    cur = unsafe { (*node).children };
     while !cur.is_null() {
-        if !cur.is_null() && !((*cur).ns).is_null()
-            && (*cur).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
+        if !cur.is_null()
+            && !(unsafe { (*cur).ns }).is_null()
+            && (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+            && (unsafe { xmlStrEqual(
                 (*cur).name,
                 b"start\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*cur).ns).href, xmlRelaxNGNs) != 0
+            ) }) != 0
+            && (unsafe { xmlStrEqual((*(*cur).ns).href, xmlRelaxNGNs) }) != 0
         {
             let mut found: i32 = 0 as i32;
-            found = xmlRelaxNGRemoveRedefine(
-                ctxt,
-                URL,
-                (*root).children,
-                0 as *const xmlChar,
-            );
+            found = xmlRelaxNGRemoveRedefine(ctxt, URL, unsafe { (*root).children }, 0 as *const xmlChar);
             if found == 0 {
                 xmlRngPErr(
                     ctxt,
@@ -3391,33 +3329,33 @@ unsafe extern "C" fn xmlRelaxNGLoadInclude<'a1, 'a2>(
                     0 as *const xmlChar,
                 );
             }
-        } else if !cur.is_null() && !((*cur).ns).is_null()
-                && (*cur).type_0 as u32
-                    == XML_ELEMENT_NODE as i32 as u32
-                && xmlStrEqual(
-                    (*cur).name,
-                    b"define\0" as *const u8 as *const i8 as *const xmlChar,
-                ) != 0 && xmlStrEqual((*(*cur).ns).href, xmlRelaxNGNs) != 0
-            {
-            let mut name: * mut u8 = 0 as *mut xmlChar;
-            name = xmlGetProp(
+        } else if !cur.is_null()
+            && !(unsafe { (*cur).ns }).is_null()
+            && (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+            && (unsafe { xmlStrEqual(
+                (*cur).name,
+                b"define\0" as *const u8 as *const i8 as *const xmlChar,
+            ) }) != 0
+            && (unsafe { xmlStrEqual((*(*cur).ns).href, xmlRelaxNGNs) }) != 0
+        {
+            let mut name: *mut u8 = 0 as *mut xmlChar;
+            name = unsafe { xmlGetProp(
                 cur as *const xmlNode,
                 b"name\0" as *const u8 as *const i8 as *mut xmlChar,
-            );
+            ) };
             if name.is_null() {
                 xmlRngPErr(
                     ctxt,
                     node,
                     XML_RNGP_NAME_MISSING as i32,
-                    b"xmlRelaxNG: include %s has define without name\n\0" as *const u8
-                        as *const i8,
+                    b"xmlRelaxNG: include %s has define without name\n\0" as *const u8 as *const i8,
                     URL,
                     0 as *const xmlChar,
                 );
             } else {
                 let mut found_0: i32 = 0;
                 xmlRelaxNGNormExtSpace(name);
-                found_0 = xmlRelaxNGRemoveRedefine(ctxt, URL, (*root).children, name);
+                found_0 = xmlRelaxNGRemoveRedefine(ctxt, URL, unsafe { (*root).children }, name);
                 if found_0 == 0 {
                     xmlRngPErr(
                         ctxt,
@@ -3429,27 +3367,28 @@ unsafe extern "C" fn xmlRelaxNGLoadInclude<'a1, 'a2>(
                         name,
                     );
                 }
-                xmlFree.expect("non-null function pointer")(name as *mut libc::c_void);
+                (unsafe { xmlFree.expect("non-null function pointer")(name as *mut libc::c_void) });
             }
         }
-        if !cur.is_null() && !((*cur).ns).is_null()
-            && (*cur).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
+        if !cur.is_null()
+            && !(unsafe { (*cur).ns }).is_null()
+            && (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+            && (unsafe { xmlStrEqual(
                 (*cur).name,
                 b"div\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*cur).ns).href, xmlRelaxNGNs) != 0
-            && !((*cur).children).is_null()
+            ) }) != 0
+            && (unsafe { xmlStrEqual((*(*cur).ns).href, xmlRelaxNGNs) }) != 0
+            && !(unsafe { (*cur).children }).is_null()
         {
-            cur = (*cur).children;
-        } else if !((*cur).next).is_null() {
-            cur = (*cur).next;
+            cur = unsafe { (*cur).children };
+        } else if !(unsafe { (*cur).next }).is_null() {
+            cur = unsafe { (*cur).next };
         } else {
-            while (*cur).parent != node && ((*(*cur).parent).next).is_null() {
-                cur = (*cur).parent;
+            while (unsafe { (*cur).parent }) != node && (unsafe { (*(*cur).parent).next }).is_null() {
+                cur = unsafe { (*cur).parent };
             }
-            cur = if (*cur).parent != node {
-                (*(*cur).parent).next
+            cur = if (unsafe { (*cur).parent }) != node {
+                unsafe { (*(*cur).parent).next }
             } else {
                 0 as *mut _xmlNode
             };
@@ -3457,232 +3396,212 @@ unsafe extern "C" fn xmlRelaxNGLoadInclude<'a1, 'a2>(
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGValidErrorPush<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+extern "C" fn xmlRelaxNGValidErrorPush<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
     mut err: u32,
-    mut arg1: * const u8,
-    mut arg2: * const u8,
+    mut arg1: *const u8,
+    mut arg2: *const u8,
     mut dup: i32,
 ) -> i32 {
-    let mut cur: Option<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError> = Option::<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError>::None;
-    if ((*ctxt).errTab).is_null() {
-        (*ctxt).errMax = 8 as i32;
-        (*ctxt).errNr = 0 as i32;
-        let ref mut fresh57 = (*ctxt).errTab;
-        *fresh57 = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(
+    let mut cur: Option<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError> =
+        Option::<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError>::None;
+    if (unsafe { (*ctxt).errTab }).is_null() {
+        (unsafe { (*ctxt).errMax = 8 as i32 });
+        (unsafe { (*ctxt).errNr = 0 as i32 });
+        let fresh57 = unsafe { &mut ((*ctxt).errTab) };
+        *fresh57 = (unsafe { xmlMalloc.expect("non-null function pointer")(
             ((*ctxt).errMax as u64)
-                .wrapping_mul(
-                    ::std::mem::size_of::<xmlRelaxNGValidError>() as u64,
-                ),
-        ) as xmlRelaxNGValidErrorPtr;
-        if ((*ctxt).errTab).is_null() {
-            xmlRngVErrMemory(
-                ctxt,
-                b"pushing error\n\0" as *const u8 as *const i8,
-            );
+                .wrapping_mul(::std::mem::size_of::<xmlRelaxNGValidError>() as u64),
+        ) }) as xmlRelaxNGValidErrorPtr;
+        if (unsafe { (*ctxt).errTab }).is_null() {
+            xmlRngVErrMemory(ctxt, b"pushing error\n\0" as *const u8 as *const i8);
             return 0 as i32;
         }
-        let ref mut fresh58 = borrow_mut(&mut (*ctxt).err);
+        let fresh58 = &mut (borrow_mut(unsafe { &mut (*ctxt).err }));
         *fresh58 = Option::<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError>::None;
     }
-    if (*ctxt).errNr >= (*ctxt).errMax {
-        (*ctxt).errMax *= 2 as i32;
-        let ref mut fresh59 = (*ctxt).errTab;
-        *fresh59 = xmlRealloc
-            .expect(
-                "non-null function pointer",
-            )(
+    if (unsafe { (*ctxt).errNr }) >= (unsafe { (*ctxt).errMax }) {
+        (unsafe { (*ctxt).errMax *= 2 as i32 });
+        let fresh59 = unsafe { &mut ((*ctxt).errTab) };
+        *fresh59 = (unsafe { xmlRealloc.expect("non-null function pointer")(
             (*ctxt).errTab as *mut libc::c_void,
             ((*ctxt).errMax as u64)
-                .wrapping_mul(
-                    ::std::mem::size_of::<xmlRelaxNGValidError>() as u64,
-                ),
-        ) as xmlRelaxNGValidErrorPtr;
-        if ((*ctxt).errTab).is_null() {
-            xmlRngVErrMemory(
-                ctxt,
-                b"pushing error\n\0" as *const u8 as *const i8,
-            );
+                .wrapping_mul(::std::mem::size_of::<xmlRelaxNGValidError>() as u64),
+        ) }) as xmlRelaxNGValidErrorPtr;
+        if (unsafe { (*ctxt).errTab }).is_null() {
+            xmlRngVErrMemory(ctxt, b"pushing error\n\0" as *const u8 as *const i8);
             return 0 as i32;
         }
-        let ref mut fresh60 = borrow_mut(&mut (*ctxt).err);
-        *fresh60 = Some(&mut *((*ctxt).errTab)
-            .offset(((*ctxt).errNr - 1 as i32) as isize));
+        let fresh60 = &mut (borrow_mut(unsafe { &mut (*ctxt).err }));
+        *fresh60 = Some(unsafe { &mut *((*ctxt).errTab).offset(((*ctxt).errNr - 1 as i32) as isize) });
     }
-    if !borrow(& ((*ctxt).err)).is_none() && !((*ctxt).state).is_null()
-        && (*(borrow(& (*ctxt).err)).unwrap()).node == (*(*ctxt).state).node
-        && (*(borrow(& (*ctxt).err)).unwrap()).err as u32 == err as u32
+    if !borrow(unsafe { &((*ctxt).err) }).is_none()
+        && !(unsafe { (*ctxt).state }).is_null()
+        && (*(borrow(unsafe { &(*ctxt).err })).unwrap()).node == (unsafe { (*(*ctxt).state).node })
+        && (*(borrow(unsafe { &(*ctxt).err })).unwrap()).err as u32 == err as u32
     {
-        return (*ctxt).errNr;
+        return unsafe { (*ctxt).errNr };
     }
-    cur = Some(&mut *((*ctxt).errTab).offset((*ctxt).errNr as isize));
+    cur = Some(unsafe { &mut *((*ctxt).errTab).offset((*ctxt).errNr as isize) });
     (*(borrow_mut(&mut cur)).unwrap()).err = err;
     if dup != 0 {
-        let ref mut fresh61 = (*(borrow_mut(&mut cur)).unwrap()).arg1;
-        *fresh61 = xmlStrdup(arg1);
-        let ref mut fresh62 = (*(borrow_mut(&mut cur)).unwrap()).arg2;
-        *fresh62 = xmlStrdup(arg2);
+        let fresh61 = &mut ((*(borrow_mut(&mut cur)).unwrap()).arg1);
+        *fresh61 = unsafe { xmlStrdup(arg1) };
+        let fresh62 = &mut ((*(borrow_mut(&mut cur)).unwrap()).arg2);
+        *fresh62 = unsafe { xmlStrdup(arg2) };
         (*(borrow_mut(&mut cur)).unwrap()).flags = 1 as i32;
     } else {
-        let ref mut fresh63 = (*(borrow_mut(&mut cur)).unwrap()).arg1;
+        let fresh63 = &mut ((*(borrow_mut(&mut cur)).unwrap()).arg1);
         *fresh63 = arg1;
-        let ref mut fresh64 = (*(borrow_mut(&mut cur)).unwrap()).arg2;
+        let fresh64 = &mut ((*(borrow_mut(&mut cur)).unwrap()).arg2);
         *fresh64 = arg2;
         (*(borrow_mut(&mut cur)).unwrap()).flags = 0 as i32;
     }
-    if !((*ctxt).state).is_null() {
-        let ref mut fresh65 = (*(borrow_mut(&mut cur)).unwrap()).node;
-        *fresh65 = (*(*ctxt).state).node;
-        let ref mut fresh66 = (*(borrow_mut(&mut cur)).unwrap()).seq;
-        *fresh66 = (*(*ctxt).state).seq;
+    if !(unsafe { (*ctxt).state }).is_null() {
+        let fresh65 = &mut ((*(borrow_mut(&mut cur)).unwrap()).node);
+        *fresh65 = unsafe { (*(*ctxt).state).node };
+        let fresh66 = &mut ((*(borrow_mut(&mut cur)).unwrap()).seq);
+        *fresh66 = unsafe { (*(*ctxt).state).seq };
     } else {
-        let ref mut fresh67 = (*(borrow_mut(&mut cur)).unwrap()).node;
+        let fresh67 = &mut ((*(borrow_mut(&mut cur)).unwrap()).node);
         *fresh67 = 0 as xmlNodePtr;
-        let ref mut fresh68 = (*(borrow_mut(&mut cur)).unwrap()).seq;
+        let fresh68 = &mut ((*(borrow_mut(&mut cur)).unwrap()).seq);
         *fresh68 = 0 as xmlNodePtr;
     }
-    let ref mut fresh69 = borrow_mut(&mut (*ctxt).err);
+    let fresh69 = &mut (borrow_mut(unsafe { &mut (*ctxt).err }));
     *fresh69 = borrow_mut(&mut cur);
-    let ref mut fresh70 = (*ctxt).errNr;
+    let fresh70 = unsafe { &mut ((*ctxt).errNr) };
     let mut fresh71 = *fresh70;
     *fresh70 = *fresh70 + 1;
     return fresh71;
 }
-unsafe extern "C" fn xmlRelaxNGValidErrorPop<'a1>(mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>) {
-    let mut cur: Option<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError> = Option::<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError>::None;
-    if (*ctxt).errNr <= 0 as i32 {
-        let ref mut fresh72 = borrow_mut(&mut (*ctxt).err);
+extern "C" fn xmlRelaxNGValidErrorPop<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+) {
+    let mut cur: Option<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError> =
+        Option::<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError>::None;
+    if (unsafe { (*ctxt).errNr }) <= 0 as i32 {
+        let fresh72 = &mut (borrow_mut(unsafe { &mut (*ctxt).err }));
         *fresh72 = Option::<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError>::None;
         return;
     }
-    let ref mut fresh73 = (*ctxt).errNr;
+    let fresh73 = unsafe { &mut ((*ctxt).errNr) };
     *fresh73 -= 1;
-    if (*ctxt).errNr > 0 as i32 {
-        let ref mut fresh74 = borrow_mut(&mut (*ctxt).err);
-        *fresh74 = Some(&mut *((*ctxt).errTab)
-            .offset(((*ctxt).errNr - 1 as i32) as isize));
+    if (unsafe { (*ctxt).errNr }) > 0 as i32 {
+        let fresh74 = &mut (borrow_mut(unsafe { &mut (*ctxt).err }));
+        *fresh74 = Some(unsafe { &mut *((*ctxt).errTab).offset(((*ctxt).errNr - 1 as i32) as isize) });
     } else {
-        let ref mut fresh75 = borrow_mut(&mut (*ctxt).err);
+        let fresh75 = &mut (borrow_mut(unsafe { &mut (*ctxt).err }));
         *fresh75 = Option::<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError>::None;
     }
-    cur = Some(&mut *((*ctxt).errTab).offset((*ctxt).errNr as isize));
-    if (*(borrow(& cur)).unwrap()).flags & 1 as i32 != 0 {
+    cur = Some(unsafe { &mut *((*ctxt).errTab).offset((*ctxt).errNr as isize) });
+    if (*(borrow(&cur)).unwrap()).flags & 1 as i32 != 0 {
         if !((*(borrow_mut(&mut cur)).unwrap()).arg1).is_null() {
-            xmlFree
-                .expect(
-                    "non-null function pointer",
-                )((*(borrow_mut(&mut cur)).unwrap()).arg1 as *mut xmlChar as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(
+                (*(borrow_mut(&mut cur)).unwrap()).arg1 as *mut xmlChar as *mut libc::c_void,
+            ) });
         }
-        let ref mut fresh76 = (*(borrow_mut(&mut cur)).unwrap()).arg1;
+        let fresh76 = &mut ((*(borrow_mut(&mut cur)).unwrap()).arg1);
         *fresh76 = 0 as *const xmlChar;
         if !((*(borrow_mut(&mut cur)).unwrap()).arg2).is_null() {
-            xmlFree
-                .expect(
-                    "non-null function pointer",
-                )((*(borrow_mut(&mut cur)).unwrap()).arg2 as *mut xmlChar as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(
+                (*(borrow_mut(&mut cur)).unwrap()).arg2 as *mut xmlChar as *mut libc::c_void,
+            ) });
         }
-        let ref mut fresh77 = (*(borrow_mut(&mut cur)).unwrap()).arg2;
+        let fresh77 = &mut ((*(borrow_mut(&mut cur)).unwrap()).arg2);
         *fresh77 = 0 as *const xmlChar;
         (*(borrow_mut(&mut cur)).unwrap()).flags = 0 as i32;
     }
 }
-unsafe extern "C" fn xmlRelaxNGDocumentPush<'a1, 'a2>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut value: * mut crate::src::relaxng::_xmlRelaxNGDocument<'a2>,
-) -> i32 where 'a1: 'a2, 'a2: 'a1 {
-    if ((*ctxt).docTab).is_null() {
-        (*ctxt).docMax = 4 as i32;
-        (*ctxt).docNr = 0 as i32;
-        let ref mut fresh78 = (*ctxt).docTab;
-        *fresh78 = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(
+extern "C" fn xmlRelaxNGDocumentPush<'a1, 'a2>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut value: *mut crate::src::relaxng::_xmlRelaxNGDocument<'a2>,
+) -> i32
+where
+    'a1: 'a2,
+    'a2: 'a1,
+{
+    if (unsafe { (*ctxt).docTab }).is_null() {
+        (unsafe { (*ctxt).docMax = 4 as i32 });
+        (unsafe { (*ctxt).docNr = 0 as i32 });
+        let fresh78 = unsafe { &mut ((*ctxt).docTab) };
+        *fresh78 = (unsafe { xmlMalloc.expect("non-null function pointer")(
             ((*ctxt).docMax as u64)
-                .wrapping_mul(
-                    ::std::mem::size_of::<xmlRelaxNGDocumentPtr>() as u64,
-                ),
-        ) as *mut xmlRelaxNGDocumentPtr;
-        if ((*ctxt).docTab).is_null() {
-            xmlRngPErrMemory(
-                ctxt,
-                b"adding document\n\0" as *const u8 as *const i8,
-            );
+                .wrapping_mul(::std::mem::size_of::<xmlRelaxNGDocumentPtr>() as u64),
+        ) }) as *mut xmlRelaxNGDocumentPtr;
+        if (unsafe { (*ctxt).docTab }).is_null() {
+            xmlRngPErrMemory(ctxt, b"adding document\n\0" as *const u8 as *const i8);
             return 0 as i32;
         }
     }
-    if (*ctxt).docNr >= (*ctxt).docMax {
-        (*ctxt).docMax *= 2 as i32;
-        let ref mut fresh79 = (*ctxt).docTab;
-        *fresh79 = xmlRealloc
-            .expect(
-                "non-null function pointer",
-            )(
+    if (unsafe { (*ctxt).docNr }) >= (unsafe { (*ctxt).docMax }) {
+        (unsafe { (*ctxt).docMax *= 2 as i32 });
+        let fresh79 = unsafe { &mut ((*ctxt).docTab) };
+        *fresh79 = (unsafe { xmlRealloc.expect("non-null function pointer")(
             (*ctxt).docTab as *mut libc::c_void,
             ((*ctxt).docMax as u64)
-                .wrapping_mul(
-                    ::std::mem::size_of::<xmlRelaxNGDocumentPtr>() as u64,
-                ),
-        ) as *mut xmlRelaxNGDocumentPtr;
-        if ((*ctxt).docTab).is_null() {
-            xmlRngPErrMemory(
-                ctxt,
-                b"adding document\n\0" as *const u8 as *const i8,
-            );
+                .wrapping_mul(::std::mem::size_of::<xmlRelaxNGDocumentPtr>() as u64),
+        ) }) as *mut xmlRelaxNGDocumentPtr;
+        if (unsafe { (*ctxt).docTab }).is_null() {
+            xmlRngPErrMemory(ctxt, b"adding document\n\0" as *const u8 as *const i8);
             return 0 as i32;
         }
     }
-    let ref mut fresh80 = *((*ctxt).docTab).offset((*ctxt).docNr as isize);
+    let fresh80 = unsafe { &mut (*((*ctxt).docTab).offset((*ctxt).docNr as isize)) };
     *fresh80 = value;
-    let ref mut fresh81 = (*ctxt).doc;
+    let fresh81 = unsafe { &mut ((*ctxt).doc) };
     *fresh81 = value;
-    let ref mut fresh82 = (*ctxt).docNr;
+    let fresh82 = unsafe { &mut ((*ctxt).docNr) };
     let mut fresh83 = *fresh82;
     *fresh82 = *fresh82 + 1;
     return fresh83;
 }
-unsafe extern "C" fn xmlRelaxNGDocumentPop<'a1, 'a2>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-) -> * mut crate::src::relaxng::_xmlRelaxNGDocument<'a2> where 'a2: 'a1, 'a1: 'a2 {
-    let mut ret: * mut crate::src::relaxng::_xmlRelaxNGDocument<'_> = 0 as *mut xmlRelaxNGDocument;
-    if (*ctxt).docNr <= 0 as i32 {
+extern "C" fn xmlRelaxNGDocumentPop<'a1, 'a2>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+) -> *mut crate::src::relaxng::_xmlRelaxNGDocument<'a2>
+where
+    'a2: 'a1,
+    'a1: 'a2,
+{
+    let mut ret: *mut crate::src::relaxng::_xmlRelaxNGDocument<'_> = 0 as *mut xmlRelaxNGDocument;
+    if (unsafe { (*ctxt).docNr }) <= 0 as i32 {
         return 0 as xmlRelaxNGDocumentPtr;
     }
-    let ref mut fresh84 = (*ctxt).docNr;
+    let fresh84 = unsafe { &mut ((*ctxt).docNr) };
     *fresh84 -= 1;
-    if (*ctxt).docNr > 0 as i32 {
-        let ref mut fresh85 = (*ctxt).doc;
-        *fresh85 = *((*ctxt).docTab).offset(((*ctxt).docNr - 1 as i32) as isize);
+    if (unsafe { (*ctxt).docNr }) > 0 as i32 {
+        let fresh85 = unsafe { &mut ((*ctxt).doc) };
+        *fresh85 = unsafe { *((*ctxt).docTab).offset(((*ctxt).docNr - 1 as i32) as isize) };
     } else {
-        let ref mut fresh86 = (*ctxt).doc;
+        let fresh86 = unsafe { &mut ((*ctxt).doc) };
         *fresh86 = 0 as xmlRelaxNGDocumentPtr;
     }
-    ret = *((*ctxt).docTab).offset((*ctxt).docNr as isize);
-    let ref mut fresh87 = *((*ctxt).docTab).offset((*ctxt).docNr as isize);
+    ret = unsafe { *((*ctxt).docTab).offset((*ctxt).docNr as isize) };
+    let fresh87 = unsafe { &mut (*((*ctxt).docTab).offset((*ctxt).docNr as isize)) };
     *fresh87 = 0 as xmlRelaxNGDocumentPtr;
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGLoadExternalRef<'a1, 'a2>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut URL: * const u8,
-    mut ns: * const u8,
-) -> * mut crate::src::relaxng::_xmlRelaxNGDocument<'a2> where 'a1: 'a2, 'a2: 'a1 {
-    let mut ret: * mut crate::src::relaxng::_xmlRelaxNGDocument<'_> = 0 as xmlRelaxNGDocumentPtr;
-    let mut doc: * mut crate::src::HTMLparser::_xmlDoc = 0 as *mut xmlDoc;
-    let mut root: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+extern "C" fn xmlRelaxNGLoadExternalRef<'a1, 'a2>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut URL: *const u8,
+    mut ns: *const u8,
+) -> *mut crate::src::relaxng::_xmlRelaxNGDocument<'a2>
+where
+    'a1: 'a2,
+    'a2: 'a1,
+{
+    let mut ret: *mut crate::src::relaxng::_xmlRelaxNGDocument<'_> = 0 as xmlRelaxNGDocumentPtr;
+    let mut doc: *mut crate::src::HTMLparser::_xmlDoc = 0 as *mut xmlDoc;
+    let mut root: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
     let mut i: i32 = 0;
     i = 0 as i32;
-    while i < (*ctxt).docNr {
-        if xmlStrEqual((**((*ctxt).docTab).offset(i as isize)).href, URL) != 0 {
+    while i < (unsafe { (*ctxt).docNr }) {
+        if (unsafe { xmlStrEqual((**((*ctxt).docTab).offset(i as isize)).href, URL) }) != 0 {
             xmlRngPErr(
                 ctxt,
                 0 as xmlNodePtr,
                 XML_RNGP_EXTERNALREF_RECURSE as i32,
-                b"Detected an externalRef recursion for %s\n\0" as *const u8
-                    as *const i8,
+                b"Detected an externalRef recursion for %s\n\0" as *const u8 as *const i8,
                 URL,
                 0 as *const xmlChar,
             );
@@ -3690,11 +3609,7 @@ unsafe extern "C" fn xmlRelaxNGLoadExternalRef<'a1, 'a2>(
         }
         i += 1;
     }
-    doc = xmlReadFile(
-        URL as *const i8,
-        0 as *const i8,
-        0 as i32,
-    );
+    doc = xmlReadFile(URL as *const i8, 0 as *const i8, 0 as i32);
     if doc.is_null() {
         xmlRngPErr(
             ctxt,
@@ -3706,72 +3621,63 @@ unsafe extern "C" fn xmlRelaxNGLoadExternalRef<'a1, 'a2>(
         );
         return 0 as xmlRelaxNGDocumentPtr;
     }
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlRelaxNGDocument>() as u64)
-        as xmlRelaxNGDocumentPtr;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlRelaxNGDocument>() as u64
+    ) }) as xmlRelaxNGDocumentPtr;
     if ret.is_null() {
         xmlRngPErr(
             ctxt,
             doc as xmlNodePtr,
             XML_ERR_NO_MEMORY as i32,
-            b"xmlRelaxNG: allocate memory for doc %s\n\0" as *const u8
-                as *const i8,
+            b"xmlRelaxNG: allocate memory for doc %s\n\0" as *const u8 as *const i8,
             URL,
             0 as *const xmlChar,
         );
-        xmlFreeDoc(doc);
+        (unsafe { xmlFreeDoc(doc) });
         return 0 as xmlRelaxNGDocumentPtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlRelaxNGDocument>() as u64,
-    );
-    let ref mut fresh88 = (*ret).doc;
+    ) });
+    let fresh88 = unsafe { &mut ((*ret).doc) };
     *fresh88 = doc;
-    let ref mut fresh89 = (*ret).href;
-    *fresh89 = xmlStrdup(URL);
-    let ref mut fresh90 = (*ret).next;
-    *fresh90 = (*ctxt).documents;
-    (*ret).externalRef = 1 as i32;
-    let ref mut fresh91 = (*ctxt).documents;
+    let fresh89 = unsafe { &mut ((*ret).href) };
+    *fresh89 = unsafe { xmlStrdup(URL) };
+    let fresh90 = unsafe { &mut ((*ret).next) };
+    *fresh90 = unsafe { (*ctxt).documents };
+    (unsafe { (*ret).externalRef = 1 as i32 });
+    let fresh91 = unsafe { &mut ((*ctxt).documents) };
     *fresh91 = ret;
     if !ns.is_null() {
-        root = xmlDocGetRootElement(doc as *const xmlDoc);
+        root = unsafe { xmlDocGetRootElement(doc as *const xmlDoc) };
         if !root.is_null() {
-            if (xmlHasProp(
+            if (unsafe { xmlHasProp(
                 root as *const xmlNode,
                 b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
-            ))
-                .is_null()
+            ) })
+            .is_null()
             {
-                xmlSetProp(
-                    root,
-                    b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ns,
-                );
+                (unsafe { xmlSetProp(root, b"ns\0" as *const u8 as *const i8 as *mut xmlChar, ns) });
             }
         }
     }
     xmlRelaxNGDocumentPush(ctxt, ret);
     doc = xmlRelaxNGCleanupDoc(ctxt, doc);
     if doc.is_null() {
-        let ref mut fresh92 = (*ctxt).doc;
+        let fresh92 = unsafe { &mut ((*ctxt).doc) };
         *fresh92 = 0 as xmlRelaxNGDocumentPtr;
         return 0 as xmlRelaxNGDocumentPtr;
     }
     xmlRelaxNGDocumentPop(ctxt);
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGDefName(
-    mut def: * mut crate::src::relaxng::_xmlRelaxNGDefine,
-) -> * const i8 {
+extern "C" fn xmlRelaxNGDefName(mut def: *mut crate::src::relaxng::_xmlRelaxNGDefine) -> *const i8 {
     if def.is_null() {
         return b"none\0" as *const u8 as *const i8;
     }
-    match (*def).type_0 as i32 {
+    match (unsafe { (*def).type_0 }) as i32 {
         0 => return b"empty\0" as *const u8 as *const i8,
         1 => return b"notAllowed\0" as *const u8 as *const i8,
         2 => return b"except\0" as *const u8 as *const i8,
@@ -3794,17 +3700,17 @@ unsafe extern "C" fn xmlRelaxNGDefName(
         20 => return b"start\0" as *const u8 as *const i8,
         -1 => return b"noop\0" as *const u8 as *const i8,
         6 => return b"param\0" as *const u8 as *const i8,
-        _ => {}
+        _ => {},
     }
     return b"unknown\0" as *const u8 as *const i8;
 }
-unsafe extern "C" fn xmlRelaxNGGetErrorString(
+extern "C" fn xmlRelaxNGGetErrorString(
     mut err: u32,
-    mut arg1: * const u8,
-    mut arg2: * const u8,
-) -> * mut u8 {
+    mut arg1: *const u8,
+    mut arg2: *const u8,
+) -> *mut u8 {
     let mut msg: [i8; 1000] = [0; 1000];
-    let mut result: * mut u8 = 0 as *mut xmlChar;
+    let mut result: *mut u8 = 0 as *mut xmlChar;
     if arg1.is_null() {
         arg1 = b"\0" as *const u8 as *const i8 as *mut xmlChar;
     }
@@ -3815,310 +3721,273 @@ unsafe extern "C" fn xmlRelaxNGGetErrorString(
     match err as u32 {
         0 => return 0 as *mut xmlChar,
         1 => {
-            return xmlCharStrdup(
-                b"out of memory\n\0" as *const u8 as *const i8,
-            );
-        }
+            return unsafe { xmlCharStrdup(b"out of memory\n\0" as *const u8 as *const i8) };
+        },
         2 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
                 b"failed to validate type %s\n\0" as *const u8 as *const i8,
                 arg1,
-            );
-        }
+            ) });
+        },
         3 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
-                b"Type %s doesn't allow value '%s'\n\0" as *const u8
-                    as *const i8,
+                b"Type %s doesn't allow value '%s'\n\0" as *const u8 as *const i8,
                 arg1,
                 arg2,
-            );
-        }
+            ) });
+        },
         4 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
                 b"ID %s redefined\n\0" as *const u8 as *const i8,
                 arg1,
-            );
-        }
+            ) });
+        },
         5 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
                 b"failed to compare type %s\n\0" as *const u8 as *const i8,
                 arg1,
-            );
-        }
+            ) });
+        },
         6 => {
-            return xmlCharStrdup(
-                b"Internal error: no state\n\0" as *const u8 as *const i8,
-            );
-        }
+            return unsafe { xmlCharStrdup(b"Internal error: no state\n\0" as *const u8 as *const i8) };
+        },
         7 => {
-            return xmlCharStrdup(
-                b"Internal error: no define\n\0" as *const u8 as *const i8,
-            );
-        }
+            return unsafe { xmlCharStrdup(b"Internal error: no define\n\0" as *const u8 as *const i8) };
+        },
         37 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
                 b"Internal error: %s\n\0" as *const u8 as *const i8,
                 arg1,
-            );
-        }
+            ) });
+        },
         8 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
                 b"Extra data in list: %s\n\0" as *const u8 as *const i8,
                 arg1,
-            );
-        }
+            ) });
+        },
         10 => {
-            return xmlCharStrdup(
-                b"Internal: interleave block has no data\n\0" as *const u8
-                    as *const i8,
-            );
-        }
+            return unsafe { xmlCharStrdup(
+                b"Internal: interleave block has no data\n\0" as *const u8 as *const i8,
+            ) };
+        },
         11 => {
-            return xmlCharStrdup(
-                b"Invalid sequence in interleave\n\0" as *const u8 as *const i8,
-            );
-        }
+            return unsafe { xmlCharStrdup(b"Invalid sequence in interleave\n\0" as *const u8 as *const i8) };
+        },
         12 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
-                b"Extra element %s in interleave\n\0" as *const u8
-                    as *const i8,
+                b"Extra element %s in interleave\n\0" as *const u8 as *const i8,
                 arg1,
-            );
-        }
+            ) });
+        },
         13 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
                 b"Expecting element %s, got %s\n\0" as *const u8 as *const i8,
                 arg1,
                 arg2,
-            );
-        }
+            ) });
+        },
         15 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
-                b"Expecting a namespace for element %s\n\0" as *const u8
-                    as *const i8,
+                b"Expecting a namespace for element %s\n\0" as *const u8 as *const i8,
                 arg1,
-            );
-        }
+            ) });
+        },
         17 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
-                b"Element %s has wrong namespace: expecting %s\n\0" as *const u8
-                    as *const i8,
+                b"Element %s has wrong namespace: expecting %s\n\0" as *const u8 as *const i8,
                 arg1,
                 arg2,
-            );
-        }
+            ) });
+        },
         38 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
-                b"Did not expect element %s there\n\0" as *const u8
-                    as *const i8,
+                b"Did not expect element %s there\n\0" as *const u8 as *const i8,
                 arg1,
-            );
-        }
+            ) });
+        },
         39 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
-                b"Did not expect text in element %s content\n\0" as *const u8
-                    as *const i8,
+                b"Did not expect text in element %s content\n\0" as *const u8 as *const i8,
                 arg1,
-            );
-        }
+            ) });
+        },
         19 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
-                b"Expecting no namespace for element %s\n\0" as *const u8
-                    as *const i8,
+                b"Expecting no namespace for element %s\n\0" as *const u8 as *const i8,
                 arg1,
-            );
-        }
+            ) });
+        },
         21 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
-                b"Expecting element %s to be empty\n\0" as *const u8
-                    as *const i8,
+                b"Expecting element %s to be empty\n\0" as *const u8 as *const i8,
                 arg1,
-            );
-        }
+            ) });
+        },
         22 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
-                b"Expecting an element %s, got nothing\n\0" as *const u8
-                    as *const i8,
+                b"Expecting an element %s, got nothing\n\0" as *const u8 as *const i8,
                 arg1,
-            );
-        }
+            ) });
+        },
         23 => {
-            return xmlCharStrdup(
-                b"Expecting an element got text\n\0" as *const u8 as *const i8,
-            );
-        }
+            return unsafe { xmlCharStrdup(b"Expecting an element got text\n\0" as *const u8 as *const i8) };
+        },
         24 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
-                b"Element %s failed to validate attributes\n\0" as *const u8
-                    as *const i8,
+                b"Element %s failed to validate attributes\n\0" as *const u8 as *const i8,
                 arg1,
-            );
-        }
+            ) });
+        },
         25 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
-                b"Element %s failed to validate content\n\0" as *const u8
-                    as *const i8,
+                b"Element %s failed to validate content\n\0" as *const u8 as *const i8,
                 arg1,
-            );
-        }
+            ) });
+        },
         26 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
-                b"Element %s has extra content: %s\n\0" as *const u8
-                    as *const i8,
+                b"Element %s has extra content: %s\n\0" as *const u8 as *const i8,
                 arg1,
                 arg2,
-            );
-        }
+            ) });
+        },
         27 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
-                b"Invalid attribute %s for element %s\n\0" as *const u8
-                    as *const i8,
+                b"Invalid attribute %s for element %s\n\0" as *const u8 as *const i8,
                 arg1,
                 arg2,
-            );
-        }
+            ) });
+        },
         36 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
-                b"Datatype element %s contains no data\n\0" as *const u8
-                    as *const i8,
+                b"Datatype element %s contains no data\n\0" as *const u8 as *const i8,
                 arg1,
-            );
-        }
+            ) });
+        },
         28 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
-                b"Datatype element %s has child elements\n\0" as *const u8
-                    as *const i8,
+                b"Datatype element %s has child elements\n\0" as *const u8 as *const i8,
                 arg1,
-            );
-        }
+            ) });
+        },
         29 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
-                b"Value element %s has child elements\n\0" as *const u8
-                    as *const i8,
+                b"Value element %s has child elements\n\0" as *const u8 as *const i8,
                 arg1,
-            );
-        }
+            ) });
+        },
         30 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
-                b"List element %s has child elements\n\0" as *const u8
-                    as *const i8,
+                b"List element %s has child elements\n\0" as *const u8 as *const i8,
                 arg1,
-            );
-        }
+            ) });
+        },
         31 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
                 b"Error validating datatype %s\n\0" as *const u8 as *const i8,
                 arg1,
-            );
-        }
+            ) });
+        },
         32 => {
-            snprintf(
+            (unsafe { snprintf(
                 msg.as_mut_ptr(),
                 1000 as i32 as u64,
                 b"Error validating value %s\n\0" as *const u8 as *const i8,
                 arg1,
-            );
-        }
+            ) });
+        },
         33 => {
-            return xmlCharStrdup(
-                b"Error validating list\n\0" as *const u8 as *const i8,
-            );
-        }
+            return unsafe { xmlCharStrdup(b"Error validating list\n\0" as *const u8 as *const i8) };
+        },
         34 => {
-            return xmlCharStrdup(
-                b"No top grammar defined\n\0" as *const u8 as *const i8,
-            );
-        }
+            return unsafe { xmlCharStrdup(b"No top grammar defined\n\0" as *const u8 as *const i8) };
+        },
         35 => {
-            return xmlCharStrdup(
-                b"Extra data in the document\n\0" as *const u8 as *const i8,
-            );
-        }
+            return unsafe { xmlCharStrdup(b"Extra data in the document\n\0" as *const u8 as *const i8) };
+        },
         _ => {
-            return xmlCharStrdup(
-                b"Unknown error !\n\0" as *const u8 as *const i8,
-            );
-        }
+            return unsafe { xmlCharStrdup(b"Unknown error !\n\0" as *const u8 as *const i8) };
+        },
     }
     if msg[0 as i32 as usize] as i32 == 0 as i32 {
-        snprintf(
+        (unsafe { snprintf(
             msg.as_mut_ptr(),
             1000 as i32 as u64,
             b"Unknown error code %d\n\0" as *const u8 as *const i8,
             err as u32,
-        );
+        ) });
     }
-    msg[(1000 as i32 - 1 as i32)
-        as usize] = 0 as i32 as i8;
-    result = xmlCharStrdup(msg.as_mut_ptr());
-    return xmlEscapeFormatString(&mut result);
+    msg[(1000 as i32 - 1 as i32) as usize] = 0 as i32 as i8;
+    result = unsafe { xmlCharStrdup(msg.as_mut_ptr()) };
+    return unsafe { xmlEscapeFormatString(&mut result) };
 }
-unsafe extern "C" fn xmlRelaxNGShowValidError<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+extern "C" fn xmlRelaxNGShowValidError<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
     mut err: u32,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
-    mut child: * mut crate::src::HTMLparser::_xmlNode,
-    mut arg1: * const u8,
-    mut arg2: * const u8,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
+    mut child: *mut crate::src::HTMLparser::_xmlNode,
+    mut arg1: *const u8,
+    mut arg2: *const u8,
 ) {
-    let mut msg: * mut u8 = 0 as *mut xmlChar;
-    if (*ctxt).flags & 8 as i32 != 0 {
+    let mut msg: *mut u8 = 0 as *mut xmlChar;
+    if (unsafe { (*ctxt).flags }) & 8 as i32 != 0 {
         return;
     }
     msg = xmlRelaxNGGetErrorString(err, arg1, arg2);
     if msg.is_null() {
         return;
     }
-    if (*ctxt).errNo == XML_RELAXNG_OK as i32 {
-        (*ctxt).errNo = err as i32;
+    if (unsafe { (*ctxt).errNo }) == XML_RELAXNG_OK as i32 {
+        (unsafe { (*ctxt).errNo = err as i32 });
     }
     xmlRngVErr(
         ctxt,
@@ -4128,55 +3997,58 @@ unsafe extern "C" fn xmlRelaxNGShowValidError<'a1>(
         arg1,
         arg2,
     );
-    xmlFree.expect("non-null function pointer")(msg as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(msg as *mut libc::c_void) });
 }
-unsafe extern "C" fn xmlRelaxNGPopErrors<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+extern "C" fn xmlRelaxNGPopErrors<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
     mut level: i32,
 ) {
     let mut i: i32 = 0;
-    let mut err: Option<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError> = Option::<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError>::None;
+    let mut err: Option<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError> =
+        Option::<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError>::None;
     i = level;
-    while i < (*ctxt).errNr {
-        err = Some(&mut *((*ctxt).errTab).offset(i as isize));
-        if (*(borrow(& err)).unwrap()).flags & 1 as i32 != 0 {
+    while i < (unsafe { (*ctxt).errNr }) {
+        err = Some(unsafe { &mut *((*ctxt).errTab).offset(i as isize) });
+        if (*(borrow(&err)).unwrap()).flags & 1 as i32 != 0 {
             if !((*(borrow_mut(&mut err)).unwrap()).arg1).is_null() {
-                xmlFree
-                    .expect(
-                        "non-null function pointer",
-                    )((*(borrow_mut(&mut err)).unwrap()).arg1 as *mut xmlChar as *mut libc::c_void);
+                (unsafe { xmlFree.expect("non-null function pointer")(
+                    (*(borrow_mut(&mut err)).unwrap()).arg1 as *mut xmlChar as *mut libc::c_void,
+                ) });
             }
-            let ref mut fresh93 = (*(borrow_mut(&mut err)).unwrap()).arg1;
+            let fresh93 = &mut ((*(borrow_mut(&mut err)).unwrap()).arg1);
             *fresh93 = 0 as *const xmlChar;
             if !((*(borrow_mut(&mut err)).unwrap()).arg2).is_null() {
-                xmlFree
-                    .expect(
-                        "non-null function pointer",
-                    )((*(borrow_mut(&mut err)).unwrap()).arg2 as *mut xmlChar as *mut libc::c_void);
+                (unsafe { xmlFree.expect("non-null function pointer")(
+                    (*(borrow_mut(&mut err)).unwrap()).arg2 as *mut xmlChar as *mut libc::c_void,
+                ) });
             }
-            let ref mut fresh94 = (*(borrow_mut(&mut err)).unwrap()).arg2;
+            let fresh94 = &mut ((*(borrow_mut(&mut err)).unwrap()).arg2);
             *fresh94 = 0 as *const xmlChar;
             (*(borrow_mut(&mut err)).unwrap()).flags = 0 as i32;
         }
         i += 1;
     }
-    (*ctxt).errNr = level;
-    if (*ctxt).errNr <= 0 as i32 {
-        let ref mut fresh95 = borrow_mut(&mut (*ctxt).err);
+    (unsafe { (*ctxt).errNr = level });
+    if (unsafe { (*ctxt).errNr }) <= 0 as i32 {
+        let fresh95 = &mut (borrow_mut(unsafe { &mut (*ctxt).err }));
         *fresh95 = Option::<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError>::None;
     }
 }
-unsafe extern "C" fn xmlRelaxNGDumpValidError<'a1>(mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>) {
+extern "C" fn xmlRelaxNGDumpValidError<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+) {
     let mut i: i32 = 0;
     let mut j: i32 = 0;
     let mut k: i32 = 0;
-    let mut err: Option<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError> = Option::<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError>::None;
-    let mut dup: Option<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError> = Option::<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError>::None;
+    let mut err: Option<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError> =
+        Option::<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError>::None;
+    let mut dup: Option<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError> =
+        Option::<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError>::None;
     i = 0 as i32;
     k = 0 as i32;
-    while i < (*ctxt).errNr {
+    while i < (unsafe { (*ctxt).errNr }) {
         let mut current_block_14: u64;
-        err = Some(&mut *((*ctxt).errTab).offset(i as isize));
+        err = Some(unsafe { &mut *((*ctxt).errTab).offset(i as isize) });
         if k < 5 as i32 {
             j = 0 as i32;
             loop {
@@ -4184,11 +4056,17 @@ unsafe extern "C" fn xmlRelaxNGDumpValidError<'a1>(mut ctxt: * mut crate::src::r
                     current_block_14 = 11812396948646013369;
                     break;
                 }
-                dup = Some(&mut *((*ctxt).errTab).offset(j as isize));
-                if (*(borrow(& err)).unwrap()).err as u32 == (*(borrow(& dup)).unwrap()).err as u32
-                    && (*(borrow(& err)).unwrap()).node == (*(borrow(& dup)).unwrap()).node
-                    && xmlStrEqual((*(borrow(& err)).unwrap()).arg1, (*(borrow(& dup)).unwrap()).arg1) != 0
-                    && xmlStrEqual((*(borrow(& err)).unwrap()).arg2, (*(borrow(& dup)).unwrap()).arg2) != 0
+                dup = Some(unsafe { &mut *((*ctxt).errTab).offset(j as isize) });
+                if (*(borrow(&err)).unwrap()).err as u32 == (*(borrow(&dup)).unwrap()).err as u32
+                    && (*(borrow(&err)).unwrap()).node == (*(borrow(&dup)).unwrap()).node
+                    && (unsafe { xmlStrEqual(
+                        (*(borrow(&err)).unwrap()).arg1,
+                        (*(borrow(&dup)).unwrap()).arg1,
+                    ) }) != 0
+                    && (unsafe { xmlStrEqual(
+                        (*(borrow(&err)).unwrap()).arg2,
+                        (*(borrow(&dup)).unwrap()).arg2,
+                    ) }) != 0
                 {
                     current_block_14 = 9509544689317704976;
                     break;
@@ -4196,118 +4074,112 @@ unsafe extern "C" fn xmlRelaxNGDumpValidError<'a1>(mut ctxt: * mut crate::src::r
                 j += 1;
             }
             match current_block_14 {
-                9509544689317704976 => {}
+                9509544689317704976 => {},
                 _ => {
                     xmlRelaxNGShowValidError(
                         ctxt,
                         (*(borrow_mut(&mut err)).unwrap()).err,
                         (*(borrow_mut(&mut err)).unwrap()).node,
                         (*(borrow_mut(&mut err)).unwrap()).seq,
-                        (*(borrow(& err)).unwrap()).arg1,
-                        (*(borrow(& err)).unwrap()).arg2,
+                        (*(borrow(&err)).unwrap()).arg1,
+                        (*(borrow(&err)).unwrap()).arg2,
                     );
                     k += 1;
-                }
+                },
             }
         }
-        if (*(borrow(& err)).unwrap()).flags & 1 as i32 != 0 {
+        if (*(borrow(&err)).unwrap()).flags & 1 as i32 != 0 {
             if !((*(borrow_mut(&mut err)).unwrap()).arg1).is_null() {
-                xmlFree
-                    .expect(
-                        "non-null function pointer",
-                    )((*(borrow_mut(&mut err)).unwrap()).arg1 as *mut xmlChar as *mut libc::c_void);
+                (unsafe { xmlFree.expect("non-null function pointer")(
+                    (*(borrow_mut(&mut err)).unwrap()).arg1 as *mut xmlChar as *mut libc::c_void,
+                ) });
             }
-            let ref mut fresh96 = (*(borrow_mut(&mut err)).unwrap()).arg1;
+            let fresh96 = &mut ((*(borrow_mut(&mut err)).unwrap()).arg1);
             *fresh96 = 0 as *const xmlChar;
             if !((*(borrow_mut(&mut err)).unwrap()).arg2).is_null() {
-                xmlFree
-                    .expect(
-                        "non-null function pointer",
-                    )((*(borrow_mut(&mut err)).unwrap()).arg2 as *mut xmlChar as *mut libc::c_void);
+                (unsafe { xmlFree.expect("non-null function pointer")(
+                    (*(borrow_mut(&mut err)).unwrap()).arg2 as *mut xmlChar as *mut libc::c_void,
+                ) });
             }
-            let ref mut fresh97 = (*(borrow_mut(&mut err)).unwrap()).arg2;
+            let fresh97 = &mut ((*(borrow_mut(&mut err)).unwrap()).arg2);
             *fresh97 = 0 as *const xmlChar;
             (*(borrow_mut(&mut err)).unwrap()).flags = 0 as i32;
         }
         i += 1;
     }
-    (*ctxt).errNr = 0 as i32;
+    (unsafe { (*ctxt).errNr = 0 as i32 });
 }
-unsafe extern "C" fn xmlRelaxNGAddValidError<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+extern "C" fn xmlRelaxNGAddValidError<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
     mut err: u32,
-    mut arg1: * const u8,
-    mut arg2: * const u8,
+    mut arg1: *const u8,
+    mut arg2: *const u8,
     mut dup: i32,
 ) {
     if ctxt.is_null() {
         return;
     }
-    if (*ctxt).flags & 8 as i32 != 0 {
+    if (unsafe { (*ctxt).flags }) & 8 as i32 != 0 {
         return;
     }
-    if (*ctxt).flags & 1 as i32 == 0 as i32
-        || (*ctxt).flags & 2 as i32 != 0
-    {
-        let mut node: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-        let mut seq: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-        if (*ctxt).errNr != 0 as i32 {
+    if (unsafe { (*ctxt).flags }) & 1 as i32 == 0 as i32 || (unsafe { (*ctxt).flags }) & 2 as i32 != 0 {
+        let mut node: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+        let mut seq: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+        if (unsafe { (*ctxt).errNr }) != 0 as i32 {
             xmlRelaxNGDumpValidError(ctxt);
         }
-        if !((*ctxt).state).is_null() {
-            node = (*(*ctxt).state).node;
-            seq = (*(*ctxt).state).seq;
+        if !(unsafe { (*ctxt).state }).is_null() {
+            node = unsafe { (*(*ctxt).state).node };
+            seq = unsafe { (*(*ctxt).state).seq };
         } else {
             seq = 0 as xmlNodePtr;
             node = seq;
         }
         if node.is_null() && seq.is_null() {
-            node = (*ctxt).pnode;
+            node = unsafe { (*ctxt).pnode };
         }
         xmlRelaxNGShowValidError(ctxt, err, node, seq, arg1, arg2);
     } else {
         xmlRelaxNGValidErrorPush(ctxt, err, arg1, arg2, dup);
     };
 }
-unsafe extern "C" fn xmlRelaxNGSchemaTypeHave(
-    mut data: * mut core::ffi::c_void,
-    mut type_0: * const u8,
+extern "C" fn xmlRelaxNGSchemaTypeHave(
+    mut _data: *mut core::ffi::c_void,
+    mut type_0: *const u8,
 ) -> i32 {
-    let mut typ: * mut crate::src::relaxng::_xmlSchemaType = 0 as *mut xmlSchemaType;
+    let mut typ: *mut crate::src::relaxng::_xmlSchemaType = 0 as *mut xmlSchemaType;
     if type_0.is_null() {
         return -(1 as i32);
     }
-    typ = xmlSchemaGetPredefinedType(
+    typ = unsafe { xmlSchemaGetPredefinedType(
         type_0,
-        b"http://www.w3.org/2001/XMLSchema\0" as *const u8 as *const i8
-            as *mut xmlChar,
-    );
+        b"http://www.w3.org/2001/XMLSchema\0" as *const u8 as *const i8 as *mut xmlChar,
+    ) };
     if typ.is_null() {
         return 0 as i32;
     }
     return 1 as i32;
 }
-unsafe extern "C" fn xmlRelaxNGSchemaTypeCheck(
-    mut data: * mut core::ffi::c_void,
-    mut type_0: * const u8,
-    mut value: * const u8,
-    mut result: * mut * mut core::ffi::c_void,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlRelaxNGSchemaTypeCheck(
+    mut _data: *mut core::ffi::c_void,
+    mut type_0: *const u8,
+    mut value: *const u8,
+    mut result: *mut *mut core::ffi::c_void,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
 ) -> i32 {
-    let mut typ: * mut crate::src::relaxng::_xmlSchemaType = 0 as *mut xmlSchemaType;
+    let mut typ: *mut crate::src::relaxng::_xmlSchemaType = 0 as *mut xmlSchemaType;
     let mut ret: i32 = 0;
     if type_0.is_null() || value.is_null() {
         return -(1 as i32);
     }
-    typ = xmlSchemaGetPredefinedType(
+    typ = unsafe { xmlSchemaGetPredefinedType(
         type_0,
-        b"http://www.w3.org/2001/XMLSchema\0" as *const u8 as *const i8
-            as *mut xmlChar,
-    );
+        b"http://www.w3.org/2001/XMLSchema\0" as *const u8 as *const i8 as *mut xmlChar,
+    ) };
     if typ.is_null() {
         return -(1 as i32);
     }
-    ret = xmlSchemaValPredefTypeNode(typ, value, result as *mut xmlSchemaValPtr, node);
+    ret = unsafe { xmlSchemaValPredefTypeNode(typ, value, result as *mut xmlSchemaValPtr, node) };
     if ret == 2 as i32 {
         return 2 as i32;
     }
@@ -4319,154 +4191,152 @@ unsafe extern "C" fn xmlRelaxNGSchemaTypeCheck(
     }
     return -(1 as i32);
 }
-unsafe extern "C" fn xmlRelaxNGSchemaFacetCheck(
-    mut data: * mut core::ffi::c_void,
-    mut type_0: * const u8,
-    mut facetname: * const u8,
-    mut val: * const u8,
-    mut strval: * const u8,
-    mut value: * mut core::ffi::c_void,
+extern "C" fn xmlRelaxNGSchemaFacetCheck(
+    mut _data: *mut core::ffi::c_void,
+    mut type_0: *const u8,
+    mut facetname: *const u8,
+    mut val: *const u8,
+    mut strval: *const u8,
+    mut value: *mut core::ffi::c_void,
 ) -> i32 {
-    let mut facet: * mut crate::src::relaxng::_xmlSchemaFacet = 0 as *mut xmlSchemaFacet;
-    let mut typ: * mut crate::src::relaxng::_xmlSchemaType = 0 as *mut xmlSchemaType;
+    let mut facet: *mut crate::src::relaxng::_xmlSchemaFacet = 0 as *mut xmlSchemaFacet;
+    let mut typ: *mut crate::src::relaxng::_xmlSchemaType = 0 as *mut xmlSchemaType;
     let mut ret: i32 = 0;
     if type_0.is_null() || strval.is_null() {
         return -(1 as i32);
     }
-    typ = xmlSchemaGetPredefinedType(
+    typ = unsafe { xmlSchemaGetPredefinedType(
         type_0,
-        b"http://www.w3.org/2001/XMLSchema\0" as *const u8 as *const i8
-            as *mut xmlChar,
-    );
+        b"http://www.w3.org/2001/XMLSchema\0" as *const u8 as *const i8 as *mut xmlChar,
+    ) };
     if typ.is_null() {
         return -(1 as i32);
     }
-    facet = xmlSchemaNewFacet();
+    facet = unsafe { xmlSchemaNewFacet() };
     if facet.is_null() {
         return -(1 as i32);
     }
-    if xmlStrEqual(
+    if (unsafe { xmlStrEqual(
         facetname,
         b"minInclusive\0" as *const u8 as *const i8 as *mut xmlChar,
-    ) != 0
+    ) }) != 0
     {
-        (*facet).type_0 = XML_SCHEMA_FACET_MININCLUSIVE;
-    } else if xmlStrEqual(
-            facetname,
-            b"minExclusive\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) != 0
-        {
-        (*facet).type_0 = XML_SCHEMA_FACET_MINEXCLUSIVE;
-    } else if xmlStrEqual(
-            facetname,
-            b"maxInclusive\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) != 0
-        {
-        (*facet).type_0 = XML_SCHEMA_FACET_MAXINCLUSIVE;
-    } else if xmlStrEqual(
-            facetname,
-            b"maxExclusive\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) != 0
-        {
-        (*facet).type_0 = XML_SCHEMA_FACET_MAXEXCLUSIVE;
-    } else if xmlStrEqual(
-            facetname,
-            b"totalDigits\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) != 0
-        {
-        (*facet).type_0 = XML_SCHEMA_FACET_TOTALDIGITS;
-    } else if xmlStrEqual(
-            facetname,
-            b"fractionDigits\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) != 0
-        {
-        (*facet).type_0 = XML_SCHEMA_FACET_FRACTIONDIGITS;
-    } else if xmlStrEqual(
-            facetname,
-            b"pattern\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) != 0
-        {
-        (*facet).type_0 = XML_SCHEMA_FACET_PATTERN;
-    } else if xmlStrEqual(
-            facetname,
-            b"enumeration\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) != 0
-        {
-        (*facet).type_0 = XML_SCHEMA_FACET_ENUMERATION;
-    } else if xmlStrEqual(
-            facetname,
-            b"whiteSpace\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) != 0
-        {
-        (*facet).type_0 = XML_SCHEMA_FACET_WHITESPACE;
-    } else if xmlStrEqual(
-            facetname,
-            b"length\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) != 0
-        {
-        (*facet).type_0 = XML_SCHEMA_FACET_LENGTH;
-    } else if xmlStrEqual(
-            facetname,
-            b"maxLength\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) != 0
-        {
-        (*facet).type_0 = XML_SCHEMA_FACET_MAXLENGTH;
-    } else if xmlStrEqual(
-            facetname,
-            b"minLength\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) != 0
-        {
-        (*facet).type_0 = XML_SCHEMA_FACET_MINLENGTH;
+        (unsafe { (*facet).type_0 = XML_SCHEMA_FACET_MININCLUSIVE });
+    } else if (unsafe { xmlStrEqual(
+        facetname,
+        b"minExclusive\0" as *const u8 as *const i8 as *mut xmlChar,
+    ) }) != 0
+    {
+        (unsafe { (*facet).type_0 = XML_SCHEMA_FACET_MINEXCLUSIVE });
+    } else if (unsafe { xmlStrEqual(
+        facetname,
+        b"maxInclusive\0" as *const u8 as *const i8 as *mut xmlChar,
+    ) }) != 0
+    {
+        (unsafe { (*facet).type_0 = XML_SCHEMA_FACET_MAXINCLUSIVE });
+    } else if (unsafe { xmlStrEqual(
+        facetname,
+        b"maxExclusive\0" as *const u8 as *const i8 as *mut xmlChar,
+    ) }) != 0
+    {
+        (unsafe { (*facet).type_0 = XML_SCHEMA_FACET_MAXEXCLUSIVE });
+    } else if (unsafe { xmlStrEqual(
+        facetname,
+        b"totalDigits\0" as *const u8 as *const i8 as *mut xmlChar,
+    ) }) != 0
+    {
+        (unsafe { (*facet).type_0 = XML_SCHEMA_FACET_TOTALDIGITS });
+    } else if (unsafe { xmlStrEqual(
+        facetname,
+        b"fractionDigits\0" as *const u8 as *const i8 as *mut xmlChar,
+    ) }) != 0
+    {
+        (unsafe { (*facet).type_0 = XML_SCHEMA_FACET_FRACTIONDIGITS });
+    } else if (unsafe { xmlStrEqual(
+        facetname,
+        b"pattern\0" as *const u8 as *const i8 as *mut xmlChar,
+    ) }) != 0
+    {
+        (unsafe { (*facet).type_0 = XML_SCHEMA_FACET_PATTERN });
+    } else if (unsafe { xmlStrEqual(
+        facetname,
+        b"enumeration\0" as *const u8 as *const i8 as *mut xmlChar,
+    ) }) != 0
+    {
+        (unsafe { (*facet).type_0 = XML_SCHEMA_FACET_ENUMERATION });
+    } else if (unsafe { xmlStrEqual(
+        facetname,
+        b"whiteSpace\0" as *const u8 as *const i8 as *mut xmlChar,
+    ) }) != 0
+    {
+        (unsafe { (*facet).type_0 = XML_SCHEMA_FACET_WHITESPACE });
+    } else if (unsafe { xmlStrEqual(
+        facetname,
+        b"length\0" as *const u8 as *const i8 as *mut xmlChar,
+    ) }) != 0
+    {
+        (unsafe { (*facet).type_0 = XML_SCHEMA_FACET_LENGTH });
+    } else if (unsafe { xmlStrEqual(
+        facetname,
+        b"maxLength\0" as *const u8 as *const i8 as *mut xmlChar,
+    ) }) != 0
+    {
+        (unsafe { (*facet).type_0 = XML_SCHEMA_FACET_MAXLENGTH });
+    } else if (unsafe { xmlStrEqual(
+        facetname,
+        b"minLength\0" as *const u8 as *const i8 as *mut xmlChar,
+    ) }) != 0
+    {
+        (unsafe { (*facet).type_0 = XML_SCHEMA_FACET_MINLENGTH });
     } else {
-        xmlSchemaFreeFacet(facet);
+        (unsafe { xmlSchemaFreeFacet(facet) });
         return -(1 as i32);
     }
-    let ref mut fresh98 = (*facet).value;
+    let fresh98 = unsafe { &mut ((*facet).value) };
     *fresh98 = val;
-    ret = xmlSchemaCheckFacet(facet, typ, 0 as xmlSchemaParserCtxtPtr, type_0);
+    ret = unsafe { xmlSchemaCheckFacet(facet, typ, 0 as xmlSchemaParserCtxtPtr, type_0) };
     if ret != 0 as i32 {
-        xmlSchemaFreeFacet(facet);
+        (unsafe { xmlSchemaFreeFacet(facet) });
         return -(1 as i32);
     }
-    ret = xmlSchemaValidateFacet(typ, facet, strval, value as xmlSchemaValPtr);
-    xmlSchemaFreeFacet(facet);
+    ret = unsafe { xmlSchemaValidateFacet(typ, facet, strval, value as xmlSchemaValPtr) };
+    (unsafe { xmlSchemaFreeFacet(facet) });
     if ret != 0 as i32 {
         return -(1 as i32);
     }
     return 0 as i32;
 }
-unsafe extern "C" fn xmlRelaxNGSchemaFreeValue(
-    mut data: * mut core::ffi::c_void,
-    mut value: * mut core::ffi::c_void,
+extern "C" fn xmlRelaxNGSchemaFreeValue(
+    mut _data: *mut core::ffi::c_void,
+    mut value: *mut core::ffi::c_void,
 ) {
-    xmlSchemaFreeValue(value as xmlSchemaValPtr);
+    (unsafe { xmlSchemaFreeValue(value as xmlSchemaValPtr) });
 }
-unsafe extern "C" fn xmlRelaxNGSchemaTypeCompare(
-    mut data: * mut core::ffi::c_void,
-    mut type_0: * const u8,
-    mut value1: * const u8,
-    mut ctxt1: * mut crate::src::HTMLparser::_xmlNode,
-    mut comp1: * mut core::ffi::c_void,
-    mut value2: * const u8,
-    mut ctxt2: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlRelaxNGSchemaTypeCompare(
+    mut _data: *mut core::ffi::c_void,
+    mut type_0: *const u8,
+    mut value1: *const u8,
+    mut ctxt1: *mut crate::src::HTMLparser::_xmlNode,
+    mut comp1: *mut core::ffi::c_void,
+    mut value2: *const u8,
+    mut ctxt2: *mut crate::src::HTMLparser::_xmlNode,
 ) -> i32 {
     let mut ret: i32 = 0;
-    let mut typ: * mut crate::src::relaxng::_xmlSchemaType = 0 as *mut xmlSchemaType;
-    let mut res1: * mut crate::src::relaxng::_xmlSchemaVal = 0 as xmlSchemaValPtr;
-    let mut res2: * mut crate::src::relaxng::_xmlSchemaVal = 0 as xmlSchemaValPtr;
+    let mut typ: *mut crate::src::relaxng::_xmlSchemaType = 0 as *mut xmlSchemaType;
+    let mut res1: *mut crate::src::relaxng::_xmlSchemaVal = 0 as xmlSchemaValPtr;
+    let mut res2: *mut crate::src::relaxng::_xmlSchemaVal = 0 as xmlSchemaValPtr;
     if type_0.is_null() || value1.is_null() || value2.is_null() {
         return -(1 as i32);
     }
-    typ = xmlSchemaGetPredefinedType(
+    typ = unsafe { xmlSchemaGetPredefinedType(
         type_0,
-        b"http://www.w3.org/2001/XMLSchema\0" as *const u8 as *const i8
-            as *mut xmlChar,
-    );
+        b"http://www.w3.org/2001/XMLSchema\0" as *const u8 as *const i8 as *mut xmlChar,
+    ) };
     if typ.is_null() {
         return -(1 as i32);
     }
     if comp1.is_null() {
-        ret = xmlSchemaValPredefTypeNode(typ, value1, &mut res1, ctxt1);
+        ret = unsafe { xmlSchemaValPredefTypeNode(typ, value1, &mut res1, ctxt1) };
         if ret != 0 as i32 {
             return -(1 as i32);
         }
@@ -4476,18 +4346,18 @@ unsafe extern "C" fn xmlRelaxNGSchemaTypeCompare(
     } else {
         res1 = comp1 as xmlSchemaValPtr;
     }
-    ret = xmlSchemaValPredefTypeNode(typ, value2, &mut res2, ctxt2);
+    ret = unsafe { xmlSchemaValPredefTypeNode(typ, value2, &mut res2, ctxt2) };
     if ret != 0 as i32 {
         if res1 != comp1 as xmlSchemaValPtr {
-            xmlSchemaFreeValue(res1);
+            (unsafe { xmlSchemaFreeValue(res1) });
         }
         return -(1 as i32);
     }
-    ret = xmlSchemaCompareValues(res1, res2);
+    ret = unsafe { xmlSchemaCompareValues(res1, res2) };
     if res1 != comp1 as xmlSchemaValPtr {
-        xmlSchemaFreeValue(res1);
+        (unsafe { xmlSchemaFreeValue(res1) });
     }
-    xmlSchemaFreeValue(res2);
+    (unsafe { xmlSchemaFreeValue(res2) });
     if ret == -(2 as i32) {
         return -(1 as i32);
     }
@@ -4496,93 +4366,81 @@ unsafe extern "C" fn xmlRelaxNGSchemaTypeCompare(
     }
     return 0 as i32;
 }
-unsafe extern "C" fn xmlRelaxNGDefaultTypeHave(
-    mut data: * mut core::ffi::c_void,
-    mut type_0: * const u8,
+extern "C" fn xmlRelaxNGDefaultTypeHave(
+    mut _data: *mut core::ffi::c_void,
+    mut type_0: *const u8,
 ) -> i32 {
     if type_0.is_null() {
         return -(1 as i32);
     }
-    if xmlStrEqual(
+    if (unsafe { xmlStrEqual(
         type_0,
         b"string\0" as *const u8 as *const i8 as *mut xmlChar,
-    ) != 0
+    ) }) != 0
     {
         return 1 as i32;
     }
-    if xmlStrEqual(
-        type_0,
-        b"token\0" as *const u8 as *const i8 as *mut xmlChar,
-    ) != 0
-    {
+    if (unsafe { xmlStrEqual(type_0, b"token\0" as *const u8 as *const i8 as *mut xmlChar) }) != 0 {
         return 1 as i32;
     }
     return 0 as i32;
 }
-unsafe extern "C" fn xmlRelaxNGDefaultTypeCheck(
-    mut data: * mut core::ffi::c_void,
-    mut type_0: * const u8,
-    mut value: * const u8,
-    mut result: * mut * mut core::ffi::c_void,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlRelaxNGDefaultTypeCheck(
+    mut _data: *mut core::ffi::c_void,
+    mut type_0: *const u8,
+    mut value: *const u8,
+    mut _result: *mut *mut core::ffi::c_void,
+    mut _node: *mut crate::src::HTMLparser::_xmlNode,
 ) -> i32 {
     if value.is_null() {
         return -(1 as i32);
     }
-    if xmlStrEqual(
+    if (unsafe { xmlStrEqual(
         type_0,
         b"string\0" as *const u8 as *const i8 as *mut xmlChar,
-    ) != 0
+    ) }) != 0
     {
         return 1 as i32;
     }
-    if xmlStrEqual(
-        type_0,
-        b"token\0" as *const u8 as *const i8 as *mut xmlChar,
-    ) != 0
-    {
+    if (unsafe { xmlStrEqual(type_0, b"token\0" as *const u8 as *const i8 as *mut xmlChar) }) != 0 {
         return 1 as i32;
     }
     return 0 as i32;
 }
-unsafe extern "C" fn xmlRelaxNGDefaultTypeCompare(
-    mut data: * mut core::ffi::c_void,
-    mut type_0: * const u8,
-    mut value1: * const u8,
-    mut ctxt1: * mut crate::src::HTMLparser::_xmlNode,
-    mut comp1: * mut core::ffi::c_void,
-    mut value2: * const u8,
-    mut ctxt2: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlRelaxNGDefaultTypeCompare(
+    mut _data: *mut core::ffi::c_void,
+    mut type_0: *const u8,
+    mut value1: *const u8,
+    mut _ctxt1: *mut crate::src::HTMLparser::_xmlNode,
+    mut _comp1: *mut core::ffi::c_void,
+    mut value2: *const u8,
+    mut _ctxt2: *mut crate::src::HTMLparser::_xmlNode,
 ) -> i32 {
     let mut ret: i32 = -(1 as i32);
-    if xmlStrEqual(
+    if (unsafe { xmlStrEqual(
         type_0,
         b"string\0" as *const u8 as *const i8 as *mut xmlChar,
-    ) != 0
+    ) }) != 0
     {
-        ret = xmlStrEqual(value1, value2);
-    } else if xmlStrEqual(
-            type_0,
-            b"token\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) != 0
-        {
-        if xmlStrEqual(value1, value2) == 0 {
-            let mut nval: * mut u8 = 0 as *mut xmlChar;
-            let mut nvalue: * mut u8 = 0 as *mut xmlChar;
+        ret = unsafe { xmlStrEqual(value1, value2) };
+    } else if (unsafe { xmlStrEqual(type_0, b"token\0" as *const u8 as *const i8 as *mut xmlChar) }) != 0 {
+        if (unsafe { xmlStrEqual(value1, value2) }) == 0 {
+            let mut nval: *mut u8 = 0 as *mut xmlChar;
+            let mut nvalue: *mut u8 = 0 as *mut xmlChar;
             nval = xmlRelaxNGNormalize(0 as xmlRelaxNGValidCtxtPtr, value1);
             nvalue = xmlRelaxNGNormalize(0 as xmlRelaxNGValidCtxtPtr, value2);
             if nval.is_null() || nvalue.is_null() {
                 ret = -(1 as i32);
-            } else if xmlStrEqual(nval, nvalue) != 0 {
+            } else if (unsafe { xmlStrEqual(nval, nvalue) }) != 0 {
                 ret = 1 as i32;
             } else {
                 ret = 0 as i32;
             }
             if !nval.is_null() {
-                xmlFree.expect("non-null function pointer")(nval as *mut libc::c_void);
+                (unsafe { xmlFree.expect("non-null function pointer")(nval as *mut libc::c_void) });
             }
             if !nvalue.is_null() {
-                xmlFree.expect("non-null function pointer")(nvalue as *mut libc::c_void);
+                (unsafe { xmlFree.expect("non-null function pointer")(nvalue as *mut libc::c_void) });
             }
         } else {
             ret = 1 as i32;
@@ -4591,57 +4449,82 @@ unsafe extern "C" fn xmlRelaxNGDefaultTypeCompare(
     return ret;
 }
 static mut xmlRelaxNGTypeInitialized: i32 = 0 as i32;
-static mut xmlRelaxNGRegisteredTypes: * mut crate::src::hash::_xmlHashTable = 0 as *const xmlHashTable
-    as xmlHashTablePtr;
-unsafe extern "C" fn xmlRelaxNGFreeTypeLibrary(
-    mut payload: * mut core::ffi::c_void,
-    mut namespace: * const u8,
+static mut xmlRelaxNGRegisteredTypes: *mut crate::src::hash::_xmlHashTable =
+    0 as *const xmlHashTable as xmlHashTablePtr;
+extern "C" fn xmlRelaxNGFreeTypeLibrary(
+    mut payload: *mut core::ffi::c_void,
+    mut _namespace: *const u8,
 ) {
-    let mut lib: * mut crate::src::relaxng::_xmlRelaxNGTypeLibrary = payload as xmlRelaxNGTypeLibraryPtr;
+    let mut lib: *mut crate::src::relaxng::_xmlRelaxNGTypeLibrary =
+        payload as xmlRelaxNGTypeLibraryPtr;
     if lib.is_null() {
         return;
     }
-    if !((*lib).namespace).is_null() {
-        xmlFree
-            .expect(
-                "non-null function pointer",
-            )((*lib).namespace as *mut xmlChar as *mut libc::c_void);
+    if !(unsafe { (*lib).namespace }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")(
+            (*lib).namespace as *mut xmlChar as *mut libc::c_void,
+        ) });
     }
-    xmlFree.expect("non-null function pointer")(lib as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(lib as *mut libc::c_void) });
 }
-unsafe extern "C" fn xmlRelaxNGRegisterTypeLibrary(
-    mut namespace: * const u8,
-    mut data: * mut core::ffi::c_void,
-    mut have: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> i32>,
-    mut check: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * mut * mut core::ffi::c_void,_: * mut crate::src::HTMLparser::_xmlNode,) -> i32>,
-    mut comp: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * mut crate::src::HTMLparser::_xmlNode,_: * mut core::ffi::c_void,_: * const u8,_: * mut crate::src::HTMLparser::_xmlNode,) -> i32>,
-    mut facet: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,_: * const u8,_: * mut core::ffi::c_void,) -> i32>,
-    mut freef: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut core::ffi::c_void,) -> ()>,
+extern "C" fn xmlRelaxNGRegisterTypeLibrary(
+    mut namespace: *const u8,
+    mut data: *mut core::ffi::c_void,
+    mut have: Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8) -> i32>,
+    mut check: Option<
+        unsafe extern "C" fn(
+            _: *mut core::ffi::c_void,
+            _: *const u8,
+            _: *const u8,
+            _: *mut *mut core::ffi::c_void,
+            _: *mut crate::src::HTMLparser::_xmlNode,
+        ) -> i32,
+    >,
+    mut comp: Option<
+        unsafe extern "C" fn(
+            _: *mut core::ffi::c_void,
+            _: *const u8,
+            _: *const u8,
+            _: *mut crate::src::HTMLparser::_xmlNode,
+            _: *mut core::ffi::c_void,
+            _: *const u8,
+            _: *mut crate::src::HTMLparser::_xmlNode,
+        ) -> i32,
+    >,
+    mut facet: Option<
+        unsafe extern "C" fn(
+            _: *mut core::ffi::c_void,
+            _: *const u8,
+            _: *const u8,
+            _: *const u8,
+            _: *const u8,
+            _: *mut core::ffi::c_void,
+        ) -> i32,
+    >,
+    mut freef: Option<
+        unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *mut core::ffi::c_void) -> (),
+    >,
 ) -> i32 {
-    let mut lib: * mut crate::src::relaxng::_xmlRelaxNGTypeLibrary = 0 as *mut xmlRelaxNGTypeLibrary;
+    let mut lib: *mut crate::src::relaxng::_xmlRelaxNGTypeLibrary = 0 as *mut xmlRelaxNGTypeLibrary;
     let mut ret: i32 = 0;
-    if xmlRelaxNGRegisteredTypes.is_null() || namespace.is_null() || check.is_none()
+    if (unsafe { xmlRelaxNGRegisteredTypes }).is_null()
+        || namespace.is_null()
+        || check.is_none()
         || comp.is_none()
     {
         return -(1 as i32);
     }
-    if !(xmlHashLookup(xmlRelaxNGRegisteredTypes, namespace)).is_null() {
-        (*(borrow(& __xmlGenericError())).unwrap())
-            .expect(
-                "non-null function pointer",
-            )(
+    if !(xmlHashLookup(unsafe { xmlRelaxNGRegisteredTypes }, namespace)).is_null() {
+        (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
             *(__xmlGenericErrorContext()).unwrap(),
-            b"Relax-NG types library '%s' already registered\n\0" as *const u8
-                as *const i8,
+            b"Relax-NG types library '%s' already registered\n\0" as *const u8 as *const i8,
             namespace,
-        );
+        ) });
         return -(1 as i32);
     }
-    lib = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlRelaxNGTypeLibrary>() as u64)
-        as xmlRelaxNGTypeLibraryPtr;
+    lib = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlRelaxNGTypeLibrary>() as u64,
+    ) }) as xmlRelaxNGTypeLibraryPtr;
     if lib.is_null() {
         xmlRngVErrMemory(
             0 as xmlRelaxNGValidCtxtPtr,
@@ -4649,520 +4532,454 @@ unsafe extern "C" fn xmlRelaxNGRegisterTypeLibrary(
         );
         return -(1 as i32);
     }
-    memset(
+    (unsafe { memset(
         lib as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlRelaxNGTypeLibrary>() as u64,
-    );
-    let ref mut fresh99 = (*lib).namespace;
-    *fresh99 = xmlStrdup(namespace);
-    let ref mut fresh100 = (*lib).data;
+    ) });
+    let fresh99 = unsafe { &mut ((*lib).namespace) };
+    *fresh99 = unsafe { xmlStrdup(namespace) };
+    let fresh100 = unsafe { &mut ((*lib).data) };
     *fresh100 = data;
-    let ref mut fresh101 = (*lib).have;
+    let fresh101 = unsafe { &mut ((*lib).have) };
     *fresh101 = have;
-    let ref mut fresh102 = (*lib).comp;
+    let fresh102 = unsafe { &mut ((*lib).comp) };
     *fresh102 = comp;
-    let ref mut fresh103 = (*lib).check;
+    let fresh103 = unsafe { &mut ((*lib).check) };
     *fresh103 = check;
-    let ref mut fresh104 = (*lib).facet;
+    let fresh104 = unsafe { &mut ((*lib).facet) };
     *fresh104 = facet;
-    let ref mut fresh105 = (*lib).freef;
+    let fresh105 = unsafe { &mut ((*lib).freef) };
     *fresh105 = freef;
     ret = xmlHashAddEntry(
-        xmlRelaxNGRegisteredTypes,
+        unsafe { xmlRelaxNGRegisteredTypes },
         namespace,
         lib as *mut libc::c_void,
     );
     if ret < 0 as i32 {
-        (*(borrow(& __xmlGenericError())).unwrap())
-            .expect(
-                "non-null function pointer",
-            )(
+        (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
             *(__xmlGenericErrorContext()).unwrap(),
-            b"Relax-NG types library failed to register '%s'\n\0" as *const u8
-                as *const i8,
+            b"Relax-NG types library failed to register '%s'\n\0" as *const u8 as *const i8,
             namespace,
-        );
+        ) });
         xmlRelaxNGFreeTypeLibrary(lib as *mut libc::c_void, namespace);
         return -(1 as i32);
     }
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRelaxNGInitTypes() -> i32 {
-    if xmlRelaxNGTypeInitialized != 0 as i32 {
+pub extern "C" fn xmlRelaxNGInitTypes() -> i32 {
+    if (unsafe { xmlRelaxNGTypeInitialized }) != 0 as i32 {
         return 0 as i32;
     }
-    xmlRelaxNGRegisteredTypes = xmlHashCreate(10 as i32);
-    if xmlRelaxNGRegisteredTypes.is_null() {
-        (*(borrow(& __xmlGenericError())).unwrap())
-            .expect(
-                "non-null function pointer",
-            )(
+    (unsafe { xmlRelaxNGRegisteredTypes = xmlHashCreate(10 as i32) });
+    if (unsafe { xmlRelaxNGRegisteredTypes }).is_null() {
+        (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
             *(__xmlGenericErrorContext()).unwrap(),
-            b"Failed to allocate sh table for Relax-NG types\n\0" as *const u8
-                as *const i8,
-        );
+            b"Failed to allocate sh table for Relax-NG types\n\0" as *const u8 as *const i8,
+        ) });
         return -(1 as i32);
     }
     xmlRelaxNGRegisterTypeLibrary(
-        b"http://www.w3.org/2001/XMLSchema-datatypes\0" as *const u8
-            as *const i8 as *mut xmlChar,
-        (0 as * mut core::ffi::c_void),
-        Some(
-            xmlRelaxNGSchemaTypeHave,
-        ),
-        Some(
-            xmlRelaxNGSchemaTypeCheck,
-        ),
-        Some(
-            xmlRelaxNGSchemaTypeCompare,
-        ),
-        Some(
-            xmlRelaxNGSchemaFacetCheck,
-        ),
-        Some(
-            xmlRelaxNGSchemaFreeValue,
-        ),
+        b"http://www.w3.org/2001/XMLSchema-datatypes\0" as *const u8 as *const i8 as *mut xmlChar,
+        0 as *mut core::ffi::c_void,
+        Some(xmlRelaxNGSchemaTypeHave),
+        Some(xmlRelaxNGSchemaTypeCheck),
+        Some(xmlRelaxNGSchemaTypeCompare),
+        Some(xmlRelaxNGSchemaFacetCheck),
+        Some(xmlRelaxNGSchemaFreeValue),
     );
     xmlRelaxNGRegisterTypeLibrary(
-        xmlRelaxNGNs,
-        (0 as * mut core::ffi::c_void),
-        Some(
-            xmlRelaxNGDefaultTypeHave,
-        ),
-        Some(
-            xmlRelaxNGDefaultTypeCheck,
-        ),
-        Some(
-            xmlRelaxNGDefaultTypeCompare,
-        ),
+        unsafe { xmlRelaxNGNs },
+        0 as *mut core::ffi::c_void,
+        Some(xmlRelaxNGDefaultTypeHave),
+        Some(xmlRelaxNGDefaultTypeCheck),
+        Some(xmlRelaxNGDefaultTypeCompare),
         None,
         None,
     );
-    xmlRelaxNGTypeInitialized = 1 as i32;
+    (unsafe { xmlRelaxNGTypeInitialized = 1 as i32 });
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRelaxNGCleanupTypes() {
-    xmlSchemaCleanupTypes();
-    if xmlRelaxNGTypeInitialized == 0 as i32 {
+pub extern "C" fn xmlRelaxNGCleanupTypes() {
+    (unsafe { xmlSchemaCleanupTypes() });
+    if (unsafe { xmlRelaxNGTypeInitialized }) == 0 as i32 {
         return;
     }
-    xmlHashFree(
-        xmlRelaxNGRegisteredTypes,
-        Some(
-            xmlRelaxNGFreeTypeLibrary,
-        ),
-    );
-    xmlRelaxNGTypeInitialized = 0 as i32;
+    xmlHashFree(unsafe { xmlRelaxNGRegisteredTypes }, Some(xmlRelaxNGFreeTypeLibrary));
+    (unsafe { xmlRelaxNGTypeInitialized = 0 as i32 });
 }
-unsafe extern "C" fn xmlRelaxNGIsCompilable(
-    mut def: * mut crate::src::relaxng::_xmlRelaxNGDefine,
-) -> i32 {
+extern "C" fn xmlRelaxNGIsCompilable(mut def: *mut crate::src::relaxng::_xmlRelaxNGDefine) -> i32 {
     let mut ret: i32 = -(1 as i32);
     if def.is_null() {
         return -(1 as i32);
     }
-    if (*def).type_0 as i32 != XML_RELAXNG_ELEMENT as i32
-        && (*def).dflags as i32 & (1 as i32) << 6 as i32 != 0
+    if (unsafe { (*def).type_0 }) as i32 != XML_RELAXNG_ELEMENT as i32
+        && (unsafe { (*def).dflags }) as i32 & (1 as i32) << 6 as i32 != 0
     {
         return 1 as i32;
     }
-    if (*def).type_0 as i32 != XML_RELAXNG_ELEMENT as i32
-        && (*def).dflags as i32 & (1 as i32) << 7 as i32 != 0
+    if (unsafe { (*def).type_0 }) as i32 != XML_RELAXNG_ELEMENT as i32
+        && (unsafe { (*def).dflags }) as i32 & (1 as i32) << 7 as i32 != 0
     {
         return 0 as i32;
     }
-    match (*def).type_0 as i32 {
+    match (unsafe { (*def).type_0 }) as i32 {
         -1 => {
-            ret = xmlRelaxNGIsCompilable((*def).content);
-        }
+            ret = xmlRelaxNGIsCompilable(unsafe { (*def).content });
+        },
         3 | 0 => {
             ret = 1 as i32;
-        }
+        },
         4 => {
-            if (*def).dflags as i32 & (1 as i32) << 7 as i32
-                == 0 as i32
-                && (*def).dflags as i32 & (1 as i32) << 6 as i32
-                    == 0 as i32
+            if (unsafe { (*def).dflags }) as i32 & (1 as i32) << 7 as i32 == 0 as i32
+                && (unsafe { (*def).dflags }) as i32 & (1 as i32) << 6 as i32 == 0 as i32
             {
-                let mut list: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-                list = (*def).content;
+                let mut list: *mut crate::src::relaxng::_xmlRelaxNGDefine =
+                    0 as *mut xmlRelaxNGDefine;
+                list = unsafe { (*def).content };
                 while !list.is_null() {
                     ret = xmlRelaxNGIsCompilable(list);
                     if ret != 1 as i32 {
                         break;
                     }
-                    list = (*list).next;
+                    list = unsafe { (*list).next };
                 }
                 if ret == 0 as i32 {
-                    let ref mut fresh106 = (*def).dflags;
-                    *fresh106 = (*fresh106 as i32
-                        & !((1 as i32) << 6 as i32)) as i16;
-                    let ref mut fresh107 = (*def).dflags;
-                    *fresh107 = (*fresh107 as i32
-                        | (1 as i32) << 7 as i32) as i16;
+                    let fresh106 = unsafe { &mut ((*def).dflags) };
+                    *fresh106 = (*fresh106 as i32 & !((1 as i32) << 6 as i32)) as i16;
+                    let fresh107 = unsafe { &mut ((*def).dflags) };
+                    *fresh107 = (*fresh107 as i32 | (1 as i32) << 7 as i32) as i16;
                 }
-                if ret == 1 as i32
-                    && {
-                        let ref mut fresh108 = (*def).dflags;
-                        *fresh108 = (*fresh108 as i32
-                            & (1 as i32) << 7 as i32) as i16;
-                        *fresh108 == 0
-                    }
-                {
-                    let ref mut fresh109 = (*def).dflags;
-                    *fresh109 = (*fresh109 as i32
-                        | (1 as i32) << 6 as i32) as i16;
+                if ret == 1 as i32 && {
+                    let fresh108 = unsafe { &mut ((*def).dflags) };
+                    *fresh108 = (*fresh108 as i32 & (1 as i32) << 7 as i32) as i16;
+                    *fresh108 == 0
+                } {
+                    let fresh109 = unsafe { &mut ((*def).dflags) };
+                    *fresh109 = (*fresh109 as i32 | (1 as i32) << 6 as i32) as i16;
                 }
             }
-            if !((*def).nameClass).is_null() || ((*def).name).is_null() {
+            if !(unsafe { (*def).nameClass }).is_null() || (unsafe { (*def).name }).is_null() {
                 ret = 0 as i32;
             } else {
                 ret = 1 as i32;
             }
             return ret;
-        }
+        },
         11 | 12 | 13 => {
-            if (*def).depth as i32 == -(20 as i32) {
-                return 1 as i32
+            if (unsafe { (*def).depth }) as i32 == -(20 as i32) {
+                return 1 as i32;
             } else {
-                let mut list_0: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-                (*def).depth = -(20 as i32) as i16;
-                list_0 = (*def).content;
+                let mut list_0: *mut crate::src::relaxng::_xmlRelaxNGDefine =
+                    0 as *mut xmlRelaxNGDefine;
+                (unsafe { (*def).depth = -(20 as i32) as i16 });
+                list_0 = unsafe { (*def).content };
                 while !list_0.is_null() {
                     ret = xmlRelaxNGIsCompilable(list_0);
                     if ret != 1 as i32 {
                         break;
                     }
-                    list_0 = (*list_0).next;
+                    list_0 = unsafe { (*list_0).next };
                 }
             }
-        }
+        },
         20 | 14 | 15 | 16 | 17 | 18 | 10 => {
-            let mut list_1: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-            list_1 = (*def).content;
+            let mut list_1: *mut crate::src::relaxng::_xmlRelaxNGDefine =
+                0 as *mut xmlRelaxNGDefine;
+            list_1 = unsafe { (*def).content };
             while !list_1.is_null() {
                 ret = xmlRelaxNGIsCompilable(list_1);
                 if ret != 1 as i32 {
                     break;
                 }
-                list_1 = (*list_1).next;
+                list_1 = unsafe { (*list_1).next };
             }
-        }
+        },
         2 | 9 | 19 | 5 | 8 | 6 | 7 | 1 => {
             ret = 0 as i32;
-        }
-        _ => {}
+        },
+        _ => {},
     }
     if ret == 0 as i32 {
-        let ref mut fresh110 = (*def).dflags;
-        *fresh110 = (*fresh110 as i32 | (1 as i32) << 7 as i32)
-            as i16;
+        let fresh110 = unsafe { &mut ((*def).dflags) };
+        *fresh110 = (*fresh110 as i32 | (1 as i32) << 7 as i32) as i16;
     }
     if ret == 1 as i32 {
-        let ref mut fresh111 = (*def).dflags;
-        *fresh111 = (*fresh111 as i32 | (1 as i32) << 6 as i32)
-            as i16;
+        let fresh111 = unsafe { &mut ((*def).dflags) };
+        *fresh111 = (*fresh111 as i32 | (1 as i32) << 6 as i32) as i16;
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGCompile<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut def: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+extern "C" fn xmlRelaxNGCompile<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut def: *mut crate::src::relaxng::_xmlRelaxNGDefine,
 ) -> i32 {
     let mut ret: i32 = 0 as i32;
-    let mut list: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut list: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
     if ctxt.is_null() || def.is_null() {
         return -(1 as i32);
     }
-    match (*def).type_0 as i32 {
+    match (unsafe { (*def).type_0 }) as i32 {
         20 => {
-            if xmlRelaxNGIsCompilable(def) == 1 as i32
-                && (*def).depth as i32 != -(25 as i32)
-            {
-                let mut oldam: * mut crate::src::catalog::_xmlAutomata = (*ctxt).am;
-                let mut oldstate: * mut crate::src::encoding::_xmlAutomataState = (*ctxt).state;
-                (*def).depth = -(25 as i32) as i16;
-                list = (*def).content;
-                let ref mut fresh112 = (*ctxt).am;
-                *fresh112 = xmlNewAutomata();
-                if ((*ctxt).am).is_null() {
+            if xmlRelaxNGIsCompilable(def) == 1 as i32 && (unsafe { (*def).depth }) as i32 != -(25 as i32) {
+                let mut oldam: *mut crate::src::catalog::_xmlAutomata = unsafe { (*ctxt).am };
+                let mut oldstate: *mut crate::src::encoding::_xmlAutomataState = unsafe { (*ctxt).state };
+                (unsafe { (*def).depth = -(25 as i32) as i16 });
+                list = unsafe { (*def).content };
+                let fresh112 = unsafe { &mut ((*ctxt).am) };
+                *fresh112 = unsafe { xmlNewAutomata() };
+                if (unsafe { (*ctxt).am }).is_null() {
                     return -(1 as i32);
                 }
-                xmlAutomataSetFlags((*ctxt).am, 1 as i32);
-                let ref mut fresh113 = (*ctxt).state;
-                *fresh113 = xmlAutomataGetInitState((*ctxt).am);
+                (unsafe { xmlAutomataSetFlags((*ctxt).am, 1 as i32) });
+                let fresh113 = unsafe { &mut ((*ctxt).state) };
+                *fresh113 = unsafe { xmlAutomataGetInitState((*ctxt).am) };
                 while !list.is_null() {
                     xmlRelaxNGCompile(ctxt, list);
-                    list = (*list).next;
+                    list = unsafe { (*list).next };
                 }
-                xmlAutomataSetFinalState((*ctxt).am, (*ctxt).state);
-                if xmlAutomataIsDeterminist((*ctxt).am) != 0 {
-                    let ref mut fresh114 = (*def).contModel;
-                    *fresh114 = xmlAutomataCompile((*ctxt).am);
+                (unsafe { xmlAutomataSetFinalState((*ctxt).am, (*ctxt).state) });
+                if (unsafe { xmlAutomataIsDeterminist((*ctxt).am) }) != 0 {
+                    let fresh114 = unsafe { &mut ((*def).contModel) };
+                    *fresh114 = unsafe { xmlAutomataCompile((*ctxt).am) };
                 }
-                xmlFreeAutomata((*ctxt).am);
-                let ref mut fresh115 = (*ctxt).state;
+                (unsafe { xmlFreeAutomata((*ctxt).am) });
+                let fresh115 = unsafe { &mut ((*ctxt).state) };
                 *fresh115 = oldstate;
-                let ref mut fresh116 = (*ctxt).am;
+                let fresh116 = unsafe { &mut ((*ctxt).am) };
                 *fresh116 = oldam;
             }
-        }
+        },
         4 => {
-            if !((*ctxt).am).is_null() && !((*def).name).is_null() {
-                let ref mut fresh117 = (*ctxt).state;
-                *fresh117 = xmlAutomataNewTransition2(
+            if !(unsafe { (*ctxt).am }).is_null() && !(unsafe { (*def).name }).is_null() {
+                let fresh117 = unsafe { &mut ((*ctxt).state) };
+                *fresh117 = unsafe { xmlAutomataNewTransition2(
                     (*ctxt).am,
                     (*ctxt).state,
                     0 as xmlAutomataStatePtr,
                     (*def).name,
                     (*def).ns,
                     def as *mut libc::c_void,
-                );
+                ) };
             }
-            if (*def).dflags as i32 & (1 as i32) << 6 as i32 != 0
-                && (*def).depth as i32 != -(25 as i32)
+            if (unsafe { (*def).dflags }) as i32 & (1 as i32) << 6 as i32 != 0
+                && (unsafe { (*def).depth }) as i32 != -(25 as i32)
             {
-                let mut oldam_0: * mut crate::src::catalog::_xmlAutomata = (*ctxt).am;
-                let mut oldstate_0: * mut crate::src::encoding::_xmlAutomataState = (*ctxt).state;
-                (*def).depth = -(25 as i32) as i16;
-                list = (*def).content;
-                let ref mut fresh118 = (*ctxt).am;
-                *fresh118 = xmlNewAutomata();
-                if ((*ctxt).am).is_null() {
+                let mut oldam_0: *mut crate::src::catalog::_xmlAutomata = unsafe { (*ctxt).am };
+                let mut oldstate_0: *mut crate::src::encoding::_xmlAutomataState = unsafe { (*ctxt).state };
+                (unsafe { (*def).depth = -(25 as i32) as i16 });
+                list = unsafe { (*def).content };
+                let fresh118 = unsafe { &mut ((*ctxt).am) };
+                *fresh118 = unsafe { xmlNewAutomata() };
+                if (unsafe { (*ctxt).am }).is_null() {
                     return -(1 as i32);
                 }
-                xmlAutomataSetFlags((*ctxt).am, 1 as i32);
-                let ref mut fresh119 = (*ctxt).state;
-                *fresh119 = xmlAutomataGetInitState((*ctxt).am);
+                (unsafe { xmlAutomataSetFlags((*ctxt).am, 1 as i32) });
+                let fresh119 = unsafe { &mut ((*ctxt).state) };
+                *fresh119 = unsafe { xmlAutomataGetInitState((*ctxt).am) };
                 while !list.is_null() {
                     xmlRelaxNGCompile(ctxt, list);
-                    list = (*list).next;
+                    list = unsafe { (*list).next };
                 }
-                xmlAutomataSetFinalState((*ctxt).am, (*ctxt).state);
-                let ref mut fresh120 = (*def).contModel;
-                *fresh120 = xmlAutomataCompile((*ctxt).am);
-                if xmlRegexpIsDeterminist((*def).contModel) == 0 {
-                    xmlRegFreeRegexp((*def).contModel);
-                    let ref mut fresh121 = (*def).contModel;
+                (unsafe { xmlAutomataSetFinalState((*ctxt).am, (*ctxt).state) });
+                let fresh120 = unsafe { &mut ((*def).contModel) };
+                *fresh120 = unsafe { xmlAutomataCompile((*ctxt).am) };
+                if (unsafe { xmlRegexpIsDeterminist((*def).contModel) }) == 0 {
+                    (unsafe { xmlRegFreeRegexp((*def).contModel) });
+                    let fresh121 = unsafe { &mut ((*def).contModel) };
                     *fresh121 = 0 as xmlRegexpPtr;
                 }
-                xmlFreeAutomata((*ctxt).am);
-                let ref mut fresh122 = (*ctxt).state;
+                (unsafe { xmlFreeAutomata((*ctxt).am) });
+                let fresh122 = unsafe { &mut ((*ctxt).state) };
                 *fresh122 = oldstate_0;
-                let ref mut fresh123 = (*ctxt).am;
+                let fresh123 = unsafe { &mut ((*ctxt).am) };
                 *fresh123 = oldam_0;
             } else {
-                let mut oldam_1: * mut crate::src::catalog::_xmlAutomata = (*ctxt).am;
+                let mut oldam_1: *mut crate::src::catalog::_xmlAutomata = unsafe { (*ctxt).am };
                 ret = xmlRelaxNGTryCompile(ctxt, def);
-                let ref mut fresh124 = (*ctxt).am;
+                let fresh124 = unsafe { &mut ((*ctxt).am) };
                 *fresh124 = oldam_1;
             }
-        }
+        },
         -1 => {
-            ret = xmlRelaxNGCompile(ctxt, (*def).content);
-        }
+            ret = xmlRelaxNGCompile(ctxt, unsafe { (*def).content });
+        },
         14 => {
-            let mut oldstate_1: * mut crate::src::encoding::_xmlAutomataState = (*ctxt).state;
-            list = (*def).content;
+            let mut oldstate_1: *mut crate::src::encoding::_xmlAutomataState = unsafe { (*ctxt).state };
+            list = unsafe { (*def).content };
             while !list.is_null() {
                 xmlRelaxNGCompile(ctxt, list);
-                list = (*list).next;
+                list = unsafe { (*list).next };
             }
-            xmlAutomataNewEpsilon((*ctxt).am, oldstate_1, (*ctxt).state);
-        }
+            (unsafe { xmlAutomataNewEpsilon((*ctxt).am, oldstate_1, (*ctxt).state) });
+        },
         15 => {
-            let mut oldstate_2: * mut crate::src::encoding::_xmlAutomataState = 0 as *mut xmlAutomataState;
-            let ref mut fresh125 = (*ctxt).state;
-            *fresh125 = xmlAutomataNewEpsilon(
-                (*ctxt).am,
-                (*ctxt).state,
-                0 as xmlAutomataStatePtr,
-            );
-            oldstate_2 = (*ctxt).state;
-            list = (*def).content;
+            let mut oldstate_2: *mut crate::src::encoding::_xmlAutomataState =
+                0 as *mut xmlAutomataState;
+            let fresh125 = unsafe { &mut ((*ctxt).state) };
+            *fresh125 = unsafe { xmlAutomataNewEpsilon((*ctxt).am, (*ctxt).state, 0 as xmlAutomataStatePtr) };
+            oldstate_2 = unsafe { (*ctxt).state };
+            list = unsafe { (*def).content };
             while !list.is_null() {
                 xmlRelaxNGCompile(ctxt, list);
-                list = (*list).next;
+                list = unsafe { (*list).next };
             }
-            xmlAutomataNewEpsilon((*ctxt).am, (*ctxt).state, oldstate_2);
-            let ref mut fresh126 = (*ctxt).state;
-            *fresh126 = xmlAutomataNewEpsilon(
-                (*ctxt).am,
-                oldstate_2,
-                0 as xmlAutomataStatePtr,
-            );
-        }
+            (unsafe { xmlAutomataNewEpsilon((*ctxt).am, (*ctxt).state, oldstate_2) });
+            let fresh126 = unsafe { &mut ((*ctxt).state) };
+            *fresh126 = unsafe { xmlAutomataNewEpsilon((*ctxt).am, oldstate_2, 0 as xmlAutomataStatePtr) };
+        },
         16 => {
-            let mut oldstate_3: * mut crate::src::encoding::_xmlAutomataState = 0 as *mut xmlAutomataState;
-            list = (*def).content;
+            let mut oldstate_3: *mut crate::src::encoding::_xmlAutomataState =
+                0 as *mut xmlAutomataState;
+            list = unsafe { (*def).content };
             while !list.is_null() {
                 xmlRelaxNGCompile(ctxt, list);
-                list = (*list).next;
+                list = unsafe { (*list).next };
             }
-            oldstate_3 = (*ctxt).state;
-            list = (*def).content;
+            oldstate_3 = unsafe { (*ctxt).state };
+            list = unsafe { (*def).content };
             while !list.is_null() {
                 xmlRelaxNGCompile(ctxt, list);
-                list = (*list).next;
+                list = unsafe { (*list).next };
             }
-            xmlAutomataNewEpsilon((*ctxt).am, (*ctxt).state, oldstate_3);
-            let ref mut fresh127 = (*ctxt).state;
-            *fresh127 = xmlAutomataNewEpsilon(
-                (*ctxt).am,
-                oldstate_3,
-                0 as xmlAutomataStatePtr,
-            );
-        }
+            (unsafe { xmlAutomataNewEpsilon((*ctxt).am, (*ctxt).state, oldstate_3) });
+            let fresh127 = unsafe { &mut ((*ctxt).state) };
+            *fresh127 = unsafe { xmlAutomataNewEpsilon((*ctxt).am, oldstate_3, 0 as xmlAutomataStatePtr) };
+        },
         17 => {
-            let mut target: * mut crate::src::encoding::_xmlAutomataState = 0 as xmlAutomataStatePtr;
-            let mut oldstate_4: * mut crate::src::encoding::_xmlAutomataState = (*ctxt).state;
-            list = (*def).content;
+            let mut target: *mut crate::src::encoding::_xmlAutomataState = 0 as xmlAutomataStatePtr;
+            let mut oldstate_4: *mut crate::src::encoding::_xmlAutomataState = unsafe { (*ctxt).state };
+            list = unsafe { (*def).content };
             while !list.is_null() {
-                let ref mut fresh128 = (*ctxt).state;
+                let fresh128 = unsafe { &mut ((*ctxt).state) };
                 *fresh128 = oldstate_4;
                 ret = xmlRelaxNGCompile(ctxt, list);
                 if ret != 0 as i32 {
                     break;
                 }
                 if target.is_null() {
-                    target = (*ctxt).state;
+                    target = unsafe { (*ctxt).state };
                 } else {
-                    xmlAutomataNewEpsilon((*ctxt).am, (*ctxt).state, target);
+                    (unsafe { xmlAutomataNewEpsilon((*ctxt).am, (*ctxt).state, target) });
                 }
-                list = (*list).next;
+                list = unsafe { (*list).next };
             }
-            let ref mut fresh129 = (*ctxt).state;
+            let fresh129 = unsafe { &mut ((*ctxt).state) };
             *fresh129 = target;
-        }
+        },
         11 | 12 | 13 | 18 | 10 => {
-            list = (*def).content;
+            list = unsafe { (*def).content };
             while !list.is_null() {
                 ret = xmlRelaxNGCompile(ctxt, list);
                 if ret != 0 as i32 {
                     break;
                 }
-                list = (*list).next;
+                list = unsafe { (*list).next };
             }
-        }
+        },
         3 => {
-            let mut oldstate_5: * mut crate::src::encoding::_xmlAutomataState = 0 as *mut xmlAutomataState;
-            let ref mut fresh130 = (*ctxt).state;
-            *fresh130 = xmlAutomataNewEpsilon(
-                (*ctxt).am,
-                (*ctxt).state,
-                0 as xmlAutomataStatePtr,
-            );
-            oldstate_5 = (*ctxt).state;
-            xmlRelaxNGCompile(ctxt, (*def).content);
-            xmlAutomataNewTransition(
+            let mut oldstate_5: *mut crate::src::encoding::_xmlAutomataState =
+                0 as *mut xmlAutomataState;
+            let fresh130 = unsafe { &mut ((*ctxt).state) };
+            *fresh130 = unsafe { xmlAutomataNewEpsilon((*ctxt).am, (*ctxt).state, 0 as xmlAutomataStatePtr) };
+            oldstate_5 = unsafe { (*ctxt).state };
+            xmlRelaxNGCompile(ctxt, unsafe { (*def).content });
+            (unsafe { xmlAutomataNewTransition(
                 (*ctxt).am,
                 (*ctxt).state,
                 (*ctxt).state,
                 b"#text\0" as *const u8 as *const i8 as *mut xmlChar,
                 0 as *mut libc::c_void,
-            );
-            let ref mut fresh131 = (*ctxt).state;
-            *fresh131 = xmlAutomataNewEpsilon(
-                (*ctxt).am,
-                oldstate_5,
-                0 as xmlAutomataStatePtr,
-            );
-        }
+            ) });
+            let fresh131 = unsafe { &mut ((*ctxt).state) };
+            *fresh131 = unsafe { xmlAutomataNewEpsilon((*ctxt).am, oldstate_5, 0 as xmlAutomataStatePtr) };
+        },
         0 => {
-            let ref mut fresh132 = (*ctxt).state;
-            *fresh132 = xmlAutomataNewEpsilon(
-                (*ctxt).am,
-                (*ctxt).state,
-                0 as xmlAutomataStatePtr,
-            );
-        }
+            let fresh132 = unsafe { &mut ((*ctxt).state) };
+            *fresh132 = unsafe { xmlAutomataNewEpsilon((*ctxt).am, (*ctxt).state, 0 as xmlAutomataStatePtr) };
+        },
         2 | 9 | 19 | 1 | 5 | 8 | 6 | 7 => {
-            fprintf(
+            (unsafe { fprintf(
                 stderr,
-                b"RNG internal error trying to compile %s\n\0" as *const u8
-                    as *const i8,
+                b"RNG internal error trying to compile %s\n\0" as *const u8 as *const i8,
                 xmlRelaxNGDefName(def),
-            );
-        }
-        _ => {}
+            ) });
+        },
+        _ => {},
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGTryCompile<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut def: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+extern "C" fn xmlRelaxNGTryCompile<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut def: *mut crate::src::relaxng::_xmlRelaxNGDefine,
 ) -> i32 {
     let mut ret: i32 = 0 as i32;
-    let mut list: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut list: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
     if ctxt.is_null() || def.is_null() {
         return -(1 as i32);
     }
-    if (*def).type_0 as i32 == XML_RELAXNG_START as i32
-        || (*def).type_0 as i32 == XML_RELAXNG_ELEMENT as i32
+    if (unsafe { (*def).type_0 }) as i32 == XML_RELAXNG_START as i32
+        || (unsafe { (*def).type_0 }) as i32 == XML_RELAXNG_ELEMENT as i32
     {
         ret = xmlRelaxNGIsCompilable(def);
-        if (*def).dflags as i32 & (1 as i32) << 6 as i32 != 0
-            && (*def).depth as i32 != -(25 as i32)
+        if (unsafe { (*def).dflags }) as i32 & (1 as i32) << 6 as i32 != 0 && (unsafe { (*def).depth }) as i32 != -(25 as i32)
         {
-            let ref mut fresh133 = (*ctxt).am;
+            let fresh133 = unsafe { &mut ((*ctxt).am) };
             *fresh133 = 0 as xmlAutomataPtr;
             ret = xmlRelaxNGCompile(ctxt, def);
             return ret;
         }
     }
-    match (*def).type_0 as i32 {
+    match (unsafe { (*def).type_0 }) as i32 {
         -1 => {
-            ret = xmlRelaxNGTryCompile(ctxt, (*def).content);
-        }
+            ret = xmlRelaxNGTryCompile(ctxt, unsafe { (*def).content });
+        },
         3 | 5 | 8 | 6 | 7 | 0 | 4 => {
             ret = 0 as i32;
-        }
+        },
         14 | 15 | 16 | 17 | 18 | 10 | 20 | 11 | 12 | 13 => {
-            list = (*def).content;
+            list = unsafe { (*def).content };
             while !list.is_null() {
                 ret = xmlRelaxNGTryCompile(ctxt, list);
                 if ret != 0 as i32 {
                     break;
                 }
-                list = (*list).next;
+                list = unsafe { (*list).next };
             }
-        }
+        },
         2 | 9 | 19 | 1 => {
             ret = 0 as i32;
-        }
-        _ => {}
+        },
+        _ => {},
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGIsNullable(
-    mut define: * mut crate::src::relaxng::_xmlRelaxNGDefine,
-) -> i32 {
+extern "C" fn xmlRelaxNGIsNullable(mut define: *mut crate::src::relaxng::_xmlRelaxNGDefine) -> i32 {
     let mut current_block: u64;
     let mut ret: i32 = 0;
     if define.is_null() {
         return -(1 as i32);
     }
-    if (*define).dflags as i32 & (1 as i32) << 0 as i32 != 0 {
+    if (unsafe { (*define).dflags }) as i32 & (1 as i32) << 0 as i32 != 0 {
         return 1 as i32;
     }
-    if (*define).dflags as i32 & (1 as i32) << 1 as i32 != 0 {
+    if (unsafe { (*define).dflags }) as i32 & (1 as i32) << 1 as i32 != 0 {
         return 0 as i32;
     }
-    match (*define).type_0 as i32 {
+    match (unsafe { (*define).type_0 }) as i32 {
         0 | 3 => {
             ret = 1 as i32;
-        }
+        },
         -1 | 10 | 11 | 12 | 13 | 16 => {
-            ret = xmlRelaxNGIsNullable((*define).content);
-        }
+            ret = xmlRelaxNGIsNullable(unsafe { (*define).content });
+        },
         2 | 1 | 4 | 5 | 6 | 7 | 8 | 9 => {
             ret = 0 as i32;
-        }
+        },
         17 => {
-            let mut list: * mut crate::src::relaxng::_xmlRelaxNGDefine = (*define).content;
+            let mut list: *mut crate::src::relaxng::_xmlRelaxNGDefine = unsafe { (*define).content };
             loop {
                 if list.is_null() {
                     current_block = 15089075282327824602;
@@ -5173,17 +4990,17 @@ unsafe extern "C" fn xmlRelaxNGIsNullable(
                     current_block = 12056796777849235375;
                     break;
                 }
-                list = (*list).next;
+                list = unsafe { (*list).next };
             }
             match current_block {
-                12056796777849235375 => {}
+                12056796777849235375 => {},
                 _ => {
                     ret = 0 as i32;
-                }
+                },
             }
-        }
+        },
         20 | 19 | 18 => {
-            let mut list_0: * mut crate::src::relaxng::_xmlRelaxNGDefine = (*define).content;
+            let mut list_0: *mut crate::src::relaxng::_xmlRelaxNGDefine = unsafe { (*define).content };
             loop {
                 if list_0.is_null() {
                     current_block = 14359455889292382949;
@@ -5194,177 +5011,161 @@ unsafe extern "C" fn xmlRelaxNGIsNullable(
                     current_block = 12056796777849235375;
                     break;
                 }
-                list_0 = (*list_0).next;
+                list_0 = unsafe { (*list_0).next };
             }
             match current_block {
-                12056796777849235375 => {}
+                12056796777849235375 => {},
                 _ => return 1 as i32,
             }
-        }
+        },
         _ => return -(1 as i32),
     }
     if ret == 0 as i32 {
-        let ref mut fresh134 = (*define).dflags;
-        *fresh134 = (*fresh134 as i32 | (1 as i32) << 1 as i32)
-            as i16;
+        let fresh134 = unsafe { &mut ((*define).dflags) };
+        *fresh134 = (*fresh134 as i32 | (1 as i32) << 1 as i32) as i16;
     }
     if ret == 1 as i32 {
-        let ref mut fresh135 = (*define).dflags;
-        *fresh135 = (*fresh135 as i32 | (1 as i32) << 0 as i32)
-            as i16;
+        let fresh135 = unsafe { &mut ((*define).dflags) };
+        *fresh135 = (*fresh135 as i32 | (1 as i32) << 0 as i32) as i16;
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGIsBlank(mut str: * mut u8) -> i32 {
+extern "C" fn xmlRelaxNGIsBlank(mut str: *mut u8) -> i32 {
     if str.is_null() {
         return 1 as i32;
     }
-    while *str as i32 != 0 as i32 {
-        if !(*str as i32 == 0x20 as i32
-            || 0x9 as i32 <= *str as i32
-                && *str as i32 <= 0xa as i32
-            || *str as i32 == 0xd as i32)
+    while (unsafe { *str }) as i32 != 0 as i32 {
+        if !((unsafe { *str }) as i32 == 0x20 as i32
+            || 0x9 as i32 <= (unsafe { *str }) as i32 && (unsafe { *str }) as i32 <= 0xa as i32
+            || (unsafe { *str }) as i32 == 0xd as i32)
         {
             return 0 as i32;
         }
-        str = str.offset(1);
+        str = unsafe { str.offset(1) };
     }
     return 1 as i32;
 }
-unsafe extern "C" fn xmlRelaxNGGetDataTypeLibrary<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
-) -> * mut u8 {
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
-    let mut escape: * mut u8 = 0 as *mut xmlChar;
+extern "C" fn xmlRelaxNGGetDataTypeLibrary<'a1>(
+    mut _ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
+) -> *mut u8 {
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
+    let mut escape: *mut u8 = 0 as *mut xmlChar;
     if node.is_null() {
         return 0 as *mut xmlChar;
     }
-    if !node.is_null() && !((*node).ns).is_null()
-        && (*node).type_0 as u32
-            == XML_ELEMENT_NODE as i32 as u32
-        && xmlStrEqual(
+    if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
             (*node).name,
             b"data\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
-        || !node.is_null() && !((*node).ns).is_null()
-            && (*node).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
+        || !node.is_null()
+            && !(unsafe { (*node).ns }).is_null()
+            && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+            && (unsafe { xmlStrEqual(
                 (*node).name,
                 b"value\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
+            ) }) != 0
+            && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
     {
-        ret = xmlGetProp(
+        ret = unsafe { xmlGetProp(
             node as *const xmlNode,
             b"datatypeLibrary\0" as *const u8 as *const i8 as *mut xmlChar,
-        );
+        ) };
         if !ret.is_null() {
-            if *ret.offset(0 as i32 as isize) as i32 == 0 as i32
-            {
-                xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+            if (unsafe { *ret.offset(0 as i32 as isize) }) as i32 == 0 as i32 {
+                (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
                 return 0 as *mut xmlChar;
             }
-            escape = xmlURIEscapeStr(
-                ret,
-                b":/#?\0" as *const u8 as *const i8 as *mut xmlChar,
-            );
+            escape = unsafe { xmlURIEscapeStr(ret, b":/#?\0" as *const u8 as *const i8 as *mut xmlChar) };
             if escape.is_null() {
                 return ret;
             }
-            xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
             return escape;
         }
     }
-    node = (*node).parent;
-    while !node.is_null()
-        && (*node).type_0 as u32
-            == XML_ELEMENT_NODE as i32 as u32
-    {
-        ret = xmlGetProp(
+    node = unsafe { (*node).parent };
+    while !node.is_null() && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32 {
+        ret = unsafe { xmlGetProp(
             node as *const xmlNode,
             b"datatypeLibrary\0" as *const u8 as *const i8 as *mut xmlChar,
-        );
+        ) };
         if !ret.is_null() {
-            if *ret.offset(0 as i32 as isize) as i32 == 0 as i32
-            {
-                xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+            if (unsafe { *ret.offset(0 as i32 as isize) }) as i32 == 0 as i32 {
+                (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
                 return 0 as *mut xmlChar;
             }
-            escape = xmlURIEscapeStr(
-                ret,
-                b":/#?\0" as *const u8 as *const i8 as *mut xmlChar,
-            );
+            escape = unsafe { xmlURIEscapeStr(ret, b":/#?\0" as *const u8 as *const i8 as *mut xmlChar) };
             if escape.is_null() {
                 return ret;
             }
-            xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
             return escape;
         }
-        node = (*node).parent;
+        node = unsafe { (*node).parent };
     }
     return 0 as *mut xmlChar;
 }
-unsafe extern "C" fn xmlRelaxNGParseValue<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
-) -> * mut crate::src::relaxng::_xmlRelaxNGDefine {
-    let mut def: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
-    let mut lib: * mut crate::src::relaxng::_xmlRelaxNGTypeLibrary = 0 as xmlRelaxNGTypeLibraryPtr;
-    let mut type_0: * mut u8 = 0 as *mut xmlChar;
-    let mut library: * mut u8 = 0 as *mut xmlChar;
+extern "C" fn xmlRelaxNGParseValue<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
+) -> *mut crate::src::relaxng::_xmlRelaxNGDefine {
+    let mut def: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
+    let mut lib: *mut crate::src::relaxng::_xmlRelaxNGTypeLibrary = 0 as xmlRelaxNGTypeLibraryPtr;
+    let mut type_0: *mut u8 = 0 as *mut xmlChar;
+    let mut library: *mut u8 = 0 as *mut xmlChar;
     let mut success: i32 = 0 as i32;
     def = xmlRelaxNGNewDefine(ctxt, node);
     if def.is_null() {
         return 0 as xmlRelaxNGDefinePtr;
     }
-    (*def).type_0 = XML_RELAXNG_VALUE;
-    type_0 = xmlGetProp(
+    (unsafe { (*def).type_0 = XML_RELAXNG_VALUE });
+    type_0 = unsafe { xmlGetProp(
         node as *const xmlNode,
         b"type\0" as *const u8 as *const i8 as *mut xmlChar,
-    );
+    ) };
     if !type_0.is_null() {
         xmlRelaxNGNormExtSpace(type_0);
-        if xmlValidateNCName(type_0, 0 as i32) != 0 {
+        if (unsafe { xmlValidateNCName(type_0, 0 as i32) }) != 0 {
             xmlRngPErr(
                 ctxt,
                 node,
                 XML_RNGP_TYPE_VALUE as i32,
-                b"value type '%s' is not an NCName\n\0" as *const u8
-                    as *const i8,
+                b"value type '%s' is not an NCName\n\0" as *const u8 as *const i8,
                 type_0,
                 0 as *const xmlChar,
             );
         }
         library = xmlRelaxNGGetDataTypeLibrary(ctxt, node);
         if library.is_null() {
-            library = xmlStrdup(
-                b"http://relaxng.org/ns/structure/1.0\0" as *const u8
-                    as *const i8 as *mut xmlChar,
-            );
+            library = unsafe { xmlStrdup(
+                b"http://relaxng.org/ns/structure/1.0\0" as *const u8 as *const i8 as *mut xmlChar,
+            ) };
         }
-        let ref mut fresh136 = (*def).name;
+        let fresh136 = unsafe { &mut ((*def).name) };
         *fresh136 = type_0;
-        let ref mut fresh137 = (*def).ns;
+        let fresh137 = unsafe { &mut ((*def).ns) };
         *fresh137 = library;
-        lib = xmlHashLookup(xmlRelaxNGRegisteredTypes, library)
-            as xmlRelaxNGTypeLibraryPtr;
+        lib = xmlHashLookup(unsafe { xmlRelaxNGRegisteredTypes }, library) as xmlRelaxNGTypeLibraryPtr;
         if lib.is_null() {
             xmlRngPErr(
                 ctxt,
                 node,
                 XML_RNGP_UNKNOWN_TYPE_LIB as i32,
-                b"Use of unregistered type library '%s'\n\0" as *const u8
-                    as *const i8,
+                b"Use of unregistered type library '%s'\n\0" as *const u8 as *const i8,
                 library,
                 0 as *const xmlChar,
             );
-            let ref mut fresh138 = (*def).data;
+            let fresh138 = unsafe { &mut ((*def).data) };
             *fresh138 = 0 as *mut libc::c_void;
         } else {
-            let ref mut fresh139 = (*def).data;
+            let fresh139 = unsafe { &mut ((*def).data) };
             *fresh139 = lib as *mut libc::c_void;
-            if ((*lib).have).is_none() {
+            if unsafe { ((*lib).have).is_none() } {
                 xmlRngPErr(
                     ctxt,
                     node,
@@ -5375,96 +5176,92 @@ unsafe extern "C" fn xmlRelaxNGParseValue<'a1>(
                     0 as *const xmlChar,
                 );
             } else {
-                success = ((*lib).have)
-                    .expect("non-null function pointer")((*lib).data, (*def).name);
+                success =
+                    unsafe { ((*lib).have).expect("non-null function pointer")((*lib).data, (*def).name) };
                 if success != 1 as i32 {
                     xmlRngPErr(
                         ctxt,
                         node,
                         XML_RNGP_TYPE_NOT_FOUND as i32,
-                        b"Error type '%s' is not exported by type library '%s'\n\0"
-                            as *const u8 as *const i8,
-                        (*def).name,
+                        b"Error type '%s' is not exported by type library '%s'\n\0" as *const u8
+                            as *const i8,
+                        unsafe { (*def).name },
                         library,
                     );
                 }
             }
         }
     }
-    if ((*node).children).is_null() {
-        let ref mut fresh140 = (*def).value;
-        *fresh140 = xmlStrdup(b"\0" as *const u8 as *const i8 as *mut xmlChar);
-    } else if (*(*node).children).type_0 as u32
-            != XML_TEXT_NODE as i32 as u32
-            && (*(*node).children).type_0 as u32
-                != XML_CDATA_SECTION_NODE as i32 as u32
-            || !((*(*node).children).next).is_null()
-        {
+    if (unsafe { (*node).children }).is_null() {
+        let fresh140 = unsafe { &mut ((*def).value) };
+        *fresh140 = unsafe { xmlStrdup(b"\0" as *const u8 as *const i8 as *mut xmlChar) };
+    } else if (unsafe { (*(*node).children).type_0 }) as u32 != XML_TEXT_NODE as i32 as u32
+        && (unsafe { (*(*node).children).type_0 }) as u32 != XML_CDATA_SECTION_NODE as i32 as u32
+        || !(unsafe { (*(*node).children).next }).is_null()
+    {
         xmlRngPErr(
             ctxt,
             node,
             XML_RNGP_TEXT_EXPECTED as i32,
-            b"Expecting a single text value for <value>content\n\0" as *const u8
-                as *const i8,
+            b"Expecting a single text value for <value>content\n\0" as *const u8 as *const i8,
             0 as *const xmlChar,
             0 as *const xmlChar,
         );
     } else if !def.is_null() {
-        let ref mut fresh141 = (*def).value;
-        *fresh141 = xmlNodeGetContent(node as *const xmlNode);
-        if ((*def).value).is_null() {
+        let fresh141 = unsafe { &mut ((*def).value) };
+        *fresh141 = unsafe { xmlNodeGetContent(node as *const xmlNode) };
+        if (unsafe { (*def).value }).is_null() {
             xmlRngPErr(
                 ctxt,
                 node,
                 XML_RNGP_VALUE_NO_CONTENT as i32,
-                b"Element <value> has no content\n\0" as *const u8
-                    as *const i8,
+                b"Element <value> has no content\n\0" as *const u8 as *const i8,
                 0 as *const xmlChar,
                 0 as *const xmlChar,
             );
-        } else if !lib.is_null() && ((*lib).check).is_some()
-                && success == 1 as i32
-            {
-            let mut val: * mut core::ffi::c_void = 0 as *mut libc::c_void;
-            success = ((*lib).check)
-                .expect(
-                    "non-null function pointer",
-                )((*lib).data, (*def).name, (*def).value, &mut val, node);
+        } else if !lib.is_null() && (unsafe { ((*lib).check).is_some() }) && success == 1 as i32 {
+            let mut val: *mut core::ffi::c_void = 0 as *mut libc::c_void;
+            success = unsafe { ((*lib).check).expect("non-null function pointer")(
+                (*lib).data,
+                (*def).name,
+                (*def).value,
+                &mut val,
+                node,
+            ) };
             if success != 1 as i32 {
                 xmlRngPErr(
                     ctxt,
                     node,
                     XML_RNGP_INVALID_VALUE as i32,
-                    b"Value '%s' is not acceptable for type '%s'\n\0" as *const u8
-                        as *const i8,
-                    (*def).value,
-                    (*def).name,
+                    b"Value '%s' is not acceptable for type '%s'\n\0" as *const u8 as *const i8,
+                    unsafe { (*def).value },
+                    unsafe { (*def).name },
                 );
             } else if !val.is_null() {
-                let ref mut fresh142 = (*def).attrs;
+                let fresh142 = unsafe { &mut ((*def).attrs) };
                 *fresh142 = val as xmlRelaxNGDefinePtr;
             }
         }
     }
     return def;
 }
-unsafe extern "C" fn xmlRelaxNGParseData<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
-) -> * mut crate::src::relaxng::_xmlRelaxNGDefine {
-    let mut def: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
-    let mut except: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    let mut param: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    let mut lastparam: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
-    let mut lib: * mut crate::src::relaxng::_xmlRelaxNGTypeLibrary = 0 as *mut xmlRelaxNGTypeLibrary;
-    let mut type_0: * mut u8 = 0 as *mut xmlChar;
-    let mut library: * mut u8 = 0 as *mut xmlChar;
-    let mut content: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+extern "C" fn xmlRelaxNGParseData<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
+) -> *mut crate::src::relaxng::_xmlRelaxNGDefine {
+    let mut def: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
+    let mut except: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut param: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut lastparam: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
+    let mut lib: *mut crate::src::relaxng::_xmlRelaxNGTypeLibrary = 0 as *mut xmlRelaxNGTypeLibrary;
+    let mut type_0: *mut u8 = 0 as *mut xmlChar;
+    let mut library: *mut u8 = 0 as *mut xmlChar;
+    let mut content: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
     let mut tmp: i32 = 0;
-    type_0 = xmlGetProp(
+    type_0 = unsafe { xmlGetProp(
         node as *const xmlNode,
         b"type\0" as *const u8 as *const i8 as *mut xmlChar,
-    );
+    ) };
     if type_0.is_null() {
         xmlRngPErr(
             ctxt,
@@ -5477,7 +5274,7 @@ unsafe extern "C" fn xmlRelaxNGParseData<'a1>(
         return 0 as xmlRelaxNGDefinePtr;
     }
     xmlRelaxNGNormExtSpace(type_0);
-    if xmlValidateNCName(type_0, 0 as i32) != 0 {
+    if (unsafe { xmlValidateNCName(type_0, 0 as i32) }) != 0 {
         xmlRngPErr(
             ctxt,
             node,
@@ -5489,123 +5286,116 @@ unsafe extern "C" fn xmlRelaxNGParseData<'a1>(
     }
     library = xmlRelaxNGGetDataTypeLibrary(ctxt, node);
     if library.is_null() {
-        library = xmlStrdup(
-            b"http://relaxng.org/ns/structure/1.0\0" as *const u8 as *const i8
-                as *mut xmlChar,
-        );
+        library = unsafe { xmlStrdup(
+            b"http://relaxng.org/ns/structure/1.0\0" as *const u8 as *const i8 as *mut xmlChar,
+        ) };
     }
     def = xmlRelaxNGNewDefine(ctxt, node);
     if def.is_null() {
-        xmlFree.expect("non-null function pointer")(library as *mut libc::c_void);
-        xmlFree.expect("non-null function pointer")(type_0 as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(library as *mut libc::c_void) });
+        (unsafe { xmlFree.expect("non-null function pointer")(type_0 as *mut libc::c_void) });
         return 0 as xmlRelaxNGDefinePtr;
     }
-    (*def).type_0 = XML_RELAXNG_DATATYPE;
-    let ref mut fresh143 = (*def).name;
+    (unsafe { (*def).type_0 = XML_RELAXNG_DATATYPE });
+    let fresh143 = unsafe { &mut ((*def).name) };
     *fresh143 = type_0;
-    let ref mut fresh144 = (*def).ns;
+    let fresh144 = unsafe { &mut ((*def).ns) };
     *fresh144 = library;
-    lib = xmlHashLookup(xmlRelaxNGRegisteredTypes, library) as xmlRelaxNGTypeLibraryPtr;
+    lib = xmlHashLookup(unsafe { xmlRelaxNGRegisteredTypes }, library) as xmlRelaxNGTypeLibraryPtr;
     if lib.is_null() {
         xmlRngPErr(
             ctxt,
             node,
             XML_RNGP_UNKNOWN_TYPE_LIB as i32,
-            b"Use of unregistered type library '%s'\n\0" as *const u8
-                as *const i8,
+            b"Use of unregistered type library '%s'\n\0" as *const u8 as *const i8,
             library,
             0 as *const xmlChar,
         );
-        let ref mut fresh145 = (*def).data;
+        let fresh145 = unsafe { &mut ((*def).data) };
         *fresh145 = 0 as *mut libc::c_void;
     } else {
-        let ref mut fresh146 = (*def).data;
+        let fresh146 = unsafe { &mut ((*def).data) };
         *fresh146 = lib as *mut libc::c_void;
-        if ((*lib).have).is_none() {
+        if unsafe { ((*lib).have).is_none() } {
             xmlRngPErr(
                 ctxt,
                 node,
                 XML_RNGP_ERROR_TYPE_LIB as i32,
-                b"Internal error with type library '%s': no 'have'\n\0" as *const u8
-                    as *const i8,
+                b"Internal error with type library '%s': no 'have'\n\0" as *const u8 as *const i8,
                 library,
                 0 as *const xmlChar,
             );
         } else {
-            tmp = ((*lib).have)
-                .expect("non-null function pointer")((*lib).data, (*def).name);
+            tmp = unsafe { ((*lib).have).expect("non-null function pointer")((*lib).data, (*def).name) };
             if tmp != 1 as i32 {
                 xmlRngPErr(
                     ctxt,
                     node,
                     XML_RNGP_TYPE_NOT_FOUND as i32,
-                    b"Error type '%s' is not exported by type library '%s'\n\0"
-                        as *const u8 as *const i8,
-                    (*def).name,
+                    b"Error type '%s' is not exported by type library '%s'\n\0" as *const u8
+                        as *const i8,
+                    unsafe { (*def).name },
                     library,
                 );
-            } else if xmlStrEqual(
-                    library,
-                    b"http://www.w3.org/2001/XMLSchema-datatypes\0" as *const u8
-                        as *const i8 as *mut xmlChar,
-                ) != 0
-                    && (xmlStrEqual(
+            } else if (unsafe { xmlStrEqual(
+                library,
+                b"http://www.w3.org/2001/XMLSchema-datatypes\0" as *const u8 as *const i8
+                    as *mut xmlChar,
+            ) }) != 0
+                && ((unsafe { xmlStrEqual(
+                    (*def).name,
+                    b"IDREF\0" as *const u8 as *const i8 as *mut xmlChar,
+                ) }) != 0
+                    || (unsafe { xmlStrEqual(
                         (*def).name,
-                        b"IDREF\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) != 0
-                        || xmlStrEqual(
-                            (*def).name,
-                            b"IDREFS\0" as *const u8 as *const i8
-                                as *mut xmlChar,
-                        ) != 0)
-                {
-                (*ctxt).idref = 1 as i32;
+                        b"IDREFS\0" as *const u8 as *const i8 as *mut xmlChar,
+                    ) }) != 0)
+            {
+                (unsafe { (*ctxt).idref = 1 as i32 });
             }
         }
     }
-    content = (*node).children;
+    content = unsafe { (*node).children };
     while !content.is_null() {
-        if xmlStrEqual(
+        if (unsafe { xmlStrEqual(
             (*content).name,
             b"param\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) == 0
+        ) }) == 0
         {
             break;
         }
-        if xmlStrEqual(
+        if (unsafe { xmlStrEqual(
             library,
-            b"http://relaxng.org/ns/structure/1.0\0" as *const u8 as *const i8
-                as *mut xmlChar,
-        ) != 0
+            b"http://relaxng.org/ns/structure/1.0\0" as *const u8 as *const i8 as *mut xmlChar,
+        ) }) != 0
         {
             xmlRngPErr(
                 ctxt,
                 node,
                 XML_RNGP_PARAM_FORBIDDEN as i32,
-                b"Type library '%s' does not allow type parameters\n\0" as *const u8
-                    as *const i8,
+                b"Type library '%s' does not allow type parameters\n\0" as *const u8 as *const i8,
                 library,
                 0 as *const xmlChar,
             );
-            content = (*content).next;
+            content = unsafe { (*content).next };
             while !content.is_null()
-                && xmlStrEqual(
+                && (unsafe { xmlStrEqual(
                     (*content).name,
                     b"param\0" as *const u8 as *const i8 as *mut xmlChar,
-                ) != 0
+                ) }) != 0
             {
-                content = (*content).next;
+                content = unsafe { (*content).next };
             }
         } else {
             param = xmlRelaxNGNewDefine(ctxt, node);
             if !param.is_null() {
-                (*param).type_0 = XML_RELAXNG_PARAM;
-                let ref mut fresh147 = (*param).name;
-                *fresh147 = xmlGetProp(
+                (unsafe { (*param).type_0 = XML_RELAXNG_PARAM });
+                let fresh147 = unsafe { &mut ((*param).name) };
+                *fresh147 = unsafe { xmlGetProp(
                     content as *const xmlNode,
                     b"name\0" as *const u8 as *const i8 as *mut xmlChar,
-                );
-                if ((*param).name).is_null() {
+                ) };
+                if (unsafe { (*param).name }).is_null() {
                     xmlRngPErr(
                         ctxt,
                         node,
@@ -5615,38 +5405,38 @@ unsafe extern "C" fn xmlRelaxNGParseData<'a1>(
                         0 as *const xmlChar,
                     );
                 }
-                let ref mut fresh148 = (*param).value;
-                *fresh148 = xmlNodeGetContent(content as *const xmlNode);
+                let fresh148 = unsafe { &mut ((*param).value) };
+                *fresh148 = unsafe { xmlNodeGetContent(content as *const xmlNode) };
                 if lastparam.is_null() {
                     lastparam = param;
-                    let ref mut fresh149 = (*def).attrs;
+                    let fresh149 = unsafe { &mut ((*def).attrs) };
                     *fresh149 = lastparam;
                 } else {
-                    let ref mut fresh150 = (*lastparam).next;
+                    let fresh150 = unsafe { &mut ((*lastparam).next) };
                     *fresh150 = param;
                     lastparam = param;
                 }
-                !lib.is_null();
+                let _ = !lib.is_null();
             }
-            content = (*content).next;
+            content = unsafe { (*content).next };
         }
     }
     if !content.is_null()
-        && xmlStrEqual(
+        && (unsafe { xmlStrEqual(
             (*content).name,
             b"except\0" as *const u8 as *const i8 as *mut xmlChar,
-        ) != 0
+        ) }) != 0
     {
-        let mut child: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-        let mut tmp2: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-        let mut last: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
+        let mut child: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+        let mut tmp2: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+        let mut last: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
         except = xmlRelaxNGNewDefine(ctxt, node);
         if except.is_null() {
             return def;
         }
-        (*except).type_0 = XML_RELAXNG_EXCEPT;
-        child = (*content).children;
-        let ref mut fresh151 = (*def).content;
+        (unsafe { (*except).type_0 = XML_RELAXNG_EXCEPT });
+        child = unsafe { (*content).children };
+        let fresh151 = unsafe { &mut ((*def).content) };
         *fresh151 = except;
         if child.is_null() {
             xmlRngPErr(
@@ -5663,36 +5453,34 @@ unsafe extern "C" fn xmlRelaxNGParseData<'a1>(
             if !tmp2.is_null() {
                 if last.is_null() {
                     last = tmp2;
-                    let ref mut fresh152 = (*except).content;
+                    let fresh152 = unsafe { &mut ((*except).content) };
                     *fresh152 = last;
                 } else {
-                    let ref mut fresh153 = (*last).next;
+                    let fresh153 = unsafe { &mut ((*last).next) };
                     *fresh153 = tmp2;
                     last = tmp2;
                 }
             }
-            child = (*child).next;
+            child = unsafe { (*child).next };
         }
-        content = (*content).next;
+        content = unsafe { (*content).next };
     }
     if !content.is_null() {
         xmlRngPErr(
             ctxt,
             content,
             XML_RNGP_DATA_CONTENT as i32,
-            b"Element data has unexpected content %s\n\0" as *const u8
-                as *const i8,
-            (*content).name,
+            b"Element data has unexpected content %s\n\0" as *const u8 as *const i8,
+            unsafe { (*content).name },
             0 as *const xmlChar,
         );
     }
     return def;
 }
-static mut invalidName: * const u8 = b"\x01\0" as *const u8 as *const i8
-    as *mut xmlChar;
-unsafe extern "C" fn xmlRelaxNGCompareNameClasses(
-    mut def1: * mut crate::src::relaxng::_xmlRelaxNGDefine,
-    mut def2: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+static mut invalidName: *const u8 = b"\x01\0" as *const u8 as *const i8 as *mut xmlChar;
+extern "C" fn xmlRelaxNGCompareNameClasses(
+    mut def1: *mut crate::src::relaxng::_xmlRelaxNGDefine,
+    mut def2: *mut crate::src::relaxng::_xmlRelaxNGDefine,
 ) -> i32 {
     let mut ret: i32 = 1 as i32;
     let mut node: crate::src::HTMLparser::_xmlNode = xmlNode {
@@ -5752,96 +5540,89 @@ unsafe extern "C" fn xmlRelaxNGCompareNameClasses(
         pdef: 0 as *mut xmlRelaxNGDefine,
         perr: 0,
     };
-    memset(
+    (unsafe { memset(
         &mut ctxt as *mut xmlRelaxNGValidCtxt as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlRelaxNGValidCtxt>() as u64,
-    );
+    ) });
     ctxt.flags = 1 as i32 | 8 as i32;
-    if (*def1).type_0 as i32 == XML_RELAXNG_ELEMENT as i32
-        || (*def1).type_0 as i32 == XML_RELAXNG_ATTRIBUTE as i32
+    if (unsafe { (*def1).type_0 }) as i32 == XML_RELAXNG_ELEMENT as i32
+        || (unsafe { (*def1).type_0 }) as i32 == XML_RELAXNG_ATTRIBUTE as i32
     {
-        if (*def2).type_0 as i32 == XML_RELAXNG_TEXT as i32 {
+        if (unsafe { (*def2).type_0 }) as i32 == XML_RELAXNG_TEXT as i32 {
             return 1 as i32;
         }
-        if !((*def1).name).is_null() {
-            node.name = (*def1).name;
+        if !(unsafe { (*def1).name }).is_null() {
+            node.name = unsafe { (*def1).name };
         } else {
-            node.name = invalidName;
+            node.name = unsafe { invalidName };
         }
-        if !((*def1).ns).is_null() {
-            if *((*def1).ns).offset(0 as i32 as isize) as i32
-                == 0 as i32
-            {
+        if !(unsafe { (*def1).ns }).is_null() {
+            if (unsafe { *((*def1).ns).offset(0 as i32 as isize) }) as i32 == 0 as i32 {
                 node.ns = 0 as *mut xmlNs;
             } else {
                 node.ns = &mut ns;
-                ns.href = (*def1).ns;
+                ns.href = unsafe { (*def1).ns };
             }
         } else {
             node.ns = 0 as *mut xmlNs;
         }
         if xmlRelaxNGElementMatch(&mut ctxt, def2, &mut node) != 0 {
-            if !((*def1).nameClass).is_null() {
-                ret = xmlRelaxNGCompareNameClasses((*def1).nameClass, def2);
+            if !(unsafe { (*def1).nameClass }).is_null() {
+                ret = xmlRelaxNGCompareNameClasses(unsafe { (*def1).nameClass }, def2);
             } else {
                 ret = 0 as i32;
             }
         } else {
             ret = 1 as i32;
         }
-    } else if (*def1).type_0 as i32 == XML_RELAXNG_TEXT as i32 {
-        if (*def2).type_0 as i32 == XML_RELAXNG_TEXT as i32 {
+    } else if (unsafe { (*def1).type_0 }) as i32 == XML_RELAXNG_TEXT as i32 {
+        if (unsafe { (*def2).type_0 }) as i32 == XML_RELAXNG_TEXT as i32 {
             return 0 as i32;
         }
         return 1 as i32;
     } else {
-        if (*def1).type_0 as i32 == XML_RELAXNG_EXCEPT as i32 {
-            ret = xmlRelaxNGCompareNameClasses((*def1).content, def2);
+        if (unsafe { (*def1).type_0 }) as i32 == XML_RELAXNG_EXCEPT as i32 {
+            ret = xmlRelaxNGCompareNameClasses(unsafe { (*def1).content }, def2);
             if ret == 0 as i32 {
                 ret = 1 as i32;
             } else if ret == 1 as i32 {
                 ret = 0 as i32;
             }
         } else {
-            (*(borrow(& __xmlGenericError())).unwrap())
-                .expect(
-                    "non-null function pointer",
-                )(
+            (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                 *(__xmlGenericErrorContext()).unwrap(),
                 b"Unimplemented block at %s:%d\n\0" as *const u8 as *const i8,
                 b"relaxng.c\0" as *const u8 as *const i8,
                 3851 as i32,
-            );
+            ) });
             ret = 0 as i32;
         }
     }
     if ret == 0 as i32 {
         return ret;
     }
-    if (*def2).type_0 as i32 == XML_RELAXNG_ELEMENT as i32
-        || (*def2).type_0 as i32 == XML_RELAXNG_ATTRIBUTE as i32
+    if (unsafe { (*def2).type_0 }) as i32 == XML_RELAXNG_ELEMENT as i32
+        || (unsafe { (*def2).type_0 }) as i32 == XML_RELAXNG_ATTRIBUTE as i32
     {
-        if !((*def2).name).is_null() {
-            node.name = (*def2).name;
+        if !(unsafe { (*def2).name }).is_null() {
+            node.name = unsafe { (*def2).name };
         } else {
-            node.name = invalidName;
+            node.name = unsafe { invalidName };
         }
         node.ns = &mut ns;
-        if !((*def2).ns).is_null() {
-            if *((*def2).ns).offset(0 as i32 as isize) as i32
-                == 0 as i32
-            {
+        if !(unsafe { (*def2).ns }).is_null() {
+            if (unsafe { *((*def2).ns).offset(0 as i32 as isize) }) as i32 == 0 as i32 {
                 node.ns = 0 as *mut xmlNs;
             } else {
-                ns.href = (*def2).ns;
+                ns.href = unsafe { (*def2).ns };
             }
         } else {
-            ns.href = invalidName;
+            ns.href = unsafe { invalidName };
         }
         if xmlRelaxNGElementMatch(&mut ctxt, def1, &mut node) != 0 {
-            if !((*def2).nameClass).is_null() {
-                ret = xmlRelaxNGCompareNameClasses((*def2).nameClass, def1);
+            if !(unsafe { (*def2).nameClass }).is_null() {
+                ret = xmlRelaxNGCompareNameClasses(unsafe { (*def2).nameClass }, def1);
             } else {
                 ret = 0 as i32;
             }
@@ -5849,85 +5630,82 @@ unsafe extern "C" fn xmlRelaxNGCompareNameClasses(
             ret = 1 as i32;
         }
     } else {
-        (*(borrow(& __xmlGenericError())).unwrap())
-            .expect(
-                "non-null function pointer",
-            )(
+        (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
             *(__xmlGenericErrorContext()).unwrap(),
             b"Unimplemented block at %s:%d\n\0" as *const u8 as *const i8,
             b"relaxng.c\0" as *const u8 as *const i8,
             3882 as i32,
-        );
+        ) });
         ret = 0 as i32;
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGCompareElemDefLists<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut def1: * mut * mut crate::src::relaxng::_xmlRelaxNGDefine,
-    mut def2: * mut * mut crate::src::relaxng::_xmlRelaxNGDefine,
+extern "C" fn xmlRelaxNGCompareElemDefLists<'a1>(
+    mut _ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut def1: *mut *mut crate::src::relaxng::_xmlRelaxNGDefine,
+    mut def2: *mut *mut crate::src::relaxng::_xmlRelaxNGDefine,
 ) -> i32 {
-    let mut basedef2: * mut * mut crate::src::relaxng::_xmlRelaxNGDefine = def2;
+    let mut basedef2: *mut *mut crate::src::relaxng::_xmlRelaxNGDefine = def2;
     if def1.is_null() || def2.is_null() {
         return 1 as i32;
     }
-    if (*def1).is_null() || (*def2).is_null() {
+    if (unsafe { *def1 }).is_null() || (unsafe { *def2 }).is_null() {
         return 1 as i32;
     }
-    while !(*def1).is_null() {
-        while !(*def2).is_null() {
-            if xmlRelaxNGCompareNameClasses(*def1, *def2) == 0 as i32 {
+    while !(unsafe { *def1 }).is_null() {
+        while !(unsafe { *def2 }).is_null() {
+            if xmlRelaxNGCompareNameClasses(unsafe { *def1 }, unsafe { *def2 }) == 0 as i32 {
                 return 0 as i32;
             }
-            def2 = def2.offset(1);
+            def2 = unsafe { def2.offset(1) };
         }
         def2 = basedef2;
-        def1 = def1.offset(1);
+        def1 = unsafe { def1.offset(1) };
     }
     return 1 as i32;
 }
-unsafe extern "C" fn xmlRelaxNGGenerateAttributes<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut def: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+extern "C" fn xmlRelaxNGGenerateAttributes<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut def: *mut crate::src::relaxng::_xmlRelaxNGDefine,
 ) -> i32 {
-    let mut parent: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    let mut cur: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    let mut tmp: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    if (*ctxt).nbErrors != 0 as i32 {
+    let mut parent: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut cur: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut tmp: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    if (unsafe { (*ctxt).nbErrors }) != 0 as i32 {
         return -(1 as i32);
     }
     parent = 0 as xmlRelaxNGDefinePtr;
     cur = def;
     while !cur.is_null() {
-        if (*cur).type_0 as i32 == XML_RELAXNG_ELEMENT as i32
-            || (*cur).type_0 as i32 == XML_RELAXNG_TEXT as i32
-            || (*cur).type_0 as i32 == XML_RELAXNG_DATATYPE as i32
-            || (*cur).type_0 as i32 == XML_RELAXNG_PARAM as i32
-            || (*cur).type_0 as i32 == XML_RELAXNG_LIST as i32
-            || (*cur).type_0 as i32 == XML_RELAXNG_VALUE as i32
-            || (*cur).type_0 as i32 == XML_RELAXNG_EMPTY as i32
+        if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_ELEMENT as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_TEXT as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_DATATYPE as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_PARAM as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_LIST as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_VALUE as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_EMPTY as i32
         {
             return 0 as i32;
         }
-        if (*cur).type_0 as i32 == XML_RELAXNG_CHOICE as i32
-            || (*cur).type_0 as i32 == XML_RELAXNG_INTERLEAVE as i32
-            || (*cur).type_0 as i32 == XML_RELAXNG_GROUP as i32
-            || (*cur).type_0 as i32 == XML_RELAXNG_ONEORMORE as i32
-            || (*cur).type_0 as i32 == XML_RELAXNG_ZEROORMORE as i32
-            || (*cur).type_0 as i32 == XML_RELAXNG_OPTIONAL as i32
-            || (*cur).type_0 as i32 == XML_RELAXNG_PARENTREF as i32
-            || (*cur).type_0 as i32 == XML_RELAXNG_EXTERNALREF as i32
-            || (*cur).type_0 as i32 == XML_RELAXNG_REF as i32
-            || (*cur).type_0 as i32 == XML_RELAXNG_DEF as i32
+        if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_CHOICE as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_INTERLEAVE as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_GROUP as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_ONEORMORE as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_ZEROORMORE as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_OPTIONAL as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_PARENTREF as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_EXTERNALREF as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_REF as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_DEF as i32
         {
-            if !((*cur).content).is_null() {
+            if !(unsafe { (*cur).content }).is_null() {
                 parent = cur;
-                cur = (*cur).content;
+                cur = unsafe { (*cur).content };
                 tmp = cur;
                 while !tmp.is_null() {
-                    let ref mut fresh154 = (*tmp).parent;
+                    let fresh154 = unsafe { &mut ((*tmp).parent) };
                     *fresh154 = parent;
-                    tmp = (*tmp).next;
+                    tmp = unsafe { (*tmp).next };
                 }
                 continue;
             }
@@ -5935,19 +5713,19 @@ unsafe extern "C" fn xmlRelaxNGGenerateAttributes<'a1>(
         if cur == def {
             break;
         }
-        if !((*cur).next).is_null() {
-            cur = (*cur).next;
+        if !(unsafe { (*cur).next }).is_null() {
+            cur = unsafe { (*cur).next };
         } else {
             loop {
-                cur = (*cur).parent;
+                cur = unsafe { (*cur).parent };
                 if cur.is_null() {
                     break;
                 }
                 if cur == def {
                     return 1 as i32;
                 }
-                if !((*cur).next).is_null() {
-                    cur = (*cur).next;
+                if !(unsafe { (*cur).next }).is_null() {
+                    cur = unsafe { (*cur).next };
                     break;
                 } else if cur.is_null() {
                     break;
@@ -5957,102 +5735,85 @@ unsafe extern "C" fn xmlRelaxNGGenerateAttributes<'a1>(
     }
     return 1 as i32;
 }
-unsafe extern "C" fn xmlRelaxNGGetElements<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut def: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+extern "C" fn xmlRelaxNGGetElements<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut def: *mut crate::src::relaxng::_xmlRelaxNGDefine,
     mut eora: i32,
-) -> * mut * mut crate::src::relaxng::_xmlRelaxNGDefine {
-    let mut ret: * mut * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefinePtr;
-    let mut parent: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    let mut cur: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    let mut tmp: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+) -> *mut *mut crate::src::relaxng::_xmlRelaxNGDefine {
+    let mut ret: *mut *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefinePtr;
+    let mut parent: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut cur: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut tmp: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
     let mut len: i32 = 0 as i32;
     let mut max: i32 = 0 as i32;
-    if (*ctxt).nbErrors != 0 as i32 {
+    if (unsafe { (*ctxt).nbErrors }) != 0 as i32 {
         return 0 as *mut xmlRelaxNGDefinePtr;
     }
     parent = 0 as xmlRelaxNGDefinePtr;
     cur = def;
     while !cur.is_null() {
         if eora == 0 as i32
-            && ((*cur).type_0 as i32 == XML_RELAXNG_ELEMENT as i32
-                || (*cur).type_0 as i32 == XML_RELAXNG_TEXT as i32)
-            || eora == 1 as i32
-                && (*cur).type_0 as i32 == XML_RELAXNG_ATTRIBUTE as i32
+            && ((unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_ELEMENT as i32
+                || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_TEXT as i32)
+            || eora == 1 as i32 && (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_ATTRIBUTE as i32
             || eora == 2 as i32
-                && ((*cur).type_0 as i32 == XML_RELAXNG_DATATYPE as i32
-                    || (*cur).type_0 as i32 == XML_RELAXNG_ELEMENT as i32
-                    || (*cur).type_0 as i32 == XML_RELAXNG_LIST as i32
-                    || (*cur).type_0 as i32 == XML_RELAXNG_TEXT as i32
-                    || (*cur).type_0 as i32 == XML_RELAXNG_VALUE as i32)
+                && ((unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_DATATYPE as i32
+                    || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_ELEMENT as i32
+                    || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_LIST as i32
+                    || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_TEXT as i32
+                    || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_VALUE as i32)
         {
             if ret.is_null() {
                 max = 10 as i32;
-                ret = xmlMalloc
-                    .expect(
-                        "non-null function pointer",
-                    )(
+                ret = (unsafe { xmlMalloc.expect("non-null function pointer")(
                     ((max + 1 as i32) as u64)
-                        .wrapping_mul(
-                            ::std::mem::size_of::<xmlRelaxNGDefinePtr>() as u64,
-                        ),
-                ) as *mut xmlRelaxNGDefinePtr;
+                        .wrapping_mul(::std::mem::size_of::<xmlRelaxNGDefinePtr>() as u64),
+                ) }) as *mut xmlRelaxNGDefinePtr;
                 if ret.is_null() {
-                    xmlRngPErrMemory(
-                        ctxt,
-                        b"getting element list\n\0" as *const u8 as *const i8,
-                    );
+                    xmlRngPErrMemory(ctxt, b"getting element list\n\0" as *const u8 as *const i8);
                     return 0 as *mut xmlRelaxNGDefinePtr;
                 }
             } else if max <= len {
-                let mut temp: * mut * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefinePtr;
+                let mut temp: *mut *mut crate::src::relaxng::_xmlRelaxNGDefine =
+                    0 as *mut xmlRelaxNGDefinePtr;
                 max *= 2 as i32;
-                temp = xmlRealloc
-                    .expect(
-                        "non-null function pointer",
-                    )(
+                temp = (unsafe { xmlRealloc.expect("non-null function pointer")(
                     ret as *mut libc::c_void,
                     ((max + 1 as i32) as u64)
-                        .wrapping_mul(
-                            ::std::mem::size_of::<xmlRelaxNGDefinePtr>() as u64,
-                        ),
-                ) as *mut xmlRelaxNGDefinePtr;
+                        .wrapping_mul(::std::mem::size_of::<xmlRelaxNGDefinePtr>() as u64),
+                ) }) as *mut xmlRelaxNGDefinePtr;
                 if temp.is_null() {
-                    xmlRngPErrMemory(
-                        ctxt,
-                        b"getting element list\n\0" as *const u8 as *const i8,
-                    );
-                    xmlFree
-                        .expect("non-null function pointer")(ret as *mut libc::c_void);
+                    xmlRngPErrMemory(ctxt, b"getting element list\n\0" as *const u8 as *const i8);
+                    (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
                     return 0 as *mut xmlRelaxNGDefinePtr;
                 }
                 ret = temp;
             }
             let mut fresh155 = len;
             len = len + 1;
-            let ref mut fresh156 = *ret.offset(fresh155 as isize);
+            let fresh156 = unsafe { &mut (*ret.offset(fresh155 as isize)) };
             *fresh156 = cur;
-            let ref mut fresh157 = *ret.offset(len as isize);
+            let fresh157 = unsafe { &mut (*ret.offset(len as isize)) };
             *fresh157 = 0 as xmlRelaxNGDefinePtr;
-        } else if (*cur).type_0 as i32 == XML_RELAXNG_CHOICE as i32
-                || (*cur).type_0 as i32 == XML_RELAXNG_INTERLEAVE as i32
-                || (*cur).type_0 as i32 == XML_RELAXNG_GROUP as i32
-                || (*cur).type_0 as i32 == XML_RELAXNG_ONEORMORE as i32
-                || (*cur).type_0 as i32 == XML_RELAXNG_ZEROORMORE as i32
-                || (*cur).type_0 as i32 == XML_RELAXNG_OPTIONAL as i32
-                || (*cur).type_0 as i32 == XML_RELAXNG_PARENTREF as i32
-                || (*cur).type_0 as i32 == XML_RELAXNG_REF as i32
-                || (*cur).type_0 as i32 == XML_RELAXNG_DEF as i32
-                || (*cur).type_0 as i32 == XML_RELAXNG_EXTERNALREF as i32
-            {
-            if !((*cur).content).is_null() {
+        } else if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_CHOICE as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_INTERLEAVE as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_GROUP as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_ONEORMORE as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_ZEROORMORE as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_OPTIONAL as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_PARENTREF as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_REF as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_DEF as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_EXTERNALREF as i32
+        {
+            if !(unsafe { (*cur).content }).is_null() {
                 parent = cur;
-                cur = (*cur).content;
+                cur = unsafe { (*cur).content };
                 tmp = cur;
                 while !tmp.is_null() {
-                    let ref mut fresh158 = (*tmp).parent;
+                    let fresh158 = unsafe { &mut ((*tmp).parent) };
                     *fresh158 = parent;
-                    tmp = (*tmp).next;
+                    tmp = unsafe { (*tmp).next };
                 }
                 continue;
             }
@@ -6060,19 +5821,19 @@ unsafe extern "C" fn xmlRelaxNGGetElements<'a1>(
         if cur == def {
             break;
         }
-        if !((*cur).next).is_null() {
-            cur = (*cur).next;
+        if !(unsafe { (*cur).next }).is_null() {
+            cur = unsafe { (*cur).next };
         } else {
             loop {
-                cur = (*cur).parent;
+                cur = unsafe { (*cur).parent };
                 if cur.is_null() {
                     break;
                 }
                 if cur == def {
                     return ret;
                 }
-                if !((*cur).next).is_null() {
-                    cur = (*cur).next;
+                if !(unsafe { (*cur).next }).is_null() {
+                    cur = unsafe { (*cur).next };
                     break;
                 } else if cur.is_null() {
                     break;
@@ -6082,50 +5843,41 @@ unsafe extern "C" fn xmlRelaxNGGetElements<'a1>(
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGCheckChoiceDeterminism<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut def: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+extern "C" fn xmlRelaxNGCheckChoiceDeterminism<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut def: *mut crate::src::relaxng::_xmlRelaxNGDefine,
 ) {
-    let mut list: * mut * mut * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut *mut xmlRelaxNGDefinePtr;
-    let mut cur: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut list: *mut *mut *mut crate::src::relaxng::_xmlRelaxNGDefine =
+        0 as *mut *mut xmlRelaxNGDefinePtr;
+    let mut cur: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
     let mut nbchild: i32 = 0 as i32;
     let mut i: i32 = 0;
     let mut j: i32 = 0;
     let mut ret: i32 = 0;
     let mut is_nullable: i32 = 0 as i32;
     let mut is_indeterminist: i32 = 0 as i32;
-    let mut triage: * mut crate::src::hash::_xmlHashTable = 0 as xmlHashTablePtr;
+    let mut triage: *mut crate::src::hash::_xmlHashTable = 0 as xmlHashTablePtr;
     let mut is_triable: i32 = 1 as i32;
-    if def.is_null() || (*def).type_0 as i32 != XML_RELAXNG_CHOICE as i32
-    {
+    if def.is_null() || (unsafe { (*def).type_0 }) as i32 != XML_RELAXNG_CHOICE as i32 {
         return;
     }
-    if (*def).dflags as i32 & (1 as i32) << 5 as i32 != 0 {
+    if (unsafe { (*def).dflags }) as i32 & (1 as i32) << 5 as i32 != 0 {
         return;
     }
-    if (*ctxt).nbErrors != 0 as i32 {
+    if (unsafe { (*ctxt).nbErrors }) != 0 as i32 {
         return;
     }
     is_nullable = xmlRelaxNGIsNullable(def);
-    cur = (*def).content;
+    cur = unsafe { (*def).content };
     while !cur.is_null() {
         nbchild += 1;
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
     }
-    list = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(
-        (nbchild as u64)
-            .wrapping_mul(
-                ::std::mem::size_of::<*mut xmlRelaxNGDefinePtr>() as u64,
-            ),
-    ) as *mut *mut xmlRelaxNGDefinePtr;
+    list = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        (nbchild as u64).wrapping_mul(::std::mem::size_of::<*mut xmlRelaxNGDefinePtr>() as u64),
+    ) }) as *mut *mut xmlRelaxNGDefinePtr;
     if list.is_null() {
-        xmlRngPErrMemory(
-            ctxt,
-            b"building choice\n\0" as *const u8 as *const i8,
-        );
+        xmlRngPErrMemory(ctxt, b"building choice\n\0" as *const u8 as *const i8);
         return;
     }
     i = 0 as i32;
@@ -6134,20 +5886,21 @@ unsafe extern "C" fn xmlRelaxNGCheckChoiceDeterminism<'a1>(
     } else {
         is_triable = 0 as i32;
     }
-    cur = (*def).content;
+    cur = unsafe { (*def).content };
     while !cur.is_null() {
-        let ref mut fresh159 = *list.offset(i as isize);
+        let fresh159 = unsafe { &mut (*list.offset(i as isize)) };
         *fresh159 = xmlRelaxNGGetElements(ctxt, cur, 0 as i32);
-        if (*list.offset(i as isize)).is_null()
-            || (*(*list.offset(i as isize)).offset(0 as i32 as isize)).is_null()
+        if (unsafe { *list.offset(i as isize) }).is_null()
+            || (unsafe { *(*list.offset(i as isize)).offset(0 as i32 as isize) }).is_null()
         {
             is_triable = 0 as i32;
         } else if is_triable == 1 as i32 {
-            let mut tmp: * mut * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefinePtr;
+            let mut tmp: *mut *mut crate::src::relaxng::_xmlRelaxNGDefine =
+                0 as *mut xmlRelaxNGDefinePtr;
             let mut res: i32 = 0;
-            tmp = *list.offset(i as isize);
-            while !(*tmp).is_null() && is_triable == 1 as i32 {
-                if (**tmp).type_0 as i32 == XML_RELAXNG_TEXT as i32 {
+            tmp = unsafe { *list.offset(i as isize) };
+            while !(unsafe { *tmp }).is_null() && is_triable == 1 as i32 {
+                if (unsafe { (**tmp).type_0 }) as i32 == XML_RELAXNG_TEXT as i32 {
                     res = xmlHashAddEntry2(
                         triage,
                         b"#text\0" as *const u8 as *const i8 as *mut xmlChar,
@@ -6157,51 +5910,44 @@ unsafe extern "C" fn xmlRelaxNGCheckChoiceDeterminism<'a1>(
                     if res != 0 as i32 {
                         is_triable = -(1 as i32);
                     }
-                } else if (**tmp).type_0 as i32
-                        == XML_RELAXNG_ELEMENT as i32
-                        && !((**tmp).name).is_null()
-                    {
-                    if ((**tmp).ns).is_null()
-                        || *((**tmp).ns).offset(0 as i32 as isize) as i32
-                            == 0 as i32
+                } else if (unsafe { (**tmp).type_0 }) as i32 == XML_RELAXNG_ELEMENT as i32
+                    && !(unsafe { (**tmp).name }).is_null()
+                {
+                    if (unsafe { (**tmp).ns }).is_null()
+                        || (unsafe { *((**tmp).ns).offset(0 as i32 as isize) }) as i32 == 0 as i32
                     {
                         res = xmlHashAddEntry2(
                             triage,
-                            (**tmp).name,
+                            unsafe { (**tmp).name },
                             0 as *const xmlChar,
                             cur as *mut libc::c_void,
                         );
                     } else {
                         res = xmlHashAddEntry2(
                             triage,
-                            (**tmp).name,
-                            (**tmp).ns,
+                            unsafe { (**tmp).name },
+                            unsafe { (**tmp).ns },
                             cur as *mut libc::c_void,
                         );
                     }
                     if res != 0 as i32 {
                         is_triable = -(1 as i32);
                     }
-                } else if (**tmp).type_0 as i32
-                        == XML_RELAXNG_ELEMENT as i32
-                    {
-                    if ((**tmp).ns).is_null()
-                        || *((**tmp).ns).offset(0 as i32 as isize) as i32
-                            == 0 as i32
+                } else if (unsafe { (**tmp).type_0 }) as i32 == XML_RELAXNG_ELEMENT as i32 {
+                    if (unsafe { (**tmp).ns }).is_null()
+                        || (unsafe { *((**tmp).ns).offset(0 as i32 as isize) }) as i32 == 0 as i32
                     {
                         res = xmlHashAddEntry2(
                             triage,
-                            b"#any\0" as *const u8 as *const i8
-                                as *mut xmlChar,
+                            b"#any\0" as *const u8 as *const i8 as *mut xmlChar,
                             0 as *const xmlChar,
                             cur as *mut libc::c_void,
                         );
                     } else {
                         res = xmlHashAddEntry2(
                             triage,
-                            b"#any\0" as *const u8 as *const i8
-                                as *mut xmlChar,
-                            (**tmp).ns,
+                            b"#any\0" as *const u8 as *const i8 as *mut xmlChar,
+                            unsafe { (**tmp).ns },
                             cur as *mut libc::c_void,
                         );
                     }
@@ -6211,22 +5957,22 @@ unsafe extern "C" fn xmlRelaxNGCheckChoiceDeterminism<'a1>(
                 } else {
                     is_triable = -(1 as i32);
                 }
-                tmp = tmp.offset(1);
+                tmp = unsafe { tmp.offset(1) };
             }
         }
         i += 1;
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
     }
     i = 0 as i32;
     while i < nbchild {
-        if !(*list.offset(i as isize)).is_null() {
+        if !(unsafe { *list.offset(i as isize) }).is_null() {
             j = 0 as i32;
             while j < i {
-                if !(*list.offset(j as isize)).is_null() {
+                if !(unsafe { *list.offset(j as isize) }).is_null() {
                     ret = xmlRelaxNGCompareElemDefLists(
                         ctxt,
-                        *list.offset(i as isize),
-                        *list.offset(j as isize),
+                        unsafe { *list.offset(i as isize) },
+                        unsafe { *list.offset(j as isize) },
                     );
                     if ret == 0 as i32 {
                         is_indeterminist = 1 as i32;
@@ -6239,114 +5985,101 @@ unsafe extern "C" fn xmlRelaxNGCheckChoiceDeterminism<'a1>(
     }
     i = 0 as i32;
     while i < nbchild {
-        if !(*list.offset(i as isize)).is_null() {
-            xmlFree
-                .expect(
-                    "non-null function pointer",
-                )(*list.offset(i as isize) as *mut libc::c_void);
+        if !(unsafe { *list.offset(i as isize) }).is_null() {
+            (unsafe { xmlFree.expect("non-null function pointer")(
+                *list.offset(i as isize) as *mut libc::c_void
+            ) });
         }
         i += 1;
     }
-    xmlFree.expect("non-null function pointer")(list as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(list as *mut libc::c_void) });
     if is_indeterminist != 0 {
-        let ref mut fresh160 = (*def).dflags;
-        *fresh160 = (*fresh160 as i32 | (1 as i32) << 2 as i32)
-            as i16;
+        let fresh160 = unsafe { &mut ((*def).dflags) };
+        *fresh160 = (*fresh160 as i32 | (1 as i32) << 2 as i32) as i16;
     }
     if is_triable == 1 as i32 {
-        let ref mut fresh161 = (*def).dflags;
-        *fresh161 = (*fresh161 as i32 | (1 as i32) << 4 as i32)
-            as i16;
-        let ref mut fresh162 = (*def).data;
+        let fresh161 = unsafe { &mut ((*def).dflags) };
+        *fresh161 = (*fresh161 as i32 | (1 as i32) << 4 as i32) as i16;
+        let fresh162 = unsafe { &mut ((*def).data) };
         *fresh162 = triage as *mut libc::c_void;
     } else if !triage.is_null() {
         xmlHashFree(triage, None);
     }
-    let ref mut fresh163 = (*def).dflags;
-    *fresh163 = (*fresh163 as i32 | (1 as i32) << 5 as i32)
-        as i16;
+    let fresh163 = unsafe { &mut ((*def).dflags) };
+    *fresh163 = (*fresh163 as i32 | (1 as i32) << 5 as i32) as i16;
 }
-unsafe extern "C" fn xmlRelaxNGCheckGroupAttrs<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut def: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+extern "C" fn xmlRelaxNGCheckGroupAttrs<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut def: *mut crate::src::relaxng::_xmlRelaxNGDefine,
 ) {
-    let mut list: * mut * mut * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut *mut xmlRelaxNGDefinePtr;
-    let mut cur: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut list: *mut *mut *mut crate::src::relaxng::_xmlRelaxNGDefine =
+        0 as *mut *mut xmlRelaxNGDefinePtr;
+    let mut cur: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
     let mut nbchild: i32 = 0 as i32;
     let mut i: i32 = 0;
     let mut j: i32 = 0;
     let mut ret: i32 = 0;
     if def.is_null()
-        || (*def).type_0 as i32 != XML_RELAXNG_GROUP as i32
-            && (*def).type_0 as i32 != XML_RELAXNG_ELEMENT as i32
+        || (unsafe { (*def).type_0 }) as i32 != XML_RELAXNG_GROUP as i32
+            && (unsafe { (*def).type_0 }) as i32 != XML_RELAXNG_ELEMENT as i32
     {
         return;
     }
-    if (*def).dflags as i32 & (1 as i32) << 5 as i32 != 0 {
+    if (unsafe { (*def).dflags }) as i32 & (1 as i32) << 5 as i32 != 0 {
         return;
     }
-    if (*ctxt).nbErrors != 0 as i32 {
+    if (unsafe { (*ctxt).nbErrors }) != 0 as i32 {
         return;
     }
-    cur = (*def).attrs;
+    cur = unsafe { (*def).attrs };
     while !cur.is_null() {
         nbchild += 1;
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
     }
-    cur = (*def).content;
+    cur = unsafe { (*def).content };
     while !cur.is_null() {
         nbchild += 1;
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
     }
-    list = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(
-        (nbchild as u64)
-            .wrapping_mul(
-                ::std::mem::size_of::<*mut xmlRelaxNGDefinePtr>() as u64,
-            ),
-    ) as *mut *mut xmlRelaxNGDefinePtr;
+    list = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        (nbchild as u64).wrapping_mul(::std::mem::size_of::<*mut xmlRelaxNGDefinePtr>() as u64),
+    ) }) as *mut *mut xmlRelaxNGDefinePtr;
     if list.is_null() {
-        xmlRngPErrMemory(
-            ctxt,
-            b"building group\n\0" as *const u8 as *const i8,
-        );
+        xmlRngPErrMemory(ctxt, b"building group\n\0" as *const u8 as *const i8);
         return;
     }
     i = 0 as i32;
-    cur = (*def).attrs;
+    cur = unsafe { (*def).attrs };
     while !cur.is_null() {
-        let ref mut fresh164 = *list.offset(i as isize);
+        let fresh164 = unsafe { &mut (*list.offset(i as isize)) };
         *fresh164 = xmlRelaxNGGetElements(ctxt, cur, 1 as i32);
         i += 1;
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
     }
-    cur = (*def).content;
+    cur = unsafe { (*def).content };
     while !cur.is_null() {
-        let ref mut fresh165 = *list.offset(i as isize);
+        let fresh165 = unsafe { &mut (*list.offset(i as isize)) };
         *fresh165 = xmlRelaxNGGetElements(ctxt, cur, 1 as i32);
         i += 1;
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
     }
     i = 0 as i32;
     while i < nbchild {
-        if !(*list.offset(i as isize)).is_null() {
+        if !(unsafe { *list.offset(i as isize) }).is_null() {
             j = 0 as i32;
             while j < i {
-                if !(*list.offset(j as isize)).is_null() {
+                if !(unsafe { *list.offset(j as isize) }).is_null() {
                     ret = xmlRelaxNGCompareElemDefLists(
                         ctxt,
-                        *list.offset(i as isize),
-                        *list.offset(j as isize),
+                        unsafe { *list.offset(i as isize) },
+                        unsafe { *list.offset(j as isize) },
                     );
                     if ret == 0 as i32 {
                         xmlRngPErr(
                             ctxt,
-                            (*def).node,
+                            unsafe { (*def).node },
                             XML_RNGP_GROUP_ATTR_CONFLICT as i32,
-                            b"Attributes conflicts in group\n\0" as *const u8
-                                as *const i8,
+                            b"Attributes conflicts in group\n\0" as *const u8 as *const i8,
                             0 as *const xmlChar,
                             0 as *const xmlChar,
                         );
@@ -6359,33 +6092,34 @@ unsafe extern "C" fn xmlRelaxNGCheckGroupAttrs<'a1>(
     }
     i = 0 as i32;
     while i < nbchild {
-        if !(*list.offset(i as isize)).is_null() {
-            xmlFree
-                .expect(
-                    "non-null function pointer",
-                )(*list.offset(i as isize) as *mut libc::c_void);
+        if !(unsafe { *list.offset(i as isize) }).is_null() {
+            (unsafe { xmlFree.expect("non-null function pointer")(
+                *list.offset(i as isize) as *mut libc::c_void
+            ) });
         }
         i += 1;
     }
-    xmlFree.expect("non-null function pointer")(list as *mut libc::c_void);
-    let ref mut fresh166 = (*def).dflags;
-    *fresh166 = (*fresh166 as i32 | (1 as i32) << 5 as i32)
-        as i16;
+    (unsafe { xmlFree.expect("non-null function pointer")(list as *mut libc::c_void) });
+    let fresh166 = unsafe { &mut ((*def).dflags) };
+    *fresh166 = (*fresh166 as i32 | (1 as i32) << 5 as i32) as i16;
 }
-unsafe extern "C" fn xmlRelaxNGComputeInterleaves(
-    mut payload: * mut core::ffi::c_void,
-    mut data: * mut core::ffi::c_void,
-    mut name: * const u8,
+extern "C" fn xmlRelaxNGComputeInterleaves(
+    mut payload: *mut core::ffi::c_void,
+    mut data: *mut core::ffi::c_void,
+    mut _name: *const u8,
 ) {
     let mut current_block: u64;
-    let mut def: * mut crate::src::relaxng::_xmlRelaxNGDefine = payload as xmlRelaxNGDefinePtr;
-    let mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'_> = data as xmlRelaxNGParserCtxtPtr;
-    let mut cur: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    let mut tmp: * mut * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefinePtr;
-    let mut partitions: * mut crate::src::relaxng::_xmlRelaxNGPartition = 0 as xmlRelaxNGPartitionPtr;
-    let mut groups: * mut * mut crate::src::relaxng::_xmlRelaxNGInterleaveGroup = 0
-        as *mut xmlRelaxNGInterleaveGroupPtr;
-    let mut group: * mut crate::src::relaxng::_xmlRelaxNGInterleaveGroup = 0 as *mut xmlRelaxNGInterleaveGroup;
+    let mut def: *mut crate::src::relaxng::_xmlRelaxNGDefine = payload as xmlRelaxNGDefinePtr;
+    let mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'_> =
+        data as xmlRelaxNGParserCtxtPtr;
+    let mut cur: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut tmp: *mut *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefinePtr;
+    let mut partitions: *mut crate::src::relaxng::_xmlRelaxNGPartition =
+        0 as xmlRelaxNGPartitionPtr;
+    let mut groups: *mut *mut crate::src::relaxng::_xmlRelaxNGInterleaveGroup =
+        0 as *mut xmlRelaxNGInterleaveGroupPtr;
+    let mut group: *mut crate::src::relaxng::_xmlRelaxNGInterleaveGroup =
+        0 as *mut xmlRelaxNGInterleaveGroup;
     let mut i: i32 = 0;
     let mut j: i32 = 0;
     let mut ret: i32 = 0;
@@ -6394,84 +6128,75 @@ unsafe extern "C" fn xmlRelaxNGComputeInterleaves(
     let mut nbchild: i32 = 0 as i32;
     let mut is_mixed: i32 = 0 as i32;
     let mut is_determinist: i32 = 1 as i32;
-    if (*ctxt).nbErrors != 0 as i32 {
+    if (unsafe { (*ctxt).nbErrors }) != 0 as i32 {
         return;
     }
-    cur = (*def).content;
+    cur = unsafe { (*def).content };
     while !cur.is_null() {
         nbchild += 1;
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
     }
-    groups = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(
-        (nbchild as u64)
-            .wrapping_mul(
-                ::std::mem::size_of::<xmlRelaxNGInterleaveGroupPtr>() as u64,
-            ),
-    ) as *mut xmlRelaxNGInterleaveGroupPtr;
+    groups = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        (nbchild as u64).wrapping_mul(::std::mem::size_of::<xmlRelaxNGInterleaveGroupPtr>() as u64),
+    ) }) as *mut xmlRelaxNGInterleaveGroupPtr;
     if !groups.is_null() {
-        cur = (*def).content;
+        cur = unsafe { (*def).content };
         loop {
             if cur.is_null() {
                 current_block = 15768484401365413375;
                 break;
             }
-            let ref mut fresh167 = *groups.offset(nbgroups as isize);
-            *fresh167 = xmlMalloc
-                .expect(
-                    "non-null function pointer",
-                )(::std::mem::size_of::<xmlRelaxNGInterleaveGroup>() as u64)
-                as xmlRelaxNGInterleaveGroupPtr;
-            if (*groups.offset(nbgroups as isize)).is_null() {
+            let fresh167 = unsafe { &mut (*groups.offset(nbgroups as isize)) };
+            *fresh167 = (unsafe { xmlMalloc.expect("non-null function pointer")(::std::mem::size_of::<
+                xmlRelaxNGInterleaveGroup,
+            >() as u64) }) as xmlRelaxNGInterleaveGroupPtr;
+            if (unsafe { *groups.offset(nbgroups as isize) }).is_null() {
                 current_block = 12972366742276778717;
                 break;
             }
-            if (*cur).type_0 as i32 == XML_RELAXNG_TEXT as i32 {
+            if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_TEXT as i32 {
                 is_mixed += 1;
             }
-            let ref mut fresh168 = (**groups.offset(nbgroups as isize)).rule;
+            let fresh168 = unsafe { &mut ((**groups.offset(nbgroups as isize)).rule) };
             *fresh168 = cur;
-            let ref mut fresh169 = (**groups.offset(nbgroups as isize)).defs;
+            let fresh169 = unsafe { &mut ((**groups.offset(nbgroups as isize)).defs) };
             *fresh169 = xmlRelaxNGGetElements(ctxt, cur, 2 as i32);
-            let ref mut fresh170 = (**groups.offset(nbgroups as isize)).attrs;
+            let fresh170 = unsafe { &mut ((**groups.offset(nbgroups as isize)).attrs) };
             *fresh170 = xmlRelaxNGGetElements(ctxt, cur, 1 as i32);
             nbgroups += 1;
-            cur = (*cur).next;
+            cur = unsafe { (*cur).next };
         }
         match current_block {
-            12972366742276778717 => {}
+            12972366742276778717 => {},
             _ => {
-                partitions = xmlMalloc
-                    .expect(
-                        "non-null function pointer",
-                    )(::std::mem::size_of::<xmlRelaxNGPartition>() as u64)
-                    as xmlRelaxNGPartitionPtr;
+                partitions = (unsafe { xmlMalloc.expect("non-null function pointer")(::std::mem::size_of::<
+                    xmlRelaxNGPartition,
+                >()
+                    as u64) }) as xmlRelaxNGPartitionPtr;
                 if !partitions.is_null() {
-                    memset(
+                    (unsafe { memset(
                         partitions as *mut libc::c_void,
                         0 as i32,
                         ::std::mem::size_of::<xmlRelaxNGPartition>() as u64,
-                    );
-                    (*partitions).nbgroups = nbgroups;
-                    let ref mut fresh171 = (*partitions).triage;
+                    ) });
+                    (unsafe { (*partitions).nbgroups = nbgroups });
+                    let fresh171 = unsafe { &mut ((*partitions).triage) };
                     *fresh171 = xmlHashCreate(nbgroups);
                     i = 0 as i32;
                     while i < nbgroups {
-                        group = *groups.offset(i as isize);
+                        group = unsafe { *groups.offset(i as isize) };
                         j = i + 1 as i32;
                         while j < nbgroups {
-                            if !(*groups.offset(j as isize)).is_null() {
+                            if !(unsafe { *groups.offset(j as isize) }).is_null() {
                                 ret = xmlRelaxNGCompareElemDefLists(
                                     ctxt,
-                                    (*group).defs,
-                                    (**groups.offset(j as isize)).defs,
+                                    unsafe { (*group).defs },
+                                    unsafe { (**groups.offset(j as isize)).defs },
                                 );
                                 if ret == 0 as i32 {
                                     xmlRngPErr(
                                         ctxt,
-                                        (*def).node,
+                                        unsafe { (*def).node },
                                         XML_RNGP_ELEM_TEXT_CONFLICT as i32,
                                         b"Element or text conflicts in interleave\n\0" as *const u8
                                             as *const i8,
@@ -6481,13 +6206,13 @@ unsafe extern "C" fn xmlRelaxNGComputeInterleaves(
                                 }
                                 ret = xmlRelaxNGCompareElemDefLists(
                                     ctxt,
-                                    (*group).attrs,
-                                    (**groups.offset(j as isize)).attrs,
+                                    unsafe { (*group).attrs },
+                                    unsafe { (**groups.offset(j as isize)).attrs },
                                 );
                                 if ret == 0 as i32 {
                                     xmlRngPErr(
                                         ctxt,
-                                        (*def).node,
+                                        unsafe { (*def).node },
                                         XML_RNGP_ATTR_CONFLICT as i32,
                                         b"Attributes conflicts in interleave\n\0" as *const u8
                                             as *const i8,
@@ -6498,71 +6223,63 @@ unsafe extern "C" fn xmlRelaxNGComputeInterleaves(
                             }
                             j += 1;
                         }
-                        tmp = (*group).defs;
-                        if !tmp.is_null() && !(*tmp).is_null() {
-                            while !(*tmp).is_null() {
-                                if (**tmp).type_0 as i32
-                                    == XML_RELAXNG_TEXT as i32
-                                {
+                        tmp = unsafe { (*group).defs };
+                        if !tmp.is_null() && !(unsafe { *tmp }).is_null() {
+                            while !(unsafe { *tmp }).is_null() {
+                                if (unsafe { (**tmp).type_0 }) as i32 == XML_RELAXNG_TEXT as i32 {
                                     res = xmlHashAddEntry2(
-                                        (*partitions).triage,
-                                        b"#text\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
+                                        unsafe { (*partitions).triage },
+                                        b"#text\0" as *const u8 as *const i8 as *mut xmlChar,
                                         0 as *const xmlChar,
                                         (i + 1 as i32) as ptrdiff_t as *mut libc::c_void,
                                     );
                                     if res != 0 as i32 {
                                         is_determinist = -(1 as i32);
                                     }
-                                } else if (**tmp).type_0 as i32
-                                        == XML_RELAXNG_ELEMENT as i32
-                                        && !((**tmp).name).is_null()
-                                    {
-                                    if ((**tmp).ns).is_null()
-                                        || *((**tmp).ns).offset(0 as i32 as isize)
-                                            as i32 == 0 as i32
+                                } else if (unsafe { (**tmp).type_0 }) as i32 == XML_RELAXNG_ELEMENT as i32
+                                    && !(unsafe { (**tmp).name }).is_null()
+                                {
+                                    if (unsafe { (**tmp).ns }).is_null()
+                                        || (unsafe { *((**tmp).ns).offset(0 as i32 as isize) }) as i32
+                                            == 0 as i32
                                     {
                                         res = xmlHashAddEntry2(
-                                            (*partitions).triage,
-                                            (**tmp).name,
+                                            unsafe { (*partitions).triage },
+                                            unsafe { (**tmp).name },
                                             0 as *const xmlChar,
                                             (i + 1 as i32) as ptrdiff_t as *mut libc::c_void,
                                         );
                                     } else {
                                         res = xmlHashAddEntry2(
-                                            (*partitions).triage,
-                                            (**tmp).name,
-                                            (**tmp).ns,
+                                            unsafe { (*partitions).triage },
+                                            unsafe { (**tmp).name },
+                                            unsafe { (**tmp).ns },
                                             (i + 1 as i32) as ptrdiff_t as *mut libc::c_void,
                                         );
                                     }
                                     if res != 0 as i32 {
                                         is_determinist = -(1 as i32);
                                     }
-                                } else if (**tmp).type_0 as i32
-                                        == XML_RELAXNG_ELEMENT as i32
-                                    {
-                                    if ((**tmp).ns).is_null()
-                                        || *((**tmp).ns).offset(0 as i32 as isize)
-                                            as i32 == 0 as i32
+                                } else if (unsafe { (**tmp).type_0 }) as i32 == XML_RELAXNG_ELEMENT as i32 {
+                                    if (unsafe { (**tmp).ns }).is_null()
+                                        || (unsafe { *((**tmp).ns).offset(0 as i32 as isize) }) as i32
+                                            == 0 as i32
                                     {
                                         res = xmlHashAddEntry2(
-                                            (*partitions).triage,
-                                            b"#any\0" as *const u8 as *const i8
-                                                as *mut xmlChar,
+                                            unsafe { (*partitions).triage },
+                                            b"#any\0" as *const u8 as *const i8 as *mut xmlChar,
                                             0 as *const xmlChar,
                                             (i + 1 as i32) as ptrdiff_t as *mut libc::c_void,
                                         );
                                     } else {
                                         res = xmlHashAddEntry2(
-                                            (*partitions).triage,
-                                            b"#any\0" as *const u8 as *const i8
-                                                as *mut xmlChar,
-                                            (**tmp).ns,
+                                            unsafe { (*partitions).triage },
+                                            b"#any\0" as *const u8 as *const i8 as *mut xmlChar,
+                                            unsafe { (**tmp).ns },
                                             (i + 1 as i32) as ptrdiff_t as *mut libc::c_void,
                                         );
                                     }
-                                    if !((**tmp).nameClass).is_null() {
+                                    if !(unsafe { (**tmp).nameClass }).is_null() {
                                         is_determinist = 2 as i32;
                                     }
                                     if res != 0 as i32 {
@@ -6571,31 +6288,30 @@ unsafe extern "C" fn xmlRelaxNGComputeInterleaves(
                                 } else {
                                     is_determinist = -(1 as i32);
                                 }
-                                tmp = tmp.offset(1);
+                                tmp = unsafe { tmp.offset(1) };
                             }
                         } else {
                             is_determinist = 0 as i32;
                         }
                         i += 1;
                     }
-                    let ref mut fresh172 = (*partitions).groups;
+                    let fresh172 = unsafe { &mut ((*partitions).groups) };
                     *fresh172 = groups;
-                    let ref mut fresh173 = (*def).data;
+                    let fresh173 = unsafe { &mut ((*def).data) };
                     *fresh173 = partitions as *mut libc::c_void;
                     if is_mixed != 0 as i32 {
-                        let ref mut fresh174 = (*def).dflags;
-                        *fresh174 = (*fresh174 as i32
-                            | (1 as i32) << 3 as i32) as i16;
+                        let fresh174 = unsafe { &mut ((*def).dflags) };
+                        *fresh174 = (*fresh174 as i32 | (1 as i32) << 3 as i32) as i16;
                     }
                     if is_determinist == 1 as i32 {
-                        (*partitions).flags = 1 as i32;
+                        (unsafe { (*partitions).flags = 1 as i32 });
                     }
                     if is_determinist == 2 as i32 {
-                        (*partitions).flags = 1 as i32 | 2 as i32;
+                        (unsafe { (*partitions).flags = 1 as i32 | 2 as i32 });
                     }
                     return;
                 }
-            }
+            },
         }
     }
     xmlRngPErrMemory(
@@ -6605,59 +6321,54 @@ unsafe extern "C" fn xmlRelaxNGComputeInterleaves(
     if !groups.is_null() {
         i = 0 as i32;
         while i < nbgroups {
-            if !(*groups.offset(i as isize)).is_null() {
-                if !((**groups.offset(i as isize)).defs).is_null() {
-                    xmlFree
-                        .expect(
-                            "non-null function pointer",
-                        )((**groups.offset(i as isize)).defs as *mut libc::c_void);
+            if !(unsafe { *groups.offset(i as isize) }).is_null() {
+                if !(unsafe { (**groups.offset(i as isize)).defs }).is_null() {
+                    (unsafe { xmlFree.expect("non-null function pointer")(
+                        (**groups.offset(i as isize)).defs as *mut libc::c_void,
+                    ) });
                 }
-                xmlFree
-                    .expect(
-                        "non-null function pointer",
-                    )(*groups.offset(i as isize) as *mut libc::c_void);
+                (unsafe { xmlFree.expect("non-null function pointer")(
+                    *groups.offset(i as isize) as *mut libc::c_void
+                ) });
             }
             i += 1;
         }
-        xmlFree.expect("non-null function pointer")(groups as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(groups as *mut libc::c_void) });
     }
     xmlRelaxNGFreePartition(partitions);
 }
-unsafe extern "C" fn xmlRelaxNGParseInterleave<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
-) -> * mut crate::src::relaxng::_xmlRelaxNGDefine {
-    let mut def: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
-    let mut last: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
-    let mut cur: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    let mut child: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+extern "C" fn xmlRelaxNGParseInterleave<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
+) -> *mut crate::src::relaxng::_xmlRelaxNGDefine {
+    let mut def: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
+    let mut last: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
+    let mut cur: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut child: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
     def = xmlRelaxNGNewDefine(ctxt, node);
     if def.is_null() {
         return 0 as xmlRelaxNGDefinePtr;
     }
-    (*def).type_0 = XML_RELAXNG_INTERLEAVE;
-    if ((*ctxt).interleaves).is_null() {
-        let ref mut fresh175 = (*ctxt).interleaves;
+    (unsafe { (*def).type_0 = XML_RELAXNG_INTERLEAVE });
+    if (unsafe { (*ctxt).interleaves }).is_null() {
+        let fresh175 = unsafe { &mut ((*ctxt).interleaves) };
         *fresh175 = xmlHashCreate(10 as i32);
     }
-    if ((*ctxt).interleaves).is_null() {
-        xmlRngPErrMemory(
-            ctxt,
-            b"create interleaves\n\0" as *const u8 as *const i8,
-        );
+    if (unsafe { (*ctxt).interleaves }).is_null() {
+        xmlRngPErrMemory(ctxt, b"create interleaves\n\0" as *const u8 as *const i8);
     } else {
         let mut name: [i8; 32] = [0; 32];
-        let ref mut fresh176 = (*ctxt).nbInterleaves;
+        let fresh176 = unsafe { &mut ((*ctxt).nbInterleaves) };
         let mut fresh177 = *fresh176;
         *fresh176 = *fresh176 + 1;
-        snprintf(
+        (unsafe { snprintf(
             name.as_mut_ptr(),
             32 as i32 as u64,
             b"interleave%d\0" as *const u8 as *const i8,
             fresh177,
-        );
+        ) });
         if xmlHashAddEntry(
-            (*ctxt).interleaves,
+            unsafe { (*ctxt).interleaves },
             name.as_mut_ptr() as *mut xmlChar,
             def as *mut libc::c_void,
         ) < 0 as i32
@@ -6666,14 +6377,13 @@ unsafe extern "C" fn xmlRelaxNGParseInterleave<'a1>(
                 ctxt,
                 node,
                 XML_RNGP_INTERLEAVE_ADD as i32,
-                b"Failed to add %s to hash table\n\0" as *const u8
-                    as *const i8,
+                b"Failed to add %s to hash table\n\0" as *const u8 as *const i8,
                 name.as_mut_ptr() as *const xmlChar,
                 0 as *const xmlChar,
             );
         }
     }
-    child = (*node).children;
+    child = unsafe { (*node).children };
     if child.is_null() {
         xmlRngPErr(
             ctxt,
@@ -6685,44 +6395,46 @@ unsafe extern "C" fn xmlRelaxNGParseInterleave<'a1>(
         );
     }
     while !child.is_null() {
-        if !child.is_null() && !((*child).ns).is_null()
-            && (*child).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
+        if !child.is_null()
+            && !(unsafe { (*child).ns }).is_null()
+            && (unsafe { (*child).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+            && (unsafe { xmlStrEqual(
                 (*child).name,
                 b"element\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*child).ns).href, xmlRelaxNGNs) != 0
+            ) }) != 0
+            && (unsafe { xmlStrEqual((*(*child).ns).href, xmlRelaxNGNs) }) != 0
         {
             cur = xmlRelaxNGParseElement(ctxt, child);
         } else {
             cur = xmlRelaxNGParsePattern(ctxt, child);
         }
         if !cur.is_null() {
-            let ref mut fresh178 = (*cur).parent;
+            let fresh178 = unsafe { &mut ((*cur).parent) };
             *fresh178 = def;
             if last.is_null() {
                 last = cur;
-                let ref mut fresh179 = (*def).content;
+                let fresh179 = unsafe { &mut ((*def).content) };
                 *fresh179 = last;
             } else {
-                let ref mut fresh180 = (*last).next;
+                let fresh180 = unsafe { &mut ((*last).next) };
                 *fresh180 = cur;
                 last = cur;
             }
         }
-        child = (*child).next;
+        child = unsafe { (*child).next };
     }
     return def;
 }
-unsafe extern "C" fn xmlRelaxNGParseInclude<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlRelaxNGParseInclude<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
 ) -> i32 {
-    let mut incl: * mut crate::src::relaxng::_xmlRelaxNGInclude<'_> = (0 as * mut crate::src::relaxng::_xmlRelaxNGInclude<'_>);
-    let mut root: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut incl: *mut crate::src::relaxng::_xmlRelaxNGInclude<'_> =
+        0 as *mut crate::src::relaxng::_xmlRelaxNGInclude<'_>;
+    let mut root: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
     let mut ret: i32 = 0 as i32;
     let mut tmp: i32 = 0;
-    incl = (*node).psvi as xmlRelaxNGIncludePtr;
+    incl = (unsafe { (*node).psvi }) as xmlRelaxNGIncludePtr;
     if incl.is_null() {
         xmlRngPErr(
             ctxt,
@@ -6734,7 +6446,7 @@ unsafe extern "C" fn xmlRelaxNGParseInclude<'a1>(
         );
         return -(1 as i32);
     }
-    root = xmlDocGetRootElement((*incl).doc as *const xmlDoc);
+    root = unsafe { xmlDocGetRootElement((*incl).doc as *const xmlDoc) };
     if root.is_null() {
         xmlRngPErr(
             ctxt,
@@ -6746,49 +6458,48 @@ unsafe extern "C" fn xmlRelaxNGParseInclude<'a1>(
         );
         return -(1 as i32);
     }
-    if xmlStrEqual(
+    if (unsafe { xmlStrEqual(
         (*root).name,
         b"grammar\0" as *const u8 as *const i8 as *mut xmlChar,
-    ) == 0
+    ) }) == 0
     {
         xmlRngPErr(
             ctxt,
             node,
             XML_RNGP_GRAMMAR_MISSING as i32,
-            b"Include document root is not a grammar\n\0" as *const u8
-                as *const i8,
+            b"Include document root is not a grammar\n\0" as *const u8 as *const i8,
             0 as *const xmlChar,
             0 as *const xmlChar,
         );
         return -(1 as i32);
     }
-    if !((*root).children).is_null() {
-        tmp = xmlRelaxNGParseGrammarContent(ctxt, (*root).children);
+    if !(unsafe { (*root).children }).is_null() {
+        tmp = xmlRelaxNGParseGrammarContent(ctxt, unsafe { (*root).children });
         if tmp != 0 as i32 {
             ret = -(1 as i32);
         }
     }
-    if !((*node).children).is_null() {
-        tmp = xmlRelaxNGParseGrammarContent(ctxt, (*node).children);
+    if !(unsafe { (*node).children }).is_null() {
+        tmp = xmlRelaxNGParseGrammarContent(ctxt, unsafe { (*node).children });
         if tmp != 0 as i32 {
             ret = -(1 as i32);
         }
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGParseDefine<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlRelaxNGParseDefine<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
 ) -> i32 {
-    let mut name: * mut u8 = 0 as *mut xmlChar;
+    let mut name: *mut u8 = 0 as *mut xmlChar;
     let mut ret: i32 = 0 as i32;
     let mut tmp: i32 = 0;
-    let mut def: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    let mut olddefine: * const u8 = 0 as *const xmlChar;
-    name = xmlGetProp(
+    let mut def: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut olddefine: *const u8 = 0 as *const xmlChar;
+    name = unsafe { xmlGetProp(
         node as *const xmlNode,
         b"name\0" as *const u8 as *const i8 as *mut xmlChar,
-    );
+    ) };
     if name.is_null() {
         xmlRngPErr(
             ctxt,
@@ -6800,26 +6511,25 @@ unsafe extern "C" fn xmlRelaxNGParseDefine<'a1>(
         );
     } else {
         xmlRelaxNGNormExtSpace(name);
-        if xmlValidateNCName(name, 0 as i32) != 0 {
+        if (unsafe { xmlValidateNCName(name, 0 as i32) }) != 0 {
             xmlRngPErr(
                 ctxt,
                 node,
                 XML_RNGP_INVALID_DEFINE_NAME as i32,
-                b"define name '%s' is not an NCName\n\0" as *const u8
-                    as *const i8,
+                b"define name '%s' is not an NCName\n\0" as *const u8 as *const i8,
                 name,
                 0 as *const xmlChar,
             );
         }
         def = xmlRelaxNGNewDefine(ctxt, node);
         if def.is_null() {
-            xmlFree.expect("non-null function pointer")(name as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(name as *mut libc::c_void) });
             return -(1 as i32);
         }
-        (*def).type_0 = XML_RELAXNG_DEF;
-        let ref mut fresh181 = (*def).name;
+        (unsafe { (*def).type_0 = XML_RELAXNG_DEF });
+        let fresh181 = unsafe { &mut ((*def).name) };
         *fresh181 = name;
-        if ((*node).children).is_null() {
+        if (unsafe { (*node).children }).is_null() {
             xmlRngPErr(
                 ctxt,
                 node,
@@ -6829,59 +6539,49 @@ unsafe extern "C" fn xmlRelaxNGParseDefine<'a1>(
                 0 as *const xmlChar,
             );
         } else {
-            olddefine = (*ctxt).define;
-            let ref mut fresh182 = (*ctxt).define;
+            olddefine = unsafe { (*ctxt).define };
+            let fresh182 = unsafe { &mut ((*ctxt).define) };
             *fresh182 = name;
-            let ref mut fresh183 = (*def).content;
-            *fresh183 = xmlRelaxNGParsePatterns(
-                ctxt,
-                (*node).children,
-                0 as i32,
-            );
-            let ref mut fresh184 = (*ctxt).define;
+            let fresh183 = unsafe { &mut ((*def).content) };
+            *fresh183 = xmlRelaxNGParsePatterns(ctxt, unsafe { (*node).children }, 0 as i32);
+            let fresh184 = unsafe { &mut ((*ctxt).define) };
             *fresh184 = olddefine;
         }
-        if ((*(*ctxt).grammar).defs).is_null() {
-            let ref mut fresh185 = (*(*ctxt).grammar).defs;
+        if (unsafe { (*(*ctxt).grammar).defs }).is_null() {
+            let fresh185 = unsafe { &mut ((*(*ctxt).grammar).defs) };
             *fresh185 = xmlHashCreate(10 as i32);
         }
-        if ((*(*ctxt).grammar).defs).is_null() {
+        if (unsafe { (*(*ctxt).grammar).defs }).is_null() {
             xmlRngPErr(
                 ctxt,
                 node,
                 XML_RNGP_DEFINE_CREATE_FAILED as i32,
-                b"Could not create definition hash\n\0" as *const u8
-                    as *const i8,
+                b"Could not create definition hash\n\0" as *const u8 as *const i8,
                 0 as *const xmlChar,
                 0 as *const xmlChar,
             );
             ret = -(1 as i32);
         } else {
-            tmp = xmlHashAddEntry(
-                (*(*ctxt).grammar).defs,
-                name,
-                def as *mut libc::c_void,
-            );
+            tmp = xmlHashAddEntry(unsafe { (*(*ctxt).grammar).defs }, name, def as *mut libc::c_void);
             if tmp < 0 as i32 {
-                let mut prev: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-                prev = xmlHashLookup((*(*ctxt).grammar).defs, name)
-                    as xmlRelaxNGDefinePtr;
+                let mut prev: *mut crate::src::relaxng::_xmlRelaxNGDefine =
+                    0 as *mut xmlRelaxNGDefine;
+                prev = xmlHashLookup(unsafe { (*(*ctxt).grammar).defs }, name) as xmlRelaxNGDefinePtr;
                 if prev.is_null() {
                     xmlRngPErr(
                         ctxt,
                         node,
                         XML_RNGP_DEFINE_CREATE_FAILED as i32,
-                        b"Internal error on define aggregation of %s\n\0" as *const u8
-                            as *const i8,
+                        b"Internal error on define aggregation of %s\n\0" as *const u8 as *const i8,
                         name,
                         0 as *const xmlChar,
                     );
                     ret = -(1 as i32);
                 } else {
-                    while !((*prev).nextHash).is_null() {
-                        prev = (*prev).nextHash;
+                    while !(unsafe { (*prev).nextHash }).is_null() {
+                        prev = unsafe { (*prev).nextHash };
                     }
-                    let ref mut fresh186 = (*prev).nextHash;
+                    let fresh186 = unsafe { &mut ((*prev).nextHash) };
                     *fresh186 = def;
                 }
             }
@@ -6889,31 +6589,30 @@ unsafe extern "C" fn xmlRelaxNGParseDefine<'a1>(
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGParseImportRef(
-    mut payload: * mut core::ffi::c_void,
-    mut data: * mut core::ffi::c_void,
-    mut name: * const u8,
+extern "C" fn xmlRelaxNGParseImportRef(
+    mut payload: *mut core::ffi::c_void,
+    mut data: *mut core::ffi::c_void,
+    mut name: *const u8,
 ) {
-    let mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'_> = data as xmlRelaxNGParserCtxtPtr;
-    let mut def: * mut crate::src::relaxng::_xmlRelaxNGDefine = payload as xmlRelaxNGDefinePtr;
+    let mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'_> =
+        data as xmlRelaxNGParserCtxtPtr;
+    let mut def: *mut crate::src::relaxng::_xmlRelaxNGDefine = payload as xmlRelaxNGDefinePtr;
     let mut tmp: i32 = 0;
-    let ref mut fresh187 = (*def).dflags;
-    *fresh187 = (*fresh187 as i32 | (1 as i32) << 8 as i32)
-        as i16;
-    tmp = xmlHashAddEntry((*(*ctxt).grammar).refs, name, def as *mut libc::c_void);
+    let fresh187 = unsafe { &mut ((*def).dflags) };
+    *fresh187 = (*fresh187 as i32 | (1 as i32) << 8 as i32) as i16;
+    tmp = xmlHashAddEntry(unsafe { (*(*ctxt).grammar).refs }, name, def as *mut libc::c_void);
     if tmp < 0 as i32 {
-        let mut prev: * mut crate::src::relaxng::_xmlRelaxNGDefine = (0 as * mut crate::src::relaxng::_xmlRelaxNGDefine);
-        prev = xmlHashLookup((*(*ctxt).grammar).refs, (*def).name)
-            as xmlRelaxNGDefinePtr;
+        let mut prev: *mut crate::src::relaxng::_xmlRelaxNGDefine =
+            0 as *mut crate::src::relaxng::_xmlRelaxNGDefine;
+        prev = xmlHashLookup(unsafe { (*(*ctxt).grammar).refs }, unsafe { (*def).name }) as xmlRelaxNGDefinePtr;
         if prev.is_null() {
-            if !((*def).name).is_null() {
+            if !(unsafe { (*def).name }).is_null() {
                 xmlRngPErr(
                     ctxt,
                     0 as xmlNodePtr,
                     XML_RNGP_REF_CREATE_FAILED as i32,
-                    b"Error refs definitions '%s'\n\0" as *const u8
-                        as *const i8,
-                    (*def).name,
+                    b"Error refs definitions '%s'\n\0" as *const u8 as *const i8,
+                    unsafe { (*def).name },
                     0 as *const xmlChar,
                 );
             } else {
@@ -6927,28 +6626,28 @@ unsafe extern "C" fn xmlRelaxNGParseImportRef(
                 );
             }
         } else {
-            let ref mut fresh188 = (*def).nextHash;
-            *fresh188 = (*prev).nextHash;
-            let ref mut fresh189 = (*prev).nextHash;
+            let fresh188 = unsafe { &mut ((*def).nextHash) };
+            *fresh188 = unsafe { (*prev).nextHash };
+            let fresh189 = unsafe { &mut ((*prev).nextHash) };
             *fresh189 = def;
         }
     }
 }
-unsafe extern "C" fn xmlRelaxNGParseImportRefs<'a1, 'a2>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut grammar: * mut crate::src::relaxng::_xmlRelaxNGGrammar<'a2>,
+extern "C" fn xmlRelaxNGParseImportRefs<'a1, 'a2>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut grammar: *mut crate::src::relaxng::_xmlRelaxNGGrammar<'a2>,
 ) -> i32 {
-    if ctxt.is_null() || grammar.is_null() || ((*ctxt).grammar).is_null() {
+    if ctxt.is_null() || grammar.is_null() || (unsafe { (*ctxt).grammar }).is_null() {
         return -(1 as i32);
     }
-    if ((*grammar).refs).is_null() {
+    if (unsafe { (*grammar).refs }).is_null() {
         return 0 as i32;
     }
-    if ((*(*ctxt).grammar).refs).is_null() {
-        let ref mut fresh190 = (*(*ctxt).grammar).refs;
+    if (unsafe { (*(*ctxt).grammar).refs }).is_null() {
+        let fresh190 = unsafe { &mut ((*(*ctxt).grammar).refs) };
         *fresh190 = xmlHashCreate(10 as i32);
     }
-    if ((*(*ctxt).grammar).refs).is_null() {
+    if (unsafe { (*(*ctxt).grammar).refs }).is_null() {
         xmlRngPErr(
             ctxt,
             0 as xmlNodePtr,
@@ -6960,143 +6659,134 @@ unsafe extern "C" fn xmlRelaxNGParseImportRefs<'a1, 'a2>(
         return -(1 as i32);
     }
     xmlHashScan(
-        (*grammar).refs,
-        Some(
-            xmlRelaxNGParseImportRef,
-        ),
+        unsafe { (*grammar).refs },
+        Some(xmlRelaxNGParseImportRef),
         ctxt as *mut libc::c_void,
     );
     return 0 as i32;
 }
-unsafe extern "C" fn xmlRelaxNGProcessExternalRef<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
-) -> * mut crate::src::relaxng::_xmlRelaxNGDefine {
-    let mut docu: * mut crate::src::relaxng::_xmlRelaxNGDocument<'_> = (0 as * mut crate::src::relaxng::_xmlRelaxNGDocument<'_>);
-    let mut root: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut tmp: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut ns: * mut u8 = 0 as *mut xmlChar;
+extern "C" fn xmlRelaxNGProcessExternalRef<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
+) -> *mut crate::src::relaxng::_xmlRelaxNGDefine {
+    let mut docu: *mut crate::src::relaxng::_xmlRelaxNGDocument<'_> =
+        0 as *mut crate::src::relaxng::_xmlRelaxNGDocument<'_>;
+    let mut root: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut tmp: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut ns: *mut u8 = 0 as *mut xmlChar;
     let mut newNs: i32 = 0 as i32;
     let mut oldflags: i32 = 0;
-    let mut def: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    docu = (*node).psvi as xmlRelaxNGDocumentPtr;
+    let mut def: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    docu = (unsafe { (*node).psvi }) as xmlRelaxNGDocumentPtr;
     if !docu.is_null() {
         def = xmlRelaxNGNewDefine(ctxt, node);
         if def.is_null() {
             return 0 as xmlRelaxNGDefinePtr;
         }
-        (*def).type_0 = XML_RELAXNG_EXTERNALREF;
-        if ((*docu).content).is_null() {
-            root = xmlDocGetRootElement((*docu).doc as *const xmlDoc);
+        (unsafe { (*def).type_0 = XML_RELAXNG_EXTERNALREF });
+        if (unsafe { (*docu).content }).is_null() {
+            root = unsafe { xmlDocGetRootElement((*docu).doc as *const xmlDoc) };
             if root.is_null() {
                 xmlRngPErr(
                     ctxt,
                     node,
                     XML_RNGP_EXTERNALREF_EMTPY as i32,
-                    b"xmlRelaxNGParse: %s is empty\n\0" as *const u8
-                        as *const i8,
-                    (*ctxt).URL,
+                    b"xmlRelaxNGParse: %s is empty\n\0" as *const u8 as *const i8,
+                    unsafe { (*ctxt).URL },
                     0 as *const xmlChar,
                 );
                 return 0 as xmlRelaxNGDefinePtr;
             }
-            ns = xmlGetProp(
+            ns = unsafe { xmlGetProp(
                 root as *const xmlNode,
                 b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
-            );
+            ) };
             if ns.is_null() {
                 tmp = node;
-                while !tmp.is_null()
-                    && (*tmp).type_0 as u32
-                        == XML_ELEMENT_NODE as i32 as u32
-                {
-                    ns = xmlGetProp(
+                while !tmp.is_null() && (unsafe { (*tmp).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32 {
+                    ns = unsafe { xmlGetProp(
                         tmp as *const xmlNode,
                         b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
-                    );
+                    ) };
                     if !ns.is_null() {
                         break;
                     }
-                    tmp = (*tmp).parent;
+                    tmp = unsafe { (*tmp).parent };
                 }
                 if !ns.is_null() {
-                    xmlSetProp(
-                        root,
-                        b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
-                        ns,
-                    );
+                    (unsafe { xmlSetProp(root, b"ns\0" as *const u8 as *const i8 as *mut xmlChar, ns) });
                     newNs = 1 as i32;
-                    xmlFree.expect("non-null function pointer")(ns as *mut libc::c_void);
+                    (unsafe { xmlFree.expect("non-null function pointer")(ns as *mut libc::c_void) });
                 }
             } else {
-                xmlFree.expect("non-null function pointer")(ns as *mut libc::c_void);
+                (unsafe { xmlFree.expect("non-null function pointer")(ns as *mut libc::c_void) });
             }
-            oldflags = (*ctxt).flags;
-            (*ctxt).flags |= (1 as i32) << 7 as i32;
-            let ref mut fresh191 = (*docu).schema;
+            oldflags = unsafe { (*ctxt).flags };
+            (unsafe { (*ctxt).flags |= (1 as i32) << 7 as i32 });
+            let fresh191 = unsafe { &mut ((*docu).schema) };
             *fresh191 = xmlRelaxNGParseDocument(ctxt, root);
-            (*ctxt).flags = oldflags;
-            if !((*docu).schema).is_null() && !((*(*docu).schema).topgrammar).is_null() {
-                let ref mut fresh192 = (*docu).content;
-                *fresh192 = (*(*(*docu).schema).topgrammar).start;
-                if !((*(*(*docu).schema).topgrammar).refs).is_null() {
-                    xmlRelaxNGParseImportRefs(ctxt, (*(*docu).schema).topgrammar);
+            (unsafe { (*ctxt).flags = oldflags });
+            if !(unsafe { (*docu).schema }).is_null() && !(unsafe { (*(*docu).schema).topgrammar }).is_null() {
+                let fresh192 = unsafe { &mut ((*docu).content) };
+                *fresh192 = unsafe { (*(*(*docu).schema).topgrammar).start };
+                if !(unsafe { (*(*(*docu).schema).topgrammar).refs }).is_null() {
+                    xmlRelaxNGParseImportRefs(ctxt, unsafe { (*(*docu).schema).topgrammar });
                 }
             }
             if newNs == 1 as i32 {
-                xmlUnsetProp(
-                    root,
-                    b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
-                );
+                (unsafe { xmlUnsetProp(root, b"ns\0" as *const u8 as *const i8 as *mut xmlChar) });
             }
         }
-        let ref mut fresh193 = (*def).content;
-        *fresh193 = (*docu).content;
+        let fresh193 = unsafe { &mut ((*def).content) };
+        *fresh193 = unsafe { (*docu).content };
     } else {
         def = 0 as xmlRelaxNGDefinePtr;
     }
     return def;
 }
-unsafe extern "C" fn xmlRelaxNGParsePattern<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
-) -> * mut crate::src::relaxng::_xmlRelaxNGDefine {
-    let mut def: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
+extern "C" fn xmlRelaxNGParsePattern<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
+) -> *mut crate::src::relaxng::_xmlRelaxNGDefine {
+    let mut def: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
     if node.is_null() {
         return 0 as xmlRelaxNGDefinePtr;
     }
-    if !node.is_null() && !((*node).ns).is_null()
-        && (*node).type_0 as u32
-            == XML_ELEMENT_NODE as i32 as u32
-        && xmlStrEqual(
+    if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
             (*node).name,
             b"element\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
     {
         def = xmlRelaxNGParseElement(ctxt, node);
-    } else if !node.is_null() && !((*node).ns).is_null()
-            && (*node).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
-                (*node).name,
-                b"attribute\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
-        {
+    } else if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
+            (*node).name,
+            b"attribute\0" as *const u8 as *const i8 as *const xmlChar,
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
+    {
         def = xmlRelaxNGParseAttribute(ctxt, node);
-    } else if !node.is_null() && !((*node).ns).is_null()
-            && (*node).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
-                (*node).name,
-                b"empty\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
-        {
+    } else if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
+            (*node).name,
+            b"empty\0" as *const u8 as *const i8 as *const xmlChar,
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
+    {
         def = xmlRelaxNGNewDefine(ctxt, node);
         if def.is_null() {
             return 0 as xmlRelaxNGDefinePtr;
         }
-        (*def).type_0 = XML_RELAXNG_EMPTY;
-        if !((*node).children).is_null() {
+        (unsafe { (*def).type_0 = XML_RELAXNG_EMPTY });
+        if !(unsafe { (*node).children }).is_null() {
             xmlRngPErr(
                 ctxt,
                 node,
@@ -7106,20 +6796,21 @@ unsafe extern "C" fn xmlRelaxNGParsePattern<'a1>(
                 0 as *const xmlChar,
             );
         }
-    } else if !node.is_null() && !((*node).ns).is_null()
-            && (*node).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
-                (*node).name,
-                b"text\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
-        {
+    } else if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
+            (*node).name,
+            b"text\0" as *const u8 as *const i8 as *const xmlChar,
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
+    {
         def = xmlRelaxNGNewDefine(ctxt, node);
         if def.is_null() {
             return 0 as xmlRelaxNGDefinePtr;
         }
-        (*def).type_0 = XML_RELAXNG_TEXT;
-        if !((*node).children).is_null() {
+        (unsafe { (*def).type_0 = XML_RELAXNG_TEXT });
+        if !(unsafe { (*node).children }).is_null() {
             xmlRngPErr(
                 ctxt,
                 node,
@@ -7129,175 +6820,161 @@ unsafe extern "C" fn xmlRelaxNGParsePattern<'a1>(
                 0 as *const xmlChar,
             );
         }
-    } else if !node.is_null() && !((*node).ns).is_null()
-            && (*node).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
-                (*node).name,
-                b"zeroOrMore\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
-        {
+    } else if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
+            (*node).name,
+            b"zeroOrMore\0" as *const u8 as *const i8 as *const xmlChar,
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
+    {
         def = xmlRelaxNGNewDefine(ctxt, node);
         if def.is_null() {
             return 0 as xmlRelaxNGDefinePtr;
         }
-        (*def).type_0 = XML_RELAXNG_ZEROORMORE;
-        if ((*node).children).is_null() {
+        (unsafe { (*def).type_0 = XML_RELAXNG_ZEROORMORE });
+        if (unsafe { (*node).children }).is_null() {
             xmlRngPErr(
                 ctxt,
                 node,
                 XML_RNGP_EMPTY_CONSTRUCT as i32,
                 b"Element %s is empty\n\0" as *const u8 as *const i8,
-                (*node).name,
+                unsafe { (*node).name },
                 0 as *const xmlChar,
             );
         } else {
-            let ref mut fresh194 = (*def).content;
-            *fresh194 = xmlRelaxNGParsePatterns(
-                ctxt,
-                (*node).children,
-                1 as i32,
-            );
+            let fresh194 = unsafe { &mut ((*def).content) };
+            *fresh194 = xmlRelaxNGParsePatterns(ctxt, unsafe { (*node).children }, 1 as i32);
         }
-    } else if !node.is_null() && !((*node).ns).is_null()
-            && (*node).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
-                (*node).name,
-                b"oneOrMore\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
-        {
+    } else if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
+            (*node).name,
+            b"oneOrMore\0" as *const u8 as *const i8 as *const xmlChar,
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
+    {
         def = xmlRelaxNGNewDefine(ctxt, node);
         if def.is_null() {
             return 0 as xmlRelaxNGDefinePtr;
         }
-        (*def).type_0 = XML_RELAXNG_ONEORMORE;
-        if ((*node).children).is_null() {
+        (unsafe { (*def).type_0 = XML_RELAXNG_ONEORMORE });
+        if (unsafe { (*node).children }).is_null() {
             xmlRngPErr(
                 ctxt,
                 node,
                 XML_RNGP_EMPTY_CONSTRUCT as i32,
                 b"Element %s is empty\n\0" as *const u8 as *const i8,
-                (*node).name,
+                unsafe { (*node).name },
                 0 as *const xmlChar,
             );
         } else {
-            let ref mut fresh195 = (*def).content;
-            *fresh195 = xmlRelaxNGParsePatterns(
-                ctxt,
-                (*node).children,
-                1 as i32,
-            );
+            let fresh195 = unsafe { &mut ((*def).content) };
+            *fresh195 = xmlRelaxNGParsePatterns(ctxt, unsafe { (*node).children }, 1 as i32);
         }
-    } else if !node.is_null() && !((*node).ns).is_null()
-            && (*node).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
-                (*node).name,
-                b"optional\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
-        {
+    } else if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
+            (*node).name,
+            b"optional\0" as *const u8 as *const i8 as *const xmlChar,
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
+    {
         def = xmlRelaxNGNewDefine(ctxt, node);
         if def.is_null() {
             return 0 as xmlRelaxNGDefinePtr;
         }
-        (*def).type_0 = XML_RELAXNG_OPTIONAL;
-        if ((*node).children).is_null() {
+        (unsafe { (*def).type_0 = XML_RELAXNG_OPTIONAL });
+        if (unsafe { (*node).children }).is_null() {
             xmlRngPErr(
                 ctxt,
                 node,
                 XML_RNGP_EMPTY_CONSTRUCT as i32,
                 b"Element %s is empty\n\0" as *const u8 as *const i8,
-                (*node).name,
+                unsafe { (*node).name },
                 0 as *const xmlChar,
             );
         } else {
-            let ref mut fresh196 = (*def).content;
-            *fresh196 = xmlRelaxNGParsePatterns(
-                ctxt,
-                (*node).children,
-                1 as i32,
-            );
+            let fresh196 = unsafe { &mut ((*def).content) };
+            *fresh196 = xmlRelaxNGParsePatterns(ctxt, unsafe { (*node).children }, 1 as i32);
         }
-    } else if !node.is_null() && !((*node).ns).is_null()
-            && (*node).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
-                (*node).name,
-                b"choice\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
-        {
+    } else if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
+            (*node).name,
+            b"choice\0" as *const u8 as *const i8 as *const xmlChar,
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
+    {
         def = xmlRelaxNGNewDefine(ctxt, node);
         if def.is_null() {
             return 0 as xmlRelaxNGDefinePtr;
         }
-        (*def).type_0 = XML_RELAXNG_CHOICE;
-        if ((*node).children).is_null() {
+        (unsafe { (*def).type_0 = XML_RELAXNG_CHOICE });
+        if (unsafe { (*node).children }).is_null() {
             xmlRngPErr(
                 ctxt,
                 node,
                 XML_RNGP_EMPTY_CONSTRUCT as i32,
                 b"Element %s is empty\n\0" as *const u8 as *const i8,
-                (*node).name,
+                unsafe { (*node).name },
                 0 as *const xmlChar,
             );
         } else {
-            let ref mut fresh197 = (*def).content;
-            *fresh197 = xmlRelaxNGParsePatterns(
-                ctxt,
-                (*node).children,
-                0 as i32,
-            );
+            let fresh197 = unsafe { &mut ((*def).content) };
+            *fresh197 = xmlRelaxNGParsePatterns(ctxt, unsafe { (*node).children }, 0 as i32);
         }
-    } else if !node.is_null() && !((*node).ns).is_null()
-            && (*node).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
-                (*node).name,
-                b"group\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
-        {
+    } else if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
+            (*node).name,
+            b"group\0" as *const u8 as *const i8 as *const xmlChar,
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
+    {
         def = xmlRelaxNGNewDefine(ctxt, node);
         if def.is_null() {
             return 0 as xmlRelaxNGDefinePtr;
         }
-        (*def).type_0 = XML_RELAXNG_GROUP;
-        if ((*node).children).is_null() {
+        (unsafe { (*def).type_0 = XML_RELAXNG_GROUP });
+        if (unsafe { (*node).children }).is_null() {
             xmlRngPErr(
                 ctxt,
                 node,
                 XML_RNGP_EMPTY_CONSTRUCT as i32,
                 b"Element %s is empty\n\0" as *const u8 as *const i8,
-                (*node).name,
+                unsafe { (*node).name },
                 0 as *const xmlChar,
             );
         } else {
-            let ref mut fresh198 = (*def).content;
-            *fresh198 = xmlRelaxNGParsePatterns(
-                ctxt,
-                (*node).children,
-                0 as i32,
-            );
+            let fresh198 = unsafe { &mut ((*def).content) };
+            *fresh198 = xmlRelaxNGParsePatterns(ctxt, unsafe { (*node).children }, 0 as i32);
         }
-    } else if !node.is_null() && !((*node).ns).is_null()
-            && (*node).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
-                (*node).name,
-                b"ref\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
-        {
+    } else if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
+            (*node).name,
+            b"ref\0" as *const u8 as *const i8 as *const xmlChar,
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
+    {
         def = xmlRelaxNGNewDefine(ctxt, node);
         if def.is_null() {
             return 0 as xmlRelaxNGDefinePtr;
         }
-        (*def).type_0 = XML_RELAXNG_REF;
-        let ref mut fresh199 = (*def).name;
-        *fresh199 = xmlGetProp(
+        (unsafe { (*def).type_0 = XML_RELAXNG_REF });
+        let fresh199 = unsafe { &mut ((*def).name) };
+        *fresh199 = unsafe { xmlGetProp(
             node as *const xmlNode,
             b"name\0" as *const u8 as *const i8 as *mut xmlChar,
-        );
-        if ((*def).name).is_null() {
+        ) };
+        if (unsafe { (*def).name }).is_null() {
             xmlRngPErr(
                 ctxt,
                 node,
@@ -7307,20 +6984,19 @@ unsafe extern "C" fn xmlRelaxNGParsePattern<'a1>(
                 0 as *const xmlChar,
             );
         } else {
-            xmlRelaxNGNormExtSpace((*def).name);
-            if xmlValidateNCName((*def).name, 0 as i32) != 0 {
+            xmlRelaxNGNormExtSpace(unsafe { (*def).name });
+            if (unsafe { xmlValidateNCName((*def).name, 0 as i32) }) != 0 {
                 xmlRngPErr(
                     ctxt,
                     node,
                     XML_RNGP_REF_NAME_INVALID as i32,
-                    b"ref name '%s' is not an NCName\n\0" as *const u8
-                        as *const i8,
-                    (*def).name,
+                    b"ref name '%s' is not an NCName\n\0" as *const u8 as *const i8,
+                    unsafe { (*def).name },
                     0 as *const xmlChar,
                 );
             }
         }
-        if !((*node).children).is_null() {
+        if !(unsafe { (*node).children }).is_null() {
             xmlRngPErr(
                 ctxt,
                 node,
@@ -7330,17 +7006,16 @@ unsafe extern "C" fn xmlRelaxNGParsePattern<'a1>(
                 0 as *const xmlChar,
             );
         }
-        if ((*(*ctxt).grammar).refs).is_null() {
-            let ref mut fresh200 = (*(*ctxt).grammar).refs;
+        if (unsafe { (*(*ctxt).grammar).refs }).is_null() {
+            let fresh200 = unsafe { &mut ((*(*ctxt).grammar).refs) };
             *fresh200 = xmlHashCreate(10 as i32);
         }
-        if ((*(*ctxt).grammar).refs).is_null() {
+        if (unsafe { (*(*ctxt).grammar).refs }).is_null() {
             xmlRngPErr(
                 ctxt,
                 node,
                 XML_RNGP_REF_CREATE_FAILED as i32,
-                b"Could not create references hash\n\0" as *const u8
-                    as *const i8,
+                b"Could not create references hash\n\0" as *const u8 as *const i8,
                 0 as *const xmlChar,
                 0 as *const xmlChar,
             );
@@ -7348,23 +7023,22 @@ unsafe extern "C" fn xmlRelaxNGParsePattern<'a1>(
         } else {
             let mut tmp: i32 = 0;
             tmp = xmlHashAddEntry(
-                (*(*ctxt).grammar).refs,
-                (*def).name,
+                unsafe { (*(*ctxt).grammar).refs },
+                unsafe { (*def).name },
                 def as *mut libc::c_void,
             );
             if tmp < 0 as i32 {
-                let mut prev: * mut crate::src::relaxng::_xmlRelaxNGDefine = (0 as * mut crate::src::relaxng::_xmlRelaxNGDefine);
-                prev = xmlHashLookup((*(*ctxt).grammar).refs, (*def).name)
-                    as xmlRelaxNGDefinePtr;
+                let mut prev: *mut crate::src::relaxng::_xmlRelaxNGDefine =
+                    0 as *mut crate::src::relaxng::_xmlRelaxNGDefine;
+                prev = xmlHashLookup(unsafe { (*(*ctxt).grammar).refs }, unsafe { (*def).name }) as xmlRelaxNGDefinePtr;
                 if prev.is_null() {
-                    if !((*def).name).is_null() {
+                    if !(unsafe { (*def).name }).is_null() {
                         xmlRngPErr(
                             ctxt,
                             node,
                             XML_RNGP_REF_CREATE_FAILED as i32,
-                            b"Error refs definitions '%s'\n\0" as *const u8
-                                as *const i8,
-                            (*def).name,
+                            b"Error refs definitions '%s'\n\0" as *const u8 as *const i8,
+                            unsafe { (*def).name },
                             0 as *const xmlChar,
                         );
                     } else {
@@ -7372,153 +7046,156 @@ unsafe extern "C" fn xmlRelaxNGParsePattern<'a1>(
                             ctxt,
                             node,
                             XML_RNGP_REF_CREATE_FAILED as i32,
-                            b"Error refs definitions\n\0" as *const u8
-                                as *const i8,
+                            b"Error refs definitions\n\0" as *const u8 as *const i8,
                             0 as *const xmlChar,
                             0 as *const xmlChar,
                         );
                     }
                     def = 0 as xmlRelaxNGDefinePtr;
                 } else {
-                    let ref mut fresh201 = (*def).nextHash;
-                    *fresh201 = (*prev).nextHash;
-                    let ref mut fresh202 = (*prev).nextHash;
+                    let fresh201 = unsafe { &mut ((*def).nextHash) };
+                    *fresh201 = unsafe { (*prev).nextHash };
+                    let fresh202 = unsafe { &mut ((*prev).nextHash) };
                     *fresh202 = def;
                 }
             }
         }
-    } else if !node.is_null() && !((*node).ns).is_null()
-            && (*node).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
-                (*node).name,
-                b"data\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
-        {
+    } else if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
+            (*node).name,
+            b"data\0" as *const u8 as *const i8 as *const xmlChar,
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
+    {
         def = xmlRelaxNGParseData(ctxt, node);
-    } else if !node.is_null() && !((*node).ns).is_null()
-            && (*node).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
-                (*node).name,
-                b"value\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
-        {
+    } else if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
+            (*node).name,
+            b"value\0" as *const u8 as *const i8 as *const xmlChar,
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
+    {
         def = xmlRelaxNGParseValue(ctxt, node);
-    } else if !node.is_null() && !((*node).ns).is_null()
-            && (*node).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
-                (*node).name,
-                b"list\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
-        {
+    } else if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
+            (*node).name,
+            b"list\0" as *const u8 as *const i8 as *const xmlChar,
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
+    {
         def = xmlRelaxNGNewDefine(ctxt, node);
         if def.is_null() {
             return 0 as xmlRelaxNGDefinePtr;
         }
-        (*def).type_0 = XML_RELAXNG_LIST;
-        if ((*node).children).is_null() {
+        (unsafe { (*def).type_0 = XML_RELAXNG_LIST });
+        if (unsafe { (*node).children }).is_null() {
             xmlRngPErr(
                 ctxt,
                 node,
                 XML_RNGP_EMPTY_CONSTRUCT as i32,
                 b"Element %s is empty\n\0" as *const u8 as *const i8,
-                (*node).name,
+                unsafe { (*node).name },
                 0 as *const xmlChar,
             );
         } else {
-            let ref mut fresh203 = (*def).content;
-            *fresh203 = xmlRelaxNGParsePatterns(
-                ctxt,
-                (*node).children,
-                0 as i32,
-            );
+            let fresh203 = unsafe { &mut ((*def).content) };
+            *fresh203 = xmlRelaxNGParsePatterns(ctxt, unsafe { (*node).children }, 0 as i32);
         }
-    } else if !node.is_null() && !((*node).ns).is_null()
-            && (*node).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
-                (*node).name,
-                b"interleave\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
-        {
+    } else if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
+            (*node).name,
+            b"interleave\0" as *const u8 as *const i8 as *const xmlChar,
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
+    {
         def = xmlRelaxNGParseInterleave(ctxt, node);
-    } else if !node.is_null() && !((*node).ns).is_null()
-            && (*node).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
-                (*node).name,
-                b"externalRef\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
-        {
+    } else if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
+            (*node).name,
+            b"externalRef\0" as *const u8 as *const i8 as *const xmlChar,
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
+    {
         def = xmlRelaxNGProcessExternalRef(ctxt, node);
-    } else if !node.is_null() && !((*node).ns).is_null()
-            && (*node).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
-                (*node).name,
-                b"notAllowed\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
-        {
+    } else if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
+            (*node).name,
+            b"notAllowed\0" as *const u8 as *const i8 as *const xmlChar,
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
+    {
         def = xmlRelaxNGNewDefine(ctxt, node);
         if def.is_null() {
             return 0 as xmlRelaxNGDefinePtr;
         }
-        (*def).type_0 = XML_RELAXNG_NOT_ALLOWED;
-        if !((*node).children).is_null() {
+        (unsafe { (*def).type_0 = XML_RELAXNG_NOT_ALLOWED });
+        if !(unsafe { (*node).children }).is_null() {
             xmlRngPErr(
                 ctxt,
                 node,
                 XML_RNGP_NOTALLOWED_NOT_EMPTY as i32,
-                b"xmlRelaxNGParse: notAllowed element is not empty\n\0" as *const u8
-                    as *const i8,
+                b"xmlRelaxNGParse: notAllowed element is not empty\n\0" as *const u8 as *const i8,
                 0 as *const xmlChar,
                 0 as *const xmlChar,
             );
         }
-    } else if !node.is_null() && !((*node).ns).is_null()
-            && (*node).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
-                (*node).name,
-                b"grammar\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
-        {
-        let mut grammar: * mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> = 0 as *mut xmlRelaxNGGrammar;
-        let mut old: * mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> = 0 as *mut xmlRelaxNGGrammar;
-        let mut oldparent: * mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> = 0 as *mut xmlRelaxNGGrammar;
-        oldparent = (*ctxt).parentgrammar;
-        old = (*ctxt).grammar;
-        let ref mut fresh204 = (*ctxt).parentgrammar;
+    } else if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
+            (*node).name,
+            b"grammar\0" as *const u8 as *const i8 as *const xmlChar,
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
+    {
+        let mut grammar: *mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> =
+            0 as *mut xmlRelaxNGGrammar;
+        let mut old: *mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> = 0 as *mut xmlRelaxNGGrammar;
+        let mut oldparent: *mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> =
+            0 as *mut xmlRelaxNGGrammar;
+        oldparent = unsafe { (*ctxt).parentgrammar };
+        old = unsafe { (*ctxt).grammar };
+        let fresh204 = unsafe { &mut ((*ctxt).parentgrammar) };
         *fresh204 = old;
-        grammar = xmlRelaxNGParseGrammar(ctxt, (*node).children);
+        grammar = xmlRelaxNGParseGrammar(ctxt, unsafe { (*node).children });
         if !old.is_null() {
-            let ref mut fresh205 = (*ctxt).grammar;
+            let fresh205 = unsafe { &mut ((*ctxt).grammar) };
             *fresh205 = old;
-            let ref mut fresh206 = (*ctxt).parentgrammar;
+            let fresh206 = unsafe { &mut ((*ctxt).parentgrammar) };
             *fresh206 = oldparent;
         }
         if !grammar.is_null() {
-            def = (*grammar).start;
+            def = unsafe { (*grammar).start };
         } else {
             def = 0 as xmlRelaxNGDefinePtr;
         }
-    } else if !node.is_null() && !((*node).ns).is_null()
-            && (*node).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
-                (*node).name,
-                b"parentRef\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
-        {
-        if ((*ctxt).parentgrammar).is_null() {
+    } else if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
+            (*node).name,
+            b"parentRef\0" as *const u8 as *const i8 as *const xmlChar,
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
+    {
+        if (unsafe { (*ctxt).parentgrammar }).is_null() {
             xmlRngPErr(
                 ctxt,
                 node,
                 XML_RNGP_PARENTREF_NO_PARENT as i32,
-                b"Use of parentRef without a parent grammar\n\0" as *const u8
-                    as *const i8,
+                b"Use of parentRef without a parent grammar\n\0" as *const u8 as *const i8,
                 0 as *const xmlChar,
                 0 as *const xmlChar,
             );
@@ -7528,13 +7205,13 @@ unsafe extern "C" fn xmlRelaxNGParsePattern<'a1>(
         if def.is_null() {
             return 0 as xmlRelaxNGDefinePtr;
         }
-        (*def).type_0 = XML_RELAXNG_PARENTREF;
-        let ref mut fresh207 = (*def).name;
-        *fresh207 = xmlGetProp(
+        (unsafe { (*def).type_0 = XML_RELAXNG_PARENTREF });
+        let fresh207 = unsafe { &mut ((*def).name) };
+        *fresh207 = unsafe { xmlGetProp(
             node as *const xmlNode,
             b"name\0" as *const u8 as *const i8 as *mut xmlChar,
-        );
-        if ((*def).name).is_null() {
+        ) };
+        if (unsafe { (*def).name }).is_null() {
             xmlRngPErr(
                 ctxt,
                 node,
@@ -7544,20 +7221,19 @@ unsafe extern "C" fn xmlRelaxNGParsePattern<'a1>(
                 0 as *const xmlChar,
             );
         } else {
-            xmlRelaxNGNormExtSpace((*def).name);
-            if xmlValidateNCName((*def).name, 0 as i32) != 0 {
+            xmlRelaxNGNormExtSpace(unsafe { (*def).name });
+            if (unsafe { xmlValidateNCName((*def).name, 0 as i32) }) != 0 {
                 xmlRngPErr(
                     ctxt,
                     node,
                     XML_RNGP_PARENTREF_NAME_INVALID as i32,
-                    b"parentRef name '%s' is not an NCName\n\0" as *const u8
-                        as *const i8,
-                    (*def).name,
+                    b"parentRef name '%s' is not an NCName\n\0" as *const u8 as *const i8,
+                    unsafe { (*def).name },
                     0 as *const xmlChar,
                 );
             }
         }
-        if !((*node).children).is_null() {
+        if !(unsafe { (*node).children }).is_null() {
             xmlRngPErr(
                 ctxt,
                 node,
@@ -7567,60 +7243,60 @@ unsafe extern "C" fn xmlRelaxNGParsePattern<'a1>(
                 0 as *const xmlChar,
             );
         }
-        if ((*(*ctxt).parentgrammar).refs).is_null() {
-            let ref mut fresh208 = (*(*ctxt).parentgrammar).refs;
+        if (unsafe { (*(*ctxt).parentgrammar).refs }).is_null() {
+            let fresh208 = unsafe { &mut ((*(*ctxt).parentgrammar).refs) };
             *fresh208 = xmlHashCreate(10 as i32);
         }
-        if ((*(*ctxt).parentgrammar).refs).is_null() {
+        if (unsafe { (*(*ctxt).parentgrammar).refs }).is_null() {
             xmlRngPErr(
                 ctxt,
                 node,
                 XML_RNGP_PARENTREF_CREATE_FAILED as i32,
-                b"Could not create references hash\n\0" as *const u8
-                    as *const i8,
+                b"Could not create references hash\n\0" as *const u8 as *const i8,
                 0 as *const xmlChar,
                 0 as *const xmlChar,
             );
             def = 0 as xmlRelaxNGDefinePtr;
-        } else if !((*def).name).is_null() {
+        } else if !(unsafe { (*def).name }).is_null() {
             let mut tmp_0: i32 = 0;
             tmp_0 = xmlHashAddEntry(
-                (*(*ctxt).parentgrammar).refs,
-                (*def).name,
+                unsafe { (*(*ctxt).parentgrammar).refs },
+                unsafe { (*def).name },
                 def as *mut libc::c_void,
             );
             if tmp_0 < 0 as i32 {
-                let mut prev_0: * mut crate::src::relaxng::_xmlRelaxNGDefine = (0 as * mut crate::src::relaxng::_xmlRelaxNGDefine);
-                prev_0 = xmlHashLookup((*(*ctxt).parentgrammar).refs, (*def).name)
+                let mut prev_0: *mut crate::src::relaxng::_xmlRelaxNGDefine =
+                    0 as *mut crate::src::relaxng::_xmlRelaxNGDefine;
+                prev_0 = xmlHashLookup(unsafe { (*(*ctxt).parentgrammar).refs }, unsafe { (*def).name })
                     as xmlRelaxNGDefinePtr;
                 if prev_0.is_null() {
                     xmlRngPErr(
                         ctxt,
                         node,
                         XML_RNGP_PARENTREF_CREATE_FAILED as i32,
-                        b"Internal error parentRef definitions '%s'\n\0" as *const u8
-                            as *const i8,
-                        (*def).name,
+                        b"Internal error parentRef definitions '%s'\n\0" as *const u8 as *const i8,
+                        unsafe { (*def).name },
                         0 as *const xmlChar,
                     );
                     def = 0 as xmlRelaxNGDefinePtr;
                 } else {
-                    let ref mut fresh209 = (*def).nextHash;
-                    *fresh209 = (*prev_0).nextHash;
-                    let ref mut fresh210 = (*prev_0).nextHash;
+                    let fresh209 = unsafe { &mut ((*def).nextHash) };
+                    *fresh209 = unsafe { (*prev_0).nextHash };
+                    let fresh210 = unsafe { &mut ((*prev_0).nextHash) };
                     *fresh210 = def;
                 }
             }
         }
-    } else if !node.is_null() && !((*node).ns).is_null()
-            && (*node).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
-                (*node).name,
-                b"mixed\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
-        {
-        if ((*node).children).is_null() {
+    } else if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
+            (*node).name,
+            b"mixed\0" as *const u8 as *const i8 as *const xmlChar,
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
+    {
+        if (unsafe { (*node).children }).is_null() {
             xmlRngPErr(
                 ctxt,
                 node,
@@ -7633,14 +7309,15 @@ unsafe extern "C" fn xmlRelaxNGParsePattern<'a1>(
         } else {
             def = xmlRelaxNGParseInterleave(ctxt, node);
             if !def.is_null() {
-                let mut tmp_1: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-                if !((*def).content).is_null() && !((*(*def).content).next).is_null() {
+                let mut tmp_1: *mut crate::src::relaxng::_xmlRelaxNGDefine =
+                    0 as *mut xmlRelaxNGDefine;
+                if !(unsafe { (*def).content }).is_null() && !(unsafe { (*(*def).content).next }).is_null() {
                     tmp_1 = xmlRelaxNGNewDefine(ctxt, node);
                     if !tmp_1.is_null() {
-                        (*tmp_1).type_0 = XML_RELAXNG_GROUP;
-                        let ref mut fresh211 = (*tmp_1).content;
-                        *fresh211 = (*def).content;
-                        let ref mut fresh212 = (*def).content;
+                        (unsafe { (*tmp_1).type_0 = XML_RELAXNG_GROUP });
+                        let fresh211 = unsafe { &mut ((*tmp_1).content) };
+                        *fresh211 = unsafe { (*def).content };
+                        let fresh212 = unsafe { &mut ((*def).content) };
                         *fresh212 = tmp_1;
                     }
                 }
@@ -7648,10 +7325,10 @@ unsafe extern "C" fn xmlRelaxNGParsePattern<'a1>(
                 if tmp_1.is_null() {
                     return def;
                 }
-                (*tmp_1).type_0 = XML_RELAXNG_TEXT;
-                let ref mut fresh213 = (*tmp_1).next;
-                *fresh213 = (*def).content;
-                let ref mut fresh214 = (*def).content;
+                (unsafe { (*tmp_1).type_0 = XML_RELAXNG_TEXT });
+                let fresh213 = unsafe { &mut ((*tmp_1).next) };
+                *fresh213 = unsafe { (*def).content };
+                let fresh214 = unsafe { &mut ((*def).content) };
                 *fresh214 = tmp_1;
             }
         }
@@ -7660,71 +7337,67 @@ unsafe extern "C" fn xmlRelaxNGParsePattern<'a1>(
             ctxt,
             node,
             XML_RNGP_UNKNOWN_CONSTRUCT as i32,
-            b"Unexpected node %s is not a pattern\n\0" as *const u8
-                as *const i8,
-            (*node).name,
+            b"Unexpected node %s is not a pattern\n\0" as *const u8 as *const i8,
+            unsafe { (*node).name },
             0 as *const xmlChar,
         );
         def = 0 as xmlRelaxNGDefinePtr;
     }
     return def;
 }
-unsafe extern "C" fn xmlRelaxNGParseAttribute<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
-) -> * mut crate::src::relaxng::_xmlRelaxNGDefine {
-    let mut ret: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    let mut cur: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    let mut child: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+extern "C" fn xmlRelaxNGParseAttribute<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
+) -> *mut crate::src::relaxng::_xmlRelaxNGDefine {
+    let mut ret: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut cur: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut child: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
     let mut old_flags: i32 = 0;
     ret = xmlRelaxNGNewDefine(ctxt, node);
     if ret.is_null() {
         return 0 as xmlRelaxNGDefinePtr;
     }
-    (*ret).type_0 = XML_RELAXNG_ATTRIBUTE;
-    let ref mut fresh215 = (*ret).parent;
-    *fresh215 = (*ctxt).def;
-    child = (*node).children;
+    (unsafe { (*ret).type_0 = XML_RELAXNG_ATTRIBUTE });
+    let fresh215 = unsafe { &mut ((*ret).parent) };
+    *fresh215 = unsafe { (*ctxt).def };
+    child = unsafe { (*node).children };
     if child.is_null() {
         xmlRngPErr(
             ctxt,
             node,
             XML_RNGP_ATTRIBUTE_EMPTY as i32,
-            b"xmlRelaxNGParseattribute: attribute has no children\n\0" as *const u8
-                as *const i8,
+            b"xmlRelaxNGParseattribute: attribute has no children\n\0" as *const u8 as *const i8,
             0 as *const xmlChar,
             0 as *const xmlChar,
         );
         return ret;
     }
-    old_flags = (*ctxt).flags;
-    (*ctxt).flags |= (1 as i32) << 0 as i32;
+    old_flags = unsafe { (*ctxt).flags };
+    (unsafe { (*ctxt).flags |= (1 as i32) << 0 as i32 });
     cur = xmlRelaxNGParseNameClass(ctxt, child, ret);
     if !cur.is_null() {
-        child = (*child).next;
+        child = unsafe { (*child).next };
     }
     if !child.is_null() {
         cur = xmlRelaxNGParsePattern(ctxt, child);
         if !cur.is_null() {
-            match (*cur).type_0 as i32 {
-                0 | 1 | 3 | 4 | 5 | 7 | 8 | 11 | 13 | 12 | 10 | 16 | 15 | 14 | 17 | 18
-                | 19 | 9 => {
-                    let ref mut fresh216 = (*ret).content;
+            match (unsafe { (*cur).type_0 }) as i32 {
+                0 | 1 | 3 | 4 | 5 | 7 | 8 | 11 | 13 | 12 | 10 | 16 | 15 | 14 | 17 | 18 | 19 | 9 => {
+                    let fresh216 = unsafe { &mut ((*ret).content) };
                     *fresh216 = cur;
-                    let ref mut fresh217 = (*cur).parent;
+                    let fresh217 = unsafe { &mut ((*cur).parent) };
                     *fresh217 = ret;
-                }
+                },
                 20 | 6 | 2 => {
                     xmlRngPErr(
                         ctxt,
                         node,
                         XML_RNGP_ATTRIBUTE_CONTENT as i32,
-                        b"attribute has invalid content\n\0" as *const u8
-                            as *const i8,
+                        b"attribute has invalid content\n\0" as *const u8 as *const i8,
                         0 as *const xmlChar,
                         0 as *const xmlChar,
                     );
-                }
+                },
                 -1 => {
                     xmlRngPErr(
                         ctxt,
@@ -7735,11 +7408,11 @@ unsafe extern "C" fn xmlRelaxNGParseAttribute<'a1>(
                         0 as *const xmlChar,
                         0 as *const xmlChar,
                     );
-                }
-                _ => {}
+                },
+                _ => {},
             }
         }
-        child = (*child).next;
+        child = unsafe { (*child).next };
     }
     if !child.is_null() {
         xmlRngPErr(
@@ -7751,25 +7424,26 @@ unsafe extern "C" fn xmlRelaxNGParseAttribute<'a1>(
             0 as *const xmlChar,
         );
     }
-    (*ctxt).flags = old_flags;
+    (unsafe { (*ctxt).flags = old_flags });
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGParseExceptNameClass<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlRelaxNGParseExceptNameClass<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
     mut attr: i32,
-) -> * mut crate::src::relaxng::_xmlRelaxNGDefine {
-    let mut ret: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    let mut cur: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    let mut last: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
-    let mut child: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    if !(!node.is_null() && !((*node).ns).is_null()
-        && (*node).type_0 as u32
-            == XML_ELEMENT_NODE as i32 as u32
-        && xmlStrEqual(
+) -> *mut crate::src::relaxng::_xmlRelaxNGDefine {
+    let mut ret: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut cur: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut last: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
+    let mut child: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    if !(!node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
             (*node).name,
             b"except\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0)
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0)
     {
         xmlRngPErr(
             ctxt,
@@ -7781,18 +7455,17 @@ unsafe extern "C" fn xmlRelaxNGParseExceptNameClass<'a1>(
         );
         return 0 as xmlRelaxNGDefinePtr;
     }
-    if !((*node).next).is_null() {
+    if !(unsafe { (*node).next }).is_null() {
         xmlRngPErr(
             ctxt,
             node,
             XML_RNGP_EXCEPT_MULTIPLE as i32,
-            b"exceptNameClass allows only a single except node\n\0" as *const u8
-                as *const i8,
+            b"exceptNameClass allows only a single except node\n\0" as *const u8 as *const i8,
             0 as *const xmlChar,
             0 as *const xmlChar,
         );
     }
-    if ((*node).children).is_null() {
+    if (unsafe { (*node).children }).is_null() {
         xmlRngPErr(
             ctxt,
             node,
@@ -7807,98 +7480,101 @@ unsafe extern "C" fn xmlRelaxNGParseExceptNameClass<'a1>(
     if ret.is_null() {
         return 0 as xmlRelaxNGDefinePtr;
     }
-    (*ret).type_0 = XML_RELAXNG_EXCEPT;
-    child = (*node).children;
+    (unsafe { (*ret).type_0 = XML_RELAXNG_EXCEPT });
+    child = unsafe { (*node).children };
     while !child.is_null() {
         cur = xmlRelaxNGNewDefine(ctxt, child);
         if cur.is_null() {
             break;
         }
         if attr != 0 {
-            (*cur).type_0 = XML_RELAXNG_ATTRIBUTE;
+            (unsafe { (*cur).type_0 = XML_RELAXNG_ATTRIBUTE });
         } else {
-            (*cur).type_0 = XML_RELAXNG_ELEMENT;
+            (unsafe { (*cur).type_0 = XML_RELAXNG_ELEMENT });
         }
         if !(xmlRelaxNGParseNameClass(ctxt, child, cur)).is_null() {
             if last.is_null() {
-                let ref mut fresh218 = (*ret).content;
+                let fresh218 = unsafe { &mut ((*ret).content) };
                 *fresh218 = cur;
             } else {
-                let ref mut fresh219 = (*last).next;
+                let fresh219 = unsafe { &mut ((*last).next) };
                 *fresh219 = cur;
             }
             last = cur;
         }
-        child = (*child).next;
+        child = unsafe { (*child).next };
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGParseNameClass<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
-    mut def: * mut crate::src::relaxng::_xmlRelaxNGDefine,
-) -> * mut crate::src::relaxng::_xmlRelaxNGDefine {
-    let mut ret: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    let mut tmp: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    let mut val: * mut u8 = 0 as *mut xmlChar;
+extern "C" fn xmlRelaxNGParseNameClass<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
+    mut def: *mut crate::src::relaxng::_xmlRelaxNGDefine,
+) -> *mut crate::src::relaxng::_xmlRelaxNGDefine {
+    let mut ret: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut tmp: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut val: *mut u8 = 0 as *mut xmlChar;
     ret = def;
-    if !node.is_null() && !((*node).ns).is_null()
-        && (*node).type_0 as u32
-            == XML_ELEMENT_NODE as i32 as u32
-        && xmlStrEqual(
+    if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
             (*node).name,
             b"name\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
-        || !node.is_null() && !((*node).ns).is_null()
-            && (*node).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
+        || !node.is_null()
+            && !(unsafe { (*node).ns }).is_null()
+            && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+            && (unsafe { xmlStrEqual(
                 (*node).name,
                 b"anyName\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
-        || !node.is_null() && !((*node).ns).is_null()
-            && (*node).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
+            ) }) != 0
+            && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
+        || !node.is_null()
+            && !(unsafe { (*node).ns }).is_null()
+            && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+            && (unsafe { xmlStrEqual(
                 (*node).name,
                 b"nsName\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
+            ) }) != 0
+            && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
     {
-        if (*def).type_0 as i32 != XML_RELAXNG_ELEMENT as i32
-            && (*def).type_0 as i32 != XML_RELAXNG_ATTRIBUTE as i32
+        if (unsafe { (*def).type_0 }) as i32 != XML_RELAXNG_ELEMENT as i32
+            && (unsafe { (*def).type_0 }) as i32 != XML_RELAXNG_ATTRIBUTE as i32
         {
             ret = xmlRelaxNGNewDefine(ctxt, node);
             if ret.is_null() {
                 return 0 as xmlRelaxNGDefinePtr;
             }
-            let ref mut fresh220 = (*ret).parent;
+            let fresh220 = unsafe { &mut ((*ret).parent) };
             *fresh220 = def;
-            if (*ctxt).flags & (1 as i32) << 0 as i32 != 0 {
-                (*ret).type_0 = XML_RELAXNG_ATTRIBUTE;
+            if (unsafe { (*ctxt).flags }) & (1 as i32) << 0 as i32 != 0 {
+                (unsafe { (*ret).type_0 = XML_RELAXNG_ATTRIBUTE });
             } else {
-                (*ret).type_0 = XML_RELAXNG_ELEMENT;
+                (unsafe { (*ret).type_0 = XML_RELAXNG_ELEMENT });
             }
         }
     }
-    if !node.is_null() && !((*node).ns).is_null()
-        && (*node).type_0 as u32
-            == XML_ELEMENT_NODE as i32 as u32
-        && xmlStrEqual(
+    if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
             (*node).name,
             b"name\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
     {
-        val = xmlNodeGetContent(node as *const xmlNode);
+        val = unsafe { xmlNodeGetContent(node as *const xmlNode) };
         xmlRelaxNGNormExtSpace(val);
-        if xmlValidateNCName(val, 0 as i32) != 0 {
-            if !((*node).parent).is_null() {
+        if (unsafe { xmlValidateNCName(val, 0 as i32) }) != 0 {
+            if !(unsafe { (*node).parent }).is_null() {
                 xmlRngPErr(
                     ctxt,
                     node,
                     XML_RNGP_ELEMENT_NAME as i32,
-                    b"Element %s name '%s' is not an NCName\n\0" as *const u8
-                        as *const i8,
-                    (*(*node).parent).name,
+                    b"Element %s name '%s' is not an NCName\n\0" as *const u8 as *const i8,
+                    unsafe { (*(*node).parent).name },
                     val,
                 );
             } else {
@@ -7906,92 +7582,91 @@ unsafe extern "C" fn xmlRelaxNGParseNameClass<'a1>(
                     ctxt,
                     node,
                     XML_RNGP_ELEMENT_NAME as i32,
-                    b"name '%s' is not an NCName\n\0" as *const u8
-                        as *const i8,
+                    b"name '%s' is not an NCName\n\0" as *const u8 as *const i8,
                     val,
                     0 as *const xmlChar,
                 );
             }
         }
-        let ref mut fresh221 = (*ret).name;
+        let fresh221 = unsafe { &mut ((*ret).name) };
         *fresh221 = val;
-        val = xmlGetProp(
+        val = unsafe { xmlGetProp(
             node as *const xmlNode,
             b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
-        );
-        let ref mut fresh222 = (*ret).ns;
+        ) };
+        let fresh222 = unsafe { &mut ((*ret).ns) };
         *fresh222 = val;
-        if (*ctxt).flags & (1 as i32) << 0 as i32 != 0 && !val.is_null()
-            && xmlStrEqual(
+        if (unsafe { (*ctxt).flags }) & (1 as i32) << 0 as i32 != 0
+            && !val.is_null()
+            && (unsafe { xmlStrEqual(
                 val,
-                b"http://www.w3.org/2000/xmlns\0" as *const u8 as *const i8
-                    as *mut xmlChar,
-            ) != 0
+                b"http://www.w3.org/2000/xmlns\0" as *const u8 as *const i8 as *mut xmlChar,
+            ) }) != 0
         {
             xmlRngPErr(
                 ctxt,
                 node,
                 XML_RNGP_XML_NS as i32,
-                b"Attribute with namespace '%s' is not allowed\n\0" as *const u8
-                    as *const i8,
+                b"Attribute with namespace '%s' is not allowed\n\0" as *const u8 as *const i8,
                 val,
                 0 as *const xmlChar,
             );
         }
-        if (*ctxt).flags & (1 as i32) << 0 as i32 != 0 && !val.is_null()
-            && *val.offset(0 as i32 as isize) as i32 == 0 as i32
-            && xmlStrEqual(
+        if (unsafe { (*ctxt).flags }) & (1 as i32) << 0 as i32 != 0
+            && !val.is_null()
+            && (unsafe { *val.offset(0 as i32 as isize) }) as i32 == 0 as i32
+            && (unsafe { xmlStrEqual(
                 (*ret).name,
                 b"xmlns\0" as *const u8 as *const i8 as *mut xmlChar,
-            ) != 0
+            ) }) != 0
         {
             xmlRngPErr(
                 ctxt,
                 node,
                 XML_RNGP_XMLNS_NAME as i32,
-                b"Attribute with QName 'xmlns' is not allowed\n\0" as *const u8
-                    as *const i8,
+                b"Attribute with QName 'xmlns' is not allowed\n\0" as *const u8 as *const i8,
                 val,
                 0 as *const xmlChar,
             );
         }
-    } else if !node.is_null() && !((*node).ns).is_null()
-            && (*node).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
-                (*node).name,
-                b"anyName\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
-        {
-        let ref mut fresh223 = (*ret).name;
+    } else if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
+            (*node).name,
+            b"anyName\0" as *const u8 as *const i8 as *const xmlChar,
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
+    {
+        let fresh223 = unsafe { &mut ((*ret).name) };
         *fresh223 = 0 as *mut xmlChar;
-        let ref mut fresh224 = (*ret).ns;
+        let fresh224 = unsafe { &mut ((*ret).ns) };
         *fresh224 = 0 as *mut xmlChar;
-        if !((*node).children).is_null() {
-            let ref mut fresh225 = (*ret).nameClass;
+        if !(unsafe { (*node).children }).is_null() {
+            let fresh225 = unsafe { &mut ((*ret).nameClass) };
             *fresh225 = xmlRelaxNGParseExceptNameClass(
                 ctxt,
-                (*node).children,
-                ((*def).type_0 as i32 == XML_RELAXNG_ATTRIBUTE as i32)
-                    as i32,
+                unsafe { (*node).children },
+                ((unsafe { (*def).type_0 }) as i32 == XML_RELAXNG_ATTRIBUTE as i32) as i32,
             );
         }
-    } else if !node.is_null() && !((*node).ns).is_null()
-            && (*node).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
-                (*node).name,
-                b"nsName\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
-        {
-        let ref mut fresh226 = (*ret).name;
+    } else if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
+            (*node).name,
+            b"nsName\0" as *const u8 as *const i8 as *const xmlChar,
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
+    {
+        let fresh226 = unsafe { &mut ((*ret).name) };
         *fresh226 = 0 as *mut xmlChar;
-        let ref mut fresh227 = (*ret).ns;
-        *fresh227 = xmlGetProp(
+        let fresh227 = unsafe { &mut ((*ret).ns) };
+        *fresh227 = unsafe { xmlGetProp(
             node as *const xmlNode,
             b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
-        );
-        if ((*ret).ns).is_null() {
+        ) };
+        if (unsafe { (*ret).ns }).is_null() {
             xmlRngPErr(
                 ctxt,
                 node,
@@ -8001,55 +7676,53 @@ unsafe extern "C" fn xmlRelaxNGParseNameClass<'a1>(
                 0 as *const xmlChar,
             );
         }
-        if (*ctxt).flags & (1 as i32) << 0 as i32 != 0
-            && !((*ret).ns).is_null()
-            && xmlStrEqual(
+        if (unsafe { (*ctxt).flags }) & (1 as i32) << 0 as i32 != 0
+            && !(unsafe { (*ret).ns }).is_null()
+            && (unsafe { xmlStrEqual(
                 (*ret).ns,
-                b"http://www.w3.org/2000/xmlns\0" as *const u8 as *const i8
-                    as *mut xmlChar,
-            ) != 0
+                b"http://www.w3.org/2000/xmlns\0" as *const u8 as *const i8 as *mut xmlChar,
+            ) }) != 0
         {
             xmlRngPErr(
                 ctxt,
                 node,
                 XML_RNGP_XML_NS as i32,
-                b"Attribute with namespace '%s' is not allowed\n\0" as *const u8
-                    as *const i8,
-                (*ret).ns,
+                b"Attribute with namespace '%s' is not allowed\n\0" as *const u8 as *const i8,
+                unsafe { (*ret).ns },
                 0 as *const xmlChar,
             );
         }
-        if !((*node).children).is_null() {
-            let ref mut fresh228 = (*ret).nameClass;
+        if !(unsafe { (*node).children }).is_null() {
+            let fresh228 = unsafe { &mut ((*ret).nameClass) };
             *fresh228 = xmlRelaxNGParseExceptNameClass(
                 ctxt,
-                (*node).children,
-                ((*def).type_0 as i32 == XML_RELAXNG_ATTRIBUTE as i32)
-                    as i32,
+                unsafe { (*node).children },
+                ((unsafe { (*def).type_0 }) as i32 == XML_RELAXNG_ATTRIBUTE as i32) as i32,
             );
         }
-    } else if !node.is_null() && !((*node).ns).is_null()
-            && (*node).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
-                (*node).name,
-                b"choice\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
-        {
-        let mut child: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-        let mut last: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
-        if (*def).type_0 as i32 == XML_RELAXNG_CHOICE as i32 {
+    } else if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
+            (*node).name,
+            b"choice\0" as *const u8 as *const i8 as *const xmlChar,
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
+    {
+        let mut child: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+        let mut last: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
+        if (unsafe { (*def).type_0 }) as i32 == XML_RELAXNG_CHOICE as i32 {
             ret = def;
         } else {
             ret = xmlRelaxNGNewDefine(ctxt, node);
             if ret.is_null() {
                 return 0 as xmlRelaxNGDefinePtr;
             }
-            let ref mut fresh229 = (*ret).parent;
+            let fresh229 = unsafe { &mut ((*ret).parent) };
             *fresh229 = def;
-            (*ret).type_0 = XML_RELAXNG_CHOICE;
+            (unsafe { (*ret).type_0 = XML_RELAXNG_CHOICE });
         }
-        if ((*node).children).is_null() {
+        if (unsafe { (*node).children }).is_null() {
             xmlRngPErr(
                 ctxt,
                 node,
@@ -8059,19 +7732,19 @@ unsafe extern "C" fn xmlRelaxNGParseNameClass<'a1>(
                 0 as *const xmlChar,
             );
         } else {
-            child = (*node).children;
+            child = unsafe { (*node).children };
             while !child.is_null() {
                 tmp = xmlRelaxNGParseNameClass(ctxt, child, ret);
                 if !tmp.is_null() {
                     if last.is_null() {
                         last = tmp;
                     } else {
-                        let ref mut fresh230 = (*last).next;
+                        let fresh230 = unsafe { &mut ((*last).next) };
                         *fresh230 = tmp;
                         last = tmp;
                     }
                 }
-                child = (*child).next;
+                child = unsafe { (*child).next };
             }
         }
     } else {
@@ -8079,56 +7752,54 @@ unsafe extern "C" fn xmlRelaxNGParseNameClass<'a1>(
             ctxt,
             node,
             XML_RNGP_CHOICE_CONTENT as i32,
-            b"expecting name, anyName, nsName or choice : got %s\n\0" as *const u8
-                as *const i8,
+            b"expecting name, anyName, nsName or choice : got %s\n\0" as *const u8 as *const i8,
             if node.is_null() {
                 b"nothing\0" as *const u8 as *const i8 as *const xmlChar
             } else {
-                (*node).name
+                unsafe { (*node).name }
             },
             0 as *const xmlChar,
         );
         return 0 as xmlRelaxNGDefinePtr;
     }
     if ret != def {
-        if ((*def).nameClass).is_null() {
-            let ref mut fresh231 = (*def).nameClass;
+        if (unsafe { (*def).nameClass }).is_null() {
+            let fresh231 = unsafe { &mut ((*def).nameClass) };
             *fresh231 = ret;
         } else {
-            tmp = (*def).nameClass;
-            while !((*tmp).next).is_null() {
-                tmp = (*tmp).next;
+            tmp = unsafe { (*def).nameClass };
+            while !(unsafe { (*tmp).next }).is_null() {
+                tmp = unsafe { (*tmp).next };
             }
-            let ref mut fresh232 = (*tmp).next;
+            let fresh232 = unsafe { &mut ((*tmp).next) };
             *fresh232 = ret;
         }
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGParseElement<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
-) -> * mut crate::src::relaxng::_xmlRelaxNGDefine {
-    let mut ret: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    let mut cur: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    let mut last: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    let mut child: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut olddefine: * const u8 = 0 as *const xmlChar;
+extern "C" fn xmlRelaxNGParseElement<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
+) -> *mut crate::src::relaxng::_xmlRelaxNGDefine {
+    let mut ret: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut cur: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut last: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut child: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut olddefine: *const u8 = 0 as *const xmlChar;
     ret = xmlRelaxNGNewDefine(ctxt, node);
     if ret.is_null() {
         return 0 as xmlRelaxNGDefinePtr;
     }
-    (*ret).type_0 = XML_RELAXNG_ELEMENT;
-    let ref mut fresh233 = (*ret).parent;
-    *fresh233 = (*ctxt).def;
-    child = (*node).children;
+    (unsafe { (*ret).type_0 = XML_RELAXNG_ELEMENT });
+    let fresh233 = unsafe { &mut ((*ret).parent) };
+    *fresh233 = unsafe { (*ctxt).def };
+    child = unsafe { (*node).children };
     if child.is_null() {
         xmlRngPErr(
             ctxt,
             node,
             XML_RNGP_ELEMENT_EMPTY as i32,
-            b"xmlRelaxNGParseElement: element has no children\n\0" as *const u8
-                as *const i8,
+            b"xmlRelaxNGParseElement: element has no children\n\0" as *const u8 as *const i8,
             0 as *const xmlChar,
             0 as *const xmlChar,
         );
@@ -8136,85 +7807,80 @@ unsafe extern "C" fn xmlRelaxNGParseElement<'a1>(
     }
     cur = xmlRelaxNGParseNameClass(ctxt, child, ret);
     if !cur.is_null() {
-        child = (*child).next;
+        child = unsafe { (*child).next };
     }
     if child.is_null() {
         xmlRngPErr(
             ctxt,
             node,
             XML_RNGP_ELEMENT_NO_CONTENT as i32,
-            b"xmlRelaxNGParseElement: element has no content\n\0" as *const u8
-                as *const i8,
+            b"xmlRelaxNGParseElement: element has no content\n\0" as *const u8 as *const i8,
             0 as *const xmlChar,
             0 as *const xmlChar,
         );
         return ret;
     }
-    olddefine = (*ctxt).define;
-    let ref mut fresh234 = (*ctxt).define;
+    olddefine = unsafe { (*ctxt).define };
+    let fresh234 = unsafe { &mut ((*ctxt).define) };
     *fresh234 = 0 as *const xmlChar;
     last = 0 as xmlRelaxNGDefinePtr;
     while !child.is_null() {
         cur = xmlRelaxNGParsePattern(ctxt, child);
         if !cur.is_null() {
-            let ref mut fresh235 = (*cur).parent;
+            let fresh235 = unsafe { &mut ((*cur).parent) };
             *fresh235 = ret;
-            match (*cur).type_0 as i32 {
-                0 | 1 | 3 | 4 | 5 | 7 | 8 | 11 | 13 | 12 | 10 | 15 | 16 | 14 | 17 | 18
-                | 19 => {
+            match (unsafe { (*cur).type_0 }) as i32 {
+                0 | 1 | 3 | 4 | 5 | 7 | 8 | 11 | 13 | 12 | 10 | 15 | 16 | 14 | 17 | 18 | 19 => {
                     if last.is_null() {
                         last = cur;
-                        let ref mut fresh236 = (*ret).content;
+                        let fresh236 = unsafe { &mut ((*ret).content) };
                         *fresh236 = last;
                     } else {
-                        if (*last).type_0 as i32
-                            == XML_RELAXNG_ELEMENT as i32
-                            && (*ret).content == last
+                        if (unsafe { (*last).type_0 }) as i32 == XML_RELAXNG_ELEMENT as i32
+                            && (unsafe { (*ret).content }) == last
                         {
-                            let ref mut fresh237 = (*ret).content;
+                            let fresh237 = unsafe { &mut ((*ret).content) };
                             *fresh237 = xmlRelaxNGNewDefine(ctxt, node);
-                            if !((*ret).content).is_null() {
-                                (*(*ret).content).type_0 = XML_RELAXNG_GROUP;
-                                let ref mut fresh238 = (*(*ret).content).content;
+                            if !(unsafe { (*ret).content }).is_null() {
+                                (unsafe { (*(*ret).content).type_0 = XML_RELAXNG_GROUP });
+                                let fresh238 = unsafe { &mut ((*(*ret).content).content) };
                                 *fresh238 = last;
                             } else {
-                                let ref mut fresh239 = (*ret).content;
+                                let fresh239 = unsafe { &mut ((*ret).content) };
                                 *fresh239 = last;
                             }
                         }
-                        let ref mut fresh240 = (*last).next;
+                        let fresh240 = unsafe { &mut ((*last).next) };
                         *fresh240 = cur;
                         last = cur;
                     }
-                }
+                },
                 9 => {
-                    let ref mut fresh241 = (*cur).next;
-                    *fresh241 = (*ret).attrs;
-                    let ref mut fresh242 = (*ret).attrs;
+                    let fresh241 = unsafe { &mut ((*cur).next) };
+                    *fresh241 = unsafe { (*ret).attrs };
+                    let fresh242 = unsafe { &mut ((*ret).attrs) };
                     *fresh242 = cur;
-                }
+                },
                 20 => {
                     xmlRngPErr(
                         ctxt,
                         node,
                         XML_RNGP_ELEMENT_CONTENT as i32,
-                        b"RNG Internal error, start found in element\n\0" as *const u8
-                            as *const i8,
+                        b"RNG Internal error, start found in element\n\0" as *const u8 as *const i8,
                         0 as *const xmlChar,
                         0 as *const xmlChar,
                     );
-                }
+                },
                 6 => {
                     xmlRngPErr(
                         ctxt,
                         node,
                         XML_RNGP_ELEMENT_CONTENT as i32,
-                        b"RNG Internal error, param found in element\n\0" as *const u8
-                            as *const i8,
+                        b"RNG Internal error, param found in element\n\0" as *const u8 as *const i8,
                         0 as *const xmlChar,
                         0 as *const xmlChar,
                     );
-                }
+                },
                 2 => {
                     xmlRngPErr(
                         ctxt,
@@ -8225,45 +7891,45 @@ unsafe extern "C" fn xmlRelaxNGParseElement<'a1>(
                         0 as *const xmlChar,
                         0 as *const xmlChar,
                     );
-                }
+                },
                 -1 => {
                     xmlRngPErr(
                         ctxt,
                         node,
                         XML_RNGP_ELEMENT_CONTENT as i32,
-                        b"RNG Internal error, noop found in element\n\0" as *const u8
-                            as *const i8,
+                        b"RNG Internal error, noop found in element\n\0" as *const u8 as *const i8,
                         0 as *const xmlChar,
                         0 as *const xmlChar,
                     );
-                }
-                _ => {}
+                },
+                _ => {},
             }
         }
-        child = (*child).next;
+        child = unsafe { (*child).next };
     }
-    let ref mut fresh243 = (*ctxt).define;
+    let fresh243 = unsafe { &mut ((*ctxt).define) };
     *fresh243 = olddefine;
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGParsePatterns<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut nodes: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlRelaxNGParsePatterns<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut nodes: *mut crate::src::HTMLparser::_xmlNode,
     mut group: i32,
-) -> * mut crate::src::relaxng::_xmlRelaxNGDefine {
-    let mut def: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
-    let mut last: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
-    let mut cur: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    let mut parent: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    parent = (*ctxt).def;
+) -> *mut crate::src::relaxng::_xmlRelaxNGDefine {
+    let mut def: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
+    let mut last: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
+    let mut cur: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut parent: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    parent = unsafe { (*ctxt).def };
     while !nodes.is_null() {
-        if !nodes.is_null() && !((*nodes).ns).is_null()
-            && (*nodes).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
+        if !nodes.is_null()
+            && !(unsafe { (*nodes).ns }).is_null()
+            && (unsafe { (*nodes).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+            && (unsafe { xmlStrEqual(
                 (*nodes).name,
                 b"element\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*nodes).ns).href, xmlRelaxNGNs) != 0
+            ) }) != 0
+            && (unsafe { xmlStrEqual((*(*nodes).ns).href, xmlRelaxNGNs) }) != 0
         {
             cur = xmlRelaxNGParseElement(ctxt, nodes);
             if cur.is_null() {
@@ -8274,22 +7940,22 @@ unsafe extern "C" fn xmlRelaxNGParsePatterns<'a1>(
                 def = last;
             } else {
                 if group == 1 as i32
-                    && (*def).type_0 as i32 == XML_RELAXNG_ELEMENT as i32
+                    && (unsafe { (*def).type_0 }) as i32 == XML_RELAXNG_ELEMENT as i32
                     && def == last
                 {
                     def = xmlRelaxNGNewDefine(ctxt, nodes);
                     if def.is_null() {
                         return 0 as xmlRelaxNGDefinePtr;
                     }
-                    (*def).type_0 = XML_RELAXNG_GROUP;
-                    let ref mut fresh244 = (*def).content;
+                    (unsafe { (*def).type_0 = XML_RELAXNG_GROUP });
+                    let fresh244 = unsafe { &mut ((*def).content) };
                     *fresh244 = last;
                 }
-                let ref mut fresh245 = (*last).next;
+                let fresh245 = unsafe { &mut ((*last).next) };
                 *fresh245 = cur;
                 last = cur;
             }
-            let ref mut fresh246 = (*cur).parent;
+            let fresh246 = unsafe { &mut ((*cur).parent) };
             *fresh246 = parent;
         } else {
             cur = xmlRelaxNGParsePattern(ctxt, nodes);
@@ -8298,23 +7964,23 @@ unsafe extern "C" fn xmlRelaxNGParsePatterns<'a1>(
                     last = cur;
                     def = last;
                 } else {
-                    let ref mut fresh247 = (*last).next;
+                    let fresh247 = unsafe { &mut ((*last).next) };
                     *fresh247 = cur;
                     last = cur;
                 }
             }
         }
-        nodes = (*nodes).next;
+        nodes = unsafe { (*nodes).next };
     }
     return def;
 }
-unsafe extern "C" fn xmlRelaxNGParseStart<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut nodes: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlRelaxNGParseStart<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut nodes: *mut crate::src::HTMLparser::_xmlNode,
 ) -> i32 {
     let mut ret: i32 = 0 as i32;
-    let mut def: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
-    let mut last: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut def: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
+    let mut last: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
     if nodes.is_null() {
         xmlRngPErr(
             ctxt,
@@ -8326,20 +7992,21 @@ unsafe extern "C" fn xmlRelaxNGParseStart<'a1>(
         );
         return -(1 as i32);
     }
-    if !nodes.is_null() && !((*nodes).ns).is_null()
-        && (*nodes).type_0 as u32
-            == XML_ELEMENT_NODE as i32 as u32
-        && xmlStrEqual(
+    if !nodes.is_null()
+        && !(unsafe { (*nodes).ns }).is_null()
+        && (unsafe { (*nodes).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
             (*nodes).name,
             b"empty\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0 && xmlStrEqual((*(*nodes).ns).href, xmlRelaxNGNs) != 0
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*nodes).ns).href, xmlRelaxNGNs) }) != 0
     {
         def = xmlRelaxNGNewDefine(ctxt, nodes);
         if def.is_null() {
             return -(1 as i32);
         }
-        (*def).type_0 = XML_RELAXNG_EMPTY;
-        if !((*nodes).children).is_null() {
+        (unsafe { (*def).type_0 = XML_RELAXNG_EMPTY });
+        if !(unsafe { (*nodes).children }).is_null() {
             xmlRngPErr(
                 ctxt,
                 nodes,
@@ -8349,26 +8016,26 @@ unsafe extern "C" fn xmlRelaxNGParseStart<'a1>(
                 0 as *const xmlChar,
             );
         }
-    } else if !nodes.is_null() && !((*nodes).ns).is_null()
-            && (*nodes).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
-                (*nodes).name,
-                b"notAllowed\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*nodes).ns).href, xmlRelaxNGNs) != 0
-        {
+    } else if !nodes.is_null()
+        && !(unsafe { (*nodes).ns }).is_null()
+        && (unsafe { (*nodes).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
+            (*nodes).name,
+            b"notAllowed\0" as *const u8 as *const i8 as *const xmlChar,
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*nodes).ns).href, xmlRelaxNGNs) }) != 0
+    {
         def = xmlRelaxNGNewDefine(ctxt, nodes);
         if def.is_null() {
             return -(1 as i32);
         }
-        (*def).type_0 = XML_RELAXNG_NOT_ALLOWED;
-        if !((*nodes).children).is_null() {
+        (unsafe { (*def).type_0 = XML_RELAXNG_NOT_ALLOWED });
+        if !(unsafe { (*nodes).children }).is_null() {
             xmlRngPErr(
                 ctxt,
                 nodes,
                 XML_RNGP_NOTALLOWED_NOT_EMPTY as i32,
-                b"element notAllowed is not empty\n\0" as *const u8
-                    as *const i8,
+                b"element notAllowed is not empty\n\0" as *const u8 as *const i8,
                 0 as *const xmlChar,
                 0 as *const xmlChar,
             );
@@ -8376,18 +8043,18 @@ unsafe extern "C" fn xmlRelaxNGParseStart<'a1>(
     } else {
         def = xmlRelaxNGParsePatterns(ctxt, nodes, 1 as i32);
     }
-    if !((*(*ctxt).grammar).start).is_null() {
-        last = (*(*ctxt).grammar).start;
-        while !((*last).next).is_null() {
-            last = (*last).next;
+    if !(unsafe { (*(*ctxt).grammar).start }).is_null() {
+        last = unsafe { (*(*ctxt).grammar).start };
+        while !(unsafe { (*last).next }).is_null() {
+            last = unsafe { (*last).next };
         }
-        let ref mut fresh248 = (*last).next;
+        let fresh248 = unsafe { &mut ((*last).next) };
         *fresh248 = def;
     } else {
-        let ref mut fresh249 = (*(*ctxt).grammar).start;
+        let fresh249 = unsafe { &mut ((*(*ctxt).grammar).start) };
         *fresh249 = def;
     }
-    nodes = (*nodes).next;
+    nodes = unsafe { (*nodes).next };
     if !nodes.is_null() {
         xmlRngPErr(
             ctxt,
@@ -8401,9 +8068,9 @@ unsafe extern "C" fn xmlRelaxNGParseStart<'a1>(
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGParseGrammarContent<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut nodes: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlRelaxNGParseGrammarContent<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut nodes: *mut crate::src::HTMLparser::_xmlNode,
 ) -> i32 {
     let mut ret: i32 = 0 as i32;
     let mut tmp: i32 = 0;
@@ -8419,15 +8086,16 @@ unsafe extern "C" fn xmlRelaxNGParseGrammarContent<'a1>(
         return -(1 as i32);
     }
     while !nodes.is_null() {
-        if !nodes.is_null() && !((*nodes).ns).is_null()
-            && (*nodes).type_0 as u32
-                == XML_ELEMENT_NODE as i32 as u32
-            && xmlStrEqual(
+        if !nodes.is_null()
+            && !(unsafe { (*nodes).ns }).is_null()
+            && (unsafe { (*nodes).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+            && (unsafe { xmlStrEqual(
                 (*nodes).name,
                 b"start\0" as *const u8 as *const i8 as *const xmlChar,
-            ) != 0 && xmlStrEqual((*(*nodes).ns).href, xmlRelaxNGNs) != 0
+            ) }) != 0
+            && (unsafe { xmlStrEqual((*(*nodes).ns).href, xmlRelaxNGNs) }) != 0
         {
-            if ((*nodes).children).is_null() {
+            if (unsafe { (*nodes).children }).is_null() {
                 xmlRngPErr(
                     ctxt,
                     nodes,
@@ -8437,31 +8105,33 @@ unsafe extern "C" fn xmlRelaxNGParseGrammarContent<'a1>(
                     0 as *const xmlChar,
                 );
             } else {
-                tmp = xmlRelaxNGParseStart(ctxt, (*nodes).children);
+                tmp = xmlRelaxNGParseStart(ctxt, unsafe { (*nodes).children });
                 if tmp != 0 as i32 {
                     ret = -(1 as i32);
                 }
             }
-        } else if !nodes.is_null() && !((*nodes).ns).is_null()
-                && (*nodes).type_0 as u32
-                    == XML_ELEMENT_NODE as i32 as u32
-                && xmlStrEqual(
-                    (*nodes).name,
-                    b"define\0" as *const u8 as *const i8 as *const xmlChar,
-                ) != 0 && xmlStrEqual((*(*nodes).ns).href, xmlRelaxNGNs) != 0
-            {
+        } else if !nodes.is_null()
+            && !(unsafe { (*nodes).ns }).is_null()
+            && (unsafe { (*nodes).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+            && (unsafe { xmlStrEqual(
+                (*nodes).name,
+                b"define\0" as *const u8 as *const i8 as *const xmlChar,
+            ) }) != 0
+            && (unsafe { xmlStrEqual((*(*nodes).ns).href, xmlRelaxNGNs) }) != 0
+        {
             tmp = xmlRelaxNGParseDefine(ctxt, nodes);
             if tmp != 0 as i32 {
                 ret = -(1 as i32);
             }
-        } else if !nodes.is_null() && !((*nodes).ns).is_null()
-                && (*nodes).type_0 as u32
-                    == XML_ELEMENT_NODE as i32 as u32
-                && xmlStrEqual(
-                    (*nodes).name,
-                    b"include\0" as *const u8 as *const i8 as *const xmlChar,
-                ) != 0 && xmlStrEqual((*(*nodes).ns).href, xmlRelaxNGNs) != 0
-            {
+        } else if !nodes.is_null()
+            && !(unsafe { (*nodes).ns }).is_null()
+            && (unsafe { (*nodes).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+            && (unsafe { xmlStrEqual(
+                (*nodes).name,
+                b"include\0" as *const u8 as *const i8 as *const xmlChar,
+            ) }) != 0
+            && (unsafe { xmlStrEqual((*(*nodes).ns).href, xmlRelaxNGNs) }) != 0
+        {
             tmp = xmlRelaxNGParseInclude(ctxt, nodes);
             if tmp != 0 as i32 {
                 ret = -(1 as i32);
@@ -8471,71 +8141,69 @@ unsafe extern "C" fn xmlRelaxNGParseGrammarContent<'a1>(
                 ctxt,
                 nodes,
                 XML_RNGP_GRAMMAR_CONTENT as i32,
-                b"grammar has unexpected child %s\n\0" as *const u8
-                    as *const i8,
-                (*nodes).name,
+                b"grammar has unexpected child %s\n\0" as *const u8 as *const i8,
+                unsafe { (*nodes).name },
                 0 as *const xmlChar,
             );
             ret = -(1 as i32);
         }
-        nodes = (*nodes).next;
+        nodes = unsafe { (*nodes).next };
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGCheckReference(
-    mut payload: * mut core::ffi::c_void,
-    mut data: * mut core::ffi::c_void,
-    mut name: * const u8,
+extern "C" fn xmlRelaxNGCheckReference(
+    mut payload: *mut core::ffi::c_void,
+    mut data: *mut core::ffi::c_void,
+    mut name: *const u8,
 ) {
-    let mut ref_0: * mut crate::src::relaxng::_xmlRelaxNGDefine = payload as xmlRelaxNGDefinePtr;
-    let mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'_> = data as xmlRelaxNGParserCtxtPtr;
-    let mut grammar: * mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> = 0 as *mut xmlRelaxNGGrammar;
-    let mut def: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    let mut cur: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    if (*ref_0).dflags as i32 & (1 as i32) << 8 as i32 != 0 {
+    let mut ref_0: *mut crate::src::relaxng::_xmlRelaxNGDefine = payload as xmlRelaxNGDefinePtr;
+    let mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'_> =
+        data as xmlRelaxNGParserCtxtPtr;
+    let mut grammar: *mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> = 0 as *mut xmlRelaxNGGrammar;
+    let mut def: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut cur: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    if (unsafe { (*ref_0).dflags }) as i32 & (1 as i32) << 8 as i32 != 0 {
         return;
     }
-    grammar = (*ctxt).grammar;
+    grammar = unsafe { (*ctxt).grammar };
     if grammar.is_null() {
         xmlRngPErr(
             ctxt,
-            (*ref_0).node,
+            unsafe { (*ref_0).node },
             XML_ERR_INTERNAL_ERROR as i32,
-            b"Internal error: no grammar in CheckReference %s\n\0" as *const u8
+            b"Internal error: no grammar in CheckReference %s\n\0" as *const u8 as *const i8,
+            name,
+            0 as *const xmlChar,
+        );
+        return;
+    }
+    if !(unsafe { (*ref_0).content }).is_null() {
+        xmlRngPErr(
+            ctxt,
+            unsafe { (*ref_0).node },
+            XML_ERR_INTERNAL_ERROR as i32,
+            b"Internal error: reference has content in CheckReference %s\n\0" as *const u8
                 as *const i8,
             name,
             0 as *const xmlChar,
         );
         return;
     }
-    if !((*ref_0).content).is_null() {
-        xmlRngPErr(
-            ctxt,
-            (*ref_0).node,
-            XML_ERR_INTERNAL_ERROR as i32,
-            b"Internal error: reference has content in CheckReference %s\n\0"
-                as *const u8 as *const i8,
-            name,
-            0 as *const xmlChar,
-        );
-        return;
-    }
-    if !((*grammar).defs).is_null() {
-        def = xmlHashLookup((*grammar).defs, name) as xmlRelaxNGDefinePtr;
+    if !(unsafe { (*grammar).defs }).is_null() {
+        def = xmlHashLookup(unsafe { (*grammar).defs }, name) as xmlRelaxNGDefinePtr;
         if !def.is_null() {
             cur = ref_0;
             while !cur.is_null() {
-                let ref mut fresh250 = (*cur).content;
+                let fresh250 = unsafe { &mut ((*cur).content) };
                 *fresh250 = def;
-                cur = (*cur).nextHash;
+                cur = unsafe { (*cur).nextHash };
             }
         } else {
             xmlRngPErr(
                 ctxt,
-                (*ref_0).node,
+                unsafe { (*ref_0).node },
                 XML_RNGP_REF_NO_DEF as i32,
-                b"Reference %s has no matching definition\n\0" as *const u8
-                    as *const i8,
+                b"Reference %s has no matching definition\n\0" as *const u8 as *const i8,
                 name,
                 0 as *const xmlChar,
             );
@@ -8543,71 +8211,71 @@ unsafe extern "C" fn xmlRelaxNGCheckReference(
     } else {
         xmlRngPErr(
             ctxt,
-            (*ref_0).node,
+            unsafe { (*ref_0).node },
             XML_RNGP_REF_NO_DEF as i32,
-            b"Reference %s has no matching definition\n\0" as *const u8
-                as *const i8,
+            b"Reference %s has no matching definition\n\0" as *const u8 as *const i8,
             name,
             0 as *const xmlChar,
         );
     };
 }
-unsafe extern "C" fn xmlRelaxNGCheckCombine(
-    mut payload: * mut core::ffi::c_void,
-    mut data: * mut core::ffi::c_void,
-    mut name: * const u8,
+extern "C" fn xmlRelaxNGCheckCombine(
+    mut payload: *mut core::ffi::c_void,
+    mut data: *mut core::ffi::c_void,
+    mut name: *const u8,
 ) {
-    let mut define: * mut crate::src::relaxng::_xmlRelaxNGDefine = payload as xmlRelaxNGDefinePtr;
-    let mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'_> = data as xmlRelaxNGParserCtxtPtr;
-    let mut combine: * mut u8 = 0 as *mut xmlChar;
+    let mut define: *mut crate::src::relaxng::_xmlRelaxNGDefine = payload as xmlRelaxNGDefinePtr;
+    let mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'_> =
+        data as xmlRelaxNGParserCtxtPtr;
+    let mut combine: *mut u8 = 0 as *mut xmlChar;
     let mut choiceOrInterleave: i32 = -(1 as i32);
     let mut missing: i32 = 0 as i32;
-    let mut cur: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    let mut last: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    let mut tmp: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    let mut tmp2: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    if ((*define).nextHash).is_null() {
+    let mut cur: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut last: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut tmp: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut tmp2: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    if (unsafe { (*define).nextHash }).is_null() {
         return;
     }
     cur = define;
     while !cur.is_null() {
-        combine = xmlGetProp(
+        combine = unsafe { xmlGetProp(
             (*cur).node as *const xmlNode,
             b"combine\0" as *const u8 as *const i8 as *mut xmlChar,
-        );
+        ) };
         if !combine.is_null() {
-            if xmlStrEqual(
+            if (unsafe { xmlStrEqual(
                 combine,
                 b"choice\0" as *const u8 as *const i8 as *mut xmlChar,
-            ) != 0
+            ) }) != 0
             {
                 if choiceOrInterleave == -(1 as i32) {
                     choiceOrInterleave = 1 as i32;
                 } else if choiceOrInterleave == 0 as i32 {
                     xmlRngPErr(
                         ctxt,
-                        (*define).node,
+                        unsafe { (*define).node },
                         XML_RNGP_DEF_CHOICE_AND_INTERLEAVE as i32,
-                        b"Defines for %s use both 'choice' and 'interleave'\n\0"
-                            as *const u8 as *const i8,
+                        b"Defines for %s use both 'choice' and 'interleave'\n\0" as *const u8
+                            as *const i8,
                         name,
                         0 as *const xmlChar,
                     );
                 }
-            } else if xmlStrEqual(
-                    combine,
-                    b"interleave\0" as *const u8 as *const i8 as *mut xmlChar,
-                ) != 0
-                {
+            } else if (unsafe { xmlStrEqual(
+                combine,
+                b"interleave\0" as *const u8 as *const i8 as *mut xmlChar,
+            ) }) != 0
+            {
                 if choiceOrInterleave == -(1 as i32) {
                     choiceOrInterleave = 0 as i32;
                 } else if choiceOrInterleave == 1 as i32 {
                     xmlRngPErr(
                         ctxt,
-                        (*define).node,
+                        unsafe { (*define).node },
                         XML_RNGP_DEF_CHOICE_AND_INTERLEAVE as i32,
-                        b"Defines for %s use both 'choice' and 'interleave'\n\0"
-                            as *const u8 as *const i8,
+                        b"Defines for %s use both 'choice' and 'interleave'\n\0" as *const u8
+                            as *const i8,
                         name,
                         0 as *const xmlChar,
                     );
@@ -8615,110 +8283,106 @@ unsafe extern "C" fn xmlRelaxNGCheckCombine(
             } else {
                 xmlRngPErr(
                     ctxt,
-                    (*define).node,
+                    unsafe { (*define).node },
                     XML_RNGP_UNKNOWN_COMBINE as i32,
-                    b"Defines for %s use unknown combine value '%s''\n\0" as *const u8
-                        as *const i8,
+                    b"Defines for %s use unknown combine value '%s''\n\0" as *const u8 as *const i8,
                     name,
                     combine,
                 );
             }
-            xmlFree.expect("non-null function pointer")(combine as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(combine as *mut libc::c_void) });
         } else if missing == 0 as i32 {
             missing = 1 as i32;
         } else {
             xmlRngPErr(
                 ctxt,
-                (*define).node,
+                unsafe { (*define).node },
                 XML_RNGP_NEED_COMBINE as i32,
-                b"Some defines for %s needs the combine attribute\n\0" as *const u8
-                    as *const i8,
+                b"Some defines for %s needs the combine attribute\n\0" as *const u8 as *const i8,
                 name,
                 0 as *const xmlChar,
             );
         }
-        cur = (*cur).nextHash;
+        cur = unsafe { (*cur).nextHash };
     }
     if choiceOrInterleave == -(1 as i32) {
         choiceOrInterleave = 0 as i32;
     }
-    cur = xmlRelaxNGNewDefine(ctxt, (*define).node);
+    cur = xmlRelaxNGNewDefine(ctxt, unsafe { (*define).node });
     if cur.is_null() {
         return;
     }
     if choiceOrInterleave == 0 as i32 {
-        (*cur).type_0 = XML_RELAXNG_INTERLEAVE;
+        (unsafe { (*cur).type_0 = XML_RELAXNG_INTERLEAVE });
     } else {
-        (*cur).type_0 = XML_RELAXNG_CHOICE;
+        (unsafe { (*cur).type_0 = XML_RELAXNG_CHOICE });
     }
     tmp = define;
     last = 0 as xmlRelaxNGDefinePtr;
     while !tmp.is_null() {
-        if !((*tmp).content).is_null() {
-            if !((*(*tmp).content).next).is_null() {
-                tmp2 = xmlRelaxNGNewDefine(ctxt, (*(*tmp).content).node);
+        if !(unsafe { (*tmp).content }).is_null() {
+            if !(unsafe { (*(*tmp).content).next }).is_null() {
+                tmp2 = xmlRelaxNGNewDefine(ctxt, unsafe { (*(*tmp).content).node });
                 if tmp2.is_null() {
                     break;
                 }
-                (*tmp2).type_0 = XML_RELAXNG_GROUP;
-                let ref mut fresh251 = (*tmp2).content;
-                *fresh251 = (*tmp).content;
+                (unsafe { (*tmp2).type_0 = XML_RELAXNG_GROUP });
+                let fresh251 = unsafe { &mut ((*tmp2).content) };
+                *fresh251 = unsafe { (*tmp).content };
             } else {
-                tmp2 = (*tmp).content;
+                tmp2 = unsafe { (*tmp).content };
             }
             if last.is_null() {
-                let ref mut fresh252 = (*cur).content;
+                let fresh252 = unsafe { &mut ((*cur).content) };
                 *fresh252 = tmp2;
             } else {
-                let ref mut fresh253 = (*last).next;
+                let fresh253 = unsafe { &mut ((*last).next) };
                 *fresh253 = tmp2;
             }
             last = tmp2;
         }
-        let ref mut fresh254 = (*tmp).content;
+        let fresh254 = unsafe { &mut ((*tmp).content) };
         *fresh254 = cur;
-        tmp = (*tmp).nextHash;
+        tmp = unsafe { (*tmp).nextHash };
     }
-    let ref mut fresh255 = (*define).content;
+    let fresh255 = unsafe { &mut ((*define).content) };
     *fresh255 = cur;
     if choiceOrInterleave == 0 as i32 {
-        if ((*ctxt).interleaves).is_null() {
-            let ref mut fresh256 = (*ctxt).interleaves;
+        if (unsafe { (*ctxt).interleaves }).is_null() {
+            let fresh256 = unsafe { &mut ((*ctxt).interleaves) };
             *fresh256 = xmlHashCreate(10 as i32);
         }
-        if ((*ctxt).interleaves).is_null() {
+        if (unsafe { (*ctxt).interleaves }).is_null() {
             xmlRngPErr(
                 ctxt,
-                (*define).node,
+                unsafe { (*define).node },
                 XML_RNGP_INTERLEAVE_CREATE_FAILED as i32,
-                b"Failed to create interleaves hash table\n\0" as *const u8
-                    as *const i8,
+                b"Failed to create interleaves hash table\n\0" as *const u8 as *const i8,
                 0 as *const xmlChar,
                 0 as *const xmlChar,
             );
         } else {
             let mut tmpname: [i8; 32] = [0; 32];
-            let ref mut fresh257 = (*ctxt).nbInterleaves;
+            let fresh257 = unsafe { &mut ((*ctxt).nbInterleaves) };
             let mut fresh258 = *fresh257;
             *fresh257 = *fresh257 + 1;
-            snprintf(
+            (unsafe { snprintf(
                 tmpname.as_mut_ptr(),
                 32 as i32 as u64,
                 b"interleave%d\0" as *const u8 as *const i8,
                 fresh258,
-            );
+            ) });
             if xmlHashAddEntry(
-                (*ctxt).interleaves,
+                unsafe { (*ctxt).interleaves },
                 tmpname.as_mut_ptr() as *mut xmlChar,
                 cur as *mut libc::c_void,
             ) < 0 as i32
             {
                 xmlRngPErr(
                     ctxt,
-                    (*define).node,
+                    unsafe { (*define).node },
                     XML_RNGP_INTERLEAVE_CREATE_FAILED as i32,
-                    b"Failed to add %s to hash table\n\0" as *const u8
-                        as *const i8,
+                    b"Failed to add %s to hash table\n\0" as *const u8 as *const i8,
                     tmpname.as_mut_ptr() as *const xmlChar,
                     0 as *const xmlChar,
                 );
@@ -8726,76 +8390,74 @@ unsafe extern "C" fn xmlRelaxNGCheckCombine(
         }
     }
 }
-unsafe extern "C" fn xmlRelaxNGCombineStart<'a1, 'a2>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut grammar: * mut crate::src::relaxng::_xmlRelaxNGGrammar<'a2>,
+extern "C" fn xmlRelaxNGCombineStart<'a1, 'a2>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut grammar: *mut crate::src::relaxng::_xmlRelaxNGGrammar<'a2>,
 ) {
-    let mut starts: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    let mut combine: * mut u8 = 0 as *mut xmlChar;
+    let mut starts: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut combine: *mut u8 = 0 as *mut xmlChar;
     let mut choiceOrInterleave: i32 = -(1 as i32);
     let mut missing: i32 = 0 as i32;
-    let mut cur: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    starts = (*grammar).start;
-    if starts.is_null() || ((*starts).next).is_null() {
+    let mut cur: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    starts = unsafe { (*grammar).start };
+    if starts.is_null() || (unsafe { (*starts).next }).is_null() {
         return;
     }
     cur = starts;
     while !cur.is_null() {
-        if ((*cur).node).is_null() || ((*(*cur).node).parent).is_null()
-            || xmlStrEqual(
+        if (unsafe { (*cur).node }).is_null()
+            || (unsafe { (*(*cur).node).parent }).is_null()
+            || (unsafe { xmlStrEqual(
                 (*(*(*cur).node).parent).name,
                 b"start\0" as *const u8 as *const i8 as *mut xmlChar,
-            ) == 0
+            ) }) == 0
         {
             combine = 0 as *mut xmlChar;
             xmlRngPErr(
                 ctxt,
-                (*cur).node,
+                unsafe { (*cur).node },
                 XML_RNGP_START_MISSING as i32,
-                b"Internal error: start element not found\n\0" as *const u8
-                    as *const i8,
+                b"Internal error: start element not found\n\0" as *const u8 as *const i8,
                 0 as *const xmlChar,
                 0 as *const xmlChar,
             );
         } else {
-            combine = xmlGetProp(
+            combine = unsafe { xmlGetProp(
                 (*(*cur).node).parent,
                 b"combine\0" as *const u8 as *const i8 as *mut xmlChar,
-            );
+            ) };
         }
         if !combine.is_null() {
-            if xmlStrEqual(
+            if (unsafe { xmlStrEqual(
                 combine,
                 b"choice\0" as *const u8 as *const i8 as *mut xmlChar,
-            ) != 0
+            ) }) != 0
             {
                 if choiceOrInterleave == -(1 as i32) {
                     choiceOrInterleave = 1 as i32;
                 } else if choiceOrInterleave == 0 as i32 {
                     xmlRngPErr(
                         ctxt,
-                        (*cur).node,
+                        unsafe { (*cur).node },
                         XML_RNGP_START_CHOICE_AND_INTERLEAVE as i32,
-                        b"<start> use both 'choice' and 'interleave'\n\0" as *const u8
-                            as *const i8,
+                        b"<start> use both 'choice' and 'interleave'\n\0" as *const u8 as *const i8,
                         0 as *const xmlChar,
                         0 as *const xmlChar,
                     );
                 }
-            } else if xmlStrEqual(
-                    combine,
-                    b"interleave\0" as *const u8 as *const i8 as *mut xmlChar,
-                ) != 0
-                {
+            } else if (unsafe { xmlStrEqual(
+                combine,
+                b"interleave\0" as *const u8 as *const i8 as *mut xmlChar,
+            ) }) != 0
+            {
                 if choiceOrInterleave == -(1 as i32) {
                     choiceOrInterleave = 0 as i32;
                 } else if choiceOrInterleave == 1 as i32 {
                     xmlRngPErr(
                         ctxt,
-                        (*cur).node,
+                        unsafe { (*cur).node },
                         XML_RNGP_START_CHOICE_AND_INTERLEAVE as i32,
-                        b"<start> use both 'choice' and 'interleave'\n\0" as *const u8
-                            as *const i8,
+                        b"<start> use both 'choice' and 'interleave'\n\0" as *const u8 as *const i8,
                         0 as *const xmlChar,
                         0 as *const xmlChar,
                     );
@@ -8803,84 +8465,80 @@ unsafe extern "C" fn xmlRelaxNGCombineStart<'a1, 'a2>(
             } else {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_UNKNOWN_COMBINE as i32,
-                    b"<start> uses unknown combine value '%s''\n\0" as *const u8
-                        as *const i8,
+                    b"<start> uses unknown combine value '%s''\n\0" as *const u8 as *const i8,
                     combine,
                     0 as *const xmlChar,
                 );
             }
-            xmlFree.expect("non-null function pointer")(combine as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(combine as *mut libc::c_void) });
         } else if missing == 0 as i32 {
             missing = 1 as i32;
         } else {
             xmlRngPErr(
                 ctxt,
-                (*cur).node,
+                unsafe { (*cur).node },
                 XML_RNGP_NEED_COMBINE as i32,
-                b"Some <start> element miss the combine attribute\n\0" as *const u8
-                    as *const i8,
+                b"Some <start> element miss the combine attribute\n\0" as *const u8 as *const i8,
                 0 as *const xmlChar,
                 0 as *const xmlChar,
             );
         }
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
     }
     if choiceOrInterleave == -(1 as i32) {
         choiceOrInterleave = 0 as i32;
     }
-    cur = xmlRelaxNGNewDefine(ctxt, (*starts).node);
+    cur = xmlRelaxNGNewDefine(ctxt, unsafe { (*starts).node });
     if cur.is_null() {
         return;
     }
     if choiceOrInterleave == 0 as i32 {
-        (*cur).type_0 = XML_RELAXNG_INTERLEAVE;
+        (unsafe { (*cur).type_0 = XML_RELAXNG_INTERLEAVE });
     } else {
-        (*cur).type_0 = XML_RELAXNG_CHOICE;
+        (unsafe { (*cur).type_0 = XML_RELAXNG_CHOICE });
     }
-    let ref mut fresh259 = (*cur).content;
-    *fresh259 = (*grammar).start;
-    let ref mut fresh260 = (*grammar).start;
+    let fresh259 = unsafe { &mut ((*cur).content) };
+    *fresh259 = unsafe { (*grammar).start };
+    let fresh260 = unsafe { &mut ((*grammar).start) };
     *fresh260 = cur;
     if choiceOrInterleave == 0 as i32 {
-        if ((*ctxt).interleaves).is_null() {
-            let ref mut fresh261 = (*ctxt).interleaves;
+        if (unsafe { (*ctxt).interleaves }).is_null() {
+            let fresh261 = unsafe { &mut ((*ctxt).interleaves) };
             *fresh261 = xmlHashCreate(10 as i32);
         }
-        if ((*ctxt).interleaves).is_null() {
+        if (unsafe { (*ctxt).interleaves }).is_null() {
             xmlRngPErr(
                 ctxt,
-                (*cur).node,
+                unsafe { (*cur).node },
                 XML_RNGP_INTERLEAVE_CREATE_FAILED as i32,
-                b"Failed to create interleaves hash table\n\0" as *const u8
-                    as *const i8,
+                b"Failed to create interleaves hash table\n\0" as *const u8 as *const i8,
                 0 as *const xmlChar,
                 0 as *const xmlChar,
             );
         } else {
             let mut tmpname: [i8; 32] = [0; 32];
-            let ref mut fresh262 = (*ctxt).nbInterleaves;
+            let fresh262 = unsafe { &mut ((*ctxt).nbInterleaves) };
             let mut fresh263 = *fresh262;
             *fresh262 = *fresh262 + 1;
-            snprintf(
+            (unsafe { snprintf(
                 tmpname.as_mut_ptr(),
                 32 as i32 as u64,
                 b"interleave%d\0" as *const u8 as *const i8,
                 fresh263,
-            );
+            ) });
             if xmlHashAddEntry(
-                (*ctxt).interleaves,
+                unsafe { (*ctxt).interleaves },
                 tmpname.as_mut_ptr() as *mut xmlChar,
                 cur as *mut libc::c_void,
             ) < 0 as i32
             {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_INTERLEAVE_CREATE_FAILED as i32,
-                    b"Failed to add %s to hash table\n\0" as *const u8
-                        as *const i8,
+                    b"Failed to add %s to hash table\n\0" as *const u8 as *const i8,
                     tmpname.as_mut_ptr() as *const xmlChar,
                     0 as *const xmlChar,
                 );
@@ -8888,249 +8546,219 @@ unsafe extern "C" fn xmlRelaxNGCombineStart<'a1, 'a2>(
         }
     }
 }
-unsafe extern "C" fn xmlRelaxNGCheckCycles<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut cur: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+extern "C" fn xmlRelaxNGCheckCycles<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut cur: *mut crate::src::relaxng::_xmlRelaxNGDefine,
     mut depth: i32,
 ) -> i32 {
     let mut ret: i32 = 0 as i32;
     while ret == 0 as i32 && !cur.is_null() {
-        if (*cur).type_0 as i32 == XML_RELAXNG_REF as i32
-            || (*cur).type_0 as i32 == XML_RELAXNG_PARENTREF as i32
+        if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_REF as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_PARENTREF as i32
         {
-            if (*cur).depth as i32 == -(1 as i32) {
-                (*cur).depth = depth as i16;
-                ret = xmlRelaxNGCheckCycles(ctxt, (*cur).content, depth);
-                (*cur).depth = -(2 as i32) as i16;
-            } else if depth == (*cur).depth as i32 {
+            if (unsafe { (*cur).depth }) as i32 == -(1 as i32) {
+                (unsafe { (*cur).depth = depth as i16 });
+                ret = xmlRelaxNGCheckCycles(ctxt, unsafe { (*cur).content }, depth);
+                (unsafe { (*cur).depth = -(2 as i32) as i16 });
+            } else if depth == (unsafe { (*cur).depth }) as i32 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_REF_CYCLE as i32,
-                    b"Detected a cycle in %s references\n\0" as *const u8
-                        as *const i8,
-                    (*cur).name,
+                    b"Detected a cycle in %s references\n\0" as *const u8 as *const i8,
+                    unsafe { (*cur).name },
                     0 as *const xmlChar,
                 );
                 return -(1 as i32);
             }
-        } else if (*cur).type_0 as i32 == XML_RELAXNG_ELEMENT as i32 {
-            ret = xmlRelaxNGCheckCycles(ctxt, (*cur).content, depth + 1 as i32);
+        } else if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_ELEMENT as i32 {
+            ret = xmlRelaxNGCheckCycles(ctxt, unsafe { (*cur).content }, depth + 1 as i32);
         } else {
-            ret = xmlRelaxNGCheckCycles(ctxt, (*cur).content, depth);
+            ret = xmlRelaxNGCheckCycles(ctxt, unsafe { (*cur).content }, depth);
         }
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGTryUnlink<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut cur: * mut crate::src::relaxng::_xmlRelaxNGDefine,
-    mut parent: * mut crate::src::relaxng::_xmlRelaxNGDefine,
-    mut prev: * mut crate::src::relaxng::_xmlRelaxNGDefine,
-) -> * mut crate::src::relaxng::_xmlRelaxNGDefine {
+extern "C" fn xmlRelaxNGTryUnlink<'a1>(
+    mut _ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut cur: *mut crate::src::relaxng::_xmlRelaxNGDefine,
+    mut parent: *mut crate::src::relaxng::_xmlRelaxNGDefine,
+    mut prev: *mut crate::src::relaxng::_xmlRelaxNGDefine,
+) -> *mut crate::src::relaxng::_xmlRelaxNGDefine {
     if !prev.is_null() {
-        let ref mut fresh264 = (*prev).next;
-        *fresh264 = (*cur).next;
+        let fresh264 = unsafe { &mut ((*prev).next) };
+        *fresh264 = unsafe { (*cur).next };
     } else if !parent.is_null() {
-        if (*parent).content == cur {
-            let ref mut fresh265 = (*parent).content;
-            *fresh265 = (*cur).next;
-        } else if (*parent).attrs == cur {
-            let ref mut fresh266 = (*parent).attrs;
-            *fresh266 = (*cur).next;
-        } else if (*parent).nameClass == cur {
-            let ref mut fresh267 = (*parent).nameClass;
-            *fresh267 = (*cur).next;
+        if (unsafe { (*parent).content }) == cur {
+            let fresh265 = unsafe { &mut ((*parent).content) };
+            *fresh265 = unsafe { (*cur).next };
+        } else if (unsafe { (*parent).attrs }) == cur {
+            let fresh266 = unsafe { &mut ((*parent).attrs) };
+            *fresh266 = unsafe { (*cur).next };
+        } else if (unsafe { (*parent).nameClass }) == cur {
+            let fresh267 = unsafe { &mut ((*parent).nameClass) };
+            *fresh267 = unsafe { (*cur).next };
         }
     } else {
-        (*cur).type_0 = XML_RELAXNG_NOOP;
+        (unsafe { (*cur).type_0 = XML_RELAXNG_NOOP });
         prev = cur;
     }
     return prev;
 }
-unsafe extern "C" fn xmlRelaxNGSimplify<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut cur: * mut crate::src::relaxng::_xmlRelaxNGDefine,
-    mut parent: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+extern "C" fn xmlRelaxNGSimplify<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut cur: *mut crate::src::relaxng::_xmlRelaxNGDefine,
+    mut parent: *mut crate::src::relaxng::_xmlRelaxNGDefine,
 ) {
-    let mut prev: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
+    let mut prev: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
     while !cur.is_null() {
-        if (*cur).type_0 as i32 == XML_RELAXNG_REF as i32
-            || (*cur).type_0 as i32 == XML_RELAXNG_PARENTREF as i32
+        if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_REF as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_PARENTREF as i32
         {
-            if (*cur).depth as i32 != -(3 as i32) {
-                (*cur).depth = -(3 as i32) as i16;
-                xmlRelaxNGSimplify(ctxt, (*cur).content, cur);
+            if (unsafe { (*cur).depth }) as i32 != -(3 as i32) {
+                (unsafe { (*cur).depth = -(3 as i32) as i16 });
+                xmlRelaxNGSimplify(ctxt, unsafe { (*cur).content }, cur);
             }
-        } else if (*cur).type_0 as i32 == XML_RELAXNG_NOT_ALLOWED as i32
-            {
-            let ref mut fresh268 = (*cur).parent;
+        } else if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_NOT_ALLOWED as i32 {
+            let fresh268 = unsafe { &mut ((*cur).parent) };
             *fresh268 = parent;
             if !parent.is_null()
-                && ((*parent).type_0 as i32
-                    == XML_RELAXNG_ATTRIBUTE as i32
-                    || (*parent).type_0 as i32 == XML_RELAXNG_LIST as i32
-                    || (*parent).type_0 as i32
-                        == XML_RELAXNG_GROUP as i32
-                    || (*parent).type_0 as i32
-                        == XML_RELAXNG_INTERLEAVE as i32
-                    || (*parent).type_0 as i32
-                        == XML_RELAXNG_ONEORMORE as i32
-                    || (*parent).type_0 as i32
-                        == XML_RELAXNG_ZEROORMORE as i32)
+                && ((unsafe { (*parent).type_0 }) as i32 == XML_RELAXNG_ATTRIBUTE as i32
+                    || (unsafe { (*parent).type_0 }) as i32 == XML_RELAXNG_LIST as i32
+                    || (unsafe { (*parent).type_0 }) as i32 == XML_RELAXNG_GROUP as i32
+                    || (unsafe { (*parent).type_0 }) as i32 == XML_RELAXNG_INTERLEAVE as i32
+                    || (unsafe { (*parent).type_0 }) as i32 == XML_RELAXNG_ONEORMORE as i32
+                    || (unsafe { (*parent).type_0 }) as i32 == XML_RELAXNG_ZEROORMORE as i32)
             {
-                (*parent).type_0 = XML_RELAXNG_NOT_ALLOWED;
+                (unsafe { (*parent).type_0 = XML_RELAXNG_NOT_ALLOWED });
                 break;
-            } else if !parent.is_null()
-                    && (*parent).type_0 as i32
-                        == XML_RELAXNG_CHOICE as i32
-                {
+            } else if !parent.is_null() && (unsafe { (*parent).type_0 }) as i32 == XML_RELAXNG_CHOICE as i32 {
                 prev = xmlRelaxNGTryUnlink(ctxt, cur, parent, prev);
             } else {
                 prev = cur;
             }
-        } else if (*cur).type_0 as i32 == XML_RELAXNG_EMPTY as i32 {
-            let ref mut fresh269 = (*cur).parent;
+        } else if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_EMPTY as i32 {
+            let fresh269 = unsafe { &mut ((*cur).parent) };
             *fresh269 = parent;
             if !parent.is_null()
-                && ((*parent).type_0 as i32
-                    == XML_RELAXNG_ONEORMORE as i32
-                    || (*parent).type_0 as i32
-                        == XML_RELAXNG_ZEROORMORE as i32)
+                && ((unsafe { (*parent).type_0 }) as i32 == XML_RELAXNG_ONEORMORE as i32
+                    || (unsafe { (*parent).type_0 }) as i32 == XML_RELAXNG_ZEROORMORE as i32)
             {
-                (*parent).type_0 = XML_RELAXNG_EMPTY;
+                (unsafe { (*parent).type_0 = XML_RELAXNG_EMPTY });
                 break;
             } else if !parent.is_null()
-                    && ((*parent).type_0 as i32
-                        == XML_RELAXNG_GROUP as i32
-                        || (*parent).type_0 as i32
-                            == XML_RELAXNG_INTERLEAVE as i32)
-                {
+                && ((unsafe { (*parent).type_0 }) as i32 == XML_RELAXNG_GROUP as i32
+                    || (unsafe { (*parent).type_0 }) as i32 == XML_RELAXNG_INTERLEAVE as i32)
+            {
                 prev = xmlRelaxNGTryUnlink(ctxt, cur, parent, prev);
             } else {
                 prev = cur;
             }
         } else {
-            let ref mut fresh270 = (*cur).parent;
+            let fresh270 = unsafe { &mut ((*cur).parent) };
             *fresh270 = parent;
-            if !((*cur).content).is_null() {
-                xmlRelaxNGSimplify(ctxt, (*cur).content, cur);
+            if !(unsafe { (*cur).content }).is_null() {
+                xmlRelaxNGSimplify(ctxt, unsafe { (*cur).content }, cur);
             }
-            if (*cur).type_0 as i32 != XML_RELAXNG_VALUE as i32
-                && !((*cur).attrs).is_null()
-            {
-                xmlRelaxNGSimplify(ctxt, (*cur).attrs, cur);
+            if (unsafe { (*cur).type_0 }) as i32 != XML_RELAXNG_VALUE as i32 && !(unsafe { (*cur).attrs }).is_null() {
+                xmlRelaxNGSimplify(ctxt, unsafe { (*cur).attrs }, cur);
             }
-            if !((*cur).nameClass).is_null() {
-                xmlRelaxNGSimplify(ctxt, (*cur).nameClass, cur);
+            if !(unsafe { (*cur).nameClass }).is_null() {
+                xmlRelaxNGSimplify(ctxt, unsafe { (*cur).nameClass }, cur);
             }
-            if (*cur).type_0 as i32 == XML_RELAXNG_ELEMENT as i32 {
+            if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_ELEMENT as i32 {
                 let mut attronly: i32 = 0;
-                let mut tmp: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-                let mut pre: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-                while !((*cur).content).is_null() {
-                    attronly = xmlRelaxNGGenerateAttributes(ctxt, (*cur).content);
+                let mut tmp: *mut crate::src::relaxng::_xmlRelaxNGDefine =
+                    0 as *mut xmlRelaxNGDefine;
+                let mut pre: *mut crate::src::relaxng::_xmlRelaxNGDefine =
+                    0 as *mut xmlRelaxNGDefine;
+                while !(unsafe { (*cur).content }).is_null() {
+                    attronly = xmlRelaxNGGenerateAttributes(ctxt, unsafe { (*cur).content });
                     if !(attronly == 1 as i32) {
                         break;
                     }
-                    tmp = (*cur).content;
-                    let ref mut fresh271 = (*cur).content;
-                    *fresh271 = (*tmp).next;
-                    let ref mut fresh272 = (*tmp).next;
-                    *fresh272 = (*cur).attrs;
-                    let ref mut fresh273 = (*cur).attrs;
+                    tmp = unsafe { (*cur).content };
+                    let fresh271 = unsafe { &mut ((*cur).content) };
+                    *fresh271 = unsafe { (*tmp).next };
+                    let fresh272 = unsafe { &mut ((*tmp).next) };
+                    *fresh272 = unsafe { (*cur).attrs };
+                    let fresh273 = unsafe { &mut ((*cur).attrs) };
                     *fresh273 = tmp;
                 }
-                pre = (*cur).content;
-                while !pre.is_null() && !((*pre).next).is_null() {
-                    tmp = (*pre).next;
+                pre = unsafe { (*cur).content };
+                while !pre.is_null() && !(unsafe { (*pre).next }).is_null() {
+                    tmp = unsafe { (*pre).next };
                     attronly = xmlRelaxNGGenerateAttributes(ctxt, tmp);
                     if attronly == 1 as i32 {
-                        let ref mut fresh274 = (*pre).next;
-                        *fresh274 = (*tmp).next;
-                        let ref mut fresh275 = (*tmp).next;
-                        *fresh275 = (*cur).attrs;
-                        let ref mut fresh276 = (*cur).attrs;
+                        let fresh274 = unsafe { &mut ((*pre).next) };
+                        *fresh274 = unsafe { (*tmp).next };
+                        let fresh275 = unsafe { &mut ((*tmp).next) };
+                        *fresh275 = unsafe { (*cur).attrs };
+                        let fresh276 = unsafe { &mut ((*cur).attrs) };
                         *fresh276 = tmp;
                     } else {
                         pre = tmp;
                     }
                 }
             }
-            if (*cur).type_0 as i32 == XML_RELAXNG_GROUP as i32
-                || (*cur).type_0 as i32 == XML_RELAXNG_INTERLEAVE as i32
+            if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_GROUP as i32
+                || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_INTERLEAVE as i32
             {
-                if ((*cur).content).is_null() {
-                    (*cur).type_0 = XML_RELAXNG_EMPTY;
-                } else if ((*(*cur).content).next).is_null() {
+                if (unsafe { (*cur).content }).is_null() {
+                    (unsafe { (*cur).type_0 = XML_RELAXNG_EMPTY });
+                } else if (unsafe { (*(*cur).content).next }).is_null() {
                     if parent.is_null() && prev.is_null() {
-                        (*cur).type_0 = XML_RELAXNG_NOOP;
+                        (unsafe { (*cur).type_0 = XML_RELAXNG_NOOP });
                     } else if prev.is_null() {
-                        let ref mut fresh277 = (*parent).content;
-                        *fresh277 = (*cur).content;
-                        let ref mut fresh278 = (*(*cur).content).next;
-                        *fresh278 = (*cur).next;
-                        cur = (*cur).content;
+                        let fresh277 = unsafe { &mut ((*parent).content) };
+                        *fresh277 = unsafe { (*cur).content };
+                        let fresh278 = unsafe { &mut ((*(*cur).content).next) };
+                        *fresh278 = unsafe { (*cur).next };
+                        cur = unsafe { (*cur).content };
                     } else {
-                        let ref mut fresh279 = (*(*cur).content).next;
-                        *fresh279 = (*cur).next;
-                        let ref mut fresh280 = (*prev).next;
-                        *fresh280 = (*cur).content;
-                        cur = (*cur).content;
+                        let fresh279 = unsafe { &mut ((*(*cur).content).next) };
+                        *fresh279 = unsafe { (*cur).next };
+                        let fresh280 = unsafe { &mut ((*prev).next) };
+                        *fresh280 = unsafe { (*cur).content };
+                        cur = unsafe { (*cur).content };
                     }
                 }
             }
-            if (*cur).type_0 as i32 == XML_RELAXNG_EXCEPT as i32
-                && !((*cur).content).is_null()
-                && (*(*cur).content).type_0 as i32
-                    == XML_RELAXNG_NOT_ALLOWED as i32
+            if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_EXCEPT as i32
+                && !(unsafe { (*cur).content }).is_null()
+                && (unsafe { (*(*cur).content).type_0 }) as i32 == XML_RELAXNG_NOT_ALLOWED as i32
             {
                 prev = xmlRelaxNGTryUnlink(ctxt, cur, parent, prev);
-            } else if (*cur).type_0 as i32
-                    == XML_RELAXNG_NOT_ALLOWED as i32
-                {
+            } else if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_NOT_ALLOWED as i32 {
                 if !parent.is_null()
-                    && ((*parent).type_0 as i32
-                        == XML_RELAXNG_ATTRIBUTE as i32
-                        || (*parent).type_0 as i32
-                            == XML_RELAXNG_LIST as i32
-                        || (*parent).type_0 as i32
-                            == XML_RELAXNG_GROUP as i32
-                        || (*parent).type_0 as i32
-                            == XML_RELAXNG_INTERLEAVE as i32
-                        || (*parent).type_0 as i32
-                            == XML_RELAXNG_ONEORMORE as i32
-                        || (*parent).type_0 as i32
-                            == XML_RELAXNG_ZEROORMORE as i32)
+                    && ((unsafe { (*parent).type_0 }) as i32 == XML_RELAXNG_ATTRIBUTE as i32
+                        || (unsafe { (*parent).type_0 }) as i32 == XML_RELAXNG_LIST as i32
+                        || (unsafe { (*parent).type_0 }) as i32 == XML_RELAXNG_GROUP as i32
+                        || (unsafe { (*parent).type_0 }) as i32 == XML_RELAXNG_INTERLEAVE as i32
+                        || (unsafe { (*parent).type_0 }) as i32 == XML_RELAXNG_ONEORMORE as i32
+                        || (unsafe { (*parent).type_0 }) as i32 == XML_RELAXNG_ZEROORMORE as i32)
                 {
-                    (*parent).type_0 = XML_RELAXNG_NOT_ALLOWED;
+                    (unsafe { (*parent).type_0 = XML_RELAXNG_NOT_ALLOWED });
                     break;
-                } else if !parent.is_null()
-                        && (*parent).type_0 as i32
-                            == XML_RELAXNG_CHOICE as i32
-                    {
+                } else if !parent.is_null() && (unsafe { (*parent).type_0 }) as i32 == XML_RELAXNG_CHOICE as i32
+                {
                     prev = xmlRelaxNGTryUnlink(ctxt, cur, parent, prev);
                 } else {
                     prev = cur;
                 }
-            } else if (*cur).type_0 as i32 == XML_RELAXNG_EMPTY as i32 {
+            } else if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_EMPTY as i32 {
                 if !parent.is_null()
-                    && ((*parent).type_0 as i32
-                        == XML_RELAXNG_ONEORMORE as i32
-                        || (*parent).type_0 as i32
-                            == XML_RELAXNG_ZEROORMORE as i32)
+                    && ((unsafe { (*parent).type_0 }) as i32 == XML_RELAXNG_ONEORMORE as i32
+                        || (unsafe { (*parent).type_0 }) as i32 == XML_RELAXNG_ZEROORMORE as i32)
                 {
-                    (*parent).type_0 = XML_RELAXNG_EMPTY;
+                    (unsafe { (*parent).type_0 = XML_RELAXNG_EMPTY });
                     break;
                 } else if !parent.is_null()
-                        && ((*parent).type_0 as i32
-                            == XML_RELAXNG_GROUP as i32
-                            || (*parent).type_0 as i32
-                                == XML_RELAXNG_INTERLEAVE as i32
-                            || (*parent).type_0 as i32
-                                == XML_RELAXNG_CHOICE as i32)
-                    {
+                    && ((unsafe { (*parent).type_0 }) as i32 == XML_RELAXNG_GROUP as i32
+                        || (unsafe { (*parent).type_0 }) as i32 == XML_RELAXNG_INTERLEAVE as i32
+                        || (unsafe { (*parent).type_0 }) as i32 == XML_RELAXNG_CHOICE as i32)
+                {
                     prev = xmlRelaxNGTryUnlink(ctxt, cur, parent, prev);
                 } else {
                     prev = cur;
@@ -9139,13 +8767,10 @@ unsafe extern "C" fn xmlRelaxNGSimplify<'a1>(
                 prev = cur;
             }
         }
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
     }
 }
- extern "C" fn xmlRelaxNGGroupContentType(
-    mut ct1: i32,
-    mut ct2: i32,
-) -> i32 {
+extern "C" fn xmlRelaxNGGroupContentType(mut ct1: i32, mut ct2: i32) -> i32 {
     if ct1 as i32 == XML_RELAXNG_CONTENT_ERROR as i32
         || ct2 as i32 == XML_RELAXNG_CONTENT_ERROR as i32
     {
@@ -9164,10 +8789,7 @@ unsafe extern "C" fn xmlRelaxNGSimplify<'a1>(
     }
     return XML_RELAXNG_CONTENT_ERROR;
 }
- extern "C" fn xmlRelaxNGMaxContentType(
-    mut ct1: i32,
-    mut ct2: i32,
-) -> i32 {
+extern "C" fn xmlRelaxNGMaxContentType(mut ct1: i32, mut ct2: i32) -> i32 {
     if ct1 as i32 == XML_RELAXNG_CONTENT_ERROR as i32
         || ct2 as i32 == XML_RELAXNG_CONTENT_ERROR as i32
     {
@@ -9185,9 +8807,9 @@ unsafe extern "C" fn xmlRelaxNGSimplify<'a1>(
     }
     return XML_RELAXNG_CONTENT_EMPTY;
 }
-unsafe extern "C" fn xmlRelaxNGCheckRules<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut cur: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+extern "C" fn xmlRelaxNGCheckRules<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut cur: *mut crate::src::relaxng::_xmlRelaxNGDefine,
     mut flags: i32,
     mut ptype: i32,
 ) -> i32 {
@@ -9197,40 +8819,37 @@ unsafe extern "C" fn xmlRelaxNGCheckRules<'a1>(
     let mut val: i32 = XML_RELAXNG_CONTENT_EMPTY;
     while !cur.is_null() {
         ret = XML_RELAXNG_CONTENT_EMPTY;
-        if (*cur).type_0 as i32 == XML_RELAXNG_REF as i32
-            || (*cur).type_0 as i32 == XML_RELAXNG_PARENTREF as i32
+        if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_REF as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_PARENTREF as i32
         {
             if flags & (1 as i32) << 3 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_DATA_EXCEPT_REF as i32,
-                    b"Found forbidden pattern data/except//ref\n\0" as *const u8
-                        as *const i8,
+                    b"Found forbidden pattern data/except//ref\n\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
             }
-            if ((*cur).content).is_null() {
-                if (*cur).type_0 as i32 == XML_RELAXNG_PARENTREF as i32 {
+            if (unsafe { (*cur).content }).is_null() {
+                if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_PARENTREF as i32 {
                     xmlRngPErr(
                         ctxt,
-                        (*cur).node,
+                        unsafe { (*cur).node },
                         XML_RNGP_REF_NO_DEF as i32,
-                        b"Internal found no define for parent refs\n\0" as *const u8
-                            as *const i8,
+                        b"Internal found no define for parent refs\n\0" as *const u8 as *const i8,
                         0 as *const xmlChar,
                         0 as *const xmlChar,
                     );
                 } else {
                     xmlRngPErr(
                         ctxt,
-                        (*cur).node,
+                        unsafe { (*cur).node },
                         XML_RNGP_REF_NO_DEF as i32,
-                        b"Internal found no define for ref %s\n\0" as *const u8
-                            as *const i8,
-                        if !((*cur).name).is_null() {
-                            (*cur).name
+                        b"Internal found no define for ref %s\n\0" as *const u8 as *const i8,
+                        if !(unsafe { (*cur).name }).is_null() {
+                            unsafe { (*cur).name }
                         } else {
                             b"null\0" as *const u8 as *const i8 as *mut xmlChar
                         },
@@ -9238,22 +8857,21 @@ unsafe extern "C" fn xmlRelaxNGCheckRules<'a1>(
                     );
                 }
             }
-            if (*cur).depth as i32 > -(4 as i32) {
-                (*cur).depth = -(4 as i32) as i16;
-                ret = xmlRelaxNGCheckRules(ctxt, (*cur).content, flags, (*cur).type_0);
-                (*cur).depth = (ret as i32 - 15 as i32) as i16;
-            } else if (*cur).depth as i32 == -(4 as i32) {
+            if (unsafe { (*cur).depth }) as i32 > -(4 as i32) {
+                (unsafe { (*cur).depth = -(4 as i32) as i16 });
+                ret = xmlRelaxNGCheckRules(ctxt, unsafe { (*cur).content }, flags, unsafe { (*cur).type_0 });
+                (unsafe { (*cur).depth = (ret as i32 - 15 as i32) as i16 });
+            } else if (unsafe { (*cur).depth }) as i32 == -(4 as i32) {
                 ret = XML_RELAXNG_CONTENT_COMPLEX;
             } else {
-                ret = ((*cur).depth as i32 + 15 as i32)
-                    as xmlRelaxNGContentType;
+                ret = ((unsafe { (*cur).depth }) as i32 + 15 as i32) as xmlRelaxNGContentType;
             }
-        } else if (*cur).type_0 as i32 == XML_RELAXNG_ELEMENT as i32 {
+        } else if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_ELEMENT as i32 {
             xmlRelaxNGCheckGroupAttrs(ctxt, cur);
             if flags & (1 as i32) << 3 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_DATA_EXCEPT_ELEM as i32,
                     b"Found forbidden pattern data/except//element(ref)\n\0" as *const u8
                         as *const i8,
@@ -9264,10 +8882,9 @@ unsafe extern "C" fn xmlRelaxNGCheckRules<'a1>(
             if flags & (1 as i32) << 2 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_LIST_ELEM as i32,
-                    b"Found forbidden pattern list//element(ref)\n\0" as *const u8
-                        as *const i8,
+                    b"Found forbidden pattern list//element(ref)\n\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
@@ -9275,7 +8892,7 @@ unsafe extern "C" fn xmlRelaxNGCheckRules<'a1>(
             if flags & (1 as i32) << 0 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_ATTR_ELEM as i32,
                     b"Found forbidden pattern attribute//element(ref)\n\0" as *const u8
                         as *const i8,
@@ -9286,7 +8903,7 @@ unsafe extern "C" fn xmlRelaxNGCheckRules<'a1>(
             if flags & (1 as i32) << 0 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_ATTR_ELEM as i32,
                     b"Found forbidden pattern attribute//element(ref)\n\0" as *const u8
                         as *const i8,
@@ -9295,40 +8912,38 @@ unsafe extern "C" fn xmlRelaxNGCheckRules<'a1>(
                 );
             }
             nflags = 0 as i32;
-            ret = xmlRelaxNGCheckRules(ctxt, (*cur).attrs, nflags, (*cur).type_0);
+            ret = xmlRelaxNGCheckRules(ctxt, unsafe { (*cur).attrs }, nflags, unsafe { (*cur).type_0 });
             if ret as i32 != XML_RELAXNG_CONTENT_EMPTY as i32 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_ELEM_CONTENT_EMPTY as i32,
                     b"Element %s attributes have a content type error\n\0" as *const u8
                         as *const i8,
-                    (*cur).name,
+                    unsafe { (*cur).name },
                     0 as *const xmlChar,
                 );
             }
-            ret = xmlRelaxNGCheckRules(ctxt, (*cur).content, nflags, (*cur).type_0);
+            ret = xmlRelaxNGCheckRules(ctxt, unsafe { (*cur).content }, nflags, unsafe { (*cur).type_0 });
             if ret as i32 == XML_RELAXNG_CONTENT_ERROR as i32 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_ELEM_CONTENT_ERROR as i32,
-                    b"Element %s has a content type error\n\0" as *const u8
-                        as *const i8,
-                    (*cur).name,
+                    b"Element %s has a content type error\n\0" as *const u8 as *const i8,
+                    unsafe { (*cur).name },
                     0 as *const xmlChar,
                 );
             } else {
                 ret = XML_RELAXNG_CONTENT_COMPLEX;
             }
-        } else if (*cur).type_0 as i32 == XML_RELAXNG_ATTRIBUTE as i32 {
+        } else if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_ATTRIBUTE as i32 {
             if flags & (1 as i32) << 0 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_ATTR_ATTR as i32,
-                    b"Found forbidden pattern attribute//attribute\n\0" as *const u8
-                        as *const i8,
+                    b"Found forbidden pattern attribute//attribute\n\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
@@ -9336,10 +8951,9 @@ unsafe extern "C" fn xmlRelaxNGCheckRules<'a1>(
             if flags & (1 as i32) << 2 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_LIST_ATTR as i32,
-                    b"Found forbidden pattern list//attribute\n\0" as *const u8
-                        as *const i8,
+                    b"Found forbidden pattern list//attribute\n\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
@@ -9347,10 +8961,10 @@ unsafe extern "C" fn xmlRelaxNGCheckRules<'a1>(
             if flags & (1 as i32) << 5 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_ONEMORE_GROUP_ATTR as i32,
-                    b"Found forbidden pattern oneOrMore//group//attribute\n\0"
-                        as *const u8 as *const i8,
+                    b"Found forbidden pattern oneOrMore//group//attribute\n\0" as *const u8
+                        as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
@@ -9358,10 +8972,10 @@ unsafe extern "C" fn xmlRelaxNGCheckRules<'a1>(
             if flags & (1 as i32) << 6 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_ONEMORE_INTERLEAVE_ATTR as i32,
-                    b"Found forbidden pattern oneOrMore//interleave//attribute\n\0"
-                        as *const u8 as *const i8,
+                    b"Found forbidden pattern oneOrMore//interleave//attribute\n\0" as *const u8
+                        as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
@@ -9369,10 +8983,9 @@ unsafe extern "C" fn xmlRelaxNGCheckRules<'a1>(
             if flags & (1 as i32) << 3 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_DATA_EXCEPT_ATTR as i32,
-                    b"Found forbidden pattern data/except//attribute\n\0" as *const u8
-                        as *const i8,
+                    b"Found forbidden pattern data/except//attribute\n\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
@@ -9380,52 +8993,51 @@ unsafe extern "C" fn xmlRelaxNGCheckRules<'a1>(
             if flags & (1 as i32) << 4 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_START_ATTR as i32,
-                    b"Found forbidden pattern start//attribute\n\0" as *const u8
-                        as *const i8,
+                    b"Found forbidden pattern start//attribute\n\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
             }
             if flags & (1 as i32) << 1 as i32 == 0
-                && ((*cur).name).is_null() && ((*cur).nameClass).is_null()
+                && (unsafe { (*cur).name }).is_null()
+                && (unsafe { (*cur).nameClass }).is_null()
             {
-                if ((*cur).ns).is_null() {
+                if (unsafe { (*cur).ns }).is_null() {
                     xmlRngPErr(
                         ctxt,
-                        (*cur).node,
+                        unsafe { (*cur).node },
                         XML_RNGP_ANYNAME_ATTR_ANCESTOR as i32,
-                        b"Found anyName attribute without oneOrMore ancestor\n\0"
-                            as *const u8 as *const i8,
+                        b"Found anyName attribute without oneOrMore ancestor\n\0" as *const u8
+                            as *const i8,
                         0 as *const xmlChar,
                         0 as *const xmlChar,
                     );
                 } else {
                     xmlRngPErr(
                         ctxt,
-                        (*cur).node,
+                        unsafe { (*cur).node },
                         XML_RNGP_NSNAME_ATTR_ANCESTOR as i32,
-                        b"Found nsName attribute without oneOrMore ancestor\n\0"
-                            as *const u8 as *const i8,
+                        b"Found nsName attribute without oneOrMore ancestor\n\0" as *const u8
+                            as *const i8,
                         0 as *const xmlChar,
                         0 as *const xmlChar,
                     );
                 }
             }
             nflags = flags | (1 as i32) << 0 as i32;
-            xmlRelaxNGCheckRules(ctxt, (*cur).content, nflags, (*cur).type_0);
+            xmlRelaxNGCheckRules(ctxt, unsafe { (*cur).content }, nflags, unsafe { (*cur).type_0 });
             ret = XML_RELAXNG_CONTENT_EMPTY;
-        } else if (*cur).type_0 as i32 == XML_RELAXNG_ONEORMORE as i32
-                || (*cur).type_0 as i32 == XML_RELAXNG_ZEROORMORE as i32
-            {
+        } else if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_ONEORMORE as i32
+            || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_ZEROORMORE as i32
+        {
             if flags & (1 as i32) << 3 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_DATA_EXCEPT_ONEMORE as i32,
-                    b"Found forbidden pattern data/except//oneOrMore\n\0" as *const u8
-                        as *const i8,
+                    b"Found forbidden pattern data/except//oneOrMore\n\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
@@ -9433,25 +9045,23 @@ unsafe extern "C" fn xmlRelaxNGCheckRules<'a1>(
             if flags & (1 as i32) << 4 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_START_ONEMORE as i32,
-                    b"Found forbidden pattern start//oneOrMore\n\0" as *const u8
-                        as *const i8,
+                    b"Found forbidden pattern start//oneOrMore\n\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
             }
             nflags = flags | (1 as i32) << 1 as i32;
-            ret = xmlRelaxNGCheckRules(ctxt, (*cur).content, nflags, (*cur).type_0);
+            ret = xmlRelaxNGCheckRules(ctxt, unsafe { (*cur).content }, nflags, unsafe { (*cur).type_0 });
             ret = xmlRelaxNGGroupContentType(ret, ret);
-        } else if (*cur).type_0 as i32 == XML_RELAXNG_LIST as i32 {
+        } else if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_LIST as i32 {
             if flags & (1 as i32) << 2 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_LIST_LIST as i32,
-                    b"Found forbidden pattern list//list\n\0" as *const u8
-                        as *const i8,
+                    b"Found forbidden pattern list//list\n\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
@@ -9459,10 +9069,9 @@ unsafe extern "C" fn xmlRelaxNGCheckRules<'a1>(
             if flags & (1 as i32) << 3 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_DATA_EXCEPT_LIST as i32,
-                    b"Found forbidden pattern data/except//list\n\0" as *const u8
-                        as *const i8,
+                    b"Found forbidden pattern data/except//list\n\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
@@ -9470,24 +9079,22 @@ unsafe extern "C" fn xmlRelaxNGCheckRules<'a1>(
             if flags & (1 as i32) << 4 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_START_LIST as i32,
-                    b"Found forbidden pattern start//list\n\0" as *const u8
-                        as *const i8,
+                    b"Found forbidden pattern start//list\n\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
             }
             nflags = flags | (1 as i32) << 2 as i32;
-            ret = xmlRelaxNGCheckRules(ctxt, (*cur).content, nflags, (*cur).type_0);
-        } else if (*cur).type_0 as i32 == XML_RELAXNG_GROUP as i32 {
+            ret = xmlRelaxNGCheckRules(ctxt, unsafe { (*cur).content }, nflags, unsafe { (*cur).type_0 });
+        } else if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_GROUP as i32 {
             if flags & (1 as i32) << 3 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_DATA_EXCEPT_GROUP as i32,
-                    b"Found forbidden pattern data/except//group\n\0" as *const u8
-                        as *const i8,
+                    b"Found forbidden pattern data/except//group\n\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
@@ -9495,10 +9102,9 @@ unsafe extern "C" fn xmlRelaxNGCheckRules<'a1>(
             if flags & (1 as i32) << 4 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_START_GROUP as i32,
-                    b"Found forbidden pattern start//group\n\0" as *const u8
-                        as *const i8,
+                    b"Found forbidden pattern start//group\n\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
@@ -9508,16 +9114,15 @@ unsafe extern "C" fn xmlRelaxNGCheckRules<'a1>(
             } else {
                 nflags = flags;
             }
-            ret = xmlRelaxNGCheckRules(ctxt, (*cur).content, nflags, (*cur).type_0);
+            ret = xmlRelaxNGCheckRules(ctxt, unsafe { (*cur).content }, nflags, unsafe { (*cur).type_0 });
             xmlRelaxNGCheckGroupAttrs(ctxt, cur);
-        } else if (*cur).type_0 as i32 == XML_RELAXNG_INTERLEAVE as i32 {
+        } else if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_INTERLEAVE as i32 {
             if flags & (1 as i32) << 2 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_LIST_INTERLEAVE as i32,
-                    b"Found forbidden pattern list//interleave\n\0" as *const u8
-                        as *const i8,
+                    b"Found forbidden pattern list//interleave\n\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
@@ -9525,7 +9130,7 @@ unsafe extern "C" fn xmlRelaxNGCheckRules<'a1>(
             if flags & (1 as i32) << 3 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_DATA_EXCEPT_INTERLEAVE as i32,
                     b"Found forbidden pattern data/except//interleave\n\0" as *const u8
                         as *const i8,
@@ -9536,10 +9141,9 @@ unsafe extern "C" fn xmlRelaxNGCheckRules<'a1>(
             if flags & (1 as i32) << 4 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_DATA_EXCEPT_INTERLEAVE as i32,
-                    b"Found forbidden pattern start//interleave\n\0" as *const u8
-                        as *const i8,
+                    b"Found forbidden pattern start//interleave\n\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
@@ -9549,53 +9153,49 @@ unsafe extern "C" fn xmlRelaxNGCheckRules<'a1>(
             } else {
                 nflags = flags;
             }
-            ret = xmlRelaxNGCheckRules(ctxt, (*cur).content, nflags, (*cur).type_0);
-        } else if (*cur).type_0 as i32 == XML_RELAXNG_EXCEPT as i32 {
-            if !((*cur).parent).is_null()
-                && (*(*cur).parent).type_0 as i32
-                    == XML_RELAXNG_DATATYPE as i32
+            ret = xmlRelaxNGCheckRules(ctxt, unsafe { (*cur).content }, nflags, unsafe { (*cur).type_0 });
+        } else if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_EXCEPT as i32 {
+            if !(unsafe { (*cur).parent }).is_null()
+                && (unsafe { (*(*cur).parent).type_0 }) as i32 == XML_RELAXNG_DATATYPE as i32
             {
                 nflags = flags | (1 as i32) << 3 as i32;
             } else {
                 nflags = flags;
             }
-            ret = xmlRelaxNGCheckRules(ctxt, (*cur).content, nflags, (*cur).type_0);
-        } else if (*cur).type_0 as i32 == XML_RELAXNG_DATATYPE as i32 {
+            ret = xmlRelaxNGCheckRules(ctxt, unsafe { (*cur).content }, nflags, unsafe { (*cur).type_0 });
+        } else if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_DATATYPE as i32 {
             if flags & (1 as i32) << 4 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_START_DATA as i32,
-                    b"Found forbidden pattern start//data\n\0" as *const u8
-                        as *const i8,
+                    b"Found forbidden pattern start//data\n\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
             }
-            xmlRelaxNGCheckRules(ctxt, (*cur).content, flags, (*cur).type_0);
+            xmlRelaxNGCheckRules(ctxt, unsafe { (*cur).content }, flags, unsafe { (*cur).type_0 });
             ret = XML_RELAXNG_CONTENT_SIMPLE;
-        } else if (*cur).type_0 as i32 == XML_RELAXNG_VALUE as i32 {
+        } else if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_VALUE as i32 {
             if flags & (1 as i32) << 4 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_START_VALUE as i32,
-                    b"Found forbidden pattern start//value\n\0" as *const u8
-                        as *const i8,
+                    b"Found forbidden pattern start//value\n\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
             }
-            xmlRelaxNGCheckRules(ctxt, (*cur).content, flags, (*cur).type_0);
+            xmlRelaxNGCheckRules(ctxt, unsafe { (*cur).content }, flags, unsafe { (*cur).type_0 });
             ret = XML_RELAXNG_CONTENT_SIMPLE;
-        } else if (*cur).type_0 as i32 == XML_RELAXNG_TEXT as i32 {
+        } else if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_TEXT as i32 {
             if flags & (1 as i32) << 2 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_LIST_TEXT as i32,
-                    b"Found forbidden pattern list//text\n\0" as *const u8
-                        as *const i8,
+                    b"Found forbidden pattern list//text\n\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
@@ -9603,10 +9203,9 @@ unsafe extern "C" fn xmlRelaxNGCheckRules<'a1>(
             if flags & (1 as i32) << 3 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_DATA_EXCEPT_TEXT as i32,
-                    b"Found forbidden pattern data/except//text\n\0" as *const u8
-                        as *const i8,
+                    b"Found forbidden pattern data/except//text\n\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
@@ -9614,23 +9213,21 @@ unsafe extern "C" fn xmlRelaxNGCheckRules<'a1>(
             if flags & (1 as i32) << 4 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_START_TEXT as i32,
-                    b"Found forbidden pattern start//text\n\0" as *const u8
-                        as *const i8,
+                    b"Found forbidden pattern start//text\n\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
             }
             ret = XML_RELAXNG_CONTENT_COMPLEX;
-        } else if (*cur).type_0 as i32 == XML_RELAXNG_EMPTY as i32 {
+        } else if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_EMPTY as i32 {
             if flags & (1 as i32) << 3 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_DATA_EXCEPT_EMPTY as i32,
-                    b"Found forbidden pattern data/except//empty\n\0" as *const u8
-                        as *const i8,
+                    b"Found forbidden pattern data/except//empty\n\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
@@ -9638,22 +9235,21 @@ unsafe extern "C" fn xmlRelaxNGCheckRules<'a1>(
             if flags & (1 as i32) << 4 as i32 != 0 {
                 xmlRngPErr(
                     ctxt,
-                    (*cur).node,
+                    unsafe { (*cur).node },
                     XML_RNGP_PAT_START_EMPTY as i32,
-                    b"Found forbidden pattern start//empty\n\0" as *const u8
-                        as *const i8,
+                    b"Found forbidden pattern start//empty\n\0" as *const u8 as *const i8,
                     0 as *const xmlChar,
                     0 as *const xmlChar,
                 );
             }
             ret = XML_RELAXNG_CONTENT_EMPTY;
-        } else if (*cur).type_0 as i32 == XML_RELAXNG_CHOICE as i32 {
+        } else if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_CHOICE as i32 {
             xmlRelaxNGCheckChoiceDeterminism(ctxt, cur);
-            ret = xmlRelaxNGCheckRules(ctxt, (*cur).content, flags, (*cur).type_0);
+            ret = xmlRelaxNGCheckRules(ctxt, unsafe { (*cur).content }, flags, unsafe { (*cur).type_0 });
         } else {
-            ret = xmlRelaxNGCheckRules(ctxt, (*cur).content, flags, (*cur).type_0);
+            ret = xmlRelaxNGCheckRules(ctxt, unsafe { (*cur).content }, flags, unsafe { (*cur).type_0 });
         }
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
         if ptype as i32 == XML_RELAXNG_GROUP as i32 {
             val = xmlRelaxNGGroupContentType(val, ret);
         } else if ptype as i32 == XML_RELAXNG_INTERLEAVE as i32 {
@@ -9677,39 +9273,43 @@ unsafe extern "C" fn xmlRelaxNGCheckRules<'a1>(
     }
     return val;
 }
-unsafe extern "C" fn xmlRelaxNGParseGrammar<'a1, 'a2>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut nodes: * mut crate::src::HTMLparser::_xmlNode,
-) -> * mut crate::src::relaxng::_xmlRelaxNGGrammar<'a2> where 'a1: 'a2, 'a2: 'a1 {
-    let mut ret: * mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> = 0 as *mut xmlRelaxNGGrammar;
-    let mut tmp: * mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> = 0 as *mut xmlRelaxNGGrammar;
-    let mut old: * mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> = 0 as *mut xmlRelaxNGGrammar;
+extern "C" fn xmlRelaxNGParseGrammar<'a1, 'a2>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut nodes: *mut crate::src::HTMLparser::_xmlNode,
+) -> *mut crate::src::relaxng::_xmlRelaxNGGrammar<'a2>
+where
+    'a1: 'a2,
+    'a2: 'a1,
+{
+    let mut ret: *mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> = 0 as *mut xmlRelaxNGGrammar;
+    let mut tmp: *mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> = 0 as *mut xmlRelaxNGGrammar;
+    let mut old: *mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> = 0 as *mut xmlRelaxNGGrammar;
     ret = xmlRelaxNGNewGrammar(ctxt);
     if ret.is_null() {
         return 0 as xmlRelaxNGGrammarPtr;
     }
-    let ref mut fresh281 = (*ret).parent;
-    *fresh281 = (*ctxt).grammar;
-    if !((*ctxt).grammar).is_null() {
-        tmp = (*(*ctxt).grammar).children;
+    let fresh281 = unsafe { &mut ((*ret).parent) };
+    *fresh281 = unsafe { (*ctxt).grammar };
+    if !(unsafe { (*ctxt).grammar }).is_null() {
+        tmp = unsafe { (*(*ctxt).grammar).children };
         if tmp.is_null() {
-            let ref mut fresh282 = (*(*ctxt).grammar).children;
+            let fresh282 = unsafe { &mut ((*(*ctxt).grammar).children) };
             *fresh282 = ret;
         } else {
-            while !((*tmp).next).is_null() {
-                tmp = (*tmp).next;
+            while !(unsafe { (*tmp).next }).is_null() {
+                tmp = unsafe { (*tmp).next };
             }
-            let ref mut fresh283 = (*tmp).next;
+            let fresh283 = unsafe { &mut ((*tmp).next) };
             *fresh283 = ret;
         }
     }
-    old = (*ctxt).grammar;
-    let ref mut fresh284 = (*ctxt).grammar;
+    old = unsafe { (*ctxt).grammar };
+    let fresh284 = unsafe { &mut ((*ctxt).grammar) };
     *fresh284 = ret;
     xmlRelaxNGParseGrammarContent(ctxt, nodes);
-    let ref mut fresh285 = (*ctxt).grammar;
+    let fresh285 = unsafe { &mut ((*ctxt).grammar) };
     *fresh285 = ret;
-    if ((*ctxt).grammar).is_null() {
+    if (unsafe { (*ctxt).grammar }).is_null() {
         xmlRngPErr(
             ctxt,
             nodes,
@@ -9718,7 +9318,7 @@ unsafe extern "C" fn xmlRelaxNGParseGrammar<'a1, 'a2>(
             0 as *const xmlChar,
             0 as *const xmlChar,
         );
-    } else if ((*(*ctxt).grammar).start).is_null() {
+    } else if (unsafe { (*(*ctxt).grammar).start }).is_null() {
         xmlRngPErr(
             ctxt,
             nodes,
@@ -9729,35 +9329,35 @@ unsafe extern "C" fn xmlRelaxNGParseGrammar<'a1, 'a2>(
         );
     }
     xmlRelaxNGCombineStart(ctxt, ret);
-    if !((*ret).defs).is_null() {
+    if !(unsafe { (*ret).defs }).is_null() {
         xmlHashScan(
-            (*ret).defs,
-            Some(
-                xmlRelaxNGCheckCombine,
-            ),
+            unsafe { (*ret).defs },
+            Some(xmlRelaxNGCheckCombine),
             ctxt as *mut libc::c_void,
         );
     }
-    if !((*ret).refs).is_null() {
+    if !(unsafe { (*ret).refs }).is_null() {
         xmlHashScan(
-            (*ret).refs,
-            Some(
-                xmlRelaxNGCheckReference,
-            ),
+            unsafe { (*ret).refs },
+            Some(xmlRelaxNGCheckReference),
             ctxt as *mut libc::c_void,
         );
     }
-    let ref mut fresh286 = (*ctxt).grammar;
+    let fresh286 = unsafe { &mut ((*ctxt).grammar) };
     *fresh286 = old;
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGParseDocument<'a1, 'a2>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
-) -> * mut crate::src::relaxng::_xmlRelaxNG<'a2> where 'a1: 'a2, 'a2: 'a1 {
-    let mut schema: * mut crate::src::relaxng::_xmlRelaxNG<'_> = 0 as xmlRelaxNGPtr;
-    let mut olddefine: * const u8 = 0 as *const xmlChar;
-    let mut old: * mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> = 0 as *mut xmlRelaxNGGrammar;
+extern "C" fn xmlRelaxNGParseDocument<'a1, 'a2>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
+) -> *mut crate::src::relaxng::_xmlRelaxNG<'a2>
+where
+    'a1: 'a2,
+    'a2: 'a1,
+{
+    let mut schema: *mut crate::src::relaxng::_xmlRelaxNG<'_> = 0 as xmlRelaxNGPtr;
+    let mut olddefine: *const u8 = 0 as *const xmlChar;
+    let mut old: *mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> = 0 as *mut xmlRelaxNGGrammar;
     if ctxt.is_null() || node.is_null() {
         return 0 as xmlRelaxNGPtr;
     }
@@ -9765,78 +9365,78 @@ unsafe extern "C" fn xmlRelaxNGParseDocument<'a1, 'a2>(
     if schema.is_null() {
         return 0 as xmlRelaxNGPtr;
     }
-    olddefine = (*ctxt).define;
-    let ref mut fresh287 = (*ctxt).define;
+    olddefine = unsafe { (*ctxt).define };
+    let fresh287 = unsafe { &mut ((*ctxt).define) };
     *fresh287 = 0 as *const xmlChar;
-    if !node.is_null() && !((*node).ns).is_null()
-        && (*node).type_0 as u32
-            == XML_ELEMENT_NODE as i32 as u32
-        && xmlStrEqual(
+    if !node.is_null()
+        && !(unsafe { (*node).ns }).is_null()
+        && (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+        && (unsafe { xmlStrEqual(
             (*node).name,
             b"grammar\0" as *const u8 as *const i8 as *const xmlChar,
-        ) != 0 && xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) != 0
+        ) }) != 0
+        && (unsafe { xmlStrEqual((*(*node).ns).href, xmlRelaxNGNs) }) != 0
     {
-        let ref mut fresh288 = (*schema).topgrammar;
-        *fresh288 = xmlRelaxNGParseGrammar(ctxt, (*node).children);
-        if ((*schema).topgrammar).is_null() {
+        let fresh288 = unsafe { &mut ((*schema).topgrammar) };
+        *fresh288 = xmlRelaxNGParseGrammar(ctxt, unsafe { (*node).children });
+        if (unsafe { (*schema).topgrammar }).is_null() {
             xmlRelaxNGFree(schema);
             return 0 as xmlRelaxNGPtr;
         }
     } else {
-        let mut tmp: * mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> = 0 as *mut xmlRelaxNGGrammar;
-        let mut ret: * mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> = 0 as *mut xmlRelaxNGGrammar;
+        let mut tmp: *mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> = 0 as *mut xmlRelaxNGGrammar;
+        let mut ret: *mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> = 0 as *mut xmlRelaxNGGrammar;
         ret = xmlRelaxNGNewGrammar(ctxt);
-        let ref mut fresh289 = (*schema).topgrammar;
+        let fresh289 = unsafe { &mut ((*schema).topgrammar) };
         *fresh289 = ret;
-        if ((*schema).topgrammar).is_null() {
+        if (unsafe { (*schema).topgrammar }).is_null() {
             xmlRelaxNGFree(schema);
             return 0 as xmlRelaxNGPtr;
         }
-        let ref mut fresh290 = (*ret).parent;
-        *fresh290 = (*ctxt).grammar;
-        if !((*ctxt).grammar).is_null() {
-            tmp = (*(*ctxt).grammar).children;
+        let fresh290 = unsafe { &mut ((*ret).parent) };
+        *fresh290 = unsafe { (*ctxt).grammar };
+        if !(unsafe { (*ctxt).grammar }).is_null() {
+            tmp = unsafe { (*(*ctxt).grammar).children };
             if tmp.is_null() {
-                let ref mut fresh291 = (*(*ctxt).grammar).children;
+                let fresh291 = unsafe { &mut ((*(*ctxt).grammar).children) };
                 *fresh291 = ret;
             } else {
-                while !((*tmp).next).is_null() {
-                    tmp = (*tmp).next;
+                while !(unsafe { (*tmp).next }).is_null() {
+                    tmp = unsafe { (*tmp).next };
                 }
-                let ref mut fresh292 = (*tmp).next;
+                let fresh292 = unsafe { &mut ((*tmp).next) };
                 *fresh292 = ret;
             }
         }
-        old = (*ctxt).grammar;
-        let ref mut fresh293 = (*ctxt).grammar;
+        old = unsafe { (*ctxt).grammar };
+        let fresh293 = unsafe { &mut ((*ctxt).grammar) };
         *fresh293 = ret;
         xmlRelaxNGParseStart(ctxt, node);
         if !old.is_null() {
-            let ref mut fresh294 = (*ctxt).grammar;
+            let fresh294 = unsafe { &mut ((*ctxt).grammar) };
             *fresh294 = old;
         }
     }
-    let ref mut fresh295 = (*ctxt).define;
+    let fresh295 = unsafe { &mut ((*ctxt).define) };
     *fresh295 = olddefine;
-    if !((*(*schema).topgrammar).start).is_null() {
-        xmlRelaxNGCheckCycles(ctxt, (*(*schema).topgrammar).start, 0 as i32);
-        if (*ctxt).flags & (1 as i32) << 7 as i32 == 0 as i32 {
+    if !(unsafe { (*(*schema).topgrammar).start }).is_null() {
+        xmlRelaxNGCheckCycles(ctxt, unsafe { (*(*schema).topgrammar).start }, 0 as i32);
+        if (unsafe { (*ctxt).flags }) & (1 as i32) << 7 as i32 == 0 as i32 {
             xmlRelaxNGSimplify(
                 ctxt,
-                (*(*schema).topgrammar).start,
+                unsafe { (*(*schema).topgrammar).start },
                 0 as xmlRelaxNGDefinePtr,
             );
-            while !((*(*schema).topgrammar).start).is_null()
-                && (*(*(*schema).topgrammar).start).type_0 as i32
-                    == XML_RELAXNG_NOOP as i32
-                && !((*(*(*schema).topgrammar).start).next).is_null()
+            while !(unsafe { (*(*schema).topgrammar).start }).is_null()
+                && (unsafe { (*(*(*schema).topgrammar).start).type_0 }) as i32 == XML_RELAXNG_NOOP as i32
+                && !(unsafe { (*(*(*schema).topgrammar).start).next }).is_null()
             {
-                let ref mut fresh296 = (*(*schema).topgrammar).start;
-                *fresh296 = (*(*(*schema).topgrammar).start).content;
+                let fresh296 = unsafe { &mut ((*(*schema).topgrammar).start) };
+                *fresh296 = unsafe { (*(*(*schema).topgrammar).start).content };
             }
             xmlRelaxNGCheckRules(
                 ctxt,
-                (*(*schema).topgrammar).start,
+                unsafe { (*(*schema).topgrammar).start },
                 (1 as i32) << 4 as i32,
                 XML_RELAXNG_NOOP,
             );
@@ -9845,18 +9445,17 @@ unsafe extern "C" fn xmlRelaxNGParseDocument<'a1, 'a2>(
     return schema;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRelaxNGNewParserCtxt<'a1>(
-    mut URL: * const i8,
-) -> * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1> {
-    let mut ret: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'_> = 0 as *mut xmlRelaxNGParserCtxt;
+pub extern "C" fn xmlRelaxNGNewParserCtxt<'a1>(
+    mut URL: *const i8,
+) -> *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1> {
+    let mut ret: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'_> =
+        0 as *mut xmlRelaxNGParserCtxt;
     if URL.is_null() {
         return 0 as xmlRelaxNGParserCtxtPtr;
     }
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlRelaxNGParserCtxt>() as u64)
-        as xmlRelaxNGParserCtxtPtr;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlRelaxNGParserCtxt>() as u64,
+    ) }) as xmlRelaxNGParserCtxtPtr;
     if ret.is_null() {
         xmlRngPErrMemory(
             0 as xmlRelaxNGParserCtxtPtr,
@@ -9864,33 +9463,32 @@ pub unsafe extern "C" fn xmlRelaxNGNewParserCtxt<'a1>(
         );
         return 0 as xmlRelaxNGParserCtxtPtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlRelaxNGParserCtxt>() as u64,
-    );
-    let ref mut fresh297 = (*ret).URL;
-    *fresh297 = xmlStrdup(URL as *const xmlChar);
-    let ref mut fresh298 = (*ret).error;
+    ) });
+    let fresh297 = unsafe { &mut ((*ret).URL) };
+    *fresh297 = unsafe { xmlStrdup(URL as *const xmlChar) };
+    let fresh298 = unsafe { &mut ((*ret).error) };
     *fresh298 = *(__xmlGenericError()).unwrap();
-    let ref mut fresh299 = (*ret).userData;
+    let fresh299 = unsafe { &mut ((*ret).userData) };
     *fresh299 = *(__xmlGenericErrorContext()).unwrap();
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRelaxNGNewMemParserCtxt<'a1>(
-    mut buffer: * const i8,
+pub extern "C" fn xmlRelaxNGNewMemParserCtxt<'a1>(
+    mut buffer: *const i8,
     mut size: i32,
-) -> * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1> {
-    let mut ret: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'_> = 0 as *mut xmlRelaxNGParserCtxt;
+) -> *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1> {
+    let mut ret: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'_> =
+        0 as *mut xmlRelaxNGParserCtxt;
     if buffer.is_null() || size <= 0 as i32 {
         return 0 as xmlRelaxNGParserCtxtPtr;
     }
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlRelaxNGParserCtxt>() as u64)
-        as xmlRelaxNGParserCtxtPtr;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlRelaxNGParserCtxt>() as u64,
+    ) }) as xmlRelaxNGParserCtxtPtr;
     if ret.is_null() {
         xmlRngPErrMemory(
             0 as xmlRelaxNGParserCtxtPtr,
@@ -9898,316 +9496,299 @@ pub unsafe extern "C" fn xmlRelaxNGNewMemParserCtxt<'a1>(
         );
         return 0 as xmlRelaxNGParserCtxtPtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlRelaxNGParserCtxt>() as u64,
-    );
-    let ref mut fresh300 = (*ret).buffer;
+    ) });
+    let fresh300 = unsafe { &mut ((*ret).buffer) };
     *fresh300 = buffer;
-    (*ret).size = size;
-    let ref mut fresh301 = (*ret).error;
+    (unsafe { (*ret).size = size });
+    let fresh301 = unsafe { &mut ((*ret).error) };
     *fresh301 = *(__xmlGenericError()).unwrap();
-    let ref mut fresh302 = (*ret).userData;
+    let fresh302 = unsafe { &mut ((*ret).userData) };
     *fresh302 = *(__xmlGenericErrorContext()).unwrap();
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRelaxNGNewDocParserCtxt<'a1>(
-    mut doc: * mut crate::src::HTMLparser::_xmlDoc,
-) -> * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1> {
-    let mut ret: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'_> = 0 as *mut xmlRelaxNGParserCtxt;
-    let mut copy: * mut crate::src::HTMLparser::_xmlDoc = 0 as *mut xmlDoc;
+pub extern "C" fn xmlRelaxNGNewDocParserCtxt<'a1>(
+    mut doc: *mut crate::src::HTMLparser::_xmlDoc,
+) -> *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1> {
+    let mut ret: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'_> =
+        0 as *mut xmlRelaxNGParserCtxt;
+    let mut copy: *mut crate::src::HTMLparser::_xmlDoc = 0 as *mut xmlDoc;
     if doc.is_null() {
         return 0 as xmlRelaxNGParserCtxtPtr;
     }
-    copy = xmlCopyDoc(doc, 1 as i32);
+    copy = unsafe { xmlCopyDoc(doc, 1 as i32) };
     if copy.is_null() {
         return 0 as xmlRelaxNGParserCtxtPtr;
     }
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlRelaxNGParserCtxt>() as u64)
-        as xmlRelaxNGParserCtxtPtr;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlRelaxNGParserCtxt>() as u64,
+    ) }) as xmlRelaxNGParserCtxtPtr;
     if ret.is_null() {
         xmlRngPErrMemory(
             0 as xmlRelaxNGParserCtxtPtr,
             b"building parser\n\0" as *const u8 as *const i8,
         );
-        xmlFreeDoc(copy);
+        (unsafe { xmlFreeDoc(copy) });
         return 0 as xmlRelaxNGParserCtxtPtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlRelaxNGParserCtxt>() as u64,
-    );
-    let ref mut fresh303 = (*ret).document;
+    ) });
+    let fresh303 = unsafe { &mut ((*ret).document) };
     *fresh303 = copy;
-    (*ret).freedoc = 1 as i32;
-    let ref mut fresh304 = (*ret).userData;
+    (unsafe { (*ret).freedoc = 1 as i32 });
+    let fresh304 = unsafe { &mut ((*ret).userData) };
     *fresh304 = *(__xmlGenericErrorContext()).unwrap();
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRelaxNGFreeParserCtxt<'a1>(mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>) {
+pub extern "C" fn xmlRelaxNGFreeParserCtxt<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+) {
     if ctxt.is_null() {
         return;
     }
-    if !((*ctxt).URL).is_null() {
-        xmlFree.expect("non-null function pointer")((*ctxt).URL as *mut libc::c_void);
+    if !(unsafe { (*ctxt).URL }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*ctxt).URL as *mut libc::c_void) });
     }
-    if !((*ctxt).doc).is_null() {
-        xmlRelaxNGFreeDocument((*ctxt).doc);
+    if !(unsafe { (*ctxt).doc }).is_null() {
+        xmlRelaxNGFreeDocument(unsafe { (*ctxt).doc });
     }
-    if !((*ctxt).interleaves).is_null() {
-        xmlHashFree((*ctxt).interleaves, None);
+    if !(unsafe { (*ctxt).interleaves }).is_null() {
+        xmlHashFree(unsafe { (*ctxt).interleaves }, None);
     }
-    if !((*ctxt).documents).is_null() {
-        xmlRelaxNGFreeDocumentList((*ctxt).documents);
+    if !(unsafe { (*ctxt).documents }).is_null() {
+        xmlRelaxNGFreeDocumentList(unsafe { (*ctxt).documents });
     }
-    if !((*ctxt).includes).is_null() {
-        xmlRelaxNGFreeIncludeList((*ctxt).includes);
+    if !(unsafe { (*ctxt).includes }).is_null() {
+        xmlRelaxNGFreeIncludeList(unsafe { (*ctxt).includes });
     }
-    if !((*ctxt).docTab).is_null() {
-        xmlFree.expect("non-null function pointer")((*ctxt).docTab as *mut libc::c_void);
+    if !(unsafe { (*ctxt).docTab }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*ctxt).docTab as *mut libc::c_void) });
     }
-    if !((*ctxt).incTab).is_null() {
-        xmlFree.expect("non-null function pointer")((*ctxt).incTab as *mut libc::c_void);
+    if !(unsafe { (*ctxt).incTab }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*ctxt).incTab as *mut libc::c_void) });
     }
-    if !((*ctxt).defTab).is_null() {
+    if !(unsafe { (*ctxt).defTab }).is_null() {
         let mut i: i32 = 0;
         i = 0 as i32;
-        while i < (*ctxt).defNr {
-            xmlRelaxNGFreeDefine(*((*ctxt).defTab).offset(i as isize));
+        while i < (unsafe { (*ctxt).defNr }) {
+            xmlRelaxNGFreeDefine(unsafe { *((*ctxt).defTab).offset(i as isize) });
             i += 1;
         }
-        xmlFree.expect("non-null function pointer")((*ctxt).defTab as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")((*ctxt).defTab as *mut libc::c_void) });
     }
-    if !((*ctxt).document).is_null() && (*ctxt).freedoc != 0 {
-        xmlFreeDoc((*ctxt).document);
+    if !(unsafe { (*ctxt).document }).is_null() && (unsafe { (*ctxt).freedoc }) != 0 {
+        (unsafe { xmlFreeDoc((*ctxt).document) });
     }
-    xmlFree.expect("non-null function pointer")(ctxt as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(ctxt as *mut libc::c_void) });
 }
-unsafe extern "C" fn xmlRelaxNGNormExtSpace(mut value: * mut u8) {
-    let mut start: * mut u8 = value;
-    let mut cur: * mut u8 = value;
+extern "C" fn xmlRelaxNGNormExtSpace(mut value: *mut u8) {
+    let mut start: *mut u8 = value;
+    let mut cur: *mut u8 = value;
     if value.is_null() {
         return;
     }
-    while *cur as i32 == 0x20 as i32
-        || 0x9 as i32 <= *cur as i32
-            && *cur as i32 <= 0xa as i32
-        || *cur as i32 == 0xd as i32
+    while (unsafe { *cur }) as i32 == 0x20 as i32
+        || 0x9 as i32 <= (unsafe { *cur }) as i32 && (unsafe { *cur }) as i32 <= 0xa as i32
+        || (unsafe { *cur }) as i32 == 0xd as i32
     {
-        cur = cur.offset(1);
+        cur = unsafe { cur.offset(1) };
     }
     if cur == start {
         loop {
-            while *cur as i32 != 0 as i32
-                && !(*cur as i32 == 0x20 as i32
-                    || 0x9 as i32 <= *cur as i32
-                        && *cur as i32 <= 0xa as i32
-                    || *cur as i32 == 0xd as i32)
+            while (unsafe { *cur }) as i32 != 0 as i32
+                && !((unsafe { *cur }) as i32 == 0x20 as i32
+                    || 0x9 as i32 <= (unsafe { *cur }) as i32 && (unsafe { *cur }) as i32 <= 0xa as i32
+                    || (unsafe { *cur }) as i32 == 0xd as i32)
             {
-                cur = cur.offset(1);
+                cur = unsafe { cur.offset(1) };
             }
-            if *cur as i32 == 0 as i32 {
+            if (unsafe { *cur }) as i32 == 0 as i32 {
                 return;
             }
             start = cur;
-            while *cur as i32 == 0x20 as i32
-                || 0x9 as i32 <= *cur as i32
-                    && *cur as i32 <= 0xa as i32
-                || *cur as i32 == 0xd as i32
+            while (unsafe { *cur }) as i32 == 0x20 as i32
+                || 0x9 as i32 <= (unsafe { *cur }) as i32 && (unsafe { *cur }) as i32 <= 0xa as i32
+                || (unsafe { *cur }) as i32 == 0xd as i32
             {
-                cur = cur.offset(1);
+                cur = unsafe { cur.offset(1) };
             }
-            if *cur as i32 == 0 as i32 {
-                *start = 0 as i32 as xmlChar;
+            if (unsafe { *cur }) as i32 == 0 as i32 {
+                (unsafe { *start = 0 as i32 as xmlChar });
                 return;
             }
         }
     } else {
         loop {
-            while *cur as i32 != 0 as i32
-                && !(*cur as i32 == 0x20 as i32
-                    || 0x9 as i32 <= *cur as i32
-                        && *cur as i32 <= 0xa as i32
-                    || *cur as i32 == 0xd as i32)
+            while (unsafe { *cur }) as i32 != 0 as i32
+                && !((unsafe { *cur }) as i32 == 0x20 as i32
+                    || 0x9 as i32 <= (unsafe { *cur }) as i32 && (unsafe { *cur }) as i32 <= 0xa as i32
+                    || (unsafe { *cur }) as i32 == 0xd as i32)
             {
                 let mut fresh305 = cur;
-                cur = cur.offset(1);
+                cur = unsafe { cur.offset(1) };
                 let mut fresh306 = start;
-                start = start.offset(1);
-                *fresh306 = *fresh305;
+                start = unsafe { start.offset(1) };
+                (unsafe { *fresh306 = *fresh305 });
             }
-            if *cur as i32 == 0 as i32 {
-                *start = 0 as i32 as xmlChar;
+            if (unsafe { *cur }) as i32 == 0 as i32 {
+                (unsafe { *start = 0 as i32 as xmlChar });
                 return;
             }
-            while *cur as i32 == 0x20 as i32
-                || 0x9 as i32 <= *cur as i32
-                    && *cur as i32 <= 0xa as i32
-                || *cur as i32 == 0xd as i32
+            while (unsafe { *cur }) as i32 == 0x20 as i32
+                || 0x9 as i32 <= (unsafe { *cur }) as i32 && (unsafe { *cur }) as i32 <= 0xa as i32
+                || (unsafe { *cur }) as i32 == 0xd as i32
             {
-                cur = cur.offset(1);
+                cur = unsafe { cur.offset(1) };
             }
-            if *cur as i32 == 0 as i32 {
-                *start = 0 as i32 as xmlChar;
+            if (unsafe { *cur }) as i32 == 0 as i32 {
+                (unsafe { *start = 0 as i32 as xmlChar });
                 return;
             }
             let mut fresh307 = cur;
-            cur = cur.offset(1);
+            cur = unsafe { cur.offset(1) };
             let mut fresh308 = start;
-            start = start.offset(1);
-            *fresh308 = *fresh307;
+            start = unsafe { start.offset(1) };
+            (unsafe { *fresh308 = *fresh307 });
         }
     };
 }
-unsafe extern "C" fn xmlRelaxNGCleanupAttributes<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlRelaxNGCleanupAttributes<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
 ) {
-    let mut cur: * mut crate::src::HTMLparser::_xmlAttr = 0 as *mut xmlAttr;
-    let mut next: * mut crate::src::HTMLparser::_xmlAttr = 0 as *mut xmlAttr;
-    cur = (*node).properties;
+    let mut cur: *mut crate::src::HTMLparser::_xmlAttr = 0 as *mut xmlAttr;
+    let mut next: *mut crate::src::HTMLparser::_xmlAttr = 0 as *mut xmlAttr;
+    cur = unsafe { (*node).properties };
     while !cur.is_null() {
-        next = (*cur).next;
-        if ((*cur).ns).is_null() || xmlStrEqual((*(*cur).ns).href, xmlRelaxNGNs) != 0 {
-            if xmlStrEqual(
+        next = unsafe { (*cur).next };
+        if (unsafe { (*cur).ns }).is_null() || (unsafe { xmlStrEqual((*(*cur).ns).href, xmlRelaxNGNs) }) != 0 {
+            if (unsafe { xmlStrEqual(
                 (*cur).name,
                 b"name\0" as *const u8 as *const i8 as *mut xmlChar,
-            ) != 0
+            ) }) != 0
             {
-                if xmlStrEqual(
+                if (unsafe { xmlStrEqual(
                     (*node).name,
                     b"element\0" as *const u8 as *const i8 as *mut xmlChar,
-                ) == 0
-                    && xmlStrEqual(
+                ) }) == 0
+                    && (unsafe { xmlStrEqual(
                         (*node).name,
-                        b"attribute\0" as *const u8 as *const i8
-                            as *mut xmlChar,
-                    ) == 0
-                    && xmlStrEqual(
+                        b"attribute\0" as *const u8 as *const i8 as *mut xmlChar,
+                    ) }) == 0
+                    && (unsafe { xmlStrEqual(
                         (*node).name,
                         b"ref\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) == 0
-                    && xmlStrEqual(
+                    ) }) == 0
+                    && (unsafe { xmlStrEqual(
                         (*node).name,
-                        b"parentRef\0" as *const u8 as *const i8
-                            as *mut xmlChar,
-                    ) == 0
-                    && xmlStrEqual(
+                        b"parentRef\0" as *const u8 as *const i8 as *mut xmlChar,
+                    ) }) == 0
+                    && (unsafe { xmlStrEqual(
                         (*node).name,
                         b"param\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) == 0
-                    && xmlStrEqual(
+                    ) }) == 0
+                    && (unsafe { xmlStrEqual(
                         (*node).name,
                         b"define\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) == 0
+                    ) }) == 0
                 {
                     xmlRngPErr(
                         ctxt,
                         node,
                         XML_RNGP_FORBIDDEN_ATTRIBUTE as i32,
-                        b"Attribute %s is not allowed on %s\n\0" as *const u8
-                            as *const i8,
-                        (*cur).name,
-                        (*node).name,
+                        b"Attribute %s is not allowed on %s\n\0" as *const u8 as *const i8,
+                        unsafe { (*cur).name },
+                        unsafe { (*node).name },
                     );
                 }
-            } else if xmlStrEqual(
-                    (*cur).name,
-                    b"type\0" as *const u8 as *const i8 as *mut xmlChar,
-                ) != 0
-                {
-                if xmlStrEqual(
+            } else if (unsafe { xmlStrEqual(
+                (*cur).name,
+                b"type\0" as *const u8 as *const i8 as *mut xmlChar,
+            ) }) != 0
+            {
+                if (unsafe { xmlStrEqual(
                     (*node).name,
                     b"value\0" as *const u8 as *const i8 as *mut xmlChar,
-                ) == 0
-                    && xmlStrEqual(
+                ) }) == 0
+                    && (unsafe { xmlStrEqual(
                         (*node).name,
                         b"data\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) == 0
+                    ) }) == 0
                 {
                     xmlRngPErr(
                         ctxt,
                         node,
                         XML_RNGP_FORBIDDEN_ATTRIBUTE as i32,
-                        b"Attribute %s is not allowed on %s\n\0" as *const u8
-                            as *const i8,
-                        (*cur).name,
-                        (*node).name,
+                        b"Attribute %s is not allowed on %s\n\0" as *const u8 as *const i8,
+                        unsafe { (*cur).name },
+                        unsafe { (*node).name },
                     );
                 }
-            } else if xmlStrEqual(
-                    (*cur).name,
-                    b"href\0" as *const u8 as *const i8 as *mut xmlChar,
-                ) != 0
-                {
-                if xmlStrEqual(
+            } else if (unsafe { xmlStrEqual(
+                (*cur).name,
+                b"href\0" as *const u8 as *const i8 as *mut xmlChar,
+            ) }) != 0
+            {
+                if (unsafe { xmlStrEqual(
                     (*node).name,
                     b"externalRef\0" as *const u8 as *const i8 as *mut xmlChar,
-                ) == 0
-                    && xmlStrEqual(
+                ) }) == 0
+                    && (unsafe { xmlStrEqual(
                         (*node).name,
                         b"include\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) == 0
+                    ) }) == 0
                 {
                     xmlRngPErr(
                         ctxt,
                         node,
                         XML_RNGP_FORBIDDEN_ATTRIBUTE as i32,
-                        b"Attribute %s is not allowed on %s\n\0" as *const u8
-                            as *const i8,
-                        (*cur).name,
-                        (*node).name,
+                        b"Attribute %s is not allowed on %s\n\0" as *const u8 as *const i8,
+                        unsafe { (*cur).name },
+                        unsafe { (*node).name },
                     );
                 }
-            } else if xmlStrEqual(
-                    (*cur).name,
-                    b"combine\0" as *const u8 as *const i8 as *mut xmlChar,
-                ) != 0
-                {
-                if xmlStrEqual(
+            } else if (unsafe { xmlStrEqual(
+                (*cur).name,
+                b"combine\0" as *const u8 as *const i8 as *mut xmlChar,
+            ) }) != 0
+            {
+                if (unsafe { xmlStrEqual(
                     (*node).name,
                     b"start\0" as *const u8 as *const i8 as *mut xmlChar,
-                ) == 0
-                    && xmlStrEqual(
+                ) }) == 0
+                    && (unsafe { xmlStrEqual(
                         (*node).name,
                         b"define\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) == 0
+                    ) }) == 0
                 {
                     xmlRngPErr(
                         ctxt,
                         node,
                         XML_RNGP_FORBIDDEN_ATTRIBUTE as i32,
-                        b"Attribute %s is not allowed on %s\n\0" as *const u8
-                            as *const i8,
-                        (*cur).name,
-                        (*node).name,
+                        b"Attribute %s is not allowed on %s\n\0" as *const u8 as *const i8,
+                        unsafe { (*cur).name },
+                        unsafe { (*node).name },
                     );
                 }
-            } else if xmlStrEqual(
-                    (*cur).name,
-                    b"datatypeLibrary\0" as *const u8 as *const i8
-                        as *mut xmlChar,
-                ) != 0
-                {
-                let mut val: * mut u8 = 0 as *mut xmlChar;
-                let mut uri: * mut crate::src::SAX2::_xmlURI = 0 as *mut xmlURI;
-                val = xmlNodeListGetString(
-                    (*node).doc,
-                    (*cur).children,
-                    1 as i32,
-                );
+            } else if (unsafe { xmlStrEqual(
+                (*cur).name,
+                b"datatypeLibrary\0" as *const u8 as *const i8 as *mut xmlChar,
+            ) }) != 0
+            {
+                let mut val: *mut u8 = 0 as *mut xmlChar;
+                let mut uri: *mut crate::src::SAX2::_xmlURI = 0 as *mut xmlURI;
+                val = unsafe { xmlNodeListGetString((*node).doc, (*cur).children, 1 as i32) };
                 if !val.is_null() {
-                    if *val.offset(0 as i32 as isize) as i32
-                        != 0 as i32
-                    {
-                        uri = xmlParseURI(val as *const i8);
+                    if (unsafe { *val.offset(0 as i32 as isize) }) as i32 != 0 as i32 {
+                        uri = unsafe { xmlParseURI(val as *const i8) };
                         if uri.is_null() {
                             xmlRngPErr(
                                 ctxt,
@@ -10215,102 +9796,93 @@ unsafe extern "C" fn xmlRelaxNGCleanupAttributes<'a1>(
                                 XML_RNGP_INVALID_URI as i32,
                                 b"Attribute %s contains invalid URI %s\n\0" as *const u8
                                     as *const i8,
-                                (*cur).name,
+                                unsafe { (*cur).name },
                                 val,
                             );
                         } else {
-                            if ((*uri).scheme).is_null() {
+                            if (unsafe { (*uri).scheme }).is_null() {
                                 xmlRngPErr(
                                     ctxt,
                                     node,
                                     XML_RNGP_URI_NOT_ABSOLUTE as i32,
                                     b"Attribute %s URI %s is not absolute\n\0" as *const u8
                                         as *const i8,
-                                    (*cur).name,
+                                    unsafe { (*cur).name },
                                     val,
                                 );
                             }
-                            if !((*uri).fragment).is_null() {
+                            if !(unsafe { (*uri).fragment }).is_null() {
                                 xmlRngPErr(
                                     ctxt,
                                     node,
                                     XML_RNGP_URI_FRAGMENT as i32,
                                     b"Attribute %s URI %s has a fragment ID\n\0" as *const u8
                                         as *const i8,
-                                    (*cur).name,
+                                    unsafe { (*cur).name },
                                     val,
                                 );
                             }
-                            xmlFreeURI(uri);
+                            (unsafe { xmlFreeURI(uri) });
                         }
                     }
-                    xmlFree
-                        .expect("non-null function pointer")(val as *mut libc::c_void);
+                    (unsafe { xmlFree.expect("non-null function pointer")(val as *mut libc::c_void) });
                 }
-            } else if xmlStrEqual(
-                    (*cur).name,
-                    b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
-                ) == 0
-                {
+            } else if (unsafe { xmlStrEqual(
+                (*cur).name,
+                b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
+            ) }) == 0
+            {
                 xmlRngPErr(
                     ctxt,
                     node,
                     XML_RNGP_UNKNOWN_ATTRIBUTE as i32,
-                    b"Unknown attribute %s on %s\n\0" as *const u8
-                        as *const i8,
-                    (*cur).name,
-                    (*node).name,
+                    b"Unknown attribute %s on %s\n\0" as *const u8 as *const i8,
+                    unsafe { (*cur).name },
+                    unsafe { (*node).name },
                 );
             }
         }
         cur = next;
     }
 }
-unsafe extern "C" fn xmlRelaxNGCleanupTree<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut root: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlRelaxNGCleanupTree<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut root: *mut crate::src::HTMLparser::_xmlNode,
 ) {
     let mut current_block: u64;
-    let mut cur: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut delete: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut cur: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut delete: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
     delete = 0 as xmlNodePtr;
     cur = root;
     while !cur.is_null() {
         if !delete.is_null() {
-            xmlUnlinkNode(delete);
-            xmlFreeNode(delete);
+            (unsafe { xmlUnlinkNode(delete) });
+            (unsafe { xmlFreeNode(delete) });
             delete = 0 as xmlNodePtr;
         }
-        if (*cur).type_0 as u32
-            == XML_ELEMENT_NODE as i32 as u32
-        {
-            if ((*cur).ns).is_null() || xmlStrEqual((*(*cur).ns).href, xmlRelaxNGNs) == 0
-            {
-                if !((*cur).parent).is_null()
-                    && (*(*cur).parent).type_0 as u32
-                        == XML_ELEMENT_NODE as i32 as u32
-                    && (xmlStrEqual(
+        if (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32 {
+            if (unsafe { (*cur).ns }).is_null() || (unsafe { xmlStrEqual((*(*cur).ns).href, xmlRelaxNGNs) }) == 0 {
+                if !(unsafe { (*cur).parent }).is_null()
+                    && (unsafe { (*(*cur).parent).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+                    && ((unsafe { xmlStrEqual(
                         (*(*cur).parent).name,
                         b"name\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) != 0
-                        || xmlStrEqual(
+                    ) }) != 0
+                        || (unsafe { xmlStrEqual(
                             (*(*cur).parent).name,
-                            b"value\0" as *const u8 as *const i8
-                                as *mut xmlChar,
-                        ) != 0
-                        || xmlStrEqual(
+                            b"value\0" as *const u8 as *const i8 as *mut xmlChar,
+                        ) }) != 0
+                        || (unsafe { xmlStrEqual(
                             (*(*cur).parent).name,
-                            b"param\0" as *const u8 as *const i8
-                                as *mut xmlChar,
-                        ) != 0)
+                            b"param\0" as *const u8 as *const i8 as *mut xmlChar,
+                        ) }) != 0)
                 {
                     xmlRngPErr(
                         ctxt,
                         cur,
                         XML_RNGP_FOREIGN_ELEMENT as i32,
-                        b"element %s doesn't allow foreign elements\n\0" as *const u8
-                            as *const i8,
-                        (*(*cur).parent).name,
+                        b"element %s doesn't allow foreign elements\n\0" as *const u8 as *const i8,
+                        unsafe { (*(*cur).parent).name },
                         0 as *const xmlChar,
                     );
                 }
@@ -10318,115 +9890,107 @@ unsafe extern "C" fn xmlRelaxNGCleanupTree<'a1>(
                 current_block = 6652497021943658697;
             } else {
                 xmlRelaxNGCleanupAttributes(ctxt, cur);
-                if xmlStrEqual(
+                if (unsafe { xmlStrEqual(
                     (*cur).name,
                     b"externalRef\0" as *const u8 as *const i8 as *mut xmlChar,
-                ) != 0
+                ) }) != 0
                 {
-                    let mut href: * mut u8 = 0 as *mut xmlChar;
-                    let mut ns: * mut u8 = 0 as *mut xmlChar;
-                    let mut base: * mut u8 = 0 as *mut xmlChar;
-                    let mut URL: * mut u8 = 0 as *mut xmlChar;
-                    let mut docu: * mut crate::src::relaxng::_xmlRelaxNGDocument<'_> = 0 as *mut xmlRelaxNGDocument;
-                    let mut tmp: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-                    let mut uri: * mut crate::src::SAX2::_xmlURI = 0 as *mut xmlURI;
-                    ns = xmlGetProp(
+                    let mut href: *mut u8 = 0 as *mut xmlChar;
+                    let mut ns: *mut u8 = 0 as *mut xmlChar;
+                    let mut base: *mut u8 = 0 as *mut xmlChar;
+                    let mut URL: *mut u8 = 0 as *mut xmlChar;
+                    let mut docu: *mut crate::src::relaxng::_xmlRelaxNGDocument<'_> =
+                        0 as *mut xmlRelaxNGDocument;
+                    let mut tmp: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+                    let mut uri: *mut crate::src::SAX2::_xmlURI = 0 as *mut xmlURI;
+                    ns = unsafe { xmlGetProp(
                         cur as *const xmlNode,
                         b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
-                    );
+                    ) };
                     if ns.is_null() {
-                        tmp = (*cur).parent;
+                        tmp = unsafe { (*cur).parent };
                         while !tmp.is_null()
-                            && (*tmp).type_0 as u32
-                                == XML_ELEMENT_NODE as i32 as u32
+                            && (unsafe { (*tmp).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
                         {
-                            ns = xmlGetProp(
+                            ns = unsafe { xmlGetProp(
                                 tmp as *const xmlNode,
                                 b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
-                            );
+                            ) };
                             if !ns.is_null() {
                                 break;
                             }
-                            tmp = (*tmp).parent;
+                            tmp = unsafe { (*tmp).parent };
                         }
                     }
-                    href = xmlGetProp(
+                    href = unsafe { xmlGetProp(
                         cur as *const xmlNode,
                         b"href\0" as *const u8 as *const i8 as *mut xmlChar,
-                    );
+                    ) };
                     if href.is_null() {
                         xmlRngPErr(
                             ctxt,
                             cur,
                             XML_RNGP_MISSING_HREF as i32,
-                            b"xmlRelaxNGParse: externalRef has no href attribute\n\0"
-                                as *const u8 as *const i8,
+                            b"xmlRelaxNGParse: externalRef has no href attribute\n\0" as *const u8
+                                as *const i8,
                             0 as *const xmlChar,
                             0 as *const xmlChar,
                         );
                         if !ns.is_null() {
-                            xmlFree
-                                .expect(
-                                    "non-null function pointer",
-                                )(ns as *mut libc::c_void);
+                            (unsafe { xmlFree.expect("non-null function pointer")(ns as *mut libc::c_void) });
                         }
                         delete = cur;
                         current_block = 6652497021943658697;
                     } else {
-                        uri = xmlParseURI(href as *const i8);
+                        uri = unsafe { xmlParseURI(href as *const i8) };
                         if uri.is_null() {
                             xmlRngPErr(
                                 ctxt,
                                 cur,
                                 XML_RNGP_HREF_ERROR as i32,
-                                b"Incorrect URI for externalRef %s\n\0" as *const u8
+                                b"Incorrect URI for externalRef %s\n\0" as *const u8 as *const i8,
+                                href,
+                                0 as *const xmlChar,
+                            );
+                            if !ns.is_null() {
+                                (unsafe { xmlFree.expect("non-null function pointer")(
+                                    ns as *mut libc::c_void,
+                                ) });
+                            }
+                            if !href.is_null() {
+                                (unsafe { xmlFree.expect("non-null function pointer")(
+                                    href as *mut libc::c_void,
+                                ) });
+                            }
+                            delete = cur;
+                            current_block = 6652497021943658697;
+                        } else if !(unsafe { (*uri).fragment }).is_null() {
+                            xmlRngPErr(
+                                ctxt,
+                                cur,
+                                XML_RNGP_HREF_ERROR as i32,
+                                b"Fragment forbidden in URI for externalRef %s\n\0" as *const u8
                                     as *const i8,
                                 href,
                                 0 as *const xmlChar,
                             );
                             if !ns.is_null() {
-                                xmlFree
-                                    .expect(
-                                        "non-null function pointer",
-                                    )(ns as *mut libc::c_void);
+                                (unsafe { xmlFree.expect("non-null function pointer")(
+                                    ns as *mut libc::c_void,
+                                ) });
                             }
+                            (unsafe { xmlFreeURI(uri) });
                             if !href.is_null() {
-                                xmlFree
-                                    .expect(
-                                        "non-null function pointer",
-                                    )(href as *mut libc::c_void);
-                            }
-                            delete = cur;
-                            current_block = 6652497021943658697;
-                        } else if !((*uri).fragment).is_null() {
-                            xmlRngPErr(
-                                ctxt,
-                                cur,
-                                XML_RNGP_HREF_ERROR as i32,
-                                b"Fragment forbidden in URI for externalRef %s\n\0"
-                                    as *const u8 as *const i8,
-                                href,
-                                0 as *const xmlChar,
-                            );
-                            if !ns.is_null() {
-                                xmlFree
-                                    .expect(
-                                        "non-null function pointer",
-                                    )(ns as *mut libc::c_void);
-                            }
-                            xmlFreeURI(uri);
-                            if !href.is_null() {
-                                xmlFree
-                                    .expect(
-                                        "non-null function pointer",
-                                    )(href as *mut libc::c_void);
+                                (unsafe { xmlFree.expect("non-null function pointer")(
+                                    href as *mut libc::c_void,
+                                ) });
                             }
                             delete = cur;
                             current_block = 6652497021943658697;
                         } else {
-                            xmlFreeURI(uri);
-                            base = xmlNodeGetBase((*cur).doc, cur as *const xmlNode);
-                            URL = xmlBuildURI(href, base);
+                            (unsafe { xmlFreeURI(uri) });
+                            base = unsafe { xmlNodeGetBase((*cur).doc, cur as *const xmlNode) };
+                            URL = unsafe { xmlBuildURI(href, base) };
                             if URL.is_null() {
                                 xmlRngPErr(
                                     ctxt,
@@ -10438,37 +10002,32 @@ unsafe extern "C" fn xmlRelaxNGCleanupTree<'a1>(
                                     0 as *const xmlChar,
                                 );
                                 if !ns.is_null() {
-                                    xmlFree
-                                        .expect(
-                                            "non-null function pointer",
-                                        )(ns as *mut libc::c_void);
+                                    (unsafe { xmlFree.expect("non-null function pointer")(
+                                        ns as *mut libc::c_void,
+                                    ) });
                                 }
                                 if !href.is_null() {
-                                    xmlFree
-                                        .expect(
-                                            "non-null function pointer",
-                                        )(href as *mut libc::c_void);
+                                    (unsafe { xmlFree.expect("non-null function pointer")(
+                                        href as *mut libc::c_void,
+                                    ) });
                                 }
                                 if !base.is_null() {
-                                    xmlFree
-                                        .expect(
-                                            "non-null function pointer",
-                                        )(base as *mut libc::c_void);
+                                    (unsafe { xmlFree.expect("non-null function pointer")(
+                                        base as *mut libc::c_void,
+                                    ) });
                                 }
                                 delete = cur;
                                 current_block = 6652497021943658697;
                             } else {
                                 if !href.is_null() {
-                                    xmlFree
-                                        .expect(
-                                            "non-null function pointer",
-                                        )(href as *mut libc::c_void);
+                                    (unsafe { xmlFree.expect("non-null function pointer")(
+                                        href as *mut libc::c_void,
+                                    ) });
                                 }
                                 if !base.is_null() {
-                                    xmlFree
-                                        .expect(
-                                            "non-null function pointer",
-                                        )(base as *mut libc::c_void);
+                                    (unsafe { xmlFree.expect("non-null function pointer")(
+                                        base as *mut libc::c_void,
+                                    ) });
                                 }
                                 docu = xmlRelaxNGLoadExternalRef(ctxt, URL, ns);
                                 if docu.is_null() {
@@ -10482,65 +10041,62 @@ unsafe extern "C" fn xmlRelaxNGCleanupTree<'a1>(
                                         0 as *const xmlChar,
                                     );
                                     if !ns.is_null() {
-                                        xmlFree
-                                            .expect(
-                                                "non-null function pointer",
-                                            )(ns as *mut libc::c_void);
+                                        (unsafe { xmlFree.expect("non-null function pointer")(
+                                            ns as *mut libc::c_void,
+                                        ) });
                                     }
-                                    xmlFree
-                                        .expect(
-                                            "non-null function pointer",
-                                        )(URL as *mut libc::c_void);
+                                    (unsafe { xmlFree.expect("non-null function pointer")(
+                                        URL as *mut libc::c_void,
+                                    ) });
                                     delete = cur;
                                     current_block = 6652497021943658697;
                                 } else {
                                     if !ns.is_null() {
-                                        xmlFree
-                                            .expect(
-                                                "non-null function pointer",
-                                            )(ns as *mut libc::c_void);
+                                        (unsafe { xmlFree.expect("non-null function pointer")(
+                                            ns as *mut libc::c_void,
+                                        ) });
                                     }
-                                    xmlFree
-                                        .expect(
-                                            "non-null function pointer",
-                                        )(URL as *mut libc::c_void);
-                                    let ref mut fresh309 = (*cur).psvi;
+                                    (unsafe { xmlFree.expect("non-null function pointer")(
+                                        URL as *mut libc::c_void,
+                                    ) });
+                                    let fresh309 = unsafe { &mut ((*cur).psvi) };
                                     *fresh309 = docu as *mut libc::c_void;
                                     current_block = 1771738965274008886;
                                 }
                             }
                         }
                     }
-                } else if xmlStrEqual(
-                        (*cur).name,
-                        b"include\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) != 0
-                    {
-                    let mut href_0: * mut u8 = 0 as *mut xmlChar;
-                    let mut ns_0: * mut u8 = 0 as *mut xmlChar;
-                    let mut base_0: * mut u8 = 0 as *mut xmlChar;
-                    let mut URL_0: * mut u8 = 0 as *mut xmlChar;
-                    let mut incl: * mut crate::src::relaxng::_xmlRelaxNGInclude<'_> = 0 as *mut xmlRelaxNGInclude;
-                    let mut tmp_0: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-                    href_0 = xmlGetProp(
+                } else if (unsafe { xmlStrEqual(
+                    (*cur).name,
+                    b"include\0" as *const u8 as *const i8 as *mut xmlChar,
+                ) }) != 0
+                {
+                    let mut href_0: *mut u8 = 0 as *mut xmlChar;
+                    let mut ns_0: *mut u8 = 0 as *mut xmlChar;
+                    let mut base_0: *mut u8 = 0 as *mut xmlChar;
+                    let mut URL_0: *mut u8 = 0 as *mut xmlChar;
+                    let mut incl: *mut crate::src::relaxng::_xmlRelaxNGInclude<'_> =
+                        0 as *mut xmlRelaxNGInclude;
+                    let mut tmp_0: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+                    href_0 = unsafe { xmlGetProp(
                         cur as *const xmlNode,
                         b"href\0" as *const u8 as *const i8 as *mut xmlChar,
-                    );
+                    ) };
                     if href_0.is_null() {
                         xmlRngPErr(
                             ctxt,
                             cur,
                             XML_RNGP_MISSING_HREF as i32,
-                            b"xmlRelaxNGParse: include has no href attribute\n\0"
-                                as *const u8 as *const i8,
+                            b"xmlRelaxNGParse: include has no href attribute\n\0" as *const u8
+                                as *const i8,
                             0 as *const xmlChar,
                             0 as *const xmlChar,
                         );
                         delete = cur;
                         current_block = 6652497021943658697;
                     } else {
-                        base_0 = xmlNodeGetBase((*cur).doc, cur as *const xmlNode);
-                        URL_0 = xmlBuildURI(href_0, base_0);
+                        base_0 = unsafe { xmlNodeGetBase((*cur).doc, cur as *const xmlNode) };
+                        URL_0 = unsafe { xmlBuildURI(href_0, base_0) };
                         if URL_0.is_null() {
                             xmlRngPErr(
                                 ctxt,
@@ -10552,125 +10108,113 @@ unsafe extern "C" fn xmlRelaxNGCleanupTree<'a1>(
                                 0 as *const xmlChar,
                             );
                             if !href_0.is_null() {
-                                xmlFree
-                                    .expect(
-                                        "non-null function pointer",
-                                    )(href_0 as *mut libc::c_void);
+                                (unsafe { xmlFree.expect("non-null function pointer")(
+                                    href_0 as *mut libc::c_void,
+                                ) });
                             }
                             if !base_0.is_null() {
-                                xmlFree
-                                    .expect(
-                                        "non-null function pointer",
-                                    )(base_0 as *mut libc::c_void);
+                                (unsafe { xmlFree.expect("non-null function pointer")(
+                                    base_0 as *mut libc::c_void,
+                                ) });
                             }
                             delete = cur;
                             current_block = 6652497021943658697;
                         } else {
                             if !href_0.is_null() {
-                                xmlFree
-                                    .expect(
-                                        "non-null function pointer",
-                                    )(href_0 as *mut libc::c_void);
+                                (unsafe { xmlFree.expect("non-null function pointer")(
+                                    href_0 as *mut libc::c_void,
+                                ) });
                             }
                             if !base_0.is_null() {
-                                xmlFree
-                                    .expect(
-                                        "non-null function pointer",
-                                    )(base_0 as *mut libc::c_void);
+                                (unsafe { xmlFree.expect("non-null function pointer")(
+                                    base_0 as *mut libc::c_void,
+                                ) });
                             }
-                            ns_0 = xmlGetProp(
+                            ns_0 = unsafe { xmlGetProp(
                                 cur as *const xmlNode,
                                 b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
-                            );
+                            ) };
                             if ns_0.is_null() {
-                                tmp_0 = (*cur).parent;
+                                tmp_0 = unsafe { (*cur).parent };
                                 while !tmp_0.is_null()
-                                    && (*tmp_0).type_0 as u32
-                                        == XML_ELEMENT_NODE as i32 as u32
+                                    && (unsafe { (*tmp_0).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
                                 {
-                                    ns_0 = xmlGetProp(
+                                    ns_0 = unsafe { xmlGetProp(
                                         tmp_0 as *const xmlNode,
                                         b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
-                                    );
+                                    ) };
                                     if !ns_0.is_null() {
                                         break;
                                     }
-                                    tmp_0 = (*tmp_0).parent;
+                                    tmp_0 = unsafe { (*tmp_0).parent };
                                 }
                             }
                             incl = xmlRelaxNGLoadInclude(ctxt, URL_0, cur, ns_0);
                             if !ns_0.is_null() {
-                                xmlFree
-                                    .expect(
-                                        "non-null function pointer",
-                                    )(ns_0 as *mut libc::c_void);
+                                (unsafe { xmlFree.expect("non-null function pointer")(
+                                    ns_0 as *mut libc::c_void,
+                                ) });
                             }
                             if incl.is_null() {
                                 xmlRngPErr(
                                     ctxt,
                                     cur,
                                     XML_RNGP_INCLUDE_FAILURE as i32,
-                                    b"Failed to load include %s\n\0" as *const u8
-                                        as *const i8,
+                                    b"Failed to load include %s\n\0" as *const u8 as *const i8,
                                     URL_0,
                                     0 as *const xmlChar,
                                 );
-                                xmlFree
-                                    .expect(
-                                        "non-null function pointer",
-                                    )(URL_0 as *mut libc::c_void);
+                                (unsafe { xmlFree.expect("non-null function pointer")(
+                                    URL_0 as *mut libc::c_void,
+                                ) });
                                 delete = cur;
                                 current_block = 6652497021943658697;
                             } else {
-                                xmlFree
-                                    .expect(
-                                        "non-null function pointer",
-                                    )(URL_0 as *mut libc::c_void);
-                                let ref mut fresh310 = (*cur).psvi;
+                                (unsafe { xmlFree.expect("non-null function pointer")(
+                                    URL_0 as *mut libc::c_void,
+                                ) });
+                                let fresh310 = unsafe { &mut ((*cur).psvi) };
                                 *fresh310 = incl as *mut libc::c_void;
                                 current_block = 1771738965274008886;
                             }
                         }
                     }
-                } else if xmlStrEqual(
+                } else if (unsafe { xmlStrEqual(
+                    (*cur).name,
+                    b"element\0" as *const u8 as *const i8 as *mut xmlChar,
+                ) }) != 0
+                    || (unsafe { xmlStrEqual(
                         (*cur).name,
-                        b"element\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) != 0
-                        || xmlStrEqual(
-                            (*cur).name,
-                            b"attribute\0" as *const u8 as *const i8
-                                as *mut xmlChar,
-                        ) != 0
-                    {
-                    let mut name: * mut u8 = 0 as *mut xmlChar;
-                    let mut ns_1: * mut u8 = 0 as *mut xmlChar;
-                    let mut text: * mut crate::src::HTMLparser::_xmlNode = 0 as xmlNodePtr;
-                    name = xmlGetProp(
+                        b"attribute\0" as *const u8 as *const i8 as *mut xmlChar,
+                    ) }) != 0
+                {
+                    let mut name: *mut u8 = 0 as *mut xmlChar;
+                    let mut ns_1: *mut u8 = 0 as *mut xmlChar;
+                    let mut text: *mut crate::src::HTMLparser::_xmlNode = 0 as xmlNodePtr;
+                    name = unsafe { xmlGetProp(
                         cur as *const xmlNode,
                         b"name\0" as *const u8 as *const i8 as *mut xmlChar,
-                    );
+                    ) };
                     if !name.is_null() {
-                        if ((*cur).children).is_null() {
-                            text = xmlNewChild(
+                        if (unsafe { (*cur).children }).is_null() {
+                            text = unsafe { xmlNewChild(
                                 cur,
                                 (*cur).ns,
-                                b"name\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"name\0" as *const u8 as *const i8 as *mut xmlChar,
                                 name,
-                            );
+                            ) };
                         } else {
-                            let mut node: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-                            node = xmlNewDocNode(
+                            let mut node: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+                            node = unsafe { xmlNewDocNode(
                                 (*cur).doc,
                                 (*cur).ns,
-                                b"name\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
+                                b"name\0" as *const u8 as *const i8 as *mut xmlChar,
                                 0 as *const xmlChar,
-                            );
+                            ) };
                             if !node.is_null() {
-                                xmlAddPrevSibling((*cur).children, node);
-                                text = xmlNewDocText((*node).doc, name);
-                                xmlAddChild(node, text);
+                                (unsafe { xmlAddPrevSibling((*cur).children, node) });
+                                text = unsafe { xmlNewDocText((*node).doc, name) };
+                                (unsafe { xmlAddChild(node, text) });
                                 text = node;
                             }
                         }
@@ -10679,208 +10223,189 @@ unsafe extern "C" fn xmlRelaxNGCleanupTree<'a1>(
                                 ctxt,
                                 cur,
                                 XML_RNGP_CREATE_FAILURE as i32,
-                                b"Failed to create a name %s element\n\0" as *const u8
-                                    as *const i8,
+                                b"Failed to create a name %s element\n\0" as *const u8 as *const i8,
                                 name,
                                 0 as *const xmlChar,
                             );
                         }
-                        xmlUnsetProp(
-                            cur,
-                            b"name\0" as *const u8 as *const i8 as *mut xmlChar,
-                        );
-                        xmlFree
-                            .expect(
-                                "non-null function pointer",
-                            )(name as *mut libc::c_void);
-                        ns_1 = xmlGetProp(
+                        (unsafe { xmlUnsetProp(cur, b"name\0" as *const u8 as *const i8 as *mut xmlChar) });
+                        (unsafe { xmlFree.expect("non-null function pointer")(name as *mut libc::c_void) });
+                        ns_1 = unsafe { xmlGetProp(
                             cur as *const xmlNode,
                             b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
-                        );
+                        ) };
                         if !ns_1.is_null() {
                             if !text.is_null() {
-                                xmlSetProp(
+                                (unsafe { xmlSetProp(
                                     text,
                                     b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
                                     ns_1,
-                                );
+                                ) });
                             }
-                            xmlFree
-                                .expect(
-                                    "non-null function pointer",
-                                )(ns_1 as *mut libc::c_void);
-                        } else if xmlStrEqual(
-                                (*cur).name,
-                                b"attribute\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
-                            ) != 0
-                            {
-                            xmlSetProp(
+                            (unsafe { xmlFree.expect("non-null function pointer")(ns_1 as *mut libc::c_void) });
+                        } else if (unsafe { xmlStrEqual(
+                            (*cur).name,
+                            b"attribute\0" as *const u8 as *const i8 as *mut xmlChar,
+                        ) }) != 0
+                        {
+                            (unsafe { xmlSetProp(
                                 text,
                                 b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
                                 b"\0" as *const u8 as *const i8 as *mut xmlChar,
-                            );
+                            ) });
                         }
                     }
                     current_block = 1771738965274008886;
-                } else if xmlStrEqual(
+                } else if (unsafe { xmlStrEqual(
+                    (*cur).name,
+                    b"name\0" as *const u8 as *const i8 as *mut xmlChar,
+                ) }) != 0
+                    || (unsafe { xmlStrEqual(
                         (*cur).name,
-                        b"name\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) != 0
-                        || xmlStrEqual(
-                            (*cur).name,
-                            b"nsName\0" as *const u8 as *const i8
-                                as *mut xmlChar,
-                        ) != 0
-                        || xmlStrEqual(
-                            (*cur).name,
-                            b"value\0" as *const u8 as *const i8
-                                as *mut xmlChar,
-                        ) != 0
-                    {
-                    if (xmlHasProp(
+                        b"nsName\0" as *const u8 as *const i8 as *mut xmlChar,
+                    ) }) != 0
+                    || (unsafe { xmlStrEqual(
+                        (*cur).name,
+                        b"value\0" as *const u8 as *const i8 as *mut xmlChar,
+                    ) }) != 0
+                {
+                    if (unsafe { xmlHasProp(
                         cur as *const xmlNode,
                         b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ))
-                        .is_null()
+                    ) })
+                    .is_null()
                     {
-                        let mut node_0: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-                        let mut ns_2: * mut u8 = 0 as *mut xmlChar;
-                        node_0 = (*cur).parent;
+                        let mut node_0: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+                        let mut ns_2: *mut u8 = 0 as *mut xmlChar;
+                        node_0 = unsafe { (*cur).parent };
                         while !node_0.is_null()
-                            && (*node_0).type_0 as u32
-                                == XML_ELEMENT_NODE as i32 as u32
+                            && (unsafe { (*node_0).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
                         {
-                            ns_2 = xmlGetProp(
+                            ns_2 = unsafe { xmlGetProp(
                                 node_0 as *const xmlNode,
                                 b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
-                            );
+                            ) };
                             if !ns_2.is_null() {
                                 break;
                             }
-                            node_0 = (*node_0).parent;
+                            node_0 = unsafe { (*node_0).parent };
                         }
                         if ns_2.is_null() {
-                            xmlSetProp(
+                            (unsafe { xmlSetProp(
                                 cur,
                                 b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
                                 b"\0" as *const u8 as *const i8 as *mut xmlChar,
-                            );
+                            ) });
                         } else {
-                            xmlSetProp(
+                            (unsafe { xmlSetProp(
                                 cur,
                                 b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
                                 ns_2,
-                            );
-                            xmlFree
-                                .expect(
-                                    "non-null function pointer",
-                                )(ns_2 as *mut libc::c_void);
+                            ) });
+                            (unsafe { xmlFree.expect("non-null function pointer")(ns_2 as *mut libc::c_void) });
                         }
                     }
-                    if xmlStrEqual(
+                    if (unsafe { xmlStrEqual(
                         (*cur).name,
                         b"name\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) != 0
+                    ) }) != 0
                     {
-                        let mut name_0: * mut u8 = 0 as *mut xmlChar;
-                        let mut local: * mut u8 = 0 as *mut xmlChar;
-                        let mut prefix: * mut u8 = 0 as *mut xmlChar;
-                        name_0 = xmlNodeGetContent(cur as *const xmlNode);
+                        let mut name_0: *mut u8 = 0 as *mut xmlChar;
+                        let mut local: *mut u8 = 0 as *mut xmlChar;
+                        let mut prefix: *mut u8 = 0 as *mut xmlChar;
+                        name_0 = unsafe { xmlNodeGetContent(cur as *const xmlNode) };
                         if !name_0.is_null() {
-                            local = xmlSplitQName2(name_0, &mut prefix);
+                            local = unsafe { xmlSplitQName2(name_0, &mut prefix) };
                             if !local.is_null() {
-                                let mut ns_3: * mut crate::src::HTMLparser::_xmlNs = (0 as * mut crate::src::HTMLparser::_xmlNs);
-                                ns_3 = xmlSearchNs((*cur).doc, cur, prefix);
+                                let mut ns_3: *mut crate::src::HTMLparser::_xmlNs =
+                                    0 as *mut crate::src::HTMLparser::_xmlNs;
+                                ns_3 = unsafe { xmlSearchNs((*cur).doc, cur, prefix) };
                                 if ns_3.is_null() {
                                     xmlRngPErr(
                                         ctxt,
                                         cur,
                                         XML_RNGP_PREFIX_UNDEFINED as i32,
                                         b"xmlRelaxNGParse: no namespace for prefix %s\n\0"
-                                            as *const u8 as *const i8,
+                                            as *const u8
+                                            as *const i8,
                                         prefix,
                                         0 as *const xmlChar,
                                     );
                                 } else {
-                                    xmlSetProp(
+                                    (unsafe { xmlSetProp(
                                         cur,
                                         b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
                                         (*ns_3).href,
-                                    );
-                                    xmlNodeSetContent(cur, local);
+                                    ) });
+                                    (unsafe { xmlNodeSetContent(cur, local) });
                                 }
-                                xmlFree
-                                    .expect(
-                                        "non-null function pointer",
-                                    )(local as *mut libc::c_void);
-                                xmlFree
-                                    .expect(
-                                        "non-null function pointer",
-                                    )(prefix as *mut libc::c_void);
+                                (unsafe { xmlFree.expect("non-null function pointer")(
+                                    local as *mut libc::c_void,
+                                ) });
+                                (unsafe { xmlFree.expect("non-null function pointer")(
+                                    prefix as *mut libc::c_void,
+                                ) });
                             }
-                            xmlFree
-                                .expect(
-                                    "non-null function pointer",
-                                )(name_0 as *mut libc::c_void);
+                            (unsafe { xmlFree.expect("non-null function pointer")(
+                                name_0 as *mut libc::c_void,
+                            ) });
                         }
                     }
-                    if xmlStrEqual(
+                    if (unsafe { xmlStrEqual(
                         (*cur).name,
                         b"nsName\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) != 0
+                    ) }) != 0
                     {
-                        if (*ctxt).flags & (1 as i32) << 9 as i32 != 0 {
+                        if (unsafe { (*ctxt).flags }) & (1 as i32) << 9 as i32 != 0 {
                             xmlRngPErr(
                                 ctxt,
                                 cur,
                                 XML_RNGP_PAT_NSNAME_EXCEPT_NSNAME as i32,
-                                b"Found nsName/except//nsName forbidden construct\n\0"
-                                    as *const u8 as *const i8,
+                                b"Found nsName/except//nsName forbidden construct\n\0" as *const u8
+                                    as *const i8,
                                 0 as *const xmlChar,
                                 0 as *const xmlChar,
                             );
                         }
                     }
                     current_block = 1771738965274008886;
-                } else if xmlStrEqual(
-                        (*cur).name,
-                        b"except\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) != 0 && cur != root
-                    {
-                    let mut oldflags: i32 = (*ctxt).flags;
-                    if !((*cur).parent).is_null()
-                        && xmlStrEqual(
+                } else if (unsafe { xmlStrEqual(
+                    (*cur).name,
+                    b"except\0" as *const u8 as *const i8 as *mut xmlChar,
+                ) }) != 0
+                    && cur != root
+                {
+                    let mut oldflags: i32 = unsafe { (*ctxt).flags };
+                    if !(unsafe { (*cur).parent }).is_null()
+                        && (unsafe { xmlStrEqual(
                             (*(*cur).parent).name,
-                            b"anyName\0" as *const u8 as *const i8
-                                as *mut xmlChar,
-                        ) != 0
+                            b"anyName\0" as *const u8 as *const i8 as *mut xmlChar,
+                        ) }) != 0
                     {
-                        (*ctxt).flags |= (1 as i32) << 8 as i32;
+                        (unsafe { (*ctxt).flags |= (1 as i32) << 8 as i32 });
                         xmlRelaxNGCleanupTree(ctxt, cur);
-                        (*ctxt).flags = oldflags;
+                        (unsafe { (*ctxt).flags = oldflags });
                         current_block = 6652497021943658697;
-                    } else if !((*cur).parent).is_null()
-                            && xmlStrEqual(
-                                (*(*cur).parent).name,
-                                b"nsName\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
-                            ) != 0
-                        {
-                        (*ctxt).flags |= (1 as i32) << 9 as i32;
+                    } else if !(unsafe { (*cur).parent }).is_null()
+                        && (unsafe { xmlStrEqual(
+                            (*(*cur).parent).name,
+                            b"nsName\0" as *const u8 as *const i8 as *mut xmlChar,
+                        ) }) != 0
+                    {
+                        (unsafe { (*ctxt).flags |= (1 as i32) << 9 as i32 });
                         xmlRelaxNGCleanupTree(ctxt, cur);
-                        (*ctxt).flags = oldflags;
+                        (unsafe { (*ctxt).flags = oldflags });
                         current_block = 6652497021943658697;
                     } else {
                         current_block = 1771738965274008886;
                     }
                 } else {
-                    if xmlStrEqual(
+                    if (unsafe { xmlStrEqual(
                         (*cur).name,
                         b"anyName\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) != 0
+                    ) }) != 0
                     {
-                        if (*ctxt).flags & (1 as i32) << 8 as i32 != 0 {
+                        if (unsafe { (*ctxt).flags }) & (1 as i32) << 8 as i32 != 0 {
                             xmlRngPErr(
                                 ctxt,
                                 cur,
@@ -10890,15 +10415,13 @@ unsafe extern "C" fn xmlRelaxNGCleanupTree<'a1>(
                                 0 as *const xmlChar,
                                 0 as *const xmlChar,
                             );
-                        } else if (*ctxt).flags & (1 as i32) << 9 as i32
-                                != 0
-                            {
+                        } else if (unsafe { (*ctxt).flags }) & (1 as i32) << 9 as i32 != 0 {
                             xmlRngPErr(
                                 ctxt,
                                 cur,
                                 XML_RNGP_PAT_NSNAME_EXCEPT_ANYNAME as i32,
-                                b"Found nsName/except//anyName forbidden construct\n\0"
-                                    as *const u8 as *const i8,
+                                b"Found nsName/except//anyName forbidden construct\n\0" as *const u8
+                                    as *const i8,
                                 0 as *const xmlChar,
                                 0 as *const xmlChar,
                             );
@@ -10907,58 +10430,59 @@ unsafe extern "C" fn xmlRelaxNGCleanupTree<'a1>(
                     current_block = 1771738965274008886;
                 }
                 match current_block {
-                    6652497021943658697 => {}
+                    6652497021943658697 => {},
                     _ => {
-                        if xmlStrEqual(
+                        if (unsafe { xmlStrEqual(
                             (*cur).name,
                             b"div\0" as *const u8 as *const i8 as *mut xmlChar,
-                        ) != 0
+                        ) }) != 0
                         {
-                            let mut ns_4: * mut u8 = 0 as *mut xmlChar;
-                            let mut child: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-                            let mut ins: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-                            let mut tmp_1: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-                            ns_4 = xmlGetProp(
+                            let mut ns_4: *mut u8 = 0 as *mut xmlChar;
+                            let mut child: *mut crate::src::HTMLparser::_xmlNode =
+                                0 as *mut xmlNode;
+                            let mut ins: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+                            let mut tmp_1: *mut crate::src::HTMLparser::_xmlNode =
+                                0 as *mut xmlNode;
+                            ns_4 = unsafe { xmlGetProp(
                                 cur as *const xmlNode,
                                 b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
-                            );
-                            child = (*cur).children;
+                            ) };
+                            child = unsafe { (*cur).children };
                             ins = cur;
                             while !child.is_null() {
                                 if !ns_4.is_null() {
-                                    if (xmlHasProp(
+                                    if (unsafe { xmlHasProp(
                                         child as *const xmlNode,
                                         b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
-                                    ))
-                                        .is_null()
+                                    ) })
+                                    .is_null()
                                     {
-                                        xmlSetProp(
+                                        (unsafe { xmlSetProp(
                                             child,
                                             b"ns\0" as *const u8 as *const i8 as *mut xmlChar,
                                             ns_4,
-                                        );
+                                        ) });
                                     }
                                 }
-                                tmp_1 = (*child).next;
-                                xmlUnlinkNode(child);
-                                ins = xmlAddNextSibling(ins, child);
+                                tmp_1 = unsafe { (*child).next };
+                                (unsafe { xmlUnlinkNode(child) });
+                                ins = unsafe { xmlAddNextSibling(ins, child) };
                                 child = tmp_1;
                             }
                             if !ns_4.is_null() {
-                                xmlFree
-                                    .expect(
-                                        "non-null function pointer",
-                                    )(ns_4 as *mut libc::c_void);
+                                (unsafe { xmlFree.expect("non-null function pointer")(
+                                    ns_4 as *mut libc::c_void,
+                                ) });
                             }
-                            if !((*cur).nsDef).is_null() && !((*cur).parent).is_null() {
-                                let mut parDef: * mut crate::src::HTMLparser::_xmlNs = &mut (*(*cur).parent).nsDef
-                                    as *mut *mut xmlNs as xmlNsPtr;
-                                while !((*parDef).next).is_null() {
-                                    parDef = (*parDef).next;
+                            if !(unsafe { (*cur).nsDef }).is_null() && !(unsafe { (*cur).parent }).is_null() {
+                                let mut parDef: *mut crate::src::HTMLparser::_xmlNs =
+                                    (unsafe { &mut (*(*cur).parent).nsDef }) as *mut *mut xmlNs as xmlNsPtr;
+                                while !(unsafe { (*parDef).next }).is_null() {
+                                    parDef = unsafe { (*parDef).next };
                                 }
-                                let ref mut fresh311 = (*parDef).next;
-                                *fresh311 = (*cur).nsDef;
-                                let ref mut fresh312 = (*cur).nsDef;
+                                let fresh311 = unsafe { &mut ((*parDef).next) };
+                                *fresh311 = unsafe { (*cur).nsDef };
+                                let fresh312 = unsafe { &mut ((*cur).nsDef) };
                                 *fresh312 = 0 as *mut xmlNs;
                             }
                             delete = cur;
@@ -10966,28 +10490,24 @@ unsafe extern "C" fn xmlRelaxNGCleanupTree<'a1>(
                         } else {
                             current_block = 3788568606521286043;
                         }
-                    }
+                    },
                 }
             }
-        } else if (*cur).type_0 as u32
-                == XML_TEXT_NODE as i32 as u32
-                || (*cur).type_0 as u32
-                    == XML_CDATA_SECTION_NODE as i32 as u32
-            {
-            if xmlRelaxNGIsBlank((*cur).content) != 0 {
-                if !((*cur).parent).is_null()
-                    && (*(*cur).parent).type_0 as u32
-                        == XML_ELEMENT_NODE as i32 as u32
+        } else if (unsafe { (*cur).type_0 }) as u32 == XML_TEXT_NODE as i32 as u32
+            || (unsafe { (*cur).type_0 }) as u32 == XML_CDATA_SECTION_NODE as i32 as u32
+        {
+            if xmlRelaxNGIsBlank(unsafe { (*cur).content }) != 0 {
+                if !(unsafe { (*cur).parent }).is_null()
+                    && (unsafe { (*(*cur).parent).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
                 {
-                    if xmlStrEqual(
+                    if (unsafe { xmlStrEqual(
                         (*(*cur).parent).name,
                         b"value\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) == 0
-                        && xmlStrEqual(
+                    ) }) == 0
+                        && (unsafe { xmlStrEqual(
                             (*(*cur).parent).name,
-                            b"param\0" as *const u8 as *const i8
-                                as *mut xmlChar,
-                        ) == 0
+                            b"param\0" as *const u8 as *const i8 as *mut xmlChar,
+                        ) }) == 0
                     {
                         delete = cur;
                     }
@@ -11005,34 +10525,31 @@ unsafe extern "C" fn xmlRelaxNGCleanupTree<'a1>(
         }
         match current_block {
             3788568606521286043 => {
-                if !((*cur).children).is_null() {
-                    if (*(*cur).children).type_0 as u32
-                        != XML_ENTITY_DECL as i32 as u32
-                        && (*(*cur).children).type_0 as u32
-                            != XML_ENTITY_REF_NODE as i32 as u32
-                        && (*(*cur).children).type_0 as u32
-                            != XML_ENTITY_NODE as i32 as u32
+                if !(unsafe { (*cur).children }).is_null() {
+                    if (unsafe { (*(*cur).children).type_0 }) as u32 != XML_ENTITY_DECL as i32 as u32
+                        && (unsafe { (*(*cur).children).type_0 }) as u32 != XML_ENTITY_REF_NODE as i32 as u32
+                        && (unsafe { (*(*cur).children).type_0 }) as u32 != XML_ENTITY_NODE as i32 as u32
                     {
-                        cur = (*cur).children;
+                        cur = unsafe { (*cur).children };
                         continue;
                     }
                 }
-            }
-            _ => {}
+            },
+            _ => {},
         }
-        if !((*cur).next).is_null() {
-            cur = (*cur).next;
+        if !(unsafe { (*cur).next }).is_null() {
+            cur = unsafe { (*cur).next };
         } else {
             loop {
-                cur = (*cur).parent;
+                cur = unsafe { (*cur).parent };
                 if cur.is_null() {
                     break;
                 }
                 if cur == root {
                     cur = 0 as xmlNodePtr;
                     break;
-                } else if !((*cur).next).is_null() {
-                    cur = (*cur).next;
+                } else if !(unsafe { (*cur).next }).is_null() {
+                    cur = unsafe { (*cur).next };
                     break;
                 } else if cur.is_null() {
                     break;
@@ -11041,24 +10558,24 @@ unsafe extern "C" fn xmlRelaxNGCleanupTree<'a1>(
         }
     }
     if !delete.is_null() {
-        xmlUnlinkNode(delete);
-        xmlFreeNode(delete);
+        (unsafe { xmlUnlinkNode(delete) });
+        (unsafe { xmlFreeNode(delete) });
         delete = 0 as xmlNodePtr;
     }
 }
-unsafe extern "C" fn xmlRelaxNGCleanupDoc<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut doc: * mut crate::src::HTMLparser::_xmlDoc,
-) -> * mut crate::src::HTMLparser::_xmlDoc {
-    let mut root: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    root = xmlDocGetRootElement(doc as *const xmlDoc);
+extern "C" fn xmlRelaxNGCleanupDoc<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut doc: *mut crate::src::HTMLparser::_xmlDoc,
+) -> *mut crate::src::HTMLparser::_xmlDoc {
+    let mut root: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    root = unsafe { xmlDocGetRootElement(doc as *const xmlDoc) };
     if root.is_null() {
         xmlRngPErr(
             ctxt,
             doc as xmlNodePtr,
             XML_RNGP_EMPTY as i32,
             b"xmlRelaxNGParse: %s is empty\n\0" as *const u8 as *const i8,
-            (*ctxt).URL,
+            unsafe { (*ctxt).URL },
             0 as *const xmlChar,
         );
         return 0 as xmlDocPtr;
@@ -11067,38 +10584,37 @@ unsafe extern "C" fn xmlRelaxNGCleanupDoc<'a1>(
     return doc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRelaxNGParse<'a1, 'a2>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-) -> * mut crate::src::relaxng::_xmlRelaxNG<'a2> where 'a1: 'a2, 'a2: 'a1 {
-    let mut ret: * mut crate::src::relaxng::_xmlRelaxNG<'_> = 0 as xmlRelaxNGPtr;
-    let mut doc: * mut crate::src::HTMLparser::_xmlDoc = 0 as *mut xmlDoc;
-    let mut root: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+pub extern "C" fn xmlRelaxNGParse<'a1, 'a2>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+) -> *mut crate::src::relaxng::_xmlRelaxNG<'a2>
+where
+    'a1: 'a2,
+    'a2: 'a1,
+{
+    let mut ret: *mut crate::src::relaxng::_xmlRelaxNG<'_> = 0 as xmlRelaxNGPtr;
+    let mut doc: *mut crate::src::HTMLparser::_xmlDoc = 0 as *mut xmlDoc;
+    let mut root: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
     xmlRelaxNGInitTypes();
     if ctxt.is_null() {
         return 0 as xmlRelaxNGPtr;
     }
-    if !((*ctxt).URL).is_null() {
-        doc = xmlReadFile(
-            (*ctxt).URL as *const i8,
-            0 as *const i8,
-            0 as i32,
-        );
+    if !(unsafe { (*ctxt).URL }).is_null() {
+        doc = xmlReadFile((unsafe { (*ctxt).URL }) as *const i8, 0 as *const i8, 0 as i32);
         if doc.is_null() {
             xmlRngPErr(
                 ctxt,
                 0 as xmlNodePtr,
                 XML_RNGP_PARSE_ERROR as i32,
-                b"xmlRelaxNGParse: could not load %s\n\0" as *const u8
-                    as *const i8,
-                (*ctxt).URL,
+                b"xmlRelaxNGParse: could not load %s\n\0" as *const u8 as *const i8,
+                unsafe { (*ctxt).URL },
                 0 as *const xmlChar,
             );
             return 0 as xmlRelaxNGPtr;
         }
-    } else if !((*ctxt).buffer).is_null() {
+    } else if !(unsafe { (*ctxt).buffer }).is_null() {
         doc = xmlReadMemory(
-            (*ctxt).buffer,
-            (*ctxt).size,
+            unsafe { (*ctxt).buffer },
+            unsafe { (*ctxt).size },
             0 as *const i8,
             0 as *const i8,
             0 as i32,
@@ -11108,23 +10624,18 @@ pub unsafe extern "C" fn xmlRelaxNGParse<'a1, 'a2>(
                 ctxt,
                 0 as xmlNodePtr,
                 XML_RNGP_PARSE_ERROR as i32,
-                b"xmlRelaxNGParse: could not parse schemas\n\0" as *const u8
-                    as *const i8,
+                b"xmlRelaxNGParse: could not parse schemas\n\0" as *const u8 as *const i8,
                 0 as *const xmlChar,
                 0 as *const xmlChar,
             );
             return 0 as xmlRelaxNGPtr;
         }
-        let ref mut fresh313 = (*doc).URL;
-        *fresh313 = xmlStrdup(
-            b"in_memory_buffer\0" as *const u8 as *const i8 as *mut xmlChar,
-        );
-        let ref mut fresh314 = (*ctxt).URL;
-        *fresh314 = xmlStrdup(
-            b"in_memory_buffer\0" as *const u8 as *const i8 as *mut xmlChar,
-        );
-    } else if !((*ctxt).document).is_null() {
-        doc = (*ctxt).document;
+        let fresh313 = unsafe { &mut ((*doc).URL) };
+        *fresh313 = unsafe { xmlStrdup(b"in_memory_buffer\0" as *const u8 as *const i8 as *mut xmlChar) };
+        let fresh314 = unsafe { &mut ((*ctxt).URL) };
+        *fresh314 = unsafe { xmlStrdup(b"in_memory_buffer\0" as *const u8 as *const i8 as *mut xmlChar) };
+    } else if !(unsafe { (*ctxt).document }).is_null() {
+        doc = unsafe { (*ctxt).document };
     } else {
         xmlRngPErr(
             ctxt,
@@ -11136,559 +10647,552 @@ pub unsafe extern "C" fn xmlRelaxNGParse<'a1, 'a2>(
         );
         return 0 as xmlRelaxNGPtr;
     }
-    let ref mut fresh315 = (*ctxt).document;
+    let fresh315 = unsafe { &mut ((*ctxt).document) };
     *fresh315 = doc;
     doc = xmlRelaxNGCleanupDoc(ctxt, doc);
     if doc.is_null() {
-        xmlFreeDoc((*ctxt).document);
-        let ref mut fresh316 = (*ctxt).document;
+        (unsafe { xmlFreeDoc((*ctxt).document) });
+        let fresh316 = unsafe { &mut ((*ctxt).document) };
         *fresh316 = 0 as xmlDocPtr;
         return 0 as xmlRelaxNGPtr;
     }
-    root = xmlDocGetRootElement(doc as *const xmlDoc);
+    root = unsafe { xmlDocGetRootElement(doc as *const xmlDoc) };
     if root.is_null() {
         xmlRngPErr(
             ctxt,
             doc as xmlNodePtr,
             XML_RNGP_EMPTY as i32,
             b"xmlRelaxNGParse: %s is empty\n\0" as *const u8 as *const i8,
-            if !((*ctxt).URL).is_null() {
-                (*ctxt).URL
+            if !(unsafe { (*ctxt).URL }).is_null() {
+                unsafe { (*ctxt).URL }
             } else {
                 b"schemas\0" as *const u8 as *const i8 as *mut xmlChar
             },
             0 as *const xmlChar,
         );
-        xmlFreeDoc((*ctxt).document);
-        let ref mut fresh317 = (*ctxt).document;
+        (unsafe { xmlFreeDoc((*ctxt).document) });
+        let fresh317 = unsafe { &mut ((*ctxt).document) };
         *fresh317 = 0 as xmlDocPtr;
         return 0 as xmlRelaxNGPtr;
     }
     ret = xmlRelaxNGParseDocument(ctxt, root);
     if ret.is_null() {
-        xmlFreeDoc((*ctxt).document);
-        let ref mut fresh318 = (*ctxt).document;
+        (unsafe { xmlFreeDoc((*ctxt).document) });
+        let fresh318 = unsafe { &mut ((*ctxt).document) };
         *fresh318 = 0 as xmlDocPtr;
         return 0 as xmlRelaxNGPtr;
     }
-    if !((*ctxt).interleaves).is_null() {
+    if !(unsafe { (*ctxt).interleaves }).is_null() {
         xmlHashScan(
-            (*ctxt).interleaves,
-            Some(
-                xmlRelaxNGComputeInterleaves,
-            ),
+            unsafe { (*ctxt).interleaves },
+            Some(xmlRelaxNGComputeInterleaves),
             ctxt as *mut libc::c_void,
         );
     }
-    if (*ctxt).nbErrors > 0 as i32 {
+    if (unsafe { (*ctxt).nbErrors }) > 0 as i32 {
         xmlRelaxNGFree(ret);
-        let ref mut fresh319 = (*ctxt).document;
+        let fresh319 = unsafe { &mut ((*ctxt).document) };
         *fresh319 = 0 as xmlDocPtr;
-        xmlFreeDoc(doc);
+        (unsafe { xmlFreeDoc(doc) });
         return 0 as xmlRelaxNGPtr;
     }
-    if !((*ret).topgrammar).is_null() && !((*(*ret).topgrammar).start).is_null() {
-        if (*(*(*ret).topgrammar).start).type_0 as i32
-            != XML_RELAXNG_START as i32
-        {
-            let mut def: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    if !(unsafe { (*ret).topgrammar }).is_null() && !(unsafe { (*(*ret).topgrammar).start }).is_null() {
+        if (unsafe { (*(*(*ret).topgrammar).start).type_0 }) as i32 != XML_RELAXNG_START as i32 {
+            let mut def: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
             def = xmlRelaxNGNewDefine(ctxt, 0 as xmlNodePtr);
             if !def.is_null() {
-                (*def).type_0 = XML_RELAXNG_START;
-                let ref mut fresh320 = (*def).content;
-                *fresh320 = (*(*ret).topgrammar).start;
-                let ref mut fresh321 = (*(*ret).topgrammar).start;
+                (unsafe { (*def).type_0 = XML_RELAXNG_START });
+                let fresh320 = unsafe { &mut ((*def).content) };
+                *fresh320 = unsafe { (*(*ret).topgrammar).start };
+                let fresh321 = unsafe { &mut ((*(*ret).topgrammar).start) };
                 *fresh321 = def;
             }
         }
-        xmlRelaxNGTryCompile(ctxt, (*(*ret).topgrammar).start);
+        xmlRelaxNGTryCompile(ctxt, unsafe { (*(*ret).topgrammar).start });
     }
-    let ref mut fresh322 = (*ret).doc;
+    let fresh322 = unsafe { &mut ((*ret).doc) };
     *fresh322 = doc;
-    let ref mut fresh323 = (*ctxt).document;
+    let fresh323 = unsafe { &mut ((*ctxt).document) };
     *fresh323 = 0 as xmlDocPtr;
-    let ref mut fresh324 = (*ret).documents;
-    *fresh324 = (*ctxt).documents;
-    let ref mut fresh325 = (*ctxt).documents;
+    let fresh324 = unsafe { &mut ((*ret).documents) };
+    *fresh324 = unsafe { (*ctxt).documents };
+    let fresh325 = unsafe { &mut ((*ctxt).documents) };
     *fresh325 = 0 as xmlRelaxNGDocumentPtr;
-    let ref mut fresh326 = (*ret).includes;
-    *fresh326 = (*ctxt).includes;
-    let ref mut fresh327 = (*ctxt).includes;
+    let fresh326 = unsafe { &mut ((*ret).includes) };
+    *fresh326 = unsafe { (*ctxt).includes };
+    let fresh327 = unsafe { &mut ((*ctxt).includes) };
     *fresh327 = 0 as xmlRelaxNGIncludePtr;
-    (*ret).defNr = (*ctxt).defNr;
-    let ref mut fresh328 = (*ret).defTab;
-    *fresh328 = (*ctxt).defTab;
-    let ref mut fresh329 = (*ctxt).defTab;
+    (unsafe { (*ret).defNr = (*ctxt).defNr });
+    let fresh328 = unsafe { &mut ((*ret).defTab) };
+    *fresh328 = unsafe { (*ctxt).defTab };
+    let fresh329 = unsafe { &mut ((*ctxt).defTab) };
     *fresh329 = 0 as *mut xmlRelaxNGDefinePtr;
-    if (*ctxt).idref == 1 as i32 {
-        (*ret).idref = 1 as i32;
+    if (unsafe { (*ctxt).idref }) == 1 as i32 {
+        (unsafe { (*ret).idref = 1 as i32 });
     }
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRelaxNGSetParserErrors<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
-    mut err: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>,
-    mut warn: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>,
-    mut ctx: * mut core::ffi::c_void,
+pub extern "C" fn xmlRelaxNGSetParserErrors<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a1>,
+    mut err: Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>,
+    mut warn: Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>,
+    mut ctx: *mut core::ffi::c_void,
 ) {
     if ctxt.is_null() {
         return;
     }
-    let ref mut fresh330 = (*ctxt).error;
+    let fresh330 = unsafe { &mut ((*ctxt).error) };
     *fresh330 = err;
-    let ref mut fresh331 = (*ctxt).warning;
+    let fresh331 = unsafe { &mut ((*ctxt).warning) };
     *fresh331 = warn;
-    let ref mut fresh332 = (*ctxt).serror;
+    let fresh332 = unsafe { &mut ((*ctxt).serror) };
     *fresh332 = None;
-    let ref mut fresh333 = (*ctxt).userData;
+    let fresh333 = unsafe { &mut ((*ctxt).userData) };
     *fresh333 = ctx;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRelaxNGGetParserErrors<'a1, 'a2, 'a3, 'a4, 'a5>(
+pub extern "C" fn xmlRelaxNGGetParserErrors<'a1, 'a2, 'a3, 'a4, 'a5>(
     mut ctxt: Option<&'a1 mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a2>>,
-    mut err: Option<&'a3 mut Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>>,
-    mut warn: Option<&'a4 mut Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>>,
-    mut ctx: Option<&'a5 mut * mut core::ffi::c_void>,
+    mut err: Option<
+        &'a3 mut Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>,
+    >,
+    mut warn: Option<
+        &'a4 mut Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>,
+    >,
+    mut ctx: Option<&'a5 mut *mut core::ffi::c_void>,
 ) -> i32 {
-    if borrow(& ctxt).is_none() {
+    if borrow(&ctxt).is_none() {
         return -(1 as i32);
     }
-    if !borrow(& err).is_none() {
+    if !borrow(&err).is_none() {
         *(borrow_mut(&mut err)).unwrap() = (*(borrow_mut(&mut ctxt)).unwrap()).error;
     }
-    if !borrow(& warn).is_none() {
+    if !borrow(&warn).is_none() {
         *(borrow_mut(&mut warn)).unwrap() = (*(borrow_mut(&mut ctxt)).unwrap()).warning;
     }
-    if !borrow(& ctx).is_none() {
+    if !borrow(&ctx).is_none() {
         *(borrow_mut(&mut ctx)).unwrap() = (*(borrow_mut(&mut ctxt)).unwrap()).userData;
     }
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRelaxNGSetParserStructuredErrors<'a1, 'a2>(
+pub extern "C" fn xmlRelaxNGSetParserStructuredErrors<'a1, 'a2>(
     mut ctxt: Option<&'a1 mut crate::src::relaxng::_xmlRelaxNGParserCtxt<'a2>>,
-    mut serror: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::HTMLparser::_xmlError,) -> ()>,
-    mut ctx: * mut core::ffi::c_void,
+    mut serror: Option<
+        unsafe extern "C" fn(
+            _: *mut core::ffi::c_void,
+            _: *mut crate::src::HTMLparser::_xmlError,
+        ) -> (),
+    >,
+    mut ctx: *mut core::ffi::c_void,
 ) {
-    if borrow(& ctxt).is_none() {
+    if borrow(&ctxt).is_none() {
         return;
     }
-    let ref mut fresh334 = (*(borrow_mut(&mut ctxt)).unwrap()).serror;
+    let fresh334 = &mut ((*(borrow_mut(&mut ctxt)).unwrap()).serror);
     *fresh334 = serror;
-    let ref mut fresh335 = (*(borrow_mut(&mut ctxt)).unwrap()).error;
+    let fresh335 = &mut ((*(borrow_mut(&mut ctxt)).unwrap()).error);
     *fresh335 = None;
-    let ref mut fresh336 = (*(borrow_mut(&mut ctxt)).unwrap()).warning;
+    let fresh336 = &mut ((*(borrow_mut(&mut ctxt)).unwrap()).warning);
     *fresh336 = None;
-    let ref mut fresh337 = (*(borrow_mut(&mut ctxt)).unwrap()).userData;
+    let fresh337 = &mut ((*(borrow_mut(&mut ctxt)).unwrap()).userData);
     *fresh337 = ctx;
 }
-unsafe extern "C" fn xmlRelaxNGDumpDefines(
-    mut output: * mut crate::src::HTMLtree::_IO_FILE,
-    mut defines: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+extern "C" fn xmlRelaxNGDumpDefines(
+    mut output: *mut crate::src::HTMLtree::_IO_FILE,
+    mut defines: *mut crate::src::relaxng::_xmlRelaxNGDefine,
 ) {
     while !defines.is_null() {
         xmlRelaxNGDumpDefine(output, defines);
-        defines = (*defines).next;
+        defines = unsafe { (*defines).next };
     }
 }
-unsafe extern "C" fn xmlRelaxNGDumpDefine(
-    mut output: * mut crate::src::HTMLtree::_IO_FILE,
-    mut define: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+extern "C" fn xmlRelaxNGDumpDefine(
+    mut output: *mut crate::src::HTMLtree::_IO_FILE,
+    mut define: *mut crate::src::relaxng::_xmlRelaxNGDefine,
 ) {
     if define.is_null() {
         return;
     }
-    match (*define).type_0 as i32 {
+    match (unsafe { (*define).type_0 }) as i32 {
         0 => {
-            fprintf(output, b"<empty/>\n\0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"<empty/>\n\0" as *const u8 as *const i8) });
+        },
         1 => {
-            fprintf(output, b"<notAllowed/>\n\0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"<notAllowed/>\n\0" as *const u8 as *const i8) });
+        },
         3 => {
-            fprintf(output, b"<text/>\n\0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"<text/>\n\0" as *const u8 as *const i8) });
+        },
         4 => {
-            fprintf(output, b"<element>\n\0" as *const u8 as *const i8);
-            if !((*define).name).is_null() {
-                fprintf(output, b"<name\0" as *const u8 as *const i8);
-                if !((*define).ns).is_null() {
-                    fprintf(
+            (unsafe { fprintf(output, b"<element>\n\0" as *const u8 as *const i8) });
+            if !(unsafe { (*define).name }).is_null() {
+                (unsafe { fprintf(output, b"<name\0" as *const u8 as *const i8) });
+                if !(unsafe { (*define).ns }).is_null() {
+                    (unsafe { fprintf(
                         output,
                         b" ns=\"%s\"\0" as *const u8 as *const i8,
                         (*define).ns,
-                    );
+                    ) });
                 }
-                fprintf(
+                (unsafe { fprintf(
                     output,
                     b">%s</name>\n\0" as *const u8 as *const i8,
                     (*define).name,
-                );
+                ) });
             }
-            xmlRelaxNGDumpDefines(output, (*define).attrs);
-            xmlRelaxNGDumpDefines(output, (*define).content);
-            fprintf(output, b"</element>\n\0" as *const u8 as *const i8);
-        }
+            xmlRelaxNGDumpDefines(output, unsafe { (*define).attrs });
+            xmlRelaxNGDumpDefines(output, unsafe { (*define).content });
+            (unsafe { fprintf(output, b"</element>\n\0" as *const u8 as *const i8) });
+        },
         8 => {
-            fprintf(output, b"<list>\n\0" as *const u8 as *const i8);
-            xmlRelaxNGDumpDefines(output, (*define).content);
-            fprintf(output, b"</list>\n\0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"<list>\n\0" as *const u8 as *const i8) });
+            xmlRelaxNGDumpDefines(output, unsafe { (*define).content });
+            (unsafe { fprintf(output, b"</list>\n\0" as *const u8 as *const i8) });
+        },
         16 => {
-            fprintf(output, b"<oneOrMore>\n\0" as *const u8 as *const i8);
-            xmlRelaxNGDumpDefines(output, (*define).content);
-            fprintf(output, b"</oneOrMore>\n\0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"<oneOrMore>\n\0" as *const u8 as *const i8) });
+            xmlRelaxNGDumpDefines(output, unsafe { (*define).content });
+            (unsafe { fprintf(output, b"</oneOrMore>\n\0" as *const u8 as *const i8) });
+        },
         15 => {
-            fprintf(output, b"<zeroOrMore>\n\0" as *const u8 as *const i8);
-            xmlRelaxNGDumpDefines(output, (*define).content);
-            fprintf(output, b"</zeroOrMore>\n\0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"<zeroOrMore>\n\0" as *const u8 as *const i8) });
+            xmlRelaxNGDumpDefines(output, unsafe { (*define).content });
+            (unsafe { fprintf(output, b"</zeroOrMore>\n\0" as *const u8 as *const i8) });
+        },
         17 => {
-            fprintf(output, b"<choice>\n\0" as *const u8 as *const i8);
-            xmlRelaxNGDumpDefines(output, (*define).content);
-            fprintf(output, b"</choice>\n\0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"<choice>\n\0" as *const u8 as *const i8) });
+            xmlRelaxNGDumpDefines(output, unsafe { (*define).content });
+            (unsafe { fprintf(output, b"</choice>\n\0" as *const u8 as *const i8) });
+        },
         18 => {
-            fprintf(output, b"<group>\n\0" as *const u8 as *const i8);
-            xmlRelaxNGDumpDefines(output, (*define).content);
-            fprintf(output, b"</group>\n\0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"<group>\n\0" as *const u8 as *const i8) });
+            xmlRelaxNGDumpDefines(output, unsafe { (*define).content });
+            (unsafe { fprintf(output, b"</group>\n\0" as *const u8 as *const i8) });
+        },
         19 => {
-            fprintf(output, b"<interleave>\n\0" as *const u8 as *const i8);
-            xmlRelaxNGDumpDefines(output, (*define).content);
-            fprintf(output, b"</interleave>\n\0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"<interleave>\n\0" as *const u8 as *const i8) });
+            xmlRelaxNGDumpDefines(output, unsafe { (*define).content });
+            (unsafe { fprintf(output, b"</interleave>\n\0" as *const u8 as *const i8) });
+        },
         14 => {
-            fprintf(output, b"<optional>\n\0" as *const u8 as *const i8);
-            xmlRelaxNGDumpDefines(output, (*define).content);
-            fprintf(output, b"</optional>\n\0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"<optional>\n\0" as *const u8 as *const i8) });
+            xmlRelaxNGDumpDefines(output, unsafe { (*define).content });
+            (unsafe { fprintf(output, b"</optional>\n\0" as *const u8 as *const i8) });
+        },
         9 => {
-            fprintf(output, b"<attribute>\n\0" as *const u8 as *const i8);
-            xmlRelaxNGDumpDefines(output, (*define).content);
-            fprintf(output, b"</attribute>\n\0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"<attribute>\n\0" as *const u8 as *const i8) });
+            xmlRelaxNGDumpDefines(output, unsafe { (*define).content });
+            (unsafe { fprintf(output, b"</attribute>\n\0" as *const u8 as *const i8) });
+        },
         10 => {
-            fprintf(output, b"<define\0" as *const u8 as *const i8);
-            if !((*define).name).is_null() {
-                fprintf(
+            (unsafe { fprintf(output, b"<define\0" as *const u8 as *const i8) });
+            if !(unsafe { (*define).name }).is_null() {
+                (unsafe { fprintf(
                     output,
                     b" name=\"%s\"\0" as *const u8 as *const i8,
                     (*define).name,
-                );
+                ) });
             }
-            fprintf(output, b">\n\0" as *const u8 as *const i8);
-            xmlRelaxNGDumpDefines(output, (*define).content);
-            fprintf(output, b"</define>\n\0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b">\n\0" as *const u8 as *const i8) });
+            xmlRelaxNGDumpDefines(output, unsafe { (*define).content });
+            (unsafe { fprintf(output, b"</define>\n\0" as *const u8 as *const i8) });
+        },
         11 => {
-            fprintf(output, b"<ref\0" as *const u8 as *const i8);
-            if !((*define).name).is_null() {
-                fprintf(
+            (unsafe { fprintf(output, b"<ref\0" as *const u8 as *const i8) });
+            if !(unsafe { (*define).name }).is_null() {
+                (unsafe { fprintf(
                     output,
                     b" name=\"%s\"\0" as *const u8 as *const i8,
                     (*define).name,
-                );
+                ) });
             }
-            fprintf(output, b">\n\0" as *const u8 as *const i8);
-            xmlRelaxNGDumpDefines(output, (*define).content);
-            fprintf(output, b"</ref>\n\0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b">\n\0" as *const u8 as *const i8) });
+            xmlRelaxNGDumpDefines(output, unsafe { (*define).content });
+            (unsafe { fprintf(output, b"</ref>\n\0" as *const u8 as *const i8) });
+        },
         13 => {
-            fprintf(output, b"<parentRef\0" as *const u8 as *const i8);
-            if !((*define).name).is_null() {
-                fprintf(
+            (unsafe { fprintf(output, b"<parentRef\0" as *const u8 as *const i8) });
+            if !(unsafe { (*define).name }).is_null() {
+                (unsafe { fprintf(
                     output,
                     b" name=\"%s\"\0" as *const u8 as *const i8,
                     (*define).name,
-                );
+                ) });
             }
-            fprintf(output, b">\n\0" as *const u8 as *const i8);
-            xmlRelaxNGDumpDefines(output, (*define).content);
-            fprintf(output, b"</parentRef>\n\0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b">\n\0" as *const u8 as *const i8) });
+            xmlRelaxNGDumpDefines(output, unsafe { (*define).content });
+            (unsafe { fprintf(output, b"</parentRef>\n\0" as *const u8 as *const i8) });
+        },
         12 => {
-            fprintf(output, b"<externalRef>\0" as *const u8 as *const i8);
-            xmlRelaxNGDumpDefines(output, (*define).content);
-            fprintf(output, b"</externalRef>\n\0" as *const u8 as *const i8);
-        }
+            (unsafe { fprintf(output, b"<externalRef>\0" as *const u8 as *const i8) });
+            xmlRelaxNGDumpDefines(output, unsafe { (*define).content });
+            (unsafe { fprintf(output, b"</externalRef>\n\0" as *const u8 as *const i8) });
+        },
         5 | 7 => {
-            (*(borrow(& __xmlGenericError())).unwrap())
-                .expect(
-                    "non-null function pointer",
-                )(
+            (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                 *(__xmlGenericErrorContext()).unwrap(),
                 b"Unimplemented block at %s:%d\n\0" as *const u8 as *const i8,
                 b"relaxng.c\0" as *const u8 as *const i8,
                 7841 as i32,
-            );
-        }
+            ) });
+        },
         20 | 2 | 6 => {
-            (*(borrow(& __xmlGenericError())).unwrap())
-                .expect(
-                    "non-null function pointer",
-                )(
+            (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                 *(__xmlGenericErrorContext()).unwrap(),
                 b"Unimplemented block at %s:%d\n\0" as *const u8 as *const i8,
                 b"relaxng.c\0" as *const u8 as *const i8,
                 7845 as i32,
-            );
-        }
+            ) });
+        },
         -1 => {
-            xmlRelaxNGDumpDefines(output, (*define).content);
-        }
-        _ => {}
+            xmlRelaxNGDumpDefines(output, unsafe { (*define).content });
+        },
+        _ => {},
     };
 }
-unsafe extern "C" fn xmlRelaxNGDumpGrammar<'a1>(
-    mut output: * mut crate::src::HTMLtree::_IO_FILE,
-    mut grammar: * mut crate::src::relaxng::_xmlRelaxNGGrammar<'a1>,
+extern "C" fn xmlRelaxNGDumpGrammar<'a1>(
+    mut output: *mut crate::src::HTMLtree::_IO_FILE,
+    mut grammar: *mut crate::src::relaxng::_xmlRelaxNGGrammar<'a1>,
     mut top: i32,
 ) {
     if grammar.is_null() {
         return;
     }
-    fprintf(output, b"<grammar\0" as *const u8 as *const i8);
+    (unsafe { fprintf(output, b"<grammar\0" as *const u8 as *const i8) });
     if top != 0 {
-        fprintf(
+        (unsafe { fprintf(
             output,
-            b" xmlns=\"http://relaxng.org/ns/structure/1.0\"\0" as *const u8
-                as *const i8,
-        );
+            b" xmlns=\"http://relaxng.org/ns/structure/1.0\"\0" as *const u8 as *const i8,
+        ) });
     }
-    match (*grammar).combine as u32 {
-        0 => {}
+    match (unsafe { (*grammar).combine }) as u32 {
+        0 => {},
         1 => {
-            fprintf(
-                output,
-                b" combine=\"choice\"\0" as *const u8 as *const i8,
-            );
-        }
+            (unsafe { fprintf(output, b" combine=\"choice\"\0" as *const u8 as *const i8) });
+        },
         2 => {
-            fprintf(
+            (unsafe { fprintf(
                 output,
                 b" combine=\"interleave\"\0" as *const u8 as *const i8,
-            );
-        }
+            ) });
+        },
         _ => {
-            fprintf(
+            (unsafe { fprintf(
                 output,
                 b" <!-- invalid combine value -->\0" as *const u8 as *const i8,
-            );
-        }
+            ) });
+        },
     }
-    fprintf(output, b">\n\0" as *const u8 as *const i8);
-    if ((*grammar).start).is_null() {
-        fprintf(
+    (unsafe { fprintf(output, b">\n\0" as *const u8 as *const i8) });
+    if (unsafe { (*grammar).start }).is_null() {
+        (unsafe { fprintf(
             output,
             b" <!-- grammar had no start -->\0" as *const u8 as *const i8,
-        );
+        ) });
     } else {
-        fprintf(output, b"<start>\n\0" as *const u8 as *const i8);
-        xmlRelaxNGDumpDefine(output, (*grammar).start);
-        fprintf(output, b"</start>\n\0" as *const u8 as *const i8);
+        (unsafe { fprintf(output, b"<start>\n\0" as *const u8 as *const i8) });
+        xmlRelaxNGDumpDefine(output, unsafe { (*grammar).start });
+        (unsafe { fprintf(output, b"</start>\n\0" as *const u8 as *const i8) });
     }
-    fprintf(output, b"</grammar>\n\0" as *const u8 as *const i8);
+    (unsafe { fprintf(output, b"</grammar>\n\0" as *const u8 as *const i8) });
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRelaxNGDump<'a1, 'a2>(
-    mut output: * mut crate::src::HTMLtree::_IO_FILE,
+pub extern "C" fn xmlRelaxNGDump<'a1, 'a2>(
+    mut output: *mut crate::src::HTMLtree::_IO_FILE,
     mut schema: Option<&'a1 mut crate::src::relaxng::_xmlRelaxNG<'a2>>,
 ) {
     if output.is_null() {
         return;
     }
-    if borrow(& schema).is_none() {
-        fprintf(
+    if borrow(&schema).is_none() {
+        (unsafe { fprintf(
             output,
             b"RelaxNG empty or failed to compile\n\0" as *const u8 as *const i8,
-        );
+        ) });
         return;
     }
-    fprintf(output, b"RelaxNG: \0" as *const u8 as *const i8);
+    (unsafe { fprintf(output, b"RelaxNG: \0" as *const u8 as *const i8) });
     if ((*(borrow_mut(&mut schema)).unwrap()).doc).is_null() {
-        fprintf(output, b"no document\n\0" as *const u8 as *const i8);
-    } else if !((*(*(borrow_mut(&mut schema)).unwrap()).doc).URL).is_null() {
-        fprintf(
+        (unsafe { fprintf(output, b"no document\n\0" as *const u8 as *const i8) });
+    } else if !(unsafe { (*(*(borrow_mut(&mut schema)).unwrap()).doc).URL }).is_null() {
+        (unsafe { fprintf(
             output,
             b"%s\n\0" as *const u8 as *const i8,
-            (*(*(borrow(& schema)).unwrap()).doc).URL,
-        );
+            (*(*(borrow(&schema)).unwrap()).doc).URL,
+        ) });
     } else {
-        fprintf(output, b"\n\0" as *const u8 as *const i8);
+        (unsafe { fprintf(output, b"\n\0" as *const u8 as *const i8) });
     }
     if ((*(borrow_mut(&mut schema)).unwrap()).topgrammar).is_null() {
-        fprintf(
+        (unsafe { fprintf(
             output,
             b"RelaxNG has no top grammar\n\0" as *const u8 as *const i8,
-        );
+        ) });
         return;
     }
-    xmlRelaxNGDumpGrammar(output, (*(borrow_mut(&mut schema)).unwrap()).topgrammar, 1 as i32);
+    xmlRelaxNGDumpGrammar(
+        output,
+        (*(borrow_mut(&mut schema)).unwrap()).topgrammar,
+        1 as i32,
+    );
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRelaxNGDumpTree<'a1, 'a2>(
-    mut output: * mut crate::src::HTMLtree::_IO_FILE,
+pub extern "C" fn xmlRelaxNGDumpTree<'a1, 'a2>(
+    mut output: *mut crate::src::HTMLtree::_IO_FILE,
     mut schema: Option<&'a1 mut crate::src::relaxng::_xmlRelaxNG<'a2>>,
 ) {
     if output.is_null() {
         return;
     }
-    if borrow(& schema).is_none() {
-        fprintf(
+    if borrow(&schema).is_none() {
+        (unsafe { fprintf(
             output,
             b"RelaxNG empty or failed to compile\n\0" as *const u8 as *const i8,
-        );
+        ) });
         return;
     }
     if ((*(borrow_mut(&mut schema)).unwrap()).doc).is_null() {
-        fprintf(output, b"no document\n\0" as *const u8 as *const i8);
+        (unsafe { fprintf(output, b"no document\n\0" as *const u8 as *const i8) });
     } else {
-        xmlDocDump(output, (*(borrow_mut(&mut schema)).unwrap()).doc);
+        (unsafe { xmlDocDump(output, (*(borrow_mut(&mut schema)).unwrap()).doc) });
     };
 }
-unsafe extern "C" fn xmlRelaxNGValidateCompiledCallback(
-    mut exec: * mut crate::src::relaxng::_xmlRegExecCtxt,
-    mut token: * const u8,
-    mut transdata: * mut core::ffi::c_void,
-    mut inputdata: * mut core::ffi::c_void,
+extern "C" fn xmlRelaxNGValidateCompiledCallback(
+    mut _exec: *mut crate::src::relaxng::_xmlRegExecCtxt,
+    mut token: *const u8,
+    mut transdata: *mut core::ffi::c_void,
+    mut inputdata: *mut core::ffi::c_void,
 ) {
-    let mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'_> = inputdata as xmlRelaxNGValidCtxtPtr;
-    let mut define: * mut crate::src::relaxng::_xmlRelaxNGDefine = transdata as xmlRelaxNGDefinePtr;
+    let mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'_> =
+        inputdata as xmlRelaxNGValidCtxtPtr;
+    let mut define: *mut crate::src::relaxng::_xmlRelaxNGDefine = transdata as xmlRelaxNGDefinePtr;
     let mut ret: i32 = 0;
     if ctxt.is_null() {
-        fprintf(
+        (unsafe { fprintf(
             stderr,
             b"callback on %s missing context\n\0" as *const u8 as *const i8,
             token,
-        );
+        ) });
         return;
     }
     if define.is_null() {
-        if *token.offset(0 as i32 as isize) as i32 == '#' as i32 {
+        if (unsafe { *token.offset(0 as i32 as isize) }) as i32 == '#' as i32 {
             return;
         }
-        fprintf(
+        (unsafe { fprintf(
             stderr,
             b"callback on %s missing define\n\0" as *const u8 as *const i8,
             token,
-        );
-        if !ctxt.is_null() && (*ctxt).errNo == XML_RELAXNG_OK as i32 {
-            (*ctxt).errNo = XML_RELAXNG_ERR_INTERNAL as i32;
+        ) });
+        if !ctxt.is_null() && (unsafe { (*ctxt).errNo }) == XML_RELAXNG_OK as i32 {
+            (unsafe { (*ctxt).errNo = XML_RELAXNG_ERR_INTERNAL as i32 });
         }
         return;
     }
     if ctxt.is_null() || define.is_null() {
-        fprintf(
+        (unsafe { fprintf(
             stderr,
             b"callback on %s missing info\n\0" as *const u8 as *const i8,
             token,
-        );
-        if !ctxt.is_null() && (*ctxt).errNo == XML_RELAXNG_OK as i32 {
-            (*ctxt).errNo = XML_RELAXNG_ERR_INTERNAL as i32;
+        ) });
+        if !ctxt.is_null() && (unsafe { (*ctxt).errNo }) == XML_RELAXNG_OK as i32 {
+            (unsafe { (*ctxt).errNo = XML_RELAXNG_ERR_INTERNAL as i32 });
         }
         return;
     } else {
-        if (*define).type_0 as i32 != XML_RELAXNG_ELEMENT as i32 {
-            fprintf(
+        if (unsafe { (*define).type_0 }) as i32 != XML_RELAXNG_ELEMENT as i32 {
+            (unsafe { fprintf(
                 stderr,
-                b"callback on %s define is not element\n\0" as *const u8
-                    as *const i8,
+                b"callback on %s define is not element\n\0" as *const u8 as *const i8,
                 token,
-            );
-            if (*ctxt).errNo == XML_RELAXNG_OK as i32 {
-                (*ctxt).errNo = XML_RELAXNG_ERR_INTERNAL as i32;
+            ) });
+            if (unsafe { (*ctxt).errNo }) == XML_RELAXNG_OK as i32 {
+                (unsafe { (*ctxt).errNo = XML_RELAXNG_ERR_INTERNAL as i32 });
             }
             return;
         }
     }
     ret = xmlRelaxNGValidateDefinition(ctxt, define);
     if ret != 0 as i32 {
-        (*ctxt).perr = ret;
+        (unsafe { (*ctxt).perr = ret });
     }
 }
-unsafe extern "C" fn xmlRelaxNGValidateCompiledContent<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut regexp: * mut crate::src::debugXML::_xmlRegexp,
-    mut content: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlRelaxNGValidateCompiledContent<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut regexp: *mut crate::src::debugXML::_xmlRegexp,
+    mut content: *mut crate::src::HTMLparser::_xmlNode,
 ) -> i32 {
-    let mut exec: * mut crate::src::relaxng::_xmlRegExecCtxt = 0 as *mut xmlRegExecCtxt;
-    let mut cur: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut exec: *mut crate::src::relaxng::_xmlRegExecCtxt = 0 as *mut xmlRegExecCtxt;
+    let mut cur: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
     let mut ret: i32 = 0 as i32;
     let mut oldperr: i32 = 0;
     if ctxt.is_null() || regexp.is_null() {
         return -(1 as i32);
     }
-    oldperr = (*ctxt).perr;
-    exec = xmlRegNewExecCtxt(
+    oldperr = unsafe { (*ctxt).perr };
+    exec = unsafe { xmlRegNewExecCtxt(
         regexp,
-        Some(
-            xmlRelaxNGValidateCompiledCallback,
-        ),
+        Some(xmlRelaxNGValidateCompiledCallback),
         ctxt as *mut libc::c_void,
-    );
-    (*ctxt).perr = 0 as i32;
+    ) };
+    (unsafe { (*ctxt).perr = 0 as i32 });
     cur = content;
     while !cur.is_null() {
-        let ref mut fresh338 = (*(*ctxt).state).seq;
+        let fresh338 = unsafe { &mut ((*(*ctxt).state).seq) };
         *fresh338 = cur;
-        match (*cur).type_0 as u32 {
+        match (unsafe { (*cur).type_0 }) as u32 {
             3 | 4 => {
-                if !(xmlIsBlankNode(cur as *const xmlNode) != 0) {
-                    ret = xmlRegExecPushString(
+                if !((unsafe { xmlIsBlankNode(cur as *const xmlNode) }) != 0) {
+                    ret = unsafe { xmlRegExecPushString(
                         exec,
                         b"#text\0" as *const u8 as *const i8 as *mut xmlChar,
                         ctxt as *mut libc::c_void,
-                    );
+                    ) };
                     if ret < 0 as i32 {
                         xmlRelaxNGAddValidError(
                             ctxt,
                             XML_RELAXNG_ERR_TEXTWRONG,
-                            (*(*cur).parent).name,
+                            unsafe { (*(*cur).parent).name },
                             0 as *const xmlChar,
                             0 as i32,
                         );
                     }
                 }
-            }
+            },
             1 => {
-                if !((*cur).ns).is_null() {
-                    ret = xmlRegExecPushString2(
+                if !(unsafe { (*cur).ns }).is_null() {
+                    ret = unsafe { xmlRegExecPushString2(
                         exec,
                         (*cur).name,
                         (*(*cur).ns).href,
                         ctxt as *mut libc::c_void,
-                    );
+                    ) };
                 } else {
-                    ret = xmlRegExecPushString(
-                        exec,
-                        (*cur).name,
-                        ctxt as *mut libc::c_void,
-                    );
+                    ret = unsafe { xmlRegExecPushString(exec, (*cur).name, ctxt as *mut libc::c_void) };
                 }
                 if ret < 0 as i32 {
                     xmlRelaxNGAddValidError(
                         ctxt,
                         XML_RELAXNG_ERR_ELEMWRONG,
-                        (*cur).name,
+                        unsafe { (*cur).name },
                         0 as *const xmlChar,
                         0 as i32,
                     );
                 }
-            }
-            _ => {}
+            },
+            _ => {},
         }
         if ret < 0 as i32 {
             break;
         }
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
     }
-    ret = xmlRegExecPushString(exec, 0 as *const xmlChar, 0 as *mut libc::c_void);
+    ret = unsafe { xmlRegExecPushString(exec, 0 as *const xmlChar, 0 as *mut libc::c_void) };
     if ret == 1 as i32 {
         ret = 0 as i32;
-        let ref mut fresh339 = (*(*ctxt).state).seq;
+        let fresh339 = unsafe { &mut ((*(*ctxt).state).seq) };
         *fresh339 = 0 as xmlNodePtr;
     } else if ret == 0 as i32 {
         xmlRelaxNGAddValidError(
@@ -11699,161 +11203,144 @@ unsafe extern "C" fn xmlRelaxNGValidateCompiledContent<'a1>(
             0 as i32,
         );
         ret = -(1 as i32);
-        if (*ctxt).flags & 1 as i32 == 0 as i32 {
+        if (unsafe { (*ctxt).flags }) & 1 as i32 == 0 as i32 {
             xmlRelaxNGDumpValidError(ctxt);
         }
     } else {
         ret = -(1 as i32);
     }
-    xmlRegFreeExecCtxt(exec);
-    if ret == 0 as i32 && (*ctxt).perr != 0 as i32 {
-        ret = (*ctxt).perr;
+    (unsafe { xmlRegFreeExecCtxt(exec) });
+    if ret == 0 as i32 && (unsafe { (*ctxt).perr }) != 0 as i32 {
+        ret = unsafe { (*ctxt).perr };
     }
-    (*ctxt).perr = oldperr;
+    (unsafe { (*ctxt).perr = oldperr });
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGElemPush<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut exec: * mut crate::src::relaxng::_xmlRegExecCtxt,
+extern "C" fn xmlRelaxNGElemPush<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut exec: *mut crate::src::relaxng::_xmlRegExecCtxt,
 ) -> i32 {
-    if ((*ctxt).elemTab).is_null() {
-        (*ctxt).elemMax = 10 as i32;
-        let ref mut fresh340 = (*ctxt).elemTab;
-        *fresh340 = xmlMalloc
-            .expect(
-                "non-null function pointer",
-            )(
+    if (unsafe { (*ctxt).elemTab }).is_null() {
+        (unsafe { (*ctxt).elemMax = 10 as i32 });
+        let fresh340 = unsafe { &mut ((*ctxt).elemTab) };
+        *fresh340 = (unsafe { xmlMalloc.expect("non-null function pointer")(
             ((*ctxt).elemMax as u64)
-                .wrapping_mul(
-                    ::std::mem::size_of::<xmlRegExecCtxtPtr>() as u64,
-                ),
-        ) as *mut xmlRegExecCtxtPtr;
-        if ((*ctxt).elemTab).is_null() {
-            xmlRngVErrMemory(
-                ctxt,
-                b"validating\n\0" as *const u8 as *const i8,
-            );
+                .wrapping_mul(::std::mem::size_of::<xmlRegExecCtxtPtr>() as u64),
+        ) }) as *mut xmlRegExecCtxtPtr;
+        if (unsafe { (*ctxt).elemTab }).is_null() {
+            xmlRngVErrMemory(ctxt, b"validating\n\0" as *const u8 as *const i8);
             return -(1 as i32);
         }
     }
-    if (*ctxt).elemNr >= (*ctxt).elemMax {
-        (*ctxt).elemMax *= 2 as i32;
-        let ref mut fresh341 = (*ctxt).elemTab;
-        *fresh341 = xmlRealloc
-            .expect(
-                "non-null function pointer",
-            )(
+    if (unsafe { (*ctxt).elemNr }) >= (unsafe { (*ctxt).elemMax }) {
+        (unsafe { (*ctxt).elemMax *= 2 as i32 });
+        let fresh341 = unsafe { &mut ((*ctxt).elemTab) };
+        *fresh341 = (unsafe { xmlRealloc.expect("non-null function pointer")(
             (*ctxt).elemTab as *mut libc::c_void,
             ((*ctxt).elemMax as u64)
-                .wrapping_mul(
-                    ::std::mem::size_of::<xmlRegExecCtxtPtr>() as u64,
-                ),
-        ) as *mut xmlRegExecCtxtPtr;
-        if ((*ctxt).elemTab).is_null() {
-            xmlRngVErrMemory(
-                ctxt,
-                b"validating\n\0" as *const u8 as *const i8,
-            );
+                .wrapping_mul(::std::mem::size_of::<xmlRegExecCtxtPtr>() as u64),
+        ) }) as *mut xmlRegExecCtxtPtr;
+        if (unsafe { (*ctxt).elemTab }).is_null() {
+            xmlRngVErrMemory(ctxt, b"validating\n\0" as *const u8 as *const i8);
             return -(1 as i32);
         }
     }
-    let ref mut fresh342 = (*ctxt).elemNr;
+    let fresh342 = unsafe { &mut ((*ctxt).elemNr) };
     let mut fresh343 = *fresh342;
     *fresh342 = *fresh342 + 1;
-    let ref mut fresh344 = *((*ctxt).elemTab).offset(fresh343 as isize);
+    let fresh344 = unsafe { &mut (*((*ctxt).elemTab).offset(fresh343 as isize)) };
     *fresh344 = exec;
-    let ref mut fresh345 = (*ctxt).elem;
+    let fresh345 = unsafe { &mut ((*ctxt).elem) };
     *fresh345 = exec;
     return 0 as i32;
 }
-unsafe extern "C" fn xmlRelaxNGElemPop<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-) -> * mut crate::src::relaxng::_xmlRegExecCtxt {
-    let mut ret: * mut crate::src::relaxng::_xmlRegExecCtxt = 0 as *mut xmlRegExecCtxt;
-    if (*ctxt).elemNr <= 0 as i32 {
+extern "C" fn xmlRelaxNGElemPop<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+) -> *mut crate::src::relaxng::_xmlRegExecCtxt {
+    let mut ret: *mut crate::src::relaxng::_xmlRegExecCtxt = 0 as *mut xmlRegExecCtxt;
+    if (unsafe { (*ctxt).elemNr }) <= 0 as i32 {
         return 0 as xmlRegExecCtxtPtr;
     }
-    let ref mut fresh346 = (*ctxt).elemNr;
+    let fresh346 = unsafe { &mut ((*ctxt).elemNr) };
     *fresh346 -= 1;
-    ret = *((*ctxt).elemTab).offset((*ctxt).elemNr as isize);
-    let ref mut fresh347 = *((*ctxt).elemTab).offset((*ctxt).elemNr as isize);
+    ret = unsafe { *((*ctxt).elemTab).offset((*ctxt).elemNr as isize) };
+    let fresh347 = unsafe { &mut (*((*ctxt).elemTab).offset((*ctxt).elemNr as isize)) };
     *fresh347 = 0 as xmlRegExecCtxtPtr;
-    if (*ctxt).elemNr > 0 as i32 {
-        let ref mut fresh348 = (*ctxt).elem;
-        *fresh348 = *((*ctxt).elemTab)
-            .offset(((*ctxt).elemNr - 1 as i32) as isize);
+    if (unsafe { (*ctxt).elemNr }) > 0 as i32 {
+        let fresh348 = unsafe { &mut ((*ctxt).elem) };
+        *fresh348 = unsafe { *((*ctxt).elemTab).offset(((*ctxt).elemNr - 1 as i32) as isize) };
     } else {
-        let ref mut fresh349 = (*ctxt).elem;
+        let fresh349 = unsafe { &mut ((*ctxt).elem) };
         *fresh349 = 0 as xmlRegExecCtxtPtr;
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGValidateProgressiveCallback(
-    mut exec: * mut crate::src::relaxng::_xmlRegExecCtxt,
-    mut token: * const u8,
-    mut transdata: * mut core::ffi::c_void,
-    mut inputdata: * mut core::ffi::c_void,
+extern "C" fn xmlRelaxNGValidateProgressiveCallback(
+    mut exec: *mut crate::src::relaxng::_xmlRegExecCtxt,
+    mut token: *const u8,
+    mut transdata: *mut core::ffi::c_void,
+    mut inputdata: *mut core::ffi::c_void,
 ) {
-    let mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'_> = inputdata as xmlRelaxNGValidCtxtPtr;
-    let mut define: * mut crate::src::relaxng::_xmlRelaxNGDefine = transdata as xmlRelaxNGDefinePtr;
-    let mut state: * mut crate::src::relaxng::_xmlRelaxNGValidState = 0 as *mut xmlRelaxNGValidState;
-    let mut oldstate: * mut crate::src::relaxng::_xmlRelaxNGValidState = 0 as *mut xmlRelaxNGValidState;
-    let mut node: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'_> =
+        inputdata as xmlRelaxNGValidCtxtPtr;
+    let mut define: *mut crate::src::relaxng::_xmlRelaxNGDefine = transdata as xmlRelaxNGDefinePtr;
+    let mut state: *mut crate::src::relaxng::_xmlRelaxNGValidState = 0 as *mut xmlRelaxNGValidState;
+    let mut oldstate: *mut crate::src::relaxng::_xmlRelaxNGValidState =
+        0 as *mut xmlRelaxNGValidState;
+    let mut node: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
     let mut ret: i32 = 0 as i32;
     let mut oldflags: i32 = 0;
     if ctxt.is_null() {
-        fprintf(
+        (unsafe { fprintf(
             stderr,
             b"callback on %s missing context\n\0" as *const u8 as *const i8,
             token,
-        );
+        ) });
         return;
     }
-    node = (*ctxt).pnode;
-    (*ctxt).pstate = 1 as i32;
+    node = unsafe { (*ctxt).pnode };
+    (unsafe { (*ctxt).pstate = 1 as i32 });
     if define.is_null() {
-        if *token.offset(0 as i32 as isize) as i32 == '#' as i32 {
+        if (unsafe { *token.offset(0 as i32 as isize) }) as i32 == '#' as i32 {
             return;
         }
-        fprintf(
+        (unsafe { fprintf(
             stderr,
             b"callback on %s missing define\n\0" as *const u8 as *const i8,
             token,
-        );
-        if !ctxt.is_null() && (*ctxt).errNo == XML_RELAXNG_OK as i32 {
-            (*ctxt).errNo = XML_RELAXNG_ERR_INTERNAL as i32;
+        ) });
+        if !ctxt.is_null() && (unsafe { (*ctxt).errNo }) == XML_RELAXNG_OK as i32 {
+            (unsafe { (*ctxt).errNo = XML_RELAXNG_ERR_INTERNAL as i32 });
         }
-        (*ctxt).pstate = -(1 as i32);
+        (unsafe { (*ctxt).pstate = -(1 as i32) });
         return;
     }
     if ctxt.is_null() || define.is_null() {
-        fprintf(
+        (unsafe { fprintf(
             stderr,
             b"callback on %s missing info\n\0" as *const u8 as *const i8,
             token,
-        );
-        if !ctxt.is_null() && (*ctxt).errNo == XML_RELAXNG_OK as i32 {
-            (*ctxt).errNo = XML_RELAXNG_ERR_INTERNAL as i32;
+        ) });
+        if !ctxt.is_null() && (unsafe { (*ctxt).errNo }) == XML_RELAXNG_OK as i32 {
+            (unsafe { (*ctxt).errNo = XML_RELAXNG_ERR_INTERNAL as i32 });
         }
-        (*ctxt).pstate = -(1 as i32);
+        (unsafe { (*ctxt).pstate = -(1 as i32) });
         return;
     } else {
-        if (*define).type_0 as i32 != XML_RELAXNG_ELEMENT as i32 {
-            fprintf(
+        if (unsafe { (*define).type_0 }) as i32 != XML_RELAXNG_ELEMENT as i32 {
+            (unsafe { fprintf(
                 stderr,
-                b"callback on %s define is not element\n\0" as *const u8
-                    as *const i8,
+                b"callback on %s define is not element\n\0" as *const u8 as *const i8,
                 token,
-            );
-            if (*ctxt).errNo == XML_RELAXNG_OK as i32 {
-                (*ctxt).errNo = XML_RELAXNG_ERR_INTERNAL as i32;
+            ) });
+            if (unsafe { (*ctxt).errNo }) == XML_RELAXNG_OK as i32 {
+                (unsafe { (*ctxt).errNo = XML_RELAXNG_ERR_INTERNAL as i32 });
             }
-            (*ctxt).pstate = -(1 as i32);
+            (unsafe { (*ctxt).pstate = -(1 as i32) });
             return;
         }
     }
-    if (*node).type_0 as u32 != XML_ELEMENT_NODE as i32 as u32
-    {
+    if (unsafe { (*node).type_0 }) as u32 != XML_ELEMENT_NODE as i32 as u32 {
         xmlRelaxNGAddValidError(
             ctxt,
             XML_RELAXNG_ERR_NOTELEM,
@@ -11861,69 +11348,67 @@ unsafe extern "C" fn xmlRelaxNGValidateProgressiveCallback(
             0 as *const xmlChar,
             0 as i32,
         );
-        if (*ctxt).flags & 1 as i32 == 0 as i32 {
+        if (unsafe { (*ctxt).flags }) & 1 as i32 == 0 as i32 {
             xmlRelaxNGDumpValidError(ctxt);
         }
-        (*ctxt).pstate = -(1 as i32);
+        (unsafe { (*ctxt).pstate = -(1 as i32) });
         return;
     }
-    if ((*define).contModel).is_null() {
-        (*ctxt).pstate = 0 as i32;
-        let ref mut fresh350 = (*ctxt).pdef;
+    if (unsafe { (*define).contModel }).is_null() {
+        (unsafe { (*ctxt).pstate = 0 as i32 });
+        let fresh350 = unsafe { &mut ((*ctxt).pdef) };
         *fresh350 = define;
         return;
     }
-    exec = xmlRegNewExecCtxt(
+    exec = unsafe { xmlRegNewExecCtxt(
         (*define).contModel,
-        Some(
-            xmlRelaxNGValidateProgressiveCallback,
-        ),
+        Some(xmlRelaxNGValidateProgressiveCallback),
         ctxt as *mut libc::c_void,
-    );
+    ) };
     if exec.is_null() {
-        (*ctxt).pstate = -(1 as i32);
+        (unsafe { (*ctxt).pstate = -(1 as i32) });
         return;
     }
     xmlRelaxNGElemPush(ctxt, exec);
     state = xmlRelaxNGNewValidState(ctxt, node);
     if state.is_null() {
-        (*ctxt).pstate = -(1 as i32);
+        (unsafe { (*ctxt).pstate = -(1 as i32) });
         return;
     }
-    oldstate = (*ctxt).state;
-    let ref mut fresh351 = (*ctxt).state;
+    oldstate = unsafe { (*ctxt).state };
+    let fresh351 = unsafe { &mut ((*ctxt).state) };
     *fresh351 = state;
-    if !((*define).attrs).is_null() {
-        ret = xmlRelaxNGValidateAttributeList(ctxt, (*define).attrs);
+    if !(unsafe { (*define).attrs }).is_null() {
+        ret = xmlRelaxNGValidateAttributeList(ctxt, unsafe { (*define).attrs });
         if ret != 0 as i32 {
-            (*ctxt).pstate = -(1 as i32);
+            (unsafe { (*ctxt).pstate = -(1 as i32) });
             xmlRelaxNGAddValidError(
                 ctxt,
                 XML_RELAXNG_ERR_ATTRVALID,
-                (*node).name,
+                unsafe { (*node).name },
                 0 as *const xmlChar,
                 0 as i32,
             );
         }
     }
-    if !((*ctxt).state).is_null() {
-        let ref mut fresh352 = (*(*ctxt).state).seq;
+    if !(unsafe { (*ctxt).state }).is_null() {
+        let fresh352 = unsafe { &mut ((*(*ctxt).state).seq) };
         *fresh352 = 0 as xmlNodePtr;
         ret = xmlRelaxNGValidateElementEnd(ctxt, 1 as i32);
         if ret != 0 as i32 {
-            (*ctxt).pstate = -(1 as i32);
+            (unsafe { (*ctxt).pstate = -(1 as i32) });
         }
-        xmlRelaxNGFreeValidState(ctxt, (*ctxt).state);
-    } else if !((*ctxt).states).is_null() {
+        xmlRelaxNGFreeValidState(ctxt, unsafe { (*ctxt).state });
+    } else if !(unsafe { (*ctxt).states }).is_null() {
         let mut tmp: i32 = -(1 as i32);
         let mut i: i32 = 0;
-        oldflags = (*ctxt).flags;
+        oldflags = unsafe { (*ctxt).flags };
         i = 0 as i32;
-        while i < (*(*ctxt).states).nbState {
-            state = *((*(*ctxt).states).tabState).offset(i as isize);
-            let ref mut fresh353 = (*ctxt).state;
+        while i < (unsafe { (*(*ctxt).states).nbState }) {
+            state = unsafe { *((*(*ctxt).states).tabState).offset(i as isize) };
+            let fresh353 = unsafe { &mut ((*ctxt).state) };
             *fresh353 = state;
-            let ref mut fresh354 = (*(*ctxt).state).seq;
+            let fresh354 = unsafe { &mut ((*(*ctxt).state).seq) };
             *fresh354 = 0 as xmlNodePtr;
             if xmlRelaxNGValidateElementEnd(ctxt, 0 as i32) == 0 as i32 {
                 tmp = 0 as i32;
@@ -11933,49 +11418,47 @@ unsafe extern "C" fn xmlRelaxNGValidateProgressiveCallback(
             }
         }
         if tmp != 0 as i32 {
-            (*ctxt).flags |= 1 as i32;
+            (unsafe { (*ctxt).flags |= 1 as i32 });
             xmlRelaxNGLogBestError(ctxt);
         }
         i = 0 as i32;
-        while i < (*(*ctxt).states).nbState {
-            xmlRelaxNGFreeValidState(
-                ctxt,
-                *((*(*ctxt).states).tabState).offset(i as isize),
-            );
+        while i < (unsafe { (*(*ctxt).states).nbState }) {
+            xmlRelaxNGFreeValidState(ctxt, unsafe { *((*(*ctxt).states).tabState).offset(i as isize) });
             i += 1;
         }
-        xmlRelaxNGFreeStates(ctxt, (*ctxt).states);
-        let ref mut fresh355 = (*ctxt).states;
+        xmlRelaxNGFreeStates(ctxt, unsafe { (*ctxt).states });
+        let fresh355 = unsafe { &mut ((*ctxt).states) };
         *fresh355 = 0 as xmlRelaxNGStatesPtr;
         if ret == 0 as i32 && tmp == -(1 as i32) {
-            (*ctxt).pstate = -(1 as i32);
+            (unsafe { (*ctxt).pstate = -(1 as i32) });
         }
-        (*ctxt).flags = oldflags;
+        (unsafe { (*ctxt).flags = oldflags });
     }
-    if (*ctxt).pstate == -(1 as i32) {
-        if (*ctxt).flags & 1 as i32 == 0 as i32 {
+    if (unsafe { (*ctxt).pstate }) == -(1 as i32) {
+        if (unsafe { (*ctxt).flags }) & 1 as i32 == 0 as i32 {
             xmlRelaxNGDumpValidError(ctxt);
         }
     }
-    let ref mut fresh356 = (*ctxt).state;
+    let fresh356 = unsafe { &mut ((*ctxt).state) };
     *fresh356 = oldstate;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRelaxNGValidatePushElement<'a1, 'a2>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut doc: Option<&'a2 mut crate::src::HTMLparser::_xmlDoc>,
-    mut elem: * mut crate::src::HTMLparser::_xmlNode,
+pub extern "C" fn xmlRelaxNGValidatePushElement<'a1, 'a2>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut _doc: Option<&'a2 mut crate::src::HTMLparser::_xmlDoc>,
+    mut elem: *mut crate::src::HTMLparser::_xmlNode,
 ) -> i32 {
     let mut ret: i32 = 1 as i32;
     if ctxt.is_null() || elem.is_null() {
         return -(1 as i32);
     }
-    if ((*ctxt).elem).is_null() {
-        let mut schema: * mut crate::src::relaxng::_xmlRelaxNG<'_> = 0 as *mut xmlRelaxNG;
-        let mut grammar: * mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> = 0 as *mut xmlRelaxNGGrammar;
-        let mut exec: * mut crate::src::relaxng::_xmlRegExecCtxt = 0 as *mut xmlRegExecCtxt;
-        let mut define: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-        schema = (*ctxt).schema;
+    if (unsafe { (*ctxt).elem }).is_null() {
+        let mut schema: *mut crate::src::relaxng::_xmlRelaxNG<'_> = 0 as *mut xmlRelaxNG;
+        let mut grammar: *mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> =
+            0 as *mut xmlRelaxNGGrammar;
+        let mut exec: *mut crate::src::relaxng::_xmlRegExecCtxt = 0 as *mut xmlRegExecCtxt;
+        let mut define: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+        schema = unsafe { (*ctxt).schema };
         if schema.is_null() {
             xmlRelaxNGAddValidError(
                 ctxt,
@@ -11986,8 +11469,8 @@ pub unsafe extern "C" fn xmlRelaxNGValidatePushElement<'a1, 'a2>(
             );
             return -(1 as i32);
         }
-        grammar = (*schema).topgrammar;
-        if grammar.is_null() || ((*grammar).start).is_null() {
+        grammar = unsafe { (*schema).topgrammar };
+        if grammar.is_null() || (unsafe { (*grammar).start }).is_null() {
             xmlRelaxNGAddValidError(
                 ctxt,
                 XML_RELAXNG_ERR_NOGRAMMAR,
@@ -11997,52 +11480,46 @@ pub unsafe extern "C" fn xmlRelaxNGValidatePushElement<'a1, 'a2>(
             );
             return -(1 as i32);
         }
-        define = (*grammar).start;
-        if ((*define).contModel).is_null() {
-            let ref mut fresh357 = (*ctxt).pdef;
+        define = unsafe { (*grammar).start };
+        if (unsafe { (*define).contModel }).is_null() {
+            let fresh357 = unsafe { &mut ((*ctxt).pdef) };
             *fresh357 = define;
             return 0 as i32;
         }
-        exec = xmlRegNewExecCtxt(
+        exec = unsafe { xmlRegNewExecCtxt(
             (*define).contModel,
-            Some(
-                xmlRelaxNGValidateProgressiveCallback,
-            ),
+            Some(xmlRelaxNGValidateProgressiveCallback),
             ctxt as *mut libc::c_void,
-        );
+        ) };
         if exec.is_null() {
             return -(1 as i32);
         }
         xmlRelaxNGElemPush(ctxt, exec);
     }
-    let ref mut fresh358 = (*ctxt).pnode;
+    let fresh358 = unsafe { &mut ((*ctxt).pnode) };
     *fresh358 = elem;
-    (*ctxt).pstate = 0 as i32;
-    if !((*elem).ns).is_null() {
-        ret = xmlRegExecPushString2(
+    (unsafe { (*ctxt).pstate = 0 as i32 });
+    if !(unsafe { (*elem).ns }).is_null() {
+        ret = unsafe { xmlRegExecPushString2(
             (*ctxt).elem,
             (*elem).name,
             (*(*elem).ns).href,
             ctxt as *mut libc::c_void,
-        );
+        ) };
     } else {
-        ret = xmlRegExecPushString(
-            (*ctxt).elem,
-            (*elem).name,
-            ctxt as *mut libc::c_void,
-        );
+        ret = unsafe { xmlRegExecPushString((*ctxt).elem, (*elem).name, ctxt as *mut libc::c_void) };
     }
     if ret < 0 as i32 {
         xmlRelaxNGAddValidError(
             ctxt,
             XML_RELAXNG_ERR_ELEMWRONG,
-            (*elem).name,
+            unsafe { (*elem).name },
             0 as *const xmlChar,
             0 as i32,
         );
-    } else if (*ctxt).pstate == 0 as i32 {
+    } else if (unsafe { (*ctxt).pstate }) == 0 as i32 {
         ret = 0 as i32;
-    } else if (*ctxt).pstate < 0 as i32 {
+    } else if (unsafe { (*ctxt).pstate }) < 0 as i32 {
         ret = -(1 as i32);
     } else {
         ret = 1 as i32;
@@ -12050,33 +11527,63 @@ pub unsafe extern "C" fn xmlRelaxNGValidatePushElement<'a1, 'a2>(
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRelaxNGValidatePushCData<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+pub extern "C" fn xmlRelaxNGValidatePushCData<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
     mut data: Option<crate::__laertes_array::CustomSlice<'static, u8, Box<[u8]>>>,
-    mut len: i32,
+    mut _len: i32,
 ) -> i32 {
     let mut ret: i32 = 1 as i32;
-    if ctxt.is_null() || ((*ctxt).elem).is_null() || crate::__laertes_array::borrow(& data)/*borrow*/.is_none() {
+    if ctxt.is_null() || (unsafe { (*ctxt).elem }).is_null() || crate::__laertes_array::borrow(&data).is_none()
+    {
         return -(1 as i32);
     }
-    while (*crate::__laertes_array::Get::<&_>::get_add((crate::__laertes_array::borrow(& data)/*borrow*/).as_ref().unwrap(), 0)) as i32 != 0 as i32 {
-        if !((*crate::__laertes_array::Get::<&_>::get_add((crate::__laertes_array::borrow(& data)/*borrow*/).as_ref().unwrap(), 0)) as i32 == 0x20 as i32
-            || 0x9 as i32 <= (*crate::__laertes_array::Get::<&_>::get_add((crate::__laertes_array::borrow(& data)/*borrow*/).as_ref().unwrap(), 0)) as i32
-                && (*crate::__laertes_array::Get::<&_>::get_add((crate::__laertes_array::borrow(& data)/*borrow*/).as_ref().unwrap(), 0)) as i32 <= 0xa as i32
-            || (*crate::__laertes_array::Get::<&_>::get_add((crate::__laertes_array::borrow(& data)/*borrow*/).as_ref().unwrap(), 0)) as i32 == 0xd as i32)
+    while (*crate::__laertes_array::Get::<&_>::get_add(
+        (crate::__laertes_array::borrow(&data)).as_ref().unwrap(),
+        0,
+    )) as i32
+        != 0 as i32
+    {
+        if !((*crate::__laertes_array::Get::<&_>::get_add(
+            (crate::__laertes_array::borrow(&data)).as_ref().unwrap(),
+            0,
+        )) as i32
+            == 0x20 as i32
+            || 0x9 as i32
+                <= (*crate::__laertes_array::Get::<&_>::get_add(
+                    (crate::__laertes_array::borrow(&data)).as_ref().unwrap(),
+                    0,
+                )) as i32
+                && (*crate::__laertes_array::Get::<&_>::get_add(
+                    (crate::__laertes_array::borrow(&data)).as_ref().unwrap(),
+                    0,
+                )) as i32
+                    <= 0xa as i32
+            || (*crate::__laertes_array::Get::<&_>::get_add(
+                (crate::__laertes_array::borrow(&data)).as_ref().unwrap(),
+                0,
+            )) as i32
+                == 0xd as i32)
         {
             break;
         }
-        data = Some(crate::__laertes_array::IntoSlice::into_slice_offset(data.unwrap(), (1)));
+        data = Some(crate::__laertes_array::IntoSlice::into_slice_offset(
+            data.unwrap(),
+            1,
+        ));
     }
-    if (*crate::__laertes_array::Get::<&_>::get_add((crate::__laertes_array::borrow(& data)/*borrow*/).as_ref().unwrap(), 0)) as i32 == 0 as i32 {
+    if (*crate::__laertes_array::Get::<&_>::get_add(
+        (crate::__laertes_array::borrow(&data)).as_ref().unwrap(),
+        0,
+    )) as i32
+        == 0 as i32
+    {
         return 1 as i32;
     }
-    ret = xmlRegExecPushString(
+    ret = unsafe { xmlRegExecPushString(
         (*ctxt).elem,
         b"#text\0" as *const u8 as *const i8 as *mut xmlChar,
         ctxt as *mut libc::c_void,
-    );
+    ) };
     if ret < 0 as i32 {
         xmlRelaxNGAddValidError(
             ctxt,
@@ -12090,18 +11597,18 @@ pub unsafe extern "C" fn xmlRelaxNGValidatePushCData<'a1>(
     return 1 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRelaxNGValidatePopElement<'a1, 'a2, 'a3>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut doc: Option<&'a2 mut crate::src::HTMLparser::_xmlDoc>,
+pub extern "C" fn xmlRelaxNGValidatePopElement<'a1, 'a2, 'a3>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut _doc: Option<&'a2 mut crate::src::HTMLparser::_xmlDoc>,
     mut elem: Option<&'a3 mut crate::src::HTMLparser::_xmlNode>,
 ) -> i32 {
     let mut ret: i32 = 0;
-    let mut exec: * mut crate::src::relaxng::_xmlRegExecCtxt = 0 as *mut xmlRegExecCtxt;
-    if ctxt.is_null() || ((*ctxt).elem).is_null() || borrow(& elem).is_none() {
+    let mut exec: *mut crate::src::relaxng::_xmlRegExecCtxt = 0 as *mut xmlRegExecCtxt;
+    if ctxt.is_null() || (unsafe { (*ctxt).elem }).is_null() || borrow(&elem).is_none() {
         return -(1 as i32);
     }
     exec = xmlRelaxNGElemPop(ctxt);
-    ret = xmlRegExecPushString(exec, 0 as *const xmlChar, 0 as *mut libc::c_void);
+    ret = unsafe { xmlRegExecPushString(exec, 0 as *const xmlChar, 0 as *mut libc::c_void) };
     if ret == 0 as i32 {
         xmlRelaxNGAddValidError(
             ctxt,
@@ -12116,158 +11623,150 @@ pub unsafe extern "C" fn xmlRelaxNGValidatePopElement<'a1, 'a2, 'a3>(
     } else {
         ret = 1 as i32;
     }
-    xmlRegFreeExecCtxt(exec);
+    (unsafe { xmlRegFreeExecCtxt(exec) });
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRelaxNGValidateFullElement<'a1, 'a2>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut doc: Option<&'a2 mut crate::src::HTMLparser::_xmlDoc>,
-    mut elem: * mut crate::src::HTMLparser::_xmlNode,
+pub extern "C" fn xmlRelaxNGValidateFullElement<'a1, 'a2>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut _doc: Option<&'a2 mut crate::src::HTMLparser::_xmlDoc>,
+    mut elem: *mut crate::src::HTMLparser::_xmlNode,
 ) -> i32 {
     let mut ret: i32 = 0;
-    let mut state: * mut crate::src::relaxng::_xmlRelaxNGValidState = 0 as *mut xmlRelaxNGValidState;
-    if ctxt.is_null() || ((*ctxt).pdef).is_null() || elem.is_null() {
+    let mut state: *mut crate::src::relaxng::_xmlRelaxNGValidState = 0 as *mut xmlRelaxNGValidState;
+    if ctxt.is_null() || (unsafe { (*ctxt).pdef }).is_null() || elem.is_null() {
         return -(1 as i32);
     }
-    state = xmlRelaxNGNewValidState(ctxt, (*elem).parent);
+    state = xmlRelaxNGNewValidState(ctxt, unsafe { (*elem).parent });
     if state.is_null() {
         return -(1 as i32);
     }
-    let ref mut fresh359 = (*state).seq;
+    let fresh359 = unsafe { &mut ((*state).seq) };
     *fresh359 = elem;
-    let ref mut fresh360 = (*ctxt).state;
+    let fresh360 = unsafe { &mut ((*ctxt).state) };
     *fresh360 = state;
-    (*ctxt).errNo = XML_RELAXNG_OK as i32;
-    ret = xmlRelaxNGValidateDefinition(ctxt, (*ctxt).pdef);
-    if ret != 0 as i32 || (*ctxt).errNo != XML_RELAXNG_OK as i32 {
+    (unsafe { (*ctxt).errNo = XML_RELAXNG_OK as i32 });
+    ret = xmlRelaxNGValidateDefinition(ctxt, unsafe { (*ctxt).pdef });
+    if ret != 0 as i32 || (unsafe { (*ctxt).errNo }) != XML_RELAXNG_OK as i32 {
         ret = -(1 as i32);
     } else {
         ret = 1 as i32;
     }
-    xmlRelaxNGFreeValidState(ctxt, (*ctxt).state);
-    let ref mut fresh361 = (*ctxt).state;
+    xmlRelaxNGFreeValidState(ctxt, unsafe { (*ctxt).state });
+    let fresh361 = unsafe { &mut ((*ctxt).state) };
     *fresh361 = 0 as xmlRelaxNGValidStatePtr;
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGSkipIgnored<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
-) -> * mut crate::src::HTMLparser::_xmlNode {
+extern "C" fn xmlRelaxNGSkipIgnored<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
+) -> *mut crate::src::HTMLparser::_xmlNode {
     while !node.is_null()
-        && ((*node).type_0 as u32
-            == XML_COMMENT_NODE as i32 as u32
-            || (*node).type_0 as u32
-                == XML_PI_NODE as i32 as u32
-            || (*node).type_0 as u32
-                == XML_XINCLUDE_START as i32 as u32
-            || (*node).type_0 as u32
-                == XML_XINCLUDE_END as i32 as u32
-            || ((*node).type_0 as u32
-                == XML_TEXT_NODE as i32 as u32
-                || (*node).type_0 as u32
-                    == XML_CDATA_SECTION_NODE as i32 as u32)
-                && ((*ctxt).flags & 4 as i32 != 0
-                    || xmlRelaxNGIsBlank((*node).content) != 0))
+        && ((unsafe { (*node).type_0 }) as u32 == XML_COMMENT_NODE as i32 as u32
+            || (unsafe { (*node).type_0 }) as u32 == XML_PI_NODE as i32 as u32
+            || (unsafe { (*node).type_0 }) as u32 == XML_XINCLUDE_START as i32 as u32
+            || (unsafe { (*node).type_0 }) as u32 == XML_XINCLUDE_END as i32 as u32
+            || ((unsafe { (*node).type_0 }) as u32 == XML_TEXT_NODE as i32 as u32
+                || (unsafe { (*node).type_0 }) as u32 == XML_CDATA_SECTION_NODE as i32 as u32)
+                && ((unsafe { (*ctxt).flags }) & 4 as i32 != 0 || xmlRelaxNGIsBlank(unsafe { (*node).content }) != 0))
     {
-        node = (*node).next;
+        node = unsafe { (*node).next };
     }
     return node;
 }
-unsafe extern "C" fn xmlRelaxNGNormalize<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut str: * const u8,
-) -> * mut u8 {
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
-    let mut p: * mut u8 = 0 as *mut xmlChar;
-    let mut tmp: * const u8 = 0 as *const xmlChar;
+extern "C" fn xmlRelaxNGNormalize<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut str: *const u8,
+) -> *mut u8 {
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
+    let mut p: *mut u8 = 0 as *mut xmlChar;
+    let mut tmp: *const u8 = 0 as *const xmlChar;
     let mut len: i32 = 0;
     if str.is_null() {
         return 0 as *mut xmlChar;
     }
     tmp = str;
-    while *tmp as i32 != 0 as i32 {
-        tmp = tmp.offset(1);
+    while (unsafe { *tmp }) as i32 != 0 as i32 {
+        tmp = unsafe { tmp.offset(1) };
     }
-    len = tmp.offset_from(str) as i64 as i32;
-    ret = xmlMallocAtomic
-        .expect(
-            "non-null function pointer",
-        )(
-        ((len + 1 as i32) as u64)
-            .wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
-    ) as *mut xmlChar;
+    len = (unsafe { tmp.offset_from(str) }) as i64 as i32;
+    ret = (unsafe { xmlMallocAtomic.expect("non-null function pointer")(
+        ((len + 1 as i32) as u64).wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
+    ) }) as *mut xmlChar;
     if ret.is_null() {
         xmlRngVErrMemory(ctxt, b"validating\n\0" as *const u8 as *const i8);
         return 0 as *mut xmlChar;
     }
     p = ret;
-    while *str as i32 == 0x20 as i32
-        || 0x9 as i32 <= *str as i32
-            && *str as i32 <= 0xa as i32
-        || *str as i32 == 0xd as i32
+    while (unsafe { *str }) as i32 == 0x20 as i32
+        || 0x9 as i32 <= (unsafe { *str }) as i32 && (unsafe { *str }) as i32 <= 0xa as i32
+        || (unsafe { *str }) as i32 == 0xd as i32
     {
-        str = str.offset(1);
+        str = unsafe { str.offset(1) };
     }
-    while *str as i32 != 0 as i32 {
-        if *str as i32 == 0x20 as i32
-            || 0x9 as i32 <= *str as i32
-                && *str as i32 <= 0xa as i32
-            || *str as i32 == 0xd as i32
+    while (unsafe { *str }) as i32 != 0 as i32 {
+        if (unsafe { *str }) as i32 == 0x20 as i32
+            || 0x9 as i32 <= (unsafe { *str }) as i32 && (unsafe { *str }) as i32 <= 0xa as i32
+            || (unsafe { *str }) as i32 == 0xd as i32
         {
-            while *str as i32 == 0x20 as i32
-                || 0x9 as i32 <= *str as i32
-                    && *str as i32 <= 0xa as i32
-                || *str as i32 == 0xd as i32
+            while (unsafe { *str }) as i32 == 0x20 as i32
+                || 0x9 as i32 <= (unsafe { *str }) as i32 && (unsafe { *str }) as i32 <= 0xa as i32
+                || (unsafe { *str }) as i32 == 0xd as i32
             {
-                str = str.offset(1);
+                str = unsafe { str.offset(1) };
             }
-            if *str as i32 == 0 as i32 {
+            if (unsafe { *str }) as i32 == 0 as i32 {
                 break;
             }
             let mut fresh362 = p;
-            p = p.offset(1);
-            *fresh362 = ' ' as i32 as xmlChar;
+            p = unsafe { p.offset(1) };
+            (unsafe { *fresh362 = ' ' as i32 as xmlChar });
         } else {
             let mut fresh363 = str;
-            str = str.offset(1);
+            str = unsafe { str.offset(1) };
             let mut fresh364 = p;
-            p = p.offset(1);
-            *fresh364 = *fresh363;
+            p = unsafe { p.offset(1) };
+            (unsafe { *fresh364 = *fresh363 });
         }
     }
-    *p = 0 as i32 as xmlChar;
+    (unsafe { *p = 0 as i32 as xmlChar });
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGValidateDatatype<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut value: * const u8,
-    mut define: * mut crate::src::relaxng::_xmlRelaxNGDefine,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlRelaxNGValidateDatatype<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut value: *const u8,
+    mut define: *mut crate::src::relaxng::_xmlRelaxNGDefine,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
 ) -> i32 {
     let mut ret: i32 = 0;
     let mut tmp: i32 = 0;
-    let mut lib: * mut crate::src::relaxng::_xmlRelaxNGTypeLibrary = (0 as * mut crate::src::relaxng::_xmlRelaxNGTypeLibrary);
-    let mut result: * mut core::ffi::c_void = 0 as *mut libc::c_void;
-    let mut cur: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-    if define.is_null() || ((*define).data).is_null() {
+    let mut lib: *mut crate::src::relaxng::_xmlRelaxNGTypeLibrary =
+        0 as *mut crate::src::relaxng::_xmlRelaxNGTypeLibrary;
+    let mut result: *mut core::ffi::c_void = 0 as *mut libc::c_void;
+    let mut cur: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    if define.is_null() || (unsafe { (*define).data }).is_null() {
         return -(1 as i32);
     }
-    lib = (*define).data as xmlRelaxNGTypeLibraryPtr;
-    if ((*lib).check).is_some() {
-        if !((*define).attrs).is_null()
-            && (*(*define).attrs).type_0 as i32
-                == XML_RELAXNG_PARAM as i32
+    lib = (unsafe { (*define).data }) as xmlRelaxNGTypeLibraryPtr;
+    if unsafe { ((*lib).check).is_some() } {
+        if !(unsafe { (*define).attrs }).is_null()
+            && (unsafe { (*(*define).attrs).type_0 }) as i32 == XML_RELAXNG_PARAM as i32
         {
-            ret = ((*lib).check)
-                .expect(
-                    "non-null function pointer",
-                )((*lib).data, (*define).name, value, &mut result, node);
+            ret = unsafe { ((*lib).check).expect("non-null function pointer")(
+                (*lib).data,
+                (*define).name,
+                value,
+                &mut result,
+                node,
+            ) };
         } else {
-            ret = ((*lib).check)
-                .expect(
-                    "non-null function pointer",
-                )((*lib).data, (*define).name, value, 0 as *mut *mut libc::c_void, node);
+            ret = unsafe { ((*lib).check).expect("non-null function pointer")(
+                (*lib).data,
+                (*define).name,
+                value,
+                0 as *mut *mut libc::c_void,
+                node,
+            ) };
         }
     } else {
         ret = -(1 as i32);
@@ -12276,12 +11775,12 @@ unsafe extern "C" fn xmlRelaxNGValidateDatatype<'a1>(
         xmlRelaxNGAddValidError(
             ctxt,
             XML_RELAXNG_ERR_TYPE,
-            (*define).name,
+            unsafe { (*define).name },
             0 as *const xmlChar,
             0 as i32,
         );
-        if !result.is_null() && !lib.is_null() && ((*lib).freef).is_some() {
-            ((*lib).freef).expect("non-null function pointer")((*lib).data, result);
+        if !result.is_null() && !lib.is_null() && (unsafe { ((*lib).freef).is_some() }) {
+            (unsafe { ((*lib).freef).expect("non-null function pointer")((*lib).data, result) });
         }
         return -(1 as i32);
     } else {
@@ -12299,78 +11798,80 @@ unsafe extern "C" fn xmlRelaxNGValidateDatatype<'a1>(
             xmlRelaxNGAddValidError(
                 ctxt,
                 XML_RELAXNG_ERR_TYPEVAL,
-                (*define).name,
+                unsafe { (*define).name },
                 value,
                 1 as i32,
             );
             ret = -(1 as i32);
         }
     }
-    cur = (*define).attrs;
-    while ret == 0 as i32 && !cur.is_null()
-        && (*cur).type_0 as i32 == XML_RELAXNG_PARAM as i32
-    {
-        if ((*lib).facet).is_some() {
-            tmp = ((*lib).facet)
-                .expect(
-                    "non-null function pointer",
-                )((*lib).data, (*define).name, (*cur).name, (*cur).value, value, result);
+    cur = unsafe { (*define).attrs };
+    while ret == 0 as i32 && !cur.is_null() && (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_PARAM as i32 {
+        if unsafe { ((*lib).facet).is_some() } {
+            tmp = unsafe { ((*lib).facet).expect("non-null function pointer")(
+                (*lib).data,
+                (*define).name,
+                (*cur).name,
+                (*cur).value,
+                value,
+                result,
+            ) };
             if tmp != 0 as i32 {
                 ret = -(1 as i32);
             }
         }
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
     }
-    if ret == 0 as i32 && !((*define).content).is_null() {
-        let mut oldvalue: * const u8 = 0 as *const xmlChar;
-        let mut oldendvalue: * const u8 = 0 as *const xmlChar;
-        oldvalue = (*(*ctxt).state).value;
-        oldendvalue = (*(*ctxt).state).endvalue;
-        let ref mut fresh365 = (*(*ctxt).state).value;
+    if ret == 0 as i32 && !(unsafe { (*define).content }).is_null() {
+        let mut oldvalue: *const u8 = 0 as *const xmlChar;
+        let mut oldendvalue: *const u8 = 0 as *const xmlChar;
+        oldvalue = unsafe { (*(*ctxt).state).value };
+        oldendvalue = unsafe { (*(*ctxt).state).endvalue };
+        let fresh365 = unsafe { &mut ((*(*ctxt).state).value) };
         *fresh365 = value as *mut xmlChar;
-        let ref mut fresh366 = (*(*ctxt).state).endvalue;
+        let fresh366 = unsafe { &mut ((*(*ctxt).state).endvalue) };
         *fresh366 = 0 as *mut xmlChar;
-        ret = xmlRelaxNGValidateValue(ctxt, (*define).content);
-        let ref mut fresh367 = (*(*ctxt).state).value;
+        ret = xmlRelaxNGValidateValue(ctxt, unsafe { (*define).content });
+        let fresh367 = unsafe { &mut ((*(*ctxt).state).value) };
         *fresh367 = oldvalue as *mut xmlChar;
-        let ref mut fresh368 = (*(*ctxt).state).endvalue;
+        let fresh368 = unsafe { &mut ((*(*ctxt).state).endvalue) };
         *fresh368 = oldendvalue as *mut xmlChar;
     }
-    if !result.is_null() && !lib.is_null() && ((*lib).freef).is_some() {
-        ((*lib).freef).expect("non-null function pointer")((*lib).data, result);
+    if !result.is_null() && !lib.is_null() && (unsafe { ((*lib).freef).is_some() }) {
+        (unsafe { ((*lib).freef).expect("non-null function pointer")((*lib).data, result) });
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGNextValue<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+extern "C" fn xmlRelaxNGNextValue<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
 ) -> i32 {
-    let mut cur: * mut u8 = 0 as *mut xmlChar;
-    cur = (*(*ctxt).state).value;
-    if cur.is_null() || ((*(*ctxt).state).endvalue).is_null() {
-        let ref mut fresh369 = (*(*ctxt).state).value;
+    let mut cur: *mut u8 = 0 as *mut xmlChar;
+    cur = unsafe { (*(*ctxt).state).value };
+    if cur.is_null() || (unsafe { (*(*ctxt).state).endvalue }).is_null() {
+        let fresh369 = unsafe { &mut ((*(*ctxt).state).value) };
         *fresh369 = 0 as *mut xmlChar;
-        let ref mut fresh370 = (*(*ctxt).state).endvalue;
+        let fresh370 = unsafe { &mut ((*(*ctxt).state).endvalue) };
         *fresh370 = 0 as *mut xmlChar;
         return 0 as i32;
     }
-    while *cur as i32 != 0 as i32 {
-        cur = cur.offset(1);
+    while (unsafe { *cur }) as i32 != 0 as i32 {
+        cur = unsafe { cur.offset(1) };
     }
-    while cur != (*(*ctxt).state).endvalue && *cur as i32 == 0 as i32 {
-        cur = cur.offset(1);
+    while cur != (unsafe { (*(*ctxt).state).endvalue }) && (unsafe { *cur }) as i32 == 0 as i32 {
+        cur = unsafe { cur.offset(1) };
     }
-    if cur == (*(*ctxt).state).endvalue {
-        let ref mut fresh371 = (*(*ctxt).state).value;
+    if cur == (unsafe { (*(*ctxt).state).endvalue }) {
+        let fresh371 = unsafe { &mut ((*(*ctxt).state).value) };
         *fresh371 = 0 as *mut xmlChar;
     } else {
-        let ref mut fresh372 = (*(*ctxt).state).value;
+        let fresh372 = unsafe { &mut ((*(*ctxt).state).value) };
         *fresh372 = cur;
     }
     return 0 as i32;
 }
-unsafe extern "C" fn xmlRelaxNGValidateValueList<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut defines: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+extern "C" fn xmlRelaxNGValidateValueList<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut defines: *mut crate::src::relaxng::_xmlRelaxNGDefine,
 ) -> i32 {
     let mut ret: i32 = 0 as i32;
     while !defines.is_null() {
@@ -12378,53 +11879,47 @@ unsafe extern "C" fn xmlRelaxNGValidateValueList<'a1>(
         if ret != 0 as i32 {
             break;
         }
-        defines = (*defines).next;
+        defines = unsafe { (*defines).next };
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGValidateValue<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut define: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+extern "C" fn xmlRelaxNGValidateValue<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut define: *mut crate::src::relaxng::_xmlRelaxNGDefine,
 ) -> i32 {
     let mut ret: i32 = 0 as i32;
     let mut oldflags: i32 = 0;
-    let mut value: * mut u8 = 0 as *mut xmlChar;
-    value = (*(*ctxt).state).value;
+    let mut value: *mut u8 = 0 as *mut xmlChar;
+    value = unsafe { (*(*ctxt).state).value };
     let mut current_block_141: u64;
-    match (*define).type_0 as i32 {
+    match (unsafe { (*define).type_0 }) as i32 {
         0 => {
-            if !value.is_null()
-                && *value.offset(0 as i32 as isize) as i32
-                    != 0 as i32
-            {
+            if !value.is_null() && (unsafe { *value.offset(0 as i32 as isize) }) as i32 != 0 as i32 {
                 let mut idx: i32 = 0 as i32;
-                while *value.offset(idx as isize) as i32 == 0x20 as i32
-                    || 0x9 as i32 <= *value.offset(idx as isize) as i32
-                        && *value.offset(idx as isize) as i32
-                            <= 0xa as i32
-                    || *value.offset(idx as isize) as i32 == 0xd as i32
+                while (unsafe { *value.offset(idx as isize) }) as i32 == 0x20 as i32
+                    || 0x9 as i32 <= (unsafe { *value.offset(idx as isize) }) as i32
+                        && (unsafe { *value.offset(idx as isize) }) as i32 <= 0xa as i32
+                    || (unsafe { *value.offset(idx as isize) }) as i32 == 0xd as i32
                 {
                     idx += 1;
                 }
-                if *value.offset(idx as isize) as i32 != 0 as i32 {
+                if (unsafe { *value.offset(idx as isize) }) as i32 != 0 as i32 {
                     ret = -(1 as i32);
                 }
             }
             current_block_141 = 6328367678128271922;
-        }
+        },
         3 => {
             current_block_141 = 6328367678128271922;
-        }
+        },
         7 => {
-            if xmlStrEqual(value, (*define).value) == 0 {
-                if !((*define).name).is_null() {
-                    let mut lib: * mut crate::src::relaxng::_xmlRelaxNGTypeLibrary = (0 as * mut crate::src::relaxng::_xmlRelaxNGTypeLibrary);
-                    lib = (*define).data as xmlRelaxNGTypeLibraryPtr;
-                    if !lib.is_null() && ((*lib).comp).is_some() {
-                        ret = ((*lib).comp)
-                            .expect(
-                                "non-null function pointer",
-                            )(
+            if (unsafe { xmlStrEqual(value, (*define).value) }) == 0 {
+                if !(unsafe { (*define).name }).is_null() {
+                    let mut lib: *mut crate::src::relaxng::_xmlRelaxNGTypeLibrary =
+                        0 as *mut crate::src::relaxng::_xmlRelaxNGTypeLibrary;
+                    lib = (unsafe { (*define).data }) as xmlRelaxNGTypeLibraryPtr;
+                    if !lib.is_null() && (unsafe { ((*lib).comp).is_some() }) {
+                        ret = unsafe { ((*lib).comp).expect("non-null function pointer")(
                             (*lib).data,
                             (*define).name,
                             (*define).value,
@@ -12432,7 +11927,7 @@ unsafe extern "C" fn xmlRelaxNGValidateValue<'a1>(
                             (*define).attrs as *mut libc::c_void,
                             value,
                             (*(*ctxt).state).node,
-                        );
+                        ) };
                     } else {
                         ret = -(1 as i32);
                     }
@@ -12440,7 +11935,7 @@ unsafe extern "C" fn xmlRelaxNGValidateValue<'a1>(
                         xmlRelaxNGAddValidError(
                             ctxt,
                             XML_RELAXNG_ERR_TYPECMP,
-                            (*define).name,
+                            unsafe { (*define).name },
                             0 as *const xmlChar,
                             0 as i32,
                         );
@@ -12453,26 +11948,18 @@ unsafe extern "C" fn xmlRelaxNGValidateValue<'a1>(
                         }
                     }
                 } else {
-                    let mut nval: * mut u8 = 0 as *mut xmlChar;
-                    let mut nvalue: * mut u8 = 0 as *mut xmlChar;
-                    nval = xmlRelaxNGNormalize(ctxt, (*define).value);
+                    let mut nval: *mut u8 = 0 as *mut xmlChar;
+                    let mut nvalue: *mut u8 = 0 as *mut xmlChar;
+                    nval = xmlRelaxNGNormalize(ctxt, unsafe { (*define).value });
                     nvalue = xmlRelaxNGNormalize(ctxt, value);
-                    if nval.is_null() || nvalue.is_null()
-                        || xmlStrEqual(nval, nvalue) == 0
-                    {
+                    if nval.is_null() || nvalue.is_null() || (unsafe { xmlStrEqual(nval, nvalue) }) == 0 {
                         ret = -(1 as i32);
                     }
                     if !nval.is_null() {
-                        xmlFree
-                            .expect(
-                                "non-null function pointer",
-                            )(nval as *mut libc::c_void);
+                        (unsafe { xmlFree.expect("non-null function pointer")(nval as *mut libc::c_void) });
                     }
                     if !nvalue.is_null() {
-                        xmlFree
-                            .expect(
-                                "non-null function pointer",
-                            )(nvalue as *mut libc::c_void);
+                        (unsafe { xmlFree.expect("non-null function pointer")(nvalue as *mut libc::c_void) });
                     }
                 }
             }
@@ -12480,52 +11967,50 @@ unsafe extern "C" fn xmlRelaxNGValidateValue<'a1>(
                 xmlRelaxNGNextValue(ctxt);
             }
             current_block_141 = 6328367678128271922;
-        }
+        },
         5 => {
-            ret = xmlRelaxNGValidateDatatype(ctxt, value, define, (*(*ctxt).state).seq);
+            ret = xmlRelaxNGValidateDatatype(ctxt, value, define, unsafe { (*(*ctxt).state).seq });
             if ret == 0 as i32 {
                 xmlRelaxNGNextValue(ctxt);
             }
             current_block_141 = 6328367678128271922;
-        }
+        },
         17 => {
-            let mut list: * mut crate::src::relaxng::_xmlRelaxNGDefine = (*define).content;
-            let mut oldvalue: * mut u8 = 0 as *mut xmlChar;
-            oldflags = (*ctxt).flags;
-            (*ctxt).flags |= 1 as i32;
-            oldvalue = (*(*ctxt).state).value;
+            let mut list: *mut crate::src::relaxng::_xmlRelaxNGDefine = unsafe { (*define).content };
+            let mut oldvalue: *mut u8 = 0 as *mut xmlChar;
+            oldflags = unsafe { (*ctxt).flags };
+            (unsafe { (*ctxt).flags |= 1 as i32 });
+            oldvalue = unsafe { (*(*ctxt).state).value };
             while !list.is_null() {
                 ret = xmlRelaxNGValidateValue(ctxt, list);
                 if ret == 0 as i32 {
                     break;
                 }
-                let ref mut fresh373 = (*(*ctxt).state).value;
+                let fresh373 = unsafe { &mut ((*(*ctxt).state).value) };
                 *fresh373 = oldvalue;
-                list = (*list).next;
+                list = unsafe { (*list).next };
             }
-            (*ctxt).flags = oldflags;
+            (unsafe { (*ctxt).flags = oldflags });
             if ret != 0 as i32 {
-                if (*ctxt).flags & 1 as i32 == 0 as i32 {
+                if (unsafe { (*ctxt).flags }) & 1 as i32 == 0 as i32 {
                     xmlRelaxNGDumpValidError(ctxt);
                 }
-            } else if (*ctxt).errNr > 0 as i32 {
+            } else if (unsafe { (*ctxt).errNr }) > 0 as i32 {
                 xmlRelaxNGPopErrors(ctxt, 0 as i32);
             }
             current_block_141 = 6328367678128271922;
-        }
+        },
         8 => {
-            let mut list_0: * mut crate::src::relaxng::_xmlRelaxNGDefine = (*define).content;
-            let mut oldvalue_0: * mut u8 = 0 as *mut xmlChar;
-            let mut oldend: * mut u8 = 0 as *mut xmlChar;
-            let mut val: * mut u8 = 0 as *mut xmlChar;
-            let mut cur: * mut u8 = 0 as *mut xmlChar;
-            oldvalue_0 = (*(*ctxt).state).value;
-            oldend = (*(*ctxt).state).endvalue;
-            val = xmlStrdup(oldvalue_0);
+            let mut list_0: *mut crate::src::relaxng::_xmlRelaxNGDefine = unsafe { (*define).content };
+            let mut oldvalue_0: *mut u8 = 0 as *mut xmlChar;
+            let mut oldend: *mut u8 = 0 as *mut xmlChar;
+            let mut val: *mut u8 = 0 as *mut xmlChar;
+            let mut cur: *mut u8 = 0 as *mut xmlChar;
+            oldvalue_0 = unsafe { (*(*ctxt).state).value };
+            oldend = unsafe { (*(*ctxt).state).endvalue };
+            val = unsafe { xmlStrdup(oldvalue_0) };
             if val.is_null() {
-                val = xmlStrdup(
-                    b"\0" as *const u8 as *const i8 as *mut xmlChar,
-                );
+                val = unsafe { xmlStrdup(b"\0" as *const u8 as *const i8 as *mut xmlChar) };
             }
             if val.is_null() {
                 xmlRelaxNGAddValidError(
@@ -12538,106 +12023,102 @@ unsafe extern "C" fn xmlRelaxNGValidateValue<'a1>(
                 return -(1 as i32);
             }
             cur = val;
-            while *cur as i32 != 0 as i32 {
-                if *cur as i32 == 0x20 as i32
-                    || 0x9 as i32 <= *cur as i32
-                        && *cur as i32 <= 0xa as i32
-                    || *cur as i32 == 0xd as i32
+            while (unsafe { *cur }) as i32 != 0 as i32 {
+                if (unsafe { *cur }) as i32 == 0x20 as i32
+                    || 0x9 as i32 <= (unsafe { *cur }) as i32 && (unsafe { *cur }) as i32 <= 0xa as i32
+                    || (unsafe { *cur }) as i32 == 0xd as i32
                 {
-                    *cur = 0 as i32 as xmlChar;
-                    cur = cur.offset(1);
-                    while *cur as i32 == 0x20 as i32
-                        || 0x9 as i32 <= *cur as i32
-                            && *cur as i32 <= 0xa as i32
-                        || *cur as i32 == 0xd as i32
+                    (unsafe { *cur = 0 as i32 as xmlChar });
+                    cur = unsafe { cur.offset(1) };
+                    while (unsafe { *cur }) as i32 == 0x20 as i32
+                        || 0x9 as i32 <= (unsafe { *cur }) as i32 && (unsafe { *cur }) as i32 <= 0xa as i32
+                        || (unsafe { *cur }) as i32 == 0xd as i32
                     {
                         let mut fresh374 = cur;
-                        cur = cur.offset(1);
-                        *fresh374 = 0 as i32 as xmlChar;
+                        cur = unsafe { cur.offset(1) };
+                        (unsafe { *fresh374 = 0 as i32 as xmlChar });
                     }
                 } else {
-                    cur = cur.offset(1);
+                    cur = unsafe { cur.offset(1) };
                 }
             }
-            let ref mut fresh375 = (*(*ctxt).state).endvalue;
+            let fresh375 = unsafe { &mut ((*(*ctxt).state).endvalue) };
             *fresh375 = cur;
             cur = val;
-            while *cur as i32 == 0 as i32
-                && cur != (*(*ctxt).state).endvalue
-            {
-                cur = cur.offset(1);
+            while (unsafe { *cur }) as i32 == 0 as i32 && cur != (unsafe { (*(*ctxt).state).endvalue }) {
+                cur = unsafe { cur.offset(1) };
             }
-            let ref mut fresh376 = (*(*ctxt).state).value;
+            let fresh376 = unsafe { &mut ((*(*ctxt).state).value) };
             *fresh376 = cur;
             while !list_0.is_null() {
-                if (*(*ctxt).state).value == (*(*ctxt).state).endvalue {
-                    let ref mut fresh377 = (*(*ctxt).state).value;
+                if (unsafe { (*(*ctxt).state).value }) == (unsafe { (*(*ctxt).state).endvalue }) {
+                    let fresh377 = unsafe { &mut ((*(*ctxt).state).value) };
                     *fresh377 = 0 as *mut xmlChar;
                 }
                 ret = xmlRelaxNGValidateValue(ctxt, list_0);
                 if ret != 0 as i32 {
                     break;
                 }
-                list_0 = (*list_0).next;
+                list_0 = unsafe { (*list_0).next };
             }
-            if ret == 0 as i32 && !((*(*ctxt).state).value).is_null()
-                && (*(*ctxt).state).value != (*(*ctxt).state).endvalue
+            if ret == 0 as i32
+                && !(unsafe { (*(*ctxt).state).value }).is_null()
+                && (unsafe { (*(*ctxt).state).value }) != (unsafe { (*(*ctxt).state).endvalue })
             {
                 xmlRelaxNGAddValidError(
                     ctxt,
                     XML_RELAXNG_ERR_LISTEXTRA,
-                    (*(*ctxt).state).value,
+                    unsafe { (*(*ctxt).state).value },
                     0 as *const xmlChar,
                     0 as i32,
                 );
                 ret = -(1 as i32);
             }
-            xmlFree.expect("non-null function pointer")(val as *mut libc::c_void);
-            let ref mut fresh378 = (*(*ctxt).state).value;
+            (unsafe { xmlFree.expect("non-null function pointer")(val as *mut libc::c_void) });
+            let fresh378 = unsafe { &mut ((*(*ctxt).state).value) };
             *fresh378 = oldvalue_0;
-            let ref mut fresh379 = (*(*ctxt).state).endvalue;
+            let fresh379 = unsafe { &mut ((*(*ctxt).state).endvalue) };
             *fresh379 = oldend;
             current_block_141 = 6328367678128271922;
-        }
+        },
         16 => {
-            ret = xmlRelaxNGValidateValueList(ctxt, (*define).content);
+            ret = xmlRelaxNGValidateValueList(ctxt, unsafe { (*define).content });
             if ret != 0 as i32 {
                 current_block_141 = 6328367678128271922;
             } else {
                 current_block_141 = 9521147444787763968;
             }
-        }
+        },
         15 => {
             current_block_141 = 9521147444787763968;
-        }
+        },
         14 => {
-            let mut temp_0: * mut u8 = 0 as *mut xmlChar;
-            if ((*(*ctxt).state).value).is_null()
-                || *(*(*ctxt).state).value as i32 == 0 as i32
-            {
+            let mut temp_0: *mut u8 = 0 as *mut xmlChar;
+            if (unsafe { (*(*ctxt).state).value }).is_null() || (unsafe { *(*(*ctxt).state).value }) as i32 == 0 as i32 {
                 ret = 0 as i32;
             } else {
-                oldflags = (*ctxt).flags;
-                (*ctxt).flags |= 1 as i32;
-                temp_0 = (*(*ctxt).state).value;
-                ret = xmlRelaxNGValidateValue(ctxt, (*define).content);
-                (*ctxt).flags = oldflags;
+                oldflags = unsafe { (*ctxt).flags };
+                (unsafe { (*ctxt).flags |= 1 as i32 });
+                temp_0 = unsafe { (*(*ctxt).state).value };
+                ret = xmlRelaxNGValidateValue(ctxt, unsafe { (*define).content });
+                (unsafe { (*ctxt).flags = oldflags });
                 if ret != 0 as i32 {
-                    let ref mut fresh381 = (*(*ctxt).state).value;
+                    let fresh381 = unsafe { &mut ((*(*ctxt).state).value) };
                     *fresh381 = temp_0;
-                    if (*ctxt).errNr > 0 as i32 {
+                    if (unsafe { (*ctxt).errNr }) > 0 as i32 {
                         xmlRelaxNGPopErrors(ctxt, 0 as i32);
                     }
                     ret = 0 as i32;
-                } else if (*ctxt).errNr > 0 as i32 {
+                } else if (unsafe { (*ctxt).errNr }) > 0 as i32 {
                     xmlRelaxNGPopErrors(ctxt, 0 as i32);
                 }
             }
             current_block_141 = 6328367678128271922;
-        }
+        },
         2 => {
-            let mut list_1: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-            list_1 = (*define).content;
+            let mut list_1: *mut crate::src::relaxng::_xmlRelaxNGDefine =
+                0 as *mut xmlRelaxNGDefine;
+            list_1 = unsafe { (*define).content };
             while !list_1.is_null() {
                 ret = xmlRelaxNGValidateValue(ctxt, list_1);
                 if ret == 0 as i32 {
@@ -12645,14 +12126,15 @@ unsafe extern "C" fn xmlRelaxNGValidateValue<'a1>(
                     break;
                 } else {
                     ret = 0 as i32;
-                    list_1 = (*list_1).next;
+                    list_1 = unsafe { (*list_1).next };
                 }
             }
             current_block_141 = 6328367678128271922;
-        }
+        },
         10 | 18 => {
-            let mut list_2: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-            list_2 = (*define).content;
+            let mut list_2: *mut crate::src::relaxng::_xmlRelaxNGDefine =
+                0 as *mut xmlRelaxNGDefine;
+            list_2 = unsafe { (*define).content };
             while !list_2.is_null() {
                 ret = xmlRelaxNGValidateValue(ctxt, list_2);
                 if ret != 0 as i32 {
@@ -12660,13 +12142,13 @@ unsafe extern "C" fn xmlRelaxNGValidateValue<'a1>(
                     break;
                 } else {
                     ret = 0 as i32;
-                    list_2 = (*list_2).next;
+                    list_2 = unsafe { (*list_2).next };
                 }
             }
             current_block_141 = 6328367678128271922;
-        }
+        },
         11 | 13 => {
-            if ((*define).content).is_null() {
+            if (unsafe { (*define).content }).is_null() {
                 xmlRelaxNGAddValidError(
                     ctxt,
                     XML_RELAXNG_ERR_NODEFINE,
@@ -12676,64 +12158,57 @@ unsafe extern "C" fn xmlRelaxNGValidateValue<'a1>(
                 );
                 ret = -(1 as i32);
             } else {
-                ret = xmlRelaxNGValidateValue(ctxt, (*define).content);
+                ret = xmlRelaxNGValidateValue(ctxt, unsafe { (*define).content });
             }
             current_block_141 = 6328367678128271922;
-        }
+        },
         _ => {
-            (*(borrow(& __xmlGenericError())).unwrap())
-                .expect(
-                    "non-null function pointer",
-                )(
+            (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                 *(__xmlGenericErrorContext()).unwrap(),
                 b"Unimplemented block at %s:%d\n\0" as *const u8 as *const i8,
                 b"relaxng.c\0" as *const u8 as *const i8,
                 9025 as i32,
-            );
+            ) });
             ret = -(1 as i32);
             current_block_141 = 6328367678128271922;
-        }
+        },
     }
     match current_block_141 {
         9521147444787763968 => {
-            let mut cur_0: * mut u8 = 0 as *mut xmlChar;
-            let mut temp: * mut u8 = 0 as *mut xmlChar;
-            if ((*(*ctxt).state).value).is_null()
-                || *(*(*ctxt).state).value as i32 == 0 as i32
-            {
+            let mut cur_0: *mut u8 = 0 as *mut xmlChar;
+            let mut temp: *mut u8 = 0 as *mut xmlChar;
+            if (unsafe { (*(*ctxt).state).value }).is_null() || (unsafe { *(*(*ctxt).state).value }) as i32 == 0 as i32 {
                 ret = 0 as i32;
             } else {
-                oldflags = (*ctxt).flags;
-                (*ctxt).flags |= 1 as i32;
-                cur_0 = (*(*ctxt).state).value;
+                oldflags = unsafe { (*ctxt).flags };
+                (unsafe { (*ctxt).flags |= 1 as i32 });
+                cur_0 = unsafe { (*(*ctxt).state).value };
                 temp = 0 as *mut xmlChar;
-                while !cur_0.is_null() && cur_0 != (*(*ctxt).state).endvalue
-                    && temp != cur_0
-                {
+                while !cur_0.is_null() && cur_0 != (unsafe { (*(*ctxt).state).endvalue }) && temp != cur_0 {
                     temp = cur_0;
-                    ret = xmlRelaxNGValidateValueList(ctxt, (*define).content);
+                    ret = xmlRelaxNGValidateValueList(ctxt, unsafe { (*define).content });
                     if ret != 0 as i32 {
-                        let ref mut fresh380 = (*(*ctxt).state).value;
+                        let fresh380 = unsafe { &mut ((*(*ctxt).state).value) };
                         *fresh380 = temp;
                         ret = 0 as i32;
                         break;
                     } else {
-                        cur_0 = (*(*ctxt).state).value;
+                        cur_0 = unsafe { (*(*ctxt).state).value };
                     }
                 }
-                (*ctxt).flags = oldflags;
-                if (*ctxt).errNr > 0 as i32 {
+                (unsafe { (*ctxt).flags = oldflags });
+                if (unsafe { (*ctxt).errNr }) > 0 as i32 {
                     xmlRelaxNGPopErrors(ctxt, 0 as i32);
                 }
             }
-        }
-        _ => {}
+        },
+        _ => {},
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGValidateValueContent<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut defines: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+extern "C" fn xmlRelaxNGValidateValueContent<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut defines: *mut crate::src::relaxng::_xmlRelaxNGDefine,
 ) -> i32 {
     let mut ret: i32 = 0 as i32;
     while !defines.is_null() {
@@ -12741,41 +12216,37 @@ unsafe extern "C" fn xmlRelaxNGValidateValueContent<'a1>(
         if ret != 0 as i32 {
             break;
         }
-        defines = (*defines).next;
+        defines = unsafe { (*defines).next };
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGAttributeMatch<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut define: * mut crate::src::relaxng::_xmlRelaxNGDefine,
-    mut prop: * mut crate::src::HTMLparser::_xmlAttr,
+extern "C" fn xmlRelaxNGAttributeMatch<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut define: *mut crate::src::relaxng::_xmlRelaxNGDefine,
+    mut prop: *mut crate::src::HTMLparser::_xmlAttr,
 ) -> i32 {
     let mut ret: i32 = 0;
-    if !((*define).name).is_null() {
-        if xmlStrEqual((*define).name, (*prop).name) == 0 {
+    if !(unsafe { (*define).name }).is_null() {
+        if (unsafe { xmlStrEqual((*define).name, (*prop).name) }) == 0 {
             return 0 as i32;
         }
     }
-    if !((*define).ns).is_null() {
-        if *((*define).ns).offset(0 as i32 as isize) as i32
-            == 0 as i32
-        {
-            if !((*prop).ns).is_null() {
+    if !(unsafe { (*define).ns }).is_null() {
+        if (unsafe { *((*define).ns).offset(0 as i32 as isize) }) as i32 == 0 as i32 {
+            if !(unsafe { (*prop).ns }).is_null() {
                 return 0 as i32;
             }
-        } else if ((*prop).ns).is_null()
-                || xmlStrEqual((*define).ns, (*(*prop).ns).href) == 0
-            {
-            return 0 as i32
+        } else if (unsafe { (*prop).ns }).is_null() || (unsafe { xmlStrEqual((*define).ns, (*(*prop).ns).href) }) == 0 {
+            return 0 as i32;
         }
     }
-    if ((*define).nameClass).is_null() {
+    if (unsafe { (*define).nameClass }).is_null() {
         return 1 as i32;
     }
-    define = (*define).nameClass;
-    if (*define).type_0 as i32 == XML_RELAXNG_EXCEPT as i32 {
-        let mut list: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-        list = (*define).content;
+    define = unsafe { (*define).nameClass };
+    if (unsafe { (*define).type_0 }) as i32 == XML_RELAXNG_EXCEPT as i32 {
+        let mut list: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+        list = unsafe { (*define).content };
         while !list.is_null() {
             ret = xmlRelaxNGAttributeMatch(ctxt, list, prop);
             if ret == 1 as i32 {
@@ -12784,11 +12255,11 @@ unsafe extern "C" fn xmlRelaxNGAttributeMatch<'a1>(
             if ret < 0 as i32 {
                 return ret;
             }
-            list = (*list).next;
+            list = unsafe { (*list).next };
         }
-    } else if (*define).type_0 as i32 == XML_RELAXNG_CHOICE as i32 {
-        let mut list_0: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
-        list_0 = (*define).nameClass;
+    } else if (unsafe { (*define).type_0 }) as i32 == XML_RELAXNG_CHOICE as i32 {
+        let mut list_0: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+        list_0 = unsafe { (*define).nameClass };
         while !list_0.is_null() {
             ret = xmlRelaxNGAttributeMatch(ctxt, list_0, prop);
             if ret == 1 as i32 {
@@ -12797,46 +12268,42 @@ unsafe extern "C" fn xmlRelaxNGAttributeMatch<'a1>(
             if ret < 0 as i32 {
                 return ret;
             }
-            list_0 = (*list_0).next;
+            list_0 = unsafe { (*list_0).next };
         }
         return 0 as i32;
     } else {
-        (*(borrow(& __xmlGenericError())).unwrap())
-            .expect(
-                "non-null function pointer",
-            )(
+        (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
             *(__xmlGenericErrorContext()).unwrap(),
             b"Unimplemented block at %s:%d\n\0" as *const u8 as *const i8,
             b"relaxng.c\0" as *const u8 as *const i8,
             9113 as i32,
-        );
+        ) });
     }
     return 1 as i32;
 }
-unsafe extern "C" fn xmlRelaxNGValidateAttribute<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut define: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+extern "C" fn xmlRelaxNGValidateAttribute<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut define: *mut crate::src::relaxng::_xmlRelaxNGDefine,
 ) -> i32 {
     let mut ret: i32 = 0 as i32;
     let mut i: i32 = 0;
-    let mut value: * mut u8 = 0 as *mut xmlChar;
-    let mut oldvalue: * mut u8 = 0 as *mut xmlChar;
-    let mut prop: * mut crate::src::HTMLparser::_xmlAttr = 0 as xmlAttrPtr;
-    let mut tmp: * mut crate::src::HTMLparser::_xmlAttr = 0 as *mut xmlAttr;
-    let mut oldseq: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    if (*(*ctxt).state).nbAttrLeft <= 0 as i32 {
+    let mut value: *mut u8 = 0 as *mut xmlChar;
+    let mut oldvalue: *mut u8 = 0 as *mut xmlChar;
+    let mut prop: *mut crate::src::HTMLparser::_xmlAttr = 0 as xmlAttrPtr;
+    let mut tmp: *mut crate::src::HTMLparser::_xmlAttr = 0 as *mut xmlAttr;
+    let mut oldseq: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    if (unsafe { (*(*ctxt).state).nbAttrLeft }) <= 0 as i32 {
         return -(1 as i32);
     }
-    if !((*define).name).is_null() {
+    if !(unsafe { (*define).name }).is_null() {
         i = 0 as i32;
-        while i < (*(*ctxt).state).nbAttrs {
-            tmp = *((*(*ctxt).state).attrs).offset(i as isize);
-            if !tmp.is_null() && xmlStrEqual((*define).name, (*tmp).name) != 0 {
-                if (((*define).ns).is_null()
-                    || *((*define).ns).offset(0 as i32 as isize) as i32
-                        == 0 as i32) && ((*tmp).ns).is_null()
-                    || !((*tmp).ns).is_null()
-                        && xmlStrEqual((*define).ns, (*(*tmp).ns).href) != 0
+        while i < (unsafe { (*(*ctxt).state).nbAttrs }) {
+            tmp = unsafe { *((*(*ctxt).state).attrs).offset(i as isize) };
+            if !tmp.is_null() && (unsafe { xmlStrEqual((*define).name, (*tmp).name) }) != 0 {
+                if ((unsafe { (*define).ns }).is_null()
+                    || (unsafe { *((*define).ns).offset(0 as i32 as isize) }) as i32 == 0 as i32)
+                    && (unsafe { (*tmp).ns }).is_null()
+                    || !(unsafe { (*tmp).ns }).is_null() && (unsafe { xmlStrEqual((*define).ns, (*(*tmp).ns).href) }) != 0
                 {
                     prop = tmp;
                     break;
@@ -12845,34 +12312,30 @@ unsafe extern "C" fn xmlRelaxNGValidateAttribute<'a1>(
             i += 1;
         }
         if !prop.is_null() {
-            value = xmlNodeListGetString(
-                (*prop).doc,
-                (*prop).children,
-                1 as i32,
-            );
-            oldvalue = (*(*ctxt).state).value;
-            oldseq = (*(*ctxt).state).seq;
-            let ref mut fresh382 = (*(*ctxt).state).seq;
+            value = unsafe { xmlNodeListGetString((*prop).doc, (*prop).children, 1 as i32) };
+            oldvalue = unsafe { (*(*ctxt).state).value };
+            oldseq = unsafe { (*(*ctxt).state).seq };
+            let fresh382 = unsafe { &mut ((*(*ctxt).state).seq) };
             *fresh382 = prop as xmlNodePtr;
-            let ref mut fresh383 = (*(*ctxt).state).value;
+            let fresh383 = unsafe { &mut ((*(*ctxt).state).value) };
             *fresh383 = value;
-            let ref mut fresh384 = (*(*ctxt).state).endvalue;
+            let fresh384 = unsafe { &mut ((*(*ctxt).state).endvalue) };
             *fresh384 = 0 as *mut xmlChar;
-            ret = xmlRelaxNGValidateValueContent(ctxt, (*define).content);
-            if !((*(*ctxt).state).value).is_null() {
-                value = (*(*ctxt).state).value;
+            ret = xmlRelaxNGValidateValueContent(ctxt, unsafe { (*define).content });
+            if !(unsafe { (*(*ctxt).state).value }).is_null() {
+                value = unsafe { (*(*ctxt).state).value };
             }
             if !value.is_null() {
-                xmlFree.expect("non-null function pointer")(value as *mut libc::c_void);
+                (unsafe { xmlFree.expect("non-null function pointer")(value as *mut libc::c_void) });
             }
-            let ref mut fresh385 = (*(*ctxt).state).value;
+            let fresh385 = unsafe { &mut ((*(*ctxt).state).value) };
             *fresh385 = oldvalue;
-            let ref mut fresh386 = (*(*ctxt).state).seq;
+            let fresh386 = unsafe { &mut ((*(*ctxt).state).seq) };
             *fresh386 = oldseq;
             if ret == 0 as i32 {
-                let ref mut fresh387 = *((*(*ctxt).state).attrs).offset(i as isize);
+                let fresh387 = unsafe { &mut (*((*(*ctxt).state).attrs).offset(i as isize)) };
                 *fresh387 = 0 as xmlAttrPtr;
-                let ref mut fresh388 = (*(*ctxt).state).nbAttrLeft;
+                let fresh388 = unsafe { &mut ((*(*ctxt).state).nbAttrLeft) };
                 *fresh388 -= 1;
             }
         } else {
@@ -12880,11 +12343,9 @@ unsafe extern "C" fn xmlRelaxNGValidateAttribute<'a1>(
         }
     } else {
         i = 0 as i32;
-        while i < (*(*ctxt).state).nbAttrs {
-            tmp = *((*(*ctxt).state).attrs).offset(i as isize);
-            if !tmp.is_null()
-                && xmlRelaxNGAttributeMatch(ctxt, define, tmp) == 1 as i32
-            {
+        while i < (unsafe { (*(*ctxt).state).nbAttrs }) {
+            tmp = unsafe { *((*(*ctxt).state).attrs).offset(i as isize) };
+            if !tmp.is_null() && xmlRelaxNGAttributeMatch(ctxt, define, tmp) == 1 as i32 {
                 prop = tmp;
                 break;
             } else {
@@ -12892,32 +12353,28 @@ unsafe extern "C" fn xmlRelaxNGValidateAttribute<'a1>(
             }
         }
         if !prop.is_null() {
-            value = xmlNodeListGetString(
-                (*prop).doc,
-                (*prop).children,
-                1 as i32,
-            );
-            oldvalue = (*(*ctxt).state).value;
-            oldseq = (*(*ctxt).state).seq;
-            let ref mut fresh389 = (*(*ctxt).state).seq;
+            value = unsafe { xmlNodeListGetString((*prop).doc, (*prop).children, 1 as i32) };
+            oldvalue = unsafe { (*(*ctxt).state).value };
+            oldseq = unsafe { (*(*ctxt).state).seq };
+            let fresh389 = unsafe { &mut ((*(*ctxt).state).seq) };
             *fresh389 = prop as xmlNodePtr;
-            let ref mut fresh390 = (*(*ctxt).state).value;
+            let fresh390 = unsafe { &mut ((*(*ctxt).state).value) };
             *fresh390 = value;
-            ret = xmlRelaxNGValidateValueContent(ctxt, (*define).content);
-            if !((*(*ctxt).state).value).is_null() {
-                value = (*(*ctxt).state).value;
+            ret = xmlRelaxNGValidateValueContent(ctxt, unsafe { (*define).content });
+            if !(unsafe { (*(*ctxt).state).value }).is_null() {
+                value = unsafe { (*(*ctxt).state).value };
             }
             if !value.is_null() {
-                xmlFree.expect("non-null function pointer")(value as *mut libc::c_void);
+                (unsafe { xmlFree.expect("non-null function pointer")(value as *mut libc::c_void) });
             }
-            let ref mut fresh391 = (*(*ctxt).state).value;
+            let fresh391 = unsafe { &mut ((*(*ctxt).state).value) };
             *fresh391 = oldvalue;
-            let ref mut fresh392 = (*(*ctxt).state).seq;
+            let fresh392 = unsafe { &mut ((*(*ctxt).state).seq) };
             *fresh392 = oldseq;
             if ret == 0 as i32 {
-                let ref mut fresh393 = *((*(*ctxt).state).attrs).offset(i as isize);
+                let fresh393 = unsafe { &mut (*((*(*ctxt).state).attrs).offset(i as isize)) };
                 *fresh393 = 0 as xmlAttrPtr;
-                let ref mut fresh394 = (*(*ctxt).state).nbAttrLeft;
+                let fresh394 = unsafe { &mut ((*(*ctxt).state).nbAttrLeft) };
                 *fresh394 -= 1;
             }
         } else {
@@ -12926,32 +12383,32 @@ unsafe extern "C" fn xmlRelaxNGValidateAttribute<'a1>(
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGValidateAttributeList<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut defines: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+extern "C" fn xmlRelaxNGValidateAttributeList<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut defines: *mut crate::src::relaxng::_xmlRelaxNGDefine,
 ) -> i32 {
     let mut ret: i32 = 0 as i32;
     let mut res: i32 = 0;
     let mut needmore: i32 = 0 as i32;
-    let mut cur: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut cur: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
     cur = defines;
     while !cur.is_null() {
-        if (*cur).type_0 as i32 == XML_RELAXNG_ATTRIBUTE as i32 {
+        if (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_ATTRIBUTE as i32 {
             if xmlRelaxNGValidateAttribute(ctxt, cur) != 0 as i32 {
                 ret = -(1 as i32);
             }
         } else {
             needmore = 1 as i32;
         }
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
     }
     if needmore == 0 {
         return ret;
     }
     cur = defines;
     while !cur.is_null() {
-        if (*cur).type_0 as i32 != XML_RELAXNG_ATTRIBUTE as i32 {
-            if !((*ctxt).state).is_null() || !((*ctxt).states).is_null() {
+        if (unsafe { (*cur).type_0 }) as i32 != XML_RELAXNG_ATTRIBUTE as i32 {
+            if !(unsafe { (*ctxt).state }).is_null() || !(unsafe { (*ctxt).states }).is_null() {
                 res = xmlRelaxNGValidateDefinition(ctxt, cur);
                 if res < 0 as i32 {
                     ret = -(1 as i32);
@@ -12970,15 +12427,15 @@ unsafe extern "C" fn xmlRelaxNGValidateAttributeList<'a1>(
                 break;
             }
         }
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGNodeMatchesList(
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
-    mut list: * mut * mut crate::src::relaxng::_xmlRelaxNGDefine,
+extern "C" fn xmlRelaxNGNodeMatchesList(
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
+    mut list: *mut *mut crate::src::relaxng::_xmlRelaxNGDefine,
 ) -> i32 {
-    let mut cur: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    let mut cur: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
     let mut i: i32 = 0 as i32;
     let mut tmp: i32 = 0;
     if node.is_null() || list.is_null() {
@@ -12986,56 +12443,56 @@ unsafe extern "C" fn xmlRelaxNGNodeMatchesList(
     }
     let mut fresh395 = i;
     i = i + 1;
-    cur = *list.offset(fresh395 as isize);
+    cur = unsafe { *list.offset(fresh395 as isize) };
     while !cur.is_null() {
-        if (*node).type_0 as u32
-            == XML_ELEMENT_NODE as i32 as u32
-            && (*cur).type_0 as i32 == XML_RELAXNG_ELEMENT as i32
+        if (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+            && (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_ELEMENT as i32
         {
             tmp = xmlRelaxNGElementMatch(0 as xmlRelaxNGValidCtxtPtr, cur, node);
             if tmp == 1 as i32 {
                 return 1 as i32;
             }
-        } else if ((*node).type_0 as u32
-                == XML_TEXT_NODE as i32 as u32
-                || (*node).type_0 as u32
-                    == XML_CDATA_SECTION_NODE as i32 as u32)
-                && ((*cur).type_0 as i32 == XML_RELAXNG_DATATYPE as i32
-                    || (*cur).type_0 as i32 == XML_RELAXNG_LIST as i32
-                    || (*cur).type_0 as i32 == XML_RELAXNG_TEXT as i32
-                    || (*cur).type_0 as i32 == XML_RELAXNG_VALUE as i32)
-            {
-            return 1 as i32
+        } else if ((unsafe { (*node).type_0 }) as u32 == XML_TEXT_NODE as i32 as u32
+            || (unsafe { (*node).type_0 }) as u32 == XML_CDATA_SECTION_NODE as i32 as u32)
+            && ((unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_DATATYPE as i32
+                || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_LIST as i32
+                || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_TEXT as i32
+                || (unsafe { (*cur).type_0 }) as i32 == XML_RELAXNG_VALUE as i32)
+        {
+            return 1 as i32;
         }
         let mut fresh396 = i;
         i = i + 1;
-        cur = *list.offset(fresh396 as isize);
+        cur = unsafe { *list.offset(fresh396 as isize) };
     }
     return 0 as i32;
 }
-unsafe extern "C" fn xmlRelaxNGValidateInterleave<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut define: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+extern "C" fn xmlRelaxNGValidateInterleave<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut define: *mut crate::src::relaxng::_xmlRelaxNGDefine,
 ) -> i32 {
     let mut current_block: u64;
     let mut ret: i32 = 0 as i32;
     let mut i: i32 = 0;
     let mut nbgroups: i32 = 0;
-    let mut errNr: i32 = (*ctxt).errNr;
+    let mut errNr: i32 = unsafe { (*ctxt).errNr };
     let mut oldflags: i32 = 0;
-    let mut oldstate: * mut crate::src::relaxng::_xmlRelaxNGValidState = 0 as *mut xmlRelaxNGValidState;
-    let mut partitions: * mut crate::src::relaxng::_xmlRelaxNGPartition = (0 as * mut crate::src::relaxng::_xmlRelaxNGPartition);
-    let mut group: * mut crate::src::relaxng::_xmlRelaxNGInterleaveGroup = 0 as xmlRelaxNGInterleaveGroupPtr;
-    let mut cur: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut start: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut last: * mut crate::src::HTMLparser::_xmlNode = 0 as xmlNodePtr;
-    let mut lastchg: * mut crate::src::HTMLparser::_xmlNode = 0 as xmlNodePtr;
-    let mut lastelem: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut list: * mut * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNodePtr;
-    let mut lasts: * mut * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNodePtr;
-    if !((*define).data).is_null() {
-        partitions = (*define).data as xmlRelaxNGPartitionPtr;
-        nbgroups = (*partitions).nbgroups;
+    let mut oldstate: *mut crate::src::relaxng::_xmlRelaxNGValidState =
+        0 as *mut xmlRelaxNGValidState;
+    let mut partitions: *mut crate::src::relaxng::_xmlRelaxNGPartition =
+        0 as *mut crate::src::relaxng::_xmlRelaxNGPartition;
+    let mut group: *mut crate::src::relaxng::_xmlRelaxNGInterleaveGroup =
+        0 as xmlRelaxNGInterleaveGroupPtr;
+    let mut cur: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut start: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut last: *mut crate::src::HTMLparser::_xmlNode = 0 as xmlNodePtr;
+    let mut lastchg: *mut crate::src::HTMLparser::_xmlNode = 0 as xmlNodePtr;
+    let mut lastelem: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut list: *mut *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNodePtr;
+    let mut lasts: *mut *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNodePtr;
+    if !(unsafe { (*define).data }).is_null() {
+        partitions = (unsafe { (*define).data }) as xmlRelaxNGPartitionPtr;
+        nbgroups = unsafe { (*partitions).nbgroups };
     } else {
         xmlRelaxNGAddValidError(
             ctxt,
@@ -13046,118 +12503,93 @@ unsafe extern "C" fn xmlRelaxNGValidateInterleave<'a1>(
         );
         return -(1 as i32);
     }
-    oldflags = (*ctxt).flags;
-    if (*define).dflags as i32 & (1 as i32) << 3 as i32 != 0 {
-        (*ctxt).flags |= 4 as i32;
+    oldflags = unsafe { (*ctxt).flags };
+    if (unsafe { (*define).dflags }) as i32 & (1 as i32) << 3 as i32 != 0 {
+        (unsafe { (*ctxt).flags |= 4 as i32 });
         if nbgroups == 2 as i32 {
-            if !((*ctxt).state).is_null() {
-                let ref mut fresh397 = (*(*ctxt).state).seq;
-                *fresh397 = xmlRelaxNGSkipIgnored(ctxt, (*(*ctxt).state).seq);
+            if !(unsafe { (*ctxt).state }).is_null() {
+                let fresh397 = unsafe { &mut ((*(*ctxt).state).seq) };
+                *fresh397 = xmlRelaxNGSkipIgnored(ctxt, unsafe { (*(*ctxt).state).seq });
             }
-            if (*(**((*partitions).groups).offset(0 as i32 as isize)).rule)
-                .type_0 as i32 == XML_RELAXNG_TEXT as i32
+            if (unsafe { (*(**((*partitions).groups).offset(0 as i32 as isize)).rule).type_0 }) as i32
+                == XML_RELAXNG_TEXT as i32
             {
                 ret = xmlRelaxNGValidateDefinition(
                     ctxt,
-                    (**((*partitions).groups).offset(1 as i32 as isize)).rule,
+                    unsafe { (**((*partitions).groups).offset(1 as i32 as isize)).rule },
                 );
             } else {
                 ret = xmlRelaxNGValidateDefinition(
                     ctxt,
-                    (**((*partitions).groups).offset(0 as i32 as isize)).rule,
+                    unsafe { (**((*partitions).groups).offset(0 as i32 as isize)).rule },
                 );
             }
             if ret == 0 as i32 {
-                if !((*ctxt).state).is_null() {
-                    let ref mut fresh398 = (*(*ctxt).state).seq;
-                    *fresh398 = xmlRelaxNGSkipIgnored(ctxt, (*(*ctxt).state).seq);
+                if !(unsafe { (*ctxt).state }).is_null() {
+                    let fresh398 = unsafe { &mut ((*(*ctxt).state).seq) };
+                    *fresh398 = xmlRelaxNGSkipIgnored(ctxt, unsafe { (*(*ctxt).state).seq });
                 }
             }
-            (*ctxt).flags = oldflags;
+            (unsafe { (*ctxt).flags = oldflags });
             return ret;
         }
     }
-    list = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(
-        (nbgroups as u64)
-            .wrapping_mul(::std::mem::size_of::<xmlNodePtr>() as u64),
-    ) as *mut xmlNodePtr;
+    list = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        (nbgroups as u64).wrapping_mul(::std::mem::size_of::<xmlNodePtr>() as u64),
+    ) }) as *mut xmlNodePtr;
     if list.is_null() {
         xmlRngVErrMemory(ctxt, b"validating\n\0" as *const u8 as *const i8);
         return -(1 as i32);
     }
-    memset(
+    (unsafe { memset(
         list as *mut libc::c_void,
         0 as i32,
-        (nbgroups as u64)
-            .wrapping_mul(::std::mem::size_of::<xmlNodePtr>() as u64),
-    );
-    lasts = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(
-        (nbgroups as u64)
-            .wrapping_mul(::std::mem::size_of::<xmlNodePtr>() as u64),
-    ) as *mut xmlNodePtr;
+        (nbgroups as u64).wrapping_mul(::std::mem::size_of::<xmlNodePtr>() as u64),
+    ) });
+    lasts = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        (nbgroups as u64).wrapping_mul(::std::mem::size_of::<xmlNodePtr>() as u64),
+    ) }) as *mut xmlNodePtr;
     if lasts.is_null() {
         xmlRngVErrMemory(ctxt, b"validating\n\0" as *const u8 as *const i8);
         return -(1 as i32);
     }
-    memset(
+    (unsafe { memset(
         lasts as *mut libc::c_void,
         0 as i32,
-        (nbgroups as u64)
-            .wrapping_mul(::std::mem::size_of::<xmlNodePtr>() as u64),
-    );
-    cur = (*(*ctxt).state).seq;
+        (nbgroups as u64).wrapping_mul(::std::mem::size_of::<xmlNodePtr>() as u64),
+    ) });
+    cur = unsafe { (*(*ctxt).state).seq };
     cur = xmlRelaxNGSkipIgnored(ctxt, cur);
     start = cur;
     while !cur.is_null() {
-        let ref mut fresh399 = (*(*ctxt).state).seq;
+        let fresh399 = unsafe { &mut ((*(*ctxt).state).seq) };
         *fresh399 = cur;
-        if !((*partitions).triage).is_null()
-            && (*partitions).flags & 1 as i32 != 0
-        {
-            let mut tmp: * mut core::ffi::c_void = 0 as *mut libc::c_void;
-            if (*cur).type_0 as u32
-                == XML_TEXT_NODE as i32 as u32
-                || (*cur).type_0 as u32
-                    == XML_CDATA_SECTION_NODE as i32 as u32
+        if !(unsafe { (*partitions).triage }).is_null() && (unsafe { (*partitions).flags }) & 1 as i32 != 0 {
+            let mut tmp: *mut core::ffi::c_void = 0 as *mut libc::c_void;
+            if (unsafe { (*cur).type_0 }) as u32 == XML_TEXT_NODE as i32 as u32
+                || (unsafe { (*cur).type_0 }) as u32 == XML_CDATA_SECTION_NODE as i32 as u32
             {
                 tmp = xmlHashLookup2(
-                    (*partitions).triage,
+                    unsafe { (*partitions).triage },
                     b"#text\0" as *const u8 as *const i8 as *mut xmlChar,
                     0 as *const xmlChar,
                 );
-            } else if (*cur).type_0 as u32
-                    == XML_ELEMENT_NODE as i32 as u32
-                {
-                if !((*cur).ns).is_null() {
-                    tmp = xmlHashLookup2(
-                        (*partitions).triage,
-                        (*cur).name,
-                        (*(*cur).ns).href,
-                    );
+            } else if (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32 {
+                if !(unsafe { (*cur).ns }).is_null() {
+                    tmp = xmlHashLookup2(unsafe { (*partitions).triage }, unsafe { (*cur).name }, unsafe { (*(*cur).ns).href });
                     if tmp.is_null() {
                         tmp = xmlHashLookup2(
-                            (*partitions).triage,
-                            b"#any\0" as *const u8 as *const i8
-                                as *mut xmlChar,
-                            (*(*cur).ns).href,
+                            unsafe { (*partitions).triage },
+                            b"#any\0" as *const u8 as *const i8 as *mut xmlChar,
+                            unsafe { (*(*cur).ns).href },
                         );
                     }
                 } else {
-                    tmp = xmlHashLookup2(
-                        (*partitions).triage,
-                        (*cur).name,
-                        0 as *const xmlChar,
-                    );
+                    tmp = xmlHashLookup2(unsafe { (*partitions).triage }, unsafe { (*cur).name }, 0 as *const xmlChar);
                 }
                 if tmp.is_null() {
                     tmp = xmlHashLookup2(
-                        (*partitions).triage,
+                        unsafe { (*partitions).triage },
                         b"#any\0" as *const u8 as *const i8 as *mut xmlChar,
                         0 as *const xmlChar,
                     );
@@ -13167,9 +12599,9 @@ unsafe extern "C" fn xmlRelaxNGValidateInterleave<'a1>(
                 i = nbgroups;
             } else {
                 i = (tmp as ptrdiff_t - 1 as i32 as i64) as i32;
-                if (*partitions).flags & 2 as i32 != 0 {
-                    group = *((*partitions).groups).offset(i as isize);
-                    if xmlRelaxNGNodeMatchesList(cur, (*group).defs) == 0 {
+                if (unsafe { (*partitions).flags }) & 2 as i32 != 0 {
+                    group = unsafe { *((*partitions).groups).offset(i as isize) };
+                    if xmlRelaxNGNodeMatchesList(cur, unsafe { (*group).defs }) == 0 {
                         i = nbgroups;
                     }
                 }
@@ -13177,9 +12609,9 @@ unsafe extern "C" fn xmlRelaxNGValidateInterleave<'a1>(
         } else {
             i = 0 as i32;
             while i < nbgroups {
-                group = *((*partitions).groups).offset(i as isize);
+                group = unsafe { *((*partitions).groups).offset(i as isize) };
                 if !group.is_null() {
-                    if xmlRelaxNGNodeMatchesList(cur, (*group).defs) != 0 {
+                    if xmlRelaxNGNodeMatchesList(cur, unsafe { (*group).defs }) != 0 {
                         break;
                     }
                 }
@@ -13189,23 +12621,23 @@ unsafe extern "C" fn xmlRelaxNGValidateInterleave<'a1>(
         if i >= nbgroups {
             break;
         }
-        if !(*lasts.offset(i as isize)).is_null() {
-            let ref mut fresh400 = (**lasts.offset(i as isize)).next;
+        if !(unsafe { *lasts.offset(i as isize) }).is_null() {
+            let fresh400 = unsafe { &mut ((**lasts.offset(i as isize)).next) };
             *fresh400 = cur;
-            let ref mut fresh401 = *lasts.offset(i as isize);
+            let fresh401 = unsafe { &mut (*lasts.offset(i as isize)) };
             *fresh401 = cur;
         } else {
-            let ref mut fresh402 = *list.offset(i as isize);
+            let fresh402 = unsafe { &mut (*list.offset(i as isize)) };
             *fresh402 = cur;
-            let ref mut fresh403 = *lasts.offset(i as isize);
+            let fresh403 = unsafe { &mut (*lasts.offset(i as isize)) };
             *fresh403 = cur;
         }
-        if !((*cur).next).is_null() {
-            lastchg = (*cur).next;
+        if !(unsafe { (*cur).next }).is_null() {
+            lastchg = unsafe { (*cur).next };
         } else {
             lastchg = cur;
         }
-        cur = xmlRelaxNGSkipIgnored(ctxt, (*cur).next);
+        cur = xmlRelaxNGSkipIgnored(ctxt, unsafe { (*cur).next });
     }
     if ret != 0 as i32 {
         xmlRelaxNGAddValidError(
@@ -13218,85 +12650,81 @@ unsafe extern "C" fn xmlRelaxNGValidateInterleave<'a1>(
         ret = -(1 as i32);
     } else {
         lastelem = cur;
-        oldstate = (*ctxt).state;
+        oldstate = unsafe { (*ctxt).state };
         i = 0 as i32;
         loop {
             if !(i < nbgroups) {
                 current_block = 5482373152242628851;
                 break;
             }
-            let ref mut fresh404 = (*ctxt).state;
+            let fresh404 = unsafe { &mut ((*ctxt).state) };
             *fresh404 = xmlRelaxNGCopyValidState(ctxt, oldstate);
-            if ((*ctxt).state).is_null() {
+            if (unsafe { (*ctxt).state }).is_null() {
                 ret = -(1 as i32);
                 current_block = 5482373152242628851;
                 break;
             } else {
-                group = *((*partitions).groups).offset(i as isize);
-                if !(*lasts.offset(i as isize)).is_null() {
-                    last = (**lasts.offset(i as isize)).next;
-                    let ref mut fresh405 = (**lasts.offset(i as isize)).next;
+                group = unsafe { *((*partitions).groups).offset(i as isize) };
+                if !(unsafe { *lasts.offset(i as isize) }).is_null() {
+                    last = unsafe { (**lasts.offset(i as isize)).next };
+                    let fresh405 = unsafe { &mut ((**lasts.offset(i as isize)).next) };
                     *fresh405 = 0 as *mut _xmlNode;
                 }
-                let ref mut fresh406 = (*(*ctxt).state).seq;
-                *fresh406 = *list.offset(i as isize);
-                ret = xmlRelaxNGValidateDefinition(ctxt, (*group).rule);
+                let fresh406 = unsafe { &mut ((*(*ctxt).state).seq) };
+                *fresh406 = unsafe { *list.offset(i as isize) };
+                ret = xmlRelaxNGValidateDefinition(ctxt, unsafe { (*group).rule });
                 if ret != 0 as i32 {
                     current_block = 5482373152242628851;
                     break;
                 }
-                if !((*ctxt).state).is_null() {
-                    cur = (*(*ctxt).state).seq;
+                if !(unsafe { (*ctxt).state }).is_null() {
+                    cur = unsafe { (*(*ctxt).state).seq };
                     cur = xmlRelaxNGSkipIgnored(ctxt, cur);
                     xmlRelaxNGFreeValidState(ctxt, oldstate);
-                    oldstate = (*ctxt).state;
-                    let ref mut fresh407 = (*ctxt).state;
+                    oldstate = unsafe { (*ctxt).state };
+                    let fresh407 = unsafe { &mut ((*ctxt).state) };
                     *fresh407 = 0 as xmlRelaxNGValidStatePtr;
                     if !cur.is_null()
-                        && ((*(*define).parent).type_0 as i32
-                            != XML_RELAXNG_DEF as i32
-                            || xmlStrEqual(
+                        && ((unsafe { (*(*define).parent).type_0 }) as i32 != XML_RELAXNG_DEF as i32
+                            || (unsafe { xmlStrEqual(
                                 (*(*define).parent).name,
-                                b"open-name-class\0" as *const u8 as *const i8
-                                    as *const xmlChar,
-                            ) == 0)
+                                b"open-name-class\0" as *const u8 as *const i8 as *const xmlChar,
+                            ) }) == 0)
                     {
                         xmlRelaxNGAddValidError(
                             ctxt,
                             XML_RELAXNG_ERR_INTEREXTRA,
-                            (*cur).name,
+                            unsafe { (*cur).name },
                             0 as *const xmlChar,
                             0 as i32,
                         );
                         ret = -(1 as i32);
-                        let ref mut fresh408 = (*ctxt).state;
+                        let fresh408 = unsafe { &mut ((*ctxt).state) };
                         *fresh408 = oldstate;
                         current_block = 790223741556965965;
                         break;
                     }
-                } else if !((*ctxt).states).is_null() {
+                } else if !(unsafe { (*ctxt).states }).is_null() {
                     let mut j: i32 = 0;
                     let mut found: i32 = 0 as i32;
                     let mut best: i32 = -(1 as i32);
                     let mut lowattr: i32 = -(1 as i32);
                     j = 0 as i32;
-                    while j < (*(*ctxt).states).nbState {
-                        cur = (**((*(*ctxt).states).tabState).offset(j as isize)).seq;
+                    while j < (unsafe { (*(*ctxt).states).nbState }) {
+                        cur = unsafe { (**((*(*ctxt).states).tabState).offset(j as isize)).seq };
                         cur = xmlRelaxNGSkipIgnored(ctxt, cur);
                         if cur.is_null() {
                             if found == 0 as i32 {
-                                lowattr = (**((*(*ctxt).states).tabState)
-                                    .offset(j as isize))
-                                    .nbAttrLeft;
+                                lowattr =
+                                    unsafe { (**((*(*ctxt).states).tabState).offset(j as isize)).nbAttrLeft };
                                 best = j;
                             }
                             found = 1 as i32;
-                            if (**((*(*ctxt).states).tabState).offset(j as isize))
-                                .nbAttrLeft <= lowattr
+                            if (unsafe { (**((*(*ctxt).states).tabState).offset(j as isize)).nbAttrLeft })
+                                <= lowattr
                             {
-                                lowattr = (**((*(*ctxt).states).tabState)
-                                    .offset(j as isize))
-                                    .nbAttrLeft;
+                                lowattr =
+                                    unsafe { (**((*(*ctxt).states).tabState).offset(j as isize)).nbAttrLeft };
                                 best = j;
                             }
                             if lowattr == 0 as i32 {
@@ -13304,61 +12732,53 @@ unsafe extern "C" fn xmlRelaxNGValidateInterleave<'a1>(
                             }
                         } else if found == 0 as i32 {
                             if lowattr == -(1 as i32) {
-                                lowattr = (**((*(*ctxt).states).tabState)
-                                    .offset(j as isize))
-                                    .nbAttrLeft;
+                                lowattr =
+                                    unsafe { (**((*(*ctxt).states).tabState).offset(j as isize)).nbAttrLeft };
                                 best = j;
-                            } else if (**((*(*ctxt).states).tabState).offset(j as isize))
-                                    .nbAttrLeft <= lowattr
-                                {
-                                lowattr = (**((*(*ctxt).states).tabState)
-                                    .offset(j as isize))
-                                    .nbAttrLeft;
+                            } else if (unsafe { (**((*(*ctxt).states).tabState).offset(j as isize)).nbAttrLeft })
+                                <= lowattr
+                            {
+                                lowattr =
+                                    unsafe { (**((*(*ctxt).states).tabState).offset(j as isize)).nbAttrLeft };
                                 best = j;
                             }
                         }
                         j += 1;
                     }
-                    if (*(*ctxt).states).nbState > 0 as i32 {
+                    if (unsafe { (*(*ctxt).states).nbState }) > 0 as i32 {
                         xmlRelaxNGFreeValidState(ctxt, oldstate);
                         if best != -(1 as i32) {
-                            oldstate = *((*(*ctxt).states).tabState)
-                                .offset(best as isize);
-                            let ref mut fresh409 = *((*(*ctxt).states).tabState)
-                                .offset(best as isize);
+                            oldstate = unsafe { *((*(*ctxt).states).tabState).offset(best as isize) };
+                            let fresh409 =
+                                unsafe { &mut (*((*(*ctxt).states).tabState).offset(best as isize)) };
                             *fresh409 = 0 as xmlRelaxNGValidStatePtr;
                         } else {
-                            oldstate = *((*(*ctxt).states).tabState)
-                                .offset(
-                                    ((*(*ctxt).states).nbState - 1 as i32) as isize,
-                                );
-                            let ref mut fresh410 = *((*(*ctxt).states).tabState)
-                                .offset(
-                                    ((*(*ctxt).states).nbState - 1 as i32) as isize,
-                                );
+                            oldstate = unsafe { *((*(*ctxt).states).tabState)
+                                .offset(((*(*ctxt).states).nbState - 1 as i32) as isize) };
+                            let fresh410 = unsafe { &mut (*((*(*ctxt).states).tabState)
+                                .offset(((*(*ctxt).states).nbState - 1 as i32) as isize)) };
                             *fresh410 = 0 as xmlRelaxNGValidStatePtr;
-                            let ref mut fresh411 = (*(*ctxt).states).nbState;
+                            let fresh411 = unsafe { &mut ((*(*ctxt).states).nbState) };
                             *fresh411 -= 1;
                         }
                     }
                     j = 0 as i32;
-                    while j < (*(*ctxt).states).nbState {
+                    while j < (unsafe { (*(*ctxt).states).nbState }) {
                         xmlRelaxNGFreeValidState(
                             ctxt,
-                            *((*(*ctxt).states).tabState).offset(j as isize),
+                            unsafe { *((*(*ctxt).states).tabState).offset(j as isize) },
                         );
                         j += 1;
                     }
-                    xmlRelaxNGFreeStates(ctxt, (*ctxt).states);
-                    let ref mut fresh412 = (*ctxt).states;
+                    xmlRelaxNGFreeStates(ctxt, unsafe { (*ctxt).states });
+                    let fresh412 = unsafe { &mut ((*ctxt).states) };
                     *fresh412 = 0 as xmlRelaxNGStatesPtr;
                     if found == 0 as i32 {
                         if cur.is_null() {
                             xmlRelaxNGAddValidError(
                                 ctxt,
                                 XML_RELAXNG_ERR_INTEREXTRA,
-                                b"noname\0" as *const u8 as *const i8
-                                    as *const xmlChar,
+                                b"noname\0" as *const u8 as *const i8 as *const xmlChar,
                                 0 as *const xmlChar,
                                 0 as i32,
                             );
@@ -13366,13 +12786,13 @@ unsafe extern "C" fn xmlRelaxNGValidateInterleave<'a1>(
                             xmlRelaxNGAddValidError(
                                 ctxt,
                                 XML_RELAXNG_ERR_INTEREXTRA,
-                                (*cur).name,
+                                unsafe { (*cur).name },
                                 0 as *const xmlChar,
                                 0 as i32,
                             );
                         }
                         ret = -(1 as i32);
-                        let ref mut fresh413 = (*ctxt).state;
+                        let fresh413 = unsafe { &mut ((*ctxt).state) };
                         *fresh413 = oldstate;
                         current_block = 790223741556965965;
                         break;
@@ -13382,22 +12802,22 @@ unsafe extern "C" fn xmlRelaxNGValidateInterleave<'a1>(
                     current_block = 5482373152242628851;
                     break;
                 }
-                if !(*lasts.offset(i as isize)).is_null() {
-                    let ref mut fresh414 = (**lasts.offset(i as isize)).next;
+                if !(unsafe { *lasts.offset(i as isize) }).is_null() {
+                    let fresh414 = unsafe { &mut ((**lasts.offset(i as isize)).next) };
                     *fresh414 = last;
                 }
                 i += 1;
             }
         }
         match current_block {
-            790223741556965965 => {}
+            790223741556965965 => {},
             _ => {
-                if !((*ctxt).state).is_null() {
-                    xmlRelaxNGFreeValidState(ctxt, (*ctxt).state);
+                if !(unsafe { (*ctxt).state }).is_null() {
+                    xmlRelaxNGFreeValidState(ctxt, unsafe { (*ctxt).state });
                 }
-                let ref mut fresh415 = (*ctxt).state;
+                let fresh415 = unsafe { &mut ((*ctxt).state) };
                 *fresh415 = oldstate;
-                let ref mut fresh416 = (*(*ctxt).state).seq;
+                let fresh416 = unsafe { &mut ((*(*ctxt).state).seq) };
                 *fresh416 = lastelem;
                 if ret != 0 as i32 {
                     xmlRelaxNGAddValidError(
@@ -13409,31 +12829,31 @@ unsafe extern "C" fn xmlRelaxNGValidateInterleave<'a1>(
                     );
                     ret = -(1 as i32);
                 }
-            }
+            },
         }
     }
-    (*ctxt).flags = oldflags;
+    (unsafe { (*ctxt).flags = oldflags });
     cur = lastchg;
     while !cur.is_null() {
-        if cur == start || ((*cur).prev).is_null() {
+        if cur == start || (unsafe { (*cur).prev }).is_null() {
             break;
         }
-        let ref mut fresh417 = (*(*cur).prev).next;
+        let fresh417 = unsafe { &mut ((*(*cur).prev).next) };
         *fresh417 = cur;
-        cur = (*cur).prev;
+        cur = unsafe { (*cur).prev };
     }
     if ret == 0 as i32 {
-        if (*ctxt).errNr > errNr {
+        if (unsafe { (*ctxt).errNr }) > errNr {
             xmlRelaxNGPopErrors(ctxt, errNr);
         }
     }
-    xmlFree.expect("non-null function pointer")(list as *mut libc::c_void);
-    xmlFree.expect("non-null function pointer")(lasts as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(list as *mut libc::c_void) });
+    (unsafe { xmlFree.expect("non-null function pointer")(lasts as *mut libc::c_void) });
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGValidateDefinitionList<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut defines: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+extern "C" fn xmlRelaxNGValidateDefinitionList<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut defines: *mut crate::src::relaxng::_xmlRelaxNGDefine,
 ) -> i32 {
     let mut ret: i32 = 0 as i32;
     let mut res: i32 = 0;
@@ -13441,15 +12861,14 @@ unsafe extern "C" fn xmlRelaxNGValidateDefinitionList<'a1>(
         xmlRelaxNGAddValidError(
             ctxt,
             XML_RELAXNG_ERR_INTERNAL,
-            b"NULL definition list\0" as *const u8 as *const i8
-                as *mut xmlChar,
+            b"NULL definition list\0" as *const u8 as *const i8 as *mut xmlChar,
             0 as *const xmlChar,
             0 as i32,
         );
         return -(1 as i32);
     }
     while !defines.is_null() {
-        if !((*ctxt).state).is_null() || !((*ctxt).states).is_null() {
+        if !(unsafe { (*ctxt).state }).is_null() || !(unsafe { (*ctxt).states }).is_null() {
             res = xmlRelaxNGValidateDefinition(ctxt, defines);
             if res < 0 as i32 {
                 ret = -(1 as i32);
@@ -13467,182 +12886,172 @@ unsafe extern "C" fn xmlRelaxNGValidateDefinitionList<'a1>(
         if res == -(1 as i32) {
             break;
         }
-        defines = (*defines).next;
+        defines = unsafe { (*defines).next };
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGElementMatch<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut define: * mut crate::src::relaxng::_xmlRelaxNGDefine,
-    mut elem: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn xmlRelaxNGElementMatch<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut define: *mut crate::src::relaxng::_xmlRelaxNGDefine,
+    mut elem: *mut crate::src::HTMLparser::_xmlNode,
 ) -> i32 {
     let mut ret: i32 = 0 as i32;
     let mut oldflags: i32 = 0 as i32;
-    if !((*define).name).is_null() {
-        if xmlStrEqual((*elem).name, (*define).name) == 0 {
+    if !(unsafe { (*define).name }).is_null() {
+        if (unsafe { xmlStrEqual((*elem).name, (*define).name) }) == 0 {
             xmlRelaxNGAddValidError(
                 ctxt,
                 XML_RELAXNG_ERR_ELEMNAME,
-                (*define).name,
-                (*elem).name,
+                unsafe { (*define).name },
+                unsafe { (*elem).name },
                 0 as i32,
             );
             return 0 as i32;
         }
     }
-    if !((*define).ns).is_null()
-        && *((*define).ns).offset(0 as i32 as isize) as i32
-            != 0 as i32
-    {
-        if ((*elem).ns).is_null() {
+    if !(unsafe { (*define).ns }).is_null() && (unsafe { *((*define).ns).offset(0 as i32 as isize) }) as i32 != 0 as i32 {
+        if (unsafe { (*elem).ns }).is_null() {
             xmlRelaxNGAddValidError(
                 ctxt,
                 XML_RELAXNG_ERR_ELEMNONS,
-                (*elem).name,
+                unsafe { (*elem).name },
                 0 as *const xmlChar,
                 0 as i32,
             );
             return 0 as i32;
         } else {
-            if xmlStrEqual((*(*elem).ns).href, (*define).ns) == 0 {
+            if (unsafe { xmlStrEqual((*(*elem).ns).href, (*define).ns) }) == 0 {
                 xmlRelaxNGAddValidError(
                     ctxt,
                     XML_RELAXNG_ERR_ELEMWRONGNS,
-                    (*elem).name,
-                    (*define).ns,
+                    unsafe { (*elem).name },
+                    unsafe { (*define).ns },
                     0 as i32,
                 );
                 return 0 as i32;
             }
         }
-    } else if !((*elem).ns).is_null() && !((*define).ns).is_null()
-            && ((*define).name).is_null()
-        {
+    } else if !(unsafe { (*elem).ns }).is_null() && !(unsafe { (*define).ns }).is_null() && (unsafe { (*define).name }).is_null() {
         xmlRelaxNGAddValidError(
             ctxt,
             XML_RELAXNG_ERR_ELEMEXTRANS,
-            (*elem).name,
+            unsafe { (*elem).name },
             0 as *const xmlChar,
             0 as i32,
         );
         return 0 as i32;
     } else {
-        if !((*elem).ns).is_null() && !((*define).name).is_null() {
+        if !(unsafe { (*elem).ns }).is_null() && !(unsafe { (*define).name }).is_null() {
             xmlRelaxNGAddValidError(
                 ctxt,
                 XML_RELAXNG_ERR_ELEMEXTRANS,
-                (*define).name,
+                unsafe { (*define).name },
                 0 as *const xmlChar,
                 0 as i32,
             );
             return 0 as i32;
         }
     }
-    if ((*define).nameClass).is_null() {
+    if (unsafe { (*define).nameClass }).is_null() {
         return 1 as i32;
     }
-    define = (*define).nameClass;
-    if (*define).type_0 as i32 == XML_RELAXNG_EXCEPT as i32 {
-        let mut list: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    define = unsafe { (*define).nameClass };
+    if (unsafe { (*define).type_0 }) as i32 == XML_RELAXNG_EXCEPT as i32 {
+        let mut list: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
         if !ctxt.is_null() {
-            oldflags = (*ctxt).flags;
-            (*ctxt).flags |= 1 as i32;
+            oldflags = unsafe { (*ctxt).flags };
+            (unsafe { (*ctxt).flags |= 1 as i32 });
         }
-        list = (*define).content;
+        list = unsafe { (*define).content };
         while !list.is_null() {
             ret = xmlRelaxNGElementMatch(ctxt, list, elem);
             if ret == 1 as i32 {
                 if !ctxt.is_null() {
-                    (*ctxt).flags = oldflags;
+                    (unsafe { (*ctxt).flags = oldflags });
                 }
                 return 0 as i32;
             }
             if ret < 0 as i32 {
                 if !ctxt.is_null() {
-                    (*ctxt).flags = oldflags;
+                    (unsafe { (*ctxt).flags = oldflags });
                 }
                 return ret;
             }
-            list = (*list).next;
+            list = unsafe { (*list).next };
         }
         ret = 1 as i32;
         if !ctxt.is_null() {
-            (*ctxt).flags = oldflags;
+            (unsafe { (*ctxt).flags = oldflags });
         }
-    } else if (*define).type_0 as i32 == XML_RELAXNG_CHOICE as i32 {
-        let mut list_0: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
+    } else if (unsafe { (*define).type_0 }) as i32 == XML_RELAXNG_CHOICE as i32 {
+        let mut list_0: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as *mut xmlRelaxNGDefine;
         if !ctxt.is_null() {
-            oldflags = (*ctxt).flags;
-            (*ctxt).flags |= 1 as i32;
+            oldflags = unsafe { (*ctxt).flags };
+            (unsafe { (*ctxt).flags |= 1 as i32 });
         }
-        list_0 = (*define).nameClass;
+        list_0 = unsafe { (*define).nameClass };
         while !list_0.is_null() {
             ret = xmlRelaxNGElementMatch(ctxt, list_0, elem);
             if ret == 1 as i32 {
                 if !ctxt.is_null() {
-                    (*ctxt).flags = oldflags;
+                    (unsafe { (*ctxt).flags = oldflags });
                 }
                 return 1 as i32;
             }
             if ret < 0 as i32 {
                 if !ctxt.is_null() {
-                    (*ctxt).flags = oldflags;
+                    (unsafe { (*ctxt).flags = oldflags });
                 }
                 return ret;
             }
-            list_0 = (*list_0).next;
+            list_0 = unsafe { (*list_0).next };
         }
         if !ctxt.is_null() {
             if ret != 0 as i32 {
-                if (*ctxt).flags & 1 as i32 == 0 as i32 {
+                if (unsafe { (*ctxt).flags }) & 1 as i32 == 0 as i32 {
                     xmlRelaxNGDumpValidError(ctxt);
                 }
-            } else if (*ctxt).errNr > 0 as i32 {
+            } else if (unsafe { (*ctxt).errNr }) > 0 as i32 {
                 xmlRelaxNGPopErrors(ctxt, 0 as i32);
             }
         }
         ret = 0 as i32;
         if !ctxt.is_null() {
-            (*ctxt).flags = oldflags;
+            (unsafe { (*ctxt).flags = oldflags });
         }
     } else {
-        (*(borrow(& __xmlGenericError())).unwrap())
-            .expect(
-                "non-null function pointer",
-            )(
+        (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
             *(__xmlGenericErrorContext()).unwrap(),
             b"Unimplemented block at %s:%d\n\0" as *const u8 as *const i8,
             b"relaxng.c\0" as *const u8 as *const i8,
             9764 as i32,
-        );
+        ) });
         ret = -(1 as i32);
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGBestState<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+extern "C" fn xmlRelaxNGBestState<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
 ) -> i32 {
-    let mut state: * mut crate::src::relaxng::_xmlRelaxNGValidState = 0 as *mut xmlRelaxNGValidState;
+    let mut state: *mut crate::src::relaxng::_xmlRelaxNGValidState = 0 as *mut xmlRelaxNGValidState;
     let mut i: i32 = 0;
     let mut tmp: i32 = 0;
     let mut best: i32 = -(1 as i32);
     let mut value: i32 = 1000000 as i32;
-    if ctxt.is_null() || ((*ctxt).states).is_null()
-        || (*(*ctxt).states).nbState <= 0 as i32
-    {
+    if ctxt.is_null() || (unsafe { (*ctxt).states }).is_null() || (unsafe { (*(*ctxt).states).nbState }) <= 0 as i32 {
         return -(1 as i32);
     }
     i = 0 as i32;
-    while i < (*(*ctxt).states).nbState {
-        state = *((*(*ctxt).states).tabState).offset(i as isize);
+    while i < (unsafe { (*(*ctxt).states).nbState }) {
+        state = unsafe { *((*(*ctxt).states).tabState).offset(i as isize) };
         if !state.is_null() {
-            if !((*state).seq).is_null() {
+            if !(unsafe { (*state).seq }).is_null() {
                 if best == -(1 as i32) || value > 100000 as i32 {
                     value = 100000 as i32;
                     best = i;
                 }
             } else {
-                tmp = (*state).nbAttrLeft;
+                tmp = unsafe { (*state).nbAttrLeft };
                 if best == -(1 as i32) || value > tmp {
                     value = tmp;
                     best = i;
@@ -13653,37 +13062,37 @@ unsafe extern "C" fn xmlRelaxNGBestState<'a1>(
     }
     return best;
 }
-unsafe extern "C" fn xmlRelaxNGLogBestError<'a1>(mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>) {
+extern "C" fn xmlRelaxNGLogBestError<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+) {
     let mut best: i32 = 0;
-    if ctxt.is_null() || ((*ctxt).states).is_null()
-        || (*(*ctxt).states).nbState <= 0 as i32
-    {
+    if ctxt.is_null() || (unsafe { (*ctxt).states }).is_null() || (unsafe { (*(*ctxt).states).nbState }) <= 0 as i32 {
         return;
     }
     best = xmlRelaxNGBestState(ctxt);
-    if best >= 0 as i32 && best < (*(*ctxt).states).nbState {
-        let ref mut fresh418 = (*ctxt).state;
-        *fresh418 = *((*(*ctxt).states).tabState).offset(best as isize);
+    if best >= 0 as i32 && best < (unsafe { (*(*ctxt).states).nbState }) {
+        let fresh418 = unsafe { &mut ((*ctxt).state) };
+        *fresh418 = unsafe { *((*(*ctxt).states).tabState).offset(best as isize) };
         xmlRelaxNGValidateElementEnd(ctxt, 1 as i32);
     }
 }
-unsafe extern "C" fn xmlRelaxNGValidateElementEnd<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+extern "C" fn xmlRelaxNGValidateElementEnd<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
     mut dolog: i32,
 ) -> i32 {
     let mut i: i32 = 0;
-    let mut state: * mut crate::src::relaxng::_xmlRelaxNGValidState = 0 as *mut xmlRelaxNGValidState;
-    state = (*ctxt).state;
-    if !((*state).seq).is_null() {
-        let ref mut fresh419 = (*state).seq;
-        *fresh419 = xmlRelaxNGSkipIgnored(ctxt, (*state).seq);
-        if !((*state).seq).is_null() {
+    let mut state: *mut crate::src::relaxng::_xmlRelaxNGValidState = 0 as *mut xmlRelaxNGValidState;
+    state = unsafe { (*ctxt).state };
+    if !(unsafe { (*state).seq }).is_null() {
+        let fresh419 = unsafe { &mut ((*state).seq) };
+        *fresh419 = xmlRelaxNGSkipIgnored(ctxt, unsafe { (*state).seq });
+        if !(unsafe { (*state).seq }).is_null() {
             if dolog != 0 {
                 xmlRelaxNGAddValidError(
                     ctxt,
                     XML_RELAXNG_ERR_EXTRACONTENT,
-                    (*(*state).node).name,
-                    (*(*state).seq).name,
+                    unsafe { (*(*state).node).name },
+                    unsafe { (*(*state).seq).name },
                     0 as i32,
                 );
             }
@@ -13691,14 +13100,14 @@ unsafe extern "C" fn xmlRelaxNGValidateElementEnd<'a1>(
         }
     }
     i = 0 as i32;
-    while i < (*state).nbAttrs {
-        if !(*((*state).attrs).offset(i as isize)).is_null() {
+    while i < (unsafe { (*state).nbAttrs }) {
+        if !(unsafe { *((*state).attrs).offset(i as isize) }).is_null() {
             if dolog != 0 {
                 xmlRelaxNGAddValidError(
                     ctxt,
                     XML_RELAXNG_ERR_INVALIDATTR,
-                    (**((*state).attrs).offset(i as isize)).name,
-                    (*(*state).node).name,
+                    unsafe { (**((*state).attrs).offset(i as isize)).name },
+                    unsafe { (*(*state).node).name },
                     0 as i32,
                 );
             }
@@ -13708,18 +13117,19 @@ unsafe extern "C" fn xmlRelaxNGValidateElementEnd<'a1>(
     }
     return 0 as i32;
 }
-unsafe extern "C" fn xmlRelaxNGValidateState<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut define: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+extern "C" fn xmlRelaxNGValidateState<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut define: *mut crate::src::relaxng::_xmlRelaxNGDefine,
 ) -> i32 {
-    let mut node: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut node: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
     let mut ret: i32 = 0 as i32;
     let mut i: i32 = 0;
     let mut tmp: i32 = 0;
     let mut oldflags: i32 = 0;
     let mut errNr: i32 = 0;
-    let mut oldstate: * mut crate::src::relaxng::_xmlRelaxNGValidState = 0 as xmlRelaxNGValidStatePtr;
-    let mut state: * mut crate::src::relaxng::_xmlRelaxNGValidState = 0 as *mut xmlRelaxNGValidState;
+    let mut oldstate: *mut crate::src::relaxng::_xmlRelaxNGValidState =
+        0 as xmlRelaxNGValidStatePtr;
+    let mut state: *mut crate::src::relaxng::_xmlRelaxNGValidState = 0 as *mut xmlRelaxNGValidState;
     if define.is_null() {
         xmlRelaxNGAddValidError(
             ctxt,
@@ -13730,58 +13140,52 @@ unsafe extern "C" fn xmlRelaxNGValidateState<'a1>(
         );
         return -(1 as i32);
     }
-    if !((*ctxt).state).is_null() {
-        node = (*(*ctxt).state).seq;
+    if !(unsafe { (*ctxt).state }).is_null() {
+        node = unsafe { (*(*ctxt).state).seq };
     } else {
         node = 0 as xmlNodePtr;
     }
-    let ref mut fresh420 = (*ctxt).depth;
+    let fresh420 = unsafe { &mut ((*ctxt).depth) };
     *fresh420 += 1;
     let mut current_block_441: u64;
-    match (*define).type_0 as i32 {
+    match (unsafe { (*define).type_0 }) as i32 {
         0 => {
             ret = 0 as i32;
             current_block_441 = 4115481825097854405;
-        }
+        },
         1 => {
             ret = -(1 as i32);
             current_block_441 = 4115481825097854405;
-        }
+        },
         3 => {
             while !node.is_null()
-                && ((*node).type_0 as u32
-                    == XML_TEXT_NODE as i32 as u32
-                    || (*node).type_0 as u32
-                        == XML_COMMENT_NODE as i32 as u32
-                    || (*node).type_0 as u32
-                        == XML_PI_NODE as i32 as u32
-                    || (*node).type_0 as u32
-                        == XML_CDATA_SECTION_NODE as i32 as u32)
+                && ((unsafe { (*node).type_0 }) as u32 == XML_TEXT_NODE as i32 as u32
+                    || (unsafe { (*node).type_0 }) as u32 == XML_COMMENT_NODE as i32 as u32
+                    || (unsafe { (*node).type_0 }) as u32 == XML_PI_NODE as i32 as u32
+                    || (unsafe { (*node).type_0 }) as u32 == XML_CDATA_SECTION_NODE as i32 as u32)
             {
-                node = (*node).next;
+                node = unsafe { (*node).next };
             }
-            let ref mut fresh421 = (*(*ctxt).state).seq;
+            let fresh421 = unsafe { &mut ((*(*ctxt).state).seq) };
             *fresh421 = node;
             current_block_441 = 4115481825097854405;
-        }
+        },
         4 => {
-            errNr = (*ctxt).errNr;
+            errNr = unsafe { (*ctxt).errNr };
             node = xmlRelaxNGSkipIgnored(ctxt, node);
             if node.is_null() {
                 xmlRelaxNGAddValidError(
                     ctxt,
                     XML_RELAXNG_ERR_NOELEM,
-                    (*define).name,
+                    unsafe { (*define).name },
                     0 as *const xmlChar,
                     0 as i32,
                 );
                 ret = -(1 as i32);
-                if (*ctxt).flags & 1 as i32 == 0 as i32 {
+                if (unsafe { (*ctxt).flags }) & 1 as i32 == 0 as i32 {
                     xmlRelaxNGDumpValidError(ctxt);
                 }
-            } else if (*node).type_0 as u32
-                    != XML_ELEMENT_NODE as i32 as u32
-                {
+            } else if (unsafe { (*node).type_0 }) as u32 != XML_ELEMENT_NODE as i32 as u32 {
                 xmlRelaxNGAddValidError(
                     ctxt,
                     XML_RELAXNG_ERR_NOTELEM,
@@ -13790,27 +13194,30 @@ unsafe extern "C" fn xmlRelaxNGValidateState<'a1>(
                     0 as i32,
                 );
                 ret = -(1 as i32);
-                if (*ctxt).flags & 1 as i32 == 0 as i32 {
+                if (unsafe { (*ctxt).flags }) & 1 as i32 == 0 as i32 {
                     xmlRelaxNGDumpValidError(ctxt);
                 }
-            } else if (*node).psvi == define as *mut libc::c_void {
-                let ref mut fresh422 = (*(*ctxt).state).seq;
-                *fresh422 = xmlRelaxNGSkipIgnored(ctxt, (*node).next);
-                if (*ctxt).errNr > errNr {
+            } else if (unsafe { (*node).psvi }) == define as *mut libc::c_void {
+                let fresh422 = unsafe { &mut ((*(*ctxt).state).seq) };
+                *fresh422 = xmlRelaxNGSkipIgnored(ctxt, unsafe { (*node).next });
+                if (unsafe { (*ctxt).errNr }) > errNr {
                     xmlRelaxNGPopErrors(ctxt, errNr);
                 }
-                if (*ctxt).errNr != 0 as i32 {
-                    while !borrow(& ((*ctxt).err)).is_none()
-                        && ((*(borrow(& (*ctxt).err)).unwrap()).err as u32
+                if (unsafe { (*ctxt).errNr }) != 0 as i32 {
+                    while !borrow(unsafe { &((*ctxt).err) }).is_none()
+                        && ((*(borrow(unsafe { &(*ctxt).err })).unwrap()).err as u32
                             == XML_RELAXNG_ERR_ELEMNAME as i32 as u32
-                            && xmlStrEqual((*(borrow(& (*ctxt).err)).unwrap()).arg2, (*node).name) != 0
-                            || (*(borrow(& (*ctxt).err)).unwrap()).err as u32
-                                == XML_RELAXNG_ERR_ELEMEXTRANS as i32
-                                    as u32
-                                && xmlStrEqual((*(borrow(& (*ctxt).err)).unwrap()).arg1, (*node).name) != 0
-                            || (*(borrow(& (*ctxt).err)).unwrap()).err as u32
+                            && (unsafe { xmlStrEqual((*(borrow(&(*ctxt).err)).unwrap()).arg2, (*node).name) })
+                                != 0
+                            || (*(borrow(unsafe { &(*ctxt).err })).unwrap()).err as u32
+                                == XML_RELAXNG_ERR_ELEMEXTRANS as i32 as u32
+                                && (unsafe { xmlStrEqual(
+                                    (*(borrow(&(*ctxt).err)).unwrap()).arg1,
+                                    (*node).name,
+                                ) }) != 0
+                            || (*(borrow(unsafe { &(*ctxt).err })).unwrap()).err as u32
                                 == XML_RELAXNG_ERR_NOELEM as i32 as u32
-                            || (*(borrow(& (*ctxt).err)).unwrap()).err as u32
+                            || (*(borrow(unsafe { &(*ctxt).err })).unwrap()).err as u32
                                 == XML_RELAXNG_ERR_NOTELEM as i32 as u32)
                     {
                         xmlRelaxNGValidErrorPop(ctxt);
@@ -13820,96 +13227,101 @@ unsafe extern "C" fn xmlRelaxNGValidateState<'a1>(
                 ret = xmlRelaxNGElementMatch(ctxt, define, node);
                 if ret <= 0 as i32 {
                     ret = -(1 as i32);
-                    if (*ctxt).flags & 1 as i32 == 0 as i32 {
+                    if (unsafe { (*ctxt).flags }) & 1 as i32 == 0 as i32 {
                         xmlRelaxNGDumpValidError(ctxt);
                     }
                 } else {
                     ret = 0 as i32;
-                    if (*ctxt).errNr != 0 as i32 {
-                        if (*ctxt).errNr > errNr {
+                    if (unsafe { (*ctxt).errNr }) != 0 as i32 {
+                        if (unsafe { (*ctxt).errNr }) > errNr {
                             xmlRelaxNGPopErrors(ctxt, errNr);
                         }
-                        while !borrow(& ((*ctxt).err)).is_none()
-                            && ((*(borrow(& (*ctxt).err)).unwrap()).err as u32
+                        while !borrow(unsafe { &((*ctxt).err) }).is_none()
+                            && ((*(borrow(unsafe { &(*ctxt).err })).unwrap()).err as u32
                                 == XML_RELAXNG_ERR_ELEMNAME as i32 as u32
-                                && xmlStrEqual((*(borrow(& (*ctxt).err)).unwrap()).arg2, (*node).name) != 0
-                                || (*(borrow(& (*ctxt).err)).unwrap()).err as u32
-                                    == XML_RELAXNG_ERR_ELEMEXTRANS as i32
-                                        as u32
-                                    && xmlStrEqual((*(borrow(& (*ctxt).err)).unwrap()).arg1, (*node).name) != 0
-                                || (*(borrow(& (*ctxt).err)).unwrap()).err as u32
+                                && (unsafe { xmlStrEqual(
+                                    (*(borrow(&(*ctxt).err)).unwrap()).arg2,
+                                    (*node).name,
+                                ) }) != 0
+                                || (*(borrow(unsafe { &(*ctxt).err })).unwrap()).err as u32
+                                    == XML_RELAXNG_ERR_ELEMEXTRANS as i32 as u32
+                                    && (unsafe { xmlStrEqual(
+                                        (*(borrow(&(*ctxt).err)).unwrap()).arg1,
+                                        (*node).name,
+                                    ) }) != 0
+                                || (*(borrow(unsafe { &(*ctxt).err })).unwrap()).err as u32
                                     == XML_RELAXNG_ERR_NOELEM as i32 as u32
-                                || (*(borrow(& (*ctxt).err)).unwrap()).err as u32
+                                || (*(borrow(unsafe { &(*ctxt).err })).unwrap()).err as u32
                                     == XML_RELAXNG_ERR_NOTELEM as i32 as u32)
                         {
                             xmlRelaxNGValidErrorPop(ctxt);
                         }
                     }
-                    errNr = (*ctxt).errNr;
-                    oldflags = (*ctxt).flags;
-                    if (*ctxt).flags & 4 as i32 != 0 {
-                        (*ctxt).flags -= 4 as i32;
+                    errNr = unsafe { (*ctxt).errNr };
+                    oldflags = unsafe { (*ctxt).flags };
+                    if (unsafe { (*ctxt).flags }) & 4 as i32 != 0 {
+                        (unsafe { (*ctxt).flags -= 4 as i32 });
                     }
                     state = xmlRelaxNGNewValidState(ctxt, node);
                     if state.is_null() {
                         ret = -(1 as i32);
-                        if (*ctxt).flags & 1 as i32 == 0 as i32 {
+                        if (unsafe { (*ctxt).flags }) & 1 as i32 == 0 as i32 {
                             xmlRelaxNGDumpValidError(ctxt);
                         }
                     } else {
-                        oldstate = (*ctxt).state;
-                        let ref mut fresh423 = (*ctxt).state;
+                        oldstate = unsafe { (*ctxt).state };
+                        let fresh423 = unsafe { &mut ((*ctxt).state) };
                         *fresh423 = state;
-                        if !((*define).attrs).is_null() {
-                            tmp = xmlRelaxNGValidateAttributeList(ctxt, (*define).attrs);
+                        if !(unsafe { (*define).attrs }).is_null() {
+                            tmp = xmlRelaxNGValidateAttributeList(ctxt, unsafe { (*define).attrs });
                             if tmp != 0 as i32 {
                                 ret = -(1 as i32);
                                 xmlRelaxNGAddValidError(
                                     ctxt,
                                     XML_RELAXNG_ERR_ATTRVALID,
-                                    (*node).name,
+                                    unsafe { (*node).name },
                                     0 as *const xmlChar,
                                     0 as i32,
                                 );
                             }
                         }
-                        if !((*define).contModel).is_null() {
-                            let mut nstate: * mut crate::src::relaxng::_xmlRelaxNGValidState = 0
-                                as *mut xmlRelaxNGValidState;
-                            let mut tmpstate: * mut crate::src::relaxng::_xmlRelaxNGValidState = (*ctxt).state;
-                            let mut tmpstates: * mut crate::src::relaxng::_xmlRelaxNGStates = (*ctxt).states;
-                            let mut nseq: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+                        if !(unsafe { (*define).contModel }).is_null() {
+                            let mut nstate: *mut crate::src::relaxng::_xmlRelaxNGValidState =
+                                0 as *mut xmlRelaxNGValidState;
+                            let mut tmpstate: *mut crate::src::relaxng::_xmlRelaxNGValidState =
+                                unsafe { (*ctxt).state };
+                            let mut tmpstates: *mut crate::src::relaxng::_xmlRelaxNGStates =
+                                unsafe { (*ctxt).states };
+                            let mut nseq: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
                             nstate = xmlRelaxNGNewValidState(ctxt, node);
-                            let ref mut fresh424 = (*ctxt).state;
+                            let fresh424 = unsafe { &mut ((*ctxt).state) };
                             *fresh424 = nstate;
-                            let ref mut fresh425 = (*ctxt).states;
+                            let fresh425 = unsafe { &mut ((*ctxt).states) };
                             *fresh425 = 0 as xmlRelaxNGStatesPtr;
                             tmp = xmlRelaxNGValidateCompiledContent(
                                 ctxt,
-                                (*define).contModel,
-                                (*(*ctxt).state).seq,
+                                unsafe { (*define).contModel },
+                                unsafe { (*(*ctxt).state).seq },
                             );
-                            nseq = (*(*ctxt).state).seq;
-                            let ref mut fresh426 = (*ctxt).state;
+                            nseq = unsafe { (*(*ctxt).state).seq };
+                            let fresh426 = unsafe { &mut ((*ctxt).state) };
                             *fresh426 = tmpstate;
-                            let ref mut fresh427 = (*ctxt).states;
+                            let fresh427 = unsafe { &mut ((*ctxt).states) };
                             *fresh427 = tmpstates;
                             xmlRelaxNGFreeValidState(ctxt, nstate);
                             if tmp != 0 as i32 {
                                 ret = -(1 as i32);
                             }
-                            if !((*ctxt).states).is_null() {
+                            if !(unsafe { (*ctxt).states }).is_null() {
                                 tmp = -(1 as i32);
                                 i = 0 as i32;
-                                while i < (*(*ctxt).states).nbState {
-                                    state = *((*(*ctxt).states).tabState).offset(i as isize);
-                                    let ref mut fresh428 = (*ctxt).state;
+                                while i < (unsafe { (*(*ctxt).states).nbState }) {
+                                    state = unsafe { *((*(*ctxt).states).tabState).offset(i as isize) };
+                                    let fresh428 = unsafe { &mut ((*ctxt).state) };
                                     *fresh428 = state;
-                                    let ref mut fresh429 = (*(*ctxt).state).seq;
+                                    let fresh429 = unsafe { &mut ((*(*ctxt).state).seq) };
                                     *fresh429 = nseq;
-                                    if xmlRelaxNGValidateElementEnd(ctxt, 0 as i32)
-                                        == 0 as i32
-                                    {
+                                    if xmlRelaxNGValidateElementEnd(ctxt, 0 as i32) == 0 as i32 {
                                         tmp = 0 as i32;
                                         break;
                                     } else {
@@ -13917,28 +13329,28 @@ unsafe extern "C" fn xmlRelaxNGValidateState<'a1>(
                                     }
                                 }
                                 if tmp != 0 as i32 {
-                                    (*ctxt).flags |= 1 as i32;
+                                    (unsafe { (*ctxt).flags |= 1 as i32 });
                                     xmlRelaxNGLogBestError(ctxt);
                                 }
                                 i = 0 as i32;
-                                while i < (*(*ctxt).states).nbState {
+                                while i < (unsafe { (*(*ctxt).states).nbState }) {
                                     xmlRelaxNGFreeValidState(
                                         ctxt,
-                                        *((*(*ctxt).states).tabState).offset(i as isize),
+                                        unsafe { *((*(*ctxt).states).tabState).offset(i as isize) },
                                     );
                                     i += 1;
                                 }
-                                xmlRelaxNGFreeStates(ctxt, (*ctxt).states);
-                                (*ctxt).flags = oldflags;
-                                let ref mut fresh430 = (*ctxt).states;
+                                xmlRelaxNGFreeStates(ctxt, unsafe { (*ctxt).states });
+                                (unsafe { (*ctxt).flags = oldflags });
+                                let fresh430 = unsafe { &mut ((*ctxt).states) };
                                 *fresh430 = 0 as xmlRelaxNGStatesPtr;
                                 if ret == 0 as i32 && tmp == -(1 as i32) {
                                     ret = -(1 as i32);
                                 }
                             } else {
-                                state = (*ctxt).state;
-                                if !((*ctxt).state).is_null() {
-                                    let ref mut fresh431 = (*(*ctxt).state).seq;
+                                state = unsafe { (*ctxt).state };
+                                if !(unsafe { (*ctxt).state }).is_null() {
+                                    let fresh431 = unsafe { &mut ((*(*ctxt).state).seq) };
                                     *fresh431 = nseq;
                                 }
                                 if ret == 0 as i32 {
@@ -13947,46 +13359,41 @@ unsafe extern "C" fn xmlRelaxNGValidateState<'a1>(
                                 xmlRelaxNGFreeValidState(ctxt, state);
                             }
                         } else {
-                            if !((*define).content).is_null() {
-                                tmp = xmlRelaxNGValidateDefinitionList(
-                                    ctxt,
-                                    (*define).content,
-                                );
+                            if !(unsafe { (*define).content }).is_null() {
+                                tmp = xmlRelaxNGValidateDefinitionList(ctxt, unsafe { (*define).content });
                                 if tmp != 0 as i32 {
                                     ret = -(1 as i32);
-                                    if ((*ctxt).state).is_null() {
-                                        let ref mut fresh432 = (*ctxt).state;
+                                    if (unsafe { (*ctxt).state }).is_null() {
+                                        let fresh432 = unsafe { &mut ((*ctxt).state) };
                                         *fresh432 = oldstate;
                                         xmlRelaxNGAddValidError(
                                             ctxt,
                                             XML_RELAXNG_ERR_CONTENTVALID,
-                                            (*node).name,
+                                            unsafe { (*node).name },
                                             0 as *const xmlChar,
                                             0 as i32,
                                         );
-                                        let ref mut fresh433 = (*ctxt).state;
+                                        let fresh433 = unsafe { &mut ((*ctxt).state) };
                                         *fresh433 = 0 as xmlRelaxNGValidStatePtr;
                                     } else {
                                         xmlRelaxNGAddValidError(
                                             ctxt,
                                             XML_RELAXNG_ERR_CONTENTVALID,
-                                            (*node).name,
+                                            unsafe { (*node).name },
                                             0 as *const xmlChar,
                                             0 as i32,
                                         );
                                     }
                                 }
                             }
-                            if !((*ctxt).states).is_null() {
+                            if !(unsafe { (*ctxt).states }).is_null() {
                                 tmp = -(1 as i32);
                                 i = 0 as i32;
-                                while i < (*(*ctxt).states).nbState {
-                                    state = *((*(*ctxt).states).tabState).offset(i as isize);
-                                    let ref mut fresh434 = (*ctxt).state;
+                                while i < (unsafe { (*(*ctxt).states).nbState }) {
+                                    state = unsafe { *((*(*ctxt).states).tabState).offset(i as isize) };
+                                    let fresh434 = unsafe { &mut ((*ctxt).state) };
                                     *fresh434 = state;
-                                    if xmlRelaxNGValidateElementEnd(ctxt, 0 as i32)
-                                        == 0 as i32
-                                    {
+                                    if xmlRelaxNGValidateElementEnd(ctxt, 0 as i32) == 0 as i32 {
                                         tmp = 0 as i32;
                                         break;
                                     } else {
@@ -13994,29 +13401,29 @@ unsafe extern "C" fn xmlRelaxNGValidateState<'a1>(
                                     }
                                 }
                                 if tmp != 0 as i32 {
-                                    (*ctxt).flags |= 1 as i32;
+                                    (unsafe { (*ctxt).flags |= 1 as i32 });
                                     xmlRelaxNGLogBestError(ctxt);
                                 }
                                 i = 0 as i32;
-                                while i < (*(*ctxt).states).nbState {
+                                while i < (unsafe { (*(*ctxt).states).nbState }) {
                                     xmlRelaxNGFreeValidState(
                                         ctxt,
-                                        *((*(*ctxt).states).tabState).offset(i as isize),
+                                        unsafe { *((*(*ctxt).states).tabState).offset(i as isize) },
                                     );
-                                    let ref mut fresh435 = *((*(*ctxt).states).tabState)
-                                        .offset(i as isize);
+                                    let fresh435 =
+                                        unsafe { &mut (*((*(*ctxt).states).tabState).offset(i as isize)) };
                                     *fresh435 = 0 as xmlRelaxNGValidStatePtr;
                                     i += 1;
                                 }
-                                xmlRelaxNGFreeStates(ctxt, (*ctxt).states);
-                                (*ctxt).flags = oldflags;
-                                let ref mut fresh436 = (*ctxt).states;
+                                xmlRelaxNGFreeStates(ctxt, unsafe { (*ctxt).states });
+                                (unsafe { (*ctxt).flags = oldflags });
+                                let fresh436 = unsafe { &mut ((*ctxt).states) };
                                 *fresh436 = 0 as xmlRelaxNGStatesPtr;
                                 if ret == 0 as i32 && tmp == -(1 as i32) {
                                     ret = -(1 as i32);
                                 }
                             } else {
-                                state = (*ctxt).state;
+                                state = unsafe { (*ctxt).state };
                                 if ret == 0 as i32 {
                                     ret = xmlRelaxNGValidateElementEnd(ctxt, 1 as i32);
                                 }
@@ -14024,139 +13431,136 @@ unsafe extern "C" fn xmlRelaxNGValidateState<'a1>(
                             }
                         }
                         if ret == 0 as i32 {
-                            let ref mut fresh437 = (*node).psvi;
+                            let fresh437 = unsafe { &mut ((*node).psvi) };
                             *fresh437 = define as *mut libc::c_void;
                         }
-                        (*ctxt).flags = oldflags;
-                        let ref mut fresh438 = (*ctxt).state;
+                        (unsafe { (*ctxt).flags = oldflags });
+                        let fresh438 = unsafe { &mut ((*ctxt).state) };
                         *fresh438 = oldstate;
                         if !oldstate.is_null() {
-                            let ref mut fresh439 = (*oldstate).seq;
-                            *fresh439 = xmlRelaxNGSkipIgnored(ctxt, (*node).next);
+                            let fresh439 = unsafe { &mut ((*oldstate).seq) };
+                            *fresh439 = xmlRelaxNGSkipIgnored(ctxt, unsafe { (*node).next });
                         }
                         if ret != 0 as i32 {
-                            if (*ctxt).flags & 1 as i32 == 0 as i32 {
+                            if (unsafe { (*ctxt).flags }) & 1 as i32 == 0 as i32 {
                                 xmlRelaxNGDumpValidError(ctxt);
                                 ret = 0 as i32;
                             }
-                        } else if (*ctxt).errNr > errNr {
+                        } else if (unsafe { (*ctxt).errNr }) > errNr {
                             xmlRelaxNGPopErrors(ctxt, errNr);
                         }
                     }
                 }
             }
             current_block_441 = 4115481825097854405;
-        }
+        },
         14 => {
-            errNr = (*ctxt).errNr;
-            oldflags = (*ctxt).flags;
-            (*ctxt).flags |= 1 as i32;
-            oldstate = xmlRelaxNGCopyValidState(ctxt, (*ctxt).state);
-            ret = xmlRelaxNGValidateDefinitionList(ctxt, (*define).content);
+            errNr = unsafe { (*ctxt).errNr };
+            oldflags = unsafe { (*ctxt).flags };
+            (unsafe { (*ctxt).flags |= 1 as i32 });
+            oldstate = xmlRelaxNGCopyValidState(ctxt, unsafe { (*ctxt).state });
+            ret = xmlRelaxNGValidateDefinitionList(ctxt, unsafe { (*define).content });
             if ret != 0 as i32 {
-                if !((*ctxt).state).is_null() {
-                    xmlRelaxNGFreeValidState(ctxt, (*ctxt).state);
+                if !(unsafe { (*ctxt).state }).is_null() {
+                    xmlRelaxNGFreeValidState(ctxt, unsafe { (*ctxt).state });
                 }
-                let ref mut fresh440 = (*ctxt).state;
+                let fresh440 = unsafe { &mut ((*ctxt).state) };
                 *fresh440 = oldstate;
-                (*ctxt).flags = oldflags;
+                (unsafe { (*ctxt).flags = oldflags });
                 ret = 0 as i32;
-                if (*ctxt).errNr > errNr {
+                if (unsafe { (*ctxt).errNr }) > errNr {
                     xmlRelaxNGPopErrors(ctxt, errNr);
                 }
             } else {
-                if !((*ctxt).states).is_null() {
-                    xmlRelaxNGAddStates(ctxt, (*ctxt).states, oldstate);
+                if !(unsafe { (*ctxt).states }).is_null() {
+                    xmlRelaxNGAddStates(ctxt, unsafe { (*ctxt).states }, oldstate);
                     current_block_441 = 11620251134136044114;
                 } else {
-                    let ref mut fresh441 = (*ctxt).states;
+                    let fresh441 = unsafe { &mut ((*ctxt).states) };
                     *fresh441 = xmlRelaxNGNewStates(ctxt, 1 as i32);
-                    if ((*ctxt).states).is_null() {
+                    if (unsafe { (*ctxt).states }).is_null() {
                         xmlRelaxNGFreeValidState(ctxt, oldstate);
-                        (*ctxt).flags = oldflags;
+                        (unsafe { (*ctxt).flags = oldflags });
                         ret = -(1 as i32);
-                        if (*ctxt).errNr > errNr {
+                        if (unsafe { (*ctxt).errNr }) > errNr {
                             xmlRelaxNGPopErrors(ctxt, errNr);
                         }
                         current_block_441 = 4115481825097854405;
                     } else {
-                        xmlRelaxNGAddStates(ctxt, (*ctxt).states, oldstate);
-                        xmlRelaxNGAddStates(ctxt, (*ctxt).states, (*ctxt).state);
-                        let ref mut fresh442 = (*ctxt).state;
+                        xmlRelaxNGAddStates(ctxt, unsafe { (*ctxt).states }, oldstate);
+                        xmlRelaxNGAddStates(ctxt, unsafe { (*ctxt).states }, unsafe { (*ctxt).state });
+                        let fresh442 = unsafe { &mut ((*ctxt).state) };
                         *fresh442 = 0 as xmlRelaxNGValidStatePtr;
                         current_block_441 = 11620251134136044114;
                     }
                 }
                 match current_block_441 {
-                    4115481825097854405 => {}
+                    4115481825097854405 => {},
                     _ => {
-                        (*ctxt).flags = oldflags;
+                        (unsafe { (*ctxt).flags = oldflags });
                         ret = 0 as i32;
-                        if (*ctxt).errNr > errNr {
+                        if (unsafe { (*ctxt).errNr }) > errNr {
                             xmlRelaxNGPopErrors(ctxt, errNr);
                         }
-                    }
+                    },
                 }
             }
             current_block_441 = 4115481825097854405;
-        }
+        },
         16 => {
-            errNr = (*ctxt).errNr;
-            ret = xmlRelaxNGValidateDefinitionList(ctxt, (*define).content);
+            errNr = unsafe { (*ctxt).errNr };
+            ret = xmlRelaxNGValidateDefinitionList(ctxt, unsafe { (*define).content });
             if ret != 0 as i32 {
                 current_block_441 = 4115481825097854405;
             } else {
-                if (*ctxt).errNr > errNr {
+                if (unsafe { (*ctxt).errNr }) > errNr {
                     xmlRelaxNGPopErrors(ctxt, errNr);
                 }
                 current_block_441 = 13526015532137226550;
             }
-        }
+        },
         15 => {
             current_block_441 = 13526015532137226550;
-        }
+        },
         17 => {
-            let mut list: * mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
-            let mut states_0: * mut crate::src::relaxng::_xmlRelaxNGStates = 0 as xmlRelaxNGStatesPtr;
+            let mut list: *mut crate::src::relaxng::_xmlRelaxNGDefine = 0 as xmlRelaxNGDefinePtr;
+            let mut states_0: *mut crate::src::relaxng::_xmlRelaxNGStates =
+                0 as xmlRelaxNGStatesPtr;
             node = xmlRelaxNGSkipIgnored(ctxt, node);
-            errNr = (*ctxt).errNr;
-            if (*define).dflags as i32 & (1 as i32) << 4 as i32
-                != 0 && !((*define).data).is_null() && !node.is_null()
+            errNr = unsafe { (*ctxt).errNr };
+            if (unsafe { (*define).dflags }) as i32 & (1 as i32) << 4 as i32 != 0
+                && !(unsafe { (*define).data }).is_null()
+                && !node.is_null()
             {
-                let mut triage: * mut crate::src::hash::_xmlHashTable = (*define).data as xmlHashTablePtr;
-                if (*node).type_0 as u32
-                    == XML_TEXT_NODE as i32 as u32
-                    || (*node).type_0 as u32
-                        == XML_CDATA_SECTION_NODE as i32 as u32
+                let mut triage: *mut crate::src::hash::_xmlHashTable =
+                    (unsafe { (*define).data }) as xmlHashTablePtr;
+                if (unsafe { (*node).type_0 }) as u32 == XML_TEXT_NODE as i32 as u32
+                    || (unsafe { (*node).type_0 }) as u32 == XML_CDATA_SECTION_NODE as i32 as u32
                 {
                     list = xmlHashLookup2(
                         triage,
                         b"#text\0" as *const u8 as *const i8 as *mut xmlChar,
                         0 as *const xmlChar,
                     ) as xmlRelaxNGDefinePtr;
-                } else if (*node).type_0 as u32
-                        == XML_ELEMENT_NODE as i32 as u32
-                    {
-                    if !((*node).ns).is_null() {
-                        list = xmlHashLookup2(triage, (*node).name, (*(*node).ns).href)
+                } else if (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32 {
+                    if !(unsafe { (*node).ns }).is_null() {
+                        list = xmlHashLookup2(triage, unsafe { (*node).name }, unsafe { (*(*node).ns).href })
                             as xmlRelaxNGDefinePtr;
                         if list.is_null() {
                             list = xmlHashLookup2(
                                 triage,
-                                b"#any\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
-                                (*(*node).ns).href,
+                                b"#any\0" as *const u8 as *const i8 as *mut xmlChar,
+                                unsafe { (*(*node).ns).href },
                             ) as xmlRelaxNGDefinePtr;
                         }
                     } else {
-                        list = xmlHashLookup2(triage, (*node).name, 0 as *const xmlChar)
+                        list = xmlHashLookup2(triage, unsafe { (*node).name }, 0 as *const xmlChar)
                             as xmlRelaxNGDefinePtr;
                     }
                     if list.is_null() {
                         list = xmlHashLookup2(
                             triage,
-                            b"#any\0" as *const u8 as *const i8
-                                as *mut xmlChar,
+                            b"#any\0" as *const u8 as *const i8 as *mut xmlChar,
                             0 as *const xmlChar,
                         ) as xmlRelaxNGDefinePtr;
                     }
@@ -14166,131 +13570,119 @@ unsafe extern "C" fn xmlRelaxNGValidateState<'a1>(
                     xmlRelaxNGAddValidError(
                         ctxt,
                         XML_RELAXNG_ERR_ELEMWRONG,
-                        (*node).name,
+                        unsafe { (*node).name },
                         0 as *const xmlChar,
                         0 as i32,
                     );
                 } else {
                     ret = xmlRelaxNGValidateDefinition(ctxt, list);
-                    ret == 0 as i32;
+                    let _ = ret == 0 as i32;
                 }
             } else {
-                list = (*define).content;
-                oldflags = (*ctxt).flags;
-                (*ctxt).flags |= 1 as i32;
+                list = unsafe { (*define).content };
+                oldflags = unsafe { (*ctxt).flags };
+                (unsafe { (*ctxt).flags |= 1 as i32 });
                 while !list.is_null() {
-                    oldstate = xmlRelaxNGCopyValidState(ctxt, (*ctxt).state);
+                    oldstate = xmlRelaxNGCopyValidState(ctxt, unsafe { (*ctxt).state });
                     ret = xmlRelaxNGValidateDefinition(ctxt, list);
                     if ret == 0 as i32 {
                         if states_0.is_null() {
                             states_0 = xmlRelaxNGNewStates(ctxt, 1 as i32);
                         }
-                        if !((*ctxt).state).is_null() {
-                            xmlRelaxNGAddStates(ctxt, states_0, (*ctxt).state);
-                        } else if !((*ctxt).states).is_null() {
+                        if !(unsafe { (*ctxt).state }).is_null() {
+                            xmlRelaxNGAddStates(ctxt, states_0, unsafe { (*ctxt).state });
+                        } else if !(unsafe { (*ctxt).states }).is_null() {
                             i = 0 as i32;
-                            while i < (*(*ctxt).states).nbState {
+                            while i < (unsafe { (*(*ctxt).states).nbState }) {
                                 xmlRelaxNGAddStates(
                                     ctxt,
                                     states_0,
-                                    *((*(*ctxt).states).tabState).offset(i as isize),
+                                    unsafe { *((*(*ctxt).states).tabState).offset(i as isize) },
                                 );
                                 i += 1;
                             }
-                            xmlRelaxNGFreeStates(ctxt, (*ctxt).states);
-                            let ref mut fresh454 = (*ctxt).states;
+                            xmlRelaxNGFreeStates(ctxt, unsafe { (*ctxt).states });
+                            let fresh454 = unsafe { &mut ((*ctxt).states) };
                             *fresh454 = 0 as xmlRelaxNGStatesPtr;
                         }
                     } else {
-                        xmlRelaxNGFreeValidState(ctxt, (*ctxt).state);
+                        xmlRelaxNGFreeValidState(ctxt, unsafe { (*ctxt).state });
                     }
-                    let ref mut fresh455 = (*ctxt).state;
+                    let fresh455 = unsafe { &mut ((*ctxt).state) };
                     *fresh455 = oldstate;
-                    list = (*list).next;
+                    list = unsafe { (*list).next };
                 }
                 if !states_0.is_null() {
                     xmlRelaxNGFreeValidState(ctxt, oldstate);
-                    let ref mut fresh456 = (*ctxt).states;
+                    let fresh456 = unsafe { &mut ((*ctxt).states) };
                     *fresh456 = states_0;
-                    let ref mut fresh457 = (*ctxt).state;
+                    let fresh457 = unsafe { &mut ((*ctxt).state) };
                     *fresh457 = 0 as xmlRelaxNGValidStatePtr;
                     ret = 0 as i32;
                 } else {
-                    let ref mut fresh458 = (*ctxt).states;
+                    let fresh458 = unsafe { &mut ((*ctxt).states) };
                     *fresh458 = 0 as xmlRelaxNGStatesPtr;
                 }
-                (*ctxt).flags = oldflags;
+                (unsafe { (*ctxt).flags = oldflags });
                 if ret != 0 as i32 {
-                    if (*ctxt).flags & 1 as i32 == 0 as i32 {
+                    if (unsafe { (*ctxt).flags }) & 1 as i32 == 0 as i32 {
                         xmlRelaxNGDumpValidError(ctxt);
                     }
-                } else if (*ctxt).errNr > errNr {
+                } else if (unsafe { (*ctxt).errNr }) > errNr {
                     xmlRelaxNGPopErrors(ctxt, errNr);
                 }
             }
             current_block_441 = 4115481825097854405;
-        }
+        },
         10 | 18 => {
-            ret = xmlRelaxNGValidateDefinitionList(ctxt, (*define).content);
+            ret = xmlRelaxNGValidateDefinitionList(ctxt, unsafe { (*define).content });
             current_block_441 = 4115481825097854405;
-        }
+        },
         19 => {
             ret = xmlRelaxNGValidateInterleave(ctxt, define);
             current_block_441 = 4115481825097854405;
-        }
+        },
         9 => {
             ret = xmlRelaxNGValidateAttribute(ctxt, define);
             current_block_441 = 4115481825097854405;
-        }
+        },
         20 | -1 | 11 | 12 | 13 => {
-            ret = xmlRelaxNGValidateDefinition(ctxt, (*define).content);
+            ret = xmlRelaxNGValidateDefinition(ctxt, unsafe { (*define).content });
             current_block_441 = 4115481825097854405;
-        }
+        },
         5 => {
-            let mut child: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-            let mut content: * mut u8 = 0 as *mut xmlChar;
+            let mut child: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+            let mut content: *mut u8 = 0 as *mut xmlChar;
             child = node;
             while !child.is_null() {
-                if (*child).type_0 as u32
-                    == XML_ELEMENT_NODE as i32 as u32
-                {
+                if (unsafe { (*child).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32 {
                     xmlRelaxNGAddValidError(
                         ctxt,
                         XML_RELAXNG_ERR_DATAELEM,
-                        (*(*node).parent).name,
+                        unsafe { (*(*node).parent).name },
                         0 as *const xmlChar,
                         0 as i32,
                     );
                     ret = -(1 as i32);
                     break;
                 } else {
-                    if (*child).type_0 as u32
-                        == XML_TEXT_NODE as i32 as u32
-                        || (*child).type_0 as u32
-                            == XML_CDATA_SECTION_NODE as i32 as u32
+                    if (unsafe { (*child).type_0 }) as u32 == XML_TEXT_NODE as i32 as u32
+                        || (unsafe { (*child).type_0 }) as u32 == XML_CDATA_SECTION_NODE as i32 as u32
                     {
-                        content = xmlStrcat(content, (*child).content);
+                        content = unsafe { xmlStrcat(content, (*child).content) };
                     }
-                    child = (*child).next;
+                    child = unsafe { (*child).next };
                 }
             }
             if ret == -(1 as i32) {
                 if !content.is_null() {
-                    xmlFree
-                        .expect(
-                            "non-null function pointer",
-                        )(content as *mut libc::c_void);
+                    (unsafe { xmlFree.expect("non-null function pointer")(content as *mut libc::c_void) });
                 }
             } else {
                 if content.is_null() {
-                    content = xmlStrdup(
-                        b"\0" as *const u8 as *const i8 as *mut xmlChar,
-                    );
+                    content = unsafe { xmlStrdup(b"\0" as *const u8 as *const i8 as *mut xmlChar) };
                     if content.is_null() {
-                        xmlRngVErrMemory(
-                            ctxt,
-                            b"validating\n\0" as *const u8 as *const i8,
-                        );
+                        xmlRngVErrMemory(ctxt, b"validating\n\0" as *const u8 as *const i8);
                         ret = -(1 as i32);
                         current_block_441 = 4115481825097854405;
                     } else {
@@ -14300,83 +13692,66 @@ unsafe extern "C" fn xmlRelaxNGValidateState<'a1>(
                     current_block_441 = 16903451103323879633;
                 }
                 match current_block_441 {
-                    4115481825097854405 => {}
+                    4115481825097854405 => {},
                     _ => {
-                        ret = xmlRelaxNGValidateDatatype(
-                            ctxt,
-                            content,
-                            define,
-                            (*(*ctxt).state).seq,
-                        );
+                        ret =
+                            xmlRelaxNGValidateDatatype(ctxt, content, define, unsafe { (*(*ctxt).state).seq });
                         if ret == -(1 as i32) {
                             xmlRelaxNGAddValidError(
                                 ctxt,
                                 XML_RELAXNG_ERR_DATATYPE,
-                                (*define).name,
+                                unsafe { (*define).name },
                                 0 as *const xmlChar,
                                 0 as i32,
                             );
                         } else if ret == 0 as i32 {
-                            let ref mut fresh459 = (*(*ctxt).state).seq;
+                            let fresh459 = unsafe { &mut ((*(*ctxt).state).seq) };
                             *fresh459 = 0 as xmlNodePtr;
                         }
                         if !content.is_null() {
-                            xmlFree
-                                .expect(
-                                    "non-null function pointer",
-                                )(content as *mut libc::c_void);
+                            (unsafe { xmlFree.expect("non-null function pointer")(
+                                content as *mut libc::c_void,
+                            ) });
                         }
-                    }
+                    },
                 }
             }
             current_block_441 = 4115481825097854405;
-        }
+        },
         7 => {
-            let mut content_0: * mut u8 = 0 as *mut xmlChar;
-            let mut oldvalue: * mut u8 = 0 as *mut xmlChar;
-            let mut child_0: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+            let mut content_0: *mut u8 = 0 as *mut xmlChar;
+            let mut oldvalue: *mut u8 = 0 as *mut xmlChar;
+            let mut child_0: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
             child_0 = node;
             while !child_0.is_null() {
-                if (*child_0).type_0 as u32
-                    == XML_ELEMENT_NODE as i32 as u32
-                {
+                if (unsafe { (*child_0).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32 {
                     xmlRelaxNGAddValidError(
                         ctxt,
                         XML_RELAXNG_ERR_VALELEM,
-                        (*(*node).parent).name,
+                        unsafe { (*(*node).parent).name },
                         0 as *const xmlChar,
                         0 as i32,
                     );
                     ret = -(1 as i32);
                     break;
                 } else {
-                    if (*child_0).type_0 as u32
-                        == XML_TEXT_NODE as i32 as u32
-                        || (*child_0).type_0 as u32
-                            == XML_CDATA_SECTION_NODE as i32 as u32
+                    if (unsafe { (*child_0).type_0 }) as u32 == XML_TEXT_NODE as i32 as u32
+                        || (unsafe { (*child_0).type_0 }) as u32 == XML_CDATA_SECTION_NODE as i32 as u32
                     {
-                        content_0 = xmlStrcat(content_0, (*child_0).content);
+                        content_0 = unsafe { xmlStrcat(content_0, (*child_0).content) };
                     }
-                    child_0 = (*child_0).next;
+                    child_0 = unsafe { (*child_0).next };
                 }
             }
             if ret == -(1 as i32) {
                 if !content_0.is_null() {
-                    xmlFree
-                        .expect(
-                            "non-null function pointer",
-                        )(content_0 as *mut libc::c_void);
+                    (unsafe { xmlFree.expect("non-null function pointer")(content_0 as *mut libc::c_void) });
                 }
             } else {
                 if content_0.is_null() {
-                    content_0 = xmlStrdup(
-                        b"\0" as *const u8 as *const i8 as *mut xmlChar,
-                    );
+                    content_0 = unsafe { xmlStrdup(b"\0" as *const u8 as *const i8 as *mut xmlChar) };
                     if content_0.is_null() {
-                        xmlRngVErrMemory(
-                            ctxt,
-                            b"validating\n\0" as *const u8 as *const i8,
-                        );
+                        xmlRngVErrMemory(ctxt, b"validating\n\0" as *const u8 as *const i8);
                         ret = -(1 as i32);
                         current_block_441 = 4115481825097854405;
                     } else {
@@ -14386,86 +13761,73 @@ unsafe extern "C" fn xmlRelaxNGValidateState<'a1>(
                     current_block_441 = 7943534109044948052;
                 }
                 match current_block_441 {
-                    4115481825097854405 => {}
+                    4115481825097854405 => {},
                     _ => {
-                        oldvalue = (*(*ctxt).state).value;
-                        let ref mut fresh460 = (*(*ctxt).state).value;
+                        oldvalue = unsafe { (*(*ctxt).state).value };
+                        let fresh460 = unsafe { &mut ((*(*ctxt).state).value) };
                         *fresh460 = content_0;
                         ret = xmlRelaxNGValidateValue(ctxt, define);
-                        let ref mut fresh461 = (*(*ctxt).state).value;
+                        let fresh461 = unsafe { &mut ((*(*ctxt).state).value) };
                         *fresh461 = oldvalue;
                         if ret == -(1 as i32) {
                             xmlRelaxNGAddValidError(
                                 ctxt,
                                 XML_RELAXNG_ERR_VALUE,
-                                (*define).name,
+                                unsafe { (*define).name },
                                 0 as *const xmlChar,
                                 0 as i32,
                             );
                         } else if ret == 0 as i32 {
-                            let ref mut fresh462 = (*(*ctxt).state).seq;
+                            let fresh462 = unsafe { &mut ((*(*ctxt).state).seq) };
                             *fresh462 = 0 as xmlNodePtr;
                         }
                         if !content_0.is_null() {
-                            xmlFree
-                                .expect(
-                                    "non-null function pointer",
-                                )(content_0 as *mut libc::c_void);
+                            (unsafe { xmlFree.expect("non-null function pointer")(
+                                content_0 as *mut libc::c_void,
+                            ) });
                         }
-                    }
+                    },
                 }
             }
             current_block_441 = 4115481825097854405;
-        }
+        },
         8 => {
-            let mut content_1: * mut u8 = 0 as *mut xmlChar;
-            let mut child_1: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-            let mut oldvalue_0: * mut u8 = 0 as *mut xmlChar;
-            let mut oldendvalue: * mut u8 = 0 as *mut xmlChar;
+            let mut content_1: *mut u8 = 0 as *mut xmlChar;
+            let mut child_1: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+            let mut oldvalue_0: *mut u8 = 0 as *mut xmlChar;
+            let mut oldendvalue: *mut u8 = 0 as *mut xmlChar;
             let mut len: i32 = 0;
             content_1 = 0 as *mut xmlChar;
             child_1 = node;
             while !child_1.is_null() {
-                if (*child_1).type_0 as u32
-                    == XML_ELEMENT_NODE as i32 as u32
-                {
+                if (unsafe { (*child_1).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32 {
                     xmlRelaxNGAddValidError(
                         ctxt,
                         XML_RELAXNG_ERR_LISTELEM,
-                        (*(*node).parent).name,
+                        unsafe { (*(*node).parent).name },
                         0 as *const xmlChar,
                         0 as i32,
                     );
                     ret = -(1 as i32);
                     break;
                 } else {
-                    if (*child_1).type_0 as u32
-                        == XML_TEXT_NODE as i32 as u32
-                        || (*child_1).type_0 as u32
-                            == XML_CDATA_SECTION_NODE as i32 as u32
+                    if (unsafe { (*child_1).type_0 }) as u32 == XML_TEXT_NODE as i32 as u32
+                        || (unsafe { (*child_1).type_0 }) as u32 == XML_CDATA_SECTION_NODE as i32 as u32
                     {
-                        content_1 = xmlStrcat(content_1, (*child_1).content);
+                        content_1 = unsafe { xmlStrcat(content_1, (*child_1).content) };
                     }
-                    child_1 = (*child_1).next;
+                    child_1 = unsafe { (*child_1).next };
                 }
             }
             if ret == -(1 as i32) {
                 if !content_1.is_null() {
-                    xmlFree
-                        .expect(
-                            "non-null function pointer",
-                        )(content_1 as *mut libc::c_void);
+                    (unsafe { xmlFree.expect("non-null function pointer")(content_1 as *mut libc::c_void) });
                 }
             } else {
                 if content_1.is_null() {
-                    content_1 = xmlStrdup(
-                        b"\0" as *const u8 as *const i8 as *mut xmlChar,
-                    );
+                    content_1 = unsafe { xmlStrdup(b"\0" as *const u8 as *const i8 as *mut xmlChar) };
                     if content_1.is_null() {
-                        xmlRngVErrMemory(
-                            ctxt,
-                            b"validating\n\0" as *const u8 as *const i8,
-                        );
+                        xmlRngVErrMemory(ctxt, b"validating\n\0" as *const u8 as *const i8);
                         ret = -(1 as i32);
                         current_block_441 = 4115481825097854405;
                     } else {
@@ -14475,19 +13837,19 @@ unsafe extern "C" fn xmlRelaxNGValidateState<'a1>(
                     current_block_441 = 16891331120537520283;
                 }
                 match current_block_441 {
-                    4115481825097854405 => {}
+                    4115481825097854405 => {},
                     _ => {
-                        len = xmlStrlen(content_1);
-                        oldvalue_0 = (*(*ctxt).state).value;
-                        oldendvalue = (*(*ctxt).state).endvalue;
-                        let ref mut fresh463 = (*(*ctxt).state).value;
+                        len = unsafe { xmlStrlen(content_1) };
+                        oldvalue_0 = unsafe { (*(*ctxt).state).value };
+                        oldendvalue = unsafe { (*(*ctxt).state).endvalue };
+                        let fresh463 = unsafe { &mut ((*(*ctxt).state).value) };
                         *fresh463 = content_1;
-                        let ref mut fresh464 = (*(*ctxt).state).endvalue;
-                        *fresh464 = content_1.offset(len as isize);
+                        let fresh464 = unsafe { &mut ((*(*ctxt).state).endvalue) };
+                        *fresh464 = unsafe { content_1.offset(len as isize) };
                         ret = xmlRelaxNGValidateValue(ctxt, define);
-                        let ref mut fresh465 = (*(*ctxt).state).value;
+                        let fresh465 = unsafe { &mut ((*(*ctxt).state).value) };
                         *fresh465 = oldvalue_0;
-                        let ref mut fresh466 = (*(*ctxt).state).endvalue;
+                        let fresh466 = unsafe { &mut ((*(*ctxt).state).endvalue) };
                         *fresh466 = oldendvalue;
                         if ret == -(1 as i32) {
                             xmlRelaxNGAddValidError(
@@ -14498,140 +13860,129 @@ unsafe extern "C" fn xmlRelaxNGValidateState<'a1>(
                                 0 as i32,
                             );
                         } else if ret == 0 as i32 && !node.is_null() {
-                            let ref mut fresh467 = (*(*ctxt).state).seq;
-                            *fresh467 = (*node).next;
+                            let fresh467 = unsafe { &mut ((*(*ctxt).state).seq) };
+                            *fresh467 = unsafe { (*node).next };
                         }
                         if !content_1.is_null() {
-                            xmlFree
-                                .expect(
-                                    "non-null function pointer",
-                                )(content_1 as *mut libc::c_void);
+                            (unsafe { xmlFree.expect("non-null function pointer")(
+                                content_1 as *mut libc::c_void,
+                            ) });
                         }
-                    }
+                    },
                 }
             }
             current_block_441 = 4115481825097854405;
-        }
+        },
         2 | 6 => {
-            (*(borrow(& __xmlGenericError())).unwrap())
-                .expect(
-                    "non-null function pointer",
-                )(
+            (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                 *(__xmlGenericErrorContext()).unwrap(),
                 b"Unimplemented block at %s:%d\n\0" as *const u8 as *const i8,
                 b"relaxng.c\0" as *const u8 as *const i8,
                 10624 as i32,
-            );
+            ) });
             ret = -(1 as i32);
             current_block_441 = 4115481825097854405;
-        }
+        },
         _ => {
             current_block_441 = 4115481825097854405;
-        }
+        },
     }
     match current_block_441 {
         13526015532137226550 => {
             let mut progress: i32 = 0;
-            let mut states: * mut crate::src::relaxng::_xmlRelaxNGStates = 0 as xmlRelaxNGStatesPtr;
-            let mut res: * mut crate::src::relaxng::_xmlRelaxNGStates = 0 as xmlRelaxNGStatesPtr;
+            let mut states: *mut crate::src::relaxng::_xmlRelaxNGStates = 0 as xmlRelaxNGStatesPtr;
+            let mut res: *mut crate::src::relaxng::_xmlRelaxNGStates = 0 as xmlRelaxNGStatesPtr;
             let mut base: i32 = 0;
             let mut j: i32 = 0;
-            errNr = (*ctxt).errNr;
+            errNr = unsafe { (*ctxt).errNr };
             res = xmlRelaxNGNewStates(ctxt, 1 as i32);
             if res.is_null() {
                 ret = -(1 as i32);
             } else {
-                if !((*ctxt).state).is_null() {
-                    xmlRelaxNGAddStates(
-                        ctxt,
-                        res,
-                        xmlRelaxNGCopyValidState(ctxt, (*ctxt).state),
-                    );
+                if !(unsafe { (*ctxt).state }).is_null() {
+                    xmlRelaxNGAddStates(ctxt, res, xmlRelaxNGCopyValidState(ctxt, unsafe { (*ctxt).state }));
                 } else {
                     j = 0 as i32;
-                    while j < (*(*ctxt).states).nbState {
+                    while j < (unsafe { (*(*ctxt).states).nbState }) {
                         xmlRelaxNGAddStates(
                             ctxt,
                             res,
                             xmlRelaxNGCopyValidState(
                                 ctxt,
-                                *((*(*ctxt).states).tabState).offset(j as isize),
+                                unsafe { *((*(*ctxt).states).tabState).offset(j as isize) },
                             ),
                         );
                         j += 1;
                     }
                 }
-                oldflags = (*ctxt).flags;
-                (*ctxt).flags |= 1 as i32;
+                oldflags = unsafe { (*ctxt).flags };
+                (unsafe { (*ctxt).flags |= 1 as i32 });
                 loop {
                     progress = 0 as i32;
-                    base = (*res).nbState;
-                    if !((*ctxt).states).is_null() {
-                        states = (*ctxt).states;
+                    base = unsafe { (*res).nbState };
+                    if !(unsafe { (*ctxt).states }).is_null() {
+                        states = unsafe { (*ctxt).states };
                         i = 0 as i32;
-                        while i < (*states).nbState {
-                            let ref mut fresh443 = (*ctxt).state;
-                            *fresh443 = *((*states).tabState).offset(i as isize);
-                            let ref mut fresh444 = (*ctxt).states;
+                        while i < (unsafe { (*states).nbState }) {
+                            let fresh443 = unsafe { &mut ((*ctxt).state) };
+                            *fresh443 = unsafe { *((*states).tabState).offset(i as isize) };
+                            let fresh444 = unsafe { &mut ((*ctxt).states) };
                             *fresh444 = 0 as xmlRelaxNGStatesPtr;
-                            ret = xmlRelaxNGValidateDefinitionList(
-                                ctxt,
-                                (*define).content,
-                            );
+                            ret = xmlRelaxNGValidateDefinitionList(ctxt, unsafe { (*define).content });
                             if ret == 0 as i32 {
-                                if !((*ctxt).state).is_null() {
-                                    tmp = xmlRelaxNGAddStates(ctxt, res, (*ctxt).state);
-                                    let ref mut fresh445 = (*ctxt).state;
+                                if !(unsafe { (*ctxt).state }).is_null() {
+                                    tmp = xmlRelaxNGAddStates(ctxt, res, unsafe { (*ctxt).state });
+                                    let fresh445 = unsafe { &mut ((*ctxt).state) };
                                     *fresh445 = 0 as xmlRelaxNGValidStatePtr;
                                     if tmp == 1 as i32 {
                                         progress = 1 as i32;
                                     }
-                                } else if !((*ctxt).states).is_null() {
+                                } else if !(unsafe { (*ctxt).states }).is_null() {
                                     j = 0 as i32;
-                                    while j < (*(*ctxt).states).nbState {
+                                    while j < (unsafe { (*(*ctxt).states).nbState }) {
                                         tmp = xmlRelaxNGAddStates(
                                             ctxt,
                                             res,
-                                            *((*(*ctxt).states).tabState).offset(j as isize),
+                                            unsafe { *((*(*ctxt).states).tabState).offset(j as isize) },
                                         );
                                         if tmp == 1 as i32 {
                                             progress = 1 as i32;
                                         }
                                         j += 1;
                                     }
-                                    xmlRelaxNGFreeStates(ctxt, (*ctxt).states);
-                                    let ref mut fresh446 = (*ctxt).states;
+                                    xmlRelaxNGFreeStates(ctxt, unsafe { (*ctxt).states });
+                                    let fresh446 = unsafe { &mut ((*ctxt).states) };
                                     *fresh446 = 0 as xmlRelaxNGStatesPtr;
                                 }
-                            } else if !((*ctxt).state).is_null() {
-                                xmlRelaxNGFreeValidState(ctxt, (*ctxt).state);
-                                let ref mut fresh447 = (*ctxt).state;
+                            } else if !(unsafe { (*ctxt).state }).is_null() {
+                                xmlRelaxNGFreeValidState(ctxt, unsafe { (*ctxt).state });
+                                let fresh447 = unsafe { &mut ((*ctxt).state) };
                                 *fresh447 = 0 as xmlRelaxNGValidStatePtr;
                             }
                             i += 1;
                         }
                     } else {
-                        ret = xmlRelaxNGValidateDefinitionList(ctxt, (*define).content);
+                        ret = xmlRelaxNGValidateDefinitionList(ctxt, unsafe { (*define).content });
                         if ret != 0 as i32 {
-                            xmlRelaxNGFreeValidState(ctxt, (*ctxt).state);
-                            let ref mut fresh448 = (*ctxt).state;
+                            xmlRelaxNGFreeValidState(ctxt, unsafe { (*ctxt).state });
+                            let fresh448 = unsafe { &mut ((*ctxt).state) };
                             *fresh448 = 0 as xmlRelaxNGValidStatePtr;
                         } else {
-                            base = (*res).nbState;
-                            if !((*ctxt).state).is_null() {
-                                tmp = xmlRelaxNGAddStates(ctxt, res, (*ctxt).state);
-                                let ref mut fresh449 = (*ctxt).state;
+                            base = unsafe { (*res).nbState };
+                            if !(unsafe { (*ctxt).state }).is_null() {
+                                tmp = xmlRelaxNGAddStates(ctxt, res, unsafe { (*ctxt).state });
+                                let fresh449 = unsafe { &mut ((*ctxt).state) };
                                 *fresh449 = 0 as xmlRelaxNGValidStatePtr;
                                 if tmp == 1 as i32 {
                                     progress = 1 as i32;
                                 }
-                            } else if !((*ctxt).states).is_null() {
+                            } else if !(unsafe { (*ctxt).states }).is_null() {
                                 j = 0 as i32;
-                                while j < (*(*ctxt).states).nbState {
+                                while j < (unsafe { (*(*ctxt).states).nbState }) {
                                     tmp = xmlRelaxNGAddStates(
                                         ctxt,
                                         res,
-                                        *((*(*ctxt).states).tabState).offset(j as isize),
+                                        unsafe { *((*(*ctxt).states).tabState).offset(j as isize) },
                                     );
                                     if tmp == 1 as i32 {
                                         progress = 1 as i32;
@@ -14639,45 +13990,45 @@ unsafe extern "C" fn xmlRelaxNGValidateState<'a1>(
                                     j += 1;
                                 }
                                 if states.is_null() {
-                                    states = (*ctxt).states;
+                                    states = unsafe { (*ctxt).states };
                                 } else {
-                                    xmlRelaxNGFreeStates(ctxt, (*ctxt).states);
+                                    xmlRelaxNGFreeStates(ctxt, unsafe { (*ctxt).states });
                                 }
-                                let ref mut fresh450 = (*ctxt).states;
+                                let fresh450 = unsafe { &mut ((*ctxt).states) };
                                 *fresh450 = 0 as xmlRelaxNGStatesPtr;
                             }
                         }
                     }
                     if progress != 0 {
-                        if (*res).nbState - base == 1 as i32 {
-                            let ref mut fresh451 = (*ctxt).state;
+                        if (unsafe { (*res).nbState }) - base == 1 as i32 {
+                            let fresh451 = unsafe { &mut ((*ctxt).state) };
                             *fresh451 = xmlRelaxNGCopyValidState(
                                 ctxt,
-                                *((*res).tabState).offset(base as isize),
+                                unsafe { *((*res).tabState).offset(base as isize) },
                             );
                         } else {
                             if states.is_null() {
-                                xmlRelaxNGNewStates(ctxt, (*res).nbState - base);
-                                states = (*ctxt).states;
+                                xmlRelaxNGNewStates(ctxt, (unsafe { (*res).nbState }) - base);
+                                states = unsafe { (*ctxt).states };
                                 if states.is_null() {
                                     progress = 0 as i32;
                                     break;
                                 }
                             }
-                            (*states).nbState = 0 as i32;
+                            (unsafe { (*states).nbState = 0 as i32 });
                             i = base;
-                            while i < (*res).nbState {
+                            while i < (unsafe { (*res).nbState }) {
                                 xmlRelaxNGAddStates(
                                     ctxt,
                                     states,
                                     xmlRelaxNGCopyValidState(
                                         ctxt,
-                                        *((*res).tabState).offset(i as isize),
+                                        unsafe { *((*res).tabState).offset(i as isize) },
                                     ),
                                 );
                                 i += 1;
                             }
-                            let ref mut fresh452 = (*ctxt).states;
+                            let fresh452 = unsafe { &mut ((*ctxt).states) };
                             *fresh452 = states;
                         }
                     }
@@ -14688,220 +14039,200 @@ unsafe extern "C" fn xmlRelaxNGValidateState<'a1>(
                 if !states.is_null() {
                     xmlRelaxNGFreeStates(ctxt, states);
                 }
-                let ref mut fresh453 = (*ctxt).states;
+                let fresh453 = unsafe { &mut ((*ctxt).states) };
                 *fresh453 = res;
-                (*ctxt).flags = oldflags;
+                (unsafe { (*ctxt).flags = oldflags });
                 ret = 0 as i32;
             }
-        }
-        _ => {}
+        },
+        _ => {},
     }
-    let ref mut fresh468 = (*ctxt).depth;
+    let fresh468 = unsafe { &mut ((*ctxt).depth) };
     *fresh468 -= 1;
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGValidateDefinition<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut define: * mut crate::src::relaxng::_xmlRelaxNGDefine,
+extern "C" fn xmlRelaxNGValidateDefinition<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut define: *mut crate::src::relaxng::_xmlRelaxNGDefine,
 ) -> i32 {
-    let mut states: * mut crate::src::relaxng::_xmlRelaxNGStates = 0 as *mut xmlRelaxNGStates;
-    let mut res: * mut crate::src::relaxng::_xmlRelaxNGStates = 0 as *mut xmlRelaxNGStates;
+    let mut states: *mut crate::src::relaxng::_xmlRelaxNGStates = 0 as *mut xmlRelaxNGStates;
+    let mut res: *mut crate::src::relaxng::_xmlRelaxNGStates = 0 as *mut xmlRelaxNGStates;
     let mut i: i32 = 0;
     let mut j: i32 = 0;
     let mut k: i32 = 0;
     let mut ret: i32 = 0;
     let mut oldflags: i32 = 0;
-    if !((*ctxt).state).is_null() && !((*ctxt).states).is_null() {
-        (*(borrow(& __xmlGenericError())).unwrap())
-            .expect(
-                "non-null function pointer",
-            )(
+    if !(unsafe { (*ctxt).state }).is_null() && !(unsafe { (*ctxt).states }).is_null() {
+        (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
             *(__xmlGenericErrorContext()).unwrap(),
             b"Unimplemented block at %s:%d\n\0" as *const u8 as *const i8,
             b"relaxng.c\0" as *const u8 as *const i8,
             10663 as i32,
-        );
-        xmlRelaxNGFreeValidState(ctxt, (*ctxt).state);
-        let ref mut fresh469 = (*ctxt).state;
+        ) });
+        xmlRelaxNGFreeValidState(ctxt, unsafe { (*ctxt).state });
+        let fresh469 = unsafe { &mut ((*ctxt).state) };
         *fresh469 = 0 as xmlRelaxNGValidStatePtr;
     }
-    if ((*ctxt).states).is_null() || (*(*ctxt).states).nbState == 1 as i32 {
-        if !((*ctxt).states).is_null() {
-            let ref mut fresh470 = (*ctxt).state;
-            *fresh470 = *((*(*ctxt).states).tabState).offset(0 as i32 as isize);
-            xmlRelaxNGFreeStates(ctxt, (*ctxt).states);
-            let ref mut fresh471 = (*ctxt).states;
+    if (unsafe { (*ctxt).states }).is_null() || (unsafe { (*(*ctxt).states).nbState }) == 1 as i32 {
+        if !(unsafe { (*ctxt).states }).is_null() {
+            let fresh470 = unsafe { &mut ((*ctxt).state) };
+            *fresh470 = unsafe { *((*(*ctxt).states).tabState).offset(0 as i32 as isize) };
+            xmlRelaxNGFreeStates(ctxt, unsafe { (*ctxt).states });
+            let fresh471 = unsafe { &mut ((*ctxt).states) };
             *fresh471 = 0 as xmlRelaxNGStatesPtr;
         }
         ret = xmlRelaxNGValidateState(ctxt, define);
-        if !((*ctxt).state).is_null() && !((*ctxt).states).is_null() {
-            (*(borrow(& __xmlGenericError())).unwrap())
-                .expect(
-                    "non-null function pointer",
-                )(
+        if !(unsafe { (*ctxt).state }).is_null() && !(unsafe { (*ctxt).states }).is_null() {
+            (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                 *(__xmlGenericErrorContext()).unwrap(),
                 b"Unimplemented block at %s:%d\n\0" as *const u8 as *const i8,
                 b"relaxng.c\0" as *const u8 as *const i8,
                 10675 as i32,
-            );
-            xmlRelaxNGFreeValidState(ctxt, (*ctxt).state);
-            let ref mut fresh472 = (*ctxt).state;
+            ) });
+            xmlRelaxNGFreeValidState(ctxt, unsafe { (*ctxt).state });
+            let fresh472 = unsafe { &mut ((*ctxt).state) };
             *fresh472 = 0 as xmlRelaxNGValidStatePtr;
         }
-        if !((*ctxt).states).is_null() && (*(*ctxt).states).nbState == 1 as i32 {
-            let ref mut fresh473 = (*ctxt).state;
-            *fresh473 = *((*(*ctxt).states).tabState).offset(0 as i32 as isize);
-            xmlRelaxNGFreeStates(ctxt, (*ctxt).states);
-            let ref mut fresh474 = (*ctxt).states;
+        if !(unsafe { (*ctxt).states }).is_null() && (unsafe { (*(*ctxt).states).nbState }) == 1 as i32 {
+            let fresh473 = unsafe { &mut ((*ctxt).state) };
+            *fresh473 = unsafe { *((*(*ctxt).states).tabState).offset(0 as i32 as isize) };
+            xmlRelaxNGFreeStates(ctxt, unsafe { (*ctxt).states });
+            let fresh474 = unsafe { &mut ((*ctxt).states) };
             *fresh474 = 0 as xmlRelaxNGStatesPtr;
         }
         return ret;
     }
-    states = (*ctxt).states;
-    let ref mut fresh475 = (*ctxt).states;
+    states = unsafe { (*ctxt).states };
+    let fresh475 = unsafe { &mut ((*ctxt).states) };
     *fresh475 = 0 as xmlRelaxNGStatesPtr;
     res = 0 as xmlRelaxNGStatesPtr;
     j = 0 as i32;
-    oldflags = (*ctxt).flags;
-    (*ctxt).flags |= 1 as i32;
+    oldflags = unsafe { (*ctxt).flags };
+    (unsafe { (*ctxt).flags |= 1 as i32 });
     i = 0 as i32;
-    while i < (*states).nbState {
-        let ref mut fresh476 = (*ctxt).state;
-        *fresh476 = *((*states).tabState).offset(i as isize);
-        let ref mut fresh477 = (*ctxt).states;
+    while i < (unsafe { (*states).nbState }) {
+        let fresh476 = unsafe { &mut ((*ctxt).state) };
+        *fresh476 = unsafe { *((*states).tabState).offset(i as isize) };
+        let fresh477 = unsafe { &mut ((*ctxt).states) };
         *fresh477 = 0 as xmlRelaxNGStatesPtr;
         ret = xmlRelaxNGValidateState(ctxt, define);
-        if !((*ctxt).state).is_null() && !((*ctxt).states).is_null() {
-            (*(borrow(& __xmlGenericError())).unwrap())
-                .expect(
-                    "non-null function pointer",
-                )(
+        if !(unsafe { (*ctxt).state }).is_null() && !(unsafe { (*ctxt).states }).is_null() {
+            (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
                 *(__xmlGenericErrorContext()).unwrap(),
                 b"Unimplemented block at %s:%d\n\0" as *const u8 as *const i8,
                 b"relaxng.c\0" as *const u8 as *const i8,
                 10700 as i32,
-            );
-            xmlRelaxNGFreeValidState(ctxt, (*ctxt).state);
-            let ref mut fresh478 = (*ctxt).state;
+            ) });
+            xmlRelaxNGFreeValidState(ctxt, unsafe { (*ctxt).state });
+            let fresh478 = unsafe { &mut ((*ctxt).state) };
             *fresh478 = 0 as xmlRelaxNGValidStatePtr;
         }
         if ret == 0 as i32 {
-            if ((*ctxt).states).is_null() {
+            if (unsafe { (*ctxt).states }).is_null() {
                 if !res.is_null() {
-                    xmlRelaxNGAddStates(ctxt, res, (*ctxt).state);
-                    let ref mut fresh479 = (*ctxt).state;
+                    xmlRelaxNGAddStates(ctxt, res, unsafe { (*ctxt).state });
+                    let fresh479 = unsafe { &mut ((*ctxt).state) };
                     *fresh479 = 0 as xmlRelaxNGValidStatePtr;
                 } else {
                     let mut fresh480 = j;
                     j = j + 1;
-                    let ref mut fresh481 = *((*states).tabState)
-                        .offset(fresh480 as isize);
-                    *fresh481 = (*ctxt).state;
-                    let ref mut fresh482 = (*ctxt).state;
+                    let fresh481 = unsafe { &mut (*((*states).tabState).offset(fresh480 as isize)) };
+                    *fresh481 = unsafe { (*ctxt).state };
+                    let fresh482 = unsafe { &mut ((*ctxt).state) };
                     *fresh482 = 0 as xmlRelaxNGValidStatePtr;
                 }
             } else if res.is_null() {
-                res = (*ctxt).states;
-                let ref mut fresh483 = (*ctxt).states;
+                res = unsafe { (*ctxt).states };
+                let fresh483 = unsafe { &mut ((*ctxt).states) };
                 *fresh483 = 0 as xmlRelaxNGStatesPtr;
                 k = 0 as i32;
                 while k < j {
-                    xmlRelaxNGAddStates(
-                        ctxt,
-                        res,
-                        *((*states).tabState).offset(k as isize),
-                    );
+                    xmlRelaxNGAddStates(ctxt, res, unsafe { *((*states).tabState).offset(k as isize) });
                     k += 1;
                 }
             } else {
                 k = 0 as i32;
-                while k < (*(*ctxt).states).nbState {
+                while k < (unsafe { (*(*ctxt).states).nbState }) {
                     xmlRelaxNGAddStates(
                         ctxt,
                         res,
-                        *((*(*ctxt).states).tabState).offset(k as isize),
+                        unsafe { *((*(*ctxt).states).tabState).offset(k as isize) },
                     );
                     k += 1;
                 }
-                xmlRelaxNGFreeStates(ctxt, (*ctxt).states);
-                let ref mut fresh484 = (*ctxt).states;
+                xmlRelaxNGFreeStates(ctxt, unsafe { (*ctxt).states });
+                let fresh484 = unsafe { &mut ((*ctxt).states) };
                 *fresh484 = 0 as xmlRelaxNGStatesPtr;
             }
-        } else if !((*ctxt).state).is_null() {
-            xmlRelaxNGFreeValidState(ctxt, (*ctxt).state);
-            let ref mut fresh485 = (*ctxt).state;
+        } else if !(unsafe { (*ctxt).state }).is_null() {
+            xmlRelaxNGFreeValidState(ctxt, unsafe { (*ctxt).state });
+            let fresh485 = unsafe { &mut ((*ctxt).state) };
             *fresh485 = 0 as xmlRelaxNGValidStatePtr;
-        } else if !((*ctxt).states).is_null() {
+        } else if !(unsafe { (*ctxt).states }).is_null() {
             k = 0 as i32;
-            while k < (*(*ctxt).states).nbState {
-                xmlRelaxNGFreeValidState(
-                    ctxt,
-                    *((*(*ctxt).states).tabState).offset(k as isize),
-                );
+            while k < (unsafe { (*(*ctxt).states).nbState }) {
+                xmlRelaxNGFreeValidState(ctxt, unsafe { *((*(*ctxt).states).tabState).offset(k as isize) });
                 k += 1;
             }
-            xmlRelaxNGFreeStates(ctxt, (*ctxt).states);
-            let ref mut fresh486 = (*ctxt).states;
+            xmlRelaxNGFreeStates(ctxt, unsafe { (*ctxt).states });
+            let fresh486 = unsafe { &mut ((*ctxt).states) };
             *fresh486 = 0 as xmlRelaxNGStatesPtr;
         }
         i += 1;
     }
-    (*ctxt).flags = oldflags;
+    (unsafe { (*ctxt).flags = oldflags });
     if !res.is_null() {
         xmlRelaxNGFreeStates(ctxt, states);
-        let ref mut fresh487 = (*ctxt).states;
+        let fresh487 = unsafe { &mut ((*ctxt).states) };
         *fresh487 = res;
         ret = 0 as i32;
     } else if j > 1 as i32 {
-        (*states).nbState = j;
-        let ref mut fresh488 = (*ctxt).states;
+        (unsafe { (*states).nbState = j });
+        let fresh488 = unsafe { &mut ((*ctxt).states) };
         *fresh488 = states;
         ret = 0 as i32;
     } else if j == 1 as i32 {
-        let ref mut fresh489 = (*ctxt).state;
-        *fresh489 = *((*states).tabState).offset(0 as i32 as isize);
+        let fresh489 = unsafe { &mut ((*ctxt).state) };
+        *fresh489 = unsafe { *((*states).tabState).offset(0 as i32 as isize) };
         xmlRelaxNGFreeStates(ctxt, states);
         ret = 0 as i32;
     } else {
         ret = -(1 as i32);
         xmlRelaxNGFreeStates(ctxt, states);
-        if !((*ctxt).states).is_null() {
-            xmlRelaxNGFreeStates(ctxt, (*ctxt).states);
-            let ref mut fresh490 = (*ctxt).states;
+        if !(unsafe { (*ctxt).states }).is_null() {
+            xmlRelaxNGFreeStates(ctxt, unsafe { (*ctxt).states });
+            let fresh490 = unsafe { &mut ((*ctxt).states) };
             *fresh490 = 0 as xmlRelaxNGStatesPtr;
         }
     }
-    if !((*ctxt).state).is_null() && !((*ctxt).states).is_null() {
-        (*(borrow(& __xmlGenericError())).unwrap())
-            .expect(
-                "non-null function pointer",
-            )(
+    if !(unsafe { (*ctxt).state }).is_null() && !(unsafe { (*ctxt).states }).is_null() {
+        (unsafe { (*(borrow(&__xmlGenericError())).unwrap()).expect("non-null function pointer")(
             *(__xmlGenericErrorContext()).unwrap(),
             b"Unimplemented block at %s:%d\n\0" as *const u8 as *const i8,
             b"relaxng.c\0" as *const u8 as *const i8,
             10766 as i32,
-        );
-        xmlRelaxNGFreeValidState(ctxt, (*ctxt).state);
-        let ref mut fresh491 = (*ctxt).state;
+        ) });
+        xmlRelaxNGFreeValidState(ctxt, unsafe { (*ctxt).state });
+        let fresh491 = unsafe { &mut ((*ctxt).state) };
         *fresh491 = 0 as xmlRelaxNGValidStatePtr;
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGValidateDocument<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut doc: * mut crate::src::HTMLparser::_xmlDoc,
+extern "C" fn xmlRelaxNGValidateDocument<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut doc: *mut crate::src::HTMLparser::_xmlDoc,
 ) -> i32 {
     let mut ret: i32 = 0;
-    let mut schema: * mut crate::src::relaxng::_xmlRelaxNG<'_> = 0 as *mut xmlRelaxNG;
-    let mut grammar: * mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> = 0 as *mut xmlRelaxNGGrammar;
-    let mut state: * mut crate::src::relaxng::_xmlRelaxNGValidState = 0 as *mut xmlRelaxNGValidState;
-    let mut node: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    if ctxt.is_null() || ((*ctxt).schema).is_null() || doc.is_null() {
+    let mut schema: *mut crate::src::relaxng::_xmlRelaxNG<'_> = 0 as *mut xmlRelaxNG;
+    let mut grammar: *mut crate::src::relaxng::_xmlRelaxNGGrammar<'_> = 0 as *mut xmlRelaxNGGrammar;
+    let mut state: *mut crate::src::relaxng::_xmlRelaxNGValidState = 0 as *mut xmlRelaxNGValidState;
+    let mut node: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    if ctxt.is_null() || (unsafe { (*ctxt).schema }).is_null() || doc.is_null() {
         return -(1 as i32);
     }
-    (*ctxt).errNo = XML_RELAXNG_OK as i32;
-    schema = (*ctxt).schema;
-    grammar = (*schema).topgrammar;
+    (unsafe { (*ctxt).errNo = XML_RELAXNG_OK as i32 });
+    schema = unsafe { (*ctxt).schema };
+    grammar = unsafe { (*schema).topgrammar };
     if grammar.is_null() {
         xmlRelaxNGAddValidError(
             ctxt,
@@ -14913,12 +14244,12 @@ unsafe extern "C" fn xmlRelaxNGValidateDocument<'a1>(
         return -(1 as i32);
     }
     state = xmlRelaxNGNewValidState(ctxt, 0 as xmlNodePtr);
-    let ref mut fresh492 = (*ctxt).state;
+    let fresh492 = unsafe { &mut ((*ctxt).state) };
     *fresh492 = state;
-    ret = xmlRelaxNGValidateDefinition(ctxt, (*grammar).start);
-    if !((*ctxt).state).is_null() && !((*state).seq).is_null() {
-        state = (*ctxt).state;
-        node = (*state).seq;
+    ret = xmlRelaxNGValidateDefinition(ctxt, unsafe { (*grammar).start });
+    if !(unsafe { (*ctxt).state }).is_null() && !(unsafe { (*state).seq }).is_null() {
+        state = unsafe { (*ctxt).state };
+        node = unsafe { (*state).seq };
         node = xmlRelaxNGSkipIgnored(ctxt, node);
         if !node.is_null() {
             if ret != -(1 as i32) {
@@ -14932,13 +14263,13 @@ unsafe extern "C" fn xmlRelaxNGValidateDocument<'a1>(
                 ret = -(1 as i32);
             }
         }
-    } else if !((*ctxt).states).is_null() {
+    } else if !(unsafe { (*ctxt).states }).is_null() {
         let mut i: i32 = 0;
         let mut tmp: i32 = -(1 as i32);
         i = 0 as i32;
-        while i < (*(*ctxt).states).nbState {
-            state = *((*(*ctxt).states).tabState).offset(i as isize);
-            node = (*state).seq;
+        while i < (unsafe { (*(*ctxt).states).nbState }) {
+            state = unsafe { *((*(*ctxt).states).tabState).offset(i as isize) };
+            node = unsafe { (*state).seq };
             node = xmlRelaxNGSkipIgnored(ctxt, node);
             if node.is_null() {
                 tmp = 0 as i32;
@@ -14959,15 +14290,15 @@ unsafe extern "C" fn xmlRelaxNGValidateDocument<'a1>(
             }
         }
     }
-    if !((*ctxt).state).is_null() {
-        xmlRelaxNGFreeValidState(ctxt, (*ctxt).state);
-        let ref mut fresh493 = (*ctxt).state;
+    if !(unsafe { (*ctxt).state }).is_null() {
+        xmlRelaxNGFreeValidState(ctxt, unsafe { (*ctxt).state });
+        let fresh493 = unsafe { &mut ((*ctxt).state) };
         *fresh493 = 0 as xmlRelaxNGValidStatePtr;
     }
     if ret != 0 as i32 {
         xmlRelaxNGDumpValidError(ctxt);
     }
-    if (*ctxt).idref == 1 as i32 {
+    if (unsafe { (*ctxt).idref }) == 1 as i32 {
         let mut vctxt: crate::src::HTMLparser::_xmlValidCtxt = xmlValidCtxt {
             userData: 0 as *mut libc::c_void,
             error: None,
@@ -14986,66 +14317,60 @@ unsafe extern "C" fn xmlRelaxNGValidateDocument<'a1>(
             am: 0 as *mut xmlAutomata,
             state: 0 as *mut xmlAutomataState,
         };
-        memset(
+        (unsafe { memset(
             &mut vctxt as *mut xmlValidCtxt as *mut libc::c_void,
             0 as i32,
             ::std::mem::size_of::<xmlValidCtxt>() as u64,
-        );
+        ) });
         vctxt.valid = 1 as i32;
-        vctxt.error = (*ctxt).error;
-        vctxt.warning = (*ctxt).warning;
-        vctxt.userData = (*ctxt).userData;
-        if xmlValidateDocumentFinal(&mut vctxt, doc) != 1 as i32 {
+        vctxt.error = unsafe { (*ctxt).error };
+        vctxt.warning = unsafe { (*ctxt).warning };
+        vctxt.userData = unsafe { (*ctxt).userData };
+        if (unsafe { xmlValidateDocumentFinal(&mut vctxt, doc) }) != 1 as i32 {
             ret = -(1 as i32);
         }
     }
-    if ret == 0 as i32 && (*ctxt).errNo != XML_RELAXNG_OK as i32 {
+    if ret == 0 as i32 && (unsafe { (*ctxt).errNo }) != XML_RELAXNG_OK as i32 {
         ret = -(1 as i32);
     }
     return ret;
 }
-unsafe extern "C" fn xmlRelaxNGCleanPSVI(mut node: * mut crate::src::HTMLparser::_xmlNode) {
-    let mut cur: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+extern "C" fn xmlRelaxNGCleanPSVI(mut node: *mut crate::src::HTMLparser::_xmlNode) {
+    let mut cur: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
     if node.is_null()
-        || (*node).type_0 as u32
-            != XML_ELEMENT_NODE as i32 as u32
-            && (*node).type_0 as u32
-                != XML_DOCUMENT_NODE as i32 as u32
-            && (*node).type_0 as u32
-                != XML_HTML_DOCUMENT_NODE as i32 as u32
+        || (unsafe { (*node).type_0 }) as u32 != XML_ELEMENT_NODE as i32 as u32
+            && (unsafe { (*node).type_0 }) as u32 != XML_DOCUMENT_NODE as i32 as u32
+            && (unsafe { (*node).type_0 }) as u32 != XML_HTML_DOCUMENT_NODE as i32 as u32
     {
         return;
     }
-    if (*node).type_0 as u32 == XML_ELEMENT_NODE as i32 as u32
-    {
-        let ref mut fresh494 = (*node).psvi;
+    if (unsafe { (*node).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32 {
+        let fresh494 = unsafe { &mut ((*node).psvi) };
         *fresh494 = 0 as *mut libc::c_void;
     }
-    cur = (*node).children;
+    cur = unsafe { (*node).children };
     while !cur.is_null() {
-        if (*cur).type_0 as u32
-            == XML_ELEMENT_NODE as i32 as u32
-        {
-            let ref mut fresh495 = (*cur).psvi;
+        if (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32 {
+            let fresh495 = unsafe { &mut ((*cur).psvi) };
             *fresh495 = 0 as *mut libc::c_void;
-            if !((*cur).children).is_null() {
-                cur = (*cur).children;
+            if !(unsafe { (*cur).children }).is_null() {
+                cur = unsafe { (*cur).children };
                 continue;
             }
         }
-        if !((*cur).next).is_null() {
-            cur = (*cur).next;
+        if !(unsafe { (*cur).next }).is_null() {
+            cur = unsafe { (*cur).next };
         } else {
             loop {
-                cur = (*cur).parent;
+                cur = unsafe { (*cur).parent };
                 if cur.is_null() {
                     break;
                 }
                 if cur == node {
                     cur = 0 as xmlNodePtr;
                     break;
-                } else if !((*cur).next).is_null() {
-                    cur = (*cur).next;
+                } else if !(unsafe { (*cur).next }).is_null() {
+                    cur = unsafe { (*cur).next };
                     break;
                 } else if cur.is_null() {
                     break;
@@ -15055,15 +14380,17 @@ unsafe extern "C" fn xmlRelaxNGCleanPSVI(mut node: * mut crate::src::HTMLparser:
     }
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRelaxNGNewValidCtxt<'a1, 'a2>(
-    mut schema: * mut crate::src::relaxng::_xmlRelaxNG<'a1>,
-) -> * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a2> where 'a2: 'a1, 'a1: 'a2 {
-    let mut ret: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'_> = 0 as *mut xmlRelaxNGValidCtxt;
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlRelaxNGValidCtxt>() as u64)
-        as xmlRelaxNGValidCtxtPtr;
+pub extern "C" fn xmlRelaxNGNewValidCtxt<'a1, 'a2>(
+    mut schema: *mut crate::src::relaxng::_xmlRelaxNG<'a1>,
+) -> *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a2>
+where
+    'a2: 'a1,
+    'a1: 'a2,
+{
+    let mut ret: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'_> = 0 as *mut xmlRelaxNGValidCtxt;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlRelaxNGValidCtxt>() as u64,
+    ) }) as xmlRelaxNGValidCtxtPtr;
     if ret.is_null() {
         xmlRngVErrMemory(
             0 as xmlRelaxNGValidCtxtPtr,
@@ -15071,152 +14398,159 @@ pub unsafe extern "C" fn xmlRelaxNGNewValidCtxt<'a1, 'a2>(
         );
         return 0 as xmlRelaxNGValidCtxtPtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlRelaxNGValidCtxt>() as u64,
-    );
-    let ref mut fresh496 = (*ret).schema;
+    ) });
+    let fresh496 = unsafe { &mut ((*ret).schema) };
     *fresh496 = schema;
-    let ref mut fresh497 = (*ret).error;
+    let fresh497 = unsafe { &mut ((*ret).error) };
     *fresh497 = *(__xmlGenericError()).unwrap();
-    let ref mut fresh498 = (*ret).userData;
+    let fresh498 = unsafe { &mut ((*ret).userData) };
     *fresh498 = *(__xmlGenericErrorContext()).unwrap();
-    (*ret).errNr = 0 as i32;
-    (*ret).errMax = 0 as i32;
-    let ref mut fresh499 = borrow_mut(&mut (*ret).err);
+    (unsafe { (*ret).errNr = 0 as i32 });
+    (unsafe { (*ret).errMax = 0 as i32 });
+    let fresh499 = &mut (borrow_mut(unsafe { &mut (*ret).err }));
     *fresh499 = Option::<&'_ mut crate::src::relaxng::_xmlRelaxNGValidError>::None;
-    let ref mut fresh500 = (*ret).errTab;
+    let fresh500 = unsafe { &mut ((*ret).errTab) };
     *fresh500 = 0 as xmlRelaxNGValidErrorPtr;
     if !schema.is_null() {
-        (*ret).idref = (*schema).idref;
+        (unsafe { (*ret).idref = (*schema).idref });
     }
-    let ref mut fresh501 = (*ret).states;
+    let fresh501 = unsafe { &mut ((*ret).states) };
     *fresh501 = 0 as xmlRelaxNGStatesPtr;
-    let ref mut fresh502 = (*ret).freeState;
+    let fresh502 = unsafe { &mut ((*ret).freeState) };
     *fresh502 = 0 as xmlRelaxNGStatesPtr;
-    let ref mut fresh503 = (*ret).freeStates;
+    let fresh503 = unsafe { &mut ((*ret).freeStates) };
     *fresh503 = 0 as *mut xmlRelaxNGStatesPtr;
-    (*ret).errNo = XML_RELAXNG_OK as i32;
+    (unsafe { (*ret).errNo = XML_RELAXNG_OK as i32 });
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRelaxNGFreeValidCtxt<'a1>(mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>) {
+pub extern "C" fn xmlRelaxNGFreeValidCtxt<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+) {
     let mut k: i32 = 0;
     if ctxt.is_null() {
         return;
     }
-    if !((*ctxt).states).is_null() {
-        xmlRelaxNGFreeStates(0 as xmlRelaxNGValidCtxtPtr, (*ctxt).states);
+    if !(unsafe { (*ctxt).states }).is_null() {
+        xmlRelaxNGFreeStates(0 as xmlRelaxNGValidCtxtPtr, unsafe { (*ctxt).states });
     }
-    if !((*ctxt).freeState).is_null() {
+    if !(unsafe { (*ctxt).freeState }).is_null() {
         k = 0 as i32;
-        while k < (*(*ctxt).freeState).nbState {
+        while k < (unsafe { (*(*ctxt).freeState).nbState }) {
             xmlRelaxNGFreeValidState(
                 0 as xmlRelaxNGValidCtxtPtr,
-                *((*(*ctxt).freeState).tabState).offset(k as isize),
+                unsafe { *((*(*ctxt).freeState).tabState).offset(k as isize) },
             );
             k += 1;
         }
-        xmlRelaxNGFreeStates(0 as xmlRelaxNGValidCtxtPtr, (*ctxt).freeState);
+        xmlRelaxNGFreeStates(0 as xmlRelaxNGValidCtxtPtr, unsafe { (*ctxt).freeState });
     }
-    if !((*ctxt).freeStates).is_null() {
+    if !(unsafe { (*ctxt).freeStates }).is_null() {
         k = 0 as i32;
-        while k < (*ctxt).freeStatesNr {
+        while k < (unsafe { (*ctxt).freeStatesNr }) {
             xmlRelaxNGFreeStates(
                 0 as xmlRelaxNGValidCtxtPtr,
-                *((*ctxt).freeStates).offset(k as isize),
+                unsafe { *((*ctxt).freeStates).offset(k as isize) },
             );
             k += 1;
         }
-        xmlFree
-            .expect(
-                "non-null function pointer",
-            )((*ctxt).freeStates as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")((*ctxt).freeStates as *mut libc::c_void) });
     }
-    if !((*ctxt).errTab).is_null() {
-        xmlFree.expect("non-null function pointer")((*ctxt).errTab as *mut libc::c_void);
+    if !(unsafe { (*ctxt).errTab }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*ctxt).errTab as *mut libc::c_void) });
     }
-    if !((*ctxt).elemTab).is_null() {
-        let mut exec: * mut crate::src::relaxng::_xmlRegExecCtxt = 0 as *mut xmlRegExecCtxt;
+    if !(unsafe { (*ctxt).elemTab }).is_null() {
+        let mut exec: *mut crate::src::relaxng::_xmlRegExecCtxt = 0 as *mut xmlRegExecCtxt;
         exec = xmlRelaxNGElemPop(ctxt);
         while !exec.is_null() {
-            xmlRegFreeExecCtxt(exec);
+            (unsafe { xmlRegFreeExecCtxt(exec) });
             exec = xmlRelaxNGElemPop(ctxt);
         }
-        xmlFree
-            .expect("non-null function pointer")((*ctxt).elemTab as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")((*ctxt).elemTab as *mut libc::c_void) });
     }
-    xmlFree.expect("non-null function pointer")(ctxt as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(ctxt as *mut libc::c_void) });
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRelaxNGSetValidErrors<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut err: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>,
-    mut warn: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>,
-    mut ctx: * mut core::ffi::c_void,
+pub extern "C" fn xmlRelaxNGSetValidErrors<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut err: Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>,
+    mut warn: Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>,
+    mut ctx: *mut core::ffi::c_void,
 ) {
     if ctxt.is_null() {
         return;
     }
-    let ref mut fresh504 = (*ctxt).error;
+    let fresh504 = unsafe { &mut ((*ctxt).error) };
     *fresh504 = err;
-    let ref mut fresh505 = (*ctxt).warning;
+    let fresh505 = unsafe { &mut ((*ctxt).warning) };
     *fresh505 = warn;
-    let ref mut fresh506 = (*ctxt).userData;
+    let fresh506 = unsafe { &mut ((*ctxt).userData) };
     *fresh506 = ctx;
-    let ref mut fresh507 = (*ctxt).serror;
+    let fresh507 = unsafe { &mut ((*ctxt).serror) };
     *fresh507 = None;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRelaxNGSetValidStructuredErrors<'a1, 'a2>(
+pub extern "C" fn xmlRelaxNGSetValidStructuredErrors<'a1, 'a2>(
     mut ctxt: Option<&'a1 mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a2>>,
-    mut serror: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::HTMLparser::_xmlError,) -> ()>,
-    mut ctx: * mut core::ffi::c_void,
+    mut serror: Option<
+        unsafe extern "C" fn(
+            _: *mut core::ffi::c_void,
+            _: *mut crate::src::HTMLparser::_xmlError,
+        ) -> (),
+    >,
+    mut ctx: *mut core::ffi::c_void,
 ) {
-    if borrow(& ctxt).is_none() {
+    if borrow(&ctxt).is_none() {
         return;
     }
-    let ref mut fresh508 = (*(borrow_mut(&mut ctxt)).unwrap()).serror;
+    let fresh508 = &mut ((*(borrow_mut(&mut ctxt)).unwrap()).serror);
     *fresh508 = serror;
-    let ref mut fresh509 = (*(borrow_mut(&mut ctxt)).unwrap()).error;
+    let fresh509 = &mut ((*(borrow_mut(&mut ctxt)).unwrap()).error);
     *fresh509 = None;
-    let ref mut fresh510 = (*(borrow_mut(&mut ctxt)).unwrap()).warning;
+    let fresh510 = &mut ((*(borrow_mut(&mut ctxt)).unwrap()).warning);
     *fresh510 = None;
-    let ref mut fresh511 = (*(borrow_mut(&mut ctxt)).unwrap()).userData;
+    let fresh511 = &mut ((*(borrow_mut(&mut ctxt)).unwrap()).userData);
     *fresh511 = ctx;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRelaxNGGetValidErrors<'a1, 'a2, 'a3, 'a4, 'a5>(
+pub extern "C" fn xmlRelaxNGGetValidErrors<'a1, 'a2, 'a3, 'a4, 'a5>(
     mut ctxt: Option<&'a1 mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a2>>,
-    mut err: Option<&'a3 mut Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>>,
-    mut warn: Option<&'a4 mut Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>>,
-    mut ctx: Option<&'a5 mut * mut core::ffi::c_void>,
+    mut err: Option<
+        &'a3 mut Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>,
+    >,
+    mut warn: Option<
+        &'a4 mut Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>,
+    >,
+    mut ctx: Option<&'a5 mut *mut core::ffi::c_void>,
 ) -> i32 {
-    if borrow(& ctxt).is_none() {
+    if borrow(&ctxt).is_none() {
         return -(1 as i32);
     }
-    if !borrow(& err).is_none() {
+    if !borrow(&err).is_none() {
         *(borrow_mut(&mut err)).unwrap() = (*(borrow_mut(&mut ctxt)).unwrap()).error;
     }
-    if !borrow(& warn).is_none() {
+    if !borrow(&warn).is_none() {
         *(borrow_mut(&mut warn)).unwrap() = (*(borrow_mut(&mut ctxt)).unwrap()).warning;
     }
-    if !borrow(& ctx).is_none() {
+    if !borrow(&ctx).is_none() {
         *(borrow_mut(&mut ctx)).unwrap() = (*(borrow_mut(&mut ctxt)).unwrap()).userData;
     }
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlRelaxNGValidateDoc<'a1>(
-    mut ctxt: * mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
-    mut doc: * mut crate::src::HTMLparser::_xmlDoc,
+pub extern "C" fn xmlRelaxNGValidateDoc<'a1>(
+    mut ctxt: *mut crate::src::relaxng::_xmlRelaxNGValidCtxt<'a1>,
+    mut doc: *mut crate::src::HTMLparser::_xmlDoc,
 ) -> i32 {
     let mut ret: i32 = 0;
     if ctxt.is_null() || doc.is_null() {
         return -(1 as i32);
     }
-    let ref mut fresh512 = (*ctxt).doc;
+    let fresh512 = unsafe { &mut ((*ctxt).doc) };
     *fresh512 = doc;
     ret = xmlRelaxNGValidateDocument(ctxt, doc);
     xmlRelaxNGCleanPSVI(doc as xmlNodePtr);

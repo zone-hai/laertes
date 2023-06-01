@@ -13,9 +13,9 @@ pub use crate::src::lib::easy::Curl_cfree;
 pub use crate::src::lib::easy::Curl_cmalloc;
 pub use crate::src::lib::easy::Curl_crealloc;
 pub type size_t = u64;
-pub type curl_malloc_callback = Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
-pub type curl_free_callback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type curl_realloc_callback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: u64,) -> * mut core::ffi::c_void>;
+pub type curl_malloc_callback<'a1> = Option<unsafe extern "C"  fn(_: u64,) -> Option<&'a1 mut core::ffi::c_void>>;
+pub type curl_free_callback<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,) -> ()>;
+pub type curl_realloc_callback<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,_: u64,) -> Option<&'a2 mut core::ffi::c_void>>;
 #[no_mangle]
 pub unsafe extern "C" fn Curl_memdup(
     mut src: * const core::ffi::c_void,

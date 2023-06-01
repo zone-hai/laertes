@@ -85,8 +85,8 @@ impl std::default::Default for C2RustUnnamed {
     fn default() -> Self { C2RustUnnamed::new() }
 }
 
-pub type curl_free_callback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type curl_calloc_callback = Option<unsafe extern "C"  fn(_: u64,_: u64,) -> * mut core::ffi::c_void>;
+pub type curl_free_callback<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,) -> ()>;
+pub type curl_calloc_callback<'a1> = Option<unsafe extern "C"  fn(_: u64,_: u64,) -> Option<&'a1 mut core::ffi::c_void>>;
 // #[derive(Copy, Clone)]
 
 pub type Curl_llist_element = crate::src::lib::http2::Curl_llist_element;

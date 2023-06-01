@@ -220,7 +220,7 @@ pub const CURLVERSION_FIRST: CURLversion = 0;
 // #[derive(Copy, Clone)]
 
 pub type curl_version_info_data<'a> = crate::src::lib::version::curl_version_info_data<'a>;
-pub type __compar_fn_t = Option<unsafe extern "C"  fn(_: * const core::ffi::c_void,_: * const core::ffi::c_void,) -> i32>;
+pub type __compar_fn_t<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 core::ffi::c_void>,_: Option<&'a2 core::ffi::c_void>,) -> i32>;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct category_descriptors {

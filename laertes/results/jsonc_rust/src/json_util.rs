@@ -1,32 +1,62 @@
-use :: libc;
+use ::libc;
 extern "C" {
-    fn __errno_location() -> *mut i32;
-    fn strlen(_: *const i8) -> u64;
-    fn vsnprintf(_: *mut i8, _: u64, _: *const i8, _: core::ffi::VaList) -> i32;
-    fn strtod(_: *const i8, _: *mut *mut i8) -> f64;
-    fn strtoll(_: *const i8, _: *mut *mut i8, _: i32) -> i64;
-    fn strtoull(_: *const i8, _: *mut *mut i8, _: i32) -> u64;
-    fn open(__file: *const i8, __oflag: i32, _: ...) -> i32;
+    
+    
+    
+    
+    
+    
+    fn __errno_location() -> * mut i32;
+    fn strlen(_: * const i8) -> u64;
+    fn vsnprintf(
+        _: * mut i8,
+        _: u64,
+        _: * const i8,
+        _: core::ffi::VaList,
+    ) -> i32;
+    fn strtod(_: * const i8, _: * mut * mut i8) -> f64;
+    fn strtoll(
+        _: * const i8,
+        _: * mut * mut i8,
+        _: i32,
+    ) -> i64;
+    fn strtoull(
+        _: * const i8,
+        _: * mut * mut i8,
+        _: i32,
+    ) -> u64;
+    fn open(__file: * const i8, __oflag: i32, _: ...) -> i32;
     fn close(__fd: i32) -> i32;
-    fn read(__fd: i32, __buf: *mut core::ffi::c_void, __nbytes: u64) -> i64;
-    fn write(__fd: i32, __buf: *const core::ffi::c_void, __n: u64) -> i64;
+    fn read(__fd: i32, __buf: * mut core::ffi::c_void, __nbytes: u64) -> i64;
+    fn write(__fd: i32, __buf: * const core::ffi::c_void, __n: u64) -> i64;
+    
+    
+    
+    
+    
 }
-pub use crate::src::{
-    json_object::{json_object, json_object_to_json_string_ext},
-    json_tokener::{
-        json_tokener_error_desc, json_tokener_free, json_tokener_get_error, json_tokener_new_ex,
-        json_tokener_parse_ex,
-    },
-    printbuf::{printbuf_free, printbuf_memappend, printbuf_new},
-    strerror_override::_json_c_strerror,
-};
+pub use crate::src::json_object::json_object_to_json_string_ext;
+pub use crate::src::json_tokener::json_tokener_error_desc;
+pub use crate::src::json_tokener::json_tokener_free;
+pub use crate::src::json_tokener::json_tokener_get_error;
+pub use crate::src::json_tokener::json_tokener_new_ex;
+pub use crate::src::json_tokener::json_tokener_parse_ex;
+pub use crate::src::printbuf::printbuf_free;
+pub use crate::src::printbuf::printbuf_memappend;
+pub use crate::src::printbuf::printbuf_new;
+pub use crate::src::strerror_override::_json_c_strerror;
+pub use crate::src::json_object::json_object;
 pub type __builtin_va_list = [crate::src::debug::__va_list_tag; 1];
+// #[derive(Copy, Clone)]
+
 pub type __va_list_tag = crate::src::debug::__va_list_tag;
 pub type __int64_t = i64;
 pub type __uint64_t = u64;
 pub type __ssize_t = i64;
 pub type int64_t = i64;
 pub type uint64_t = u64;
+// #[derive(Copy, Clone)]
+
 pub type printbuf = crate::src::apps::json_parse::printbuf;
 pub type json_type = u32;
 pub const json_type_string: json_type = 6;
@@ -84,20 +114,29 @@ pub const json_tokener_state_null: json_tokener_state = 3;
 pub const json_tokener_state_finish: json_tokener_state = 2;
 pub const json_tokener_state_start: json_tokener_state = 1;
 pub const json_tokener_state_eatws: json_tokener_state = 0;
+// #[derive(Copy, Clone)]
+
 pub type json_tokener_srec<'a> = crate::src::apps::json_parse::json_tokener_srec<'a>;
+// #[derive(Copy, Clone)]
+
 pub type json_tokener<'a> = crate::src::apps::json_parse::json_tokener<'a>;
 static mut _last_err: [i8; 256] = unsafe {
-    * core :: intrinsics :: transmute :: < & '_ [u8 ; 256] , & '_ mut [i8 ; 256] > (b"\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0" ,)
+    *core::intrinsics::transmute::<&'_ [u8; 256], &'_ mut [i8; 256]>(
+        b"\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0",
+    )
 };
 #[no_mangle]
-pub extern "C" fn json_util_get_last_err() -> *const i8 {
-    if (unsafe { _last_err[0 as i32 as usize] }) as i32 == '\u{0}' as i32 {
+pub unsafe extern "C" fn json_util_get_last_err() -> * const i8 {
+    if _last_err[0 as i32 as usize] as i32 == '\u{0}' as i32 {
         return 0 as *const i8;
     }
-    return (unsafe { _last_err.as_mut_ptr() });
+    return _last_err.as_mut_ptr();
 }
 #[no_mangle]
-pub unsafe extern "C" fn _json_c_set_last_err(mut err_fmt: *const i8, mut args: ...) {
+pub unsafe extern "C" fn _json_c_set_last_err(
+    mut err_fmt: * const i8,
+    mut args: ...
+) {
     let mut ap: core::ffi::VaListImpl;
     ap = args.clone();
     vsnprintf(
@@ -108,25 +147,26 @@ pub unsafe extern "C" fn _json_c_set_last_err(mut err_fmt: *const i8, mut args: 
     );
 }
 #[no_mangle]
-pub extern "C" fn json_object_from_fd(mut fd: i32) -> *mut crate::src::json_object::json_object {
+pub unsafe extern "C" fn json_object_from_fd(mut fd: i32) -> * mut crate::src::json_object::json_object {
     return json_object_from_fd_ex(fd, -(1 as i32));
 }
 #[no_mangle]
-pub extern "C" fn json_object_from_fd_ex(
+pub unsafe extern "C" fn json_object_from_fd_ex(
     mut fd: i32,
     mut in_depth: i32,
-) -> *mut crate::src::json_object::json_object {
-    let mut pb: *mut crate::src::apps::json_parse::printbuf = 0 as *mut printbuf;
-    let mut obj: *mut crate::src::json_object::json_object = 0 as *mut json_object;
+) -> * mut crate::src::json_object::json_object {
+    let mut pb: * mut crate::src::apps::json_parse::printbuf = 0 as *mut printbuf;
+    let mut obj: * mut crate::src::json_object::json_object = 0 as *mut json_object;
     let mut buf: [i8; 4096] = [0; 4096];
     let mut ret: i64 = 0;
     let mut depth: i32 = 32 as i32;
-    let mut tok: *mut crate::src::apps::json_parse::json_tokener<'_> = 0 as *mut json_tokener;
+    let mut tok: * mut crate::src::apps::json_parse::json_tokener<'_> = 0 as *mut json_tokener;
     pb = printbuf_new();
     if pb.is_null() {
-        (unsafe { _json_c_set_last_err(
-            b"json_object_from_fd_ex: printbuf_new failed\n\0" as *const u8 as *const i8,
-        ) });
+        _json_c_set_last_err(
+            b"json_object_from_fd_ex: printbuf_new failed\n\0" as *const u8
+                as *const i8,
+        );
         return 0 as *mut json_object;
     }
     if in_depth != -(1 as i32) {
@@ -134,125 +174,139 @@ pub extern "C" fn json_object_from_fd_ex(
     }
     tok = json_tokener_new_ex(depth);
     if tok.is_null() {
-        (unsafe { _json_c_set_last_err(
+        _json_c_set_last_err(
             b"json_object_from_fd_ex: unable to allocate json_tokener(depth=%d): %s\n\0"
                 as *const u8 as *const i8,
             depth,
             _json_c_strerror(*__errno_location()),
-        ) });
+        );
         printbuf_free(pb);
         return 0 as *mut json_object;
     }
     loop {
-        ret = (unsafe { read(
+        ret = read(
             fd,
             buf.as_mut_ptr() as *mut libc::c_void,
             ::std::mem::size_of::<[i8; 4096]>() as u64,
-        ) });
+        );
         if !(ret > 0 as i32 as i64) {
             break;
         }
-        if printbuf_memappend(pb, buf.as_mut_ptr(), ret as i32) < 0 as i32 {
-            (unsafe { _json_c_set_last_err (b"json_object_from_fd_ex: failed to printbuf_memappend after reading %d+%d bytes: %s\0" as * const u8 as * const i8 , (* pb) . bpos , ret as i32 , _json_c_strerror (* __errno_location ()) ,) }) ;
+        if printbuf_memappend(pb, buf.as_mut_ptr(), ret as i32)
+            < 0 as i32
+        {
+            _json_c_set_last_err(
+                b"json_object_from_fd_ex: failed to printbuf_memappend after reading %d+%d bytes: %s\0"
+                    as *const u8 as *const i8,
+                (*pb).bpos,
+                ret as i32,
+                _json_c_strerror(*__errno_location()),
+            );
             json_tokener_free(tok);
             printbuf_free(pb);
             return 0 as *mut json_object;
         }
     }
     if ret < 0 as i32 as i64 {
-        (unsafe { _json_c_set_last_err(
-            b"json_object_from_fd_ex: error reading fd %d: %s\n\0" as *const u8 as *const i8,
+        _json_c_set_last_err(
+            b"json_object_from_fd_ex: error reading fd %d: %s\n\0" as *const u8
+                as *const i8,
             fd,
             _json_c_strerror(*__errno_location()),
-        ) });
+        );
         json_tokener_free(tok);
         printbuf_free(pb);
         return 0 as *mut json_object;
     }
-    obj = json_tokener_parse_ex(tok, (unsafe { (*pb).buf }), (unsafe { (*pb).bpos }));
+    obj = json_tokener_parse_ex(tok, (*pb).buf, (*pb).bpos);
     if obj.is_null() {
-        (unsafe { _json_c_set_last_err(
+        _json_c_set_last_err(
             b"json_tokener_parse_ex failed: %s\n\0" as *const u8 as *const i8,
             json_tokener_error_desc(json_tokener_get_error(tok)),
-        ) });
+        );
     }
     json_tokener_free(tok);
     printbuf_free(pb);
     return obj;
 }
 #[no_mangle]
-pub extern "C" fn json_object_from_file(
-    mut filename: *const i8,
-) -> *mut crate::src::json_object::json_object {
-    let mut obj: *mut crate::src::json_object::json_object = 0 as *mut json_object;
+pub unsafe extern "C" fn json_object_from_file(
+    mut filename: * const i8,
+) -> * mut crate::src::json_object::json_object {
+    let mut obj: * mut crate::src::json_object::json_object = 0 as *mut json_object;
     let mut fd: i32 = 0;
-    fd = (unsafe { open(filename, 0 as i32) });
+    fd = open(filename, 0 as i32);
     if fd < 0 as i32 {
-        (unsafe { _json_c_set_last_err(
-            b"json_object_from_file: error opening file %s: %s\n\0" as *const u8 as *const i8,
+        _json_c_set_last_err(
+            b"json_object_from_file: error opening file %s: %s\n\0" as *const u8
+                as *const i8,
             filename,
             _json_c_strerror(*__errno_location()),
-        ) });
+        );
         return 0 as *mut json_object;
     }
     obj = json_object_from_fd(fd);
-    (unsafe { close(fd) });
+    close(fd);
     return obj;
 }
 #[no_mangle]
-pub extern "C" fn json_object_to_file_ext(
-    mut filename: *const i8,
-    mut obj: *mut crate::src::json_object::json_object,
+pub unsafe extern "C" fn json_object_to_file_ext(
+    mut filename: * const i8,
+    mut obj: * mut crate::src::json_object::json_object,
     mut flags: i32,
 ) -> i32 {
     let mut fd: i32 = 0;
     let mut ret: i32 = 0;
     let mut saved_errno: i32 = 0;
     if obj.is_null() {
-        (unsafe { _json_c_set_last_err(
-            b"json_object_to_file_ext: object is null\n\0" as *const u8 as *const i8,
-        ) });
+        _json_c_set_last_err(
+            b"json_object_to_file_ext: object is null\n\0" as *const u8
+                as *const i8,
+        );
         return -(1 as i32);
     }
-    fd = (unsafe { open(
+    fd = open(
         filename,
         0o1 as i32 | 0o1000 as i32 | 0o100 as i32,
         0o644 as i32,
-    ) });
+    );
     if fd < 0 as i32 {
-        (unsafe { _json_c_set_last_err(
-            b"json_object_to_file_ext: error opening file %s: %s\n\0" as *const u8 as *const i8,
+        _json_c_set_last_err(
+            b"json_object_to_file_ext: error opening file %s: %s\n\0" as *const u8
+                as *const i8,
             filename,
             _json_c_strerror(*__errno_location()),
-        ) });
+        );
         return -(1 as i32);
     }
     ret = _json_object_to_fd(fd, obj, flags, filename);
-    saved_errno = (unsafe { *__errno_location() });
-    (unsafe { close(fd) });
-    (unsafe { *__errno_location() = saved_errno });
+    saved_errno = *__errno_location();
+    close(fd);
+    *__errno_location() = saved_errno;
     return ret;
 }
 #[no_mangle]
-pub extern "C" fn json_object_to_fd(
+pub unsafe extern "C" fn json_object_to_fd(
     mut fd: i32,
-    mut obj: *mut crate::src::json_object::json_object,
+    mut obj: * mut crate::src::json_object::json_object,
     mut flags: i32,
 ) -> i32 {
     if obj.is_null() {
-        (unsafe { _json_c_set_last_err(b"json_object_to_fd: object is null\n\0" as *const u8 as *const i8) });
+        _json_c_set_last_err(
+            b"json_object_to_fd: object is null\n\0" as *const u8 as *const i8,
+        );
         return -(1 as i32);
     }
     return _json_object_to_fd(fd, obj, flags, 0 as *const i8);
 }
-extern "C" fn _json_object_to_fd(
+unsafe extern "C" fn _json_object_to_fd(
     mut fd: i32,
-    mut obj: *mut crate::src::json_object::json_object,
+    mut obj: * mut crate::src::json_object::json_object,
     mut flags: i32,
-    mut filename: *const i8,
+    mut filename: * const i8,
 ) -> i32 {
     let mut ret: i64 = 0;
-    let mut json_str: *const i8 = 0 as *const i8;
+    let mut json_str: * const i8 = 0 as *const i8;
     let mut wpos: u64 = 0;
     let mut wsize: u64 = 0;
     filename = if !filename.is_null() {
@@ -264,20 +318,21 @@ extern "C" fn _json_object_to_fd(
     if json_str.is_null() {
         return -(1 as i32);
     }
-    wsize = (unsafe { strlen(json_str) });
+    wsize = strlen(json_str);
     wpos = 0 as i32 as size_t;
     while wpos < wsize {
-        ret = (unsafe { write(
+        ret = write(
             fd,
             json_str.offset(wpos as isize) as *const libc::c_void,
             wsize.wrapping_sub(wpos),
-        ) });
+        );
         if ret < 0 as i32 as i64 {
-            (unsafe { _json_c_set_last_err(
-                b"json_object_to_fd: error writing file %s: %s\n\0" as *const u8 as *const i8,
+            _json_c_set_last_err(
+                b"json_object_to_fd: error writing file %s: %s\n\0" as *const u8
+                    as *const i8,
                 filename,
                 _json_c_strerror(*__errno_location()),
-            ) });
+            );
             return -(1 as i32);
         }
         wpos = (wpos as u64).wrapping_add(ret as size_t) as size_t as size_t;
@@ -285,19 +340,19 @@ extern "C" fn _json_object_to_fd(
     return 0 as i32;
 }
 #[no_mangle]
-pub extern "C" fn json_object_to_file(
-    mut filename: *const i8,
-    mut obj: *mut crate::src::json_object::json_object,
+pub unsafe extern "C" fn json_object_to_file(
+    mut filename: * const i8,
+    mut obj: * mut crate::src::json_object::json_object,
 ) -> i32 {
     return json_object_to_file_ext(filename, obj, 0 as i32);
 }
 #[no_mangle]
-pub extern "C" fn json_parse_double<'a1>(
-    mut buf: *const i8,
+pub unsafe extern "C" fn json_parse_double<'a1>(
+    mut buf: * const i8,
     mut retval: Option<&'a1 mut f64>,
 ) -> i32 {
-    let mut end: *mut i8 = 0 as *mut i8;
-    *(borrow_mut(&mut retval)).unwrap() = (unsafe { strtod(buf, &mut end) });
+    let mut end: * mut i8 = 0 as *mut i8;
+    *(borrow_mut(&mut retval)).unwrap() = strtod(buf, &mut end);
     return if end == buf as *mut i8 {
         1 as i32
     } else {
@@ -305,48 +360,52 @@ pub extern "C" fn json_parse_double<'a1>(
     };
 }
 #[no_mangle]
-pub extern "C" fn json_parse_int64<'a1>(
-    mut buf: *const i8,
+pub unsafe extern "C" fn json_parse_int64<'a1>(
+    mut buf: * const i8,
     mut retval: Option<&'a1 mut i64>,
 ) -> i32 {
-    let mut end: *mut i8 = 0 as *mut i8;
+    let mut end: * mut i8 = 0 as *mut i8;
     let mut val: i64 = 0;
-    (unsafe { *__errno_location() = 0 as i32 });
-    val = (unsafe { strtoll(buf, &mut end, 10 as i32) }) as int64_t;
+    *__errno_location() = 0 as i32;
+    val = strtoll(buf, &mut end, 10 as i32) as int64_t;
     if end != buf as *mut i8 {
         *(borrow_mut(&mut retval)).unwrap() = val;
     }
-    if val == 0 as i32 as i64 && (unsafe { *__errno_location() }) != 0 as i32 || end == buf as *mut i8 {
-        (unsafe { *__errno_location() = 22 as i32 });
+    if val == 0 as i32 as i64 && *__errno_location() != 0 as i32
+        || end == buf as *mut i8
+    {
+        *__errno_location() = 22 as i32;
         return 1 as i32;
     }
     return 0 as i32;
 }
 #[no_mangle]
-pub extern "C" fn json_parse_uint64<'a1>(
-    mut buf: *const i8,
+pub unsafe extern "C" fn json_parse_uint64<'a1>(
+    mut buf: * const i8,
     mut retval: Option<&'a1 mut u64>,
 ) -> i32 {
-    let mut end: *mut i8 = 0 as *mut i8;
+    let mut end: * mut i8 = 0 as *mut i8;
     let mut val: u64 = 0;
-    (unsafe { *__errno_location() = 0 as i32 });
-    while (unsafe { *buf }) as i32 == ' ' as i32 {
-        buf = (unsafe { buf.offset(1) });
+    *__errno_location() = 0 as i32;
+    while *buf as i32 == ' ' as i32 {
+        buf = buf.offset(1);
     }
-    if (unsafe { *buf }) as i32 == '-' as i32 {
+    if *buf as i32 == '-' as i32 {
         return 1 as i32;
     }
-    val = (unsafe { strtoull(buf, &mut end, 10 as i32) }) as uint64_t;
+    val = strtoull(buf, &mut end, 10 as i32) as uint64_t;
     if end != buf as *mut i8 {
         *(borrow_mut(&mut retval)).unwrap() = val;
     }
-    if val == 0 as i32 as u64 && (unsafe { *__errno_location() }) != 0 as i32 || end == buf as *mut i8 {
-        (unsafe { *__errno_location() = 22 as i32 });
+    if val == 0 as i32 as u64
+        && *__errno_location() != 0 as i32 || end == buf as *mut i8
+    {
+        *__errno_location() = 22 as i32;
         return 1 as i32;
     }
     return 0 as i32;
 }
-static mut json_type_name: [*const i8; 7] = [
+static mut json_type_name: [* const i8; 7] = [
     b"null\0" as *const u8 as *const i8,
     b"boolean\0" as *const u8 as *const i8,
     b"double\0" as *const u8 as *const i8,
@@ -356,21 +415,28 @@ static mut json_type_name: [*const i8; 7] = [
     b"string\0" as *const u8 as *const i8,
 ];
 #[no_mangle]
-pub extern "C" fn json_type_to_name(mut o_type: u32) -> *const i8 {
+pub unsafe extern "C" fn json_type_to_name(
+    mut o_type: u32,
+) -> * const i8 {
     let mut o_type_int: i32 = o_type as i32;
     if o_type_int < 0 as i32
         || o_type_int
             >= (::std::mem::size_of::<[*const i8; 7]>() as u64)
-                .wrapping_div(::std::mem::size_of::<*const i8>() as u64) as i32
+                .wrapping_div(
+                    ::std::mem::size_of::<*const i8>() as u64,
+                ) as i32
     {
-        (unsafe { _json_c_set_last_err(
-            b"json_type_to_name: type %d is out of range [0,%u]\n\0" as *const u8 as *const i8,
+        _json_c_set_last_err(
+            b"json_type_to_name: type %d is out of range [0,%u]\n\0" as *const u8
+                as *const i8,
             o_type as u32,
             (::std::mem::size_of::<[*const i8; 7]>() as u64)
-                .wrapping_div(::std::mem::size_of::<*const i8>() as u64) as u32,
-        ) });
+                .wrapping_div(
+                    ::std::mem::size_of::<*const i8>() as u64,
+                ) as u32,
+        );
         return 0 as *const i8;
     }
-    return (unsafe { json_type_name[o_type as usize] });
+    return json_type_name[o_type as usize];
 }
 use crate::laertes_rt::*;

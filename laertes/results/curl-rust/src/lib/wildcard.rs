@@ -29,7 +29,7 @@ pub type curl_fileinfo = crate::src::lib::fileinfo::curl_fileinfo;
 // #[derive(Copy, Clone)]
 
 pub type C2RustUnnamed = crate::src::lib::fileinfo::C2RustUnnamed;
-pub type curl_free_callback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
+pub type curl_free_callback<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,) -> ()>;
 pub type CURLcode = u32;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
@@ -131,7 +131,7 @@ pub const CURLE_URL_MALFORMAT: CURLcode = 3;
 pub const CURLE_FAILED_INIT: CURLcode = 2;
 pub const CURLE_UNSUPPORTED_PROTOCOL: CURLcode = 1;
 pub const CURLE_OK: CURLcode = 0;
-pub type Curl_llist_dtor = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut core::ffi::c_void,) -> ()>;
+pub type Curl_llist_dtor<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,_: Option<&'a2 mut core::ffi::c_void>,) -> ()>;
 // #[derive(Copy, Clone)]
 
 pub type Curl_llist_element = crate::src::lib::http2::Curl_llist_element;
@@ -147,7 +147,7 @@ pub const CURLWC_DOWNLOADING: wildcard_states = 3;
 pub const CURLWC_MATCHING: wildcard_states = 2;
 pub const CURLWC_INIT: wildcard_states = 1;
 pub const CURLWC_CLEAR: wildcard_states = 0;
-pub type wildcard_dtor = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
+pub type wildcard_dtor<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,) -> ()>;
 // #[derive(Copy, Clone)]
 
 pub type WildcardData = crate::src::lib::http2::WildcardData;

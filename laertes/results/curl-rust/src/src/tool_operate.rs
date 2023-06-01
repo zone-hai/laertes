@@ -1087,7 +1087,7 @@ unsafe extern "C" fn add_per_transfer<'a1>(mut per: * mut * mut crate::src::src:
     all_xfers += 1;
     return CURLE_OK;
 }
-unsafe extern "C" fn del_per_transfer<'a1, 'a2>(mut per: * mut crate::src::src::tool_cb_hdr::per_transfer<'a1>) -> * mut crate::src::src::tool_cb_hdr::per_transfer<'a2> where 'a2: 'a1, 'a2: 'static, 'a1: 'a2 {
+unsafe extern "C" fn del_per_transfer<'a1, 'a2>(mut per: * mut crate::src::src::tool_cb_hdr::per_transfer<'a1>) -> * mut crate::src::src::tool_cb_hdr::per_transfer<'a2> where 'a2: 'static, 'a2: 'a1, 'a1: 'a2 {
     let mut n: * mut crate::src::src::tool_cb_hdr::per_transfer<'_> = 0 as *mut per_transfer;
     let mut p: * mut crate::src::src::tool_cb_hdr::per_transfer<'_> = 0 as *mut per_transfer;
     n = (*per).next;

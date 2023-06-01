@@ -34,7 +34,7 @@ pub type size_t = u64;
 pub type _IO_FILE = crate::src::lib::http2::_IO_FILE;
 pub type _IO_lock_t = ();
 pub type FILE = crate::src::lib::http2::_IO_FILE;
-pub type curl_free_callback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
+pub type curl_free_callback<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,) -> ()>;
 static mut keylog_file_fp: * mut crate::src::lib::http2::_IO_FILE = 0 as *const FILE as *mut FILE;
 #[no_mangle]
 pub unsafe extern "C" fn Curl_tls_keylog_open() {

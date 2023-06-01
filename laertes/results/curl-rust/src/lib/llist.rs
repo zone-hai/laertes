@@ -1,6 +1,6 @@
 use ::libc;
 pub type size_t = u64;
-pub type Curl_llist_dtor = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut core::ffi::c_void,) -> ()>;
+pub type Curl_llist_dtor<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,_: Option<&'a2 mut core::ffi::c_void>,) -> ()>;
 // #[derive(Copy, Clone)]
 
 pub type Curl_llist_element = crate::src::lib::http2::Curl_llist_element;

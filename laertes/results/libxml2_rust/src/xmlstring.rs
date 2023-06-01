@@ -1,62 +1,40 @@
-use ::libc;
+use :: libc;
 extern "C" {
-    
-    
     pub type _xmlStartTag;
     pub type _xmlBuf;
-    
-    
-    
-    fn vsnprintf(
-        _: * mut i8,
-        _: u64,
-        _: * const i8,
-        _: core::ffi::VaList,
-    ) -> i32;
+    fn vsnprintf(_: *mut i8, _: u64, _: *const i8, _: core::ffi::VaList) -> i32;
     fn memcpy(
-        _: * mut core::ffi::c_void,
-        _: * const core::ffi::c_void,
+        _: *mut core::ffi::c_void,
+        _: *const core::ffi::c_void,
         _: u64,
-    ) -> * mut core::ffi::c_void;
-    fn strlen(_: * const i8) -> u64;
-    static mut xmlFree: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-    static mut xmlMalloc: Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
-    static mut xmlRealloc: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: u64,) -> * mut core::ffi::c_void>;
-    static mut xmlMallocAtomic: Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
-    fn xmlErrMemory(ctxt: * mut crate::src::tree::_xmlParserCtxt, extra: * const i8);
+    ) -> *mut core::ffi::c_void;
+    fn strlen(_: *const i8) -> u64;
+    static mut xmlFree: Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+    static mut xmlMalloc: Option<unsafe extern "C" fn(_: u64) -> *mut core::ffi::c_void>;
+    static mut xmlRealloc:
+        Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: u64) -> *mut core::ffi::c_void>;
+    static mut xmlMallocAtomic: Option<unsafe extern "C" fn(_: u64) -> *mut core::ffi::c_void>;
+    fn xmlErrMemory(ctxt: *mut crate::src::tree::_xmlParserCtxt, extra: *const i8);
 }
-pub use crate::src::valid::_xmlValidState;
-pub use crate::src::xmlregexp::_xmlAutomata;
-pub use crate::src::xmlregexp::_xmlAutomataState;
-pub use crate::src::xmlsave::_xmlHashTable;
-pub use crate::src::xpointer::_xmlDict;
+pub use crate::src::{
+    valid::_xmlValidState,
+    xmlregexp::{_xmlAutomata, _xmlAutomataState},
+    xmlsave::_xmlHashTable,
+    xpointer::_xmlDict,
+};
 pub type __builtin_va_list = [crate::src::xmllint::__va_list_tag; 1];
-// #[derive(Copy, Clone)]
-
 pub type __va_list_tag = crate::src::xmllint::__va_list_tag;
 pub type va_list = [crate::src::xmllint::__va_list_tag; 1];
 pub type xmlChar = u8;
-pub type xmlParserCtxtPtr = * mut crate::src::tree::_xmlParserCtxt;
+pub type xmlParserCtxtPtr = *mut crate::src::tree::_xmlParserCtxt;
 pub type xmlParserCtxt = crate::src::tree::_xmlParserCtxt;
-// #[derive(Copy, Clone)]
-
 pub type _xmlParserCtxt = crate::src::tree::_xmlParserCtxt;
 pub type xmlParserNodeInfo = crate::src::tree::_xmlParserNodeInfo;
-// #[derive(Copy, Clone)]
-
 pub type _xmlParserNodeInfo = crate::src::tree::_xmlParserNodeInfo;
-// #[derive(Copy, Clone)]
-
 pub type _xmlNode = crate::src::threads::_xmlNode;
 pub type xmlNs = crate::src::threads::_xmlNs;
-// #[derive(Copy, Clone)]
-
 pub type _xmlNs = crate::src::threads::_xmlNs;
-// #[derive(Copy, Clone)]
-
 pub type _xmlDoc = crate::src::threads::_xmlDoc;
-// #[derive(Copy, Clone)]
-
 pub type _xmlDtd = crate::src::threads::_xmlDtd;
 pub type xmlElementType = u32;
 pub const XML_XINCLUDE_END: xmlElementType = 20;
@@ -80,8 +58,6 @@ pub const XML_TEXT_NODE: xmlElementType = 3;
 pub const XML_ATTRIBUTE_NODE: xmlElementType = 2;
 pub const XML_ELEMENT_NODE: xmlElementType = 1;
 pub type xmlNsType = u32;
-// #[derive(Copy, Clone)]
-
 pub type _xmlAttr = crate::src::threads::_xmlAttr;
 pub type xmlAttributeType = u32;
 pub const XML_ATTRIBUTE_NOTATION: xmlAttributeType = 10;
@@ -102,46 +78,41 @@ pub const XML_PARSE_SAX: xmlParserMode = 2;
 pub const XML_PARSE_DOM: xmlParserMode = 1;
 pub const XML_PARSE_UNKNOWN: xmlParserMode = 0;
 pub type xmlError = crate::src::threads::_xmlError;
-// #[derive(Copy, Clone)]
-
 pub type _xmlError = crate::src::threads::_xmlError;
 pub type xmlErrorLevel = u32;
 pub const XML_ERR_FATAL: xmlErrorLevel = 3;
 pub const XML_ERR_ERROR: xmlErrorLevel = 2;
 pub const XML_ERR_WARNING: xmlErrorLevel = 1;
 pub const XML_ERR_NONE: xmlErrorLevel = 0;
-pub type xmlAttrPtr = * mut crate::src::threads::_xmlAttr;
+pub type xmlAttrPtr = *mut crate::src::threads::_xmlAttr;
 pub type xmlAttr = crate::src::threads::_xmlAttr;
-pub type xmlNodePtr = * mut crate::src::threads::_xmlNode;
+pub type xmlNodePtr = *mut crate::src::threads::_xmlNode;
 pub type xmlNode = crate::src::threads::_xmlNode;
-pub type xmlHashTablePtr = * mut crate::src::xmlsave::_xmlHashTable;
+pub type xmlHashTablePtr = *mut crate::src::xmlsave::_xmlHashTable;
 pub type xmlHashTable = crate::src::xmlsave::_xmlHashTable;
 pub type xmlStartTag = crate::src::xmlstring::_xmlStartTag;
-pub type xmlDictPtr = * mut crate::src::xpointer::_xmlDict;
+pub type xmlDictPtr = *mut crate::src::xpointer::_xmlDict;
 pub type xmlDict = crate::src::xpointer::_xmlDict;
-pub type xmlParserInputPtr = * mut crate::src::threads::_xmlParserInput;
+pub type xmlParserInputPtr = *mut crate::src::threads::_xmlParserInput;
 pub type xmlParserInput = crate::src::threads::_xmlParserInput;
-// #[derive(Copy, Clone)]
-
 pub type _xmlParserInput = crate::src::threads::_xmlParserInput;
-pub type xmlParserInputDeallocate = Option<unsafe extern "C"  fn(_: * mut u8,) -> ()>;
-pub type xmlParserInputBufferPtr = * mut crate::src::threads::_xmlParserInputBuffer;
+pub type xmlParserInputDeallocate = Option<unsafe extern "C" fn(_: *mut u8) -> ()>;
+pub type xmlParserInputBufferPtr = *mut crate::src::threads::_xmlParserInputBuffer;
 pub type xmlParserInputBuffer = crate::src::threads::_xmlParserInputBuffer;
-// #[derive(Copy, Clone)]
-
 pub type _xmlParserInputBuffer = crate::src::threads::_xmlParserInputBuffer;
-pub type xmlBufPtr = * mut crate::src::xmlstring::_xmlBuf;
+pub type xmlBufPtr = *mut crate::src::xmlstring::_xmlBuf;
 pub type xmlBuf = crate::src::xmlstring::_xmlBuf;
-pub type xmlCharEncodingHandlerPtr = * mut crate::src::threads::_xmlCharEncodingHandler;
+pub type xmlCharEncodingHandlerPtr = *mut crate::src::threads::_xmlCharEncodingHandler;
 pub type xmlCharEncodingHandler = crate::src::threads::_xmlCharEncodingHandler;
-// #[derive(Copy, Clone)]
-
 pub type _xmlCharEncodingHandler = crate::src::threads::_xmlCharEncodingHandler;
-pub type iconv_t = * mut core::ffi::c_void;
-pub type xmlCharEncodingOutputFunc = Option<unsafe extern "C"  fn(_: * mut u8,_: * mut i32,_: * const u8,_: * mut i32,) -> i32>;
-pub type xmlCharEncodingInputFunc = Option<unsafe extern "C"  fn(_: * mut u8,_: * mut i32,_: * const u8,_: * mut i32,) -> i32>;
-pub type xmlInputCloseCallback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type xmlInputReadCallback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut i8,_: i32,) -> i32>;
+pub type iconv_t = *mut core::ffi::c_void;
+pub type xmlCharEncodingOutputFunc =
+    Option<unsafe extern "C" fn(_: *mut u8, _: *mut i32, _: *const u8, _: *mut i32) -> i32>;
+pub type xmlCharEncodingInputFunc =
+    Option<unsafe extern "C" fn(_: *mut u8, _: *mut i32, _: *const u8, _: *mut i32) -> i32>;
+pub type xmlInputCloseCallback = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type xmlInputReadCallback =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *mut i8, _: i32) -> i32>;
 pub type xmlParserInputState = i32;
 pub const XML_PARSER_PUBLIC_LITERAL: xmlParserInputState = 16;
 pub const XML_PARSER_IGNORE: xmlParserInputState = 15;
@@ -162,36 +133,54 @@ pub const XML_PARSER_MISC: xmlParserInputState = 1;
 pub const XML_PARSER_START: xmlParserInputState = 0;
 pub const XML_PARSER_EOF: xmlParserInputState = -1;
 pub type xmlValidCtxt = crate::src::tree::_xmlValidCtxt;
-// #[derive(Copy, Clone)]
-
 pub type _xmlValidCtxt = crate::src::tree::_xmlValidCtxt;
-pub type xmlAutomataStatePtr = * mut crate::src::xmlregexp::_xmlAutomataState;
+pub type xmlAutomataStatePtr = *mut crate::src::xmlregexp::_xmlAutomataState;
 pub type xmlAutomataState = crate::src::xmlregexp::_xmlAutomataState;
-pub type xmlAutomataPtr = * mut crate::src::xmlregexp::_xmlAutomata;
+pub type xmlAutomataPtr = *mut crate::src::xmlregexp::_xmlAutomata;
 pub type xmlAutomata = crate::src::xmlregexp::_xmlAutomata;
 pub type xmlValidState = crate::src::valid::_xmlValidState;
-pub type xmlDocPtr = * mut crate::src::threads::_xmlDoc;
+pub type xmlDocPtr = *mut crate::src::threads::_xmlDoc;
 pub type xmlDoc = crate::src::threads::_xmlDoc;
-pub type xmlValidityWarningFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type xmlValidityErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
+pub type xmlValidityWarningFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type xmlValidityErrorFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
 pub type xmlParserNodeInfoSeq = crate::src::tree::_xmlParserNodeInfoSeq;
-// #[derive(Copy, Clone)]
-
 pub type _xmlParserNodeInfoSeq = crate::src::tree::_xmlParserNodeInfoSeq;
-// #[derive(Copy, Clone)]
-
 pub type _xmlSAXHandler = crate::src::tree::_xmlSAXHandler;
-pub type xmlStructuredErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::threads::_xmlError,) -> ()>;
-pub type xmlErrorPtr = * mut crate::src::threads::_xmlError;
-pub type endElementNsSAX2Func = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
-pub type startElementNsSAX2Func = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,_: i32,_: * mut * const u8,_: i32,_: i32,_: * mut * const u8,) -> ()>;
-pub type externalSubsetSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
-pub type cdataBlockSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,) -> ()>;
-pub type getParameterEntitySAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> * mut crate::src::threads::_xmlEntity>;
-pub type xmlEntityPtr = * mut crate::src::threads::_xmlEntity;
+pub type xmlStructuredErrorFunc = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *mut crate::src::threads::_xmlError) -> (),
+>;
+pub type xmlErrorPtr = *mut crate::src::threads::_xmlError;
+pub type endElementNsSAX2Func = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8, _: *const u8) -> (),
+>;
+pub type startElementNsSAX2Func = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+        _: *const u8,
+        _: i32,
+        _: *mut *const u8,
+        _: i32,
+        _: i32,
+        _: *mut *const u8,
+    ) -> (),
+>;
+pub type externalSubsetSAXFunc = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8, _: *const u8) -> (),
+>;
+pub type cdataBlockSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: i32) -> ()>;
+pub type getParameterEntitySAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+    ) -> *mut crate::src::threads::_xmlEntity,
+>;
+pub type xmlEntityPtr = *mut crate::src::threads::_xmlEntity;
 pub type xmlEntity = crate::src::threads::_xmlEntity;
-// #[derive(Copy, Clone)]
-
 pub type _xmlEntity = crate::src::threads::_xmlEntity;
 pub type xmlEntityType = u32;
 pub const XML_INTERNAL_PREDEFINED_ENTITY: xmlEntityType = 6;
@@ -200,30 +189,56 @@ pub const XML_INTERNAL_PARAMETER_ENTITY: xmlEntityType = 4;
 pub const XML_EXTERNAL_GENERAL_UNPARSED_ENTITY: xmlEntityType = 3;
 pub const XML_EXTERNAL_GENERAL_PARSED_ENTITY: xmlEntityType = 2;
 pub const XML_INTERNAL_GENERAL_ENTITY: xmlEntityType = 1;
-pub type fatalErrorSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type errorSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type warningSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
-pub type commentSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> ()>;
-pub type processingInstructionSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,) -> ()>;
-pub type ignorableWhitespaceSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,) -> ()>;
-pub type charactersSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,) -> ()>;
-pub type referenceSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> ()>;
-pub type endElementSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> ()>;
-pub type startElementSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * mut * const u8,) -> ()>;
-pub type endDocumentSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type startDocumentSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type setDocumentLocatorSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::threads::_xmlSAXLocator,) -> ()>;
-pub type xmlSAXLocatorPtr = * mut crate::src::threads::_xmlSAXLocator;
+pub type fatalErrorSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type errorSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type warningSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
+pub type commentSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8) -> ()>;
+pub type processingInstructionSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8) -> ()>;
+pub type ignorableWhitespaceSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: i32) -> ()>;
+pub type charactersSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: i32) -> ()>;
+pub type referenceSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8) -> ()>;
+pub type endElementSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8) -> ()>;
+pub type startElementSAXFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *mut *const u8) -> ()>;
+pub type endDocumentSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+pub type startDocumentSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+pub type setDocumentLocatorSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *mut crate::src::threads::_xmlSAXLocator,
+    ) -> (),
+>;
+pub type xmlSAXLocatorPtr = *mut crate::src::threads::_xmlSAXLocator;
 pub type xmlSAXLocator = crate::src::threads::_xmlSAXLocator;
-// #[derive(Copy, Clone)]
-
 pub type _xmlSAXLocator = crate::src::threads::_xmlSAXLocator;
-pub type unparsedEntityDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
-pub type elementDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,_: * mut crate::src::threads::_xmlElementContent,) -> ()>;
-pub type xmlElementContentPtr = * mut crate::src::threads::_xmlElementContent;
+pub type unparsedEntityDeclSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+        _: *const u8,
+        _: *const u8,
+    ) -> (),
+>;
+pub type elementDeclSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: i32,
+        _: *mut crate::src::threads::_xmlElementContent,
+    ) -> (),
+>;
+pub type xmlElementContentPtr = *mut crate::src::threads::_xmlElementContent;
 pub type xmlElementContent = crate::src::threads::_xmlElementContent;
-// #[derive(Copy, Clone)]
-
 pub type _xmlElementContent = crate::src::threads::_xmlElementContent;
 pub type xmlElementContentOccur = u32;
 pub const XML_ELEMENT_CONTENT_PLUS: xmlElementContentOccur = 4;
@@ -235,114 +250,131 @@ pub const XML_ELEMENT_CONTENT_OR: xmlElementContentType = 4;
 pub const XML_ELEMENT_CONTENT_SEQ: xmlElementContentType = 3;
 pub const XML_ELEMENT_CONTENT_ELEMENT: xmlElementContentType = 2;
 pub const XML_ELEMENT_CONTENT_PCDATA: xmlElementContentType = 1;
-pub type attributeDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: i32,_: i32,_: * const u8,_: * mut crate::src::threads::_xmlEnumeration,) -> ()>;
-pub type xmlEnumerationPtr = * mut crate::src::threads::_xmlEnumeration;
+pub type attributeDeclSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+        _: i32,
+        _: i32,
+        _: *const u8,
+        _: *mut crate::src::threads::_xmlEnumeration,
+    ) -> (),
+>;
+pub type xmlEnumerationPtr = *mut crate::src::threads::_xmlEnumeration;
 pub type xmlEnumeration = crate::src::threads::_xmlEnumeration;
-// #[derive(Copy, Clone)]
-
 pub type _xmlEnumeration = crate::src::threads::_xmlEnumeration;
-pub type notationDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
-pub type entityDeclSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: i32,_: * const u8,_: * const u8,_: * mut u8,) -> ()>;
-pub type getEntitySAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,) -> * mut crate::src::threads::_xmlEntity>;
-pub type resolveEntitySAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,) -> * mut crate::src::threads::_xmlParserInput>;
-pub type hasExternalSubsetSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type hasInternalSubsetSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type isStandaloneSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type internalSubsetSAXFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: * const u8,_: * const u8,) -> ()>;
+pub type notationDeclSAXFunc = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8, _: *const u8) -> (),
+>;
+pub type entityDeclSAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: i32,
+        _: *const u8,
+        _: *const u8,
+        _: *mut u8,
+    ) -> (),
+>;
+pub type getEntitySAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+    ) -> *mut crate::src::threads::_xmlEntity,
+>;
+pub type resolveEntitySAXFunc = Option<
+    unsafe extern "C" fn(
+        _: *mut core::ffi::c_void,
+        _: *const u8,
+        _: *const u8,
+    ) -> *mut crate::src::threads::_xmlParserInput,
+>;
+pub type hasExternalSubsetSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type hasInternalSubsetSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type isStandaloneSAXFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type internalSubsetSAXFunc = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const u8, _: *const u8, _: *const u8) -> (),
+>;
 pub type size_t = u64;
-pub type xmlMallocFunc = Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
-pub type xmlReallocFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: u64,) -> * mut core::ffi::c_void>;
-pub type xmlFreeFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
+pub type xmlMallocFunc = Option<unsafe extern "C" fn(_: u64) -> *mut core::ffi::c_void>;
+pub type xmlReallocFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: u64) -> *mut core::ffi::c_void>;
+pub type xmlFreeFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
 #[no_mangle]
-pub unsafe extern "C" fn xmlStrndup(
-    mut cur: * const u8,
-    mut len: i32,
-) -> * mut u8 {
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
+pub extern "C" fn xmlStrndup(mut cur: *const u8, mut len: i32) -> *mut u8 {
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
     if cur.is_null() || len < 0 as i32 {
         return 0 as *mut xmlChar;
     }
-    ret = xmlMallocAtomic
-        .expect(
-            "non-null function pointer",
-        )(
+    ret = (unsafe { xmlMallocAtomic.expect("non-null function pointer")(
         (len as size_t)
             .wrapping_add(1 as i32 as u64)
             .wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
-    ) as *mut xmlChar;
+    ) }) as *mut xmlChar;
     if ret.is_null() {
-        xmlErrMemory(0 as xmlParserCtxtPtr, 0 as *const i8);
+        (unsafe { xmlErrMemory(0 as xmlParserCtxtPtr, 0 as *const i8) });
         return 0 as *mut xmlChar;
     }
-    memcpy(
+    (unsafe { memcpy(
         ret as *mut libc::c_void,
         cur as *const libc::c_void,
-        (len as u64)
-            .wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
-    );
-    *ret.offset(len as isize) = 0 as i32 as xmlChar;
+        (len as u64).wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
+    ) });
+    (unsafe { *ret.offset(len as isize) = 0 as i32 as xmlChar });
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlStrdup(mut cur: * const u8) -> * mut u8 {
-    let mut p: * const u8 = cur;
+pub extern "C" fn xmlStrdup(mut cur: *const u8) -> *mut u8 {
+    let mut p: *const u8 = cur;
     if cur.is_null() {
         return 0 as *mut xmlChar;
     }
-    while *p as i32 != 0 as i32 {
-        p = p.offset(1);
+    while (unsafe { *p }) as i32 != 0 as i32 {
+        p = unsafe { p.offset(1) };
     }
-    return xmlStrndup(cur, p.offset_from(cur) as i64 as i32);
+    return xmlStrndup(cur, (unsafe { p.offset_from(cur) }) as i64 as i32);
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCharStrndup(
-    mut cur: * const i8,
-    mut len: i32,
-) -> * mut u8 {
+pub extern "C" fn xmlCharStrndup(mut cur: *const i8, mut len: i32) -> *mut u8 {
     let mut i: i32 = 0;
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
     if cur.is_null() || len < 0 as i32 {
         return 0 as *mut xmlChar;
     }
-    ret = xmlMallocAtomic
-        .expect(
-            "non-null function pointer",
-        )(
+    ret = (unsafe { xmlMallocAtomic.expect("non-null function pointer")(
         (len as size_t)
             .wrapping_add(1 as i32 as u64)
             .wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
-    ) as *mut xmlChar;
+    ) }) as *mut xmlChar;
     if ret.is_null() {
-        xmlErrMemory(0 as xmlParserCtxtPtr, 0 as *const i8);
+        (unsafe { xmlErrMemory(0 as xmlParserCtxtPtr, 0 as *const i8) });
         return 0 as *mut xmlChar;
     }
     i = 0 as i32;
     while i < len {
-        *ret.offset(i as isize) = *cur.offset(i as isize) as xmlChar;
-        if *ret.offset(i as isize) as i32 == 0 as i32 {
+        (unsafe { *ret.offset(i as isize) = *cur.offset(i as isize) as xmlChar });
+        if (unsafe { *ret.offset(i as isize) }) as i32 == 0 as i32 {
             return ret;
         }
         i += 1;
     }
-    *ret.offset(len as isize) = 0 as i32 as xmlChar;
+    (unsafe { *ret.offset(len as isize) = 0 as i32 as xmlChar });
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCharStrdup(mut cur: * const i8) -> * mut u8 {
-    let mut p: * const i8 = cur;
+pub extern "C" fn xmlCharStrdup(mut cur: *const i8) -> *mut u8 {
+    let mut p: *const i8 = cur;
     if cur.is_null() {
         return 0 as *mut xmlChar;
     }
-    while *p as i32 != '\u{0}' as i32 {
-        p = p.offset(1);
+    while (unsafe { *p }) as i32 != '\u{0}' as i32 {
+        p = unsafe { p.offset(1) };
     }
-    return xmlCharStrndup(cur, p.offset_from(cur) as i64 as i32);
+    return xmlCharStrndup(cur, (unsafe { p.offset_from(cur) }) as i64 as i32);
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlStrcmp(
-    mut str1: * const u8,
-    mut str2: * const u8,
-) -> i32 {
+pub extern "C" fn xmlStrcmp(mut str1: *const u8, mut str2: *const u8) -> i32 {
     if str1 == str2 {
         return 0 as i32;
     }
@@ -354,24 +386,21 @@ pub unsafe extern "C" fn xmlStrcmp(
     }
     loop {
         let mut fresh0 = str1;
-        str1 = str1.offset(1);
-        let mut tmp: i32 = *fresh0 as i32 - *str2 as i32;
+        str1 = unsafe { str1.offset(1) };
+        let mut tmp: i32 = (unsafe { *fresh0 }) as i32 - (unsafe { *str2 }) as i32;
         if tmp != 0 as i32 {
             return tmp;
         }
         let mut fresh1 = str2;
-        str2 = str2.offset(1);
-        if !(*fresh1 as i32 != 0 as i32) {
+        str2 = unsafe { str2.offset(1) };
+        if !((unsafe { *fresh1 }) as i32 != 0 as i32) {
             break;
         }
     }
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlStrEqual(
-    mut str1: * const u8,
-    mut str2: * const u8,
-) -> i32 {
+pub extern "C" fn xmlStrEqual(mut str1: *const u8, mut str2: *const u8) -> i32 {
     if str1 == str2 {
         return 1 as i32;
     }
@@ -383,23 +412,23 @@ pub unsafe extern "C" fn xmlStrEqual(
     }
     loop {
         let mut fresh2 = str1;
-        str1 = str1.offset(1);
-        if *fresh2 as i32 != *str2 as i32 {
+        str1 = unsafe { str1.offset(1) };
+        if (unsafe { *fresh2 }) as i32 != (unsafe { *str2 }) as i32 {
             return 0 as i32;
         }
         let mut fresh3 = str2;
-        str2 = str2.offset(1);
-        if !(*fresh3 != 0) {
+        str2 = unsafe { str2.offset(1) };
+        if !((unsafe { *fresh3 }) != 0) {
             break;
         }
     }
     return 1 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlStrQEqual(
-    mut pref: * const u8,
-    mut name: * const u8,
-    mut str: * const u8,
+pub extern "C" fn xmlStrQEqual(
+    mut pref: *const u8,
+    mut name: *const u8,
+    mut str: *const u8,
 ) -> i32 {
     if pref.is_null() {
         return xmlStrEqual(name, str);
@@ -412,41 +441,37 @@ pub unsafe extern "C" fn xmlStrQEqual(
     }
     loop {
         let mut fresh4 = pref;
-        pref = pref.offset(1);
-        if *fresh4 as i32 != *str as i32 {
+        pref = unsafe { pref.offset(1) };
+        if (unsafe { *fresh4 }) as i32 != (unsafe { *str }) as i32 {
             return 0 as i32;
         }
         let mut fresh5 = str;
-        str = str.offset(1);
-        if !(*fresh5 as i32 != 0 && *pref as i32 != 0) {
+        str = unsafe { str.offset(1) };
+        if !((unsafe { *fresh5 }) as i32 != 0 && (unsafe { *pref }) as i32 != 0) {
             break;
         }
     }
     let mut fresh6 = str;
-    str = str.offset(1);
-    if *fresh6 as i32 != ':' as i32 {
+    str = unsafe { str.offset(1) };
+    if (unsafe { *fresh6 }) as i32 != ':' as i32 {
         return 0 as i32;
     }
     loop {
         let mut fresh7 = name;
-        name = name.offset(1);
-        if *fresh7 as i32 != *str as i32 {
+        name = unsafe { name.offset(1) };
+        if (unsafe { *fresh7 }) as i32 != (unsafe { *str }) as i32 {
             return 0 as i32;
         }
         let mut fresh8 = str;
-        str = str.offset(1);
-        if !(*fresh8 != 0) {
+        str = unsafe { str.offset(1) };
+        if !((unsafe { *fresh8 }) != 0) {
             break;
         }
     }
     return 1 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlStrncmp(
-    mut str1: * const u8,
-    mut str2: * const u8,
-    mut len: i32,
-) -> i32 {
+pub extern "C" fn xmlStrncmp(mut str1: *const u8, mut str2: *const u8, mut len: i32) -> i32 {
     if len <= 0 as i32 {
         return 0 as i32;
     }
@@ -461,19 +486,17 @@ pub unsafe extern "C" fn xmlStrncmp(
     }
     loop {
         let mut fresh9 = str1;
-        str1 = str1.offset(1);
-        let mut tmp: i32 = *fresh9 as i32 - *str2 as i32;
-        if tmp != 0 as i32
-            || {
-                len -= 1;
-                len == 0 as i32
-            }
-        {
+        str1 = unsafe { str1.offset(1) };
+        let mut tmp: i32 = (unsafe { *fresh9 }) as i32 - (unsafe { *str2 }) as i32;
+        if tmp != 0 as i32 || {
+            len -= 1;
+            len == 0 as i32
+        } {
             return tmp;
         }
         let mut fresh10 = str2;
-        str2 = str2.offset(1);
-        if !(*fresh10 as i32 != 0 as i32) {
+        str2 = unsafe { str2.offset(1) };
+        if !((unsafe { *fresh10 }) as i32 != 0 as i32) {
             break;
         }
     }
@@ -738,10 +761,7 @@ static mut casemap: [u8; 256] = [
     0xff as i32 as xmlChar,
 ];
 #[no_mangle]
-pub unsafe extern "C" fn xmlStrcasecmp(
-    mut str1: * const u8,
-    mut str2: * const u8,
-) -> i32 {
+pub extern "C" fn xmlStrcasecmp(mut str1: *const u8, mut str2: *const u8) -> i32 {
     let mut tmp: i32 = 0;
     if str1 == str2 {
         return 0 as i32;
@@ -754,26 +774,21 @@ pub unsafe extern "C" fn xmlStrcasecmp(
     }
     loop {
         let mut fresh11 = str1;
-        str1 = str1.offset(1);
-        tmp = casemap[*fresh11 as usize] as i32
-            - casemap[*str2 as usize] as i32;
+        str1 = unsafe { str1.offset(1) };
+        tmp = (unsafe { casemap[*fresh11 as usize] }) as i32 - (unsafe { casemap[*str2 as usize] }) as i32;
         if tmp != 0 as i32 {
             return tmp;
         }
         let mut fresh12 = str2;
-        str2 = str2.offset(1);
-        if !(*fresh12 as i32 != 0 as i32) {
+        str2 = unsafe { str2.offset(1) };
+        if !((unsafe { *fresh12 }) as i32 != 0 as i32) {
             break;
         }
     }
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlStrncasecmp(
-    mut str1: * const u8,
-    mut str2: * const u8,
-    mut len: i32,
-) -> i32 {
+pub extern "C" fn xmlStrncasecmp(mut str1: *const u8, mut str2: *const u8, mut len: i32) -> i32 {
     let mut tmp: i32 = 0;
     if len <= 0 as i32 {
         return 0 as i32;
@@ -789,47 +804,37 @@ pub unsafe extern "C" fn xmlStrncasecmp(
     }
     loop {
         let mut fresh13 = str1;
-        str1 = str1.offset(1);
-        tmp = casemap[*fresh13 as usize] as i32
-            - casemap[*str2 as usize] as i32;
-        if tmp != 0 as i32
-            || {
-                len -= 1;
-                len == 0 as i32
-            }
-        {
+        str1 = unsafe { str1.offset(1) };
+        tmp = (unsafe { casemap[*fresh13 as usize] }) as i32 - (unsafe { casemap[*str2 as usize] }) as i32;
+        if tmp != 0 as i32 || {
+            len -= 1;
+            len == 0 as i32
+        } {
             return tmp;
         }
         let mut fresh14 = str2;
-        str2 = str2.offset(1);
-        if !(*fresh14 as i32 != 0 as i32) {
+        str2 = unsafe { str2.offset(1) };
+        if !((unsafe { *fresh14 }) as i32 != 0 as i32) {
             break;
         }
     }
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlStrchr(
-    mut str: * const u8,
-    mut val: u8,
-) -> * const u8 {
+pub extern "C" fn xmlStrchr(mut str: *const u8, mut val: u8) -> *const u8 {
     if str.is_null() {
-        // type
         return 0 as *const libc::c_void as *const xmlChar;
     }
-    while *str as i32 != 0 as i32 {
-        if *str as i32 == val as i32 {
+    while (unsafe { *str }) as i32 != 0 as i32 {
+        if (unsafe { *str }) as i32 == val as i32 {
             return str as *mut xmlChar;
         }
-        str = str.offset(1);
+        str = unsafe { str.offset(1) };
     }
     return 0 as *const xmlChar;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlStrstr(
-    mut str: * const u8,
-    mut val: * const u8,
-) -> * const u8 {
+pub extern "C" fn xmlStrstr(mut str: *const u8, mut val: *const u8) -> *const u8 {
     let mut n: i32 = 0;
     if str.is_null() {
         return 0 as *const xmlChar;
@@ -841,21 +846,18 @@ pub unsafe extern "C" fn xmlStrstr(
     if n == 0 as i32 {
         return str;
     }
-    while *str as i32 != 0 as i32 {
-        if *str as i32 == *val as i32 {
+    while (unsafe { *str }) as i32 != 0 as i32 {
+        if (unsafe { *str }) as i32 == (unsafe { *val }) as i32 {
             if xmlStrncmp(str, val, n) == 0 {
                 return str;
             }
         }
-        str = str.offset(1);
+        str = unsafe { str.offset(1) };
     }
     return 0 as *const xmlChar;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlStrcasestr(
-    mut str: * const u8,
-    mut val: * const u8,
-) -> * const u8 {
+pub extern "C" fn xmlStrcasestr(mut str: *const u8, mut val: *const u8) -> *const u8 {
     let mut n: i32 = 0;
     if str.is_null() {
         return 0 as *const xmlChar;
@@ -867,23 +869,18 @@ pub unsafe extern "C" fn xmlStrcasestr(
     if n == 0 as i32 {
         return str;
     }
-    while *str as i32 != 0 as i32 {
-        if casemap[*str as usize] as i32 == casemap[*val as usize] as i32
-        {
+    while (unsafe { *str }) as i32 != 0 as i32 {
+        if (unsafe { casemap[*str as usize] }) as i32 == (unsafe { casemap[*val as usize] }) as i32 {
             if xmlStrncasecmp(str, val, n) == 0 {
                 return str;
             }
         }
-        str = str.offset(1);
+        str = unsafe { str.offset(1) };
     }
     return 0 as *const xmlChar;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlStrsub(
-    mut str: * const u8,
-    mut start: i32,
-    mut len: i32,
-) -> * mut u8 {
+pub extern "C" fn xmlStrsub(mut str: *const u8, mut start: i32, mut len: i32) -> *mut u8 {
     let mut i: i32 = 0;
     if str.is_null() {
         return 0 as *mut xmlChar;
@@ -896,21 +893,21 @@ pub unsafe extern "C" fn xmlStrsub(
     }
     i = 0 as i32;
     while i < start {
-        if *str as i32 == 0 as i32 {
+        if (unsafe { *str }) as i32 == 0 as i32 {
             return 0 as *mut xmlChar;
         }
-        str = str.offset(1);
+        str = unsafe { str.offset(1) };
         i += 1;
     }
-    if *str as i32 == 0 as i32 {
+    if (unsafe { *str }) as i32 == 0 as i32 {
         return 0 as *mut xmlChar;
     }
     return xmlStrndup(str, len);
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlStrlen(mut str: * const u8) -> i32 {
+pub extern "C" fn xmlStrlen(mut str: *const u8) -> i32 {
     let mut len: u64 = if !str.is_null() {
-        strlen(str as *const i8)
+        unsafe { strlen(str as *const i8) }
     } else {
         0 as i32 as u64
     };
@@ -921,13 +918,9 @@ pub unsafe extern "C" fn xmlStrlen(mut str: * const u8) -> i32 {
     }) as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlStrncat(
-    mut cur: * mut u8,
-    mut add: * const u8,
-    mut len: i32,
-) -> * mut u8 {
+pub extern "C" fn xmlStrncat(mut cur: *mut u8, mut add: *const u8, mut len: i32) -> *mut u8 {
     let mut size: i32 = 0;
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
     if add.is_null() || len == 0 as i32 {
         return cur;
     }
@@ -941,37 +934,29 @@ pub unsafe extern "C" fn xmlStrncat(
     if size < 0 as i32 || size > 2147483647 as i32 - len {
         return 0 as *mut xmlChar;
     }
-    ret = xmlRealloc
-        .expect(
-            "non-null function pointer",
-        )(
+    ret = (unsafe { xmlRealloc.expect("non-null function pointer")(
         cur as *mut libc::c_void,
         (size as size_t)
             .wrapping_add(len as u64)
             .wrapping_add(1 as i32 as u64)
             .wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
-    ) as *mut xmlChar;
+    ) }) as *mut xmlChar;
     if ret.is_null() {
-        xmlErrMemory(0 as xmlParserCtxtPtr, 0 as *const i8);
+        (unsafe { xmlErrMemory(0 as xmlParserCtxtPtr, 0 as *const i8) });
         return cur;
     }
-    memcpy(
+    (unsafe { memcpy(
         &mut *ret.offset(size as isize) as *mut xmlChar as *mut libc::c_void,
         add as *const libc::c_void,
-        (len as u64)
-            .wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
-    );
-    *ret.offset((size + len) as isize) = 0 as i32 as xmlChar;
+        (len as u64).wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
+    ) });
+    (unsafe { *ret.offset((size + len) as isize) = 0 as i32 as xmlChar });
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlStrncatNew(
-    mut str1: * const u8,
-    mut str2: * const u8,
-    mut len: i32,
-) -> * mut u8 {
+pub extern "C" fn xmlStrncatNew(mut str1: *const u8, mut str2: *const u8, mut len: i32) -> *mut u8 {
     let mut size: i32 = 0;
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
     if len < 0 as i32 {
         len = xmlStrlen(str2);
         if len < 0 as i32 {
@@ -988,56 +973,48 @@ pub unsafe extern "C" fn xmlStrncatNew(
     if size < 0 as i32 || size > 2147483647 as i32 - len {
         return 0 as *mut xmlChar;
     }
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(
         (size as size_t)
             .wrapping_add(len as u64)
             .wrapping_add(1 as i32 as u64)
             .wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
-    ) as *mut xmlChar;
+    ) }) as *mut xmlChar;
     if ret.is_null() {
-        xmlErrMemory(0 as xmlParserCtxtPtr, 0 as *const i8);
+        (unsafe { xmlErrMemory(0 as xmlParserCtxtPtr, 0 as *const i8) });
         return xmlStrndup(str1, size);
     }
-    memcpy(
+    (unsafe { memcpy(
         ret as *mut libc::c_void,
         str1 as *const libc::c_void,
-        (size as u64)
-            .wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
-    );
-    memcpy(
+        (size as u64).wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
+    ) });
+    (unsafe { memcpy(
         &mut *ret.offset(size as isize) as *mut xmlChar as *mut libc::c_void,
         str2 as *const libc::c_void,
-        (len as u64)
-            .wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
-    );
-    *ret.offset((size + len) as isize) = 0 as i32 as xmlChar;
+        (len as u64).wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
+    ) });
+    (unsafe { *ret.offset((size + len) as isize) = 0 as i32 as xmlChar });
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlStrcat(
-    mut cur: * mut u8,
-    mut add: * const u8,
-) -> * mut u8 {
-    let mut p: * const u8 = add;
+pub extern "C" fn xmlStrcat(mut cur: *mut u8, mut add: *const u8) -> *mut u8 {
+    let mut p: *const u8 = add;
     if add.is_null() {
         return cur;
     }
     if cur.is_null() {
         return xmlStrdup(add);
     }
-    while *p as i32 != 0 as i32 {
-        p = p.offset(1);
+    while (unsafe { *p }) as i32 != 0 as i32 {
+        p = unsafe { p.offset(1) };
     }
-    return xmlStrncat(cur, add, p.offset_from(add) as i64 as i32);
+    return xmlStrncat(cur, add, (unsafe { p.offset_from(add) }) as i64 as i32);
 }
 #[no_mangle]
 pub unsafe extern "C" fn xmlStrPrintf(
-    mut buf: * mut u8,
+    mut buf: *mut u8,
     mut len: i32,
-    mut msg: * const i8,
+    mut msg: *const i8,
     mut args: ...
 ) -> i32 {
     let mut args_0: core::ffi::VaListImpl;
@@ -1046,52 +1023,42 @@ pub unsafe extern "C" fn xmlStrPrintf(
         return -(1 as i32);
     }
     args_0 = args.clone();
-    ret = vsnprintf(
-        buf as *mut i8,
-        len as u64,
-        msg,
-        args_0.as_va_list(),
-    );
+    ret = vsnprintf(buf as *mut i8, len as u64, msg, args_0.as_va_list());
     *buf.offset((len - 1 as i32) as isize) = 0 as i32 as xmlChar;
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlStrVPrintf(
-    mut buf: * mut u8,
+pub extern "C" fn xmlStrVPrintf(
+    mut buf: *mut u8,
     mut len: i32,
-    mut msg: * const i8,
+    mut msg: *const i8,
     mut ap: core::ffi::VaList,
 ) -> i32 {
     let mut ret: i32 = 0;
     if buf.is_null() || msg.is_null() {
         return -(1 as i32);
     }
-    ret = vsnprintf(
-        buf as *mut i8,
-        len as u64,
-        msg,
-        ap.as_va_list(),
-    );
-    *buf.offset((len - 1 as i32) as isize) = 0 as i32 as xmlChar;
+    ret = unsafe { vsnprintf(buf as *mut i8, len as u64, msg, ap.as_va_list()) };
+    (unsafe { *buf.offset((len - 1 as i32) as isize) = 0 as i32 as xmlChar });
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUTF8Size(mut utf: * const u8) -> i32 {
+pub extern "C" fn xmlUTF8Size(mut utf: *const u8) -> i32 {
     let mut mask: u8 = 0;
     let mut len: i32 = 0;
     if utf.is_null() {
         return -(1 as i32);
     }
-    if (*utf as i32) < 0x80 as i32 {
+    if ((unsafe { *utf }) as i32) < 0x80 as i32 {
         return 1 as i32;
     }
-    if *utf as i32 & 0x40 as i32 == 0 {
+    if (unsafe { *utf }) as i32 & 0x40 as i32 == 0 {
         return -(1 as i32);
     }
     len = 2 as i32;
     mask = 0x20 as i32 as xmlChar;
     while mask as i32 != 0 as i32 {
-        if *utf as i32 & mask as i32 == 0 {
+        if (unsafe { *utf }) as i32 & mask as i32 == 0 {
             return len;
         }
         len += 1;
@@ -1100,10 +1067,7 @@ pub unsafe extern "C" fn xmlUTF8Size(mut utf: * const u8) -> i32 {
     return -(1 as i32);
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUTF8Charcmp(
-    mut utf1: * const u8,
-    mut utf2: * const u8,
-) -> i32 {
+pub extern "C" fn xmlUTF8Charcmp(mut utf1: *const u8, mut utf2: *const u8) -> i32 {
     if utf1.is_null() {
         if utf2.is_null() {
             return 0 as i32;
@@ -1113,47 +1077,35 @@ pub unsafe extern "C" fn xmlUTF8Charcmp(
     return xmlStrncmp(utf1, utf2, xmlUTF8Size(utf1));
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUTF8Strlen(mut utf: * const u8) -> i32 {
+pub extern "C" fn xmlUTF8Strlen(mut utf: *const u8) -> i32 {
     let mut ret: u64 = 0 as i32 as size_t;
     if utf.is_null() {
         return -(1 as i32);
     }
-    while *utf as i32 != 0 as i32 {
-        if *utf.offset(0 as i32 as isize) as i32 & 0x80 as i32
-            != 0
-        {
-            if *utf.offset(1 as i32 as isize) as i32
-                & 0xc0 as i32 != 0x80 as i32
-            {
+    while (unsafe { *utf }) as i32 != 0 as i32 {
+        if (unsafe { *utf.offset(0 as i32 as isize) }) as i32 & 0x80 as i32 != 0 {
+            if (unsafe { *utf.offset(1 as i32 as isize) }) as i32 & 0xc0 as i32 != 0x80 as i32 {
                 return -(1 as i32);
             }
-            if *utf.offset(0 as i32 as isize) as i32
-                & 0xe0 as i32 == 0xe0 as i32
-            {
-                if *utf.offset(2 as i32 as isize) as i32
-                    & 0xc0 as i32 != 0x80 as i32
-                {
+            if (unsafe { *utf.offset(0 as i32 as isize) }) as i32 & 0xe0 as i32 == 0xe0 as i32 {
+                if (unsafe { *utf.offset(2 as i32 as isize) }) as i32 & 0xc0 as i32 != 0x80 as i32 {
                     return -(1 as i32);
                 }
-                if *utf.offset(0 as i32 as isize) as i32
-                    & 0xf0 as i32 == 0xf0 as i32
-                {
-                    if *utf.offset(0 as i32 as isize) as i32
-                        & 0xf8 as i32 != 0xf0 as i32
-                        || *utf.offset(3 as i32 as isize) as i32
-                            & 0xc0 as i32 != 0x80 as i32
+                if (unsafe { *utf.offset(0 as i32 as isize) }) as i32 & 0xf0 as i32 == 0xf0 as i32 {
+                    if (unsafe { *utf.offset(0 as i32 as isize) }) as i32 & 0xf8 as i32 != 0xf0 as i32
+                        || (unsafe { *utf.offset(3 as i32 as isize) }) as i32 & 0xc0 as i32 != 0x80 as i32
                     {
                         return -(1 as i32);
                     }
-                    utf = utf.offset(4 as i32 as isize);
+                    utf = unsafe { utf.offset(4 as i32 as isize) };
                 } else {
-                    utf = utf.offset(3 as i32 as isize);
+                    utf = unsafe { utf.offset(3 as i32 as isize) };
                 }
             } else {
-                utf = utf.offset(2 as i32 as isize);
+                utf = unsafe { utf.offset(2 as i32 as isize) };
             }
         } else {
-            utf = utf.offset(1);
+            utf = unsafe { utf.offset(1) };
         }
         ret = ret.wrapping_add(1);
     }
@@ -1164,78 +1116,114 @@ pub unsafe extern "C" fn xmlUTF8Strlen(mut utf: * const u8) -> i32 {
     }) as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlGetUTF8Char<'a1, 'a2>(
-    mut utf: Option<crate::__laertes_array::CustomSlice<'a1, u8, &'a1  [u8]>>,
+pub extern "C" fn xmlGetUTF8Char<'a1, 'a2>(
+    mut utf: Option<crate::__laertes_array::CustomSlice<'a1, u8, &'a1 [u8]>>,
     mut len: Option<&'a2 mut i32>,
 ) -> i32 {
     let mut current_block: u64;
     let mut c: u32 = 0;
-    if !crate::__laertes_array::borrow(& utf)/*borrow*/.is_none() {
-        if !borrow(& len).is_none() {
-            if !(*(borrow(& len)).unwrap() < 1 as i32) {
-                c = (*crate::__laertes_array::Get::<&_>::get_offset(utf.as_ref().unwrap(), (0 as i32 as isize))) as u32;
+    if !crate::__laertes_array::borrow(&utf).is_none() {
+        if !borrow(&len).is_none() {
+            if !(*(borrow(&len)).unwrap() < 1 as i32) {
+                c = (*crate::__laertes_array::Get::<&_>::get_offset(
+                    utf.as_ref().unwrap(),
+                    0 as i32 as isize,
+                )) as u32;
                 if c & 0x80 as i32 as u32 != 0 {
-                    if *(borrow(& len)).unwrap() < 2 as i32 {
+                    if *(borrow(&len)).unwrap() < 2 as i32 {
                         current_block = 3966416321279884290;
-                    } else if (*crate::__laertes_array::Get::<&_>::get_offset(crate::__laertes_array::borrow(& utf)/*borrow*/.as_ref().unwrap(), (1 as i32 as isize))) as i32
-                            & 0xc0 as i32 != 0x80 as i32
-                        {
+                    } else if (*crate::__laertes_array::Get::<&_>::get_offset(
+                        crate::__laertes_array::borrow(&utf).as_ref().unwrap(),
+                        1 as i32 as isize,
+                    )) as i32
+                        & 0xc0 as i32
+                        != 0x80 as i32
+                    {
                         current_block = 3966416321279884290;
-                    } else if c & 0xe0 as i32 as u32
-                            == 0xe0 as i32 as u32
+                    } else if c & 0xe0 as i32 as u32 == 0xe0 as i32 as u32 {
+                        if *(borrow(&len)).unwrap() < 3 as i32 {
+                            current_block = 3966416321279884290;
+                        } else if (*crate::__laertes_array::Get::<&_>::get_offset(
+                            crate::__laertes_array::borrow(&utf).as_ref().unwrap(),
+                            2 as i32 as isize,
+                        )) as i32
+                            & 0xc0 as i32
+                            != 0x80 as i32
                         {
-                        if *(borrow(& len)).unwrap() < 3 as i32 {
                             current_block = 3966416321279884290;
-                        } else if (*crate::__laertes_array::Get::<&_>::get_offset(crate::__laertes_array::borrow(& utf)/*borrow*/.as_ref().unwrap(), (2 as i32 as isize))) as i32
-                                & 0xc0 as i32 != 0x80 as i32
-                            {
-                            current_block = 3966416321279884290;
-                        } else if c & 0xf0 as i32 as u32
-                                == 0xf0 as i32 as u32
-                            {
-                            if *(borrow(& len)).unwrap() < 4 as i32 {
+                        } else if c & 0xf0 as i32 as u32 == 0xf0 as i32 as u32 {
+                            if *(borrow(&len)).unwrap() < 4 as i32 {
                                 current_block = 3966416321279884290;
-                            } else if c & 0xf8 as i32 as u32
-                                    != 0xf0 as i32 as u32
-                                    || (*crate::__laertes_array::Get::<&_>::get_offset(crate::__laertes_array::borrow(& utf)/*borrow*/.as_ref().unwrap(), (3 as i32 as isize))) as i32
-                                        & 0xc0 as i32 != 0x80 as i32
-                                {
+                            } else if c & 0xf8 as i32 as u32 != 0xf0 as i32 as u32
+                                || (*crate::__laertes_array::Get::<&_>::get_offset(
+                                    crate::__laertes_array::borrow(&utf).as_ref().unwrap(),
+                                    3 as i32 as isize,
+                                )) as i32
+                                    & 0xc0 as i32
+                                    != 0x80 as i32
+                            {
                                 current_block = 3966416321279884290;
                             } else {
                                 *(borrow_mut(&mut len)).unwrap() = 4 as i32;
-                                c = (((*crate::__laertes_array::Get::<&_>::get_offset(crate::__laertes_array::borrow(& utf)/*borrow*/.as_ref().unwrap(), (0 as i32 as isize))) as i32
-                                    & 0x7 as i32) << 18 as i32) as u32;
-                                c
-                                    |= (((*crate::__laertes_array::Get::<&_>::get_offset(crate::__laertes_array::borrow(& utf)/*borrow*/.as_ref().unwrap(), (1 as i32 as isize))) as i32
-                                        & 0x3f as i32) << 12 as i32)
-                                        as u32;
-                                c
-                                    |= (((*crate::__laertes_array::Get::<&_>::get_offset(crate::__laertes_array::borrow(& utf)/*borrow*/.as_ref().unwrap(), (2 as i32 as isize))) as i32
-                                        & 0x3f as i32) << 6 as i32) as u32;
-                                c
-                                    |= ((*crate::__laertes_array::Get::<&_>::get_offset(crate::__laertes_array::borrow(& utf)/*borrow*/.as_ref().unwrap(), (3 as i32 as isize))) as i32
-                                        & 0x3f as i32) as u32;
+                                c = (((*crate::__laertes_array::Get::<&_>::get_offset(
+                                    crate::__laertes_array::borrow(&utf).as_ref().unwrap(),
+                                    0 as i32 as isize,
+                                )) as i32
+                                    & 0x7 as i32)
+                                    << 18 as i32) as u32;
+                                c |= (((*crate::__laertes_array::Get::<&_>::get_offset(
+                                    crate::__laertes_array::borrow(&utf).as_ref().unwrap(),
+                                    1 as i32 as isize,
+                                )) as i32
+                                    & 0x3f as i32)
+                                    << 12 as i32) as u32;
+                                c |= (((*crate::__laertes_array::Get::<&_>::get_offset(
+                                    crate::__laertes_array::borrow(&utf).as_ref().unwrap(),
+                                    2 as i32 as isize,
+                                )) as i32
+                                    & 0x3f as i32)
+                                    << 6 as i32) as u32;
+                                c |= ((*crate::__laertes_array::Get::<&_>::get_offset(
+                                    crate::__laertes_array::borrow(&utf).as_ref().unwrap(),
+                                    3 as i32 as isize,
+                                )) as i32
+                                    & 0x3f as i32) as u32;
                                 current_block = 11932355480408055363;
                             }
                         } else {
                             *(borrow_mut(&mut len)).unwrap() = 3 as i32;
-                            c = (((*crate::__laertes_array::Get::<&_>::get_offset(crate::__laertes_array::borrow(& utf)/*borrow*/.as_ref().unwrap(), (0 as i32 as isize))) as i32
-                                & 0xf as i32) << 12 as i32) as u32;
-                            c
-                                |= (((*crate::__laertes_array::Get::<&_>::get_offset(crate::__laertes_array::borrow(& utf)/*borrow*/.as_ref().unwrap(), (1 as i32 as isize))) as i32
-                                    & 0x3f as i32) << 6 as i32) as u32;
-                            c
-                                |= ((*crate::__laertes_array::Get::<&_>::get_offset(crate::__laertes_array::borrow(& utf)/*borrow*/.as_ref().unwrap(), (2 as i32 as isize))) as i32
-                                    & 0x3f as i32) as u32;
+                            c = (((*crate::__laertes_array::Get::<&_>::get_offset(
+                                crate::__laertes_array::borrow(&utf).as_ref().unwrap(),
+                                0 as i32 as isize,
+                            )) as i32
+                                & 0xf as i32)
+                                << 12 as i32) as u32;
+                            c |= (((*crate::__laertes_array::Get::<&_>::get_offset(
+                                crate::__laertes_array::borrow(&utf).as_ref().unwrap(),
+                                1 as i32 as isize,
+                            )) as i32
+                                & 0x3f as i32)
+                                << 6 as i32) as u32;
+                            c |= ((*crate::__laertes_array::Get::<&_>::get_offset(
+                                crate::__laertes_array::borrow(&utf).as_ref().unwrap(),
+                                2 as i32 as isize,
+                            )) as i32
+                                & 0x3f as i32) as u32;
                             current_block = 11932355480408055363;
                         }
                     } else {
                         *(borrow_mut(&mut len)).unwrap() = 2 as i32;
-                        c = (((*crate::__laertes_array::Get::<&_>::get_offset(crate::__laertes_array::borrow(& utf)/*borrow*/.as_ref().unwrap(), (0 as i32 as isize))) as i32
-                            & 0x1f as i32) << 6 as i32) as u32;
-                        c
-                            |= ((*crate::__laertes_array::Get::<&_>::get_offset(crate::__laertes_array::borrow(& utf)/*borrow*/.as_ref().unwrap(), (1 as i32 as isize))) as i32
-                                & 0x3f as i32) as u32;
+                        c = (((*crate::__laertes_array::Get::<&_>::get_offset(
+                            crate::__laertes_array::borrow(&utf).as_ref().unwrap(),
+                            0 as i32 as isize,
+                        )) as i32
+                            & 0x1f as i32)
+                            << 6 as i32) as u32;
+                        c |= ((*crate::__laertes_array::Get::<&_>::get_offset(
+                            crate::__laertes_array::borrow(&utf).as_ref().unwrap(),
+                            1 as i32 as isize,
+                        )) as i32
+                            & 0x3f as i32) as u32;
                         current_block = 11932355480408055363;
                     }
                 } else {
@@ -1243,26 +1231,31 @@ pub unsafe extern "C" fn xmlGetUTF8Char<'a1, 'a2>(
                     current_block = 11932355480408055363;
                 }
                 match current_block {
-                    3966416321279884290 => {}
+                    3966416321279884290 => {},
                     _ => return c as i32,
                 }
             }
         }
     }
-    if !borrow(& len).is_none() {
+    if !borrow(&len).is_none() {
         *(borrow_mut(&mut len)).unwrap() = 0 as i32;
     }
     return -(1 as i32);
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCheckUTF8(mut utf: Option<crate::__laertes_array::CustomSlice<'static, u8, Box<[u8]>>>) -> i32 {
+pub extern "C" fn xmlCheckUTF8(
+    mut utf: Option<crate::__laertes_array::CustomSlice<'static, u8, Box<[u8]>>>,
+) -> i32 {
     let mut ix: i32 = 0;
     let mut c: u8 = 0;
-    if crate::__laertes_array::borrow(& utf)/*borrow*/.is_none() {
+    if crate::__laertes_array::borrow(&utf).is_none() {
         return 0 as i32;
     }
     loop {
-        c = (*crate::__laertes_array::Get::<&_>::get_offset(utf.as_ref().unwrap(), (0 as i32 as isize)));
+        c = *crate::__laertes_array::Get::<&_>::get_offset(
+            utf.as_ref().unwrap(),
+            0 as i32 as isize,
+        );
         if !(c != 0) {
             break;
         }
@@ -1270,45 +1263,69 @@ pub unsafe extern "C" fn xmlCheckUTF8(mut utf: Option<crate::__laertes_array::Cu
         if c as i32 & 0x80 as i32 == 0 as i32 {
             ix = 1 as i32;
         } else if c as i32 & 0xe0 as i32 == 0xc0 as i32 {
-            if (*crate::__laertes_array::Get::<&_>::get_offset(crate::__laertes_array::borrow(& utf)/*borrow*/.as_ref().unwrap(), (1 as i32 as isize))) as i32
-                & 0xc0 as i32 != 0x80 as i32
+            if (*crate::__laertes_array::Get::<&_>::get_offset(
+                crate::__laertes_array::borrow(&utf).as_ref().unwrap(),
+                1 as i32 as isize,
+            )) as i32
+                & 0xc0 as i32
+                != 0x80 as i32
             {
                 return 0 as i32;
             }
             ix = 2 as i32;
         } else if c as i32 & 0xf0 as i32 == 0xe0 as i32 {
-            if (*crate::__laertes_array::Get::<&_>::get_offset(crate::__laertes_array::borrow(& utf)/*borrow*/.as_ref().unwrap(), (1 as i32 as isize))) as i32
-                & 0xc0 as i32 != 0x80 as i32
-                || (*crate::__laertes_array::Get::<&_>::get_offset(crate::__laertes_array::borrow(& utf)/*borrow*/.as_ref().unwrap(), (2 as i32 as isize))) as i32
-                    & 0xc0 as i32 != 0x80 as i32
+            if (*crate::__laertes_array::Get::<&_>::get_offset(
+                crate::__laertes_array::borrow(&utf).as_ref().unwrap(),
+                1 as i32 as isize,
+            )) as i32
+                & 0xc0 as i32
+                != 0x80 as i32
+                || (*crate::__laertes_array::Get::<&_>::get_offset(
+                    crate::__laertes_array::borrow(&utf).as_ref().unwrap(),
+                    2 as i32 as isize,
+                )) as i32
+                    & 0xc0 as i32
+                    != 0x80 as i32
             {
                 return 0 as i32;
             }
             ix = 3 as i32;
         } else if c as i32 & 0xf8 as i32 == 0xf0 as i32 {
-            if (*crate::__laertes_array::Get::<&_>::get_offset(crate::__laertes_array::borrow(& utf)/*borrow*/.as_ref().unwrap(), (1 as i32 as isize))) as i32
-                & 0xc0 as i32 != 0x80 as i32
-                || (*crate::__laertes_array::Get::<&_>::get_offset(crate::__laertes_array::borrow(& utf)/*borrow*/.as_ref().unwrap(), (2 as i32 as isize))) as i32
-                    & 0xc0 as i32 != 0x80 as i32
-                || (*crate::__laertes_array::Get::<&_>::get_offset(crate::__laertes_array::borrow(& utf)/*borrow*/.as_ref().unwrap(), (3 as i32 as isize))) as i32
-                    & 0xc0 as i32 != 0x80 as i32
+            if (*crate::__laertes_array::Get::<&_>::get_offset(
+                crate::__laertes_array::borrow(&utf).as_ref().unwrap(),
+                1 as i32 as isize,
+            )) as i32
+                & 0xc0 as i32
+                != 0x80 as i32
+                || (*crate::__laertes_array::Get::<&_>::get_offset(
+                    crate::__laertes_array::borrow(&utf).as_ref().unwrap(),
+                    2 as i32 as isize,
+                )) as i32
+                    & 0xc0 as i32
+                    != 0x80 as i32
+                || (*crate::__laertes_array::Get::<&_>::get_offset(
+                    crate::__laertes_array::borrow(&utf).as_ref().unwrap(),
+                    3 as i32 as isize,
+                )) as i32
+                    & 0xc0 as i32
+                    != 0x80 as i32
             {
                 return 0 as i32;
             }
             ix = 4 as i32;
         } else {
-            return 0 as i32
+            return 0 as i32;
         }
-        utf = Some(crate::__laertes_array::IntoSlice::into_slice_offset(utf.unwrap(), (ix as isize)));
+        utf = Some(crate::__laertes_array::IntoSlice::into_slice_offset(
+            utf.unwrap(),
+            ix as isize,
+        ));
     }
     return 1 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUTF8Strsize(
-    mut utf: * const u8,
-    mut len: i32,
-) -> i32 {
-    let mut ptr: * const u8 = utf;
+pub extern "C" fn xmlUTF8Strsize(mut utf: *const u8, mut len: i32) -> i32 {
+    let mut ptr: *const u8 = utf;
     let mut ch: i32 = 0;
     let mut ret: u64 = 0;
     if utf.is_null() {
@@ -1323,26 +1340,26 @@ pub unsafe extern "C" fn xmlUTF8Strsize(
         if !(fresh15 > 0 as i32) {
             break;
         }
-        if *ptr == 0 {
+        if (unsafe { *ptr }) == 0 {
             break;
         }
         let mut fresh16 = ptr;
-        ptr = ptr.offset(1);
-        ch = *fresh16 as i32;
+        ptr = unsafe { ptr.offset(1) };
+        ch = (unsafe { *fresh16 }) as i32;
         if ch & 0x80 as i32 != 0 {
             loop {
                 ch <<= 1 as i32;
                 if !(ch & 0x80 as i32 != 0) {
                     break;
                 }
-                if *ptr as i32 == 0 as i32 {
+                if (unsafe { *ptr }) as i32 == 0 as i32 {
                     break;
                 }
-                ptr = ptr.offset(1);
+                ptr = unsafe { ptr.offset(1) };
             }
         }
     }
-    ret = ptr.offset_from(utf) as i64 as size_t;
+    ret = (unsafe { ptr.offset_from(utf) }) as i64 as size_t;
     return (if ret > 2147483647 as i32 as u64 {
         0 as i32 as u64
     } else {
@@ -1350,48 +1367,37 @@ pub unsafe extern "C" fn xmlUTF8Strsize(
     }) as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUTF8Strndup(
-    mut utf: * const u8,
-    mut len: i32,
-) -> * mut u8 {
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
+pub extern "C" fn xmlUTF8Strndup(mut utf: *const u8, mut len: i32) -> *mut u8 {
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
     let mut i: i32 = 0;
     if utf.is_null() || len < 0 as i32 {
         return 0 as *mut xmlChar;
     }
     i = xmlUTF8Strsize(utf, len);
-    ret = xmlMallocAtomic
-        .expect(
-            "non-null function pointer",
-        )(
+    ret = (unsafe { xmlMallocAtomic.expect("non-null function pointer")(
         (i as size_t)
             .wrapping_add(1 as i32 as u64)
             .wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
-    ) as *mut xmlChar;
+    ) }) as *mut xmlChar;
     if ret.is_null() {
         return 0 as *mut xmlChar;
     }
-    memcpy(
+    (unsafe { memcpy(
         ret as *mut libc::c_void,
         utf as *const libc::c_void,
-        (i as u64)
-            .wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
-    );
-    *ret.offset(i as isize) = 0 as i32 as xmlChar;
+        (i as u64).wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
+    ) });
+    (unsafe { *ret.offset(i as isize) = 0 as i32 as xmlChar });
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUTF8Strpos(
-    mut utf: * const u8,
-    mut pos: i32,
-) -> * const u8 {
+pub extern "C" fn xmlUTF8Strpos(mut utf: *const u8, mut pos: i32) -> *const u8 {
     let mut ch: i32 = 0;
     if utf.is_null() {
-        // type
-        return (0 as * const u8);
+        return 0 as *const u8;
     }
     if pos < 0 as i32 {
-        return (0 as * const u8);
+        return 0 as *const u8;
     }
     loop {
         let mut fresh17 = pos;
@@ -1400,14 +1406,14 @@ pub unsafe extern "C" fn xmlUTF8Strpos(
             break;
         }
         let mut fresh18 = utf;
-        utf = utf.offset(1);
-        ch = *fresh18 as i32;
+        utf = unsafe { utf.offset(1) };
+        ch = (unsafe { *fresh18 }) as i32;
         if ch == 0 as i32 {
-            return (0 as * const u8);
+            return 0 as *const u8;
         }
         if ch & 0x80 as i32 != 0 {
             if ch & 0xc0 as i32 != 0xc0 as i32 {
-                return (0 as * const u8);
+                return 0 as *const u8;
             }
             loop {
                 ch <<= 1 as i32;
@@ -1415,9 +1421,9 @@ pub unsafe extern "C" fn xmlUTF8Strpos(
                     break;
                 }
                 let mut fresh19 = utf;
-                utf = utf.offset(1);
-                if *fresh19 as i32 & 0xc0 as i32 != 0x80 as i32 {
-                    return (0 as * const u8);
+                utf = unsafe { utf.offset(1) };
+                if (unsafe { *fresh19 }) as i32 & 0xc0 as i32 != 0x80 as i32 {
+                    return 0 as *const u8;
                 }
             }
         }
@@ -1425,10 +1431,7 @@ pub unsafe extern "C" fn xmlUTF8Strpos(
     return utf as *mut xmlChar;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUTF8Strloc(
-    mut utf: * const u8,
-    mut utfchar: * const u8,
-) -> i32 {
+pub extern "C" fn xmlUTF8Strloc(mut utf: *const u8, mut utfchar: *const u8) -> i32 {
     let mut i: u64 = 0;
     let mut size: i32 = 0;
     let mut ch: i32 = 0;
@@ -1438,7 +1441,7 @@ pub unsafe extern "C" fn xmlUTF8Strloc(
     size = xmlUTF8Strsize(utfchar, 1 as i32);
     i = 0 as i32 as size_t;
     loop {
-        ch = *utf as i32;
+        ch = (unsafe { *utf }) as i32;
         if !(ch != 0 as i32) {
             break;
         }
@@ -1449,7 +1452,7 @@ pub unsafe extern "C" fn xmlUTF8Strloc(
                 i
             }) as i32;
         }
-        utf = utf.offset(1);
+        utf = unsafe { utf.offset(1) };
         if ch & 0x80 as i32 != 0 {
             if ch & 0xc0 as i32 != 0xc0 as i32 {
                 return -(1 as i32);
@@ -1460,8 +1463,8 @@ pub unsafe extern "C" fn xmlUTF8Strloc(
                     break;
                 }
                 let mut fresh20 = utf;
-                utf = utf.offset(1);
-                if *fresh20 as i32 & 0xc0 as i32 != 0x80 as i32 {
+                utf = unsafe { utf.offset(1) };
+                if (unsafe { *fresh20 }) as i32 & 0xc0 as i32 != 0x80 as i32 {
                     return -(1 as i32);
                 }
             }
@@ -1471,11 +1474,7 @@ pub unsafe extern "C" fn xmlUTF8Strloc(
     return -(1 as i32);
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUTF8Strsub(
-    mut utf: * const u8,
-    mut start: i32,
-    mut len: i32,
-) -> * mut u8 {
+pub extern "C" fn xmlUTF8Strsub(mut utf: *const u8, mut start: i32, mut len: i32) -> *mut u8 {
     let mut i: i32 = 0;
     let mut ch: i32 = 0;
     if utf.is_null() {
@@ -1490,8 +1489,8 @@ pub unsafe extern "C" fn xmlUTF8Strsub(
     i = 0 as i32;
     while i < start {
         let mut fresh21 = utf;
-        utf = utf.offset(1);
-        ch = *fresh21 as i32;
+        utf = unsafe { utf.offset(1) };
+        ch = (unsafe { *fresh21 }) as i32;
         if ch == 0 as i32 {
             return 0 as *mut xmlChar;
         }
@@ -1505,8 +1504,8 @@ pub unsafe extern "C" fn xmlUTF8Strsub(
                     break;
                 }
                 let mut fresh22 = utf;
-                utf = utf.offset(1);
-                if *fresh22 as i32 & 0xc0 as i32 != 0x80 as i32 {
+                utf = unsafe { utf.offset(1) };
+                if (unsafe { *fresh22 }) as i32 & 0xc0 as i32 != 0x80 as i32 {
                     return 0 as *mut xmlChar;
                 }
             }
@@ -1516,64 +1515,57 @@ pub unsafe extern "C" fn xmlUTF8Strsub(
     return xmlUTF8Strndup(utf, len);
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlEscapeFormatString<'a1>(
-    mut msg: Option<&'a1 mut * mut u8>,
-) -> * mut u8 {
-    let mut msgPtr: * mut u8 = 0 as *mut xmlChar;
-    let mut result: * mut u8 = 0 as *mut xmlChar;
-    let mut resultPtr: * mut u8 = 0 as *mut xmlChar;
+pub extern "C" fn xmlEscapeFormatString<'a1>(mut msg: Option<&'a1 mut *mut u8>) -> *mut u8 {
+    let mut msgPtr: *mut u8 = 0 as *mut xmlChar;
+    let mut result: *mut u8 = 0 as *mut xmlChar;
+    let mut resultPtr: *mut u8 = 0 as *mut xmlChar;
     let mut count: u64 = 0 as i32 as size_t;
     let mut msgLen: u64 = 0 as i32 as size_t;
     let mut resultLen: u64 = 0 as i32 as size_t;
-    if borrow(& msg).is_none() || (*(borrow_mut(&mut msg)).unwrap()).is_null() {
+    if borrow(&msg).is_none() || (*(borrow_mut(&mut msg)).unwrap()).is_null() {
         return 0 as *mut xmlChar;
     }
     msgPtr = *(borrow_mut(&mut msg)).unwrap();
-    while *msgPtr as i32 != '\u{0}' as i32 {
+    while (unsafe { *msgPtr }) as i32 != '\u{0}' as i32 {
         msgLen = msgLen.wrapping_add(1);
-        if *msgPtr as i32 == '%' as i32 {
+        if (unsafe { *msgPtr }) as i32 == '%' as i32 {
             count = count.wrapping_add(1);
         }
-        msgPtr = msgPtr.offset(1);
+        msgPtr = unsafe { msgPtr.offset(1) };
     }
     if count == 0 as i32 as u64 {
         return *(borrow_mut(&mut msg)).unwrap();
     }
-    if count > 2147483647 as i32 as u64
-        || msgLen > (2147483647 as i32 as u64).wrapping_sub(count)
-    {
+    if count > 2147483647 as i32 as u64 || msgLen > (2147483647 as i32 as u64).wrapping_sub(count) {
         return 0 as *mut xmlChar;
     }
-    resultLen = msgLen
-        .wrapping_add(count)
-        .wrapping_add(1 as i32 as u64);
-    result = xmlMallocAtomic
-        .expect(
-            "non-null function pointer",
-        )(resultLen.wrapping_mul(::std::mem::size_of::<xmlChar>() as u64))
-        as *mut xmlChar;
+    resultLen = msgLen.wrapping_add(count).wrapping_add(1 as i32 as u64);
+    result = (unsafe { xmlMallocAtomic.expect("non-null function pointer")(
+        resultLen.wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
+    ) }) as *mut xmlChar;
     if result.is_null() {
-        xmlFree.expect("non-null function pointer")(*(borrow_mut(&mut msg)).unwrap() as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(
+            *(borrow_mut(&mut msg)).unwrap() as *mut libc::c_void
+        ) });
         *(borrow_mut(&mut msg)).unwrap() = 0 as *mut xmlChar;
-        xmlErrMemory(0 as xmlParserCtxtPtr, 0 as *const i8);
+        (unsafe { xmlErrMemory(0 as xmlParserCtxtPtr, 0 as *const i8) });
         return 0 as *mut xmlChar;
     }
     msgPtr = *(borrow_mut(&mut msg)).unwrap();
     resultPtr = result;
-    while *msgPtr as i32 != '\u{0}' as i32 {
-        *resultPtr = *msgPtr;
-        if *msgPtr as i32 == '%' as i32 {
-            resultPtr = resultPtr.offset(1);
-            *resultPtr = '%' as i32 as xmlChar;
+    while (unsafe { *msgPtr }) as i32 != '\u{0}' as i32 {
+        (unsafe { *resultPtr = *msgPtr });
+        if (unsafe { *msgPtr }) as i32 == '%' as i32 {
+            resultPtr = unsafe { resultPtr.offset(1) };
+            (unsafe { *resultPtr = '%' as i32 as xmlChar });
         }
-        msgPtr = msgPtr.offset(1);
-        resultPtr = resultPtr.offset(1);
+        msgPtr = unsafe { msgPtr.offset(1) };
+        resultPtr = unsafe { resultPtr.offset(1) };
     }
-    *result
-        .offset(
-            resultLen.wrapping_sub(1 as i32 as u64) as isize,
-        ) = '\u{0}' as i32 as xmlChar;
-    xmlFree.expect("non-null function pointer")(*(borrow_mut(&mut msg)).unwrap() as *mut libc::c_void);
+    (unsafe { *result.offset(resultLen.wrapping_sub(1 as i32 as u64) as isize) = '\u{0}' as i32 as xmlChar });
+    (unsafe { xmlFree.expect("non-null function pointer")(
+        *(borrow_mut(&mut msg)).unwrap() as *mut libc::c_void
+    ) });
     *(borrow_mut(&mut msg)).unwrap() = result;
     return *(borrow_mut(&mut msg)).unwrap();
 }

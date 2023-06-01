@@ -1,94 +1,76 @@
-use ::libc;
+use :: libc;
 extern "C" {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    fn fprintf(_: * mut crate::src::tree::_IO_FILE, _: * const i8, _: ...) -> i32;
-    fn snprintf(
-        _: * mut i8,
-        _: u64,
-        _: * const i8,
-        _: ...
-    ) -> i32;
+    fn fprintf(_: *mut crate::src::tree::_IO_FILE, _: *const i8, _: ...) -> i32;
+    fn snprintf(_: *mut i8, _: u64, _: *const i8, _: ...) -> i32;
     fn memcpy(
-        _: * mut core::ffi::c_void,
-        _: * const core::ffi::c_void,
+        _: *mut core::ffi::c_void,
+        _: *const core::ffi::c_void,
         _: u64,
-    ) -> * mut core::ffi::c_void;
-    fn memset(
-        _: * mut core::ffi::c_void,
-        _: i32,
-        _: u64,
-    ) -> * mut core::ffi::c_void;
-    fn strlen(_: * const i8) -> u64;
+    ) -> *mut core::ffi::c_void;
+    fn memset(_: *mut core::ffi::c_void, _: i32, _: u64) -> *mut core::ffi::c_void;
+    fn strlen(_: *const i8) -> u64;
     fn __xmlRaiseError(
-        schannel: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::threads::_xmlError,) -> ()>,
-        channel: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>,
-        data: * mut core::ffi::c_void,
-        ctx: * mut core::ffi::c_void,
-        node: * mut core::ffi::c_void,
+        schannel: Option<
+            unsafe extern "C" fn(
+                _: *mut core::ffi::c_void,
+                _: *mut crate::src::threads::_xmlError,
+            ) -> (),
+        >,
+        channel: Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>,
+        data: *mut core::ffi::c_void,
+        ctx: *mut core::ffi::c_void,
+        node: *mut core::ffi::c_void,
         domain: i32,
         code: i32,
         level: u32,
-        file: * const i8,
+        file: *const i8,
         line: i32,
-        str1: * const i8,
-        str2: * const i8,
-        str3: * const i8,
+        str1: *const i8,
+        str2: *const i8,
+        str3: *const i8,
         int1: i32,
         col: i32,
-        msg: * const i8,
+        msg: *const i8,
         _: ...
     );
-    static mut xmlMemStrdup: Option<unsafe extern "C"  fn(_: * const i8,) -> * mut i8>;
-    static mut xmlFree: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-    static mut xmlRealloc: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: u64,) -> * mut core::ffi::c_void>;
-    static mut xmlMallocAtomic: Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
-    static mut xmlMalloc: Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
+    static mut xmlMemStrdup: Option<unsafe extern "C" fn(_: *const i8) -> *mut i8>;
+    static mut xmlFree: Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+    static mut xmlRealloc:
+        Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: u64) -> *mut core::ffi::c_void>;
+    static mut xmlMallocAtomic: Option<unsafe extern "C" fn(_: u64) -> *mut core::ffi::c_void>;
+    static mut xmlMalloc: Option<unsafe extern "C" fn(_: u64) -> *mut core::ffi::c_void>;
 }
-pub use crate::src::xmlstring::xmlStrEqual;
-pub use crate::src::xmlstring::xmlStrcat;
-pub use crate::src::xmlstring::xmlStrchr;
-pub use crate::src::xmlstring::xmlStrcmp;
-pub use crate::src::xmlstring::xmlStrdup;
-pub use crate::src::xmlstring::xmlStrlen;
-pub use crate::src::xmlstring::xmlStrndup;
-pub use crate::src::xmlstring::xmlStrstr;
-pub use crate::src::xmllint::_IO_marker;
-pub use crate::src::xmlmemory::_IO_wide_data;
-pub use crate::src::xmlsave::_IO_codecvt;
+pub use crate::src::{
+    xmllint::_IO_marker,
+    xmlmemory::_IO_wide_data,
+    xmlsave::_IO_codecvt,
+    xmlstring::{
+        xmlStrEqual, xmlStrcat, xmlStrchr, xmlStrcmp, xmlStrdup, xmlStrlen, xmlStrndup, xmlStrstr,
+    },
+};
 pub type xmlChar = u8;
 pub type size_t = u64;
 pub type __off_t = i64;
 pub type __off64_t = i64;
-// #[derive(Copy, Clone)]
-
 pub type _IO_FILE = crate::src::tree::_IO_FILE;
 pub type _IO_lock_t = ();
 pub type FILE = crate::src::tree::_IO_FILE;
-pub type xmlFreeFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type xmlMallocFunc = Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
-pub type xmlReallocFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: u64,) -> * mut core::ffi::c_void>;
-pub type xmlStrdupFunc = Option<unsafe extern "C"  fn(_: * const i8,) -> * mut i8>;
+pub type xmlFreeFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+pub type xmlMallocFunc = Option<unsafe extern "C" fn(_: u64) -> *mut core::ffi::c_void>;
+pub type xmlReallocFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: u64) -> *mut core::ffi::c_void>;
+pub type xmlStrdupFunc = Option<unsafe extern "C" fn(_: *const i8) -> *mut i8>;
 pub type xmlError = crate::src::threads::_xmlError;
-// #[derive(Copy, Clone)]
-
 pub type _xmlError = crate::src::threads::_xmlError;
 pub type xmlErrorLevel = u32;
 pub const XML_ERR_FATAL: xmlErrorLevel = 3;
 pub const XML_ERR_ERROR: xmlErrorLevel = 2;
 pub const XML_ERR_WARNING: xmlErrorLevel = 1;
 pub const XML_ERR_NONE: xmlErrorLevel = 0;
-pub type xmlStructuredErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::threads::_xmlError,) -> ()>;
-pub type xmlErrorPtr = * mut crate::src::threads::_xmlError;
+pub type xmlStructuredErrorFunc = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *mut crate::src::threads::_xmlError) -> (),
+>;
+pub type xmlErrorPtr = *mut crate::src::threads::_xmlError;
 pub type C2RustUnnamed = u32;
 pub const XML_FROM_URI: C2RustUnnamed = 30;
 pub const XML_FROM_BUFFER: C2RustUnnamed = 29;
@@ -858,49 +840,50 @@ pub const XML_ERR_DOCUMENT_START: C2RustUnnamed_0 = 3;
 pub const XML_ERR_NO_MEMORY: C2RustUnnamed_0 = 2;
 pub const XML_ERR_INTERNAL_ERROR: C2RustUnnamed_0 = 1;
 pub const XML_ERR_OK: C2RustUnnamed_0 = 0;
-pub type xmlGenericErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
+pub type xmlGenericErrorFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlURI {
-    pub scheme: * mut i8,
-    pub opaque: * mut i8,
-    pub authority: * mut i8,
-    pub server: * mut i8,
-    pub user: * mut i8,
+    pub scheme: *mut i8,
+    pub opaque: *mut i8,
+    pub authority: *mut i8,
+    pub server: *mut i8,
+    pub user: *mut i8,
     pub port: i32,
-    pub path: * mut i8,
-    pub query: * mut i8,
-    pub fragment: * mut i8,
+    pub path: *mut i8,
+    pub query: *mut i8,
+    pub fragment: *mut i8,
     pub cleanup: i32,
-    pub query_raw: * mut i8,
+    pub query_raw: *mut i8,
 }
 impl _xmlURI {
     pub const fn new() -> Self {
         _xmlURI {
-        scheme: (0 as * mut i8),
-        opaque: (0 as * mut i8),
-        authority: (0 as * mut i8),
-        server: (0 as * mut i8),
-        user: (0 as * mut i8),
-        port: 0,
-        path: (0 as * mut i8),
-        query: (0 as * mut i8),
-        fragment: (0 as * mut i8),
-        cleanup: 0,
-        query_raw: (0 as * mut i8)
+            scheme: (0 as *mut i8),
+            opaque: (0 as *mut i8),
+            authority: (0 as *mut i8),
+            server: (0 as *mut i8),
+            user: (0 as *mut i8),
+            port: 0,
+            path: (0 as *mut i8),
+            query: (0 as *mut i8),
+            fragment: (0 as *mut i8),
+            cleanup: 0,
+            query_raw: (0 as *mut i8),
         }
     }
 }
-
 impl std::default::Default for _xmlURI {
-    fn default() -> Self { _xmlURI::new() }
+    fn default() -> Self {
+        _xmlURI::new()
+    }
 }
-
 pub type xmlURI = crate::src::uri::_xmlURI;
-pub type xmlURIPtr = * mut crate::src::uri::_xmlURI;
-unsafe extern "C" fn xmlURIErrMemory(mut extra: * const i8) {
+pub type xmlURIPtr = *mut crate::src::uri::_xmlURI;
+extern "C" fn xmlURIErrMemory(mut extra: *const i8) {
     if !extra.is_null() {
-        __xmlRaiseError(
+        (unsafe { __xmlRaiseError(
             None,
             None,
             0 as *mut libc::c_void,
@@ -918,9 +901,9 @@ unsafe extern "C" fn xmlURIErrMemory(mut extra: * const i8) {
             0 as i32,
             b"Memory allocation failed : %s\n\0" as *const u8 as *const i8,
             extra,
-        );
+        ) });
     } else {
-        __xmlRaiseError(
+        (unsafe { __xmlRaiseError(
             None,
             None,
             0 as *mut libc::c_void,
@@ -937,118 +920,124 @@ unsafe extern "C" fn xmlURIErrMemory(mut extra: * const i8) {
             0 as i32,
             0 as i32,
             b"Memory allocation failed\n\0" as *const u8 as *const i8,
-        );
+        ) });
     };
 }
-unsafe extern "C" fn xmlParse3986Scheme<'a1>(
-    mut uri: * mut crate::src::uri::_xmlURI,
-    mut str: Option<&'a1 mut * const i8>,
+extern "C" fn xmlParse3986Scheme<'a1>(
+    mut uri: *mut crate::src::uri::_xmlURI,
+    mut str: Option<&'a1 mut *const i8>,
 ) -> i32 {
-    let mut cur: * const i8 = 0 as *const i8;
-    if borrow(& str).is_none() {
+    let mut cur: *const i8 = 0 as *const i8;
+    if borrow(&str).is_none() {
         return -(1 as i32);
     }
-    cur = *(borrow(& str)).unwrap();
-    if !(*cur as i32 >= 'a' as i32 && *cur as i32 <= 'z' as i32
-        || *cur as i32 >= 'A' as i32 && *cur as i32 <= 'Z' as i32)
+    cur = *(borrow(&str)).unwrap();
+    if !((unsafe { *cur }) as i32 >= 'a' as i32 && (unsafe { *cur }) as i32 <= 'z' as i32
+        || (unsafe { *cur }) as i32 >= 'A' as i32 && (unsafe { *cur }) as i32 <= 'Z' as i32)
     {
         return 2 as i32;
     }
-    cur = cur.offset(1);
-    while *cur as i32 >= 'a' as i32 && *cur as i32 <= 'z' as i32
-        || *cur as i32 >= 'A' as i32 && *cur as i32 <= 'Z' as i32
-        || *cur as i32 >= '0' as i32 && *cur as i32 <= '9' as i32
-        || *cur as i32 == '+' as i32 || *cur as i32 == '-' as i32
-        || *cur as i32 == '.' as i32
+    cur = unsafe { cur.offset(1) };
+    while (unsafe { *cur }) as i32 >= 'a' as i32 && (unsafe { *cur }) as i32 <= 'z' as i32
+        || (unsafe { *cur }) as i32 >= 'A' as i32 && (unsafe { *cur }) as i32 <= 'Z' as i32
+        || (unsafe { *cur }) as i32 >= '0' as i32 && (unsafe { *cur }) as i32 <= '9' as i32
+        || (unsafe { *cur }) as i32 == '+' as i32
+        || (unsafe { *cur }) as i32 == '-' as i32
+        || (unsafe { *cur }) as i32 == '.' as i32
     {
-        cur = cur.offset(1);
+        cur = unsafe { cur.offset(1) };
     }
     if !uri.is_null() {
-        if !((*uri).scheme).is_null() {
-            xmlFree
-                .expect("non-null function pointer")((*uri).scheme as *mut libc::c_void);
+        if !(unsafe { (*uri).scheme }).is_null() {
+            (unsafe { xmlFree.expect("non-null function pointer")((*uri).scheme as *mut libc::c_void) });
         }
-        let ref mut fresh0 = (*uri).scheme;
+        let fresh0 = unsafe { &mut ((*uri).scheme) };
         *fresh0 = xmlStrndup(
-            *(borrow(& str)).unwrap() as *const xmlChar,
-            cur.offset_from(*(borrow(& str)).unwrap()) as i64 as i32,
+            *(borrow(&str)).unwrap() as *const xmlChar,
+            (unsafe { cur.offset_from(*(borrow(&str)).unwrap()) }) as i64 as i32,
         ) as *mut i8;
     }
     *(borrow_mut(&mut str)).unwrap() = cur;
     return 0 as i32;
 }
-unsafe extern "C" fn xmlParse3986Fragment<'a1>(
-    mut uri: * mut crate::src::uri::_xmlURI,
-    mut str: Option<&'a1 mut * const i8>,
+extern "C" fn xmlParse3986Fragment<'a1>(
+    mut uri: *mut crate::src::uri::_xmlURI,
+    mut str: Option<&'a1 mut *const i8>,
 ) -> i32 {
-    let mut cur: * const i8 = 0 as *const i8;
-    if borrow(& str).is_none() {
+    let mut cur: *const i8 = 0 as *const i8;
+    if borrow(&str).is_none() {
         return -(1 as i32);
     }
-    cur = *(borrow(& str)).unwrap();
-    while *cur as i32 >= 'a' as i32 && *cur as i32 <= 'z' as i32
-        || *cur as i32 >= 'A' as i32 && *cur as i32 <= 'Z' as i32
-        || *cur as i32 >= '0' as i32 && *cur as i32 <= '9' as i32
-        || *cur as i32 == '-' as i32 || *cur as i32 == '.' as i32
-        || *cur as i32 == '_' as i32 || *cur as i32 == '~' as i32
-        || *cur as i32 == '%' as i32
-            && (*cur.offset(1 as i32 as isize) as i32 >= '0' as i32
-                && *cur.offset(1 as i32 as isize) as i32 <= '9' as i32
-                || *cur.offset(1 as i32 as isize) as i32 >= 'a' as i32
-                    && *cur.offset(1 as i32 as isize) as i32
-                        <= 'f' as i32
-                || *cur.offset(1 as i32 as isize) as i32 >= 'A' as i32
-                    && *cur.offset(1 as i32 as isize) as i32
-                        <= 'F' as i32)
-            && (*cur.offset(2 as i32 as isize) as i32 >= '0' as i32
-                && *cur.offset(2 as i32 as isize) as i32 <= '9' as i32
-                || *cur.offset(2 as i32 as isize) as i32 >= 'a' as i32
-                    && *cur.offset(2 as i32 as isize) as i32
-                        <= 'f' as i32
-                || *cur.offset(2 as i32 as isize) as i32 >= 'A' as i32
-                    && *cur.offset(2 as i32 as isize) as i32
-                        <= 'F' as i32)
-        || (*cur as i32 == '!' as i32 || *cur as i32 == '$' as i32
-            || *cur as i32 == '&' as i32 || *cur as i32 == '(' as i32
-            || *cur as i32 == ')' as i32 || *cur as i32 == '*' as i32
-            || *cur as i32 == '+' as i32 || *cur as i32 == ',' as i32
-            || *cur as i32 == ';' as i32 || *cur as i32 == '=' as i32
-            || *cur as i32 == '\'' as i32) || *cur as i32 == ':' as i32
-        || *cur as i32 == '@' as i32 || *cur as i32 == '/' as i32
-        || *cur as i32 == '?' as i32 || *cur as i32 == '[' as i32
-        || *cur as i32 == ']' as i32
-        || !uri.is_null() && (*uri).cleanup & 1 as i32 != 0
-            && (*cur as i32 == '{' as i32 || *cur as i32 == '}' as i32
-                || *cur as i32 == '|' as i32
-                || *cur as i32 == '\\' as i32
-                || *cur as i32 == '^' as i32 || *cur as i32 == '[' as i32
-                || *cur as i32 == ']' as i32
-                || *cur as i32 == '`' as i32)
+    cur = *(borrow(&str)).unwrap();
+    while (unsafe { *cur }) as i32 >= 'a' as i32 && (unsafe { *cur }) as i32 <= 'z' as i32
+        || (unsafe { *cur }) as i32 >= 'A' as i32 && (unsafe { *cur }) as i32 <= 'Z' as i32
+        || (unsafe { *cur }) as i32 >= '0' as i32 && (unsafe { *cur }) as i32 <= '9' as i32
+        || (unsafe { *cur }) as i32 == '-' as i32
+        || (unsafe { *cur }) as i32 == '.' as i32
+        || (unsafe { *cur }) as i32 == '_' as i32
+        || (unsafe { *cur }) as i32 == '~' as i32
+        || (unsafe { *cur }) as i32 == '%' as i32
+            && ((unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= '0' as i32
+                && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= '9' as i32
+                || (unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= 'a' as i32
+                    && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= 'f' as i32
+                || (unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= 'A' as i32
+                    && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= 'F' as i32)
+            && ((unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= '0' as i32
+                && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 <= '9' as i32
+                || (unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= 'a' as i32
+                    && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 <= 'f' as i32
+                || (unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= 'A' as i32
+                    && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 <= 'F' as i32)
+        || ((unsafe { *cur }) as i32 == '!' as i32
+            || (unsafe { *cur }) as i32 == '$' as i32
+            || (unsafe { *cur }) as i32 == '&' as i32
+            || (unsafe { *cur }) as i32 == '(' as i32
+            || (unsafe { *cur }) as i32 == ')' as i32
+            || (unsafe { *cur }) as i32 == '*' as i32
+            || (unsafe { *cur }) as i32 == '+' as i32
+            || (unsafe { *cur }) as i32 == ',' as i32
+            || (unsafe { *cur }) as i32 == ';' as i32
+            || (unsafe { *cur }) as i32 == '=' as i32
+            || (unsafe { *cur }) as i32 == '\'' as i32)
+        || (unsafe { *cur }) as i32 == ':' as i32
+        || (unsafe { *cur }) as i32 == '@' as i32
+        || (unsafe { *cur }) as i32 == '/' as i32
+        || (unsafe { *cur }) as i32 == '?' as i32
+        || (unsafe { *cur }) as i32 == '[' as i32
+        || (unsafe { *cur }) as i32 == ']' as i32
+        || !uri.is_null()
+            && (unsafe { (*uri).cleanup }) & 1 as i32 != 0
+            && ((unsafe { *cur }) as i32 == '{' as i32
+                || (unsafe { *cur }) as i32 == '}' as i32
+                || (unsafe { *cur }) as i32 == '|' as i32
+                || (unsafe { *cur }) as i32 == '\\' as i32
+                || (unsafe { *cur }) as i32 == '^' as i32
+                || (unsafe { *cur }) as i32 == '[' as i32
+                || (unsafe { *cur }) as i32 == ']' as i32
+                || (unsafe { *cur }) as i32 == '`' as i32)
     {
-        if *cur as i32 == '%' as i32 {
-            cur = cur.offset(3 as i32 as isize);
+        if (unsafe { *cur }) as i32 == '%' as i32 {
+            cur = unsafe { cur.offset(3 as i32 as isize) };
         } else {
-            cur = cur.offset(1);
+            cur = unsafe { cur.offset(1) };
         };
     }
     if !uri.is_null() {
-        if !((*uri).fragment).is_null() {
-            xmlFree
-                .expect(
-                    "non-null function pointer",
-                )((*uri).fragment as *mut libc::c_void);
+        if !(unsafe { (*uri).fragment }).is_null() {
+            (unsafe { xmlFree.expect("non-null function pointer")((*uri).fragment as *mut libc::c_void) });
         }
-        if (*uri).cleanup & 2 as i32 != 0 {
-            let ref mut fresh1 = (*uri).fragment;
+        if (unsafe { (*uri).cleanup }) & 2 as i32 != 0 {
+            let fresh1 = unsafe { &mut ((*uri).fragment) };
             *fresh1 = xmlStrndup(
-                *(borrow(& str)).unwrap() as *const xmlChar,
-                cur.offset_from(*(borrow(& str)).unwrap()) as i64 as i32,
+                *(borrow(&str)).unwrap() as *const xmlChar,
+                (unsafe { cur.offset_from(*(borrow(&str)).unwrap()) }) as i64 as i32,
             ) as *mut i8;
         } else {
-            let ref mut fresh2 = (*uri).fragment;
+            let fresh2 = unsafe { &mut ((*uri).fragment) };
             *fresh2 = xmlURIUnescapeString(
-                *(borrow(& str)).unwrap(),
-                cur.offset_from(*(borrow(& str)).unwrap()) as i64 as i32,
+                *(borrow(&str)).unwrap(),
+                (unsafe { cur.offset_from(*(borrow(&str)).unwrap()) }) as i64 as i32,
                 0 as *mut i8,
             );
         }
@@ -1056,102 +1045,106 @@ unsafe extern "C" fn xmlParse3986Fragment<'a1>(
     *(borrow_mut(&mut str)).unwrap() = cur;
     return 0 as i32;
 }
-unsafe extern "C" fn xmlParse3986Query<'a1>(
-    mut uri: * mut crate::src::uri::_xmlURI,
-    mut str: Option<&'a1 mut * const i8>,
+extern "C" fn xmlParse3986Query<'a1>(
+    mut uri: *mut crate::src::uri::_xmlURI,
+    mut str: Option<&'a1 mut *const i8>,
 ) -> i32 {
-    let mut cur: * const i8 = 0 as *const i8;
-    if borrow(& str).is_none() {
+    let mut cur: *const i8 = 0 as *const i8;
+    if borrow(&str).is_none() {
         return -(1 as i32);
     }
-    cur = *(borrow(& str)).unwrap();
-    while *cur as i32 >= 'a' as i32 && *cur as i32 <= 'z' as i32
-        || *cur as i32 >= 'A' as i32 && *cur as i32 <= 'Z' as i32
-        || *cur as i32 >= '0' as i32 && *cur as i32 <= '9' as i32
-        || *cur as i32 == '-' as i32 || *cur as i32 == '.' as i32
-        || *cur as i32 == '_' as i32 || *cur as i32 == '~' as i32
-        || *cur as i32 == '%' as i32
-            && (*cur.offset(1 as i32 as isize) as i32 >= '0' as i32
-                && *cur.offset(1 as i32 as isize) as i32 <= '9' as i32
-                || *cur.offset(1 as i32 as isize) as i32 >= 'a' as i32
-                    && *cur.offset(1 as i32 as isize) as i32
-                        <= 'f' as i32
-                || *cur.offset(1 as i32 as isize) as i32 >= 'A' as i32
-                    && *cur.offset(1 as i32 as isize) as i32
-                        <= 'F' as i32)
-            && (*cur.offset(2 as i32 as isize) as i32 >= '0' as i32
-                && *cur.offset(2 as i32 as isize) as i32 <= '9' as i32
-                || *cur.offset(2 as i32 as isize) as i32 >= 'a' as i32
-                    && *cur.offset(2 as i32 as isize) as i32
-                        <= 'f' as i32
-                || *cur.offset(2 as i32 as isize) as i32 >= 'A' as i32
-                    && *cur.offset(2 as i32 as isize) as i32
-                        <= 'F' as i32)
-        || (*cur as i32 == '!' as i32 || *cur as i32 == '$' as i32
-            || *cur as i32 == '&' as i32 || *cur as i32 == '(' as i32
-            || *cur as i32 == ')' as i32 || *cur as i32 == '*' as i32
-            || *cur as i32 == '+' as i32 || *cur as i32 == ',' as i32
-            || *cur as i32 == ';' as i32 || *cur as i32 == '=' as i32
-            || *cur as i32 == '\'' as i32) || *cur as i32 == ':' as i32
-        || *cur as i32 == '@' as i32 || *cur as i32 == '/' as i32
-        || *cur as i32 == '?' as i32
-        || !uri.is_null() && (*uri).cleanup & 1 as i32 != 0
-            && (*cur as i32 == '{' as i32 || *cur as i32 == '}' as i32
-                || *cur as i32 == '|' as i32
-                || *cur as i32 == '\\' as i32
-                || *cur as i32 == '^' as i32 || *cur as i32 == '[' as i32
-                || *cur as i32 == ']' as i32
-                || *cur as i32 == '`' as i32)
+    cur = *(borrow(&str)).unwrap();
+    while (unsafe { *cur }) as i32 >= 'a' as i32 && (unsafe { *cur }) as i32 <= 'z' as i32
+        || (unsafe { *cur }) as i32 >= 'A' as i32 && (unsafe { *cur }) as i32 <= 'Z' as i32
+        || (unsafe { *cur }) as i32 >= '0' as i32 && (unsafe { *cur }) as i32 <= '9' as i32
+        || (unsafe { *cur }) as i32 == '-' as i32
+        || (unsafe { *cur }) as i32 == '.' as i32
+        || (unsafe { *cur }) as i32 == '_' as i32
+        || (unsafe { *cur }) as i32 == '~' as i32
+        || (unsafe { *cur }) as i32 == '%' as i32
+            && ((unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= '0' as i32
+                && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= '9' as i32
+                || (unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= 'a' as i32
+                    && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= 'f' as i32
+                || (unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= 'A' as i32
+                    && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= 'F' as i32)
+            && ((unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= '0' as i32
+                && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 <= '9' as i32
+                || (unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= 'a' as i32
+                    && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 <= 'f' as i32
+                || (unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= 'A' as i32
+                    && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 <= 'F' as i32)
+        || ((unsafe { *cur }) as i32 == '!' as i32
+            || (unsafe { *cur }) as i32 == '$' as i32
+            || (unsafe { *cur }) as i32 == '&' as i32
+            || (unsafe { *cur }) as i32 == '(' as i32
+            || (unsafe { *cur }) as i32 == ')' as i32
+            || (unsafe { *cur }) as i32 == '*' as i32
+            || (unsafe { *cur }) as i32 == '+' as i32
+            || (unsafe { *cur }) as i32 == ',' as i32
+            || (unsafe { *cur }) as i32 == ';' as i32
+            || (unsafe { *cur }) as i32 == '=' as i32
+            || (unsafe { *cur }) as i32 == '\'' as i32)
+        || (unsafe { *cur }) as i32 == ':' as i32
+        || (unsafe { *cur }) as i32 == '@' as i32
+        || (unsafe { *cur }) as i32 == '/' as i32
+        || (unsafe { *cur }) as i32 == '?' as i32
+        || !uri.is_null()
+            && (unsafe { (*uri).cleanup }) & 1 as i32 != 0
+            && ((unsafe { *cur }) as i32 == '{' as i32
+                || (unsafe { *cur }) as i32 == '}' as i32
+                || (unsafe { *cur }) as i32 == '|' as i32
+                || (unsafe { *cur }) as i32 == '\\' as i32
+                || (unsafe { *cur }) as i32 == '^' as i32
+                || (unsafe { *cur }) as i32 == '[' as i32
+                || (unsafe { *cur }) as i32 == ']' as i32
+                || (unsafe { *cur }) as i32 == '`' as i32)
     {
-        if *cur as i32 == '%' as i32 {
-            cur = cur.offset(3 as i32 as isize);
+        if (unsafe { *cur }) as i32 == '%' as i32 {
+            cur = unsafe { cur.offset(3 as i32 as isize) };
         } else {
-            cur = cur.offset(1);
+            cur = unsafe { cur.offset(1) };
         };
     }
     if !uri.is_null() {
-        if !((*uri).query).is_null() {
-            xmlFree
-                .expect("non-null function pointer")((*uri).query as *mut libc::c_void);
+        if !(unsafe { (*uri).query }).is_null() {
+            (unsafe { xmlFree.expect("non-null function pointer")((*uri).query as *mut libc::c_void) });
         }
-        if (*uri).cleanup & 2 as i32 != 0 {
-            let ref mut fresh3 = (*uri).query;
+        if (unsafe { (*uri).cleanup }) & 2 as i32 != 0 {
+            let fresh3 = unsafe { &mut ((*uri).query) };
             *fresh3 = xmlStrndup(
-                *(borrow(& str)).unwrap() as *const xmlChar,
-                cur.offset_from(*(borrow(& str)).unwrap()) as i64 as i32,
+                *(borrow(&str)).unwrap() as *const xmlChar,
+                (unsafe { cur.offset_from(*(borrow(&str)).unwrap()) }) as i64 as i32,
             ) as *mut i8;
         } else {
-            let ref mut fresh4 = (*uri).query;
+            let fresh4 = unsafe { &mut ((*uri).query) };
             *fresh4 = xmlURIUnescapeString(
-                *(borrow(& str)).unwrap(),
-                cur.offset_from(*(borrow(& str)).unwrap()) as i64 as i32,
+                *(borrow(&str)).unwrap(),
+                (unsafe { cur.offset_from(*(borrow(&str)).unwrap()) }) as i64 as i32,
                 0 as *mut i8,
             );
         }
-        if !((*uri).query_raw).is_null() {
-            xmlFree
-                .expect(
-                    "non-null function pointer",
-                )((*uri).query_raw as *mut libc::c_void);
+        if !(unsafe { (*uri).query_raw }).is_null() {
+            (unsafe { xmlFree.expect("non-null function pointer")((*uri).query_raw as *mut libc::c_void) });
         }
-        let ref mut fresh5 = (*uri).query_raw;
+        let fresh5 = unsafe { &mut ((*uri).query_raw) };
         *fresh5 = xmlStrndup(
-            *(borrow(& str)).unwrap() as *const xmlChar,
-            cur.offset_from(*(borrow(& str)).unwrap()) as i64 as i32,
+            *(borrow(&str)).unwrap() as *const xmlChar,
+            (unsafe { cur.offset_from(*(borrow(&str)).unwrap()) }) as i64 as i32,
         ) as *mut i8;
     }
     *(borrow_mut(&mut str)).unwrap() = cur;
     return 0 as i32;
 }
-unsafe extern "C" fn xmlParse3986Port<'a1>(
-    mut uri: * mut crate::src::uri::_xmlURI,
-    mut str: Option<&'a1 mut * const i8>,
+extern "C" fn xmlParse3986Port<'a1>(
+    mut uri: *mut crate::src::uri::_xmlURI,
+    mut str: Option<&'a1 mut *const i8>,
 ) -> i32 {
-    let mut cur: * const i8 = *(borrow(& str)).unwrap();
+    let mut cur: *const i8 = *(borrow(&str)).unwrap();
     let mut port: i32 = 0 as i32;
-    if *cur as i32 >= '0' as i32 && *cur as i32 <= '9' as i32 {
-        while *cur as i32 >= '0' as i32 && *cur as i32 <= '9' as i32 {
-            let mut digit: i32 = *cur as i32 - '0' as i32;
+    if (unsafe { *cur }) as i32 >= '0' as i32 && (unsafe { *cur }) as i32 <= '9' as i32 {
+        while (unsafe { *cur }) as i32 >= '0' as i32 && (unsafe { *cur }) as i32 <= '9' as i32 {
+            let mut digit: i32 = (unsafe { *cur }) as i32 - '0' as i32;
             if port > 2147483647 as i32 / 10 as i32 {
                 return 1 as i32;
             }
@@ -1160,76 +1153,77 @@ unsafe extern "C" fn xmlParse3986Port<'a1>(
                 return 1 as i32;
             }
             port += digit;
-            cur = cur.offset(1);
+            cur = unsafe { cur.offset(1) };
         }
         if !uri.is_null() {
-            (*uri).port = port;
+            (unsafe { (*uri).port = port });
         }
         *(borrow_mut(&mut str)).unwrap() = cur;
         return 0 as i32;
     }
     return 1 as i32;
 }
-unsafe extern "C" fn xmlParse3986Userinfo<'a1>(
-    mut uri: * mut crate::src::uri::_xmlURI,
-    mut str: Option<&'a1 mut * const i8>,
+extern "C" fn xmlParse3986Userinfo<'a1>(
+    mut uri: *mut crate::src::uri::_xmlURI,
+    mut str: Option<&'a1 mut *const i8>,
 ) -> i32 {
-    let mut cur: * const i8 = 0 as *const i8;
-    cur = *(borrow(& str)).unwrap();
-    while *cur as i32 >= 'a' as i32 && *cur as i32 <= 'z' as i32
-        || *cur as i32 >= 'A' as i32 && *cur as i32 <= 'Z' as i32
-        || *cur as i32 >= '0' as i32 && *cur as i32 <= '9' as i32
-        || *cur as i32 == '-' as i32 || *cur as i32 == '.' as i32
-        || *cur as i32 == '_' as i32 || *cur as i32 == '~' as i32
-        || *cur as i32 == '%' as i32
-            && (*cur.offset(1 as i32 as isize) as i32 >= '0' as i32
-                && *cur.offset(1 as i32 as isize) as i32 <= '9' as i32
-                || *cur.offset(1 as i32 as isize) as i32 >= 'a' as i32
-                    && *cur.offset(1 as i32 as isize) as i32
-                        <= 'f' as i32
-                || *cur.offset(1 as i32 as isize) as i32 >= 'A' as i32
-                    && *cur.offset(1 as i32 as isize) as i32
-                        <= 'F' as i32)
-            && (*cur.offset(2 as i32 as isize) as i32 >= '0' as i32
-                && *cur.offset(2 as i32 as isize) as i32 <= '9' as i32
-                || *cur.offset(2 as i32 as isize) as i32 >= 'a' as i32
-                    && *cur.offset(2 as i32 as isize) as i32
-                        <= 'f' as i32
-                || *cur.offset(2 as i32 as isize) as i32 >= 'A' as i32
-                    && *cur.offset(2 as i32 as isize) as i32
-                        <= 'F' as i32)
-        || (*cur as i32 == '!' as i32 || *cur as i32 == '$' as i32
-            || *cur as i32 == '&' as i32 || *cur as i32 == '(' as i32
-            || *cur as i32 == ')' as i32 || *cur as i32 == '*' as i32
-            || *cur as i32 == '+' as i32 || *cur as i32 == ',' as i32
-            || *cur as i32 == ';' as i32 || *cur as i32 == '=' as i32
-            || *cur as i32 == '\'' as i32) || *cur as i32 == ':' as i32
+    let mut cur: *const i8 = 0 as *const i8;
+    cur = *(borrow(&str)).unwrap();
+    while (unsafe { *cur }) as i32 >= 'a' as i32 && (unsafe { *cur }) as i32 <= 'z' as i32
+        || (unsafe { *cur }) as i32 >= 'A' as i32 && (unsafe { *cur }) as i32 <= 'Z' as i32
+        || (unsafe { *cur }) as i32 >= '0' as i32 && (unsafe { *cur }) as i32 <= '9' as i32
+        || (unsafe { *cur }) as i32 == '-' as i32
+        || (unsafe { *cur }) as i32 == '.' as i32
+        || (unsafe { *cur }) as i32 == '_' as i32
+        || (unsafe { *cur }) as i32 == '~' as i32
+        || (unsafe { *cur }) as i32 == '%' as i32
+            && ((unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= '0' as i32
+                && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= '9' as i32
+                || (unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= 'a' as i32
+                    && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= 'f' as i32
+                || (unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= 'A' as i32
+                    && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= 'F' as i32)
+            && ((unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= '0' as i32
+                && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 <= '9' as i32
+                || (unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= 'a' as i32
+                    && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 <= 'f' as i32
+                || (unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= 'A' as i32
+                    && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 <= 'F' as i32)
+        || ((unsafe { *cur }) as i32 == '!' as i32
+            || (unsafe { *cur }) as i32 == '$' as i32
+            || (unsafe { *cur }) as i32 == '&' as i32
+            || (unsafe { *cur }) as i32 == '(' as i32
+            || (unsafe { *cur }) as i32 == ')' as i32
+            || (unsafe { *cur }) as i32 == '*' as i32
+            || (unsafe { *cur }) as i32 == '+' as i32
+            || (unsafe { *cur }) as i32 == ',' as i32
+            || (unsafe { *cur }) as i32 == ';' as i32
+            || (unsafe { *cur }) as i32 == '=' as i32
+            || (unsafe { *cur }) as i32 == '\'' as i32)
+        || (unsafe { *cur }) as i32 == ':' as i32
     {
-        if *cur as i32 == '%' as i32 {
-            cur = cur.offset(3 as i32 as isize);
+        if (unsafe { *cur }) as i32 == '%' as i32 {
+            cur = unsafe { cur.offset(3 as i32 as isize) };
         } else {
-            cur = cur.offset(1);
+            cur = unsafe { cur.offset(1) };
         };
     }
-    if *cur as i32 == '@' as i32 {
+    if (unsafe { *cur }) as i32 == '@' as i32 {
         if !uri.is_null() {
-            if !((*uri).user).is_null() {
-                xmlFree
-                    .expect(
-                        "non-null function pointer",
-                    )((*uri).user as *mut libc::c_void);
+            if !(unsafe { (*uri).user }).is_null() {
+                (unsafe { xmlFree.expect("non-null function pointer")((*uri).user as *mut libc::c_void) });
             }
-            if (*uri).cleanup & 2 as i32 != 0 {
-                let ref mut fresh6 = (*uri).user;
+            if (unsafe { (*uri).cleanup }) & 2 as i32 != 0 {
+                let fresh6 = unsafe { &mut ((*uri).user) };
                 *fresh6 = xmlStrndup(
-                    *(borrow(& str)).unwrap() as *const xmlChar,
-                    cur.offset_from(*(borrow(& str)).unwrap()) as i64 as i32,
+                    *(borrow(&str)).unwrap() as *const xmlChar,
+                    (unsafe { cur.offset_from(*(borrow(&str)).unwrap()) }) as i64 as i32,
                 ) as *mut i8;
             } else {
-                let ref mut fresh7 = (*uri).user;
+                let fresh7 = unsafe { &mut ((*uri).user) };
                 *fresh7 = xmlURIUnescapeString(
-                    *(borrow(& str)).unwrap(),
-                    cur.offset_from(*(borrow(& str)).unwrap()) as i64 as i32,
+                    *(borrow(&str)).unwrap(),
+                    (unsafe { cur.offset_from(*(borrow(&str)).unwrap()) }) as i64 as i32,
                     0 as *mut i8,
                 );
             }
@@ -1239,84 +1233,80 @@ unsafe extern "C" fn xmlParse3986Userinfo<'a1>(
     }
     return 1 as i32;
 }
-unsafe extern "C" fn xmlParse3986DecOctet<'a1>(
-    mut str: Option<&'a1 mut * const i8>,
-) -> i32 {
-    let mut cur: * const i8 = *(borrow(& str)).unwrap();
-    if !(*cur as i32 >= '0' as i32 && *cur as i32 <= '9' as i32) {
+extern "C" fn xmlParse3986DecOctet<'a1>(mut str: Option<&'a1 mut *const i8>) -> i32 {
+    let mut cur: *const i8 = *(borrow(&str)).unwrap();
+    if !((unsafe { *cur }) as i32 >= '0' as i32 && (unsafe { *cur }) as i32 <= '9' as i32) {
         return 1 as i32;
     }
-    if !(*cur.offset(1 as i32 as isize) as i32 >= '0' as i32
-        && *cur.offset(1 as i32 as isize) as i32 <= '9' as i32)
+    if !((unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= '0' as i32
+        && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= '9' as i32)
     {
-        cur = cur.offset(1);
-    } else if *cur as i32 != '0' as i32
-            && (*cur.offset(1 as i32 as isize) as i32 >= '0' as i32
-                && *cur.offset(1 as i32 as isize) as i32 <= '9' as i32)
-            && !(*cur.offset(2 as i32 as isize) as i32 >= '0' as i32
-                && *cur.offset(2 as i32 as isize) as i32 <= '9' as i32)
-        {
-        cur = cur.offset(2 as i32 as isize);
-    } else if *cur as i32 == '1' as i32
-            && (*cur.offset(1 as i32 as isize) as i32 >= '0' as i32
-                && *cur.offset(1 as i32 as isize) as i32 <= '9' as i32)
-            && (*cur.offset(2 as i32 as isize) as i32 >= '0' as i32
-                && *cur.offset(2 as i32 as isize) as i32 <= '9' as i32)
-        {
-        cur = cur.offset(3 as i32 as isize);
-    } else if *cur as i32 == '2' as i32
-            && *cur.offset(1 as i32 as isize) as i32 >= '0' as i32
-            && *cur.offset(1 as i32 as isize) as i32 <= '4' as i32
-            && (*cur.offset(2 as i32 as isize) as i32 >= '0' as i32
-                && *cur.offset(2 as i32 as isize) as i32 <= '9' as i32)
-        {
-        cur = cur.offset(3 as i32 as isize);
-    } else if *cur as i32 == '2' as i32
-            && *cur.offset(1 as i32 as isize) as i32 == '5' as i32
-            && *cur.offset(2 as i32 as isize) as i32 >= '0' as i32
-            && *cur.offset(1 as i32 as isize) as i32 <= '5' as i32
-        {
-        cur = cur.offset(3 as i32 as isize);
+        cur = unsafe { cur.offset(1) };
+    } else if (unsafe { *cur }) as i32 != '0' as i32
+        && ((unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= '0' as i32
+            && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= '9' as i32)
+        && !((unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= '0' as i32
+            && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 <= '9' as i32)
+    {
+        cur = unsafe { cur.offset(2 as i32 as isize) };
+    } else if (unsafe { *cur }) as i32 == '1' as i32
+        && ((unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= '0' as i32
+            && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= '9' as i32)
+        && ((unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= '0' as i32
+            && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 <= '9' as i32)
+    {
+        cur = unsafe { cur.offset(3 as i32 as isize) };
+    } else if (unsafe { *cur }) as i32 == '2' as i32
+        && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= '0' as i32
+        && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= '4' as i32
+        && ((unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= '0' as i32
+            && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 <= '9' as i32)
+    {
+        cur = unsafe { cur.offset(3 as i32 as isize) };
+    } else if (unsafe { *cur }) as i32 == '2' as i32
+        && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 == '5' as i32
+        && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= '0' as i32
+        && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= '5' as i32
+    {
+        cur = unsafe { cur.offset(3 as i32 as isize) };
     } else {
-        return 1 as i32
+        return 1 as i32;
     }
     *(borrow_mut(&mut str)).unwrap() = cur;
     return 0 as i32;
 }
-unsafe extern "C" fn xmlParse3986Host<'a1>(
-    mut uri: * mut crate::src::uri::_xmlURI,
-    mut str: Option<&'a1 mut * const i8>,
+extern "C" fn xmlParse3986Host<'a1>(
+    mut uri: *mut crate::src::uri::_xmlURI,
+    mut str: Option<&'a1 mut *const i8>,
 ) -> i32 {
     let mut current_block: u64;
-    let mut cur: * const i8 = *(borrow(& str)).unwrap();
-    let mut host: * const i8 = 0 as *const i8;
+    let mut cur: *const i8 = *(borrow(&str)).unwrap();
+    let mut host: *const i8 = 0 as *const i8;
     host = cur;
-    if *cur as i32 == '[' as i32 {
-        cur = cur.offset(1);
-        while *cur as i32 != ']' as i32
-            && *cur as i32 != 0 as i32
-        {
-            cur = cur.offset(1);
+    if (unsafe { *cur }) as i32 == '[' as i32 {
+        cur = unsafe { cur.offset(1) };
+        while (unsafe { *cur }) as i32 != ']' as i32 && (unsafe { *cur }) as i32 != 0 as i32 {
+            cur = unsafe { cur.offset(1) };
         }
-        if *cur as i32 != ']' as i32 {
+        if (unsafe { *cur }) as i32 != ']' as i32 {
             return 1 as i32;
         }
-        cur = cur.offset(1);
+        cur = unsafe { cur.offset(1) };
     } else {
-        if *cur as i32 >= '0' as i32 && *cur as i32 <= '9' as i32 {
+        if (unsafe { *cur }) as i32 >= '0' as i32 && (unsafe { *cur }) as i32 <= '9' as i32 {
             if xmlParse3986DecOctet(Some(&mut cur)) != 0 as i32 {
                 current_block = 6168486577495969577;
-            } else if *cur as i32 != '.' as i32 {
+            } else if (unsafe { *cur }) as i32 != '.' as i32 {
                 current_block = 6168486577495969577;
             } else {
-                cur = cur.offset(1);
+                cur = unsafe { cur.offset(1) };
                 if xmlParse3986DecOctet(Some(&mut cur)) != 0 as i32 {
                     current_block = 6168486577495969577;
-                } else if *cur as i32 != '.' as i32 {
+                } else if (unsafe { *cur }) as i32 != '.' as i32 {
                     current_block = 6168486577495969577;
                 } else if xmlParse3986DecOctet(Some(&mut cur)) != 0 as i32 {
                     current_block = 6168486577495969577;
-                } else if *cur as i32 != '.' as i32 {
+                } else if (unsafe { *cur }) as i32 != '.' as i32 {
                     current_block = 6168486577495969577;
                 } else if xmlParse3986DecOctet(Some(&mut cur)) != 0 as i32 {
                     current_block = 6168486577495969577;
@@ -1325,129 +1315,105 @@ unsafe extern "C" fn xmlParse3986Host<'a1>(
                 }
             }
             match current_block {
-                2777664028896885676 => {}
+                2777664028896885676 => {},
                 _ => {
-                    cur = *(borrow(& str)).unwrap();
+                    cur = *(borrow(&str)).unwrap();
                     current_block = 5601891728916014340;
-                }
+                },
             }
         } else {
             current_block = 5601891728916014340;
         }
         match current_block {
-            2777664028896885676 => {}
+            2777664028896885676 => {},
             _ => {
-                while *cur as i32 >= 'a' as i32
-                    && *cur as i32 <= 'z' as i32
-                    || *cur as i32 >= 'A' as i32
-                        && *cur as i32 <= 'Z' as i32
-                    || *cur as i32 >= '0' as i32
-                        && *cur as i32 <= '9' as i32
-                    || *cur as i32 == '-' as i32
-                    || *cur as i32 == '.' as i32
-                    || *cur as i32 == '_' as i32
-                    || *cur as i32 == '~' as i32
-                    || *cur as i32 == '%' as i32
-                        && (*cur.offset(1 as i32 as isize) as i32
-                            >= '0' as i32
-                            && *cur.offset(1 as i32 as isize) as i32
-                                <= '9' as i32
-                            || *cur.offset(1 as i32 as isize) as i32
-                                >= 'a' as i32
-                                && *cur.offset(1 as i32 as isize) as i32
-                                    <= 'f' as i32
-                            || *cur.offset(1 as i32 as isize) as i32
-                                >= 'A' as i32
-                                && *cur.offset(1 as i32 as isize) as i32
-                                    <= 'F' as i32)
-                        && (*cur.offset(2 as i32 as isize) as i32
-                            >= '0' as i32
-                            && *cur.offset(2 as i32 as isize) as i32
-                                <= '9' as i32
-                            || *cur.offset(2 as i32 as isize) as i32
-                                >= 'a' as i32
-                                && *cur.offset(2 as i32 as isize) as i32
-                                    <= 'f' as i32
-                            || *cur.offset(2 as i32 as isize) as i32
-                                >= 'A' as i32
-                                && *cur.offset(2 as i32 as isize) as i32
-                                    <= 'F' as i32)
-                    || (*cur as i32 == '!' as i32
-                        || *cur as i32 == '$' as i32
-                        || *cur as i32 == '&' as i32
-                        || *cur as i32 == '(' as i32
-                        || *cur as i32 == ')' as i32
-                        || *cur as i32 == '*' as i32
-                        || *cur as i32 == '+' as i32
-                        || *cur as i32 == ',' as i32
-                        || *cur as i32 == ';' as i32
-                        || *cur as i32 == '=' as i32
-                        || *cur as i32 == '\'' as i32)
+                while (unsafe { *cur }) as i32 >= 'a' as i32 && (unsafe { *cur }) as i32 <= 'z' as i32
+                    || (unsafe { *cur }) as i32 >= 'A' as i32 && (unsafe { *cur }) as i32 <= 'Z' as i32
+                    || (unsafe { *cur }) as i32 >= '0' as i32 && (unsafe { *cur }) as i32 <= '9' as i32
+                    || (unsafe { *cur }) as i32 == '-' as i32
+                    || (unsafe { *cur }) as i32 == '.' as i32
+                    || (unsafe { *cur }) as i32 == '_' as i32
+                    || (unsafe { *cur }) as i32 == '~' as i32
+                    || (unsafe { *cur }) as i32 == '%' as i32
+                        && ((unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= '0' as i32
+                            && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= '9' as i32
+                            || (unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= 'a' as i32
+                                && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= 'f' as i32
+                            || (unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= 'A' as i32
+                                && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= 'F' as i32)
+                        && ((unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= '0' as i32
+                            && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 <= '9' as i32
+                            || (unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= 'a' as i32
+                                && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 <= 'f' as i32
+                            || (unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= 'A' as i32
+                                && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 <= 'F' as i32)
+                    || ((unsafe { *cur }) as i32 == '!' as i32
+                        || (unsafe { *cur }) as i32 == '$' as i32
+                        || (unsafe { *cur }) as i32 == '&' as i32
+                        || (unsafe { *cur }) as i32 == '(' as i32
+                        || (unsafe { *cur }) as i32 == ')' as i32
+                        || (unsafe { *cur }) as i32 == '*' as i32
+                        || (unsafe { *cur }) as i32 == '+' as i32
+                        || (unsafe { *cur }) as i32 == ',' as i32
+                        || (unsafe { *cur }) as i32 == ';' as i32
+                        || (unsafe { *cur }) as i32 == '=' as i32
+                        || (unsafe { *cur }) as i32 == '\'' as i32)
                 {
-                    if *cur as i32 == '%' as i32 {
-                        cur = cur.offset(3 as i32 as isize);
+                    if (unsafe { *cur }) as i32 == '%' as i32 {
+                        cur = unsafe { cur.offset(3 as i32 as isize) };
                     } else {
-                        cur = cur.offset(1);
+                        cur = unsafe { cur.offset(1) };
                     };
                 }
-            }
+            },
         }
     }
     if !uri.is_null() {
-        if !((*uri).authority).is_null() {
-            xmlFree
-                .expect(
-                    "non-null function pointer",
-                )((*uri).authority as *mut libc::c_void);
+        if !(unsafe { (*uri).authority }).is_null() {
+            (unsafe { xmlFree.expect("non-null function pointer")((*uri).authority as *mut libc::c_void) });
         }
-        let ref mut fresh8 = (*uri).authority;
+        let fresh8 = unsafe { &mut ((*uri).authority) };
         *fresh8 = 0 as *mut i8;
-        if !((*uri).server).is_null() {
-            xmlFree
-                .expect("non-null function pointer")((*uri).server as *mut libc::c_void);
+        if !(unsafe { (*uri).server }).is_null() {
+            (unsafe { xmlFree.expect("non-null function pointer")((*uri).server as *mut libc::c_void) });
         }
         if cur != host {
-            if (*uri).cleanup & 2 as i32 != 0 {
-                let ref mut fresh9 = (*uri).server;
-                *fresh9 = xmlStrndup(
-                    host as *const xmlChar,
-                    cur.offset_from(host) as i64 as i32,
-                ) as *mut i8;
+            if (unsafe { (*uri).cleanup }) & 2 as i32 != 0 {
+                let fresh9 = unsafe { &mut ((*uri).server) };
+                *fresh9 = xmlStrndup(host as *const xmlChar, (unsafe { cur.offset_from(host) }) as i64 as i32)
+                    as *mut i8;
             } else {
-                let ref mut fresh10 = (*uri).server;
-                *fresh10 = xmlURIUnescapeString(
-                    host,
-                    cur.offset_from(host) as i64 as i32,
-                    0 as *mut i8,
-                );
+                let fresh10 = unsafe { &mut ((*uri).server) };
+                *fresh10 =
+                    xmlURIUnescapeString(host, (unsafe { cur.offset_from(host) }) as i64 as i32, 0 as *mut i8);
             }
         } else {
-            let ref mut fresh11 = (*uri).server;
+            let fresh11 = unsafe { &mut ((*uri).server) };
             *fresh11 = 0 as *mut i8;
         }
     }
     *(borrow_mut(&mut str)).unwrap() = cur;
     return 0 as i32;
 }
-unsafe extern "C" fn xmlParse3986Authority<'a1>(
-    mut uri: * mut crate::src::uri::_xmlURI,
-    mut str: Option<&'a1 mut * const i8>,
+extern "C" fn xmlParse3986Authority<'a1>(
+    mut uri: *mut crate::src::uri::_xmlURI,
+    mut str: Option<&'a1 mut *const i8>,
 ) -> i32 {
-    let mut cur: * const i8 = 0 as *const i8;
+    let mut cur: *const i8 = 0 as *const i8;
     let mut ret: i32 = 0;
-    cur = *(borrow(& str)).unwrap();
+    cur = *(borrow(&str)).unwrap();
     ret = xmlParse3986Userinfo(uri, Some(&mut cur));
-    if ret != 0 as i32 || *cur as i32 != '@' as i32 {
-        cur = *(borrow(& str)).unwrap();
+    if ret != 0 as i32 || (unsafe { *cur }) as i32 != '@' as i32 {
+        cur = *(borrow(&str)).unwrap();
     } else {
-        cur = cur.offset(1);
+        cur = unsafe { cur.offset(1) };
     }
     ret = xmlParse3986Host(uri, Some(&mut cur));
     if ret != 0 as i32 {
         return ret;
     }
-    if *cur as i32 == ':' as i32 {
-        cur = cur.offset(1);
+    if (unsafe { *cur }) as i32 == ':' as i32 {
+        cur = unsafe { cur.offset(1) };
         ret = xmlParse3986Port(uri, Some(&mut cur));
         if ret != 0 as i32 {
             return ret;
@@ -1456,312 +1422,290 @@ unsafe extern "C" fn xmlParse3986Authority<'a1>(
     *(borrow_mut(&mut str)).unwrap() = cur;
     return 0 as i32;
 }
-unsafe extern "C" fn xmlParse3986Segment<'a1>(
-    mut str: Option<&'a1 mut * const i8>,
+extern "C" fn xmlParse3986Segment<'a1>(
+    mut str: Option<&'a1 mut *const i8>,
     mut forbid: i8,
     mut empty: i32,
 ) -> i32 {
-    let mut cur: * const i8 = 0 as *const i8;
-    cur = *(borrow(& str)).unwrap();
-    if !(*cur as i32 >= 'a' as i32 && *cur as i32 <= 'z' as i32
-        || *cur as i32 >= 'A' as i32 && *cur as i32 <= 'Z' as i32
-        || *cur as i32 >= '0' as i32 && *cur as i32 <= '9' as i32
-        || *cur as i32 == '-' as i32 || *cur as i32 == '.' as i32
-        || *cur as i32 == '_' as i32 || *cur as i32 == '~' as i32
-        || *cur as i32 == '%' as i32
-            && (*cur.offset(1 as i32 as isize) as i32 >= '0' as i32
-                && *cur.offset(1 as i32 as isize) as i32 <= '9' as i32
-                || *cur.offset(1 as i32 as isize) as i32 >= 'a' as i32
-                    && *cur.offset(1 as i32 as isize) as i32
-                        <= 'f' as i32
-                || *cur.offset(1 as i32 as isize) as i32 >= 'A' as i32
-                    && *cur.offset(1 as i32 as isize) as i32
-                        <= 'F' as i32)
-            && (*cur.offset(2 as i32 as isize) as i32 >= '0' as i32
-                && *cur.offset(2 as i32 as isize) as i32 <= '9' as i32
-                || *cur.offset(2 as i32 as isize) as i32 >= 'a' as i32
-                    && *cur.offset(2 as i32 as isize) as i32
-                        <= 'f' as i32
-                || *cur.offset(2 as i32 as isize) as i32 >= 'A' as i32
-                    && *cur.offset(2 as i32 as isize) as i32
-                        <= 'F' as i32)
-        || (*cur as i32 == '!' as i32 || *cur as i32 == '$' as i32
-            || *cur as i32 == '&' as i32 || *cur as i32 == '(' as i32
-            || *cur as i32 == ')' as i32 || *cur as i32 == '*' as i32
-            || *cur as i32 == '+' as i32 || *cur as i32 == ',' as i32
-            || *cur as i32 == ';' as i32 || *cur as i32 == '=' as i32
-            || *cur as i32 == '\'' as i32) || *cur as i32 == ':' as i32
-        || *cur as i32 == '@' as i32)
+    let mut cur: *const i8 = 0 as *const i8;
+    cur = *(borrow(&str)).unwrap();
+    if !((unsafe { *cur }) as i32 >= 'a' as i32 && (unsafe { *cur }) as i32 <= 'z' as i32
+        || (unsafe { *cur }) as i32 >= 'A' as i32 && (unsafe { *cur }) as i32 <= 'Z' as i32
+        || (unsafe { *cur }) as i32 >= '0' as i32 && (unsafe { *cur }) as i32 <= '9' as i32
+        || (unsafe { *cur }) as i32 == '-' as i32
+        || (unsafe { *cur }) as i32 == '.' as i32
+        || (unsafe { *cur }) as i32 == '_' as i32
+        || (unsafe { *cur }) as i32 == '~' as i32
+        || (unsafe { *cur }) as i32 == '%' as i32
+            && ((unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= '0' as i32
+                && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= '9' as i32
+                || (unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= 'a' as i32
+                    && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= 'f' as i32
+                || (unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= 'A' as i32
+                    && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= 'F' as i32)
+            && ((unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= '0' as i32
+                && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 <= '9' as i32
+                || (unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= 'a' as i32
+                    && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 <= 'f' as i32
+                || (unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= 'A' as i32
+                    && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 <= 'F' as i32)
+        || ((unsafe { *cur }) as i32 == '!' as i32
+            || (unsafe { *cur }) as i32 == '$' as i32
+            || (unsafe { *cur }) as i32 == '&' as i32
+            || (unsafe { *cur }) as i32 == '(' as i32
+            || (unsafe { *cur }) as i32 == ')' as i32
+            || (unsafe { *cur }) as i32 == '*' as i32
+            || (unsafe { *cur }) as i32 == '+' as i32
+            || (unsafe { *cur }) as i32 == ',' as i32
+            || (unsafe { *cur }) as i32 == ';' as i32
+            || (unsafe { *cur }) as i32 == '=' as i32
+            || (unsafe { *cur }) as i32 == '\'' as i32)
+        || (unsafe { *cur }) as i32 == ':' as i32
+        || (unsafe { *cur }) as i32 == '@' as i32)
     {
         if empty != 0 {
             return 0 as i32;
         }
         return 1 as i32;
     }
-    while (*cur as i32 >= 'a' as i32 && *cur as i32 <= 'z' as i32
-        || *cur as i32 >= 'A' as i32 && *cur as i32 <= 'Z' as i32
-        || *cur as i32 >= '0' as i32 && *cur as i32 <= '9' as i32
-        || *cur as i32 == '-' as i32 || *cur as i32 == '.' as i32
-        || *cur as i32 == '_' as i32 || *cur as i32 == '~' as i32
-        || *cur as i32 == '%' as i32
-            && (*cur.offset(1 as i32 as isize) as i32 >= '0' as i32
-                && *cur.offset(1 as i32 as isize) as i32 <= '9' as i32
-                || *cur.offset(1 as i32 as isize) as i32 >= 'a' as i32
-                    && *cur.offset(1 as i32 as isize) as i32
-                        <= 'f' as i32
-                || *cur.offset(1 as i32 as isize) as i32 >= 'A' as i32
-                    && *cur.offset(1 as i32 as isize) as i32
-                        <= 'F' as i32)
-            && (*cur.offset(2 as i32 as isize) as i32 >= '0' as i32
-                && *cur.offset(2 as i32 as isize) as i32 <= '9' as i32
-                || *cur.offset(2 as i32 as isize) as i32 >= 'a' as i32
-                    && *cur.offset(2 as i32 as isize) as i32
-                        <= 'f' as i32
-                || *cur.offset(2 as i32 as isize) as i32 >= 'A' as i32
-                    && *cur.offset(2 as i32 as isize) as i32
-                        <= 'F' as i32)
-        || (*cur as i32 == '!' as i32 || *cur as i32 == '$' as i32
-            || *cur as i32 == '&' as i32 || *cur as i32 == '(' as i32
-            || *cur as i32 == ')' as i32 || *cur as i32 == '*' as i32
-            || *cur as i32 == '+' as i32 || *cur as i32 == ',' as i32
-            || *cur as i32 == ';' as i32 || *cur as i32 == '=' as i32
-            || *cur as i32 == '\'' as i32) || *cur as i32 == ':' as i32
-        || *cur as i32 == '@' as i32)
-        && *cur as i32 != forbid as i32
+    while ((unsafe { *cur }) as i32 >= 'a' as i32 && (unsafe { *cur }) as i32 <= 'z' as i32
+        || (unsafe { *cur }) as i32 >= 'A' as i32 && (unsafe { *cur }) as i32 <= 'Z' as i32
+        || (unsafe { *cur }) as i32 >= '0' as i32 && (unsafe { *cur }) as i32 <= '9' as i32
+        || (unsafe { *cur }) as i32 == '-' as i32
+        || (unsafe { *cur }) as i32 == '.' as i32
+        || (unsafe { *cur }) as i32 == '_' as i32
+        || (unsafe { *cur }) as i32 == '~' as i32
+        || (unsafe { *cur }) as i32 == '%' as i32
+            && ((unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= '0' as i32
+                && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= '9' as i32
+                || (unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= 'a' as i32
+                    && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= 'f' as i32
+                || (unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= 'A' as i32
+                    && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= 'F' as i32)
+            && ((unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= '0' as i32
+                && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 <= '9' as i32
+                || (unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= 'a' as i32
+                    && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 <= 'f' as i32
+                || (unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= 'A' as i32
+                    && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 <= 'F' as i32)
+        || ((unsafe { *cur }) as i32 == '!' as i32
+            || (unsafe { *cur }) as i32 == '$' as i32
+            || (unsafe { *cur }) as i32 == '&' as i32
+            || (unsafe { *cur }) as i32 == '(' as i32
+            || (unsafe { *cur }) as i32 == ')' as i32
+            || (unsafe { *cur }) as i32 == '*' as i32
+            || (unsafe { *cur }) as i32 == '+' as i32
+            || (unsafe { *cur }) as i32 == ',' as i32
+            || (unsafe { *cur }) as i32 == ';' as i32
+            || (unsafe { *cur }) as i32 == '=' as i32
+            || (unsafe { *cur }) as i32 == '\'' as i32)
+        || (unsafe { *cur }) as i32 == ':' as i32
+        || (unsafe { *cur }) as i32 == '@' as i32)
+        && (unsafe { *cur }) as i32 != forbid as i32
     {
-        if *cur as i32 == '%' as i32 {
-            cur = cur.offset(3 as i32 as isize);
+        if (unsafe { *cur }) as i32 == '%' as i32 {
+            cur = unsafe { cur.offset(3 as i32 as isize) };
         } else {
-            cur = cur.offset(1);
+            cur = unsafe { cur.offset(1) };
         };
     }
     *(borrow_mut(&mut str)).unwrap() = cur;
     return 0 as i32;
 }
-unsafe extern "C" fn xmlParse3986PathAbEmpty<'a1>(
-    mut uri: * mut crate::src::uri::_xmlURI,
-    mut str: Option<&'a1 mut * const i8>,
+extern "C" fn xmlParse3986PathAbEmpty<'a1>(
+    mut uri: *mut crate::src::uri::_xmlURI,
+    mut str: Option<&'a1 mut *const i8>,
 ) -> i32 {
-    let mut cur: * const i8 = 0 as *const i8;
+    let mut cur: *const i8 = 0 as *const i8;
     let mut ret: i32 = 0;
-    cur = *(borrow(& str)).unwrap();
-    while *cur as i32 == '/' as i32 {
-        cur = cur.offset(1);
-        ret = xmlParse3986Segment(
-            Some(&mut cur),
-            0 as i32 as i8,
-            1 as i32,
-        );
+    cur = *(borrow(&str)).unwrap();
+    while (unsafe { *cur }) as i32 == '/' as i32 {
+        cur = unsafe { cur.offset(1) };
+        ret = xmlParse3986Segment(Some(&mut cur), 0 as i32 as i8, 1 as i32);
         if ret != 0 as i32 {
             return ret;
         }
     }
     if !uri.is_null() {
-        if !((*uri).path).is_null() {
-            xmlFree
-                .expect("non-null function pointer")((*uri).path as *mut libc::c_void);
+        if !(unsafe { (*uri).path }).is_null() {
+            (unsafe { xmlFree.expect("non-null function pointer")((*uri).path as *mut libc::c_void) });
         }
-        if *(borrow(& str)).unwrap() != cur {
-            if (*uri).cleanup & 2 as i32 != 0 {
-                let ref mut fresh12 = (*uri).path;
+        if *(borrow(&str)).unwrap() != cur {
+            if (unsafe { (*uri).cleanup }) & 2 as i32 != 0 {
+                let fresh12 = unsafe { &mut ((*uri).path) };
                 *fresh12 = xmlStrndup(
-                    *(borrow(& str)).unwrap() as *const xmlChar,
-                    cur.offset_from(*(borrow(& str)).unwrap()) as i64 as i32,
+                    *(borrow(&str)).unwrap() as *const xmlChar,
+                    (unsafe { cur.offset_from(*(borrow(&str)).unwrap()) }) as i64 as i32,
                 ) as *mut i8;
             } else {
-                let ref mut fresh13 = (*uri).path;
+                let fresh13 = unsafe { &mut ((*uri).path) };
                 *fresh13 = xmlURIUnescapeString(
-                    *(borrow(& str)).unwrap(),
-                    cur.offset_from(*(borrow(& str)).unwrap()) as i64 as i32,
+                    *(borrow(&str)).unwrap(),
+                    (unsafe { cur.offset_from(*(borrow(&str)).unwrap()) }) as i64 as i32,
                     0 as *mut i8,
                 );
             }
         } else {
-            let ref mut fresh14 = (*uri).path;
+            let fresh14 = unsafe { &mut ((*uri).path) };
             *fresh14 = 0 as *mut i8;
         }
     }
     *(borrow_mut(&mut str)).unwrap() = cur;
     return 0 as i32;
 }
-unsafe extern "C" fn xmlParse3986PathAbsolute<'a1>(
-    mut uri: * mut crate::src::uri::_xmlURI,
-    mut str: Option<&'a1 mut * const i8>,
+extern "C" fn xmlParse3986PathAbsolute<'a1>(
+    mut uri: *mut crate::src::uri::_xmlURI,
+    mut str: Option<&'a1 mut *const i8>,
 ) -> i32 {
-    let mut cur: * const i8 = 0 as *const i8;
+    let mut cur: *const i8 = 0 as *const i8;
     let mut ret: i32 = 0;
-    cur = *(borrow(& str)).unwrap();
-    if *cur as i32 != '/' as i32 {
+    cur = *(borrow(&str)).unwrap();
+    if (unsafe { *cur }) as i32 != '/' as i32 {
         return 1 as i32;
     }
-    cur = cur.offset(1);
-    ret = xmlParse3986Segment(
-        Some(&mut cur),
-        0 as i32 as i8,
-        0 as i32,
-    );
+    cur = unsafe { cur.offset(1) };
+    ret = xmlParse3986Segment(Some(&mut cur), 0 as i32 as i8, 0 as i32);
     if ret == 0 as i32 {
-        while *cur as i32 == '/' as i32 {
-            cur = cur.offset(1);
-            ret = xmlParse3986Segment(
-                Some(&mut cur),
-                0 as i32 as i8,
-                1 as i32,
-            );
+        while (unsafe { *cur }) as i32 == '/' as i32 {
+            cur = unsafe { cur.offset(1) };
+            ret = xmlParse3986Segment(Some(&mut cur), 0 as i32 as i8, 1 as i32);
             if ret != 0 as i32 {
                 return ret;
             }
         }
     }
     if !uri.is_null() {
-        if !((*uri).path).is_null() {
-            xmlFree
-                .expect("non-null function pointer")((*uri).path as *mut libc::c_void);
+        if !(unsafe { (*uri).path }).is_null() {
+            (unsafe { xmlFree.expect("non-null function pointer")((*uri).path as *mut libc::c_void) });
         }
-        if cur != *(borrow(& str)).unwrap() {
-            if (*uri).cleanup & 2 as i32 != 0 {
-                let ref mut fresh15 = (*uri).path;
+        if cur != *(borrow(&str)).unwrap() {
+            if (unsafe { (*uri).cleanup }) & 2 as i32 != 0 {
+                let fresh15 = unsafe { &mut ((*uri).path) };
                 *fresh15 = xmlStrndup(
-                    *(borrow(& str)).unwrap() as *const xmlChar,
-                    cur.offset_from(*(borrow(& str)).unwrap()) as i64 as i32,
+                    *(borrow(&str)).unwrap() as *const xmlChar,
+                    (unsafe { cur.offset_from(*(borrow(&str)).unwrap()) }) as i64 as i32,
                 ) as *mut i8;
             } else {
-                let ref mut fresh16 = (*uri).path;
+                let fresh16 = unsafe { &mut ((*uri).path) };
                 *fresh16 = xmlURIUnescapeString(
-                    *(borrow(& str)).unwrap(),
-                    cur.offset_from(*(borrow(& str)).unwrap()) as i64 as i32,
+                    *(borrow(&str)).unwrap(),
+                    (unsafe { cur.offset_from(*(borrow(&str)).unwrap()) }) as i64 as i32,
                     0 as *mut i8,
                 );
             }
         } else {
-            let ref mut fresh17 = (*uri).path;
+            let fresh17 = unsafe { &mut ((*uri).path) };
             *fresh17 = 0 as *mut i8;
         }
     }
     *(borrow_mut(&mut str)).unwrap() = cur;
     return 0 as i32;
 }
-unsafe extern "C" fn xmlParse3986PathRootless<'a1>(
-    mut uri: * mut crate::src::uri::_xmlURI,
-    mut str: Option<&'a1 mut * const i8>,
+extern "C" fn xmlParse3986PathRootless<'a1>(
+    mut uri: *mut crate::src::uri::_xmlURI,
+    mut str: Option<&'a1 mut *const i8>,
 ) -> i32 {
-    let mut cur: * const i8 = 0 as *const i8;
+    let mut cur: *const i8 = 0 as *const i8;
     let mut ret: i32 = 0;
-    cur = *(borrow(& str)).unwrap();
-    ret = xmlParse3986Segment(
-        Some(&mut cur),
-        0 as i32 as i8,
-        0 as i32,
-    );
+    cur = *(borrow(&str)).unwrap();
+    ret = xmlParse3986Segment(Some(&mut cur), 0 as i32 as i8, 0 as i32);
     if ret != 0 as i32 {
         return ret;
     }
-    while *cur as i32 == '/' as i32 {
-        cur = cur.offset(1);
-        ret = xmlParse3986Segment(
-            Some(&mut cur),
-            0 as i32 as i8,
-            1 as i32,
-        );
+    while (unsafe { *cur }) as i32 == '/' as i32 {
+        cur = unsafe { cur.offset(1) };
+        ret = xmlParse3986Segment(Some(&mut cur), 0 as i32 as i8, 1 as i32);
         if ret != 0 as i32 {
             return ret;
         }
     }
     if !uri.is_null() {
-        if !((*uri).path).is_null() {
-            xmlFree
-                .expect("non-null function pointer")((*uri).path as *mut libc::c_void);
+        if !(unsafe { (*uri).path }).is_null() {
+            (unsafe { xmlFree.expect("non-null function pointer")((*uri).path as *mut libc::c_void) });
         }
-        if cur != *(borrow(& str)).unwrap() {
-            if (*uri).cleanup & 2 as i32 != 0 {
-                let ref mut fresh18 = (*uri).path;
+        if cur != *(borrow(&str)).unwrap() {
+            if (unsafe { (*uri).cleanup }) & 2 as i32 != 0 {
+                let fresh18 = unsafe { &mut ((*uri).path) };
                 *fresh18 = xmlStrndup(
-                    *(borrow(& str)).unwrap() as *const xmlChar,
-                    cur.offset_from(*(borrow(& str)).unwrap()) as i64 as i32,
+                    *(borrow(&str)).unwrap() as *const xmlChar,
+                    (unsafe { cur.offset_from(*(borrow(&str)).unwrap()) }) as i64 as i32,
                 ) as *mut i8;
             } else {
-                let ref mut fresh19 = (*uri).path;
+                let fresh19 = unsafe { &mut ((*uri).path) };
                 *fresh19 = xmlURIUnescapeString(
-                    *(borrow(& str)).unwrap(),
-                    cur.offset_from(*(borrow(& str)).unwrap()) as i64 as i32,
+                    *(borrow(&str)).unwrap(),
+                    (unsafe { cur.offset_from(*(borrow(&str)).unwrap()) }) as i64 as i32,
                     0 as *mut i8,
                 );
             }
         } else {
-            let ref mut fresh20 = (*uri).path;
+            let fresh20 = unsafe { &mut ((*uri).path) };
             *fresh20 = 0 as *mut i8;
         }
     }
     *(borrow_mut(&mut str)).unwrap() = cur;
     return 0 as i32;
 }
-unsafe extern "C" fn xmlParse3986PathNoScheme<'a1>(
-    mut uri: * mut crate::src::uri::_xmlURI,
-    mut str: Option<&'a1 mut * const i8>,
+extern "C" fn xmlParse3986PathNoScheme<'a1>(
+    mut uri: *mut crate::src::uri::_xmlURI,
+    mut str: Option<&'a1 mut *const i8>,
 ) -> i32 {
-    let mut cur: * const i8 = 0 as *const i8;
+    let mut cur: *const i8 = 0 as *const i8;
     let mut ret: i32 = 0;
-    cur = *(borrow(& str)).unwrap();
+    cur = *(borrow(&str)).unwrap();
     ret = xmlParse3986Segment(Some(&mut cur), ':' as i32 as i8, 0 as i32);
     if ret != 0 as i32 {
         return ret;
     }
-    while *cur as i32 == '/' as i32 {
-        cur = cur.offset(1);
-        ret = xmlParse3986Segment(
-            Some(&mut cur),
-            0 as i32 as i8,
-            1 as i32,
-        );
+    while (unsafe { *cur }) as i32 == '/' as i32 {
+        cur = unsafe { cur.offset(1) };
+        ret = xmlParse3986Segment(Some(&mut cur), 0 as i32 as i8, 1 as i32);
         if ret != 0 as i32 {
             return ret;
         }
     }
     if !uri.is_null() {
-        if !((*uri).path).is_null() {
-            xmlFree
-                .expect("non-null function pointer")((*uri).path as *mut libc::c_void);
+        if !(unsafe { (*uri).path }).is_null() {
+            (unsafe { xmlFree.expect("non-null function pointer")((*uri).path as *mut libc::c_void) });
         }
-        if cur != *(borrow(& str)).unwrap() {
-            if (*uri).cleanup & 2 as i32 != 0 {
-                let ref mut fresh21 = (*uri).path;
+        if cur != *(borrow(&str)).unwrap() {
+            if (unsafe { (*uri).cleanup }) & 2 as i32 != 0 {
+                let fresh21 = unsafe { &mut ((*uri).path) };
                 *fresh21 = xmlStrndup(
-                    *(borrow(& str)).unwrap() as *const xmlChar,
-                    cur.offset_from(*(borrow(& str)).unwrap()) as i64 as i32,
+                    *(borrow(&str)).unwrap() as *const xmlChar,
+                    (unsafe { cur.offset_from(*(borrow(&str)).unwrap()) }) as i64 as i32,
                 ) as *mut i8;
             } else {
-                let ref mut fresh22 = (*uri).path;
+                let fresh22 = unsafe { &mut ((*uri).path) };
                 *fresh22 = xmlURIUnescapeString(
-                    *(borrow(& str)).unwrap(),
-                    cur.offset_from(*(borrow(& str)).unwrap()) as i64 as i32,
+                    *(borrow(&str)).unwrap(),
+                    (unsafe { cur.offset_from(*(borrow(&str)).unwrap()) }) as i64 as i32,
                     0 as *mut i8,
                 );
             }
         } else {
-            let ref mut fresh23 = (*uri).path;
+            let fresh23 = unsafe { &mut ((*uri).path) };
             *fresh23 = 0 as *mut i8;
         }
     }
     *(borrow_mut(&mut str)).unwrap() = cur;
     return 0 as i32;
 }
-unsafe extern "C" fn xmlParse3986HierPart<'a1>(
-    mut uri: * mut crate::src::uri::_xmlURI,
-    mut str: Option<&'a1 mut * const i8>,
+extern "C" fn xmlParse3986HierPart<'a1>(
+    mut uri: *mut crate::src::uri::_xmlURI,
+    mut str: Option<&'a1 mut *const i8>,
 ) -> i32 {
-    let mut cur: * const i8 = 0 as *const i8;
+    let mut cur: *const i8 = 0 as *const i8;
     let mut ret: i32 = 0;
-    cur = *(borrow(& str)).unwrap();
-    if *cur as i32 == '/' as i32
-        && *cur.offset(1 as i32 as isize) as i32 == '/' as i32
-    {
-        cur = cur.offset(2 as i32 as isize);
+    cur = *(borrow(&str)).unwrap();
+    if (unsafe { *cur }) as i32 == '/' as i32 && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 == '/' as i32 {
+        cur = unsafe { cur.offset(2 as i32 as isize) };
         ret = xmlParse3986Authority(uri, Some(&mut cur));
         if ret != 0 as i32 {
             return ret;
         }
-        if ((*uri).server).is_null() {
-            (*uri).port = -(1 as i32);
+        if (unsafe { (*uri).server }).is_null() {
+            (unsafe { (*uri).port = -(1 as i32) });
         }
         ret = xmlParse3986PathAbEmpty(uri, Some(&mut cur));
         if ret != 0 as i32 {
@@ -1770,81 +1714,67 @@ unsafe extern "C" fn xmlParse3986HierPart<'a1>(
         *(borrow_mut(&mut str)).unwrap() = cur;
         return 0 as i32;
     } else {
-        if *cur as i32 == '/' as i32 {
+        if (unsafe { *cur }) as i32 == '/' as i32 {
             ret = xmlParse3986PathAbsolute(uri, Some(&mut cur));
             if ret != 0 as i32 {
                 return ret;
             }
-        } else if *cur as i32 >= 'a' as i32 && *cur as i32 <= 'z' as i32
-                || *cur as i32 >= 'A' as i32 && *cur as i32 <= 'Z' as i32
-                || *cur as i32 >= '0' as i32 && *cur as i32 <= '9' as i32
-                || *cur as i32 == '-' as i32 || *cur as i32 == '.' as i32
-                || *cur as i32 == '_' as i32 || *cur as i32 == '~' as i32
-                || *cur as i32 == '%' as i32
-                    && (*cur.offset(1 as i32 as isize) as i32
-                        >= '0' as i32
-                        && *cur.offset(1 as i32 as isize) as i32
-                            <= '9' as i32
-                        || *cur.offset(1 as i32 as isize) as i32
-                            >= 'a' as i32
-                            && *cur.offset(1 as i32 as isize) as i32
-                                <= 'f' as i32
-                        || *cur.offset(1 as i32 as isize) as i32
-                            >= 'A' as i32
-                            && *cur.offset(1 as i32 as isize) as i32
-                                <= 'F' as i32)
-                    && (*cur.offset(2 as i32 as isize) as i32
-                        >= '0' as i32
-                        && *cur.offset(2 as i32 as isize) as i32
-                            <= '9' as i32
-                        || *cur.offset(2 as i32 as isize) as i32
-                            >= 'a' as i32
-                            && *cur.offset(2 as i32 as isize) as i32
-                                <= 'f' as i32
-                        || *cur.offset(2 as i32 as isize) as i32
-                            >= 'A' as i32
-                            && *cur.offset(2 as i32 as isize) as i32
-                                <= 'F' as i32)
-                || (*cur as i32 == '!' as i32
-                    || *cur as i32 == '$' as i32
-                    || *cur as i32 == '&' as i32
-                    || *cur as i32 == '(' as i32
-                    || *cur as i32 == ')' as i32
-                    || *cur as i32 == '*' as i32
-                    || *cur as i32 == '+' as i32
-                    || *cur as i32 == ',' as i32
-                    || *cur as i32 == ';' as i32
-                    || *cur as i32 == '=' as i32
-                    || *cur as i32 == '\'' as i32)
-                || *cur as i32 == ':' as i32 || *cur as i32 == '@' as i32
-            {
+        } else if (unsafe { *cur }) as i32 >= 'a' as i32 && (unsafe { *cur }) as i32 <= 'z' as i32
+            || (unsafe { *cur }) as i32 >= 'A' as i32 && (unsafe { *cur }) as i32 <= 'Z' as i32
+            || (unsafe { *cur }) as i32 >= '0' as i32 && (unsafe { *cur }) as i32 <= '9' as i32
+            || (unsafe { *cur }) as i32 == '-' as i32
+            || (unsafe { *cur }) as i32 == '.' as i32
+            || (unsafe { *cur }) as i32 == '_' as i32
+            || (unsafe { *cur }) as i32 == '~' as i32
+            || (unsafe { *cur }) as i32 == '%' as i32
+                && ((unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= '0' as i32
+                    && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= '9' as i32
+                    || (unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= 'a' as i32
+                        && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= 'f' as i32
+                    || (unsafe { *cur.offset(1 as i32 as isize) }) as i32 >= 'A' as i32
+                        && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 <= 'F' as i32)
+                && ((unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= '0' as i32
+                    && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 <= '9' as i32
+                    || (unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= 'a' as i32
+                        && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 <= 'f' as i32
+                    || (unsafe { *cur.offset(2 as i32 as isize) }) as i32 >= 'A' as i32
+                        && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 <= 'F' as i32)
+            || ((unsafe { *cur }) as i32 == '!' as i32
+                || (unsafe { *cur }) as i32 == '$' as i32
+                || (unsafe { *cur }) as i32 == '&' as i32
+                || (unsafe { *cur }) as i32 == '(' as i32
+                || (unsafe { *cur }) as i32 == ')' as i32
+                || (unsafe { *cur }) as i32 == '*' as i32
+                || (unsafe { *cur }) as i32 == '+' as i32
+                || (unsafe { *cur }) as i32 == ',' as i32
+                || (unsafe { *cur }) as i32 == ';' as i32
+                || (unsafe { *cur }) as i32 == '=' as i32
+                || (unsafe { *cur }) as i32 == '\'' as i32)
+            || (unsafe { *cur }) as i32 == ':' as i32
+            || (unsafe { *cur }) as i32 == '@' as i32
+        {
             ret = xmlParse3986PathRootless(uri, Some(&mut cur));
             if ret != 0 as i32 {
                 return ret;
             }
         } else if !uri.is_null() {
-            if !((*uri).path).is_null() {
-                xmlFree
-                    .expect(
-                        "non-null function pointer",
-                    )((*uri).path as *mut libc::c_void);
+            if !(unsafe { (*uri).path }).is_null() {
+                (unsafe { xmlFree.expect("non-null function pointer")((*uri).path as *mut libc::c_void) });
             }
-            let ref mut fresh24 = (*uri).path;
+            let fresh24 = unsafe { &mut ((*uri).path) };
             *fresh24 = 0 as *mut i8;
         }
     }
     *(borrow_mut(&mut str)).unwrap() = cur;
     return 0 as i32;
 }
-unsafe extern "C" fn xmlParse3986RelativeRef(
-    mut uri: * mut crate::src::uri::_xmlURI,
-    mut str: * const i8,
+extern "C" fn xmlParse3986RelativeRef(
+    mut uri: *mut crate::src::uri::_xmlURI,
+    mut str: *const i8,
 ) -> i32 {
     let mut ret: i32 = 0;
-    if *str as i32 == '/' as i32
-        && *str.offset(1 as i32 as isize) as i32 == '/' as i32
-    {
-        str = str.offset(2 as i32 as isize);
+    if (unsafe { *str }) as i32 == '/' as i32 && (unsafe { *str.offset(1 as i32 as isize) }) as i32 == '/' as i32 {
+        str = unsafe { str.offset(2 as i32 as isize) };
         ret = xmlParse3986Authority(uri, Some(&mut str));
         if ret != 0 as i32 {
             return ret;
@@ -1853,119 +1783,113 @@ unsafe extern "C" fn xmlParse3986RelativeRef(
         if ret != 0 as i32 {
             return ret;
         }
-    } else if *str as i32 == '/' as i32 {
+    } else if (unsafe { *str }) as i32 == '/' as i32 {
         ret = xmlParse3986PathAbsolute(uri, Some(&mut str));
         if ret != 0 as i32 {
             return ret;
         }
-    } else if *str as i32 >= 'a' as i32 && *str as i32 <= 'z' as i32
-            || *str as i32 >= 'A' as i32 && *str as i32 <= 'Z' as i32
-            || *str as i32 >= '0' as i32 && *str as i32 <= '9' as i32
-            || *str as i32 == '-' as i32 || *str as i32 == '.' as i32
-            || *str as i32 == '_' as i32 || *str as i32 == '~' as i32
-            || *str as i32 == '%' as i32
-                && (*str.offset(1 as i32 as isize) as i32 >= '0' as i32
-                    && *str.offset(1 as i32 as isize) as i32
-                        <= '9' as i32
-                    || *str.offset(1 as i32 as isize) as i32
-                        >= 'a' as i32
-                        && *str.offset(1 as i32 as isize) as i32
-                            <= 'f' as i32
-                    || *str.offset(1 as i32 as isize) as i32
-                        >= 'A' as i32
-                        && *str.offset(1 as i32 as isize) as i32
-                            <= 'F' as i32)
-                && (*str.offset(2 as i32 as isize) as i32 >= '0' as i32
-                    && *str.offset(2 as i32 as isize) as i32
-                        <= '9' as i32
-                    || *str.offset(2 as i32 as isize) as i32
-                        >= 'a' as i32
-                        && *str.offset(2 as i32 as isize) as i32
-                            <= 'f' as i32
-                    || *str.offset(2 as i32 as isize) as i32
-                        >= 'A' as i32
-                        && *str.offset(2 as i32 as isize) as i32
-                            <= 'F' as i32)
-            || (*str as i32 == '!' as i32 || *str as i32 == '$' as i32
-                || *str as i32 == '&' as i32 || *str as i32 == '(' as i32
-                || *str as i32 == ')' as i32 || *str as i32 == '*' as i32
-                || *str as i32 == '+' as i32 || *str as i32 == ',' as i32
-                || *str as i32 == ';' as i32 || *str as i32 == '=' as i32
-                || *str as i32 == '\'' as i32)
-            || *str as i32 == ':' as i32 || *str as i32 == '@' as i32
-        {
+    } else if (unsafe { *str }) as i32 >= 'a' as i32 && (unsafe { *str }) as i32 <= 'z' as i32
+        || (unsafe { *str }) as i32 >= 'A' as i32 && (unsafe { *str }) as i32 <= 'Z' as i32
+        || (unsafe { *str }) as i32 >= '0' as i32 && (unsafe { *str }) as i32 <= '9' as i32
+        || (unsafe { *str }) as i32 == '-' as i32
+        || (unsafe { *str }) as i32 == '.' as i32
+        || (unsafe { *str }) as i32 == '_' as i32
+        || (unsafe { *str }) as i32 == '~' as i32
+        || (unsafe { *str }) as i32 == '%' as i32
+            && ((unsafe { *str.offset(1 as i32 as isize) }) as i32 >= '0' as i32
+                && (unsafe { *str.offset(1 as i32 as isize) }) as i32 <= '9' as i32
+                || (unsafe { *str.offset(1 as i32 as isize) }) as i32 >= 'a' as i32
+                    && (unsafe { *str.offset(1 as i32 as isize) }) as i32 <= 'f' as i32
+                || (unsafe { *str.offset(1 as i32 as isize) }) as i32 >= 'A' as i32
+                    && (unsafe { *str.offset(1 as i32 as isize) }) as i32 <= 'F' as i32)
+            && ((unsafe { *str.offset(2 as i32 as isize) }) as i32 >= '0' as i32
+                && (unsafe { *str.offset(2 as i32 as isize) }) as i32 <= '9' as i32
+                || (unsafe { *str.offset(2 as i32 as isize) }) as i32 >= 'a' as i32
+                    && (unsafe { *str.offset(2 as i32 as isize) }) as i32 <= 'f' as i32
+                || (unsafe { *str.offset(2 as i32 as isize) }) as i32 >= 'A' as i32
+                    && (unsafe { *str.offset(2 as i32 as isize) }) as i32 <= 'F' as i32)
+        || ((unsafe { *str }) as i32 == '!' as i32
+            || (unsafe { *str }) as i32 == '$' as i32
+            || (unsafe { *str }) as i32 == '&' as i32
+            || (unsafe { *str }) as i32 == '(' as i32
+            || (unsafe { *str }) as i32 == ')' as i32
+            || (unsafe { *str }) as i32 == '*' as i32
+            || (unsafe { *str }) as i32 == '+' as i32
+            || (unsafe { *str }) as i32 == ',' as i32
+            || (unsafe { *str }) as i32 == ';' as i32
+            || (unsafe { *str }) as i32 == '=' as i32
+            || (unsafe { *str }) as i32 == '\'' as i32)
+        || (unsafe { *str }) as i32 == ':' as i32
+        || (unsafe { *str }) as i32 == '@' as i32
+    {
         ret = xmlParse3986PathNoScheme(uri, Some(&mut str));
         if ret != 0 as i32 {
             return ret;
         }
     } else if !uri.is_null() {
-        if !((*uri).path).is_null() {
-            xmlFree
-                .expect("non-null function pointer")((*uri).path as *mut libc::c_void);
+        if !(unsafe { (*uri).path }).is_null() {
+            (unsafe { xmlFree.expect("non-null function pointer")((*uri).path as *mut libc::c_void) });
         }
-        let ref mut fresh25 = (*uri).path;
+        let fresh25 = unsafe { &mut ((*uri).path) };
         *fresh25 = 0 as *mut i8;
     }
-    if *str as i32 == '?' as i32 {
-        str = str.offset(1);
+    if (unsafe { *str }) as i32 == '?' as i32 {
+        str = unsafe { str.offset(1) };
         ret = xmlParse3986Query(uri, Some(&mut str));
         if ret != 0 as i32 {
             return ret;
         }
     }
-    if *str as i32 == '#' as i32 {
-        str = str.offset(1);
+    if (unsafe { *str }) as i32 == '#' as i32 {
+        str = unsafe { str.offset(1) };
         ret = xmlParse3986Fragment(uri, Some(&mut str));
         if ret != 0 as i32 {
             return ret;
         }
     }
-    if *str as i32 != 0 as i32 {
+    if (unsafe { *str }) as i32 != 0 as i32 {
         xmlCleanURI(uri);
         return 1 as i32;
     }
     return 0 as i32;
 }
-unsafe extern "C" fn xmlParse3986URI(
-    mut uri: * mut crate::src::uri::_xmlURI,
-    mut str: * const i8,
-) -> i32 {
+extern "C" fn xmlParse3986URI(mut uri: *mut crate::src::uri::_xmlURI, mut str: *const i8) -> i32 {
     let mut ret: i32 = 0;
     ret = xmlParse3986Scheme(uri, Some(&mut str));
     if ret != 0 as i32 {
         return ret;
     }
-    if *str as i32 != ':' as i32 {
+    if (unsafe { *str }) as i32 != ':' as i32 {
         return 1 as i32;
     }
-    str = str.offset(1);
+    str = unsafe { str.offset(1) };
     ret = xmlParse3986HierPart(uri, Some(&mut str));
     if ret != 0 as i32 {
         return ret;
     }
-    if *str as i32 == '?' as i32 {
-        str = str.offset(1);
+    if (unsafe { *str }) as i32 == '?' as i32 {
+        str = unsafe { str.offset(1) };
         ret = xmlParse3986Query(uri, Some(&mut str));
         if ret != 0 as i32 {
             return ret;
         }
     }
-    if *str as i32 == '#' as i32 {
-        str = str.offset(1);
+    if (unsafe { *str }) as i32 == '#' as i32 {
+        str = unsafe { str.offset(1) };
         ret = xmlParse3986Fragment(uri, Some(&mut str));
         if ret != 0 as i32 {
             return ret;
         }
     }
-    if *str as i32 != 0 as i32 {
+    if (unsafe { *str }) as i32 != 0 as i32 {
         xmlCleanURI(uri);
         return 1 as i32;
     }
     return 0 as i32;
 }
-unsafe extern "C" fn xmlParse3986URIReference(
-    mut uri: * mut crate::src::uri::_xmlURI,
-    mut str: * const i8,
+extern "C" fn xmlParse3986URIReference(
+    mut uri: *mut crate::src::uri::_xmlURI,
+    mut str: *const i8,
 ) -> i32 {
     let mut ret: i32 = 0;
     if str.is_null() {
@@ -1984,8 +1908,8 @@ unsafe extern "C" fn xmlParse3986URIReference(
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlParseURI(mut str: * const i8) -> * mut crate::src::uri::_xmlURI {
-    let mut uri: * mut crate::src::uri::_xmlURI = 0 as *mut xmlURI;
+pub extern "C" fn xmlParseURI(mut str: *const i8) -> *mut crate::src::uri::_xmlURI {
+    let mut uri: *mut crate::src::uri::_xmlURI = 0 as *mut xmlURI;
     let mut ret: i32 = 0;
     if str.is_null() {
         return 0 as xmlURIPtr;
@@ -2001,18 +1925,18 @@ pub unsafe extern "C" fn xmlParseURI(mut str: * const i8) -> * mut crate::src::u
     return uri;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlParseURIReference(
-    mut uri: * mut crate::src::uri::_xmlURI,
-    mut str: * const i8,
+pub extern "C" fn xmlParseURIReference(
+    mut uri: *mut crate::src::uri::_xmlURI,
+    mut str: *const i8,
 ) -> i32 {
     return xmlParse3986URIReference(uri, str);
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlParseURIRaw(
-    mut str: * const i8,
+pub extern "C" fn xmlParseURIRaw(
+    mut str: *const i8,
     mut raw: i32,
-) -> * mut crate::src::uri::_xmlURI {
-    let mut uri: * mut crate::src::uri::_xmlURI = 0 as *mut xmlURI;
+) -> *mut crate::src::uri::_xmlURI {
+    let mut uri: *mut crate::src::uri::_xmlURI = 0 as *mut xmlURI;
     let mut ret: i32 = 0;
     if str.is_null() {
         return 0 as xmlURIPtr;
@@ -2020,7 +1944,7 @@ pub unsafe extern "C" fn xmlParseURIRaw(
     uri = xmlCreateURI();
     if !uri.is_null() {
         if raw != 0 {
-            (*uri).cleanup |= 2 as i32;
+            (unsafe { (*uri).cleanup |= 2 as i32 });
         }
         ret = xmlParseURIReference(uri, str);
         if ret != 0 {
@@ -2031,43 +1955,33 @@ pub unsafe extern "C" fn xmlParseURIRaw(
     return uri;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCreateURI() -> * mut crate::src::uri::_xmlURI {
-    let mut ret: * mut crate::src::uri::_xmlURI = 0 as *mut xmlURI;
-    ret = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlURI>() as u64) as xmlURIPtr;
+pub extern "C" fn xmlCreateURI() -> *mut crate::src::uri::_xmlURI {
+    let mut ret: *mut crate::src::uri::_xmlURI = 0 as *mut xmlURI;
+    ret = (unsafe { xmlMalloc.expect("non-null function pointer")(::std::mem::size_of::<xmlURI>() as u64) })
+        as xmlURIPtr;
     if ret.is_null() {
-        xmlURIErrMemory(
-            b"creating URI structure\n\0" as *const u8 as *const i8,
-        );
+        xmlURIErrMemory(b"creating URI structure\n\0" as *const u8 as *const i8);
         return 0 as xmlURIPtr;
     }
-    memset(
+    (unsafe { memset(
         ret as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlURI>() as u64,
-    );
+    ) });
     return ret;
 }
-unsafe extern "C" fn xmlSaveUriRealloc<'a1>(
-    mut ret: * mut u8,
-    mut max: Option<&'a1 mut i32>,
-) -> * mut u8 {
-    let mut temp: * mut u8 = 0 as *mut xmlChar;
+extern "C" fn xmlSaveUriRealloc<'a1>(mut ret: *mut u8, mut max: Option<&'a1 mut i32>) -> *mut u8 {
+    let mut temp: *mut u8 = 0 as *mut xmlChar;
     let mut tmp: i32 = 0;
-    if *(borrow(& max)).unwrap() > 1024 as i32 * 1024 as i32 {
-        xmlURIErrMemory(
-            b"reaching arbitrary MAX_URI_LENGTH limit\n\0" as *const u8
-                as *const i8,
-        );
+    if *(borrow(&max)).unwrap() > 1024 as i32 * 1024 as i32 {
+        xmlURIErrMemory(b"reaching arbitrary MAX_URI_LENGTH limit\n\0" as *const u8 as *const i8);
         return 0 as *mut xmlChar;
     }
-    tmp = *(borrow(& max)).unwrap() * 2 as i32;
-    temp = xmlRealloc
-        .expect(
-            "non-null function pointer",
-        )(ret as *mut libc::c_void, (tmp + 1 as i32) as size_t) as *mut xmlChar;
+    tmp = *(borrow(&max)).unwrap() * 2 as i32;
+    temp = (unsafe { xmlRealloc.expect("non-null function pointer")(
+        ret as *mut libc::c_void,
+        (tmp + 1 as i32) as size_t,
+    ) }) as *mut xmlChar;
     if temp.is_null() {
         xmlURIErrMemory(b"saving URI\n\0" as *const u8 as *const i8);
         return 0 as *mut xmlChar;
@@ -2076,33 +1990,29 @@ unsafe extern "C" fn xmlSaveUriRealloc<'a1>(
     return temp;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlSaveUri(mut uri: * mut crate::src::uri::_xmlURI) -> * mut u8 {
+pub extern "C" fn xmlSaveUri(mut uri: *mut crate::src::uri::_xmlURI) -> *mut u8 {
     let mut current_block: u64;
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
-    let mut temp: * mut u8 = 0 as *mut xmlChar;
-    let mut p: * const i8 = 0 as *const i8;
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
+    let mut temp: *mut u8 = 0 as *mut xmlChar;
+    let mut p: *const i8 = 0 as *const i8;
     let mut len: i32 = 0;
     let mut max: i32 = 0;
     if uri.is_null() {
         return 0 as *mut xmlChar;
     }
     max = 80 as i32;
-    ret = xmlMallocAtomic
-        .expect(
-            "non-null function pointer",
-        )(
-        ((max + 1 as i32) as u64)
-            .wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
-    ) as *mut xmlChar;
+    ret = (unsafe { xmlMallocAtomic.expect("non-null function pointer")(
+        ((max + 1 as i32) as u64).wrapping_mul(::std::mem::size_of::<xmlChar>() as u64),
+    ) }) as *mut xmlChar;
     if ret.is_null() {
         xmlURIErrMemory(b"saving URI\n\0" as *const u8 as *const i8);
         return 0 as *mut xmlChar;
     }
     len = 0 as i32;
-    if !((*uri).scheme).is_null() {
-        p = (*uri).scheme;
+    if !(unsafe { (*uri).scheme }).is_null() {
+        p = unsafe { (*uri).scheme };
         loop {
-            if !(*p as i32 != 0 as i32) {
+            if !((unsafe { *p }) as i32 != 0 as i32) {
                 current_block = 15904375183555213903;
                 break;
             }
@@ -2115,13 +2025,13 @@ pub unsafe extern "C" fn xmlSaveUri(mut uri: * mut crate::src::uri::_xmlURI) -> 
                 ret = temp;
             }
             let mut fresh26 = p;
-            p = p.offset(1);
+            p = unsafe { p.offset(1) };
             let mut fresh27 = len;
             len = len + 1;
-            *ret.offset(fresh27 as isize) = *fresh26 as xmlChar;
+            (unsafe { *ret.offset(fresh27 as isize) = *fresh26 as xmlChar });
         }
         match current_block {
-            18064673131860544307 => {}
+            18064673131860544307 => {},
             _ => {
                 if len >= max {
                     temp = xmlSaveUriRealloc(ret, Some(&mut max));
@@ -2135,25 +2045,25 @@ pub unsafe extern "C" fn xmlSaveUri(mut uri: * mut crate::src::uri::_xmlURI) -> 
                     current_block = 14401909646449704462;
                 }
                 match current_block {
-                    18064673131860544307 => {}
+                    18064673131860544307 => {},
                     _ => {
                         let mut fresh28 = len;
                         len = len + 1;
-                        *ret.offset(fresh28 as isize) = ':' as i32 as xmlChar;
+                        (unsafe { *ret.offset(fresh28 as isize) = ':' as i32 as xmlChar });
                         current_block = 17478428563724192186;
-                    }
+                    },
                 }
-            }
+            },
         }
     } else {
         current_block = 17478428563724192186;
     }
     match current_block {
         17478428563724192186 => {
-            if !((*uri).opaque).is_null() {
-                p = (*uri).opaque;
+            if !(unsafe { (*uri).opaque }).is_null() {
+                p = unsafe { (*uri).opaque };
                 loop {
-                    if !(*p as i32 != 0 as i32) {
+                    if !((unsafe { *p }) as i32 != 0 as i32) {
                         current_block = 13161952823003036500;
                         break;
                     }
@@ -2165,74 +2075,65 @@ pub unsafe extern "C" fn xmlSaveUri(mut uri: * mut crate::src::uri::_xmlURI) -> 
                         }
                         ret = temp;
                     }
-                    if *p as i32 == ';' as i32 || *p as i32 == '/' as i32
-                        || *p as i32 == '?' as i32
-                        || *p as i32 == ':' as i32
-                        || *p as i32 == '@' as i32
-                        || *p as i32 == '&' as i32
-                        || *p as i32 == '=' as i32
-                        || *p as i32 == '+' as i32
-                        || *p as i32 == '$' as i32
-                        || *p as i32 == ',' as i32
-                        || *p as i32 == '[' as i32
-                        || *p as i32 == ']' as i32
-                        || (*p as i32 >= 'a' as i32
-                            && *p as i32 <= 'z' as i32
-                            || *p as i32 >= 'A' as i32
-                                && *p as i32 <= 'Z' as i32
-                            || *p as i32 >= '0' as i32
-                                && *p as i32 <= '9' as i32
-                            || (*p as i32 == '-' as i32
-                                || *p as i32 == '_' as i32
-                                || *p as i32 == '.' as i32
-                                || *p as i32 == '!' as i32
-                                || *p as i32 == '~' as i32
-                                || *p as i32 == '*' as i32
-                                || *p as i32 == '\'' as i32
-                                || *p as i32 == '(' as i32
-                                || *p as i32 == ')' as i32))
+                    if (unsafe { *p }) as i32 == ';' as i32
+                        || (unsafe { *p }) as i32 == '/' as i32
+                        || (unsafe { *p }) as i32 == '?' as i32
+                        || (unsafe { *p }) as i32 == ':' as i32
+                        || (unsafe { *p }) as i32 == '@' as i32
+                        || (unsafe { *p }) as i32 == '&' as i32
+                        || (unsafe { *p }) as i32 == '=' as i32
+                        || (unsafe { *p }) as i32 == '+' as i32
+                        || (unsafe { *p }) as i32 == '$' as i32
+                        || (unsafe { *p }) as i32 == ',' as i32
+                        || (unsafe { *p }) as i32 == '[' as i32
+                        || (unsafe { *p }) as i32 == ']' as i32
+                        || ((unsafe { *p }) as i32 >= 'a' as i32 && (unsafe { *p }) as i32 <= 'z' as i32
+                            || (unsafe { *p }) as i32 >= 'A' as i32 && (unsafe { *p }) as i32 <= 'Z' as i32
+                            || (unsafe { *p }) as i32 >= '0' as i32 && (unsafe { *p }) as i32 <= '9' as i32
+                            || ((unsafe { *p }) as i32 == '-' as i32
+                                || (unsafe { *p }) as i32 == '_' as i32
+                                || (unsafe { *p }) as i32 == '.' as i32
+                                || (unsafe { *p }) as i32 == '!' as i32
+                                || (unsafe { *p }) as i32 == '~' as i32
+                                || (unsafe { *p }) as i32 == '*' as i32
+                                || (unsafe { *p }) as i32 == '\'' as i32
+                                || (unsafe { *p }) as i32 == '(' as i32
+                                || (unsafe { *p }) as i32 == ')' as i32))
                     {
                         let mut fresh29 = p;
-                        p = p.offset(1);
+                        p = unsafe { p.offset(1) };
                         let mut fresh30 = len;
                         len = len + 1;
-                        *ret.offset(fresh30 as isize) = *fresh29 as xmlChar;
+                        (unsafe { *ret.offset(fresh30 as isize) = *fresh29 as xmlChar });
                     } else {
                         let mut fresh31 = p;
-                        p = p.offset(1);
-                        let mut val: i32 = *(fresh31 as *mut u8)
-                            as i32;
+                        p = unsafe { p.offset(1) };
+                        let mut val: i32 = (unsafe { *(fresh31 as *mut u8) }) as i32;
                         let mut hi: i32 = val / 0x10 as i32;
                         let mut lo: i32 = val % 0x10 as i32;
                         let mut fresh32 = len;
                         len = len + 1;
-                        *ret.offset(fresh32 as isize) = '%' as i32 as xmlChar;
+                        (unsafe { *ret.offset(fresh32 as isize) = '%' as i32 as xmlChar });
                         let mut fresh33 = len;
                         len = len + 1;
-                        *ret
-                            .offset(
-                                fresh33 as isize,
-                            ) = (hi
+                        (unsafe { *ret.offset(fresh33 as isize) = (hi
                             + (if hi > 9 as i32 {
                                 'A' as i32 - 10 as i32
                             } else {
                                 '0' as i32
-                            })) as xmlChar;
+                            })) as xmlChar });
                         let mut fresh34 = len;
                         len = len + 1;
-                        *ret
-                            .offset(
-                                fresh34 as isize,
-                            ) = (lo
+                        (unsafe { *ret.offset(fresh34 as isize) = (lo
                             + (if lo > 9 as i32 {
                                 'A' as i32 - 10 as i32
                             } else {
                                 '0' as i32
-                            })) as xmlChar;
+                            })) as xmlChar });
                     }
                 }
             } else {
-                if !((*uri).server).is_null() || (*uri).port == -(1 as i32) {
+                if !(unsafe { (*uri).server }).is_null() || (unsafe { (*uri).port }) == -(1 as i32) {
                     if len + 3 as i32 >= max {
                         temp = xmlSaveUriRealloc(ret, Some(&mut max));
                         if temp.is_null() {
@@ -2245,18 +2146,18 @@ pub unsafe extern "C" fn xmlSaveUri(mut uri: * mut crate::src::uri::_xmlURI) -> 
                         current_block = 9441801433784995173;
                     }
                     match current_block {
-                        18064673131860544307 => {}
+                        18064673131860544307 => {},
                         _ => {
                             let mut fresh35 = len;
                             len = len + 1;
-                            *ret.offset(fresh35 as isize) = '/' as i32 as xmlChar;
+                            (unsafe { *ret.offset(fresh35 as isize) = '/' as i32 as xmlChar });
                             let mut fresh36 = len;
                             len = len + 1;
-                            *ret.offset(fresh36 as isize) = '/' as i32 as xmlChar;
-                            if !((*uri).user).is_null() {
-                                p = (*uri).user;
+                            (unsafe { *ret.offset(fresh36 as isize) = '/' as i32 as xmlChar });
+                            if !(unsafe { (*uri).user }).is_null() {
+                                p = unsafe { (*uri).user };
                                 loop {
-                                    if !(*p as i32 != 0 as i32) {
+                                    if !((unsafe { *p }) as i32 != 0 as i32) {
                                         current_block = 8835654301469918283;
                                         break;
                                     }
@@ -2268,70 +2169,62 @@ pub unsafe extern "C" fn xmlSaveUri(mut uri: * mut crate::src::uri::_xmlURI) -> 
                                         }
                                         ret = temp;
                                     }
-                                    if *p as i32 >= 'a' as i32
-                                        && *p as i32 <= 'z' as i32
-                                        || *p as i32 >= 'A' as i32
-                                            && *p as i32 <= 'Z' as i32
-                                        || *p as i32 >= '0' as i32
-                                            && *p as i32 <= '9' as i32
-                                        || (*p as i32 == '-' as i32
-                                            || *p as i32 == '_' as i32
-                                            || *p as i32 == '.' as i32
-                                            || *p as i32 == '!' as i32
-                                            || *p as i32 == '~' as i32
-                                            || *p as i32 == '*' as i32
-                                            || *p as i32 == '\'' as i32
-                                            || *p as i32 == '(' as i32
-                                            || *p as i32 == ')' as i32)
-                                        || *p as i32 == ';' as i32
-                                        || *p as i32 == ':' as i32
-                                        || *p as i32 == '&' as i32
-                                        || *p as i32 == '=' as i32
-                                        || *p as i32 == '+' as i32
-                                        || *p as i32 == '$' as i32
-                                        || *p as i32 == ',' as i32
+                                    if (unsafe { *p }) as i32 >= 'a' as i32 && (unsafe { *p }) as i32 <= 'z' as i32
+                                        || (unsafe { *p }) as i32 >= 'A' as i32 && (unsafe { *p }) as i32 <= 'Z' as i32
+                                        || (unsafe { *p }) as i32 >= '0' as i32 && (unsafe { *p }) as i32 <= '9' as i32
+                                        || ((unsafe { *p }) as i32 == '-' as i32
+                                            || (unsafe { *p }) as i32 == '_' as i32
+                                            || (unsafe { *p }) as i32 == '.' as i32
+                                            || (unsafe { *p }) as i32 == '!' as i32
+                                            || (unsafe { *p }) as i32 == '~' as i32
+                                            || (unsafe { *p }) as i32 == '*' as i32
+                                            || (unsafe { *p }) as i32 == '\'' as i32
+                                            || (unsafe { *p }) as i32 == '(' as i32
+                                            || (unsafe { *p }) as i32 == ')' as i32)
+                                        || (unsafe { *p }) as i32 == ';' as i32
+                                        || (unsafe { *p }) as i32 == ':' as i32
+                                        || (unsafe { *p }) as i32 == '&' as i32
+                                        || (unsafe { *p }) as i32 == '=' as i32
+                                        || (unsafe { *p }) as i32 == '+' as i32
+                                        || (unsafe { *p }) as i32 == '$' as i32
+                                        || (unsafe { *p }) as i32 == ',' as i32
                                     {
                                         let mut fresh37 = p;
-                                        p = p.offset(1);
+                                        p = unsafe { p.offset(1) };
                                         let mut fresh38 = len;
                                         len = len + 1;
-                                        *ret.offset(fresh38 as isize) = *fresh37 as xmlChar;
+                                        (unsafe { *ret.offset(fresh38 as isize) = *fresh37 as xmlChar });
                                     } else {
                                         let mut fresh39 = p;
-                                        p = p.offset(1);
-                                        let mut val_0: i32 = *(fresh39
-                                            as *mut u8) as i32;
+                                        p = unsafe { p.offset(1) };
+                                        let mut val_0: i32 = (unsafe { *(fresh39 as *mut u8) }) as i32;
                                         let mut hi_0: i32 = val_0 / 0x10 as i32;
                                         let mut lo_0: i32 = val_0 % 0x10 as i32;
                                         let mut fresh40 = len;
                                         len = len + 1;
-                                        *ret.offset(fresh40 as isize) = '%' as i32 as xmlChar;
+                                        (unsafe { *ret.offset(fresh40 as isize) = '%' as i32 as xmlChar });
                                         let mut fresh41 = len;
                                         len = len + 1;
-                                        *ret
-                                            .offset(
-                                                fresh41 as isize,
-                                            ) = (hi_0
+                                        (unsafe { *ret.offset(fresh41 as isize) = (hi_0
                                             + (if hi_0 > 9 as i32 {
                                                 'A' as i32 - 10 as i32
                                             } else {
                                                 '0' as i32
-                                            })) as xmlChar;
+                                            }))
+                                            as xmlChar });
                                         let mut fresh42 = len;
                                         len = len + 1;
-                                        *ret
-                                            .offset(
-                                                fresh42 as isize,
-                                            ) = (lo_0
+                                        (unsafe { *ret.offset(fresh42 as isize) = (lo_0
                                             + (if lo_0 > 9 as i32 {
                                                 'A' as i32 - 10 as i32
                                             } else {
                                                 '0' as i32
-                                            })) as xmlChar;
+                                            }))
+                                            as xmlChar });
                                     }
                                 }
                                 match current_block {
-                                    18064673131860544307 => {}
+                                    18064673131860544307 => {},
                                     _ => {
                                         if len + 3 as i32 >= max {
                                             temp = xmlSaveUriRealloc(ret, Some(&mut max));
@@ -2345,26 +2238,27 @@ pub unsafe extern "C" fn xmlSaveUri(mut uri: * mut crate::src::uri::_xmlURI) -> 
                                             current_block = 307447392441238883;
                                         }
                                         match current_block {
-                                            18064673131860544307 => {}
+                                            18064673131860544307 => {},
                                             _ => {
                                                 let mut fresh43 = len;
                                                 len = len + 1;
-                                                *ret.offset(fresh43 as isize) = '@' as i32 as xmlChar;
+                                                (unsafe { *ret.offset(fresh43 as isize) =
+                                                    '@' as i32 as xmlChar });
                                                 current_block = 15970011996474399071;
-                                            }
+                                            },
                                         }
-                                    }
+                                    },
                                 }
                             } else {
                                 current_block = 15970011996474399071;
                             }
                             match current_block {
-                                18064673131860544307 => {}
+                                18064673131860544307 => {},
                                 _ => {
-                                    if !((*uri).server).is_null() {
-                                        p = (*uri).server;
+                                    if !(unsafe { (*uri).server }).is_null() {
+                                        p = unsafe { (*uri).server };
                                         loop {
-                                            if !(*p as i32 != 0 as i32) {
+                                            if !((unsafe { *p }) as i32 != 0 as i32) {
                                                 current_block = 3736434875406665187;
                                                 break;
                                             }
@@ -2377,17 +2271,18 @@ pub unsafe extern "C" fn xmlSaveUri(mut uri: * mut crate::src::uri::_xmlURI) -> 
                                                 ret = temp;
                                             }
                                             let mut fresh44 = p;
-                                            p = p.offset(1);
+                                            p = unsafe { p.offset(1) };
                                             let mut fresh45 = len;
                                             len = len + 1;
-                                            *ret.offset(fresh45 as isize) = *fresh44 as xmlChar;
+                                            (unsafe { *ret.offset(fresh45 as isize) = *fresh44 as xmlChar });
                                         }
                                         match current_block {
-                                            18064673131860544307 => {}
+                                            18064673131860544307 => {},
                                             _ => {
-                                                if (*uri).port > 0 as i32 {
+                                                if (unsafe { (*uri).port }) > 0 as i32 {
                                                     if len + 10 as i32 >= max {
-                                                        temp = xmlSaveUriRealloc(ret, Some(&mut max));
+                                                        temp =
+                                                            xmlSaveUriRealloc(ret, Some(&mut max));
                                                         if temp.is_null() {
                                                             current_block = 18064673131860544307;
                                                         } else {
@@ -2398,32 +2293,32 @@ pub unsafe extern "C" fn xmlSaveUri(mut uri: * mut crate::src::uri::_xmlURI) -> 
                                                         current_block = 993425571616822999;
                                                     }
                                                     match current_block {
-                                                        18064673131860544307 => {}
+                                                        18064673131860544307 => {},
                                                         _ => {
-                                                            len
-                                                                += snprintf(
-                                                                    &mut *ret.offset(len as isize) as *mut xmlChar
-                                                                        as *mut i8,
-                                                                    (max - len) as u64,
-                                                                    b":%d\0" as *const u8 as *const i8,
-                                                                    (*uri).port,
-                                                                );
+                                                            len += unsafe { snprintf(
+                                                                &mut *ret.offset(len as isize)
+                                                                    as *mut xmlChar
+                                                                    as *mut i8,
+                                                                (max - len) as u64,
+                                                                b":%d\0" as *const u8 as *const i8,
+                                                                (*uri).port,
+                                                            ) };
                                                             current_block = 9775647934248138666;
-                                                        }
+                                                        },
                                                     }
                                                 } else {
                                                     current_block = 9775647934248138666;
                                                 }
-                                            }
+                                            },
                                         }
                                     } else {
                                         current_block = 9775647934248138666;
                                     }
-                                }
+                                },
                             }
-                        }
+                        },
                     }
-                } else if !((*uri).authority).is_null() {
+                } else if !(unsafe { (*uri).authority }).is_null() {
                     if len + 3 as i32 >= max {
                         temp = xmlSaveUriRealloc(ret, Some(&mut max));
                         if temp.is_null() {
@@ -2436,17 +2331,17 @@ pub unsafe extern "C" fn xmlSaveUri(mut uri: * mut crate::src::uri::_xmlURI) -> 
                         current_block = 12705158477165241210;
                     }
                     match current_block {
-                        18064673131860544307 => {}
+                        18064673131860544307 => {},
                         _ => {
                             let mut fresh46 = len;
                             len = len + 1;
-                            *ret.offset(fresh46 as isize) = '/' as i32 as xmlChar;
+                            (unsafe { *ret.offset(fresh46 as isize) = '/' as i32 as xmlChar });
                             let mut fresh47 = len;
                             len = len + 1;
-                            *ret.offset(fresh47 as isize) = '/' as i32 as xmlChar;
-                            p = (*uri).authority;
+                            (unsafe { *ret.offset(fresh47 as isize) = '/' as i32 as xmlChar });
+                            p = unsafe { (*uri).authority };
                             loop {
-                                if !(*p as i32 != 0 as i32) {
+                                if !((unsafe { *p }) as i32 != 0 as i32) {
                                     current_block = 9775647934248138666;
                                     break;
                                 }
@@ -2458,72 +2353,64 @@ pub unsafe extern "C" fn xmlSaveUri(mut uri: * mut crate::src::uri::_xmlURI) -> 
                                     }
                                     ret = temp;
                                 }
-                                if *p as i32 >= 'a' as i32
-                                    && *p as i32 <= 'z' as i32
-                                    || *p as i32 >= 'A' as i32
-                                        && *p as i32 <= 'Z' as i32
-                                    || *p as i32 >= '0' as i32
-                                        && *p as i32 <= '9' as i32
-                                    || (*p as i32 == '-' as i32
-                                        || *p as i32 == '_' as i32
-                                        || *p as i32 == '.' as i32
-                                        || *p as i32 == '!' as i32
-                                        || *p as i32 == '~' as i32
-                                        || *p as i32 == '*' as i32
-                                        || *p as i32 == '\'' as i32
-                                        || *p as i32 == '(' as i32
-                                        || *p as i32 == ')' as i32)
-                                    || *p as i32 == '$' as i32
-                                    || *p as i32 == ',' as i32
-                                    || *p as i32 == ';' as i32
-                                    || *p as i32 == ':' as i32
-                                    || *p as i32 == '@' as i32
-                                    || *p as i32 == '&' as i32
-                                    || *p as i32 == '=' as i32
-                                    || *p as i32 == '+' as i32
+                                if (unsafe { *p }) as i32 >= 'a' as i32 && (unsafe { *p }) as i32 <= 'z' as i32
+                                    || (unsafe { *p }) as i32 >= 'A' as i32 && (unsafe { *p }) as i32 <= 'Z' as i32
+                                    || (unsafe { *p }) as i32 >= '0' as i32 && (unsafe { *p }) as i32 <= '9' as i32
+                                    || ((unsafe { *p }) as i32 == '-' as i32
+                                        || (unsafe { *p }) as i32 == '_' as i32
+                                        || (unsafe { *p }) as i32 == '.' as i32
+                                        || (unsafe { *p }) as i32 == '!' as i32
+                                        || (unsafe { *p }) as i32 == '~' as i32
+                                        || (unsafe { *p }) as i32 == '*' as i32
+                                        || (unsafe { *p }) as i32 == '\'' as i32
+                                        || (unsafe { *p }) as i32 == '(' as i32
+                                        || (unsafe { *p }) as i32 == ')' as i32)
+                                    || (unsafe { *p }) as i32 == '$' as i32
+                                    || (unsafe { *p }) as i32 == ',' as i32
+                                    || (unsafe { *p }) as i32 == ';' as i32
+                                    || (unsafe { *p }) as i32 == ':' as i32
+                                    || (unsafe { *p }) as i32 == '@' as i32
+                                    || (unsafe { *p }) as i32 == '&' as i32
+                                    || (unsafe { *p }) as i32 == '=' as i32
+                                    || (unsafe { *p }) as i32 == '+' as i32
                                 {
                                     let mut fresh48 = p;
-                                    p = p.offset(1);
+                                    p = unsafe { p.offset(1) };
                                     let mut fresh49 = len;
                                     len = len + 1;
-                                    *ret.offset(fresh49 as isize) = *fresh48 as xmlChar;
+                                    (unsafe { *ret.offset(fresh49 as isize) = *fresh48 as xmlChar });
                                 } else {
                                     let mut fresh50 = p;
-                                    p = p.offset(1);
-                                    let mut val_1: i32 = *(fresh50
-                                        as *mut u8) as i32;
+                                    p = unsafe { p.offset(1) };
+                                    let mut val_1: i32 = (unsafe { *(fresh50 as *mut u8) }) as i32;
                                     let mut hi_1: i32 = val_1 / 0x10 as i32;
                                     let mut lo_1: i32 = val_1 % 0x10 as i32;
                                     let mut fresh51 = len;
                                     len = len + 1;
-                                    *ret.offset(fresh51 as isize) = '%' as i32 as xmlChar;
+                                    (unsafe { *ret.offset(fresh51 as isize) = '%' as i32 as xmlChar });
                                     let mut fresh52 = len;
                                     len = len + 1;
-                                    *ret
-                                        .offset(
-                                            fresh52 as isize,
-                                        ) = (hi_1
+                                    (unsafe { *ret.offset(fresh52 as isize) = (hi_1
                                         + (if hi_1 > 9 as i32 {
                                             'A' as i32 - 10 as i32
                                         } else {
                                             '0' as i32
-                                        })) as xmlChar;
+                                        }))
+                                        as xmlChar });
                                     let mut fresh53 = len;
                                     len = len + 1;
-                                    *ret
-                                        .offset(
-                                            fresh53 as isize,
-                                        ) = (lo_1
+                                    (unsafe { *ret.offset(fresh53 as isize) = (lo_1
                                         + (if lo_1 > 9 as i32 {
                                             'A' as i32 - 10 as i32
                                         } else {
                                             '0' as i32
-                                        })) as xmlChar;
+                                        }))
+                                        as xmlChar });
                                 }
                             }
-                        }
+                        },
                     }
-                } else if !((*uri).scheme).is_null() {
+                } else if !(unsafe { (*uri).scheme }).is_null() {
                     if len + 3 as i32 >= max {
                         temp = xmlSaveUriRealloc(ret, Some(&mut max));
                         if temp.is_null() {
@@ -2539,27 +2426,20 @@ pub unsafe extern "C" fn xmlSaveUri(mut uri: * mut crate::src::uri::_xmlURI) -> 
                     current_block = 9775647934248138666;
                 }
                 match current_block {
-                    18064673131860544307 => {}
+                    18064673131860544307 => {},
                     _ => {
-                        if !((*uri).path).is_null() {
-                            p = (*uri).path;
-                            if !((*uri).scheme).is_null()
-                                && *p.offset(0 as i32 as isize) as i32
-                                    == '/' as i32
-                                && (*p.offset(1 as i32 as isize) as i32
-                                    >= 'a' as i32
-                                    && *p.offset(1 as i32 as isize) as i32
-                                        <= 'z' as i32
-                                    || *p.offset(1 as i32 as isize) as i32
-                                        >= 'A' as i32
-                                        && *p.offset(1 as i32 as isize) as i32
-                                            <= 'Z' as i32)
-                                && *p.offset(2 as i32 as isize) as i32
-                                    == ':' as i32
+                        if !(unsafe { (*uri).path }).is_null() {
+                            p = unsafe { (*uri).path };
+                            if !(unsafe { (*uri).scheme }).is_null()
+                                && (unsafe { *p.offset(0 as i32 as isize) }) as i32 == '/' as i32
+                                && ((unsafe { *p.offset(1 as i32 as isize) }) as i32 >= 'a' as i32
+                                    && (unsafe { *p.offset(1 as i32 as isize) }) as i32 <= 'z' as i32
+                                    || (unsafe { *p.offset(1 as i32 as isize) }) as i32 >= 'A' as i32
+                                        && (unsafe { *p.offset(1 as i32 as isize) }) as i32 <= 'Z' as i32)
+                                && (unsafe { *p.offset(2 as i32 as isize) }) as i32 == ':' as i32
                                 && xmlStrEqual(
-                                    (*uri).scheme as *mut xmlChar,
-                                    b"file\0" as *const u8 as *const i8
-                                        as *mut xmlChar,
+                                    (unsafe { (*uri).scheme }) as *mut xmlChar,
+                                    b"file\0" as *const u8 as *const i8 as *mut xmlChar,
                                 ) != 0
                             {
                                 if len + 3 as i32 >= max {
@@ -2574,117 +2454,107 @@ pub unsafe extern "C" fn xmlSaveUri(mut uri: * mut crate::src::uri::_xmlURI) -> 
                                     current_block = 5248622017361056354;
                                 }
                                 match current_block {
-                                    18064673131860544307 => {}
+                                    18064673131860544307 => {},
                                     _ => {
                                         let mut fresh54 = p;
-                                        p = p.offset(1);
+                                        p = unsafe { p.offset(1) };
                                         let mut fresh55 = len;
                                         len = len + 1;
-                                        *ret.offset(fresh55 as isize) = *fresh54 as xmlChar;
+                                        (unsafe { *ret.offset(fresh55 as isize) = *fresh54 as xmlChar });
                                         let mut fresh56 = p;
-                                        p = p.offset(1);
+                                        p = unsafe { p.offset(1) };
                                         let mut fresh57 = len;
                                         len = len + 1;
-                                        *ret.offset(fresh57 as isize) = *fresh56 as xmlChar;
+                                        (unsafe { *ret.offset(fresh57 as isize) = *fresh56 as xmlChar });
                                         let mut fresh58 = p;
-                                        p = p.offset(1);
+                                        p = unsafe { p.offset(1) };
                                         let mut fresh59 = len;
                                         len = len + 1;
-                                        *ret.offset(fresh59 as isize) = *fresh58 as xmlChar;
+                                        (unsafe { *ret.offset(fresh59 as isize) = *fresh58 as xmlChar });
                                         current_block = 13014351284863956202;
-                                    }
+                                    },
                                 }
                             } else {
                                 current_block = 13014351284863956202;
                             }
                             match current_block {
-                                18064673131860544307 => {}
-                                _ => {
-                                    loop {
-                                        if !(*p as i32 != 0 as i32) {
-                                            current_block = 7923086311623215889;
+                                18064673131860544307 => {},
+                                _ => loop {
+                                    if !((unsafe { *p }) as i32 != 0 as i32) {
+                                        current_block = 7923086311623215889;
+                                        break;
+                                    }
+                                    if len + 3 as i32 >= max {
+                                        temp = xmlSaveUriRealloc(ret, Some(&mut max));
+                                        if temp.is_null() {
+                                            current_block = 18064673131860544307;
                                             break;
                                         }
-                                        if len + 3 as i32 >= max {
-                                            temp = xmlSaveUriRealloc(ret, Some(&mut max));
-                                            if temp.is_null() {
-                                                current_block = 18064673131860544307;
-                                                break;
-                                            }
-                                            ret = temp;
-                                        }
-                                        if *p as i32 >= 'a' as i32
-                                            && *p as i32 <= 'z' as i32
-                                            || *p as i32 >= 'A' as i32
-                                                && *p as i32 <= 'Z' as i32
-                                            || *p as i32 >= '0' as i32
-                                                && *p as i32 <= '9' as i32
-                                            || (*p as i32 == '-' as i32
-                                                || *p as i32 == '_' as i32
-                                                || *p as i32 == '.' as i32
-                                                || *p as i32 == '!' as i32
-                                                || *p as i32 == '~' as i32
-                                                || *p as i32 == '*' as i32
-                                                || *p as i32 == '\'' as i32
-                                                || *p as i32 == '(' as i32
-                                                || *p as i32 == ')' as i32)
-                                            || *p as i32 == '/' as i32
-                                            || *p as i32 == ';' as i32
-                                            || *p as i32 == '@' as i32
-                                            || *p as i32 == '&' as i32
-                                            || *p as i32 == '=' as i32
-                                            || *p as i32 == '+' as i32
-                                            || *p as i32 == '$' as i32
-                                            || *p as i32 == ',' as i32
-                                        {
-                                            let mut fresh60 = p;
-                                            p = p.offset(1);
-                                            let mut fresh61 = len;
-                                            len = len + 1;
-                                            *ret.offset(fresh61 as isize) = *fresh60 as xmlChar;
-                                        } else {
-                                            let mut fresh62 = p;
-                                            p = p.offset(1);
-                                            let mut val_2: i32 = *(fresh62
-                                                as *mut u8) as i32;
-                                            let mut hi_2: i32 = val_2 / 0x10 as i32;
-                                            let mut lo_2: i32 = val_2 % 0x10 as i32;
-                                            let mut fresh63 = len;
-                                            len = len + 1;
-                                            *ret.offset(fresh63 as isize) = '%' as i32 as xmlChar;
-                                            let mut fresh64 = len;
-                                            len = len + 1;
-                                            *ret
-                                                .offset(
-                                                    fresh64 as isize,
-                                                ) = (hi_2
-                                                + (if hi_2 > 9 as i32 {
-                                                    'A' as i32 - 10 as i32
-                                                } else {
-                                                    '0' as i32
-                                                })) as xmlChar;
-                                            let mut fresh65 = len;
-                                            len = len + 1;
-                                            *ret
-                                                .offset(
-                                                    fresh65 as isize,
-                                                ) = (lo_2
-                                                + (if lo_2 > 9 as i32 {
-                                                    'A' as i32 - 10 as i32
-                                                } else {
-                                                    '0' as i32
-                                                })) as xmlChar;
-                                        }
+                                        ret = temp;
                                     }
-                                }
+                                    if (unsafe { *p }) as i32 >= 'a' as i32 && (unsafe { *p }) as i32 <= 'z' as i32
+                                        || (unsafe { *p }) as i32 >= 'A' as i32 && (unsafe { *p }) as i32 <= 'Z' as i32
+                                        || (unsafe { *p }) as i32 >= '0' as i32 && (unsafe { *p }) as i32 <= '9' as i32
+                                        || ((unsafe { *p }) as i32 == '-' as i32
+                                            || (unsafe { *p }) as i32 == '_' as i32
+                                            || (unsafe { *p }) as i32 == '.' as i32
+                                            || (unsafe { *p }) as i32 == '!' as i32
+                                            || (unsafe { *p }) as i32 == '~' as i32
+                                            || (unsafe { *p }) as i32 == '*' as i32
+                                            || (unsafe { *p }) as i32 == '\'' as i32
+                                            || (unsafe { *p }) as i32 == '(' as i32
+                                            || (unsafe { *p }) as i32 == ')' as i32)
+                                        || (unsafe { *p }) as i32 == '/' as i32
+                                        || (unsafe { *p }) as i32 == ';' as i32
+                                        || (unsafe { *p }) as i32 == '@' as i32
+                                        || (unsafe { *p }) as i32 == '&' as i32
+                                        || (unsafe { *p }) as i32 == '=' as i32
+                                        || (unsafe { *p }) as i32 == '+' as i32
+                                        || (unsafe { *p }) as i32 == '$' as i32
+                                        || (unsafe { *p }) as i32 == ',' as i32
+                                    {
+                                        let mut fresh60 = p;
+                                        p = unsafe { p.offset(1) };
+                                        let mut fresh61 = len;
+                                        len = len + 1;
+                                        (unsafe { *ret.offset(fresh61 as isize) = *fresh60 as xmlChar });
+                                    } else {
+                                        let mut fresh62 = p;
+                                        p = unsafe { p.offset(1) };
+                                        let mut val_2: i32 = (unsafe { *(fresh62 as *mut u8) }) as i32;
+                                        let mut hi_2: i32 = val_2 / 0x10 as i32;
+                                        let mut lo_2: i32 = val_2 % 0x10 as i32;
+                                        let mut fresh63 = len;
+                                        len = len + 1;
+                                        (unsafe { *ret.offset(fresh63 as isize) = '%' as i32 as xmlChar });
+                                        let mut fresh64 = len;
+                                        len = len + 1;
+                                        (unsafe { *ret.offset(fresh64 as isize) = (hi_2
+                                            + (if hi_2 > 9 as i32 {
+                                                'A' as i32 - 10 as i32
+                                            } else {
+                                                '0' as i32
+                                            }))
+                                            as xmlChar });
+                                        let mut fresh65 = len;
+                                        len = len + 1;
+                                        (unsafe { *ret.offset(fresh65 as isize) = (lo_2
+                                            + (if lo_2 > 9 as i32 {
+                                                'A' as i32 - 10 as i32
+                                            } else {
+                                                '0' as i32
+                                            }))
+                                            as xmlChar });
+                                    }
+                                },
                             }
                         } else {
                             current_block = 7923086311623215889;
                         }
                         match current_block {
-                            18064673131860544307 => {}
+                            18064673131860544307 => {},
                             _ => {
-                                if !((*uri).query_raw).is_null() {
+                                if !(unsafe { (*uri).query_raw }).is_null() {
                                     if len + 1 as i32 >= max {
                                         temp = xmlSaveUriRealloc(ret, Some(&mut max));
                                         if temp.is_null() {
@@ -2697,14 +2567,14 @@ pub unsafe extern "C" fn xmlSaveUri(mut uri: * mut crate::src::uri::_xmlURI) -> 
                                         current_block = 92352228884877657;
                                     }
                                     match current_block {
-                                        18064673131860544307 => {}
+                                        18064673131860544307 => {},
                                         _ => {
                                             let mut fresh66 = len;
                                             len = len + 1;
-                                            *ret.offset(fresh66 as isize) = '?' as i32 as xmlChar;
-                                            p = (*uri).query_raw;
+                                            (unsafe { *ret.offset(fresh66 as isize) = '?' as i32 as xmlChar });
+                                            p = unsafe { (*uri).query_raw };
                                             loop {
-                                                if !(*p as i32 != 0 as i32) {
+                                                if !((unsafe { *p }) as i32 != 0 as i32) {
                                                     current_block = 13161952823003036500;
                                                     break;
                                                 }
@@ -2717,14 +2587,14 @@ pub unsafe extern "C" fn xmlSaveUri(mut uri: * mut crate::src::uri::_xmlURI) -> 
                                                     ret = temp;
                                                 }
                                                 let mut fresh67 = p;
-                                                p = p.offset(1);
+                                                p = unsafe { p.offset(1) };
                                                 let mut fresh68 = len;
                                                 len = len + 1;
-                                                *ret.offset(fresh68 as isize) = *fresh67 as xmlChar;
+                                                (unsafe { *ret.offset(fresh68 as isize) = *fresh67 as xmlChar });
                                             }
-                                        }
+                                        },
                                     }
-                                } else if !((*uri).query).is_null() {
+                                } else if !(unsafe { (*uri).query }).is_null() {
                                     if len + 3 as i32 >= max {
                                         temp = xmlSaveUriRealloc(ret, Some(&mut max));
                                         if temp.is_null() {
@@ -2737,14 +2607,14 @@ pub unsafe extern "C" fn xmlSaveUri(mut uri: * mut crate::src::uri::_xmlURI) -> 
                                         current_block = 2838755337219234678;
                                     }
                                     match current_block {
-                                        18064673131860544307 => {}
+                                        18064673131860544307 => {},
                                         _ => {
                                             let mut fresh69 = len;
                                             len = len + 1;
-                                            *ret.offset(fresh69 as isize) = '?' as i32 as xmlChar;
-                                            p = (*uri).query;
+                                            (unsafe { *ret.offset(fresh69 as isize) = '?' as i32 as xmlChar });
+                                            p = unsafe { (*uri).query };
                                             loop {
-                                                if !(*p as i32 != 0 as i32) {
+                                                if !((unsafe { *p }) as i32 != 0 as i32) {
                                                     current_block = 13161952823003036500;
                                                     break;
                                                 }
@@ -2756,87 +2626,85 @@ pub unsafe extern "C" fn xmlSaveUri(mut uri: * mut crate::src::uri::_xmlURI) -> 
                                                     }
                                                     ret = temp;
                                                 }
-                                                if *p as i32 >= 'a' as i32
-                                                    && *p as i32 <= 'z' as i32
-                                                    || *p as i32 >= 'A' as i32
-                                                        && *p as i32 <= 'Z' as i32
-                                                    || *p as i32 >= '0' as i32
-                                                        && *p as i32 <= '9' as i32
-                                                    || (*p as i32 == '-' as i32
-                                                        || *p as i32 == '_' as i32
-                                                        || *p as i32 == '.' as i32
-                                                        || *p as i32 == '!' as i32
-                                                        || *p as i32 == '~' as i32
-                                                        || *p as i32 == '*' as i32
-                                                        || *p as i32 == '\'' as i32
-                                                        || *p as i32 == '(' as i32
-                                                        || *p as i32 == ')' as i32)
-                                                    || (*p as i32 == ';' as i32
-                                                        || *p as i32 == '/' as i32
-                                                        || *p as i32 == '?' as i32
-                                                        || *p as i32 == ':' as i32
-                                                        || *p as i32 == '@' as i32
-                                                        || *p as i32 == '&' as i32
-                                                        || *p as i32 == '=' as i32
-                                                        || *p as i32 == '+' as i32
-                                                        || *p as i32 == '$' as i32
-                                                        || *p as i32 == ',' as i32
-                                                        || *p as i32 == '[' as i32
-                                                        || *p as i32 == ']' as i32)
+                                                if (unsafe { *p }) as i32 >= 'a' as i32
+                                                    && (unsafe { *p }) as i32 <= 'z' as i32
+                                                    || (unsafe { *p }) as i32 >= 'A' as i32
+                                                        && (unsafe { *p }) as i32 <= 'Z' as i32
+                                                    || (unsafe { *p }) as i32 >= '0' as i32
+                                                        && (unsafe { *p }) as i32 <= '9' as i32
+                                                    || ((unsafe { *p }) as i32 == '-' as i32
+                                                        || (unsafe { *p }) as i32 == '_' as i32
+                                                        || (unsafe { *p }) as i32 == '.' as i32
+                                                        || (unsafe { *p }) as i32 == '!' as i32
+                                                        || (unsafe { *p }) as i32 == '~' as i32
+                                                        || (unsafe { *p }) as i32 == '*' as i32
+                                                        || (unsafe { *p }) as i32 == '\'' as i32
+                                                        || (unsafe { *p }) as i32 == '(' as i32
+                                                        || (unsafe { *p }) as i32 == ')' as i32)
+                                                    || ((unsafe { *p }) as i32 == ';' as i32
+                                                        || (unsafe { *p }) as i32 == '/' as i32
+                                                        || (unsafe { *p }) as i32 == '?' as i32
+                                                        || (unsafe { *p }) as i32 == ':' as i32
+                                                        || (unsafe { *p }) as i32 == '@' as i32
+                                                        || (unsafe { *p }) as i32 == '&' as i32
+                                                        || (unsafe { *p }) as i32 == '=' as i32
+                                                        || (unsafe { *p }) as i32 == '+' as i32
+                                                        || (unsafe { *p }) as i32 == '$' as i32
+                                                        || (unsafe { *p }) as i32 == ',' as i32
+                                                        || (unsafe { *p }) as i32 == '[' as i32
+                                                        || (unsafe { *p }) as i32 == ']' as i32)
                                                 {
                                                     let mut fresh70 = p;
-                                                    p = p.offset(1);
+                                                    p = unsafe { p.offset(1) };
                                                     let mut fresh71 = len;
                                                     len = len + 1;
-                                                    *ret.offset(fresh71 as isize) = *fresh70 as xmlChar;
+                                                    (unsafe { *ret.offset(fresh71 as isize) =
+                                                        *fresh70 as xmlChar });
                                                 } else {
                                                     let mut fresh72 = p;
-                                                    p = p.offset(1);
-                                                    let mut val_3: i32 = *(fresh72
-                                                        as *mut u8) as i32;
+                                                    p = unsafe { p.offset(1) };
+                                                    let mut val_3: i32 =
+                                                        (unsafe { *(fresh72 as *mut u8) }) as i32;
                                                     let mut hi_3: i32 = val_3 / 0x10 as i32;
                                                     let mut lo_3: i32 = val_3 % 0x10 as i32;
                                                     let mut fresh73 = len;
                                                     len = len + 1;
-                                                    *ret.offset(fresh73 as isize) = '%' as i32 as xmlChar;
+                                                    (unsafe { *ret.offset(fresh73 as isize) =
+                                                        '%' as i32 as xmlChar });
                                                     let mut fresh74 = len;
                                                     len = len + 1;
-                                                    *ret
-                                                        .offset(
-                                                            fresh74 as isize,
-                                                        ) = (hi_3
+                                                    (unsafe { *ret.offset(fresh74 as isize) = (hi_3
                                                         + (if hi_3 > 9 as i32 {
                                                             'A' as i32 - 10 as i32
                                                         } else {
                                                             '0' as i32
-                                                        })) as xmlChar;
+                                                        }))
+                                                        as xmlChar });
                                                     let mut fresh75 = len;
                                                     len = len + 1;
-                                                    *ret
-                                                        .offset(
-                                                            fresh75 as isize,
-                                                        ) = (lo_3
+                                                    (unsafe { *ret.offset(fresh75 as isize) = (lo_3
                                                         + (if lo_3 > 9 as i32 {
                                                             'A' as i32 - 10 as i32
                                                         } else {
                                                             '0' as i32
-                                                        })) as xmlChar;
+                                                        }))
+                                                        as xmlChar });
                                                 }
                                             }
-                                        }
+                                        },
                                     }
                                 } else {
                                     current_block = 13161952823003036500;
                                 }
-                            }
+                            },
                         }
-                    }
+                    },
                 }
             }
             match current_block {
-                18064673131860544307 => {}
+                18064673131860544307 => {},
                 _ => {
-                    if !((*uri).fragment).is_null() {
+                    if !(unsafe { (*uri).fragment }).is_null() {
                         if len + 3 as i32 >= max {
                             temp = xmlSaveUriRealloc(ret, Some(&mut max));
                             if temp.is_null() {
@@ -2849,14 +2717,14 @@ pub unsafe extern "C" fn xmlSaveUri(mut uri: * mut crate::src::uri::_xmlURI) -> 
                             current_block = 654039154479240366;
                         }
                         match current_block {
-                            18064673131860544307 => {}
+                            18064673131860544307 => {},
                             _ => {
                                 let mut fresh76 = len;
                                 len = len + 1;
-                                *ret.offset(fresh76 as isize) = '#' as i32 as xmlChar;
-                                p = (*uri).fragment;
+                                (unsafe { *ret.offset(fresh76 as isize) = '#' as i32 as xmlChar });
+                                p = unsafe { (*uri).fragment };
                                 loop {
-                                    if !(*p as i32 != 0 as i32) {
+                                    if !((unsafe { *p }) as i32 != 0 as i32) {
                                         current_block = 7256998052328658819;
                                         break;
                                     }
@@ -2868,80 +2736,72 @@ pub unsafe extern "C" fn xmlSaveUri(mut uri: * mut crate::src::uri::_xmlURI) -> 
                                         }
                                         ret = temp;
                                     }
-                                    if *p as i32 >= 'a' as i32
-                                        && *p as i32 <= 'z' as i32
-                                        || *p as i32 >= 'A' as i32
-                                            && *p as i32 <= 'Z' as i32
-                                        || *p as i32 >= '0' as i32
-                                            && *p as i32 <= '9' as i32
-                                        || (*p as i32 == '-' as i32
-                                            || *p as i32 == '_' as i32
-                                            || *p as i32 == '.' as i32
-                                            || *p as i32 == '!' as i32
-                                            || *p as i32 == '~' as i32
-                                            || *p as i32 == '*' as i32
-                                            || *p as i32 == '\'' as i32
-                                            || *p as i32 == '(' as i32
-                                            || *p as i32 == ')' as i32)
-                                        || (*p as i32 == ';' as i32
-                                            || *p as i32 == '/' as i32
-                                            || *p as i32 == '?' as i32
-                                            || *p as i32 == ':' as i32
-                                            || *p as i32 == '@' as i32
-                                            || *p as i32 == '&' as i32
-                                            || *p as i32 == '=' as i32
-                                            || *p as i32 == '+' as i32
-                                            || *p as i32 == '$' as i32
-                                            || *p as i32 == ',' as i32
-                                            || *p as i32 == '[' as i32
-                                            || *p as i32 == ']' as i32)
+                                    if (unsafe { *p }) as i32 >= 'a' as i32 && (unsafe { *p }) as i32 <= 'z' as i32
+                                        || (unsafe { *p }) as i32 >= 'A' as i32 && (unsafe { *p }) as i32 <= 'Z' as i32
+                                        || (unsafe { *p }) as i32 >= '0' as i32 && (unsafe { *p }) as i32 <= '9' as i32
+                                        || ((unsafe { *p }) as i32 == '-' as i32
+                                            || (unsafe { *p }) as i32 == '_' as i32
+                                            || (unsafe { *p }) as i32 == '.' as i32
+                                            || (unsafe { *p }) as i32 == '!' as i32
+                                            || (unsafe { *p }) as i32 == '~' as i32
+                                            || (unsafe { *p }) as i32 == '*' as i32
+                                            || (unsafe { *p }) as i32 == '\'' as i32
+                                            || (unsafe { *p }) as i32 == '(' as i32
+                                            || (unsafe { *p }) as i32 == ')' as i32)
+                                        || ((unsafe { *p }) as i32 == ';' as i32
+                                            || (unsafe { *p }) as i32 == '/' as i32
+                                            || (unsafe { *p }) as i32 == '?' as i32
+                                            || (unsafe { *p }) as i32 == ':' as i32
+                                            || (unsafe { *p }) as i32 == '@' as i32
+                                            || (unsafe { *p }) as i32 == '&' as i32
+                                            || (unsafe { *p }) as i32 == '=' as i32
+                                            || (unsafe { *p }) as i32 == '+' as i32
+                                            || (unsafe { *p }) as i32 == '$' as i32
+                                            || (unsafe { *p }) as i32 == ',' as i32
+                                            || (unsafe { *p }) as i32 == '[' as i32
+                                            || (unsafe { *p }) as i32 == ']' as i32)
                                     {
                                         let mut fresh77 = p;
-                                        p = p.offset(1);
+                                        p = unsafe { p.offset(1) };
                                         let mut fresh78 = len;
                                         len = len + 1;
-                                        *ret.offset(fresh78 as isize) = *fresh77 as xmlChar;
+                                        (unsafe { *ret.offset(fresh78 as isize) = *fresh77 as xmlChar });
                                     } else {
                                         let mut fresh79 = p;
-                                        p = p.offset(1);
-                                        let mut val_4: i32 = *(fresh79
-                                            as *mut u8) as i32;
+                                        p = unsafe { p.offset(1) };
+                                        let mut val_4: i32 = (unsafe { *(fresh79 as *mut u8) }) as i32;
                                         let mut hi_4: i32 = val_4 / 0x10 as i32;
                                         let mut lo_4: i32 = val_4 % 0x10 as i32;
                                         let mut fresh80 = len;
                                         len = len + 1;
-                                        *ret.offset(fresh80 as isize) = '%' as i32 as xmlChar;
+                                        (unsafe { *ret.offset(fresh80 as isize) = '%' as i32 as xmlChar });
                                         let mut fresh81 = len;
                                         len = len + 1;
-                                        *ret
-                                            .offset(
-                                                fresh81 as isize,
-                                            ) = (hi_4
+                                        (unsafe { *ret.offset(fresh81 as isize) = (hi_4
                                             + (if hi_4 > 9 as i32 {
                                                 'A' as i32 - 10 as i32
                                             } else {
                                                 '0' as i32
-                                            })) as xmlChar;
+                                            }))
+                                            as xmlChar });
                                         let mut fresh82 = len;
                                         len = len + 1;
-                                        *ret
-                                            .offset(
-                                                fresh82 as isize,
-                                            ) = (lo_4
+                                        (unsafe { *ret.offset(fresh82 as isize) = (lo_4
                                             + (if lo_4 > 9 as i32 {
                                                 'A' as i32 - 10 as i32
                                             } else {
                                                 '0' as i32
-                                            })) as xmlChar;
+                                            }))
+                                            as xmlChar });
                                     }
                                 }
-                            }
+                            },
                         }
                     } else {
                         current_block = 7256998052328658819;
                     }
                     match current_block {
-                        18064673131860544307 => {}
+                        18064673131860544307 => {},
                         _ => {
                             if len >= max {
                                 temp = xmlSaveUriRealloc(ret, Some(&mut max));
@@ -2955,286 +2815,255 @@ pub unsafe extern "C" fn xmlSaveUri(mut uri: * mut crate::src::uri::_xmlURI) -> 
                                 current_block = 16813369756331276724;
                             }
                             match current_block {
-                                18064673131860544307 => {}
+                                18064673131860544307 => {},
                                 _ => {
-                                    *ret.offset(len as isize) = 0 as i32 as xmlChar;
+                                    (unsafe { *ret.offset(len as isize) = 0 as i32 as xmlChar });
                                     return ret;
-                                }
+                                },
                             }
-                        }
+                        },
                     }
-                }
+                },
             }
-        }
-        _ => {}
+        },
+        _ => {},
     }
-    xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
     return 0 as *mut xmlChar;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlPrintURI(mut stream: * mut crate::src::tree::_IO_FILE, mut uri: * mut crate::src::uri::_xmlURI) {
-    let mut out: * mut u8 = 0 as *mut xmlChar;
+pub extern "C" fn xmlPrintURI(
+    mut stream: *mut crate::src::tree::_IO_FILE,
+    mut uri: *mut crate::src::uri::_xmlURI,
+) {
+    let mut out: *mut u8 = 0 as *mut xmlChar;
     out = xmlSaveUri(uri);
     if !out.is_null() {
-        fprintf(
-            stream,
-            b"%s\0" as *const u8 as *const i8,
-            out as *mut i8,
-        );
-        xmlFree.expect("non-null function pointer")(out as *mut libc::c_void);
+        (unsafe { fprintf(stream, b"%s\0" as *const u8 as *const i8, out as *mut i8) });
+        (unsafe { xmlFree.expect("non-null function pointer")(out as *mut libc::c_void) });
     }
 }
-unsafe extern "C" fn xmlCleanURI(mut uri: * mut crate::src::uri::_xmlURI) {
+extern "C" fn xmlCleanURI(mut uri: *mut crate::src::uri::_xmlURI) {
     if uri.is_null() {
         return;
     }
-    if !((*uri).scheme).is_null() {
-        xmlFree.expect("non-null function pointer")((*uri).scheme as *mut libc::c_void);
+    if !(unsafe { (*uri).scheme }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*uri).scheme as *mut libc::c_void) });
     }
-    let ref mut fresh83 = (*uri).scheme;
+    let fresh83 = unsafe { &mut ((*uri).scheme) };
     *fresh83 = 0 as *mut i8;
-    if !((*uri).server).is_null() {
-        xmlFree.expect("non-null function pointer")((*uri).server as *mut libc::c_void);
+    if !(unsafe { (*uri).server }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*uri).server as *mut libc::c_void) });
     }
-    let ref mut fresh84 = (*uri).server;
+    let fresh84 = unsafe { &mut ((*uri).server) };
     *fresh84 = 0 as *mut i8;
-    if !((*uri).user).is_null() {
-        xmlFree.expect("non-null function pointer")((*uri).user as *mut libc::c_void);
+    if !(unsafe { (*uri).user }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*uri).user as *mut libc::c_void) });
     }
-    let ref mut fresh85 = (*uri).user;
+    let fresh85 = unsafe { &mut ((*uri).user) };
     *fresh85 = 0 as *mut i8;
-    if !((*uri).path).is_null() {
-        xmlFree.expect("non-null function pointer")((*uri).path as *mut libc::c_void);
+    if !(unsafe { (*uri).path }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*uri).path as *mut libc::c_void) });
     }
-    let ref mut fresh86 = (*uri).path;
+    let fresh86 = unsafe { &mut ((*uri).path) };
     *fresh86 = 0 as *mut i8;
-    if !((*uri).fragment).is_null() {
-        xmlFree
-            .expect("non-null function pointer")((*uri).fragment as *mut libc::c_void);
+    if !(unsafe { (*uri).fragment }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*uri).fragment as *mut libc::c_void) });
     }
-    let ref mut fresh87 = (*uri).fragment;
+    let fresh87 = unsafe { &mut ((*uri).fragment) };
     *fresh87 = 0 as *mut i8;
-    if !((*uri).opaque).is_null() {
-        xmlFree.expect("non-null function pointer")((*uri).opaque as *mut libc::c_void);
+    if !(unsafe { (*uri).opaque }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*uri).opaque as *mut libc::c_void) });
     }
-    let ref mut fresh88 = (*uri).opaque;
+    let fresh88 = unsafe { &mut ((*uri).opaque) };
     *fresh88 = 0 as *mut i8;
-    if !((*uri).authority).is_null() {
-        xmlFree
-            .expect("non-null function pointer")((*uri).authority as *mut libc::c_void);
+    if !(unsafe { (*uri).authority }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*uri).authority as *mut libc::c_void) });
     }
-    let ref mut fresh89 = (*uri).authority;
+    let fresh89 = unsafe { &mut ((*uri).authority) };
     *fresh89 = 0 as *mut i8;
-    if !((*uri).query).is_null() {
-        xmlFree.expect("non-null function pointer")((*uri).query as *mut libc::c_void);
+    if !(unsafe { (*uri).query }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*uri).query as *mut libc::c_void) });
     }
-    let ref mut fresh90 = (*uri).query;
+    let fresh90 = unsafe { &mut ((*uri).query) };
     *fresh90 = 0 as *mut i8;
-    if !((*uri).query_raw).is_null() {
-        xmlFree
-            .expect("non-null function pointer")((*uri).query_raw as *mut libc::c_void);
+    if !(unsafe { (*uri).query_raw }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*uri).query_raw as *mut libc::c_void) });
     }
-    let ref mut fresh91 = (*uri).query_raw;
+    let fresh91 = unsafe { &mut ((*uri).query_raw) };
     *fresh91 = 0 as *mut i8;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlFreeURI(mut uri: * mut crate::src::uri::_xmlURI) {
+pub extern "C" fn xmlFreeURI(mut uri: *mut crate::src::uri::_xmlURI) {
     if uri.is_null() {
         return;
     }
-    if !((*uri).scheme).is_null() {
-        xmlFree.expect("non-null function pointer")((*uri).scheme as *mut libc::c_void);
+    if !(unsafe { (*uri).scheme }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*uri).scheme as *mut libc::c_void) });
     }
-    if !((*uri).server).is_null() {
-        xmlFree.expect("non-null function pointer")((*uri).server as *mut libc::c_void);
+    if !(unsafe { (*uri).server }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*uri).server as *mut libc::c_void) });
     }
-    if !((*uri).user).is_null() {
-        xmlFree.expect("non-null function pointer")((*uri).user as *mut libc::c_void);
+    if !(unsafe { (*uri).user }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*uri).user as *mut libc::c_void) });
     }
-    if !((*uri).path).is_null() {
-        xmlFree.expect("non-null function pointer")((*uri).path as *mut libc::c_void);
+    if !(unsafe { (*uri).path }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*uri).path as *mut libc::c_void) });
     }
-    if !((*uri).fragment).is_null() {
-        xmlFree
-            .expect("non-null function pointer")((*uri).fragment as *mut libc::c_void);
+    if !(unsafe { (*uri).fragment }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*uri).fragment as *mut libc::c_void) });
     }
-    if !((*uri).opaque).is_null() {
-        xmlFree.expect("non-null function pointer")((*uri).opaque as *mut libc::c_void);
+    if !(unsafe { (*uri).opaque }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*uri).opaque as *mut libc::c_void) });
     }
-    if !((*uri).authority).is_null() {
-        xmlFree
-            .expect("non-null function pointer")((*uri).authority as *mut libc::c_void);
+    if !(unsafe { (*uri).authority }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*uri).authority as *mut libc::c_void) });
     }
-    if !((*uri).query).is_null() {
-        xmlFree.expect("non-null function pointer")((*uri).query as *mut libc::c_void);
+    if !(unsafe { (*uri).query }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*uri).query as *mut libc::c_void) });
     }
-    if !((*uri).query_raw).is_null() {
-        xmlFree
-            .expect("non-null function pointer")((*uri).query_raw as *mut libc::c_void);
+    if !(unsafe { (*uri).query_raw }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")((*uri).query_raw as *mut libc::c_void) });
     }
-    xmlFree.expect("non-null function pointer")(uri as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(uri as *mut libc::c_void) });
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlNormalizeURIPath(
-    mut path: * mut i8,
-) -> i32 {
-    let mut cur: * mut i8 = 0 as *mut i8;
-    let mut out: * mut i8 = 0 as *mut i8;
+pub extern "C" fn xmlNormalizeURIPath(mut path: *mut i8) -> i32 {
+    let mut cur: *mut i8 = 0 as *mut i8;
+    let mut out: *mut i8 = 0 as *mut i8;
     if path.is_null() {
         return -(1 as i32);
     }
     cur = path;
-    while *cur.offset(0 as i32 as isize) as i32 == '/' as i32 {
-        cur = cur.offset(1);
+    while (unsafe { *cur.offset(0 as i32 as isize) }) as i32 == '/' as i32 {
+        cur = unsafe { cur.offset(1) };
     }
-    if *cur.offset(0 as i32 as isize) as i32 == '\u{0}' as i32 {
+    if (unsafe { *cur.offset(0 as i32 as isize) }) as i32 == '\u{0}' as i32 {
         return 0 as i32;
     }
     out = cur;
-    's_39: while *cur.offset(0 as i32 as isize) as i32 != '\u{0}' as i32
-    {
-        if *cur.offset(0 as i32 as isize) as i32 == '.' as i32
-            && *cur.offset(1 as i32 as isize) as i32 == '/' as i32
+    's_39: while (unsafe { *cur.offset(0 as i32 as isize) }) as i32 != '\u{0}' as i32 {
+        if (unsafe { *cur.offset(0 as i32 as isize) }) as i32 == '.' as i32
+            && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 == '/' as i32
         {
-            cur = cur.offset(2 as i32 as isize);
-            while *cur.offset(0 as i32 as isize) as i32 == '/' as i32 {
-                cur = cur.offset(1);
+            cur = unsafe { cur.offset(2 as i32 as isize) };
+            while (unsafe { *cur.offset(0 as i32 as isize) }) as i32 == '/' as i32 {
+                cur = unsafe { cur.offset(1) };
             }
         } else {
-            if *cur.offset(0 as i32 as isize) as i32 == '.' as i32
-                && *cur.offset(1 as i32 as isize) as i32
-                    == '\u{0}' as i32
+            if (unsafe { *cur.offset(0 as i32 as isize) }) as i32 == '.' as i32
+                && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 == '\u{0}' as i32
             {
                 break;
             }
-            while *cur.offset(0 as i32 as isize) as i32 != '/' as i32 {
-                if *cur.offset(0 as i32 as isize) as i32
-                    == '\u{0}' as i32
-                {
+            while (unsafe { *cur.offset(0 as i32 as isize) }) as i32 != '/' as i32 {
+                if (unsafe { *cur.offset(0 as i32 as isize) }) as i32 == '\u{0}' as i32 {
                     break 's_39;
                 }
                 let mut fresh92 = cur;
-                cur = cur.offset(1);
+                cur = unsafe { cur.offset(1) };
                 let mut fresh93 = out;
-                out = out.offset(1);
-                *fresh93
-                    .offset(
-                        0 as i32 as isize,
-                    ) = *fresh92.offset(0 as i32 as isize);
+                out = unsafe { out.offset(1) };
+                (unsafe { *fresh93.offset(0 as i32 as isize) = *fresh92.offset(0 as i32 as isize) });
             }
-            while *cur.offset(0 as i32 as isize) as i32 == '/' as i32
-                && *cur.offset(1 as i32 as isize) as i32 == '/' as i32
+            while (unsafe { *cur.offset(0 as i32 as isize) }) as i32 == '/' as i32
+                && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 == '/' as i32
             {
-                cur = cur.offset(1);
+                cur = unsafe { cur.offset(1) };
             }
             let mut fresh94 = cur;
-            cur = cur.offset(1);
+            cur = unsafe { cur.offset(1) };
             let mut fresh95 = out;
-            out = out.offset(1);
-            *fresh95
-                .offset(
-                    0 as i32 as isize,
-                ) = *fresh94.offset(0 as i32 as isize);
+            out = unsafe { out.offset(1) };
+            (unsafe { *fresh95.offset(0 as i32 as isize) = *fresh94.offset(0 as i32 as isize) });
         }
     }
-    *out.offset(0 as i32 as isize) = '\u{0}' as i32 as i8;
+    (unsafe { *out.offset(0 as i32 as isize) = '\u{0}' as i32 as i8 });
     cur = path;
-    while *cur.offset(0 as i32 as isize) as i32 == '/' as i32 {
-        cur = cur.offset(1);
+    while (unsafe { *cur.offset(0 as i32 as isize) }) as i32 == '/' as i32 {
+        cur = unsafe { cur.offset(1) };
     }
-    if *cur.offset(0 as i32 as isize) as i32 == '\u{0}' as i32 {
+    if (unsafe { *cur.offset(0 as i32 as isize) }) as i32 == '\u{0}' as i32 {
         return 0 as i32;
     }
     loop {
-        let mut segp: * mut i8 = 0 as *mut i8;
-        let mut tmp: * mut i8 = 0 as *mut i8;
+        let mut segp: *mut i8 = 0 as *mut i8;
+        let mut tmp: *mut i8 = 0 as *mut i8;
         segp = cur;
-        while *segp.offset(0 as i32 as isize) as i32 != '/' as i32
-            && *segp.offset(0 as i32 as isize) as i32 != '\u{0}' as i32
+        while (unsafe { *segp.offset(0 as i32 as isize) }) as i32 != '/' as i32
+            && (unsafe { *segp.offset(0 as i32 as isize) }) as i32 != '\u{0}' as i32
         {
-            segp = segp.offset(1);
+            segp = unsafe { segp.offset(1) };
         }
-        if *segp.offset(0 as i32 as isize) as i32 == '\u{0}' as i32 {
+        if (unsafe { *segp.offset(0 as i32 as isize) }) as i32 == '\u{0}' as i32 {
             break;
         }
-        segp = segp.offset(1);
-        if *cur.offset(0 as i32 as isize) as i32 == '.' as i32
-            && *cur.offset(1 as i32 as isize) as i32 == '.' as i32
-            && segp == cur.offset(3 as i32 as isize)
-            || (*segp.offset(0 as i32 as isize) as i32 != '.' as i32
-                || *segp.offset(1 as i32 as isize) as i32 != '.' as i32
-                || *segp.offset(2 as i32 as isize) as i32 != '/' as i32
-                    && *segp.offset(2 as i32 as isize) as i32
-                        != '\u{0}' as i32)
+        segp = unsafe { segp.offset(1) };
+        if (unsafe { *cur.offset(0 as i32 as isize) }) as i32 == '.' as i32
+            && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 == '.' as i32
+            && segp == (unsafe { cur.offset(3 as i32 as isize) })
+            || ((unsafe { *segp.offset(0 as i32 as isize) }) as i32 != '.' as i32
+                || (unsafe { *segp.offset(1 as i32 as isize) }) as i32 != '.' as i32
+                || (unsafe { *segp.offset(2 as i32 as isize) }) as i32 != '/' as i32
+                    && (unsafe { *segp.offset(2 as i32 as isize) }) as i32 != '\u{0}' as i32)
         {
             cur = segp;
-        } else if *segp.offset(2 as i32 as isize) as i32
-                == '\u{0}' as i32
-            {
-            *cur.offset(0 as i32 as isize) = '\u{0}' as i32 as i8;
+        } else if (unsafe { *segp.offset(2 as i32 as isize) }) as i32 == '\u{0}' as i32 {
+            (unsafe { *cur.offset(0 as i32 as isize) = '\u{0}' as i32 as i8 });
             break;
         } else {
             tmp = cur;
-            segp = segp.offset(3 as i32 as isize);
+            segp = unsafe { segp.offset(3 as i32 as isize) };
             loop {
                 let mut fresh96 = segp;
-                segp = segp.offset(1);
+                segp = unsafe { segp.offset(1) };
                 let mut fresh97 = tmp;
-                tmp = tmp.offset(1);
-                *fresh97 = *fresh96;
-                if !(*fresh97 as i32 != 0 as i32) {
+                tmp = unsafe { tmp.offset(1) };
+                (unsafe { *fresh97 = *fresh96 });
+                if !((unsafe { *fresh97 }) as i32 != 0 as i32) {
                     break;
                 }
             }
             segp = cur;
-            while segp > path
-                && {
-                    segp = segp.offset(-1);
-                    *segp.offset(0 as i32 as isize) as i32 == '/' as i32
-                }
-            {}
+            while segp > path && {
+                segp = unsafe { segp.offset(-1) };
+                (unsafe { *segp.offset(0 as i32 as isize) }) as i32 == '/' as i32
+            } {}
             if segp == path {
                 continue;
             }
             cur = segp;
-            while cur > path
-                && *cur.offset(-(1 as i32) as isize) as i32 != '/' as i32
-            {
-                cur = cur.offset(-1);
+            while cur > path && (unsafe { *cur.offset(-(1 as i32) as isize) }) as i32 != '/' as i32 {
+                cur = unsafe { cur.offset(-1) };
             }
         }
     }
-    *out.offset(0 as i32 as isize) = '\u{0}' as i32 as i8;
-    if *path.offset(0 as i32 as isize) as i32 == '/' as i32 {
+    (unsafe { *out.offset(0 as i32 as isize) = '\u{0}' as i32 as i8 });
+    if (unsafe { *path.offset(0 as i32 as isize) }) as i32 == '/' as i32 {
         cur = path;
-        while *cur.offset(0 as i32 as isize) as i32 == '/' as i32
-            && *cur.offset(1 as i32 as isize) as i32 == '.' as i32
-            && *cur.offset(2 as i32 as isize) as i32 == '.' as i32
-            && (*cur.offset(3 as i32 as isize) as i32 == '/' as i32
-                || *cur.offset(3 as i32 as isize) as i32
-                    == '\u{0}' as i32)
+        while (unsafe { *cur.offset(0 as i32 as isize) }) as i32 == '/' as i32
+            && (unsafe { *cur.offset(1 as i32 as isize) }) as i32 == '.' as i32
+            && (unsafe { *cur.offset(2 as i32 as isize) }) as i32 == '.' as i32
+            && ((unsafe { *cur.offset(3 as i32 as isize) }) as i32 == '/' as i32
+                || (unsafe { *cur.offset(3 as i32 as isize) }) as i32 == '\u{0}' as i32)
         {
-            cur = cur.offset(3 as i32 as isize);
+            cur = unsafe { cur.offset(3 as i32 as isize) };
         }
         if cur != path {
             out = path;
-            while *cur.offset(0 as i32 as isize) as i32 != '\u{0}' as i32
-            {
+            while (unsafe { *cur.offset(0 as i32 as isize) }) as i32 != '\u{0}' as i32 {
                 let mut fresh98 = cur;
-                cur = cur.offset(1);
+                cur = unsafe { cur.offset(1) };
                 let mut fresh99 = out;
-                out = out.offset(1);
-                *fresh99
-                    .offset(
-                        0 as i32 as isize,
-                    ) = *fresh98.offset(0 as i32 as isize);
+                out = unsafe { out.offset(1) };
+                (unsafe { *fresh99.offset(0 as i32 as isize) = *fresh98.offset(0 as i32 as isize) });
             }
-            *out.offset(0 as i32 as isize) = 0 as i32 as i8;
+            (unsafe { *out.offset(0 as i32 as isize) = 0 as i32 as i8 });
         }
     }
     return 0 as i32;
 }
- extern "C" fn is_hex(mut c: i8) -> i32 {
+extern "C" fn is_hex(mut c: i8) -> i32 {
     if c as i32 >= '0' as i32 && c as i32 <= '9' as i32
         || c as i32 >= 'a' as i32 && c as i32 <= 'f' as i32
         || c as i32 >= 'A' as i32 && c as i32 <= 'F' as i32
@@ -3244,31 +3073,28 @@ pub unsafe extern "C" fn xmlNormalizeURIPath(
     return 0 as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlURIUnescapeString(
-    mut str: * const i8,
+pub extern "C" fn xmlURIUnescapeString(
+    mut str: *const i8,
     mut len: i32,
-    mut target: * mut i8,
-) -> * mut i8 {
-    let mut ret: * mut i8 = 0 as *mut i8;
-    let mut out: * mut i8 = 0 as *mut i8;
-    let mut in_0: * const i8 = 0 as *const i8;
+    mut target: *mut i8,
+) -> *mut i8 {
+    let mut ret: *mut i8 = 0 as *mut i8;
+    let mut out: *mut i8 = 0 as *mut i8;
+    let mut in_0: *const i8 = 0 as *const i8;
     if str.is_null() {
         return 0 as *mut i8;
     }
     if len <= 0 as i32 {
-        len = strlen(str) as i32;
+        len = (unsafe { strlen(str) }) as i32;
     }
     if len < 0 as i32 {
         return 0 as *mut i8;
     }
     if target.is_null() {
-        ret = xmlMallocAtomic
-            .expect("non-null function pointer")((len + 1 as i32) as size_t)
+        ret = (unsafe { xmlMallocAtomic.expect("non-null function pointer")((len + 1 as i32) as size_t) })
             as *mut i8;
         if ret.is_null() {
-            xmlURIErrMemory(
-                b"unescaping URI value\n\0" as *const u8 as *const i8,
-            );
+            xmlURIErrMemory(b"unescaping URI value\n\0" as *const u8 as *const i8);
             return 0 as *mut i8;
         }
     } else {
@@ -3277,69 +3103,57 @@ pub unsafe extern "C" fn xmlURIUnescapeString(
     in_0 = str;
     out = ret;
     while len > 0 as i32 {
-        if len > 2 as i32 && *in_0 as i32 == '%' as i32
-            && is_hex(*in_0.offset(1 as i32 as isize)) != 0
-            && is_hex(*in_0.offset(2 as i32 as isize)) != 0
+        if len > 2 as i32
+            && (unsafe { *in_0 }) as i32 == '%' as i32
+            && is_hex(unsafe { *in_0.offset(1 as i32 as isize) }) != 0
+            && is_hex(unsafe { *in_0.offset(2 as i32 as isize) }) != 0
         {
             let mut c: i32 = 0 as i32;
-            in_0 = in_0.offset(1);
-            if *in_0 as i32 >= '0' as i32 && *in_0 as i32 <= '9' as i32 {
-                c = *in_0 as i32 - '0' as i32;
-            } else if *in_0 as i32 >= 'a' as i32
-                    && *in_0 as i32 <= 'f' as i32
-                {
-                c = *in_0 as i32 - 'a' as i32 + 10 as i32;
-            } else if *in_0 as i32 >= 'A' as i32
-                    && *in_0 as i32 <= 'F' as i32
-                {
-                c = *in_0 as i32 - 'A' as i32 + 10 as i32;
+            in_0 = unsafe { in_0.offset(1) };
+            if (unsafe { *in_0 }) as i32 >= '0' as i32 && (unsafe { *in_0 }) as i32 <= '9' as i32 {
+                c = (unsafe { *in_0 }) as i32 - '0' as i32;
+            } else if (unsafe { *in_0 }) as i32 >= 'a' as i32 && (unsafe { *in_0 }) as i32 <= 'f' as i32 {
+                c = (unsafe { *in_0 }) as i32 - 'a' as i32 + 10 as i32;
+            } else if (unsafe { *in_0 }) as i32 >= 'A' as i32 && (unsafe { *in_0 }) as i32 <= 'F' as i32 {
+                c = (unsafe { *in_0 }) as i32 - 'A' as i32 + 10 as i32;
             }
-            in_0 = in_0.offset(1);
-            if *in_0 as i32 >= '0' as i32 && *in_0 as i32 <= '9' as i32 {
-                c = c * 16 as i32 + (*in_0 as i32 - '0' as i32);
-            } else if *in_0 as i32 >= 'a' as i32
-                    && *in_0 as i32 <= 'f' as i32
-                {
-                c = c * 16 as i32 + (*in_0 as i32 - 'a' as i32)
-                    + 10 as i32;
-            } else if *in_0 as i32 >= 'A' as i32
-                    && *in_0 as i32 <= 'F' as i32
-                {
-                c = c * 16 as i32 + (*in_0 as i32 - 'A' as i32)
-                    + 10 as i32;
+            in_0 = unsafe { in_0.offset(1) };
+            if (unsafe { *in_0 }) as i32 >= '0' as i32 && (unsafe { *in_0 }) as i32 <= '9' as i32 {
+                c = c * 16 as i32 + ((unsafe { *in_0 }) as i32 - '0' as i32);
+            } else if (unsafe { *in_0 }) as i32 >= 'a' as i32 && (unsafe { *in_0 }) as i32 <= 'f' as i32 {
+                c = c * 16 as i32 + ((unsafe { *in_0 }) as i32 - 'a' as i32) + 10 as i32;
+            } else if (unsafe { *in_0 }) as i32 >= 'A' as i32 && (unsafe { *in_0 }) as i32 <= 'F' as i32 {
+                c = c * 16 as i32 + ((unsafe { *in_0 }) as i32 - 'A' as i32) + 10 as i32;
             }
-            in_0 = in_0.offset(1);
+            in_0 = unsafe { in_0.offset(1) };
             len -= 3 as i32;
             let mut fresh100 = out;
-            out = out.offset(1);
-            *fresh100 = c as i8;
+            out = unsafe { out.offset(1) };
+            (unsafe { *fresh100 = c as i8 });
         } else {
             let mut fresh101 = in_0;
-            in_0 = in_0.offset(1);
+            in_0 = unsafe { in_0.offset(1) };
             let mut fresh102 = out;
-            out = out.offset(1);
-            *fresh102 = *fresh101;
+            out = unsafe { out.offset(1) };
+            (unsafe { *fresh102 = *fresh101 });
             len -= 1;
         }
     }
-    *out = 0 as i32 as i8;
+    (unsafe { *out = 0 as i32 as i8 });
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlURIEscapeStr(
-    mut str: * const u8,
-    mut list: * const u8,
-) -> * mut u8 {
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
+pub extern "C" fn xmlURIEscapeStr(mut str: *const u8, mut list: *const u8) -> *mut u8 {
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
     let mut ch: u8 = 0;
-    let mut temp: * mut u8 = 0 as *mut xmlChar;
-    let mut in_0: * const u8 = 0 as *const xmlChar;
+    let mut temp: *mut u8 = 0 as *mut xmlChar;
+    let mut in_0: *const u8 = 0 as *const xmlChar;
     let mut len: i32 = 0;
     let mut out: i32 = 0;
     if str.is_null() {
         return 0 as *mut xmlChar;
     }
-    if *str.offset(0 as i32 as isize) as i32 == 0 as i32 {
+    if (unsafe { *str.offset(0 as i32 as isize) }) as i32 == 0 as i32 {
         return xmlStrdup(str);
     }
     len = xmlStrlen(str);
@@ -3347,34 +3161,34 @@ pub unsafe extern "C" fn xmlURIEscapeStr(
         return 0 as *mut xmlChar;
     }
     len += 20 as i32;
-    ret = xmlMallocAtomic.expect("non-null function pointer")(len as size_t)
-        as *mut xmlChar;
+    ret = (unsafe { xmlMallocAtomic.expect("non-null function pointer")(len as size_t) }) as *mut xmlChar;
     if ret.is_null() {
         xmlURIErrMemory(b"escaping URI value\n\0" as *const u8 as *const i8);
         return 0 as *mut xmlChar;
     }
     in_0 = str;
     out = 0 as i32;
-    while *in_0 as i32 != 0 as i32 {
+    while (unsafe { *in_0 }) as i32 != 0 as i32 {
         if len - out <= 3 as i32 {
             temp = xmlSaveUriRealloc(ret, Some(&mut len));
             if temp.is_null() {
-                xmlURIErrMemory(
-                    b"escaping URI value\n\0" as *const u8 as *const i8,
-                );
-                xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+                xmlURIErrMemory(b"escaping URI value\n\0" as *const u8 as *const i8);
+                (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
                 return 0 as *mut xmlChar;
             }
             ret = temp;
         }
-        ch = *in_0;
+        ch = unsafe { *in_0 };
         if ch as i32 != '@' as i32
             && !(ch as i32 >= 'a' as i32 && ch as i32 <= 'z' as i32
                 || ch as i32 >= 'A' as i32 && ch as i32 <= 'Z' as i32
                 || ch as i32 >= '0' as i32 && ch as i32 <= '9' as i32
-                || (ch as i32 == '-' as i32 || ch as i32 == '_' as i32
-                    || ch as i32 == '.' as i32 || ch as i32 == '!' as i32
-                    || ch as i32 == '~' as i32 || ch as i32 == '*' as i32
+                || (ch as i32 == '-' as i32
+                    || ch as i32 == '_' as i32
+                    || ch as i32 == '.' as i32
+                    || ch as i32 == '!' as i32
+                    || ch as i32 == '~' as i32
+                    || ch as i32 == '*' as i32
                     || ch as i32 == '\'' as i32
                     || ch as i32 == '(' as i32
                     || ch as i32 == ')' as i32))
@@ -3383,65 +3197,51 @@ pub unsafe extern "C" fn xmlURIEscapeStr(
             let mut val: u8 = 0;
             let mut fresh103 = out;
             out = out + 1;
-            *ret.offset(fresh103 as isize) = '%' as i32 as xmlChar;
+            (unsafe { *ret.offset(fresh103 as isize) = '%' as i32 as xmlChar });
             val = (ch as i32 >> 4 as i32) as u8;
             if val as i32 <= 9 as i32 {
                 let mut fresh104 = out;
                 out = out + 1;
-                *ret
-                    .offset(
-                        fresh104 as isize,
-                    ) = ('0' as i32 + val as i32) as xmlChar;
+                (unsafe { *ret.offset(fresh104 as isize) = ('0' as i32 + val as i32) as xmlChar });
             } else {
                 let mut fresh105 = out;
                 out = out + 1;
-                *ret
-                    .offset(
-                        fresh105 as isize,
-                    ) = ('A' as i32 + val as i32 - 0xa as i32)
-                    as xmlChar;
+                (unsafe { *ret.offset(fresh105 as isize) = ('A' as i32 + val as i32 - 0xa as i32) as xmlChar });
             }
             val = (ch as i32 & 0xf as i32) as u8;
             if val as i32 <= 9 as i32 {
                 let mut fresh106 = out;
                 out = out + 1;
-                *ret
-                    .offset(
-                        fresh106 as isize,
-                    ) = ('0' as i32 + val as i32) as xmlChar;
+                (unsafe { *ret.offset(fresh106 as isize) = ('0' as i32 + val as i32) as xmlChar });
             } else {
                 let mut fresh107 = out;
                 out = out + 1;
-                *ret
-                    .offset(
-                        fresh107 as isize,
-                    ) = ('A' as i32 + val as i32 - 0xa as i32)
-                    as xmlChar;
+                (unsafe { *ret.offset(fresh107 as isize) = ('A' as i32 + val as i32 - 0xa as i32) as xmlChar });
             }
-            in_0 = in_0.offset(1);
+            in_0 = unsafe { in_0.offset(1) };
         } else {
             let mut fresh108 = in_0;
-            in_0 = in_0.offset(1);
+            in_0 = unsafe { in_0.offset(1) };
             let mut fresh109 = out;
             out = out + 1;
-            *ret.offset(fresh109 as isize) = *fresh108;
+            (unsafe { *ret.offset(fresh109 as isize) = *fresh108 });
         }
     }
-    *ret.offset(out as isize) = 0 as i32 as xmlChar;
+    (unsafe { *ret.offset(out as isize) = 0 as i32 as xmlChar });
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlURIEscape(mut str: * const u8) -> * mut u8 {
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
-    let mut segment: * mut u8 = 0 as *mut xmlChar;
-    let mut uri: * mut crate::src::uri::_xmlURI = 0 as *mut xmlURI;
+pub extern "C" fn xmlURIEscape(mut str: *const u8) -> *mut u8 {
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
+    let mut segment: *mut u8 = 0 as *mut xmlChar;
+    let mut uri: *mut crate::src::uri::_xmlURI = 0 as *mut xmlURI;
     let mut ret2: i32 = 0;
     if str.is_null() {
         return 0 as *mut xmlChar;
     }
     uri = xmlCreateURI();
     if !uri.is_null() {
-        (*uri).cleanup = 1 as i32;
+        (unsafe { (*uri).cleanup = 1 as i32 });
         ret2 = xmlParseURIReference(uri, str as *const i8);
         if ret2 != 0 {
             xmlFreeURI(uri);
@@ -3452,188 +3252,160 @@ pub unsafe extern "C" fn xmlURIEscape(mut str: * const u8) -> * mut u8 {
         return 0 as *mut xmlChar;
     }
     ret = 0 as *mut xmlChar;
-    if !((*uri).scheme).is_null() {
+    if !(unsafe { (*uri).scheme }).is_null() {
         segment = xmlURIEscapeStr(
-            (*uri).scheme as *mut xmlChar,
+            (unsafe { (*uri).scheme }) as *mut xmlChar,
             b"+-.\0" as *const u8 as *const i8 as *mut xmlChar,
         );
         if segment.is_null() {
-            xmlURIErrMemory(
-                b"escaping URI value\n\0" as *const u8 as *const i8,
-            );
+            xmlURIErrMemory(b"escaping URI value\n\0" as *const u8 as *const i8);
             xmlFreeURI(uri);
-            xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
             return 0 as *mut xmlChar;
         }
         ret = xmlStrcat(ret, segment);
         ret = xmlStrcat(ret, b":\0" as *const u8 as *const i8 as *mut xmlChar);
-        xmlFree.expect("non-null function pointer")(segment as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(segment as *mut libc::c_void) });
     }
-    if !((*uri).authority).is_null() {
+    if !(unsafe { (*uri).authority }).is_null() {
         segment = xmlURIEscapeStr(
-            (*uri).authority as *mut xmlChar,
+            (unsafe { (*uri).authority }) as *mut xmlChar,
             b"/?;:@\0" as *const u8 as *const i8 as *mut xmlChar,
         );
         if segment.is_null() {
-            xmlURIErrMemory(
-                b"escaping URI value\n\0" as *const u8 as *const i8,
-            );
+            xmlURIErrMemory(b"escaping URI value\n\0" as *const u8 as *const i8);
             xmlFreeURI(uri);
-            xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
             return 0 as *mut xmlChar;
         }
-        ret = xmlStrcat(
-            ret,
-            b"//\0" as *const u8 as *const i8 as *mut xmlChar,
-        );
+        ret = xmlStrcat(ret, b"//\0" as *const u8 as *const i8 as *mut xmlChar);
         ret = xmlStrcat(ret, segment);
-        xmlFree.expect("non-null function pointer")(segment as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(segment as *mut libc::c_void) });
     }
-    if !((*uri).user).is_null() {
+    if !(unsafe { (*uri).user }).is_null() {
         segment = xmlURIEscapeStr(
-            (*uri).user as *mut xmlChar,
+            (unsafe { (*uri).user }) as *mut xmlChar,
             b";:&=+$,\0" as *const u8 as *const i8 as *mut xmlChar,
         );
         if segment.is_null() {
-            xmlURIErrMemory(
-                b"escaping URI value\n\0" as *const u8 as *const i8,
-            );
+            xmlURIErrMemory(b"escaping URI value\n\0" as *const u8 as *const i8);
             xmlFreeURI(uri);
-            xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
             return 0 as *mut xmlChar;
         }
-        ret = xmlStrcat(
-            ret,
-            b"//\0" as *const u8 as *const i8 as *mut xmlChar,
-        );
+        ret = xmlStrcat(ret, b"//\0" as *const u8 as *const i8 as *mut xmlChar);
         ret = xmlStrcat(ret, segment);
         ret = xmlStrcat(ret, b"@\0" as *const u8 as *const i8 as *mut xmlChar);
-        xmlFree.expect("non-null function pointer")(segment as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(segment as *mut libc::c_void) });
     }
-    if !((*uri).server).is_null() {
+    if !(unsafe { (*uri).server }).is_null() {
         segment = xmlURIEscapeStr(
-            (*uri).server as *mut xmlChar,
+            (unsafe { (*uri).server }) as *mut xmlChar,
             b"/?;:@\0" as *const u8 as *const i8 as *mut xmlChar,
         );
         if segment.is_null() {
-            xmlURIErrMemory(
-                b"escaping URI value\n\0" as *const u8 as *const i8,
-            );
+            xmlURIErrMemory(b"escaping URI value\n\0" as *const u8 as *const i8);
             xmlFreeURI(uri);
-            xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
             return 0 as *mut xmlChar;
         }
-        if ((*uri).user).is_null() {
-            ret = xmlStrcat(
-                ret,
-                b"//\0" as *const u8 as *const i8 as *mut xmlChar,
-            );
+        if (unsafe { (*uri).user }).is_null() {
+            ret = xmlStrcat(ret, b"//\0" as *const u8 as *const i8 as *mut xmlChar);
         }
         ret = xmlStrcat(ret, segment);
-        xmlFree.expect("non-null function pointer")(segment as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(segment as *mut libc::c_void) });
     }
-    if (*uri).port != 0 {
+    if (unsafe { (*uri).port }) != 0 {
         let mut port: [u8; 10] = [0; 10];
-        snprintf(
+        (unsafe { snprintf(
             port.as_mut_ptr() as *mut i8,
             10 as i32 as u64,
             b"%d\0" as *const u8 as *const i8,
             (*uri).port,
-        );
+        ) });
         ret = xmlStrcat(ret, b":\0" as *const u8 as *const i8 as *mut xmlChar);
         ret = xmlStrcat(ret, port.as_mut_ptr());
     }
-    if !((*uri).path).is_null() {
+    if !(unsafe { (*uri).path }).is_null() {
         segment = xmlURIEscapeStr(
-            (*uri).path as *mut xmlChar,
+            (unsafe { (*uri).path }) as *mut xmlChar,
             b":@&=+$,/?;\0" as *const u8 as *const i8 as *mut xmlChar,
         );
         if segment.is_null() {
-            xmlURIErrMemory(
-                b"escaping URI value\n\0" as *const u8 as *const i8,
-            );
+            xmlURIErrMemory(b"escaping URI value\n\0" as *const u8 as *const i8);
             xmlFreeURI(uri);
-            xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
             return 0 as *mut xmlChar;
         }
         ret = xmlStrcat(ret, segment);
-        xmlFree.expect("non-null function pointer")(segment as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(segment as *mut libc::c_void) });
     }
-    if !((*uri).query_raw).is_null() {
+    if !(unsafe { (*uri).query_raw }).is_null() {
         ret = xmlStrcat(ret, b"?\0" as *const u8 as *const i8 as *mut xmlChar);
-        ret = xmlStrcat(ret, (*uri).query_raw as *mut xmlChar);
-    } else if !((*uri).query).is_null() {
+        ret = xmlStrcat(ret, (unsafe { (*uri).query_raw }) as *mut xmlChar);
+    } else if !(unsafe { (*uri).query }).is_null() {
         segment = xmlURIEscapeStr(
-            (*uri).query as *mut xmlChar,
+            (unsafe { (*uri).query }) as *mut xmlChar,
             b";/?:@&=+,$\0" as *const u8 as *const i8 as *mut xmlChar,
         );
         if segment.is_null() {
-            xmlURIErrMemory(
-                b"escaping URI value\n\0" as *const u8 as *const i8,
-            );
+            xmlURIErrMemory(b"escaping URI value\n\0" as *const u8 as *const i8);
             xmlFreeURI(uri);
-            xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
             return 0 as *mut xmlChar;
         }
         ret = xmlStrcat(ret, b"?\0" as *const u8 as *const i8 as *mut xmlChar);
         ret = xmlStrcat(ret, segment);
-        xmlFree.expect("non-null function pointer")(segment as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(segment as *mut libc::c_void) });
     }
-    if !((*uri).opaque).is_null() {
+    if !(unsafe { (*uri).opaque }).is_null() {
         segment = xmlURIEscapeStr(
-            (*uri).opaque as *mut xmlChar,
+            (unsafe { (*uri).opaque }) as *mut xmlChar,
             b"\0" as *const u8 as *const i8 as *mut xmlChar,
         );
         if segment.is_null() {
-            xmlURIErrMemory(
-                b"escaping URI value\n\0" as *const u8 as *const i8,
-            );
+            xmlURIErrMemory(b"escaping URI value\n\0" as *const u8 as *const i8);
             xmlFreeURI(uri);
-            xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
             return 0 as *mut xmlChar;
         }
         ret = xmlStrcat(ret, segment);
-        xmlFree.expect("non-null function pointer")(segment as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(segment as *mut libc::c_void) });
     }
-    if !((*uri).fragment).is_null() {
+    if !(unsafe { (*uri).fragment }).is_null() {
         segment = xmlURIEscapeStr(
-            (*uri).fragment as *mut xmlChar,
+            (unsafe { (*uri).fragment }) as *mut xmlChar,
             b"#\0" as *const u8 as *const i8 as *mut xmlChar,
         );
         if segment.is_null() {
-            xmlURIErrMemory(
-                b"escaping URI value\n\0" as *const u8 as *const i8,
-            );
+            xmlURIErrMemory(b"escaping URI value\n\0" as *const u8 as *const i8);
             xmlFreeURI(uri);
-            xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(ret as *mut libc::c_void) });
             return 0 as *mut xmlChar;
         }
         ret = xmlStrcat(ret, b"#\0" as *const u8 as *const i8 as *mut xmlChar);
         ret = xmlStrcat(ret, segment);
-        xmlFree.expect("non-null function pointer")(segment as *mut libc::c_void);
+        (unsafe { xmlFree.expect("non-null function pointer")(segment as *mut libc::c_void) });
     }
     xmlFreeURI(uri);
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBuildURI(
-    mut URI: * const u8,
-    mut base: * const u8,
-) -> * mut u8 {
+pub extern "C" fn xmlBuildURI(mut URI: *const u8, mut base: *const u8) -> *mut u8 {
     let mut current_block: u64;
-    let mut val: * mut u8 = 0 as *mut xmlChar;
+    let mut val: *mut u8 = 0 as *mut xmlChar;
     let mut ret: i32 = 0;
     let mut len: i32 = 0;
     let mut indx: i32 = 0;
     let mut cur: i32 = 0;
     let mut out: i32 = 0;
-    let mut ref_0: * mut crate::src::uri::_xmlURI = 0 as xmlURIPtr;
-    let mut bas: * mut crate::src::uri::_xmlURI = 0 as xmlURIPtr;
-    let mut res: * mut crate::src::uri::_xmlURI = 0 as xmlURIPtr;
+    let mut ref_0: *mut crate::src::uri::_xmlURI = 0 as xmlURIPtr;
+    let mut bas: *mut crate::src::uri::_xmlURI = 0 as xmlURIPtr;
+    let mut res: *mut crate::src::uri::_xmlURI = 0 as xmlURIPtr;
     if URI.is_null() {
         ret = -(1 as i32);
         current_block = 13109137661213826276;
-    } else if *URI != 0 {
+    } else if (unsafe { *URI }) != 0 {
         ref_0 = xmlCreateURI();
         if ref_0.is_null() {
             current_block = 10227634464655804289;
@@ -3648,7 +3420,7 @@ pub unsafe extern "C" fn xmlBuildURI(
     match current_block {
         13109137661213826276 => {
             if !(ret != 0 as i32) {
-                if !ref_0.is_null() && !((*ref_0).scheme).is_null() {
+                if !ref_0.is_null() && !(unsafe { (*ref_0).scheme }).is_null() {
                     val = xmlStrdup(URI);
                 } else {
                     if base.is_null() {
@@ -3664,257 +3436,318 @@ pub unsafe extern "C" fn xmlBuildURI(
                         }
                     }
                     match current_block {
-                        10227634464655804289 => {}
+                        10227634464655804289 => {},
                         _ => {
                             if ret != 0 as i32 {
                                 if !ref_0.is_null() {
                                     val = xmlSaveUri(ref_0);
                                 }
                             } else if ref_0.is_null() {
-                                if !((*bas).fragment).is_null() {
-                                    xmlFree
-                                        .expect(
-                                            "non-null function pointer",
-                                        )((*bas).fragment as *mut libc::c_void);
-                                    let ref mut fresh110 = (*bas).fragment;
+                                if !(unsafe { (*bas).fragment }).is_null() {
+                                    (unsafe { xmlFree.expect("non-null function pointer")(
+                                        (*bas).fragment as *mut libc::c_void,
+                                    ) });
+                                    let fresh110 = unsafe { &mut ((*bas).fragment) };
                                     *fresh110 = 0 as *mut i8;
                                 }
                                 val = xmlSaveUri(bas);
                             } else {
                                 res = xmlCreateURI();
                                 if !res.is_null() {
-                                    if ((*ref_0).scheme).is_null() && ((*ref_0).path).is_null()
-                                        && (((*ref_0).authority).is_null()
-                                            && ((*ref_0).server).is_null())
+                                    if (unsafe { (*ref_0).scheme }).is_null()
+                                        && (unsafe { (*ref_0).path }).is_null()
+                                        && ((unsafe { (*ref_0).authority }).is_null()
+                                            && (unsafe { (*ref_0).server }).is_null())
                                     {
-                                        if !((*bas).scheme).is_null() {
-                                            let ref mut fresh111 = (*res).scheme;
-                                            *fresh111 = xmlMemStrdup
-                                                .expect("non-null function pointer")((*bas).scheme);
+                                        if !(unsafe { (*bas).scheme }).is_null() {
+                                            let fresh111 = unsafe { &mut ((*res).scheme) };
+                                            *fresh111 = unsafe { xmlMemStrdup
+                                                .expect("non-null function pointer")(
+                                                (*bas).scheme
+                                            ) };
                                         }
-                                        if !((*bas).authority).is_null() {
-                                            let ref mut fresh112 = (*res).authority;
-                                            *fresh112 = xmlMemStrdup
-                                                .expect("non-null function pointer")((*bas).authority);
-                                        } else if !((*bas).server).is_null()
-                                                || (*bas).port == -(1 as i32)
-                                            {
-                                            if !((*bas).server).is_null() {
-                                                let ref mut fresh113 = (*res).server;
-                                                *fresh113 = xmlMemStrdup
-                                                    .expect("non-null function pointer")((*bas).server);
+                                        if !(unsafe { (*bas).authority }).is_null() {
+                                            let fresh112 = unsafe { &mut ((*res).authority) };
+                                            *fresh112 = unsafe { xmlMemStrdup
+                                                .expect("non-null function pointer")(
+                                                (*bas).authority,
+                                            ) };
+                                        } else if !(unsafe { (*bas).server }).is_null()
+                                            || (unsafe { (*bas).port }) == -(1 as i32)
+                                        {
+                                            if !(unsafe { (*bas).server }).is_null() {
+                                                let fresh113 = unsafe { &mut ((*res).server) };
+                                                *fresh113 = unsafe { xmlMemStrdup
+                                                    .expect("non-null function pointer")(
+                                                    (*bas).server,
+                                                ) };
                                             }
-                                            if !((*bas).user).is_null() {
-                                                let ref mut fresh114 = (*res).user;
-                                                *fresh114 = xmlMemStrdup
-                                                    .expect("non-null function pointer")((*bas).user);
+                                            if !(unsafe { (*bas).user }).is_null() {
+                                                let fresh114 = unsafe { &mut ((*res).user) };
+                                                *fresh114 = unsafe { xmlMemStrdup
+                                                    .expect("non-null function pointer")(
+                                                    (*bas).user,
+                                                ) };
                                             }
-                                            (*res).port = (*bas).port;
+                                            (unsafe { (*res).port = (*bas).port });
                                         }
-                                        if !((*bas).path).is_null() {
-                                            let ref mut fresh115 = (*res).path;
-                                            *fresh115 = xmlMemStrdup
-                                                .expect("non-null function pointer")((*bas).path);
+                                        if !(unsafe { (*bas).path }).is_null() {
+                                            let fresh115 = unsafe { &mut ((*res).path) };
+                                            *fresh115 = unsafe { xmlMemStrdup
+                                                .expect("non-null function pointer")(
+                                                (*bas).path
+                                            ) };
                                         }
-                                        if !((*ref_0).query_raw).is_null() {
-                                            let ref mut fresh116 = (*res).query_raw;
-                                            *fresh116 = xmlMemStrdup
-                                                .expect("non-null function pointer")((*ref_0).query_raw);
-                                        } else if !((*ref_0).query).is_null() {
-                                            let ref mut fresh117 = (*res).query;
-                                            *fresh117 = xmlMemStrdup
-                                                .expect("non-null function pointer")((*ref_0).query);
-                                        } else if !((*bas).query_raw).is_null() {
-                                            let ref mut fresh118 = (*res).query_raw;
-                                            *fresh118 = xmlMemStrdup
-                                                .expect("non-null function pointer")((*bas).query_raw);
-                                        } else if !((*bas).query).is_null() {
-                                            let ref mut fresh119 = (*res).query;
-                                            *fresh119 = xmlMemStrdup
-                                                .expect("non-null function pointer")((*bas).query);
+                                        if !(unsafe { (*ref_0).query_raw }).is_null() {
+                                            let fresh116 = unsafe { &mut ((*res).query_raw) };
+                                            *fresh116 = unsafe { xmlMemStrdup
+                                                .expect("non-null function pointer")(
+                                                (*ref_0).query_raw,
+                                            ) };
+                                        } else if !(unsafe { (*ref_0).query }).is_null() {
+                                            let fresh117 = unsafe { &mut ((*res).query) };
+                                            *fresh117 = unsafe { xmlMemStrdup
+                                                .expect("non-null function pointer")(
+                                                (*ref_0).query,
+                                            ) };
+                                        } else if !(unsafe { (*bas).query_raw }).is_null() {
+                                            let fresh118 = unsafe { &mut ((*res).query_raw) };
+                                            *fresh118 = unsafe { xmlMemStrdup
+                                                .expect("non-null function pointer")(
+                                                (*bas).query_raw,
+                                            ) };
+                                        } else if !(unsafe { (*bas).query }).is_null() {
+                                            let fresh119 = unsafe { &mut ((*res).query) };
+                                            *fresh119 = unsafe { xmlMemStrdup
+                                                .expect("non-null function pointer")(
+                                                (*bas).query
+                                            ) };
                                         }
-                                        if !((*ref_0).fragment).is_null() {
-                                            let ref mut fresh120 = (*res).fragment;
-                                            *fresh120 = xmlMemStrdup
-                                                .expect("non-null function pointer")((*ref_0).fragment);
+                                        if !(unsafe { (*ref_0).fragment }).is_null() {
+                                            let fresh120 = unsafe { &mut ((*res).fragment) };
+                                            *fresh120 = unsafe { xmlMemStrdup
+                                                .expect("non-null function pointer")(
+                                                (*ref_0).fragment,
+                                            ) };
                                         }
                                         current_block = 17921910600917564308;
-                                    } else if !((*ref_0).scheme).is_null() {
+                                    } else if !(unsafe { (*ref_0).scheme }).is_null() {
                                         val = xmlSaveUri(ref_0);
                                         current_block = 10227634464655804289;
                                     } else {
-                                        if !((*bas).scheme).is_null() {
-                                            let ref mut fresh121 = (*res).scheme;
-                                            *fresh121 = xmlMemStrdup
-                                                .expect("non-null function pointer")((*bas).scheme);
+                                        if !(unsafe { (*bas).scheme }).is_null() {
+                                            let fresh121 = unsafe { &mut ((*res).scheme) };
+                                            *fresh121 = unsafe { xmlMemStrdup
+                                                .expect("non-null function pointer")(
+                                                (*bas).scheme
+                                            ) };
                                         }
-                                        if !((*ref_0).query_raw).is_null() {
-                                            let ref mut fresh122 = (*res).query_raw;
-                                            *fresh122 = xmlMemStrdup
-                                                .expect("non-null function pointer")((*ref_0).query_raw);
-                                        } else if !((*ref_0).query).is_null() {
-                                            let ref mut fresh123 = (*res).query;
-                                            *fresh123 = xmlMemStrdup
-                                                .expect("non-null function pointer")((*ref_0).query);
+                                        if !(unsafe { (*ref_0).query_raw }).is_null() {
+                                            let fresh122 = unsafe { &mut ((*res).query_raw) };
+                                            *fresh122 = unsafe { xmlMemStrdup
+                                                .expect("non-null function pointer")(
+                                                (*ref_0).query_raw,
+                                            ) };
+                                        } else if !(unsafe { (*ref_0).query }).is_null() {
+                                            let fresh123 = unsafe { &mut ((*res).query) };
+                                            *fresh123 = unsafe { xmlMemStrdup
+                                                .expect("non-null function pointer")(
+                                                (*ref_0).query,
+                                            ) };
                                         }
-                                        if !((*ref_0).fragment).is_null() {
-                                            let ref mut fresh124 = (*res).fragment;
-                                            *fresh124 = xmlMemStrdup
-                                                .expect("non-null function pointer")((*ref_0).fragment);
+                                        if !(unsafe { (*ref_0).fragment }).is_null() {
+                                            let fresh124 = unsafe { &mut ((*res).fragment) };
+                                            *fresh124 = unsafe { xmlMemStrdup
+                                                .expect("non-null function pointer")(
+                                                (*ref_0).fragment,
+                                            ) };
                                         }
-                                        if !((*ref_0).authority).is_null()
-                                            || !((*ref_0).server).is_null()
+                                        if !(unsafe { (*ref_0).authority }).is_null()
+                                            || !(unsafe { (*ref_0).server }).is_null()
                                         {
-                                            if !((*ref_0).authority).is_null() {
-                                                let ref mut fresh125 = (*res).authority;
-                                                *fresh125 = xmlMemStrdup
-                                                    .expect("non-null function pointer")((*ref_0).authority);
+                                            if !(unsafe { (*ref_0).authority }).is_null() {
+                                                let fresh125 = unsafe { &mut ((*res).authority) };
+                                                *fresh125 = unsafe { xmlMemStrdup
+                                                    .expect("non-null function pointer")(
+                                                    (*ref_0).authority,
+                                                ) };
                                             } else {
-                                                let ref mut fresh126 = (*res).server;
-                                                *fresh126 = xmlMemStrdup
-                                                    .expect("non-null function pointer")((*ref_0).server);
-                                                if !((*ref_0).user).is_null() {
-                                                    let ref mut fresh127 = (*res).user;
-                                                    *fresh127 = xmlMemStrdup
-                                                        .expect("non-null function pointer")((*ref_0).user);
+                                                let fresh126 = unsafe { &mut ((*res).server) };
+                                                *fresh126 = unsafe { xmlMemStrdup
+                                                    .expect("non-null function pointer")(
+                                                    (*ref_0).server,
+                                                ) };
+                                                if !(unsafe { (*ref_0).user }).is_null() {
+                                                    let fresh127 = unsafe { &mut ((*res).user) };
+                                                    *fresh127 = unsafe { xmlMemStrdup
+                                                        .expect("non-null function pointer")(
+                                                        (*ref_0).user,
+                                                    ) };
                                                 }
-                                                (*res).port = (*ref_0).port;
+                                                (unsafe { (*res).port = (*ref_0).port });
                                             }
-                                            if !((*ref_0).path).is_null() {
-                                                let ref mut fresh128 = (*res).path;
-                                                *fresh128 = xmlMemStrdup
-                                                    .expect("non-null function pointer")((*ref_0).path);
+                                            if !(unsafe { (*ref_0).path }).is_null() {
+                                                let fresh128 = unsafe { &mut ((*res).path) };
+                                                *fresh128 = unsafe { xmlMemStrdup
+                                                    .expect("non-null function pointer")(
+                                                    (*ref_0).path,
+                                                ) };
                                             }
                                             current_block = 17921910600917564308;
                                         } else {
-                                            if !((*bas).authority).is_null() {
-                                                let ref mut fresh129 = (*res).authority;
-                                                *fresh129 = xmlMemStrdup
-                                                    .expect("non-null function pointer")((*bas).authority);
-                                            } else if !((*bas).server).is_null()
-                                                    || (*bas).port == -(1 as i32)
-                                                {
-                                                if !((*bas).server).is_null() {
-                                                    let ref mut fresh130 = (*res).server;
-                                                    *fresh130 = xmlMemStrdup
-                                                        .expect("non-null function pointer")((*bas).server);
-                                                }
-                                                if !((*bas).user).is_null() {
-                                                    let ref mut fresh131 = (*res).user;
-                                                    *fresh131 = xmlMemStrdup
-                                                        .expect("non-null function pointer")((*bas).user);
-                                                }
-                                                (*res).port = (*bas).port;
-                                            }
-                                            if !((*ref_0).path).is_null()
-                                                && *((*ref_0).path).offset(0 as i32 as isize)
-                                                    as i32 == '/' as i32
+                                            if !(unsafe { (*bas).authority }).is_null() {
+                                                let fresh129 = unsafe { &mut ((*res).authority) };
+                                                *fresh129 = unsafe { xmlMemStrdup
+                                                    .expect("non-null function pointer")(
+                                                    (*bas).authority,
+                                                ) };
+                                            } else if !(unsafe { (*bas).server }).is_null()
+                                                || (unsafe { (*bas).port }) == -(1 as i32)
                                             {
-                                                let ref mut fresh132 = (*res).path;
-                                                *fresh132 = xmlMemStrdup
-                                                    .expect("non-null function pointer")((*ref_0).path);
+                                                if !(unsafe { (*bas).server }).is_null() {
+                                                    let fresh130 = unsafe { &mut ((*res).server) };
+                                                    *fresh130 = unsafe { xmlMemStrdup
+                                                        .expect("non-null function pointer")(
+                                                        (*bas).server,
+                                                    ) };
+                                                }
+                                                if !(unsafe { (*bas).user }).is_null() {
+                                                    let fresh131 = unsafe { &mut ((*res).user) };
+                                                    *fresh131 = unsafe { xmlMemStrdup
+                                                        .expect("non-null function pointer")(
+                                                        (*bas).user,
+                                                    ) };
+                                                }
+                                                (unsafe { (*res).port = (*bas).port });
+                                            }
+                                            if !(unsafe { (*ref_0).path }).is_null()
+                                                && (unsafe { *((*ref_0).path).offset(0 as i32 as isize) }) as i32
+                                                    == '/' as i32
+                                            {
+                                                let fresh132 = unsafe { &mut ((*res).path) };
+                                                *fresh132 = unsafe { xmlMemStrdup
+                                                    .expect("non-null function pointer")(
+                                                    (*ref_0).path,
+                                                ) };
                                                 current_block = 17921910600917564308;
                                             } else {
                                                 len = 2 as i32;
-                                                if !((*ref_0).path).is_null() {
+                                                if !(unsafe { (*ref_0).path }).is_null() {
                                                     len = (len as u64)
-                                                        .wrapping_add(strlen((*ref_0).path)) as i32
+                                                        .wrapping_add(unsafe { strlen((*ref_0).path) })
+                                                        as i32
                                                         as i32;
                                                 }
-                                                if !((*bas).path).is_null() {
+                                                if !(unsafe { (*bas).path }).is_null() {
                                                     len = (len as u64)
-                                                        .wrapping_add(strlen((*bas).path)) as i32
+                                                        .wrapping_add(unsafe { strlen((*bas).path) })
+                                                        as i32
                                                         as i32;
                                                 }
-                                                let ref mut fresh133 = (*res).path;
-                                                *fresh133 = xmlMallocAtomic
-                                                    .expect("non-null function pointer")(len as size_t)
+                                                let fresh133 = unsafe { &mut ((*res).path) };
+                                                *fresh133 = (unsafe { xmlMallocAtomic
+                                                    .expect("non-null function pointer")(
+                                                    len as size_t,
+                                                ) })
                                                     as *mut i8;
-                                                if ((*res).path).is_null() {
+                                                if (unsafe { (*res).path }).is_null() {
                                                     xmlURIErrMemory(
-                                                        b"resolving URI against base\n\0" as *const u8
+                                                        b"resolving URI against base\n\0"
+                                                            as *const u8
                                                             as *const i8,
                                                     );
                                                     current_block = 10227634464655804289;
                                                 } else {
-                                                    *((*res).path)
-                                                        .offset(
-                                                            0 as i32 as isize,
-                                                        ) = 0 as i32 as i8;
+                                                    (unsafe { *((*res).path).offset(0 as i32 as isize) =
+                                                        0 as i32 as i8 });
                                                     cur = 0 as i32;
                                                     out = 0 as i32;
-                                                    if !((*bas).path).is_null() {
-                                                        while *((*bas).path).offset(cur as isize) as i32
+                                                    if !(unsafe { (*bas).path }).is_null() {
+                                                        while (unsafe { *((*bas).path).offset(cur as isize) })
+                                                            as i32
                                                             != 0 as i32
                                                         {
-                                                            while *((*bas).path).offset(cur as isize) as i32
+                                                            while (unsafe { *((*bas).path)
+                                                                .offset(cur as isize) })
+                                                                as i32
                                                                 != 0 as i32
-                                                                && *((*bas).path).offset(cur as isize) as i32
+                                                                && (unsafe { *((*bas).path)
+                                                                    .offset(cur as isize) })
+                                                                    as i32
                                                                     != '/' as i32
                                                             {
                                                                 cur += 1;
                                                             }
-                                                            if *((*bas).path).offset(cur as isize) as i32
+                                                            if (unsafe { *((*bas).path).offset(cur as isize) })
+                                                                as i32
                                                                 == 0 as i32
                                                             {
                                                                 break;
                                                             }
                                                             cur += 1;
                                                             while out < cur {
-                                                                *((*res).path)
-                                                                    .offset(out as isize) = *((*bas).path).offset(out as isize);
+                                                                (unsafe { *((*res).path)
+                                                                    .offset(out as isize) =
+                                                                    *((*bas).path)
+                                                                        .offset(out as isize) });
                                                                 out += 1;
                                                             }
                                                         }
                                                     }
-                                                    *((*res).path)
-                                                        .offset(out as isize) = 0 as i32 as i8;
-                                                    if !((*ref_0).path).is_null()
-                                                        && *((*ref_0).path).offset(0 as i32 as isize)
-                                                            as i32 != 0 as i32
+                                                    (unsafe { *((*res).path).offset(out as isize) =
+                                                        0 as i32 as i8 });
+                                                    if !(unsafe { (*ref_0).path }).is_null()
+                                                        && (unsafe { *((*ref_0).path)
+                                                            .offset(0 as i32 as isize) })
+                                                            as i32
+                                                            != 0 as i32
                                                     {
                                                         indx = 0 as i32;
-                                                        if out == 0 as i32 && !((*bas).server).is_null() {
+                                                        if out == 0 as i32
+                                                            && !(unsafe { (*bas).server }).is_null()
+                                                        {
                                                             let mut fresh134 = out;
                                                             out = out + 1;
-                                                            *((*res).path)
-                                                                .offset(fresh134 as isize) = '/' as i32 as i8;
+                                                            (unsafe { *((*res).path)
+                                                                .offset(fresh134 as isize) =
+                                                                '/' as i32 as i8 });
                                                         }
-                                                        while *((*ref_0).path).offset(indx as isize) as i32
+                                                        while (unsafe { *((*ref_0).path).offset(indx as isize) })
+                                                            as i32
                                                             != 0 as i32
                                                         {
                                                             let mut fresh135 = indx;
                                                             indx = indx + 1;
                                                             let mut fresh136 = out;
                                                             out = out + 1;
-                                                            *((*res).path)
-                                                                .offset(
-                                                                    fresh136 as isize,
-                                                                ) = *((*ref_0).path).offset(fresh135 as isize);
+                                                            (unsafe { *((*res).path)
+                                                                .offset(fresh136 as isize) =
+                                                                *((*ref_0).path)
+                                                                    .offset(fresh135 as isize) });
                                                         }
                                                     }
-                                                    *((*res).path)
-                                                        .offset(out as isize) = 0 as i32 as i8;
-                                                    xmlNormalizeURIPath((*res).path);
+                                                    (unsafe { *((*res).path).offset(out as isize) =
+                                                        0 as i32 as i8 });
+                                                    xmlNormalizeURIPath(unsafe { (*res).path });
                                                     current_block = 17921910600917564308;
                                                 }
                                             }
                                         }
                                     }
                                     match current_block {
-                                        10227634464655804289 => {}
+                                        10227634464655804289 => {},
                                         _ => {
                                             val = xmlSaveUri(res);
-                                        }
+                                        },
                                     }
                                 }
                             }
-                        }
+                        },
                     }
                 }
             }
-        }
-        _ => {}
+        },
+        _ => {},
     }
     if !ref_0.is_null() {
         xmlFreeURI(ref_0);
@@ -3928,30 +3761,27 @@ pub unsafe extern "C" fn xmlBuildURI(
     return val;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlBuildRelativeURI(
-    mut URI: * const u8,
-    mut base: * const u8,
-) -> * mut u8 {
+pub extern "C" fn xmlBuildRelativeURI(mut URI: *const u8, mut base: *const u8) -> *mut u8 {
     let mut current_block: u64;
-    let mut val: * mut u8 = 0 as *mut xmlChar;
+    let mut val: *mut u8 = 0 as *mut xmlChar;
     let mut ret: i32 = 0;
     let mut ix: i32 = 0;
     let mut nbslash: i32 = 0 as i32;
     let mut len: i32 = 0;
-    let mut ref_0: * mut crate::src::uri::_xmlURI = 0 as xmlURIPtr;
-    let mut bas: * mut crate::src::uri::_xmlURI = 0 as xmlURIPtr;
-    let mut bptr: * mut u8 = 0 as *mut xmlChar;
-    let mut uptr: * mut u8 = 0 as *mut xmlChar;
-    let mut vptr: * mut u8 = 0 as *mut xmlChar;
+    let mut ref_0: *mut crate::src::uri::_xmlURI = 0 as xmlURIPtr;
+    let mut bas: *mut crate::src::uri::_xmlURI = 0 as xmlURIPtr;
+    let mut bptr: *mut u8 = 0 as *mut xmlChar;
+    let mut uptr: *mut u8 = 0 as *mut xmlChar;
+    let mut vptr: *mut u8 = 0 as *mut xmlChar;
     let mut remove_path: i32 = 0 as i32;
-    if URI.is_null() || *URI as i32 == 0 as i32 {
+    if URI.is_null() || (unsafe { *URI }) as i32 == 0 as i32 {
         return 0 as *mut xmlChar;
     }
     ref_0 = xmlCreateURI();
     if ref_0.is_null() {
         return 0 as *mut xmlChar;
     }
-    if *URI.offset(0 as i32 as isize) as i32 != '.' as i32 {
+    if (unsafe { *URI.offset(0 as i32 as isize) }) as i32 != '.' as i32 {
         ret = xmlParseURIReference(ref_0, URI as *const i8);
         if ret != 0 as i32 {
             current_block = 18107649296940163300;
@@ -3959,20 +3789,18 @@ pub unsafe extern "C" fn xmlBuildRelativeURI(
             current_block = 10599921512955367680;
         }
     } else {
-        let ref mut fresh137 = (*ref_0).path;
+        let fresh137 = unsafe { &mut ((*ref_0).path) };
         *fresh137 = xmlStrdup(URI) as *mut i8;
         current_block = 10599921512955367680;
     }
     match current_block {
         10599921512955367680 => {
-            if base.is_null() || *base as i32 == 0 as i32 {
+            if base.is_null() || (unsafe { *base }) as i32 == 0 as i32 {
                 val = xmlStrdup(URI);
             } else {
                 bas = xmlCreateURI();
                 if !bas.is_null() {
-                    if *base.offset(0 as i32 as isize) as i32
-                        != '.' as i32
-                    {
+                    if (unsafe { *base.offset(0 as i32 as isize) }) as i32 != '.' as i32 {
                         ret = xmlParseURIReference(bas, base as *const i8);
                         if ret != 0 as i32 {
                             current_block = 18107649296940163300;
@@ -3980,96 +3808,83 @@ pub unsafe extern "C" fn xmlBuildRelativeURI(
                             current_block = 14576567515993809846;
                         }
                     } else {
-                        let ref mut fresh138 = (*bas).path;
+                        let fresh138 = unsafe { &mut ((*bas).path) };
                         *fresh138 = xmlStrdup(base) as *mut i8;
                         current_block = 14576567515993809846;
                     }
                     match current_block {
-                        18107649296940163300 => {}
+                        18107649296940163300 => {},
                         _ => {
-                            if !((*ref_0).scheme).is_null()
-                                && (((*bas).scheme).is_null()
+                            if !(unsafe { (*ref_0).scheme }).is_null()
+                                && ((unsafe { (*bas).scheme }).is_null()
                                     || xmlStrcmp(
-                                        (*bas).scheme as *mut xmlChar,
-                                        (*ref_0).scheme as *mut xmlChar,
+                                        (unsafe { (*bas).scheme }) as *mut xmlChar,
+                                        (unsafe { (*ref_0).scheme }) as *mut xmlChar,
                                     ) != 0
                                     || xmlStrcmp(
-                                        (*bas).server as *mut xmlChar,
-                                        (*ref_0).server as *mut xmlChar,
+                                        (unsafe { (*bas).server }) as *mut xmlChar,
+                                        (unsafe { (*ref_0).server }) as *mut xmlChar,
                                     ) != 0)
                             {
                                 val = xmlStrdup(URI);
                             } else if xmlStrEqual(
-                                    (*bas).path as *mut xmlChar,
-                                    (*ref_0).path as *mut xmlChar,
-                                ) != 0
-                                {
-                                val = xmlStrdup(
-                                    b"\0" as *const u8 as *const i8 as *mut xmlChar,
-                                );
-                            } else if ((*bas).path).is_null() {
-                                val = xmlStrdup((*ref_0).path as *mut xmlChar);
+                                (unsafe { (*bas).path }) as *mut xmlChar,
+                                (unsafe { (*ref_0).path }) as *mut xmlChar,
+                            ) != 0
+                            {
+                                val = xmlStrdup(b"\0" as *const u8 as *const i8 as *mut xmlChar);
+                            } else if (unsafe { (*bas).path }).is_null() {
+                                val = xmlStrdup((unsafe { (*ref_0).path }) as *mut xmlChar);
                             } else {
-                                if ((*ref_0).path).is_null() {
-                                    let ref mut fresh139 = (*ref_0).path;
-                                    *fresh139 = b"/\0" as *const u8 as *const i8
-                                        as *mut i8;
+                                if (unsafe { (*ref_0).path }).is_null() {
+                                    let fresh139 = unsafe { &mut ((*ref_0).path) };
+                                    *fresh139 = b"/\0" as *const u8 as *const i8 as *mut i8;
                                     remove_path = 1 as i32;
                                 }
-                                bptr = (*bas).path as *mut xmlChar;
-                                let mut rptr: * mut u8 = (*ref_0).path as *mut xmlChar;
+                                bptr = (unsafe { (*bas).path }) as *mut xmlChar;
+                                let mut rptr: *mut u8 = (unsafe { (*ref_0).path }) as *mut xmlChar;
                                 let mut pos: i32 = 0 as i32;
-                                if *rptr as i32 == '.' as i32
-                                    && *rptr.offset(1 as i32 as isize) as i32
-                                        == '/' as i32
+                                if (unsafe { *rptr }) as i32 == '.' as i32
+                                    && (unsafe { *rptr.offset(1 as i32 as isize) }) as i32 == '/' as i32
                                 {
-                                    rptr = rptr.offset(2 as i32 as isize);
+                                    rptr = unsafe { rptr.offset(2 as i32 as isize) };
                                 }
-                                if *bptr as i32 == '.' as i32
-                                    && *bptr.offset(1 as i32 as isize) as i32
-                                        == '/' as i32
+                                if (unsafe { *bptr }) as i32 == '.' as i32
+                                    && (unsafe { *bptr.offset(1 as i32 as isize) }) as i32 == '/' as i32
                                 {
-                                    bptr = bptr.offset(2 as i32 as isize);
-                                } else if *bptr as i32 == '/' as i32
-                                        && *rptr as i32 != '/' as i32
-                                    {
-                                    bptr = bptr.offset(1);
+                                    bptr = unsafe { bptr.offset(2 as i32 as isize) };
+                                } else if (unsafe { *bptr }) as i32 == '/' as i32 && (unsafe { *rptr }) as i32 != '/' as i32 {
+                                    bptr = unsafe { bptr.offset(1) };
                                 }
-                                while *bptr.offset(pos as isize) as i32
-                                    == *rptr.offset(pos as isize) as i32
-                                    && *bptr.offset(pos as isize) as i32
-                                        != 0 as i32
+                                while (unsafe { *bptr.offset(pos as isize) }) as i32
+                                    == (unsafe { *rptr.offset(pos as isize) }) as i32
+                                    && (unsafe { *bptr.offset(pos as isize) }) as i32 != 0 as i32
                                 {
                                     pos += 1;
                                 }
-                                if *bptr.offset(pos as isize) as i32
-                                    == *rptr.offset(pos as isize) as i32
+                                if (unsafe { *bptr.offset(pos as isize) }) as i32
+                                    == (unsafe { *rptr.offset(pos as isize) }) as i32
                                 {
-                                    val = xmlStrdup(
-                                        b"\0" as *const u8 as *const i8 as *mut xmlChar,
-                                    );
+                                    val =
+                                        xmlStrdup(b"\0" as *const u8 as *const i8 as *mut xmlChar);
                                 } else {
                                     ix = pos;
                                     while ix > 0 as i32 {
-                                        if *rptr.offset((ix - 1 as i32) as isize)
-                                            as i32 == '/' as i32
+                                        if (unsafe { *rptr.offset((ix - 1 as i32) as isize) }) as i32
+                                            == '/' as i32
                                         {
                                             break;
                                         }
                                         ix -= 1;
                                     }
-                                    uptr = &mut *rptr.offset(ix as isize) as *mut xmlChar;
-                                    while *bptr.offset(ix as isize) as i32
-                                        != 0 as i32
-                                    {
-                                        if *bptr.offset(ix as isize) as i32 == '/' as i32 {
+                                    uptr = (unsafe { &mut *rptr.offset(ix as isize) }) as *mut xmlChar;
+                                    while (unsafe { *bptr.offset(ix as isize) }) as i32 != 0 as i32 {
+                                        if (unsafe { *bptr.offset(ix as isize) }) as i32 == '/' as i32 {
                                             nbslash += 1;
                                         }
                                         ix += 1;
                                     }
-                                    if nbslash == 0 as i32
-                                        && *uptr.offset(0 as i32 as isize) == 0
-                                    {
+                                    if nbslash == 0 as i32 && (unsafe { *uptr.offset(0 as i32 as isize) }) == 0 {
                                         val = xmlStrdup(
                                             b"./\0" as *const u8 as *const i8 as *mut xmlChar,
                                         );
@@ -4084,10 +3899,9 @@ pub unsafe extern "C" fn xmlBuildRelativeURI(
                                                 );
                                             }
                                         } else {
-                                            val = xmlMalloc
-                                                .expect(
-                                                    "non-null function pointer",
-                                                )((len + 3 as i32 * nbslash) as size_t)
+                                            val = (unsafe { xmlMalloc.expect("non-null function pointer")(
+                                                (len + 3 as i32 * nbslash) as size_t,
+                                            ) })
                                                 as *mut xmlChar;
                                             if val.is_null() {
                                                 xmlURIErrMemory(
@@ -4098,49 +3912,44 @@ pub unsafe extern "C" fn xmlBuildRelativeURI(
                                                 vptr = val;
                                                 while nbslash > 0 as i32 {
                                                     let mut fresh140 = vptr;
-                                                    vptr = vptr.offset(1);
-                                                    *fresh140 = '.' as i32 as xmlChar;
+                                                    vptr = unsafe { vptr.offset(1) };
+                                                    (unsafe { *fresh140 = '.' as i32 as xmlChar });
                                                     let mut fresh141 = vptr;
-                                                    vptr = vptr.offset(1);
-                                                    *fresh141 = '.' as i32 as xmlChar;
+                                                    vptr = unsafe { vptr.offset(1) };
+                                                    (unsafe { *fresh141 = '.' as i32 as xmlChar });
                                                     let mut fresh142 = vptr;
-                                                    vptr = vptr.offset(1);
-                                                    *fresh142 = '/' as i32 as xmlChar;
+                                                    vptr = unsafe { vptr.offset(1) };
+                                                    (unsafe { *fresh142 = '/' as i32 as xmlChar });
                                                     nbslash -= 1;
                                                 }
                                                 if !uptr.is_null() {
-                                                    if vptr > val && len > 0 as i32
-                                                        && *uptr.offset(0 as i32 as isize) as i32
+                                                    if vptr > val
+                                                        && len > 0 as i32
+                                                        && (unsafe { *uptr.offset(0 as i32 as isize) }) as i32
                                                             == '/' as i32
-                                                        && *vptr.offset(-(1 as i32) as isize) as i32
+                                                        && (unsafe { *vptr.offset(-(1 as i32) as isize) }) as i32
                                                             == '/' as i32
                                                     {
-                                                        memcpy(
+                                                        (unsafe { memcpy(
                                                             vptr as *mut libc::c_void,
                                                             uptr.offset(1 as i32 as isize)
                                                                 as *const libc::c_void,
                                                             (len - 1 as i32) as u64,
-                                                        );
-                                                        *vptr
-                                                            .offset(
-                                                                (len - 2 as i32) as isize,
-                                                            ) = 0 as i32 as xmlChar;
+                                                        ) });
+                                                        (unsafe { *vptr.offset((len - 2 as i32) as isize) =
+                                                            0 as i32 as xmlChar });
                                                     } else {
-                                                        memcpy(
+                                                        (unsafe { memcpy(
                                                             vptr as *mut libc::c_void,
                                                             uptr as *const libc::c_void,
                                                             len as u64,
-                                                        );
-                                                        *vptr
-                                                            .offset(
-                                                                (len - 1 as i32) as isize,
-                                                            ) = 0 as i32 as xmlChar;
+                                                        ) });
+                                                        (unsafe { *vptr.offset((len - 1 as i32) as isize) =
+                                                            0 as i32 as xmlChar });
                                                     }
                                                 } else {
-                                                    *vptr
-                                                        .offset(
-                                                            (len - 1 as i32) as isize,
-                                                        ) = 0 as i32 as xmlChar;
+                                                    (unsafe { *vptr.offset((len - 1 as i32) as isize) =
+                                                        0 as i32 as xmlChar });
                                                 }
                                                 vptr = val;
                                                 val = xmlURIEscapeStr(
@@ -4148,24 +3957,23 @@ pub unsafe extern "C" fn xmlBuildRelativeURI(
                                                     b"/;&=+$,\0" as *const u8 as *const i8
                                                         as *mut xmlChar,
                                                 );
-                                                xmlFree
-                                                    .expect(
-                                                        "non-null function pointer",
-                                                    )(vptr as *mut libc::c_void);
+                                                (unsafe { xmlFree.expect("non-null function pointer")(
+                                                    vptr as *mut libc::c_void,
+                                                ) });
                                             }
                                         }
                                     }
                                 }
                             }
-                        }
+                        },
                     }
                 }
             }
-        }
-        _ => {}
+        },
+        _ => {},
     }
     if remove_path != 0 as i32 {
-        let ref mut fresh143 = (*ref_0).path;
+        let fresh143 = unsafe { &mut ((*ref_0).path) };
         *fresh143 = 0 as *mut i8;
     }
     if !ref_0.is_null() {
@@ -4177,35 +3985,32 @@ pub unsafe extern "C" fn xmlBuildRelativeURI(
     return val;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlCanonicPath(mut path: * const u8) -> * mut u8 {
+pub extern "C" fn xmlCanonicPath(mut path: *const u8) -> *mut u8 {
     let mut current_block: u64;
-    let mut uri: * mut crate::src::uri::_xmlURI = 0 as *mut xmlURI;
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
-    let mut absuri: * const u8 = 0 as *const xmlChar;
+    let mut uri: *mut crate::src::uri::_xmlURI = 0 as *mut xmlURI;
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
+    let mut absuri: *const u8 = 0 as *const xmlChar;
     if path.is_null() {
         return 0 as *mut xmlChar;
     }
-    if *path.offset(0 as i32 as isize) as i32 == '/' as i32
-        && *path.offset(1 as i32 as isize) as i32 == '/' as i32
-        && *path.offset(2 as i32 as isize) as i32 != '/' as i32
+    if (unsafe { *path.offset(0 as i32 as isize) }) as i32 == '/' as i32
+        && (unsafe { *path.offset(1 as i32 as isize) }) as i32 == '/' as i32
+        && (unsafe { *path.offset(2 as i32 as isize) }) as i32 != '/' as i32
     {
-        path = path.offset(1);
+        path = unsafe { path.offset(1) };
     }
     uri = xmlParseURI(path as *const i8);
     if !uri.is_null() {
         xmlFreeURI(uri);
         return xmlStrdup(path);
     }
-    absuri = xmlStrstr(
-        path,
-        b"://\0" as *const u8 as *const i8 as *mut xmlChar,
-    );
+    absuri = xmlStrstr(path, b"://\0" as *const u8 as *const i8 as *mut xmlChar);
     if !absuri.is_null() {
         let mut l: i32 = 0;
         let mut j: i32 = 0;
         let mut c: u8 = 0;
-        let mut escURI: * mut u8 = 0 as *mut xmlChar;
-        l = absuri.offset_from(path) as i64 as i32;
+        let mut escURI: *mut u8 = 0 as *mut xmlChar;
+        l = (unsafe { absuri.offset_from(path) }) as i64 as i32;
         if !(l <= 0 as i32 || l > 20 as i32) {
             j = 0 as i32;
             loop {
@@ -4213,7 +4018,7 @@ pub unsafe extern "C" fn xmlCanonicPath(mut path: * const u8) -> * mut u8 {
                     current_block = 5948590327928692120;
                     break;
                 }
-                c = *path.offset(j as isize);
+                c = unsafe { *path.offset(j as isize) };
                 if !(c as i32 >= 'a' as i32 && c as i32 <= 'z' as i32
                     || c as i32 >= 'A' as i32 && c as i32 <= 'Z' as i32)
                 {
@@ -4223,12 +4028,11 @@ pub unsafe extern "C" fn xmlCanonicPath(mut path: * const u8) -> * mut u8 {
                 j += 1;
             }
             match current_block {
-                9381984106425117681 => {}
+                9381984106425117681 => {},
                 _ => {
                     escURI = xmlURIEscapeStr(
                         path,
-                        b":/?_.#&;=\0" as *const u8 as *const i8
-                            as *mut xmlChar,
+                        b":/?_.#&;=\0" as *const u8 as *const i8 as *mut xmlChar,
                     );
                     if !escURI.is_null() {
                         uri = xmlParseURI(escURI as *const i8);
@@ -4236,12 +4040,9 @@ pub unsafe extern "C" fn xmlCanonicPath(mut path: * const u8) -> * mut u8 {
                             xmlFreeURI(uri);
                             return escURI;
                         }
-                        xmlFree
-                            .expect(
-                                "non-null function pointer",
-                            )(escURI as *mut libc::c_void);
+                        (unsafe { xmlFree.expect("non-null function pointer")(escURI as *mut libc::c_void) });
                     }
-                }
+                },
             }
         }
     }
@@ -4249,8 +4050,8 @@ pub unsafe extern "C" fn xmlCanonicPath(mut path: * const u8) -> * mut u8 {
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlPathToURI(mut path: * const u8) -> * mut u8 {
-    let mut uri: * mut crate::src::uri::_xmlURI = 0 as *mut xmlURI;
+pub extern "C" fn xmlPathToURI(mut path: *const u8) -> *mut u8 {
+    let mut uri: *mut crate::src::uri::_xmlURI = 0 as *mut xmlURI;
     let mut temp: crate::src::uri::_xmlURI = xmlURI {
         scheme: 0 as *mut i8,
         opaque: 0 as *mut i8,
@@ -4264,8 +4065,8 @@ pub unsafe extern "C" fn xmlPathToURI(mut path: * const u8) -> * mut u8 {
         cleanup: 0,
         query_raw: 0 as *mut i8,
     };
-    let mut ret: * mut u8 = 0 as *mut xmlChar;
-    let mut cal: * mut u8 = 0 as *mut xmlChar;
+    let mut ret: *mut u8 = 0 as *mut xmlChar;
+    let mut cal: *mut u8 = 0 as *mut xmlChar;
     if path.is_null() {
         return 0 as *mut xmlChar;
     }
@@ -4278,14 +4079,14 @@ pub unsafe extern "C" fn xmlPathToURI(mut path: * const u8) -> * mut u8 {
     if cal.is_null() {
         return 0 as *mut xmlChar;
     }
-    memset(
+    (unsafe { memset(
         &mut temp as *mut xmlURI as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlURI>() as u64,
-    );
+    ) });
     temp.path = cal as *mut i8;
     ret = xmlSaveUri(&mut temp);
-    xmlFree.expect("non-null function pointer")(cal as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(cal as *mut libc::c_void) });
     return ret;
 }
 use crate::laertes_rt::*;

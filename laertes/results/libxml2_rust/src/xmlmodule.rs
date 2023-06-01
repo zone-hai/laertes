@@ -1,56 +1,53 @@
-use ::libc;
+use :: libc;
 extern "C" {
-    
-    fn memset(
-        _: * mut core::ffi::c_void,
-        _: i32,
-        _: u64,
-    ) -> * mut core::ffi::c_void;
+    fn memset(_: *mut core::ffi::c_void, _: i32, _: u64) -> *mut core::ffi::c_void;
     fn __xmlRaiseError(
-        schannel: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::threads::_xmlError,) -> ()>,
-        channel: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>,
-        data: * mut core::ffi::c_void,
-        ctx: * mut core::ffi::c_void,
-        node: * mut core::ffi::c_void,
+        schannel: Option<
+            unsafe extern "C" fn(
+                _: *mut core::ffi::c_void,
+                _: *mut crate::src::threads::_xmlError,
+            ) -> (),
+        >,
+        channel: Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>,
+        data: *mut core::ffi::c_void,
+        ctx: *mut core::ffi::c_void,
+        node: *mut core::ffi::c_void,
         domain: i32,
         code: i32,
         level: u32,
-        file: * const i8,
+        file: *const i8,
         line: i32,
-        str1: * const i8,
-        str2: * const i8,
-        str3: * const i8,
+        str1: *const i8,
+        str2: *const i8,
+        str3: *const i8,
         int1: i32,
         col: i32,
-        msg: * const i8,
+        msg: *const i8,
         _: ...
     );
-    static mut xmlMalloc: Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
-    static mut xmlFree: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-    fn dlopen(__file: * const i8, __mode: i32) -> * mut core::ffi::c_void;
-    fn dlclose(__handle: * mut core::ffi::c_void) -> i32;
-    fn dlsym(
-        __handle: * mut core::ffi::c_void,
-        __name: * const i8,
-    ) -> * mut core::ffi::c_void;
-    fn dlerror() -> * mut i8;
+    static mut xmlMalloc: Option<unsafe extern "C" fn(_: u64) -> *mut core::ffi::c_void>;
+    static mut xmlFree: Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+    fn dlopen(__file: *const i8, __mode: i32) -> *mut core::ffi::c_void;
+    fn dlclose(__handle: *mut core::ffi::c_void) -> i32;
+    fn dlsym(__handle: *mut core::ffi::c_void, __name: *const i8) -> *mut core::ffi::c_void;
+    fn dlerror() -> *mut i8;
 }
 pub use crate::src::xmlstring::xmlStrdup;
 pub type xmlChar = u8;
 pub type size_t = u64;
-pub type xmlFreeFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type xmlMallocFunc = Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
+pub type xmlFreeFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+pub type xmlMallocFunc = Option<unsafe extern "C" fn(_: u64) -> *mut core::ffi::c_void>;
 pub type xmlError = crate::src::threads::_xmlError;
-// #[derive(Copy, Clone)]
-
 pub type _xmlError = crate::src::threads::_xmlError;
 pub type xmlErrorLevel = u32;
 pub const XML_ERR_FATAL: xmlErrorLevel = 3;
 pub const XML_ERR_ERROR: xmlErrorLevel = 2;
 pub const XML_ERR_WARNING: xmlErrorLevel = 1;
 pub const XML_ERR_NONE: xmlErrorLevel = 0;
-pub type xmlStructuredErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut crate::src::threads::_xmlError,) -> ()>;
-pub type xmlErrorPtr = * mut crate::src::threads::_xmlError;
+pub type xmlStructuredErrorFunc = Option<
+    unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *mut crate::src::threads::_xmlError) -> (),
+>;
+pub type xmlErrorPtr = *mut crate::src::threads::_xmlError;
 pub type C2RustUnnamed = u32;
 pub const XML_FROM_URI: C2RustUnnamed = 30;
 pub const XML_FROM_BUFFER: C2RustUnnamed = 29;
@@ -820,37 +817,38 @@ pub const XML_ERR_DOCUMENT_START: C2RustUnnamed_0 = 3;
 pub const XML_ERR_NO_MEMORY: C2RustUnnamed_0 = 2;
 pub const XML_ERR_INTERNAL_ERROR: C2RustUnnamed_0 = 1;
 pub const XML_ERR_OK: C2RustUnnamed_0 = 0;
-pub type xmlGenericErrorFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,...) -> ()>;
+pub type xmlGenericErrorFunc =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, ...) -> ()>;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlModule {
-    pub name: * mut u8,
-    pub handle: * mut core::ffi::c_void,
+    pub name: *mut u8,
+    pub handle: *mut core::ffi::c_void,
 }
 impl _xmlModule {
     pub const fn new() -> Self {
         _xmlModule {
-        name: (0 as * mut u8),
-        handle: (0 as * mut core::ffi::c_void)
+            name: (0 as *mut u8),
+            handle: (0 as *mut core::ffi::c_void),
         }
     }
 }
-
 impl std::default::Default for _xmlModule {
-    fn default() -> Self { _xmlModule::new() }
-}
-
-pub type xmlModule = crate::src::xmlmodule::_xmlModule;
-pub type xmlModulePtr = * mut crate::src::xmlmodule::_xmlModule;
-unsafe extern "C" fn xmlModuleErrMemory<'a1>(
-    mut module: Option<&'a1 mut crate::src::xmlmodule::_xmlModule>,
-    mut extra: * const i8,
-) {
-    let mut name: * const i8 = 0 as *const i8;
-    if !borrow(& module).is_none() {
-        name = (*(borrow(& module)).unwrap()).name as *const i8;
+    fn default() -> Self {
+        _xmlModule::new()
     }
-    __xmlRaiseError(
+}
+pub type xmlModule = crate::src::xmlmodule::_xmlModule;
+pub type xmlModulePtr = *mut crate::src::xmlmodule::_xmlModule;
+extern "C" fn xmlModuleErrMemory<'a1>(
+    mut module: Option<&'a1 mut crate::src::xmlmodule::_xmlModule>,
+    mut extra: *const i8,
+) {
+    let mut name: *const i8 = 0 as *const i8;
+    if !borrow(&module).is_none() {
+        name = (*(borrow(&module)).unwrap()).name as *const i8;
+    }
+    (unsafe { __xmlRaiseError(
         None,
         None,
         0 as *mut libc::c_void,
@@ -868,18 +866,16 @@ unsafe extern "C" fn xmlModuleErrMemory<'a1>(
         0 as i32,
         b"Memory allocation failed : %s\n\0" as *const u8 as *const i8,
         extra,
-    );
+    ) });
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlModuleOpen(
-    mut name: * const i8,
-    mut options: i32,
-) -> * mut crate::src::xmlmodule::_xmlModule {
-    let mut module: * mut crate::src::xmlmodule::_xmlModule = 0 as *mut xmlModule;
-    module = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlModule>() as u64) as xmlModulePtr;
+pub extern "C" fn xmlModuleOpen(
+    mut name: *const i8,
+    mut _options: i32,
+) -> *mut crate::src::xmlmodule::_xmlModule {
+    let mut module: *mut crate::src::xmlmodule::_xmlModule = 0 as *mut xmlModule;
+    module = (unsafe { xmlMalloc.expect("non-null function pointer")(::std::mem::size_of::<xmlModule>() as u64) })
+        as xmlModulePtr;
     if module.is_null() {
         xmlModuleErrMemory(
             Option::<&'_ mut crate::src::xmlmodule::_xmlModule>::None,
@@ -887,16 +883,16 @@ pub unsafe extern "C" fn xmlModuleOpen(
         );
         return 0 as xmlModulePtr;
     }
-    memset(
+    (unsafe { memset(
         module as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlModule>() as u64,
-    );
-    let ref mut fresh0 = (*module).handle;
+    ) });
+    let fresh0 = unsafe { &mut ((*module).handle) };
     *fresh0 = xmlModulePlatformOpen(name);
-    if ((*module).handle).is_null() {
-        xmlFree.expect("non-null function pointer")(module as *mut libc::c_void);
-        __xmlRaiseError(
+    if (unsafe { (*module).handle }).is_null() {
+        (unsafe { xmlFree.expect("non-null function pointer")(module as *mut libc::c_void) });
+        (unsafe { __xmlRaiseError(
             None,
             None,
             0 as *mut libc::c_void,
@@ -914,22 +910,22 @@ pub unsafe extern "C" fn xmlModuleOpen(
             0 as i32,
             b"failed to open %s\n\0" as *const u8 as *const i8,
             name,
-        );
+        ) });
         return 0 as xmlModulePtr;
     }
-    let ref mut fresh1 = (*module).name;
+    let fresh1 = unsafe { &mut ((*module).name) };
     *fresh1 = xmlStrdup(name as *const xmlChar);
     return module;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlModuleSymbol<'a1, 'a2>(
+pub extern "C" fn xmlModuleSymbol<'a1, 'a2>(
     mut module: Option<&'a1 mut crate::src::xmlmodule::_xmlModule>,
-    mut name: * const i8,
-    mut symbol: Option<&'a2 mut * mut core::ffi::c_void>,
+    mut name: *const i8,
+    mut symbol: Option<&'a2 mut *mut core::ffi::c_void>,
 ) -> i32 {
     let mut rc: i32 = -(1 as i32);
-    if borrow(& module).is_none() || borrow(& symbol).is_none() || name.is_null() {
-        __xmlRaiseError(
+    if borrow(&module).is_none() || borrow(&symbol).is_none() || name.is_null() {
+        (unsafe { __xmlRaiseError(
             None,
             None,
             0 as *mut libc::c_void,
@@ -946,12 +942,16 @@ pub unsafe extern "C" fn xmlModuleSymbol<'a1, 'a2>(
             0 as i32,
             0 as i32,
             b"null parameter\n\0" as *const u8 as *const i8,
-        );
+        ) });
         return rc;
     }
-    rc = xmlModulePlatformSymbol((*(borrow_mut(&mut module)).unwrap()).handle, name, borrow_mut(&mut symbol));
+    rc = xmlModulePlatformSymbol(
+        (*(borrow_mut(&mut module)).unwrap()).handle,
+        name,
+        borrow_mut(&mut symbol),
+    );
     if rc == -(1 as i32) {
-        __xmlRaiseError(
+        (unsafe { __xmlRaiseError(
             None,
             None,
             0 as *mut libc::c_void,
@@ -973,16 +973,16 @@ pub unsafe extern "C" fn xmlModuleSymbol<'a1, 'a2>(
             } else {
                 name
             },
-        );
+        ) });
         return rc;
     }
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlModuleClose(mut module: * mut crate::src::xmlmodule::_xmlModule) -> i32 {
+pub extern "C" fn xmlModuleClose(mut module: *mut crate::src::xmlmodule::_xmlModule) -> i32 {
     let mut rc: i32 = 0;
     if module.is_null() {
-        __xmlRaiseError(
+        (unsafe { __xmlRaiseError(
             None,
             None,
             0 as *mut libc::c_void,
@@ -999,12 +999,12 @@ pub unsafe extern "C" fn xmlModuleClose(mut module: * mut crate::src::xmlmodule:
             0 as i32,
             0 as i32,
             b"null module pointer\n\0" as *const u8 as *const i8,
-        );
+        ) });
         return -(1 as i32);
     }
-    rc = xmlModulePlatformClose((*module).handle);
+    rc = xmlModulePlatformClose(unsafe { (*module).handle });
     if rc != 0 as i32 {
-        __xmlRaiseError(
+        (unsafe { __xmlRaiseError(
             None,
             None,
             0 as *mut libc::c_void,
@@ -1022,16 +1022,16 @@ pub unsafe extern "C" fn xmlModuleClose(mut module: * mut crate::src::xmlmodule:
             0 as i32,
             b"failed to close: %s\n\0" as *const u8 as *const i8,
             (*module).name,
-        );
+        ) });
         return -(2 as i32);
     }
     rc = xmlModuleFree(module);
     return rc;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlModuleFree(mut module: * mut crate::src::xmlmodule::_xmlModule) -> i32 {
+pub extern "C" fn xmlModuleFree(mut module: *mut crate::src::xmlmodule::_xmlModule) -> i32 {
     if module.is_null() {
-        __xmlRaiseError(
+        (unsafe { __xmlRaiseError(
             None,
             None,
             0 as *mut libc::c_void,
@@ -1048,30 +1048,26 @@ pub unsafe extern "C" fn xmlModuleFree(mut module: * mut crate::src::xmlmodule::
             0 as i32,
             0 as i32,
             b"null module pointer\n\0" as *const u8 as *const i8,
-        );
+        ) });
         return -(1 as i32);
     }
-    xmlFree.expect("non-null function pointer")((*module).name as *mut libc::c_void);
-    xmlFree.expect("non-null function pointer")(module as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")((*module).name as *mut libc::c_void) });
+    (unsafe { xmlFree.expect("non-null function pointer")(module as *mut libc::c_void) });
     return 0 as i32;
 }
-unsafe extern "C" fn xmlModulePlatformOpen(
-    mut name: * const i8,
-) -> * mut core::ffi::c_void {
-    return dlopen(name, 0x100 as i32 | 0x2 as i32);
+extern "C" fn xmlModulePlatformOpen(mut name: *const i8) -> *mut core::ffi::c_void {
+    return unsafe { dlopen(name, 0x100 as i32 | 0x2 as i32) };
 }
-unsafe extern "C" fn xmlModulePlatformClose(
-    mut handle: * mut core::ffi::c_void,
-) -> i32 {
-    return dlclose(handle);
+extern "C" fn xmlModulePlatformClose(mut handle: *mut core::ffi::c_void) -> i32 {
+    return unsafe { dlclose(handle) };
 }
-unsafe extern "C" fn xmlModulePlatformSymbol<'a1>(
-    mut handle: * mut core::ffi::c_void,
-    mut name: * const i8,
-    mut symbol: Option<&'a1 mut * mut core::ffi::c_void>,
+extern "C" fn xmlModulePlatformSymbol<'a1>(
+    mut handle: *mut core::ffi::c_void,
+    mut name: *const i8,
+    mut symbol: Option<&'a1 mut *mut core::ffi::c_void>,
 ) -> i32 {
-    *(borrow_mut(&mut symbol)).unwrap() = dlsym(handle, name);
-    if !(dlerror()).is_null() {
+    *(borrow_mut(&mut symbol)).unwrap() = unsafe { dlsym(handle, name) };
+    if !(unsafe { dlerror() }).is_null() {
         return -(1 as i32);
     }
     return 0 as i32;

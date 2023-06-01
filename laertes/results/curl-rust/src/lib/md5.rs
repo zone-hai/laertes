@@ -15,8 +15,8 @@ pub use crate::src::lib::warnless::curlx_uztoui;
 pub use crate::src::lib::easy::Curl_cfree;
 pub use crate::src::lib::easy::Curl_cmalloc;
 pub type size_t = u64;
-pub type curl_malloc_callback = Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
-pub type curl_free_callback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
+pub type curl_malloc_callback<'a1> = Option<unsafe extern "C"  fn(_: u64,) -> Option<&'a1 mut core::ffi::c_void>>;
+pub type curl_free_callback<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,) -> ()>;
 pub type CURLcode = u32;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
@@ -118,15 +118,15 @@ pub const CURLE_URL_MALFORMAT: CURLcode = 3;
 pub const CURLE_FAILED_INIT: CURLcode = 2;
 pub const CURLE_UNSUPPORTED_PROTOCOL: CURLcode = 1;
 pub const CURLE_OK: CURLcode = 0;
-pub type HMAC_hinit_func = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type HMAC_hupdate_func = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: u32,) -> ()>;
-pub type HMAC_hfinal_func = Option<unsafe extern "C"  fn(_: * mut u8,_: * mut core::ffi::c_void,) -> ()>;
+pub type HMAC_hinit_func<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,) -> ()>;
+pub type HMAC_hupdate_func<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,_: Option<&'a2 u8>,_: u32,) -> ()>;
+pub type HMAC_hfinal_func<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut u8>,_: Option<&'a2 mut core::ffi::c_void>,) -> ()>;
 // #[derive(Copy, Clone)]
 
 pub type HMAC_params = crate::src::lib::curl_ntlm_core::HMAC_params;
-pub type Curl_MD5_init_func = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type Curl_MD5_update_func = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: u32,) -> ()>;
-pub type Curl_MD5_final_func = Option<unsafe extern "C"  fn(_: * mut u8,_: * mut core::ffi::c_void,) -> ()>;
+pub type Curl_MD5_init_func<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,) -> ()>;
+pub type Curl_MD5_update_func<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,_: Option<&'a2 u8>,_: u32,) -> ()>;
+pub type Curl_MD5_final_func<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut u8>,_: Option<&'a2 mut core::ffi::c_void>,) -> ()>;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct MD5_params {

@@ -1,105 +1,86 @@
-use ::libc;
+use :: libc;
 extern "C" {
-    
-    
     pub type _IO_marker;
-    
-    
-    fn xmlStrndup(cur: * const u8, len: i32) -> * mut u8;
-    fn xmlStrstr(str: * const u8, val: * const u8) -> * const u8;
-    fn xmlStrcasestr(str: * const u8, val: * const u8) -> * const u8;
-    fn xmlStrcmp(str1: * const u8, str2: * const u8) -> i32;
-    fn xmlStrcasecmp(str1: * const u8, str2: * const u8) -> i32;
-    fn xmlStrEqual(str1: * const u8, str2: * const u8) -> i32;
-    fn snprintf(
-        _: * mut i8,
-        _: u64,
-        _: * const i8,
-        _: ...
-    ) -> i32;
-    fn memset(
-        _: * mut core::ffi::c_void,
-        _: i32,
-        _: u64,
-    ) -> * mut core::ffi::c_void;
-    
-    
+    fn xmlStrndup(cur: *const u8, len: i32) -> *mut u8;
+    fn xmlStrstr(str: *const u8, val: *const u8) -> *const u8;
+    fn xmlStrcasestr(str: *const u8, val: *const u8) -> *const u8;
+    fn xmlStrcmp(str1: *const u8, str2: *const u8) -> i32;
+    fn xmlStrcasecmp(str1: *const u8, str2: *const u8) -> i32;
+    fn xmlStrEqual(str1: *const u8, str2: *const u8) -> i32;
+    fn snprintf(_: *mut i8, _: u64, _: *const i8, _: ...) -> i32;
+    fn memset(_: *mut core::ffi::c_void, _: i32, _: u64) -> *mut core::ffi::c_void;
     fn xmlNewProp(
-        node: * mut crate::src::HTMLparser::_xmlNode,
-        name: * const u8,
-        value: * const u8,
-    ) -> * mut crate::src::HTMLparser::_xmlAttr;
+        node: *mut crate::src::HTMLparser::_xmlNode,
+        name: *const u8,
+        value: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlAttr;
     fn xmlNewDocNode(
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        ns: * mut crate::src::HTMLparser::_xmlNs,
-        name: * const u8,
-        content: * const u8,
-    ) -> * mut crate::src::HTMLparser::_xmlNode;
-    fn xmlAddChild(parent: * mut crate::src::HTMLparser::_xmlNode, cur: * mut crate::src::HTMLparser::_xmlNode) -> * mut crate::src::HTMLparser::_xmlNode;
-    fn xmlAddPrevSibling(cur: * mut crate::src::HTMLparser::_xmlNode, elem: * mut crate::src::HTMLparser::_xmlNode) -> * mut crate::src::HTMLparser::_xmlNode;
-    fn xmlUnlinkNode(cur: * mut crate::src::HTMLparser::_xmlNode);
-    fn xmlFreeNode(cur: * mut crate::src::HTMLparser::_xmlNode);
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        ns: *mut crate::src::HTMLparser::_xmlNs,
+        name: *const u8,
+        content: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
+    fn xmlAddChild(
+        parent: *mut crate::src::HTMLparser::_xmlNode,
+        cur: *mut crate::src::HTMLparser::_xmlNode,
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
+    fn xmlAddPrevSibling(
+        cur: *mut crate::src::HTMLparser::_xmlNode,
+        elem: *mut crate::src::HTMLparser::_xmlNode,
+    ) -> *mut crate::src::HTMLparser::_xmlNode;
+    fn xmlUnlinkNode(cur: *mut crate::src::HTMLparser::_xmlNode);
+    fn xmlFreeNode(cur: *mut crate::src::HTMLparser::_xmlNode);
     fn xmlSetProp(
-        node: * mut crate::src::HTMLparser::_xmlNode,
-        name: * const u8,
-        value: * const u8,
-    ) -> * mut crate::src::HTMLparser::_xmlAttr;
+        node: *mut crate::src::HTMLparser::_xmlNode,
+        name: *const u8,
+        value: *const u8,
+    ) -> *mut crate::src::HTMLparser::_xmlAttr;
     fn xmlNodeListGetString(
-        doc: * mut crate::src::HTMLparser::_xmlDoc,
-        list: * const crate::src::HTMLparser::_xmlNode,
+        doc: *mut crate::src::HTMLparser::_xmlDoc,
+        list: *const crate::src::HTMLparser::_xmlNode,
         inLine: i32,
-    ) -> * mut u8;
-    
-    
-    
-    
-    
-    
-    
-    fn xmlOutputBufferClose(out: * mut crate::src::HTMLtree::_xmlOutputBuffer) -> i32;
-    fn xmlOutputBufferFlush(out: * mut crate::src::HTMLtree::_xmlOutputBuffer) -> i32;
+    ) -> *mut u8;
+    fn xmlOutputBufferClose(out: *mut crate::src::HTMLtree::_xmlOutputBuffer) -> i32;
+    fn xmlOutputBufferFlush(out: *mut crate::src::HTMLtree::_xmlOutputBuffer) -> i32;
     fn xmlOutputBufferWriteString(
-        out: * mut crate::src::HTMLtree::_xmlOutputBuffer,
-        str: * const i8,
+        out: *mut crate::src::HTMLtree::_xmlOutputBuffer,
+        str: *const i8,
     ) -> i32;
     fn xmlOutputBufferCreateFile(
-        file: * mut crate::src::HTMLtree::_IO_FILE,
-        encoder: * mut crate::src::HTMLparser::_xmlCharEncodingHandler,
-    ) -> * mut crate::src::HTMLtree::_xmlOutputBuffer;
+        file: *mut crate::src::HTMLtree::_IO_FILE,
+        encoder: *mut crate::src::HTMLparser::_xmlCharEncodingHandler,
+    ) -> *mut crate::src::HTMLtree::_xmlOutputBuffer;
     fn xmlOutputBufferCreateFilename(
-        URI: * const i8,
-        encoder: * mut crate::src::HTMLparser::_xmlCharEncodingHandler,
+        URI: *const i8,
+        encoder: *mut crate::src::HTMLparser::_xmlCharEncodingHandler,
         compression: i32,
-    ) -> * mut crate::src::HTMLtree::_xmlOutputBuffer;
-    
+    ) -> *mut crate::src::HTMLtree::_xmlOutputBuffer;
     static xmlStringTextNoenc: [u8; 0];
     static xmlStringText: [u8; 0];
-    fn xmlURIEscapeStr(str: * const u8, list: * const u8) -> * mut u8;
-    
-    
-    
+    fn xmlURIEscapeStr(str: *const u8, list: *const u8) -> *mut u8;
     fn xmlAllocOutputBufferInternal(
-        encoder: * mut crate::src::HTMLparser::_xmlCharEncodingHandler,
-    ) -> * mut crate::src::HTMLtree::_xmlOutputBuffer;
-    fn xmlNsListDumpOutput(buf: * mut crate::src::HTMLtree::_xmlOutputBuffer, cur: * mut crate::src::HTMLparser::_xmlNs);
+        encoder: *mut crate::src::HTMLparser::_xmlCharEncodingHandler,
+    ) -> *mut crate::src::HTMLtree::_xmlOutputBuffer;
+    fn xmlNsListDumpOutput(
+        buf: *mut crate::src::HTMLtree::_xmlOutputBuffer,
+        cur: *mut crate::src::HTMLparser::_xmlNs,
+    );
 }
-pub use crate::src::HTMLparser::htmlTagLookup;
-pub use crate::src::buf::xmlBufBackToBuffer;
-pub use crate::src::buf::xmlBufContent;
-pub use crate::src::buf::xmlBufFromBuffer;
-pub use crate::src::buf::xmlBufUse;
-pub use crate::src::buf::xmlBufWriteQuotedString;
-pub use crate::src::encoding::xmlFindCharEncodingHandler;
-pub use crate::src::encoding::xmlParseCharEncoding;
-pub use crate::src::entities::xmlEncodeEntitiesReentrant;
-pub use crate::src::error::__xmlSimpleError;
-pub use crate::src::parser::xmlInitParser;
-pub use crate::src::catalog::_IO_wide_data;
-pub use crate::src::globals::xmlFree;
-pub use crate::src::globals::xmlMalloc;
-pub use crate::src::relaxng::_IO_codecvt;
-pub use crate::src::buf::_xmlBuf;
-pub use crate::src::dict::_xmlDict;
+pub use crate::src::{
+    buf::{
+        _xmlBuf, xmlBufBackToBuffer, xmlBufContent, xmlBufFromBuffer, xmlBufUse,
+        xmlBufWriteQuotedString,
+    },
+    catalog::_IO_wide_data,
+    dict::_xmlDict,
+    encoding::{xmlFindCharEncodingHandler, xmlParseCharEncoding},
+    entities::xmlEncodeEntitiesReentrant,
+    error::__xmlSimpleError,
+    globals::{xmlFree, xmlMalloc},
+    parser::xmlInitParser,
+    relaxng::_IO_codecvt,
+    HTMLparser::htmlTagLookup,
+};
 pub type xmlChar = u8;
 pub type size_t = u64;
 pub type __off_t = i64;
@@ -108,31 +89,31 @@ pub type __off64_t = i64;
 #[repr(C)]
 pub struct _IO_FILE {
     pub _flags: i32,
-    pub _IO_read_ptr: * mut i8,
-    pub _IO_read_end: * mut i8,
-    pub _IO_read_base: * mut i8,
-    pub _IO_write_base: * mut i8,
-    pub _IO_write_ptr: * mut i8,
-    pub _IO_write_end: * mut i8,
-    pub _IO_buf_base: * mut i8,
-    pub _IO_buf_end: * mut i8,
-    pub _IO_save_base: * mut i8,
-    pub _IO_backup_base: * mut i8,
-    pub _IO_save_end: * mut i8,
-    pub _markers: * mut crate::src::HTMLtree::_IO_marker,
-    pub _chain: * mut crate::src::HTMLtree::_IO_FILE,
+    pub _IO_read_ptr: *mut i8,
+    pub _IO_read_end: *mut i8,
+    pub _IO_read_base: *mut i8,
+    pub _IO_write_base: *mut i8,
+    pub _IO_write_ptr: *mut i8,
+    pub _IO_write_end: *mut i8,
+    pub _IO_buf_base: *mut i8,
+    pub _IO_buf_end: *mut i8,
+    pub _IO_save_base: *mut i8,
+    pub _IO_backup_base: *mut i8,
+    pub _IO_save_end: *mut i8,
+    pub _markers: *mut crate::src::HTMLtree::_IO_marker,
+    pub _chain: *mut crate::src::HTMLtree::_IO_FILE,
     pub _fileno: i32,
     pub _flags2: i32,
     pub _old_offset: i64,
     pub _cur_column: u16,
     pub _vtable_offset: i8,
     pub _shortbuf: [i8; 1],
-    pub _lock: * mut core::ffi::c_void,
+    pub _lock: *mut core::ffi::c_void,
     pub _offset: i64,
-    pub _codecvt: * mut crate::src::relaxng::_IO_codecvt,
-    pub _wide_data: * mut crate::src::catalog::_IO_wide_data,
-    pub _freeres_list: * mut crate::src::HTMLtree::_IO_FILE,
-    pub _freeres_buf: * mut core::ffi::c_void,
+    pub _codecvt: *mut crate::src::relaxng::_IO_codecvt,
+    pub _wide_data: *mut crate::src::catalog::_IO_wide_data,
+    pub _freeres_list: *mut crate::src::HTMLtree::_IO_FILE,
+    pub _freeres_buf: *mut core::ffi::c_void,
     pub __pad5: u64,
     pub _mode: i32,
     pub _unused2: [i8; 20],
@@ -140,104 +121,98 @@ pub struct _IO_FILE {
 impl _IO_FILE {
     pub const fn new() -> Self {
         _IO_FILE {
-        _flags: 0,
-        _IO_read_ptr: (0 as * mut i8),
-        _IO_read_end: (0 as * mut i8),
-        _IO_read_base: (0 as * mut i8),
-        _IO_write_base: (0 as * mut i8),
-        _IO_write_ptr: (0 as * mut i8),
-        _IO_write_end: (0 as * mut i8),
-        _IO_buf_base: (0 as * mut i8),
-        _IO_buf_end: (0 as * mut i8),
-        _IO_save_base: (0 as * mut i8),
-        _IO_backup_base: (0 as * mut i8),
-        _IO_save_end: (0 as * mut i8),
-        _markers: (0 as * mut crate::src::HTMLtree::_IO_marker),
-        _chain: (0 as * mut crate::src::HTMLtree::_IO_FILE),
-        _fileno: 0,
-        _flags2: 0,
-        _old_offset: 0,
-        _cur_column: 0,
-        _vtable_offset: 0,
-        _shortbuf: [0,],
-        _lock: (0 as * mut core::ffi::c_void),
-        _offset: 0,
-        _codecvt: (0 as * mut crate::src::relaxng::_IO_codecvt),
-        _wide_data: (0 as * mut crate::src::catalog::_IO_wide_data),
-        _freeres_list: (0 as * mut crate::src::HTMLtree::_IO_FILE),
-        _freeres_buf: (0 as * mut core::ffi::c_void),
-        __pad5: 0,
-        _mode: 0,
-        _unused2: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,]
+            _flags: 0,
+            _IO_read_ptr: (0 as *mut i8),
+            _IO_read_end: (0 as *mut i8),
+            _IO_read_base: (0 as *mut i8),
+            _IO_write_base: (0 as *mut i8),
+            _IO_write_ptr: (0 as *mut i8),
+            _IO_write_end: (0 as *mut i8),
+            _IO_buf_base: (0 as *mut i8),
+            _IO_buf_end: (0 as *mut i8),
+            _IO_save_base: (0 as *mut i8),
+            _IO_backup_base: (0 as *mut i8),
+            _IO_save_end: (0 as *mut i8),
+            _markers: (0 as *mut crate::src::HTMLtree::_IO_marker),
+            _chain: (0 as *mut crate::src::HTMLtree::_IO_FILE),
+            _fileno: 0,
+            _flags2: 0,
+            _old_offset: 0,
+            _cur_column: 0,
+            _vtable_offset: 0,
+            _shortbuf: [0],
+            _lock: (0 as *mut core::ffi::c_void),
+            _offset: 0,
+            _codecvt: (0 as *mut crate::src::relaxng::_IO_codecvt),
+            _wide_data: (0 as *mut crate::src::catalog::_IO_wide_data),
+            _freeres_list: (0 as *mut crate::src::HTMLtree::_IO_FILE),
+            _freeres_buf: (0 as *mut core::ffi::c_void),
+            __pad5: 0,
+            _mode: 0,
+            _unused2: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         }
     }
 }
-
 impl std::default::Default for _IO_FILE {
-    fn default() -> Self { _IO_FILE::new() }
+    fn default() -> Self {
+        _IO_FILE::new()
+    }
 }
-
 pub type _IO_lock_t = ();
 pub type FILE = crate::src::HTMLtree::_IO_FILE;
-pub type xmlFreeFunc = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type xmlMallocFunc = Option<unsafe extern "C"  fn(_: u64,) -> * mut core::ffi::c_void>;
-pub type xmlBufPtr = * mut crate::src::buf::_xmlBuf;
+pub type xmlFreeFunc = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> ()>;
+pub type xmlMallocFunc = Option<unsafe extern "C" fn(_: u64) -> *mut core::ffi::c_void>;
+pub type xmlBufPtr = *mut crate::src::buf::_xmlBuf;
 pub type xmlBuf = crate::src::buf::_xmlBuf;
-pub type xmlCharEncodingHandlerPtr = * mut crate::src::HTMLparser::_xmlCharEncodingHandler;
+pub type xmlCharEncodingHandlerPtr = *mut crate::src::HTMLparser::_xmlCharEncodingHandler;
 pub type xmlCharEncodingHandler = crate::src::HTMLparser::_xmlCharEncodingHandler;
-// #[derive(Copy, Clone)]
-
 pub type _xmlCharEncodingHandler = crate::src::HTMLparser::_xmlCharEncodingHandler;
-pub type iconv_t = * mut core::ffi::c_void;
-pub type xmlCharEncodingOutputFunc = Option<unsafe extern "C"  fn(_: * mut u8,_: * mut i32,_: * const u8,_: * mut i32,) -> i32>;
-pub type xmlCharEncodingInputFunc = Option<unsafe extern "C"  fn(_: * mut u8,_: * mut i32,_: * const u8,_: * mut i32,) -> i32>;
+pub type iconv_t = *mut core::ffi::c_void;
+pub type xmlCharEncodingOutputFunc =
+    Option<unsafe extern "C" fn(_: *mut u8, _: *mut i32, _: *const u8, _: *mut i32) -> i32>;
+pub type xmlCharEncodingInputFunc =
+    Option<unsafe extern "C" fn(_: *mut u8, _: *mut i32, _: *const u8, _: *mut i32) -> i32>;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlOutputBuffer {
-    pub context: * mut core::ffi::c_void,
-    pub writecallback: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,_: i32,) -> i32>,
-    pub closecallback: Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>,
-    pub encoder: * mut crate::src::HTMLparser::_xmlCharEncodingHandler,
-    pub buffer: * mut crate::src::buf::_xmlBuf,
-    pub conv: * mut crate::src::buf::_xmlBuf,
+    pub context: *mut core::ffi::c_void,
+    pub writecallback:
+        Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, _: i32) -> i32>,
+    pub closecallback: Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>,
+    pub encoder: *mut crate::src::HTMLparser::_xmlCharEncodingHandler,
+    pub buffer: *mut crate::src::buf::_xmlBuf,
+    pub conv: *mut crate::src::buf::_xmlBuf,
     pub written: i32,
     pub error: i32,
 }
 impl _xmlOutputBuffer {
     pub const fn new() -> Self {
         _xmlOutputBuffer {
-        context: (0 as * mut core::ffi::c_void),
-        writecallback: None,
-        closecallback: None,
-        encoder: (0 as * mut crate::src::HTMLparser::_xmlCharEncodingHandler),
-        buffer: (0 as * mut crate::src::buf::_xmlBuf),
-        conv: (0 as * mut crate::src::buf::_xmlBuf),
-        written: 0,
-        error: 0
+            context: (0 as *mut core::ffi::c_void),
+            writecallback: None,
+            closecallback: None,
+            encoder: (0 as *mut crate::src::HTMLparser::_xmlCharEncodingHandler),
+            buffer: (0 as *mut crate::src::buf::_xmlBuf),
+            conv: (0 as *mut crate::src::buf::_xmlBuf),
+            written: 0,
+            error: 0,
         }
     }
 }
-
 impl std::default::Default for _xmlOutputBuffer {
-    fn default() -> Self { _xmlOutputBuffer::new() }
+    fn default() -> Self {
+        _xmlOutputBuffer::new()
+    }
 }
-
-pub type xmlOutputCloseCallback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i32>;
-pub type xmlOutputWriteCallback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,_: i32,) -> i32>;
+pub type xmlOutputCloseCallback = Option<unsafe extern "C" fn(_: *mut core::ffi::c_void) -> i32>;
+pub type xmlOutputWriteCallback =
+    Option<unsafe extern "C" fn(_: *mut core::ffi::c_void, _: *const i8, _: i32) -> i32>;
 pub type xmlOutputBuffer = crate::src::HTMLtree::_xmlOutputBuffer;
-pub type xmlOutputBufferPtr = * mut crate::src::HTMLtree::_xmlOutputBuffer;
-// #[derive(Copy, Clone)]
-
+pub type xmlOutputBufferPtr = *mut crate::src::HTMLtree::_xmlOutputBuffer;
 pub type _xmlNode = crate::src::HTMLparser::_xmlNode;
 pub type xmlNs = crate::src::HTMLparser::_xmlNs;
-// #[derive(Copy, Clone)]
-
 pub type _xmlNs = crate::src::HTMLparser::_xmlNs;
-// #[derive(Copy, Clone)]
-
 pub type _xmlDoc = crate::src::HTMLparser::_xmlDoc;
-// #[derive(Copy, Clone)]
-
 pub type _xmlDtd = crate::src::HTMLparser::_xmlDtd;
 pub type xmlElementType = u32;
 pub const XML_XINCLUDE_END: xmlElementType = 20;
@@ -261,8 +236,6 @@ pub const XML_TEXT_NODE: xmlElementType = 3;
 pub const XML_ATTRIBUTE_NODE: xmlElementType = 2;
 pub const XML_ELEMENT_NODE: xmlElementType = 1;
 pub type xmlNsType = u32;
-// #[derive(Copy, Clone)]
-
 pub type _xmlAttr = crate::src::HTMLparser::_xmlAttr;
 pub type xmlAttributeType = u32;
 pub const XML_ATTRIBUTE_NOTATION: xmlAttributeType = 10;
@@ -275,11 +248,11 @@ pub const XML_ATTRIBUTE_IDREFS: xmlAttributeType = 4;
 pub const XML_ATTRIBUTE_IDREF: xmlAttributeType = 3;
 pub const XML_ATTRIBUTE_ID: xmlAttributeType = 2;
 pub const XML_ATTRIBUTE_CDATA: xmlAttributeType = 1;
-pub type xmlAttrPtr = * mut crate::src::HTMLparser::_xmlAttr;
+pub type xmlAttrPtr = *mut crate::src::HTMLparser::_xmlAttr;
 pub type xmlAttr = crate::src::HTMLparser::_xmlAttr;
-pub type xmlNodePtr = * mut crate::src::HTMLparser::_xmlNode;
+pub type xmlNodePtr = *mut crate::src::HTMLparser::_xmlNode;
 pub type xmlNode = crate::src::HTMLparser::_xmlNode;
-pub type xmlDocPtr = * mut crate::src::HTMLparser::_xmlDoc;
+pub type xmlDocPtr = *mut crate::src::HTMLparser::_xmlDoc;
 pub type xmlDoc = crate::src::HTMLparser::_xmlDoc;
 pub type xmlBufferAllocationScheme = u32;
 pub const XML_BUFFER_ALLOC_BOUNDED: xmlBufferAllocationScheme = 5;
@@ -291,33 +264,33 @@ pub const XML_BUFFER_ALLOC_DOUBLEIT: xmlBufferAllocationScheme = 0;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct _xmlBuffer {
-    pub content: * mut u8,
+    pub content: *mut u8,
     pub use_0: u32,
     pub size: u32,
     pub alloc: u32,
-    pub contentIO: * mut u8,
+    pub contentIO: *mut u8,
 }
 impl _xmlBuffer {
     pub const fn new() -> Self {
         _xmlBuffer {
-        content: (0 as * mut u8),
-        use_0: 0,
-        size: 0,
-        alloc: 0,
-        contentIO: (0 as * mut u8)
+            content: (0 as *mut u8),
+            use_0: 0,
+            size: 0,
+            alloc: 0,
+            contentIO: (0 as *mut u8),
         }
     }
 }
-
 impl std::default::Default for _xmlBuffer {
-    fn default() -> Self { _xmlBuffer::new() }
+    fn default() -> Self {
+        _xmlBuffer::new()
+    }
 }
-
 pub type xmlBuffer = crate::src::HTMLtree::_xmlBuffer;
-pub type xmlBufferPtr = * mut crate::src::HTMLtree::_xmlBuffer;
-pub type xmlNsPtr = * mut crate::src::HTMLparser::_xmlNs;
+pub type xmlBufferPtr = *mut crate::src::HTMLtree::_xmlBuffer;
+pub type xmlNsPtr = *mut crate::src::HTMLparser::_xmlNs;
 pub type xmlDtd = crate::src::HTMLparser::_xmlDtd;
-pub type xmlDtdPtr = * mut crate::src::HTMLparser::_xmlDtd;
+pub type xmlDtdPtr = *mut crate::src::HTMLparser::_xmlDtd;
 pub type C2RustUnnamed = u32;
 pub const XML_FROM_URI: C2RustUnnamed = 30;
 pub const XML_FROM_BUFFER: C2RustUnnamed = 29;
@@ -1112,155 +1085,142 @@ pub const XML_CHAR_ENCODING_UTF16LE: xmlCharEncoding = 2;
 pub const XML_CHAR_ENCODING_UTF8: xmlCharEncoding = 1;
 pub const XML_CHAR_ENCODING_NONE: xmlCharEncoding = 0;
 pub const XML_CHAR_ENCODING_ERROR: xmlCharEncoding = -1;
-pub type htmlDocPtr = * mut crate::src::HTMLparser::_xmlDoc;
-pub type htmlNodePtr = * mut crate::src::HTMLparser::_xmlNode;
-// #[derive(Copy, Clone)]
-
+pub type htmlDocPtr = *mut crate::src::HTMLparser::_xmlDoc;
+pub type htmlNodePtr = *mut crate::src::HTMLparser::_xmlNode;
 pub type _htmlElemDesc = crate::src::HTMLparser::_htmlElemDesc;
 pub type htmlElemDesc = crate::src::HTMLparser::_htmlElemDesc;
 #[no_mangle]
-pub unsafe extern "C" fn htmlGetMetaEncoding(mut doc: * mut crate::src::HTMLparser::_xmlDoc) -> * const u8 {
+pub extern "C" fn htmlGetMetaEncoding(mut doc: *mut crate::src::HTMLparser::_xmlDoc) -> *const u8 {
     let mut current_block: u64;
-    let mut cur: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut content: * const u8 = 0 as *const xmlChar;
-    let mut encoding: * const u8 = 0 as *const xmlChar;
+    let mut cur: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut content: *const u8 = 0 as *const xmlChar;
+    let mut encoding: *const u8 = 0 as *const xmlChar;
     if doc.is_null() {
         return 0 as *const xmlChar;
     }
-    cur = (*doc).children;
+    cur = unsafe { (*doc).children };
     loop {
         if cur.is_null() {
             current_block = 12209867499936983673;
             break;
         }
-        if (*cur).type_0 as u32
-            == XML_ELEMENT_NODE as i32 as u32
-            && !((*cur).name).is_null()
-        {
-            if xmlStrEqual(
+        if (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32 && !(unsafe { (*cur).name }).is_null() {
+            if (unsafe { xmlStrEqual(
                 (*cur).name,
                 b"html\0" as *const u8 as *const i8 as *mut xmlChar,
-            ) != 0
+            ) }) != 0
             {
                 current_block = 12209867499936983673;
                 break;
             }
-            if xmlStrEqual(
+            if (unsafe { xmlStrEqual(
                 (*cur).name,
                 b"head\0" as *const u8 as *const i8 as *mut xmlChar,
-            ) != 0
+            ) }) != 0
             {
                 current_block = 17610497583950210252;
                 break;
             }
-            if xmlStrEqual(
+            if (unsafe { xmlStrEqual(
                 (*cur).name,
                 b"meta\0" as *const u8 as *const i8 as *mut xmlChar,
-            ) != 0
+            ) }) != 0
             {
                 current_block = 11194104282611034094;
                 break;
             }
         }
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
     }
     match current_block {
         12209867499936983673 => {
             if cur.is_null() {
                 return 0 as *const xmlChar;
             }
-            cur = (*cur).children;
+            cur = unsafe { (*cur).children };
             loop {
                 if cur.is_null() {
                     current_block = 12147880666119273379;
                     break;
                 }
-                if (*cur).type_0 as u32
-                    == XML_ELEMENT_NODE as i32 as u32
-                    && !((*cur).name).is_null()
+                if (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+                    && !(unsafe { (*cur).name }).is_null()
                 {
-                    if xmlStrEqual(
+                    if (unsafe { xmlStrEqual(
                         (*cur).name,
                         b"head\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) != 0
+                    ) }) != 0
                     {
                         current_block = 12147880666119273379;
                         break;
                     }
-                    if xmlStrEqual(
+                    if (unsafe { xmlStrEqual(
                         (*cur).name,
                         b"meta\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) != 0
+                    ) }) != 0
                     {
                         current_block = 11194104282611034094;
                         break;
                     }
                 }
-                cur = (*cur).next;
+                cur = unsafe { (*cur).next };
             }
             match current_block {
-                11194104282611034094 => {}
+                11194104282611034094 => {},
                 _ => {
                     if cur.is_null() {
                         return 0 as *const xmlChar;
                     }
                     current_block = 17610497583950210252;
-                }
+                },
             }
-        }
-        _ => {}
+        },
+        _ => {},
     }
     match current_block {
         17610497583950210252 => {
-            cur = (*cur).children;
-        }
-        _ => {}
+            cur = unsafe { (*cur).children };
+        },
+        _ => {},
     }
     's_121: loop {
         if cur.is_null() {
             current_block = 2480299350034459858;
             break;
         }
-        if (*cur).type_0 as u32
-            == XML_ELEMENT_NODE as i32 as u32
-            && !((*cur).name).is_null()
-        {
-            if xmlStrEqual(
+        if (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32 && !(unsafe { (*cur).name }).is_null() {
+            if (unsafe { xmlStrEqual(
                 (*cur).name,
                 b"meta\0" as *const u8 as *const i8 as *mut xmlChar,
-            ) != 0
+            ) }) != 0
             {
-                let mut attr: * mut crate::src::HTMLparser::_xmlAttr = (*cur).properties;
+                let mut attr: *mut crate::src::HTMLparser::_xmlAttr = unsafe { (*cur).properties };
                 let mut http: i32 = 0;
-                let mut value: * const u8 = 0 as *const xmlChar;
+                let mut value: *const u8 = 0 as *const xmlChar;
                 content = 0 as *const xmlChar;
                 http = 0 as i32;
                 while !attr.is_null() {
-                    if !((*attr).children).is_null()
-                        && (*(*attr).children).type_0 as u32
-                            == XML_TEXT_NODE as i32 as u32
-                        && ((*(*attr).children).next).is_null()
+                    if !(unsafe { (*attr).children }).is_null()
+                        && (unsafe { (*(*attr).children).type_0 }) as u32 == XML_TEXT_NODE as i32 as u32
+                        && (unsafe { (*(*attr).children).next }).is_null()
                     {
-                        value = (*(*attr).children).content;
-                        if xmlStrcasecmp(
+                        value = unsafe { (*(*attr).children).content };
+                        if (unsafe { xmlStrcasecmp(
                             (*attr).name,
-                            b"http-equiv\0" as *const u8 as *const i8
-                                as *mut xmlChar,
-                        ) == 0
-                            && xmlStrcasecmp(
+                            b"http-equiv\0" as *const u8 as *const i8 as *mut xmlChar,
+                        ) }) == 0
+                            && (unsafe { xmlStrcasecmp(
                                 value,
-                                b"Content-Type\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
-                            ) == 0
+                                b"Content-Type\0" as *const u8 as *const i8 as *mut xmlChar,
+                            ) }) == 0
                         {
                             http = 1 as i32;
                         } else if !value.is_null()
-                                && xmlStrcasecmp(
-                                    (*attr).name,
-                                    b"content\0" as *const u8 as *const i8
-                                        as *mut xmlChar,
-                                ) == 0
-                            {
+                            && (unsafe { xmlStrcasecmp(
+                                (*attr).name,
+                                b"content\0" as *const u8 as *const i8 as *mut xmlChar,
+                            ) }) == 0
+                        {
                             content = value;
                         }
                         if http != 0 as i32 && !content.is_null() {
@@ -1268,246 +1228,233 @@ pub unsafe extern "C" fn htmlGetMetaEncoding(mut doc: * mut crate::src::HTMLpars
                             break 's_121;
                         }
                     }
-                    attr = (*attr).next;
+                    attr = unsafe { (*attr).next };
                 }
             }
         }
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
     }
     match current_block {
         2480299350034459858 => return 0 as *const xmlChar,
         _ => {
-            encoding = xmlStrstr(
+            encoding = unsafe { xmlStrstr(
                 content,
                 b"charset=\0" as *const u8 as *const i8 as *mut xmlChar,
-            );
+            ) };
             if encoding.is_null() {
-                encoding = xmlStrstr(
+                encoding = unsafe { xmlStrstr(
                     content,
                     b"Charset=\0" as *const u8 as *const i8 as *mut xmlChar,
-                );
+                ) };
             }
             if encoding.is_null() {
-                encoding = xmlStrstr(
+                encoding = unsafe { xmlStrstr(
                     content,
                     b"CHARSET=\0" as *const u8 as *const i8 as *mut xmlChar,
-                );
+                ) };
             }
             if !encoding.is_null() {
-                encoding = encoding.offset(8 as i32 as isize);
+                encoding = unsafe { encoding.offset(8 as i32 as isize) };
             } else {
-                encoding = xmlStrstr(
+                encoding = unsafe { xmlStrstr(
                     content,
                     b"charset =\0" as *const u8 as *const i8 as *mut xmlChar,
-                );
+                ) };
                 if encoding.is_null() {
-                    encoding = xmlStrstr(
+                    encoding = unsafe { xmlStrstr(
                         content,
-                        b"Charset =\0" as *const u8 as *const i8
-                            as *mut xmlChar,
-                    );
+                        b"Charset =\0" as *const u8 as *const i8 as *mut xmlChar,
+                    ) };
                 }
                 if encoding.is_null() {
-                    encoding = xmlStrstr(
+                    encoding = unsafe { xmlStrstr(
                         content,
-                        b"CHARSET =\0" as *const u8 as *const i8
-                            as *mut xmlChar,
-                    );
+                        b"CHARSET =\0" as *const u8 as *const i8 as *mut xmlChar,
+                    ) };
                 }
                 if !encoding.is_null() {
-                    encoding = encoding.offset(9 as i32 as isize);
+                    encoding = unsafe { encoding.offset(9 as i32 as isize) };
                 }
             }
             if !encoding.is_null() {
-                while *encoding as i32 == ' ' as i32
-                    || *encoding as i32 == '\t' as i32
-                {
-                    encoding = encoding.offset(1);
+                while (unsafe { *encoding }) as i32 == ' ' as i32 || (unsafe { *encoding }) as i32 == '\t' as i32 {
+                    encoding = unsafe { encoding.offset(1) };
                 }
             }
             return encoding;
-        }
+        },
     };
 }
 #[no_mangle]
-pub unsafe extern "C" fn htmlSetMetaEncoding(
-    mut doc: * mut crate::src::HTMLparser::_xmlDoc,
-    mut encoding: * const u8,
+pub extern "C" fn htmlSetMetaEncoding(
+    mut doc: *mut crate::src::HTMLparser::_xmlDoc,
+    mut encoding: *const u8,
 ) -> i32 {
     let mut current_block: u64;
-    let mut cur: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut meta: * mut crate::src::HTMLparser::_xmlNode = 0 as htmlNodePtr;
-    let mut head: * mut crate::src::HTMLparser::_xmlNode = 0 as htmlNodePtr;
-    let mut content: * const u8 = 0 as *const xmlChar;
+    let mut cur: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut meta: *mut crate::src::HTMLparser::_xmlNode = 0 as htmlNodePtr;
+    let mut head: *mut crate::src::HTMLparser::_xmlNode = 0 as htmlNodePtr;
+    let mut content: *const u8 = 0 as *const xmlChar;
     let mut newcontent: [i8; 100] = [0; 100];
     newcontent[0 as i32 as usize] = 0 as i32 as i8;
     if doc.is_null() {
         return -(1 as i32);
     }
-    if xmlStrcasecmp(
+    if (unsafe { xmlStrcasecmp(
         encoding,
         b"html\0" as *const u8 as *const i8 as *mut xmlChar,
-    ) == 0
+    ) }) == 0
     {
         return -(1 as i32);
     }
     if !encoding.is_null() {
-        snprintf(
+        (unsafe { snprintf(
             newcontent.as_mut_ptr(),
             ::std::mem::size_of::<[i8; 100]>() as u64,
             b"text/html; charset=%s\0" as *const u8 as *const i8,
             encoding as *mut i8,
-        );
-        newcontent[(::std::mem::size_of::<[i8; 100]>() as u64)
-            .wrapping_sub(1 as i32 as u64)
-            as usize] = 0 as i32 as i8;
+        ) });
+        newcontent
+            [(::std::mem::size_of::<[i8; 100]>() as u64).wrapping_sub(1 as i32 as u64) as usize] =
+            0 as i32 as i8;
     }
-    cur = (*doc).children;
+    cur = unsafe { (*doc).children };
     loop {
         if cur.is_null() {
             current_block = 8457315219000651999;
             break;
         }
-        if (*cur).type_0 as u32
-            == XML_ELEMENT_NODE as i32 as u32
-            && !((*cur).name).is_null()
-        {
-            if xmlStrcasecmp(
+        if (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32 && !(unsafe { (*cur).name }).is_null() {
+            if (unsafe { xmlStrcasecmp(
                 (*cur).name,
                 b"html\0" as *const u8 as *const i8 as *mut xmlChar,
-            ) == 0 as i32
+            ) }) == 0 as i32
             {
                 current_block = 8457315219000651999;
                 break;
             }
-            if xmlStrcasecmp(
+            if (unsafe { xmlStrcasecmp(
                 (*cur).name,
                 b"head\0" as *const u8 as *const i8 as *mut xmlChar,
-            ) == 0 as i32
+            ) }) == 0 as i32
             {
                 current_block = 3995502596705044892;
                 break;
             }
-            if xmlStrcasecmp(
+            if (unsafe { xmlStrcasecmp(
                 (*cur).name,
                 b"meta\0" as *const u8 as *const i8 as *mut xmlChar,
-            ) == 0 as i32
+            ) }) == 0 as i32
             {
                 current_block = 8110654923557504590;
                 break;
             }
         }
-        cur = (*cur).next;
+        cur = unsafe { (*cur).next };
     }
     match current_block {
         8457315219000651999 => {
             if cur.is_null() {
                 return -(1 as i32);
             }
-            cur = (*cur).children;
+            cur = unsafe { (*cur).children };
             loop {
                 if cur.is_null() {
                     current_block = 14648156034262866959;
                     break;
                 }
-                if (*cur).type_0 as u32
-                    == XML_ELEMENT_NODE as i32 as u32
-                    && !((*cur).name).is_null()
+                if (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+                    && !(unsafe { (*cur).name }).is_null()
                 {
-                    if xmlStrcasecmp(
+                    if (unsafe { xmlStrcasecmp(
                         (*cur).name,
                         b"head\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) == 0 as i32
+                    ) }) == 0 as i32
                     {
                         current_block = 14648156034262866959;
                         break;
                     }
-                    if xmlStrcasecmp(
+                    if (unsafe { xmlStrcasecmp(
                         (*cur).name,
                         b"meta\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) == 0 as i32
+                    ) }) == 0 as i32
                     {
-                        head = (*cur).parent;
+                        head = unsafe { (*cur).parent };
                         current_block = 8110654923557504590;
                         break;
                     }
                 }
-                cur = (*cur).next;
+                cur = unsafe { (*cur).next };
             }
             match current_block {
-                8110654923557504590 => {}
+                8110654923557504590 => {},
                 _ => {
                     if cur.is_null() {
                         return -(1 as i32);
                     }
                     current_block = 3995502596705044892;
-                }
+                },
             }
-        }
-        _ => {}
+        },
+        _ => {},
     }
     match current_block {
         3995502596705044892 => {
             head = cur;
-            if ((*cur).children).is_null() {
+            if (unsafe { (*cur).children }).is_null() {
                 current_block = 6861722712724833375;
             } else {
-                cur = (*cur).children;
+                cur = unsafe { (*cur).children };
                 current_block = 8110654923557504590;
             }
-        }
-        _ => {}
+        },
+        _ => {},
     }
     match current_block {
         8110654923557504590 => {
             while !cur.is_null() {
-                if (*cur).type_0 as u32
-                    == XML_ELEMENT_NODE as i32 as u32
-                    && !((*cur).name).is_null()
+                if (unsafe { (*cur).type_0 }) as u32 == XML_ELEMENT_NODE as i32 as u32
+                    && !(unsafe { (*cur).name }).is_null()
                 {
-                    if xmlStrcasecmp(
+                    if (unsafe { xmlStrcasecmp(
                         (*cur).name,
                         b"meta\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) == 0 as i32
+                    ) }) == 0 as i32
                     {
-                        let mut attr: * mut crate::src::HTMLparser::_xmlAttr = (*cur).properties;
+                        let mut attr: *mut crate::src::HTMLparser::_xmlAttr = unsafe { (*cur).properties };
                         let mut http: i32 = 0;
-                        let mut value: * const u8 = 0 as *const xmlChar;
+                        let mut value: *const u8 = 0 as *const xmlChar;
                         content = 0 as *const xmlChar;
                         http = 0 as i32;
                         while !attr.is_null() {
-                            if !((*attr).children).is_null()
-                                && (*(*attr).children).type_0 as u32
-                                    == XML_TEXT_NODE as i32 as u32
-                                && ((*(*attr).children).next).is_null()
+                            if !(unsafe { (*attr).children }).is_null()
+                                && (unsafe { (*(*attr).children).type_0 }) as u32 == XML_TEXT_NODE as i32 as u32
+                                && (unsafe { (*(*attr).children).next }).is_null()
                             {
-                                value = (*(*attr).children).content;
-                                if xmlStrcasecmp(
+                                value = unsafe { (*(*attr).children).content };
+                                if (unsafe { xmlStrcasecmp(
                                     (*attr).name,
-                                    b"http-equiv\0" as *const u8 as *const i8
-                                        as *mut xmlChar,
-                                ) == 0
-                                    && xmlStrcasecmp(
+                                    b"http-equiv\0" as *const u8 as *const i8 as *mut xmlChar,
+                                ) }) == 0
+                                    && (unsafe { xmlStrcasecmp(
                                         value,
-                                        b"Content-Type\0" as *const u8 as *const i8
-                                            as *mut xmlChar,
-                                    ) == 0
+                                        b"Content-Type\0" as *const u8 as *const i8 as *mut xmlChar,
+                                    ) }) == 0
                                 {
                                     http = 1 as i32;
                                 } else if !value.is_null()
-                                        && xmlStrcasecmp(
-                                            (*attr).name,
-                                            b"content\0" as *const u8 as *const i8
-                                                as *mut xmlChar,
-                                        ) == 0
-                                    {
+                                    && (unsafe { xmlStrcasecmp(
+                                        (*attr).name,
+                                        b"content\0" as *const u8 as *const i8 as *mut xmlChar,
+                                    ) }) == 0
+                                {
                                     content = value;
                                 }
                                 if http != 0 as i32 && !content.is_null() {
                                     break;
                                 }
                             }
-                            attr = (*attr).next;
+                            attr = unsafe { (*attr).next };
                         }
                         if http != 0 as i32 && !content.is_null() {
                             meta = cur;
@@ -1515,48 +1462,48 @@ pub unsafe extern "C" fn htmlSetMetaEncoding(
                         }
                     }
                 }
-                cur = (*cur).next;
+                cur = unsafe { (*cur).next };
             }
-        }
-        _ => {}
+        },
+        _ => {},
     }
     if meta.is_null() {
         if !encoding.is_null() && !head.is_null() {
-            meta = xmlNewDocNode(
+            meta = unsafe { xmlNewDocNode(
                 doc,
                 0 as xmlNsPtr,
                 b"meta\0" as *const u8 as *const i8 as *mut xmlChar,
                 0 as *const xmlChar,
-            );
-            if ((*head).children).is_null() {
-                xmlAddChild(head, meta);
+            ) };
+            if (unsafe { (*head).children }).is_null() {
+                (unsafe { xmlAddChild(head, meta) });
             } else {
-                xmlAddPrevSibling((*head).children, meta);
+                (unsafe { xmlAddPrevSibling((*head).children, meta) });
             }
-            xmlNewProp(
+            (unsafe { xmlNewProp(
                 meta,
                 b"http-equiv\0" as *const u8 as *const i8 as *mut xmlChar,
                 b"Content-Type\0" as *const u8 as *const i8 as *mut xmlChar,
-            );
-            xmlNewProp(
+            ) });
+            (unsafe { xmlNewProp(
                 meta,
                 b"content\0" as *const u8 as *const i8 as *mut xmlChar,
                 newcontent.as_mut_ptr() as *mut xmlChar,
-            );
+            ) });
         }
     } else if encoding.is_null() {
-        xmlUnlinkNode(meta);
-        xmlFreeNode(meta);
-    } else if (xmlStrcasestr(content, encoding)).is_null() {
-        xmlSetProp(
+        (unsafe { xmlUnlinkNode(meta) });
+        (unsafe { xmlFreeNode(meta) });
+    } else if (unsafe { xmlStrcasestr(content, encoding) }).is_null() {
+        (unsafe { xmlSetProp(
             meta,
             b"content\0" as *const u8 as *const i8 as *mut xmlChar,
             newcontent.as_mut_ptr() as *mut xmlChar,
-        );
+        ) });
     }
     return 0 as i32;
 }
-static mut htmlBooleanAttrs: [* const i8; 14] = [
+static mut htmlBooleanAttrs: [*const i8; 14] = [
     b"checked\0" as *const u8 as *const i8,
     b"compact\0" as *const u8 as *const i8,
     b"declare\0" as *const u8 as *const i8,
@@ -1573,19 +1520,17 @@ static mut htmlBooleanAttrs: [* const i8; 14] = [
     0 as *const i8,
 ];
 #[no_mangle]
-pub unsafe extern "C" fn htmlIsBooleanAttr(mut name: * const u8) -> i32 {
+pub extern "C" fn htmlIsBooleanAttr(mut name: *const u8) -> i32 {
     let mut i: i32 = 0 as i32;
-    while !(htmlBooleanAttrs[i as usize]).is_null() {
-        if xmlStrcasecmp(htmlBooleanAttrs[i as usize] as *const xmlChar, name)
-            == 0 as i32
-        {
+    while !(unsafe { htmlBooleanAttrs[i as usize] }).is_null() {
+        if (unsafe { xmlStrcasecmp(htmlBooleanAttrs[i as usize] as *const xmlChar, name) }) == 0 as i32 {
             return 1 as i32;
         }
         i += 1;
     }
     return 0 as i32;
 }
-unsafe extern "C" fn htmlSaveErrMemory(mut extra: * const i8) {
+extern "C" fn htmlSaveErrMemory(mut extra: *const i8) {
     __xmlSimpleError(
         XML_FROM_OUTPUT as i32,
         XML_ERR_NO_MEMORY as i32,
@@ -1594,86 +1539,82 @@ unsafe extern "C" fn htmlSaveErrMemory(mut extra: * const i8) {
         extra,
     );
 }
-unsafe extern "C" fn htmlSaveErr(
+extern "C" fn htmlSaveErr(
     mut code: i32,
-    mut node: * mut crate::src::HTMLparser::_xmlNode,
-    mut extra: * const i8,
+    mut node: *mut crate::src::HTMLparser::_xmlNode,
+    mut extra: *const i8,
 ) {
-    let mut msg: * const i8 = 0 as *const i8;
+    let mut msg: *const i8 = 0 as *const i8;
     match code {
         1400 => {
             msg = b"string is not in UTF-8\n\0" as *const u8 as *const i8;
-        }
+        },
         1401 => {
             msg = b"invalid character value\n\0" as *const u8 as *const i8;
-        }
+        },
         1403 => {
             msg = b"unknown encoding %s\n\0" as *const u8 as *const i8;
-        }
+        },
         1402 => {
             msg = b"HTML has no DOCTYPE\n\0" as *const u8 as *const i8;
-        }
+        },
         _ => {
             msg = b"unexpected error number\n\0" as *const u8 as *const i8;
-        }
+        },
     }
     __xmlSimpleError(XML_FROM_OUTPUT as i32, code, node, msg, extra);
 }
-unsafe extern "C" fn htmlBufNodeDumpFormat(
-    mut buf: * mut crate::src::buf::_xmlBuf,
-    mut doc: * mut crate::src::HTMLparser::_xmlDoc,
-    mut cur: * mut crate::src::HTMLparser::_xmlNode,
+extern "C" fn htmlBufNodeDumpFormat(
+    mut buf: *mut crate::src::buf::_xmlBuf,
+    mut doc: *mut crate::src::HTMLparser::_xmlDoc,
+    mut cur: *mut crate::src::HTMLparser::_xmlNode,
     mut format: i32,
 ) -> u64 {
     let mut use_0: u64 = 0;
     let mut ret: i32 = 0;
-    let mut outbuf: * mut crate::src::HTMLtree::_xmlOutputBuffer = 0 as *mut xmlOutputBuffer;
+    let mut outbuf: *mut crate::src::HTMLtree::_xmlOutputBuffer = 0 as *mut xmlOutputBuffer;
     if cur.is_null() {
         return -(1 as i32) as size_t;
     }
     if buf.is_null() {
         return -(1 as i32) as size_t;
     }
-    outbuf = xmlMalloc
-        .expect(
-            "non-null function pointer",
-        )(::std::mem::size_of::<xmlOutputBuffer>() as u64)
-        as xmlOutputBufferPtr;
+    outbuf = (unsafe { xmlMalloc.expect("non-null function pointer")(
+        ::std::mem::size_of::<xmlOutputBuffer>() as u64
+    ) }) as xmlOutputBufferPtr;
     if outbuf.is_null() {
-        htmlSaveErrMemory(
-            b"allocating HTML output buffer\0" as *const u8 as *const i8,
-        );
+        htmlSaveErrMemory(b"allocating HTML output buffer\0" as *const u8 as *const i8);
         return -(1 as i32) as size_t;
     }
-    memset(
+    (unsafe { memset(
         outbuf as *mut libc::c_void,
         0 as i32,
         ::std::mem::size_of::<xmlOutputBuffer>() as u64,
-    );
-    let ref mut fresh0 = (*outbuf).buffer;
+    ) });
+    let fresh0 = unsafe { &mut ((*outbuf).buffer) };
     *fresh0 = buf;
-    let ref mut fresh1 = (*outbuf).encoder;
+    let fresh1 = unsafe { &mut ((*outbuf).encoder) };
     *fresh1 = 0 as xmlCharEncodingHandlerPtr;
-    let ref mut fresh2 = (*outbuf).writecallback;
+    let fresh2 = unsafe { &mut ((*outbuf).writecallback) };
     *fresh2 = None;
-    let ref mut fresh3 = (*outbuf).closecallback;
+    let fresh3 = unsafe { &mut ((*outbuf).closecallback) };
     *fresh3 = None;
-    let ref mut fresh4 = (*outbuf).context;
+    let fresh4 = unsafe { &mut ((*outbuf).context) };
     *fresh4 = 0 as *mut libc::c_void;
-    (*outbuf).written = 0 as i32;
+    (unsafe { (*outbuf).written = 0 as i32 });
     use_0 = xmlBufUse(buf);
     htmlNodeDumpFormatOutput(outbuf, doc, cur, Option::<&'_ i8>::None, format);
-    xmlFree.expect("non-null function pointer")(outbuf as *mut libc::c_void);
+    (unsafe { xmlFree.expect("non-null function pointer")(outbuf as *mut libc::c_void) });
     ret = (xmlBufUse(buf)).wrapping_sub(use_0) as i32;
     return ret as size_t;
 }
 #[no_mangle]
-pub unsafe extern "C" fn htmlNodeDump(
-    mut buf: * mut crate::src::HTMLtree::_xmlBuffer,
-    mut doc: * mut crate::src::HTMLparser::_xmlDoc,
-    mut cur: * mut crate::src::HTMLparser::_xmlNode,
+pub extern "C" fn htmlNodeDump(
+    mut buf: *mut crate::src::HTMLtree::_xmlBuffer,
+    mut doc: *mut crate::src::HTMLparser::_xmlDoc,
+    mut cur: *mut crate::src::HTMLparser::_xmlNode,
 ) -> i32 {
-    let mut buffer: * mut crate::src::buf::_xmlBuf = 0 as *mut xmlBuf;
+    let mut buffer: *mut crate::src::buf::_xmlBuf = 0 as *mut xmlBuf;
     let mut ret: u64 = 0;
     if buf.is_null() || cur.is_null() {
         return -(1 as i32);
@@ -1691,15 +1632,16 @@ pub unsafe extern "C" fn htmlNodeDump(
     return ret as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn htmlNodeDumpFileFormat(
-    mut out: * mut crate::src::HTMLtree::_IO_FILE,
-    mut doc: * mut crate::src::HTMLparser::_xmlDoc,
-    mut cur: * mut crate::src::HTMLparser::_xmlNode,
-    mut encoding: * const i8,
+pub extern "C" fn htmlNodeDumpFileFormat(
+    mut out: *mut crate::src::HTMLtree::_IO_FILE,
+    mut doc: *mut crate::src::HTMLparser::_xmlDoc,
+    mut cur: *mut crate::src::HTMLparser::_xmlNode,
+    mut encoding: *const i8,
     mut format: i32,
 ) -> i32 {
-    let mut buf: * mut crate::src::HTMLtree::_xmlOutputBuffer = 0 as *mut xmlOutputBuffer;
-    let mut handler: * mut crate::src::HTMLparser::_xmlCharEncodingHandler = 0 as xmlCharEncodingHandlerPtr;
+    let mut buf: *mut crate::src::HTMLtree::_xmlOutputBuffer = 0 as *mut xmlOutputBuffer;
+    let mut handler: *mut crate::src::HTMLparser::_xmlCharEncodingHandler =
+        0 as xmlCharEncodingHandlerPtr;
     let mut ret: i32 = 0;
     xmlInitParser();
     if !encoding.is_null() {
@@ -1708,57 +1650,50 @@ pub unsafe extern "C" fn htmlNodeDumpFileFormat(
         if enc as i32 != XML_CHAR_ENCODING_UTF8 as i32 {
             handler = xmlFindCharEncodingHandler(encoding);
             if handler.is_null() {
-                htmlSaveErr(
-                    XML_SAVE_UNKNOWN_ENCODING as i32,
-                    0 as xmlNodePtr,
-                    encoding,
-                );
+                htmlSaveErr(XML_SAVE_UNKNOWN_ENCODING as i32, 0 as xmlNodePtr, encoding);
             }
         }
     } else {
         if handler.is_null() {
-            handler = xmlFindCharEncodingHandler(
-                b"HTML\0" as *const u8 as *const i8,
-            );
+            handler = xmlFindCharEncodingHandler(b"HTML\0" as *const u8 as *const i8);
         }
         if handler.is_null() {
-            handler = xmlFindCharEncodingHandler(
-                b"ascii\0" as *const u8 as *const i8,
-            );
+            handler = xmlFindCharEncodingHandler(b"ascii\0" as *const u8 as *const i8);
         }
     }
-    buf = xmlOutputBufferCreateFile(out, handler);
+    buf = unsafe { xmlOutputBufferCreateFile(out, handler) };
     if buf.is_null() {
         return 0 as i32;
     }
     htmlNodeDumpFormatOutput(buf, doc, cur, Option::<&'_ i8>::None, format);
-    ret = xmlOutputBufferClose(buf);
+    ret = unsafe { xmlOutputBufferClose(buf) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn htmlNodeDumpFile(
-    mut out: * mut crate::src::HTMLtree::_IO_FILE,
-    mut doc: * mut crate::src::HTMLparser::_xmlDoc,
-    mut cur: * mut crate::src::HTMLparser::_xmlNode,
+pub extern "C" fn htmlNodeDumpFile(
+    mut out: *mut crate::src::HTMLtree::_IO_FILE,
+    mut doc: *mut crate::src::HTMLparser::_xmlDoc,
+    mut cur: *mut crate::src::HTMLparser::_xmlNode,
 ) {
     htmlNodeDumpFileFormat(out, doc, cur, 0 as *const i8, 1 as i32);
 }
 #[no_mangle]
-pub unsafe extern "C" fn htmlDocDumpMemoryFormat<'a1, 'a2>(
-    mut cur: * mut crate::src::HTMLparser::_xmlDoc,
-    mut mem: Option<&'a1 mut * mut u8>,
+pub extern "C" fn htmlDocDumpMemoryFormat<'a1, 'a2>(
+    mut cur: *mut crate::src::HTMLparser::_xmlDoc,
+    mut mem: Option<&'a1 mut *mut u8>,
     mut size: Option<&'a2 mut i32>,
     mut format: i32,
 ) {
-    let mut buf: * mut crate::src::HTMLtree::_xmlOutputBuffer = 0 as *mut xmlOutputBuffer;
-    let mut handler: * mut crate::src::HTMLparser::_xmlCharEncodingHandler = 0 as xmlCharEncodingHandlerPtr;
-    let mut encoding: * const i8 = 0 as *const i8;
+    let mut buf: *mut crate::src::HTMLtree::_xmlOutputBuffer = 0 as *mut xmlOutputBuffer;
+    let mut handler: *mut crate::src::HTMLparser::_xmlCharEncodingHandler =
+        0 as xmlCharEncodingHandlerPtr;
+    let mut encoding: *const i8 = 0 as *const i8;
     xmlInitParser();
-    if borrow(& mem).is_none() || borrow(& size).is_none() {
+    if borrow(&mem).is_none() || borrow(&size).is_none() {
         return;
     }
     if cur.is_null() {
-        *(borrow_mut(&mut mem)).unwrap() = (0 as * mut u8);
+        *(borrow_mut(&mut mem)).unwrap() = 0 as *mut u8;
         *(borrow_mut(&mut size)).unwrap() = 0 as i32;
         return;
     }
@@ -1769,56 +1704,54 @@ pub unsafe extern "C" fn htmlDocDumpMemoryFormat<'a1, 'a2>(
         if enc as i32 != XML_CHAR_ENCODING_UTF8 as i32 {
             handler = xmlFindCharEncodingHandler(encoding);
             if handler.is_null() {
-                htmlSaveErr(
-                    XML_SAVE_UNKNOWN_ENCODING as i32,
-                    0 as xmlNodePtr,
-                    encoding,
-                );
+                htmlSaveErr(XML_SAVE_UNKNOWN_ENCODING as i32, 0 as xmlNodePtr, encoding);
             }
         }
     } else {
         if handler.is_null() {
-            handler = xmlFindCharEncodingHandler(
-                b"HTML\0" as *const u8 as *const i8,
-            );
+            handler = xmlFindCharEncodingHandler(b"HTML\0" as *const u8 as *const i8);
         }
         if handler.is_null() {
-            handler = xmlFindCharEncodingHandler(
-                b"ascii\0" as *const u8 as *const i8,
-            );
+            handler = xmlFindCharEncodingHandler(b"ascii\0" as *const u8 as *const i8);
         }
     }
-    buf = xmlAllocOutputBufferInternal(handler);
+    buf = unsafe { xmlAllocOutputBufferInternal(handler) };
     if buf.is_null() {
-        *(borrow_mut(&mut mem)).unwrap() = (0 as * mut u8);
+        *(borrow_mut(&mut mem)).unwrap() = 0 as *mut u8;
         *(borrow_mut(&mut size)).unwrap() = 0 as i32;
         return;
     }
     htmlDocContentDumpFormatOutput(buf, cur, 0 as *const i8, format);
-    xmlOutputBufferFlush(buf);
-    if !((*buf).conv).is_null() {
-        *(borrow_mut(&mut size)).unwrap() = xmlBufUse((*buf).conv) as i32;
-        *(borrow_mut(&mut mem)).unwrap() = xmlStrndup(xmlBufContent((*buf).conv as *const xmlBuf), *(borrow_mut(&mut size)).unwrap());
+    (unsafe { xmlOutputBufferFlush(buf) });
+    if !(unsafe { (*buf).conv }).is_null() {
+        *(borrow_mut(&mut size)).unwrap() = xmlBufUse(unsafe { (*buf).conv }) as i32;
+        *(borrow_mut(&mut mem)).unwrap() = unsafe { xmlStrndup(
+            xmlBufContent((*buf).conv as *const xmlBuf),
+            *(borrow_mut(&mut size)).unwrap(),
+        ) };
     } else {
-        *(borrow_mut(&mut size)).unwrap() = xmlBufUse((*buf).buffer) as i32;
-        *(borrow_mut(&mut mem)).unwrap() = xmlStrndup(xmlBufContent((*buf).buffer as *const xmlBuf), *(borrow_mut(&mut size)).unwrap());
+        *(borrow_mut(&mut size)).unwrap() = xmlBufUse(unsafe { (*buf).buffer }) as i32;
+        *(borrow_mut(&mut mem)).unwrap() = unsafe { xmlStrndup(
+            xmlBufContent((*buf).buffer as *const xmlBuf),
+            *(borrow_mut(&mut size)).unwrap(),
+        ) };
     }
-    xmlOutputBufferClose(buf);
+    (unsafe { xmlOutputBufferClose(buf) });
 }
 #[no_mangle]
-pub unsafe extern "C" fn htmlDocDumpMemory<'a1, 'a2>(
-    mut cur: * mut crate::src::HTMLparser::_xmlDoc,
-    mut mem: Option<&'a1 mut * mut u8>,
+pub extern "C" fn htmlDocDumpMemory<'a1, 'a2>(
+    mut cur: *mut crate::src::HTMLparser::_xmlDoc,
+    mut mem: Option<&'a1 mut *mut u8>,
     mut size: Option<&'a2 mut i32>,
 ) {
     htmlDocDumpMemoryFormat(cur, borrow_mut(&mut mem), borrow_mut(&mut size), 1 as i32);
 }
-unsafe extern "C" fn htmlDtdDumpOutput<'a1>(
-    mut buf: * mut crate::src::HTMLtree::_xmlOutputBuffer,
-    mut doc: * mut crate::src::HTMLparser::_xmlDoc,
-    mut encoding: Option<&'a1 i8>,
+extern "C" fn htmlDtdDumpOutput<'a1>(
+    mut buf: *mut crate::src::HTMLtree::_xmlOutputBuffer,
+    mut doc: *mut crate::src::HTMLparser::_xmlDoc,
+    mut _encoding: Option<&'a1 i8>,
 ) {
-    let mut cur: * mut crate::src::HTMLparser::_xmlDtd = (*doc).intSubset;
+    let mut cur: *mut crate::src::HTMLparser::_xmlDtd = unsafe { (*doc).intSubset };
     if cur.is_null() {
         htmlSaveErr(
             XML_SAVE_NO_DOCTYPE as i32,
@@ -1827,485 +1760,359 @@ unsafe extern "C" fn htmlDtdDumpOutput<'a1>(
         );
         return;
     }
-    xmlOutputBufferWriteString(buf, b"<!DOCTYPE \0" as *const u8 as *const i8);
-    xmlOutputBufferWriteString(buf, (*cur).name as *const i8);
-    if !((*cur).ExternalID).is_null() {
-        xmlOutputBufferWriteString(
-            buf,
-            b" PUBLIC \0" as *const u8 as *const i8,
-        );
-        xmlBufWriteQuotedString((*buf).buffer, (*cur).ExternalID);
-        if !((*cur).SystemID).is_null() {
-            xmlOutputBufferWriteString(buf, b" \0" as *const u8 as *const i8);
-            xmlBufWriteQuotedString((*buf).buffer, (*cur).SystemID);
+    (unsafe { xmlOutputBufferWriteString(buf, b"<!DOCTYPE \0" as *const u8 as *const i8) });
+    (unsafe { xmlOutputBufferWriteString(buf, (*cur).name as *const i8) });
+    if !(unsafe { (*cur).ExternalID }).is_null() {
+        (unsafe { xmlOutputBufferWriteString(buf, b" PUBLIC \0" as *const u8 as *const i8) });
+        xmlBufWriteQuotedString(unsafe { (*buf).buffer }, unsafe { (*cur).ExternalID });
+        if !(unsafe { (*cur).SystemID }).is_null() {
+            (unsafe { xmlOutputBufferWriteString(buf, b" \0" as *const u8 as *const i8) });
+            xmlBufWriteQuotedString(unsafe { (*buf).buffer }, unsafe { (*cur).SystemID });
         }
-    } else if !((*cur).SystemID).is_null()
-            && xmlStrcmp(
-                (*cur).SystemID,
-                b"about:legacy-compat\0" as *const u8 as *const i8
-                    as *mut xmlChar,
-            ) != 0
-        {
-        xmlOutputBufferWriteString(
-            buf,
-            b" SYSTEM \0" as *const u8 as *const i8,
-        );
-        xmlBufWriteQuotedString((*buf).buffer, (*cur).SystemID);
+    } else if !(unsafe { (*cur).SystemID }).is_null()
+        && (unsafe { xmlStrcmp(
+            (*cur).SystemID,
+            b"about:legacy-compat\0" as *const u8 as *const i8 as *mut xmlChar,
+        ) }) != 0
+    {
+        (unsafe { xmlOutputBufferWriteString(buf, b" SYSTEM \0" as *const u8 as *const i8) });
+        xmlBufWriteQuotedString(unsafe { (*buf).buffer }, unsafe { (*cur).SystemID });
     }
-    xmlOutputBufferWriteString(buf, b">\n\0" as *const u8 as *const i8);
+    (unsafe { xmlOutputBufferWriteString(buf, b">\n\0" as *const u8 as *const i8) });
 }
-unsafe extern "C" fn htmlAttrDumpOutput(
-    mut buf: * mut crate::src::HTMLtree::_xmlOutputBuffer,
-    mut doc: * mut crate::src::HTMLparser::_xmlDoc,
-    mut cur: * mut crate::src::HTMLparser::_xmlAttr,
+extern "C" fn htmlAttrDumpOutput(
+    mut buf: *mut crate::src::HTMLtree::_xmlOutputBuffer,
+    mut doc: *mut crate::src::HTMLparser::_xmlDoc,
+    mut cur: *mut crate::src::HTMLparser::_xmlAttr,
 ) {
-    let mut value: * mut u8 = 0 as *mut xmlChar;
+    let mut value: *mut u8 = 0 as *mut xmlChar;
     if cur.is_null() {
         return;
     }
-    xmlOutputBufferWriteString(buf, b" \0" as *const u8 as *const i8);
-    if !((*cur).ns).is_null() && !((*(*cur).ns).prefix).is_null() {
-        xmlOutputBufferWriteString(buf, (*(*cur).ns).prefix as *const i8);
-        xmlOutputBufferWriteString(buf, b":\0" as *const u8 as *const i8);
+    (unsafe { xmlOutputBufferWriteString(buf, b" \0" as *const u8 as *const i8) });
+    if !(unsafe { (*cur).ns }).is_null() && !(unsafe { (*(*cur).ns).prefix }).is_null() {
+        (unsafe { xmlOutputBufferWriteString(buf, (*(*cur).ns).prefix as *const i8) });
+        (unsafe { xmlOutputBufferWriteString(buf, b":\0" as *const u8 as *const i8) });
     }
-    xmlOutputBufferWriteString(buf, (*cur).name as *const i8);
-    if !((*cur).children).is_null() && htmlIsBooleanAttr((*cur).name) == 0 {
-        value = xmlNodeListGetString(doc, (*cur).children, 0 as i32);
+    (unsafe { xmlOutputBufferWriteString(buf, (*cur).name as *const i8) });
+    if !(unsafe { (*cur).children }).is_null() && htmlIsBooleanAttr(unsafe { (*cur).name }) == 0 {
+        value = unsafe { xmlNodeListGetString(doc, (*cur).children, 0 as i32) };
         if !value.is_null() {
-            xmlOutputBufferWriteString(buf, b"=\0" as *const u8 as *const i8);
-            if ((*cur).ns).is_null() && !((*cur).parent).is_null()
-                && ((*(*cur).parent).ns).is_null()
-                && (xmlStrcasecmp(
+            (unsafe { xmlOutputBufferWriteString(buf, b"=\0" as *const u8 as *const i8) });
+            if (unsafe { (*cur).ns }).is_null()
+                && !(unsafe { (*cur).parent }).is_null()
+                && (unsafe { (*(*cur).parent).ns }).is_null()
+                && ((unsafe { xmlStrcasecmp(
                     (*cur).name,
                     b"href\0" as *const u8 as *const i8 as *mut xmlChar,
-                ) == 0
-                    || xmlStrcasecmp(
+                ) }) == 0
+                    || (unsafe { xmlStrcasecmp(
                         (*cur).name,
                         b"action\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) == 0
-                    || xmlStrcasecmp(
+                    ) }) == 0
+                    || (unsafe { xmlStrcasecmp(
                         (*cur).name,
                         b"src\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) == 0
-                    || xmlStrcasecmp(
+                    ) }) == 0
+                    || (unsafe { xmlStrcasecmp(
                         (*cur).name,
                         b"name\0" as *const u8 as *const i8 as *mut xmlChar,
-                    ) == 0
-                        && xmlStrcasecmp(
+                    ) }) == 0
+                        && (unsafe { xmlStrcasecmp(
                             (*(*cur).parent).name,
                             b"a\0" as *const u8 as *const i8 as *mut xmlChar,
-                        ) == 0)
+                        ) }) == 0)
             {
-                let mut escaped: * mut u8 = 0 as *mut xmlChar;
-                let mut tmp: * mut u8 = value;
-                while *tmp as i32 == 0x20 as i32
-                    || 0x9 as i32 <= *tmp as i32
-                        && *tmp as i32 <= 0xa as i32
-                    || *tmp as i32 == 0xd as i32
+                let mut escaped: *mut u8 = 0 as *mut xmlChar;
+                let mut tmp: *mut u8 = value;
+                while (unsafe { *tmp }) as i32 == 0x20 as i32
+                    || 0x9 as i32 <= (unsafe { *tmp }) as i32 && (unsafe { *tmp }) as i32 <= 0xa as i32
+                    || (unsafe { *tmp }) as i32 == 0xd as i32
                 {
-                    tmp = tmp.offset(1);
+                    tmp = unsafe { tmp.offset(1) };
                 }
-                escaped = xmlURIEscapeStr(
+                escaped = unsafe { xmlURIEscapeStr(
                     tmp,
-                    b"@/:=?;#%&,+<>\0" as *const u8 as *const i8
-                        as *mut xmlChar,
-                );
+                    b"@/:=?;#%&,+<>\0" as *const u8 as *const i8 as *mut xmlChar,
+                ) };
                 if !escaped.is_null() {
-                    xmlBufWriteQuotedString((*buf).buffer, escaped);
-                    xmlFree
-                        .expect(
-                            "non-null function pointer",
-                        )(escaped as *mut libc::c_void);
+                    xmlBufWriteQuotedString(unsafe { (*buf).buffer }, escaped);
+                    (unsafe { xmlFree.expect("non-null function pointer")(escaped as *mut libc::c_void) });
                 } else {
-                    xmlBufWriteQuotedString((*buf).buffer, value);
+                    xmlBufWriteQuotedString(unsafe { (*buf).buffer }, value);
                 }
             } else {
-                xmlBufWriteQuotedString((*buf).buffer, value);
+                xmlBufWriteQuotedString(unsafe { (*buf).buffer }, value);
             }
-            xmlFree.expect("non-null function pointer")(value as *mut libc::c_void);
+            (unsafe { xmlFree.expect("non-null function pointer")(value as *mut libc::c_void) });
         } else {
-            xmlOutputBufferWriteString(
-                buf,
-                b"=\"\"\0" as *const u8 as *const i8,
-            );
+            (unsafe { xmlOutputBufferWriteString(buf, b"=\"\"\0" as *const u8 as *const i8) });
         }
     }
 }
 #[no_mangle]
-pub unsafe extern "C" fn htmlNodeDumpFormatOutput<'a1>(
-    mut buf: * mut crate::src::HTMLtree::_xmlOutputBuffer,
-    mut doc: * mut crate::src::HTMLparser::_xmlDoc,
-    mut cur: * mut crate::src::HTMLparser::_xmlNode,
+pub extern "C" fn htmlNodeDumpFormatOutput<'a1>(
+    mut buf: *mut crate::src::HTMLtree::_xmlOutputBuffer,
+    mut doc: *mut crate::src::HTMLparser::_xmlDoc,
+    mut cur: *mut crate::src::HTMLparser::_xmlNode,
     mut encoding: Option<&'a1 i8>,
     mut format: i32,
 ) {
-    let mut root: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut parent: * mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
-    let mut attr: * mut crate::src::HTMLparser::_xmlAttr = 0 as *mut xmlAttr;
-    let mut info: * const crate::src::HTMLparser::_htmlElemDesc = (0 as * const crate::src::HTMLparser::_htmlElemDesc);
+    let mut root: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut parent: *mut crate::src::HTMLparser::_xmlNode = 0 as *mut xmlNode;
+    let mut attr: *mut crate::src::HTMLparser::_xmlAttr = 0 as *mut xmlAttr;
+    let mut info: *const crate::src::HTMLparser::_htmlElemDesc =
+        0 as *const crate::src::HTMLparser::_htmlElemDesc;
     xmlInitParser();
     if cur.is_null() || buf.is_null() {
         return;
     }
     root = cur;
-    parent = (*cur).parent;
+    parent = unsafe { (*cur).parent };
     loop {
-        match (*cur).type_0 as u32 {
+        match (unsafe { (*cur).type_0 }) as u32 {
             13 | 9 => {
-                if !((*(cur as xmlDocPtr)).intSubset).is_null() {
+                if !(unsafe { (*(cur as xmlDocPtr)).intSubset }).is_null() {
                     htmlDtdDumpOutput(buf, cur as xmlDocPtr, Option::<&'_ i8>::None);
                 }
-                if !((*cur).children).is_null() {
-                    if (*cur).parent == parent {
+                if !(unsafe { (*cur).children }).is_null() {
+                    if (unsafe { (*cur).parent }) == parent {
                         parent = cur;
-                        cur = (*cur).children;
+                        cur = unsafe { (*cur).children };
                         continue;
                     }
                 } else {
-                    xmlOutputBufferWriteString(
-                        buf,
-                        b"\n\0" as *const u8 as *const i8,
-                    );
+                    (unsafe { xmlOutputBufferWriteString(buf, b"\n\0" as *const u8 as *const i8) });
                 }
-            }
+            },
             1 => {
-                if (*cur).parent != parent && !((*cur).children).is_null() {
+                if (unsafe { (*cur).parent }) != parent && !(unsafe { (*cur).children }).is_null() {
                     htmlNodeDumpFormatOutput(buf, doc, cur, (encoding).clone(), format);
                 } else {
-                    if ((*cur).ns).is_null() {
-                        info = htmlTagLookup((*cur).name);
+                    if (unsafe { (*cur).ns }).is_null() {
+                        info = htmlTagLookup(unsafe { (*cur).name });
                     } else {
-                        info = (0 as * const crate::src::HTMLparser::_htmlElemDesc);
+                        info = 0 as *const crate::src::HTMLparser::_htmlElemDesc;
                     }
-                    xmlOutputBufferWriteString(
-                        buf,
-                        b"<\0" as *const u8 as *const i8,
-                    );
-                    if !((*cur).ns).is_null() && !((*(*cur).ns).prefix).is_null() {
-                        xmlOutputBufferWriteString(
-                            buf,
-                            (*(*cur).ns).prefix as *const i8,
-                        );
-                        xmlOutputBufferWriteString(
-                            buf,
-                            b":\0" as *const u8 as *const i8,
-                        );
+                    (unsafe { xmlOutputBufferWriteString(buf, b"<\0" as *const u8 as *const i8) });
+                    if !(unsafe { (*cur).ns }).is_null() && !(unsafe { (*(*cur).ns).prefix }).is_null() {
+                        (unsafe { xmlOutputBufferWriteString(buf, (*(*cur).ns).prefix as *const i8) });
+                        (unsafe { xmlOutputBufferWriteString(buf, b":\0" as *const u8 as *const i8) });
                     }
-                    xmlOutputBufferWriteString(buf, (*cur).name as *const i8);
-                    if !((*cur).nsDef).is_null() {
-                        xmlNsListDumpOutput(buf, (*cur).nsDef);
+                    (unsafe { xmlOutputBufferWriteString(buf, (*cur).name as *const i8) });
+                    if !(unsafe { (*cur).nsDef }).is_null() {
+                        (unsafe { xmlNsListDumpOutput(buf, (*cur).nsDef) });
                     }
-                    attr = (*cur).properties;
+                    attr = unsafe { (*cur).properties };
                     while !attr.is_null() {
                         htmlAttrDumpOutput(buf, doc, attr);
-                        attr = (*attr).next;
+                        attr = unsafe { (*attr).next };
                     }
-                    if !info.is_null() && (*info).empty as i32 != 0 {
-                        xmlOutputBufferWriteString(
-                            buf,
-                            b">\0" as *const u8 as *const i8,
-                        );
-                    } else if ((*cur).children).is_null() {
+                    if !info.is_null() && (unsafe { (*info).empty }) as i32 != 0 {
+                        (unsafe { xmlOutputBufferWriteString(buf, b">\0" as *const u8 as *const i8) });
+                    } else if (unsafe { (*cur).children }).is_null() {
                         if !info.is_null()
-                            && (*info).saveEndTag as i32 != 0 as i32
-                            && xmlStrcmp(
+                            && (unsafe { (*info).saveEndTag }) as i32 != 0 as i32
+                            && (unsafe { xmlStrcmp(
                                 (*info).name as *mut xmlChar,
-                                b"html\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
-                            ) != 0
-                            && xmlStrcmp(
+                                b"html\0" as *const u8 as *const i8 as *mut xmlChar,
+                            ) }) != 0
+                            && (unsafe { xmlStrcmp(
                                 (*info).name as *mut xmlChar,
-                                b"body\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
-                            ) != 0
+                                b"body\0" as *const u8 as *const i8 as *mut xmlChar,
+                            ) }) != 0
                         {
-                            xmlOutputBufferWriteString(
-                                buf,
-                                b">\0" as *const u8 as *const i8,
-                            );
+                            (unsafe { xmlOutputBufferWriteString(buf, b">\0" as *const u8 as *const i8) });
                         } else {
-                            xmlOutputBufferWriteString(
-                                buf,
-                                b"></\0" as *const u8 as *const i8,
-                            );
-                            if !((*cur).ns).is_null() && !((*(*cur).ns).prefix).is_null()
-                            {
-                                xmlOutputBufferWriteString(
-                                    buf,
-                                    (*(*cur).ns).prefix as *const i8,
-                                );
-                                xmlOutputBufferWriteString(
-                                    buf,
-                                    b":\0" as *const u8 as *const i8,
-                                );
+                            (unsafe { xmlOutputBufferWriteString(buf, b"></\0" as *const u8 as *const i8) });
+                            if !(unsafe { (*cur).ns }).is_null() && !(unsafe { (*(*cur).ns).prefix }).is_null() {
+                                (unsafe { xmlOutputBufferWriteString(buf, (*(*cur).ns).prefix as *const i8) });
+                                (unsafe { xmlOutputBufferWriteString(buf, b":\0" as *const u8 as *const i8) });
                             }
-                            xmlOutputBufferWriteString(
-                                buf,
-                                (*cur).name as *const i8,
-                            );
-                            xmlOutputBufferWriteString(
-                                buf,
-                                b">\0" as *const u8 as *const i8,
-                            );
+                            (unsafe { xmlOutputBufferWriteString(buf, (*cur).name as *const i8) });
+                            (unsafe { xmlOutputBufferWriteString(buf, b">\0" as *const u8 as *const i8) });
                         }
                     } else {
-                        xmlOutputBufferWriteString(
-                            buf,
-                            b">\0" as *const u8 as *const i8,
-                        );
-                        if format != 0 && !info.is_null() && (*info).isinline == 0
-                            && (*(*cur).children).type_0 as u32
-                                != XML_TEXT_NODE as i32 as u32
-                            && (*(*cur).children).type_0 as u32
-                                != XML_ENTITY_REF_NODE as i32 as u32
-                            && (*cur).children != (*cur).last && !((*cur).name).is_null()
-                            && *((*cur).name).offset(0 as i32 as isize)
-                                as i32 != 'p' as i32
+                        (unsafe { xmlOutputBufferWriteString(buf, b">\0" as *const u8 as *const i8) });
+                        if format != 0
+                            && !info.is_null()
+                            && (unsafe { (*info).isinline }) == 0
+                            && (unsafe { (*(*cur).children).type_0 }) as u32 != XML_TEXT_NODE as i32 as u32
+                            && (unsafe { (*(*cur).children).type_0 }) as u32 != XML_ENTITY_REF_NODE as i32 as u32
+                            && (unsafe { (*cur).children }) != (unsafe { (*cur).last })
+                            && !(unsafe { (*cur).name }).is_null()
+                            && (unsafe { *((*cur).name).offset(0 as i32 as isize) }) as i32 != 'p' as i32
                         {
-                            xmlOutputBufferWriteString(
-                                buf,
-                                b"\n\0" as *const u8 as *const i8,
-                            );
+                            (unsafe { xmlOutputBufferWriteString(buf, b"\n\0" as *const u8 as *const i8) });
                         }
                         parent = cur;
-                        cur = (*cur).children;
+                        cur = unsafe { (*cur).children };
                         continue;
                     }
-                    if format != 0 && !((*cur).next).is_null() && !info.is_null()
-                        && (*info).isinline == 0
+                    if format != 0
+                        && !(unsafe { (*cur).next }).is_null()
+                        && !info.is_null()
+                        && (unsafe { (*info).isinline }) == 0
                     {
-                        if (*(*cur).next).type_0 as u32
-                            != XML_TEXT_NODE as i32 as u32
-                            && (*(*cur).next).type_0 as u32
-                                != XML_ENTITY_REF_NODE as i32 as u32
-                            && !parent.is_null() && !((*parent).name).is_null()
-                            && *((*parent).name).offset(0 as i32 as isize)
-                                as i32 != 'p' as i32
+                        if (unsafe { (*(*cur).next).type_0 }) as u32 != XML_TEXT_NODE as i32 as u32
+                            && (unsafe { (*(*cur).next).type_0 }) as u32 != XML_ENTITY_REF_NODE as i32 as u32
+                            && !parent.is_null()
+                            && !(unsafe { (*parent).name }).is_null()
+                            && (unsafe { *((*parent).name).offset(0 as i32 as isize) }) as i32 != 'p' as i32
                         {
-                            xmlOutputBufferWriteString(
-                                buf,
-                                b"\n\0" as *const u8 as *const i8,
-                            );
+                            (unsafe { xmlOutputBufferWriteString(buf, b"\n\0" as *const u8 as *const i8) });
                         }
                     }
                 }
-            }
+            },
             2 => {
                 htmlAttrDumpOutput(buf, doc, cur as xmlAttrPtr);
-            }
+            },
             3 => {
-                if !((*cur).content).is_null() {
-                    if ((*cur).name == xmlStringText.as_ptr()
-                        || (*cur).name != xmlStringTextNoenc.as_ptr())
+                if !(unsafe { (*cur).content }).is_null() {
+                    if ((unsafe { (*cur).name }) == (unsafe { xmlStringText.as_ptr() })
+                        || (unsafe { (*cur).name }) != (unsafe { xmlStringTextNoenc.as_ptr() }))
                         && (parent.is_null()
-                            || xmlStrcasecmp(
+                            || (unsafe { xmlStrcasecmp(
                                 (*parent).name,
-                                b"script\0" as *const u8 as *const i8
-                                    as *mut xmlChar,
-                            ) != 0
-                                && xmlStrcasecmp(
+                                b"script\0" as *const u8 as *const i8 as *mut xmlChar,
+                            ) }) != 0
+                                && (unsafe { xmlStrcasecmp(
                                     (*parent).name,
-                                    b"style\0" as *const u8 as *const i8
-                                        as *mut xmlChar,
-                                ) != 0)
+                                    b"style\0" as *const u8 as *const i8 as *mut xmlChar,
+                                ) }) != 0)
                     {
-                        let mut buffer: * mut u8 = 0 as *mut xmlChar;
-                        buffer = xmlEncodeEntitiesReentrant(doc, (*cur).content);
+                        let mut buffer: *mut u8 = 0 as *mut xmlChar;
+                        buffer = xmlEncodeEntitiesReentrant(doc, unsafe { (*cur).content });
                         if !buffer.is_null() {
-                            xmlOutputBufferWriteString(
-                                buf,
-                                buffer as *const i8,
-                            );
-                            xmlFree
-                                .expect(
-                                    "non-null function pointer",
-                                )(buffer as *mut libc::c_void);
+                            (unsafe { xmlOutputBufferWriteString(buf, buffer as *const i8) });
+                            (unsafe { xmlFree.expect("non-null function pointer")(
+                                buffer as *mut libc::c_void,
+                            ) });
                         }
                     } else {
-                        xmlOutputBufferWriteString(
-                            buf,
-                            (*cur).content as *const i8,
-                        );
+                        (unsafe { xmlOutputBufferWriteString(buf, (*cur).content as *const i8) });
                     }
                 }
-            }
+            },
             8 => {
-                if !((*cur).content).is_null() {
-                    xmlOutputBufferWriteString(
-                        buf,
-                        b"<!--\0" as *const u8 as *const i8,
-                    );
-                    xmlOutputBufferWriteString(
-                        buf,
-                        (*cur).content as *const i8,
-                    );
-                    xmlOutputBufferWriteString(
-                        buf,
-                        b"-->\0" as *const u8 as *const i8,
-                    );
+                if !(unsafe { (*cur).content }).is_null() {
+                    (unsafe { xmlOutputBufferWriteString(buf, b"<!--\0" as *const u8 as *const i8) });
+                    (unsafe { xmlOutputBufferWriteString(buf, (*cur).content as *const i8) });
+                    (unsafe { xmlOutputBufferWriteString(buf, b"-->\0" as *const u8 as *const i8) });
                 }
-            }
+            },
             7 => {
-                if !((*cur).name).is_null() {
-                    xmlOutputBufferWriteString(
-                        buf,
-                        b"<?\0" as *const u8 as *const i8,
-                    );
-                    xmlOutputBufferWriteString(buf, (*cur).name as *const i8);
-                    if !((*cur).content).is_null() {
-                        xmlOutputBufferWriteString(
-                            buf,
-                            b" \0" as *const u8 as *const i8,
-                        );
-                        xmlOutputBufferWriteString(
-                            buf,
-                            (*cur).content as *const i8,
-                        );
+                if !(unsafe { (*cur).name }).is_null() {
+                    (unsafe { xmlOutputBufferWriteString(buf, b"<?\0" as *const u8 as *const i8) });
+                    (unsafe { xmlOutputBufferWriteString(buf, (*cur).name as *const i8) });
+                    if !(unsafe { (*cur).content }).is_null() {
+                        (unsafe { xmlOutputBufferWriteString(buf, b" \0" as *const u8 as *const i8) });
+                        (unsafe { xmlOutputBufferWriteString(buf, (*cur).content as *const i8) });
                     }
-                    xmlOutputBufferWriteString(
-                        buf,
-                        b">\0" as *const u8 as *const i8,
-                    );
+                    (unsafe { xmlOutputBufferWriteString(buf, b">\0" as *const u8 as *const i8) });
                 }
-            }
+            },
             5 => {
-                xmlOutputBufferWriteString(
-                    buf,
-                    b"&\0" as *const u8 as *const i8,
-                );
-                xmlOutputBufferWriteString(buf, (*cur).name as *const i8);
-                xmlOutputBufferWriteString(
-                    buf,
-                    b";\0" as *const u8 as *const i8,
-                );
-            }
+                (unsafe { xmlOutputBufferWriteString(buf, b"&\0" as *const u8 as *const i8) });
+                (unsafe { xmlOutputBufferWriteString(buf, (*cur).name as *const i8) });
+                (unsafe { xmlOutputBufferWriteString(buf, b";\0" as *const u8 as *const i8) });
+            },
             4 => {
-                if !((*cur).content).is_null() {
-                    xmlOutputBufferWriteString(
-                        buf,
-                        (*cur).content as *const i8,
-                    );
+                if !(unsafe { (*cur).content }).is_null() {
+                    (unsafe { xmlOutputBufferWriteString(buf, (*cur).content as *const i8) });
                 }
-            }
-            _ => {}
+            },
+            _ => {},
         }
         loop {
             if cur == root {
                 return;
             }
-            if !((*cur).next).is_null() {
-                cur = (*cur).next;
+            if !(unsafe { (*cur).next }).is_null() {
+                cur = unsafe { (*cur).next };
                 break;
             } else {
                 cur = parent;
-                parent = (*cur).parent;
-                if (*cur).type_0 as u32
-                    == XML_HTML_DOCUMENT_NODE as i32 as u32
-                    || (*cur).type_0 as u32
-                        == XML_DOCUMENT_NODE as i32 as u32
+                parent = unsafe { (*cur).parent };
+                if (unsafe { (*cur).type_0 }) as u32 == XML_HTML_DOCUMENT_NODE as i32 as u32
+                    || (unsafe { (*cur).type_0 }) as u32 == XML_DOCUMENT_NODE as i32 as u32
                 {
-                    xmlOutputBufferWriteString(
-                        buf,
-                        b"\n\0" as *const u8 as *const i8,
-                    );
+                    (unsafe { xmlOutputBufferWriteString(buf, b"\n\0" as *const u8 as *const i8) });
                 } else {
-                    if format != 0 && ((*cur).ns).is_null() {
-                        info = htmlTagLookup((*cur).name);
+                    if format != 0 && (unsafe { (*cur).ns }).is_null() {
+                        info = htmlTagLookup(unsafe { (*cur).name });
                     } else {
-                        info = (0 as * const crate::src::HTMLparser::_htmlElemDesc);
+                        info = 0 as *const crate::src::HTMLparser::_htmlElemDesc;
                     }
-                    if format != 0 && !info.is_null() && (*info).isinline == 0
-                        && (*(*cur).last).type_0 as u32
-                            != XML_TEXT_NODE as i32 as u32
-                        && (*(*cur).last).type_0 as u32
-                            != XML_ENTITY_REF_NODE as i32 as u32
-                        && (*cur).children != (*cur).last && !((*cur).name).is_null()
-                        && *((*cur).name).offset(0 as i32 as isize)
-                            as i32 != 'p' as i32
+                    if format != 0
+                        && !info.is_null()
+                        && (unsafe { (*info).isinline }) == 0
+                        && (unsafe { (*(*cur).last).type_0 }) as u32 != XML_TEXT_NODE as i32 as u32
+                        && (unsafe { (*(*cur).last).type_0 }) as u32 != XML_ENTITY_REF_NODE as i32 as u32
+                        && (unsafe { (*cur).children }) != (unsafe { (*cur).last })
+                        && !(unsafe { (*cur).name }).is_null()
+                        && (unsafe { *((*cur).name).offset(0 as i32 as isize) }) as i32 != 'p' as i32
                     {
-                        xmlOutputBufferWriteString(
-                            buf,
-                            b"\n\0" as *const u8 as *const i8,
-                        );
+                        (unsafe { xmlOutputBufferWriteString(buf, b"\n\0" as *const u8 as *const i8) });
                     }
-                    xmlOutputBufferWriteString(
-                        buf,
-                        b"</\0" as *const u8 as *const i8,
-                    );
-                    if !((*cur).ns).is_null() && !((*(*cur).ns).prefix).is_null() {
-                        xmlOutputBufferWriteString(
-                            buf,
-                            (*(*cur).ns).prefix as *const i8,
-                        );
-                        xmlOutputBufferWriteString(
-                            buf,
-                            b":\0" as *const u8 as *const i8,
-                        );
+                    (unsafe { xmlOutputBufferWriteString(buf, b"</\0" as *const u8 as *const i8) });
+                    if !(unsafe { (*cur).ns }).is_null() && !(unsafe { (*(*cur).ns).prefix }).is_null() {
+                        (unsafe { xmlOutputBufferWriteString(buf, (*(*cur).ns).prefix as *const i8) });
+                        (unsafe { xmlOutputBufferWriteString(buf, b":\0" as *const u8 as *const i8) });
                     }
-                    xmlOutputBufferWriteString(buf, (*cur).name as *const i8);
-                    xmlOutputBufferWriteString(
-                        buf,
-                        b">\0" as *const u8 as *const i8,
-                    );
-                    if format != 0 && !info.is_null() && (*info).isinline == 0
-                        && !((*cur).next).is_null()
+                    (unsafe { xmlOutputBufferWriteString(buf, (*cur).name as *const i8) });
+                    (unsafe { xmlOutputBufferWriteString(buf, b">\0" as *const u8 as *const i8) });
+                    if format != 0
+                        && !info.is_null()
+                        && (unsafe { (*info).isinline }) == 0
+                        && !(unsafe { (*cur).next }).is_null()
                     {
-                        if (*(*cur).next).type_0 as u32
-                            != XML_TEXT_NODE as i32 as u32
-                            && (*(*cur).next).type_0 as u32
-                                != XML_ENTITY_REF_NODE as i32 as u32
-                            && !parent.is_null() && !((*parent).name).is_null()
-                            && *((*parent).name).offset(0 as i32 as isize)
-                                as i32 != 'p' as i32
+                        if (unsafe { (*(*cur).next).type_0 }) as u32 != XML_TEXT_NODE as i32 as u32
+                            && (unsafe { (*(*cur).next).type_0 }) as u32 != XML_ENTITY_REF_NODE as i32 as u32
+                            && !parent.is_null()
+                            && !(unsafe { (*parent).name }).is_null()
+                            && (unsafe { *((*parent).name).offset(0 as i32 as isize) }) as i32 != 'p' as i32
                         {
-                            xmlOutputBufferWriteString(
-                                buf,
-                                b"\n\0" as *const u8 as *const i8,
-                            );
+                            (unsafe { xmlOutputBufferWriteString(buf, b"\n\0" as *const u8 as *const i8) });
                         }
                     }
                 }
             }
         }
-    };
+    }
 }
 #[no_mangle]
-pub unsafe extern "C" fn htmlNodeDumpOutput<'a1>(
-    mut buf: * mut crate::src::HTMLtree::_xmlOutputBuffer,
-    mut doc: * mut crate::src::HTMLparser::_xmlDoc,
-    mut cur: * mut crate::src::HTMLparser::_xmlNode,
-    mut encoding: Option<&'a1 i8>,
+pub extern "C" fn htmlNodeDumpOutput<'a1>(
+    mut buf: *mut crate::src::HTMLtree::_xmlOutputBuffer,
+    mut doc: *mut crate::src::HTMLparser::_xmlDoc,
+    mut cur: *mut crate::src::HTMLparser::_xmlNode,
+    mut _encoding: Option<&'a1 i8>,
 ) {
     htmlNodeDumpFormatOutput(buf, doc, cur, Option::<&'_ i8>::None, 1 as i32);
 }
 #[no_mangle]
-pub unsafe extern "C" fn htmlDocContentDumpFormatOutput(
-    mut buf: * mut crate::src::HTMLtree::_xmlOutputBuffer,
-    mut cur: * mut crate::src::HTMLparser::_xmlDoc,
-    mut encoding: * const i8,
+pub extern "C" fn htmlDocContentDumpFormatOutput(
+    mut buf: *mut crate::src::HTMLtree::_xmlOutputBuffer,
+    mut cur: *mut crate::src::HTMLparser::_xmlDoc,
+    mut _encoding: *const i8,
     mut format: i32,
 ) {
     let mut type_0: i32 = 0 as i32;
     if !cur.is_null() {
-        type_0 = (*cur).type_0 as i32;
-        (*cur).type_0 = XML_HTML_DOCUMENT_NODE;
+        type_0 = (unsafe { (*cur).type_0 }) as i32;
+        (unsafe { (*cur).type_0 = XML_HTML_DOCUMENT_NODE });
     }
-    htmlNodeDumpFormatOutput(
-        buf,
-        cur,
-        cur as xmlNodePtr,
-        Option::<&'_ i8>::None,
-        format,
-    );
+    htmlNodeDumpFormatOutput(buf, cur, cur as xmlNodePtr, Option::<&'_ i8>::None, format);
     if !cur.is_null() {
-        (*cur).type_0 = type_0 as xmlElementType;
+        (unsafe { (*cur).type_0 = type_0 as xmlElementType });
     }
 }
 #[no_mangle]
-pub unsafe extern "C" fn htmlDocContentDumpOutput<'a1>(
-    mut buf: * mut crate::src::HTMLtree::_xmlOutputBuffer,
-    mut cur: * mut crate::src::HTMLparser::_xmlDoc,
-    mut encoding: Option<&'a1 i8>,
+pub extern "C" fn htmlDocContentDumpOutput<'a1>(
+    mut buf: *mut crate::src::HTMLtree::_xmlOutputBuffer,
+    mut cur: *mut crate::src::HTMLparser::_xmlDoc,
+    mut _encoding: Option<&'a1 i8>,
 ) {
     htmlNodeDumpFormatOutput(
         buf,
@@ -2316,13 +2123,14 @@ pub unsafe extern "C" fn htmlDocContentDumpOutput<'a1>(
     );
 }
 #[no_mangle]
-pub unsafe extern "C" fn htmlDocDump(
-    mut f: * mut crate::src::HTMLtree::_IO_FILE,
-    mut cur: * mut crate::src::HTMLparser::_xmlDoc,
+pub extern "C" fn htmlDocDump(
+    mut f: *mut crate::src::HTMLtree::_IO_FILE,
+    mut cur: *mut crate::src::HTMLparser::_xmlDoc,
 ) -> i32 {
-    let mut buf: * mut crate::src::HTMLtree::_xmlOutputBuffer = 0 as *mut xmlOutputBuffer;
-    let mut handler: * mut crate::src::HTMLparser::_xmlCharEncodingHandler = 0 as xmlCharEncodingHandlerPtr;
-    let mut encoding: * const i8 = 0 as *const i8;
+    let mut buf: *mut crate::src::HTMLtree::_xmlOutputBuffer = 0 as *mut xmlOutputBuffer;
+    let mut handler: *mut crate::src::HTMLparser::_xmlCharEncodingHandler =
+        0 as xmlCharEncodingHandlerPtr;
+    let mut encoding: *const i8 = 0 as *const i8;
     let mut ret: i32 = 0;
     xmlInitParser();
     if cur.is_null() || f.is_null() {
@@ -2335,41 +2143,34 @@ pub unsafe extern "C" fn htmlDocDump(
         if enc as i32 != XML_CHAR_ENCODING_UTF8 as i32 {
             handler = xmlFindCharEncodingHandler(encoding);
             if handler.is_null() {
-                htmlSaveErr(
-                    XML_SAVE_UNKNOWN_ENCODING as i32,
-                    0 as xmlNodePtr,
-                    encoding,
-                );
+                htmlSaveErr(XML_SAVE_UNKNOWN_ENCODING as i32, 0 as xmlNodePtr, encoding);
             }
         }
     } else {
         if handler.is_null() {
-            handler = xmlFindCharEncodingHandler(
-                b"HTML\0" as *const u8 as *const i8,
-            );
+            handler = xmlFindCharEncodingHandler(b"HTML\0" as *const u8 as *const i8);
         }
         if handler.is_null() {
-            handler = xmlFindCharEncodingHandler(
-                b"ascii\0" as *const u8 as *const i8,
-            );
+            handler = xmlFindCharEncodingHandler(b"ascii\0" as *const u8 as *const i8);
         }
     }
-    buf = xmlOutputBufferCreateFile(f, handler);
+    buf = unsafe { xmlOutputBufferCreateFile(f, handler) };
     if buf.is_null() {
         return -(1 as i32);
     }
     htmlDocContentDumpOutput(buf, cur, Option::<&'_ i8>::None);
-    ret = xmlOutputBufferClose(buf);
+    ret = unsafe { xmlOutputBufferClose(buf) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn htmlSaveFile(
-    mut filename: * const i8,
-    mut cur: * mut crate::src::HTMLparser::_xmlDoc,
+pub extern "C" fn htmlSaveFile(
+    mut filename: *const i8,
+    mut cur: *mut crate::src::HTMLparser::_xmlDoc,
 ) -> i32 {
-    let mut buf: * mut crate::src::HTMLtree::_xmlOutputBuffer = 0 as *mut xmlOutputBuffer;
-    let mut handler: * mut crate::src::HTMLparser::_xmlCharEncodingHandler = 0 as xmlCharEncodingHandlerPtr;
-    let mut encoding: * const i8 = 0 as *const i8;
+    let mut buf: *mut crate::src::HTMLtree::_xmlOutputBuffer = 0 as *mut xmlOutputBuffer;
+    let mut handler: *mut crate::src::HTMLparser::_xmlCharEncodingHandler =
+        0 as xmlCharEncodingHandlerPtr;
+    let mut encoding: *const i8 = 0 as *const i8;
     let mut ret: i32 = 0;
     if cur.is_null() || filename.is_null() {
         return -(1 as i32);
@@ -2382,42 +2183,35 @@ pub unsafe extern "C" fn htmlSaveFile(
         if enc as i32 != XML_CHAR_ENCODING_UTF8 as i32 {
             handler = xmlFindCharEncodingHandler(encoding);
             if handler.is_null() {
-                htmlSaveErr(
-                    XML_SAVE_UNKNOWN_ENCODING as i32,
-                    0 as xmlNodePtr,
-                    encoding,
-                );
+                htmlSaveErr(XML_SAVE_UNKNOWN_ENCODING as i32, 0 as xmlNodePtr, encoding);
             }
         }
     } else {
         if handler.is_null() {
-            handler = xmlFindCharEncodingHandler(
-                b"HTML\0" as *const u8 as *const i8,
-            );
+            handler = xmlFindCharEncodingHandler(b"HTML\0" as *const u8 as *const i8);
         }
         if handler.is_null() {
-            handler = xmlFindCharEncodingHandler(
-                b"ascii\0" as *const u8 as *const i8,
-            );
+            handler = xmlFindCharEncodingHandler(b"ascii\0" as *const u8 as *const i8);
         }
     }
-    buf = xmlOutputBufferCreateFilename(filename, handler, (*cur).compression);
+    buf = unsafe { xmlOutputBufferCreateFilename(filename, handler, (*cur).compression) };
     if buf.is_null() {
         return 0 as i32;
     }
     htmlDocContentDumpOutput(buf, cur, Option::<&'_ i8>::None);
-    ret = xmlOutputBufferClose(buf);
+    ret = unsafe { xmlOutputBufferClose(buf) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn htmlSaveFileFormat(
-    mut filename: * const i8,
-    mut cur: * mut crate::src::HTMLparser::_xmlDoc,
-    mut encoding: * const i8,
+pub extern "C" fn htmlSaveFileFormat(
+    mut filename: *const i8,
+    mut cur: *mut crate::src::HTMLparser::_xmlDoc,
+    mut encoding: *const i8,
     mut format: i32,
 ) -> i32 {
-    let mut buf: * mut crate::src::HTMLtree::_xmlOutputBuffer = 0 as *mut xmlOutputBuffer;
-    let mut handler: * mut crate::src::HTMLparser::_xmlCharEncodingHandler = 0 as xmlCharEncodingHandlerPtr;
+    let mut buf: *mut crate::src::HTMLtree::_xmlOutputBuffer = 0 as *mut xmlOutputBuffer;
+    let mut handler: *mut crate::src::HTMLparser::_xmlCharEncodingHandler =
+        0 as xmlCharEncodingHandlerPtr;
     let mut ret: i32 = 0;
     if cur.is_null() || filename.is_null() {
         return -(1 as i32);
@@ -2429,43 +2223,32 @@ pub unsafe extern "C" fn htmlSaveFileFormat(
         if enc as i32 != XML_CHAR_ENCODING_UTF8 as i32 {
             handler = xmlFindCharEncodingHandler(encoding);
             if handler.is_null() {
-                htmlSaveErr(
-                    XML_SAVE_UNKNOWN_ENCODING as i32,
-                    0 as xmlNodePtr,
-                    encoding,
-                );
+                htmlSaveErr(XML_SAVE_UNKNOWN_ENCODING as i32, 0 as xmlNodePtr, encoding);
             }
         }
         htmlSetMetaEncoding(cur, encoding as *const xmlChar);
     } else {
-        htmlSetMetaEncoding(
-            cur,
-            b"UTF-8\0" as *const u8 as *const i8 as *const xmlChar,
-        );
+        htmlSetMetaEncoding(cur, b"UTF-8\0" as *const u8 as *const i8 as *const xmlChar);
         if handler.is_null() {
-            handler = xmlFindCharEncodingHandler(
-                b"HTML\0" as *const u8 as *const i8,
-            );
+            handler = xmlFindCharEncodingHandler(b"HTML\0" as *const u8 as *const i8);
         }
         if handler.is_null() {
-            handler = xmlFindCharEncodingHandler(
-                b"ascii\0" as *const u8 as *const i8,
-            );
+            handler = xmlFindCharEncodingHandler(b"ascii\0" as *const u8 as *const i8);
         }
     }
-    buf = xmlOutputBufferCreateFilename(filename, handler, 0 as i32);
+    buf = unsafe { xmlOutputBufferCreateFilename(filename, handler, 0 as i32) };
     if buf.is_null() {
         return 0 as i32;
     }
     htmlDocContentDumpFormatOutput(buf, cur, encoding, format);
-    ret = xmlOutputBufferClose(buf);
+    ret = unsafe { xmlOutputBufferClose(buf) };
     return ret;
 }
 #[no_mangle]
-pub unsafe extern "C" fn htmlSaveFileEnc(
-    mut filename: * const i8,
-    mut cur: * mut crate::src::HTMLparser::_xmlDoc,
-    mut encoding: * const i8,
+pub extern "C" fn htmlSaveFileEnc(
+    mut filename: *const i8,
+    mut cur: *mut crate::src::HTMLparser::_xmlDoc,
+    mut encoding: *const i8,
 ) -> i32 {
     return htmlSaveFileFormat(filename, cur, encoding, 1 as i32);
 }

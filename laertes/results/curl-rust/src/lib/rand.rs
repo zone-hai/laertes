@@ -150,11 +150,11 @@ pub type curl_slist = crate::src::lib::http2::curl_slist;
 // #[derive(Copy, Clone)]
 
 pub type WildcardData = crate::src::lib::http2::WildcardData;
-pub type wildcard_dtor = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
+pub type wildcard_dtor<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,) -> ()>;
 // #[derive(Copy, Clone)]
 
 pub type Curl_llist = crate::src::lib::http2::Curl_llist;
-pub type Curl_llist_dtor = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut core::ffi::c_void,) -> ()>;
+pub type Curl_llist_dtor<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,_: Option<&'a2 mut core::ffi::c_void>,) -> ()>;
 // #[derive(Copy, Clone)]
 
 pub type Curl_llist_element = crate::src::lib::http2::Curl_llist_element;
@@ -192,7 +192,7 @@ pub const HTTPREQ_GET: Curl_HttpReq = 0;
 
 pub type urlpieces = crate::src::lib::http2::urlpieces;
 pub type CURLU = crate::src::lib::urlapi::Curl_URL;
-pub type curl_read_callback = Option<unsafe extern "C"  fn(_: * mut i8,_: u64,_: u64,_: * mut core::ffi::c_void,) -> u64>;
+pub type curl_read_callback<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut i8>,_: u64,_: u64,_: Option<&'a2 mut core::ffi::c_void>,) -> u64>;
 // #[derive(Copy, Clone)]
 
 pub type time_node = crate::src::lib::http2::time_node;
@@ -250,9 +250,9 @@ pub type conncache = crate::src::lib::http2::conncache;
 // #[derive(Copy, Clone)]
 
 pub type Curl_hash = crate::src::lib::http2::Curl_hash;
-pub type Curl_hash_dtor = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type comp_function = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: u64,_: * mut core::ffi::c_void,_: u64,) -> u64>;
-pub type hash_function = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: u64,_: u64,) -> u64>;
+pub type Curl_hash_dtor<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,) -> ()>;
+pub type comp_function<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,_: u64,_: Option<&'a2 mut core::ffi::c_void>,_: u64,) -> u64>;
+pub type hash_function<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,_: u64,_: u64,) -> u64>;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
 pub type Progress = crate::src::lib::http2::Progress;
@@ -266,8 +266,8 @@ pub type Cookie = crate::src::lib::http2::Cookie;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
 pub type UserDefined = crate::src::lib::http2::UserDefined;
-pub type curl_trailer_callback = Option<unsafe extern "C"  fn(_: * mut * mut crate::src::lib::http2::curl_slist,_: * mut core::ffi::c_void,) -> i32>;
-pub type multidone_func = Option<unsafe extern "C"  fn(_: * mut crate::src::lib::http2::Curl_easy,_: u32,) -> i32>;
+pub type curl_trailer_callback<'a1, 'a2, 'a3> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut Option<&'a2 mut crate::src::lib::http2::curl_slist>>,_: Option<&'a3 mut core::ffi::c_void>,) -> i32>;
+pub type multidone_func<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut crate::src::lib::http2::Curl_easy>,_: u32,) -> i32>;
 pub type CURLcode = u32;
 pub const CURL_LAST: CURLcode = 99;
 pub const CURLE_SSL_CLIENTCERT: CURLcode = 98;
@@ -369,13 +369,13 @@ pub const CURLE_URL_MALFORMAT: CURLcode = 3;
 pub const CURLE_FAILED_INIT: CURLcode = 2;
 pub const CURLE_UNSUPPORTED_PROTOCOL: CURLcode = 1;
 pub const CURLE_OK: CURLcode = 0;
-pub type curl_resolver_start_callback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * mut core::ffi::c_void,_: * mut core::ffi::c_void,) -> i32>;
+pub type curl_resolver_start_callback<'a1, 'a2, 'a3> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,_: Option<&'a2 mut core::ffi::c_void>,_: Option<&'a3 mut core::ffi::c_void>,) -> i32>;
 // #[derive(Copy, Clone)]
 
 pub type Curl_http2_dep = crate::src::lib::http2::Curl_http2_dep;
-pub type curl_fnmatch_callback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const i8,_: * const i8,) -> i32>;
-pub type curl_chunk_end_callback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> i64>;
-pub type curl_chunk_bgn_callback = Option<unsafe extern "C"  fn(_: * const core::ffi::c_void,_: * mut core::ffi::c_void,_: i32,) -> i64>;
+pub type curl_fnmatch_callback<'a1, 'a2, 'a3> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,_: Option<&'a2 i8>,_: Option<&'a3 i8>,) -> i32>;
+pub type curl_chunk_end_callback<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,) -> i64>;
+pub type curl_chunk_bgn_callback<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 core::ffi::c_void>,_: Option<&'a2 mut core::ffi::c_void>,_: i32,) -> i64>;
 pub type Curl_RtspReq = u32;
 pub const RTSPREQ_LAST: Curl_RtspReq = 12;
 pub const RTSPREQ_RECEIVE: Curl_RtspReq = 11;
@@ -401,7 +401,7 @@ pub const CURL_NETRC_LAST: CURL_NETRC_OPTION = 3;
 pub const CURL_NETRC_REQUIRED: CURL_NETRC_OPTION = 2;
 pub const CURL_NETRC_OPTIONAL: CURL_NETRC_OPTION = 1;
 pub const CURL_NETRC_IGNORED: CURL_NETRC_OPTION = 0;
-pub type curl_sshkeycallback = Option<unsafe extern "C"  fn(_: * mut crate::src::lib::http2::Curl_easy,_: * const crate::src::lib::http2::curl_khkey,_: * const crate::src::lib::http2::curl_khkey,_: u32,_: * mut core::ffi::c_void,) -> i32>;
+pub type curl_sshkeycallback<'a1, 'a2, 'a3, 'a4> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut crate::src::lib::http2::Curl_easy>,_: Option<&'a2 crate::src::lib::http2::curl_khkey>,_: Option<&'a3 crate::src::lib::http2::curl_khkey>,_: u32,_: Option<&'a4 mut core::ffi::c_void>,) -> i32>;
 pub type curl_khmatch = u32;
 pub const CURLKHMATCH_LAST: curl_khmatch = 3;
 pub const CURLKHMATCH_MISSING: curl_khmatch = 2;
@@ -442,7 +442,7 @@ pub type CURL_TLSAUTH = u32;
 pub const CURL_TLSAUTH_LAST: CURL_TLSAUTH = 2;
 pub const CURL_TLSAUTH_SRP: CURL_TLSAUTH = 1;
 pub const CURL_TLSAUTH_NONE: CURL_TLSAUTH = 0;
-pub type curl_ssl_ctx_callback = Option<unsafe extern "C"  fn(_: * mut crate::src::lib::http2::Curl_easy,_: * mut core::ffi::c_void,_: * mut core::ffi::c_void,) -> u32>;
+pub type curl_ssl_ctx_callback<'a1, 'a2, 'a3> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut crate::src::lib::http2::Curl_easy>,_: Option<&'a2 mut core::ffi::c_void>,_: Option<&'a3 mut core::ffi::c_void>,) -> u32>;
 pub type curl_proxytype = u32;
 pub const CURLPROXY_SOCKS5_HOSTNAME: curl_proxytype = 7;
 pub const CURLPROXY_SOCKS4A: curl_proxytype = 6;
@@ -480,8 +480,8 @@ pub const MIMESTATE_EOH: mimestate = 3;
 pub const MIMESTATE_USERHEADERS: mimestate = 2;
 pub const MIMESTATE_CURLHEADERS: mimestate = 1;
 pub const MIMESTATE_BEGIN: mimestate = 0;
-pub type curl_free_callback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type curl_seek_callback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: i64,_: i32,) -> i32>;
+pub type curl_free_callback<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,) -> ()>;
+pub type curl_seek_callback<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,_: i64,_: i32,) -> i32>;
 pub type mimekind = u32;
 pub const MIMEKIND_LAST: mimekind = 5;
 pub const MIMEKIND_MULTIPART: mimekind = 4;
@@ -495,7 +495,7 @@ pub type curl_mime = crate::src::lib::http2::curl_mime;
 // #[derive(Copy, Clone)]
 
 pub type curl_httppost = crate::src::lib::http2::curl_httppost;
-pub type curl_hstswrite_callback = Option<unsafe extern "C"  fn(_: * mut crate::src::lib::http2::Curl_easy,_: * mut crate::src::lib::http2::curl_hstsentry,_: * mut crate::src::lib::http2::curl_index,_: * mut core::ffi::c_void,) -> u32>;
+pub type curl_hstswrite_callback<'a1, 'a2, 'a3, 'a4> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut crate::src::lib::http2::Curl_easy>,_: Option<&'a2 mut crate::src::lib::http2::curl_hstsentry>,_: Option<&'a3 mut crate::src::lib::http2::curl_index>,_: Option<&'a4 mut core::ffi::c_void>,) -> u32>;
 // #[derive(Copy, Clone)]
 
 pub type curl_index = crate::src::lib::http2::curl_index;
@@ -506,11 +506,11 @@ pub type CURLSTScode = u32;
 pub const CURLSTS_FAIL: CURLSTScode = 2;
 pub const CURLSTS_DONE: CURLSTScode = 1;
 pub const CURLSTS_OK: CURLSTScode = 0;
-pub type curl_hstsread_callback = Option<unsafe extern "C"  fn(_: * mut crate::src::lib::http2::Curl_easy,_: * mut crate::src::lib::http2::curl_hstsentry,_: * mut core::ffi::c_void,) -> u32>;
-pub type curl_conv_callback = Option<unsafe extern "C"  fn(_: * mut i8,_: u64,) -> u32>;
-pub type curl_closesocket_callback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: i32,) -> i32>;
+pub type curl_hstsread_callback<'a1, 'a2, 'a3> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut crate::src::lib::http2::Curl_easy>,_: Option<&'a2 mut crate::src::lib::http2::curl_hstsentry>,_: Option<&'a3 mut core::ffi::c_void>,) -> u32>;
+pub type curl_conv_callback<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut i8>,_: u64,) -> u32>;
+pub type curl_closesocket_callback<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,_: i32,) -> i32>;
 pub type curl_socket_t = i32;
-pub type curl_opensocket_callback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: u32,_: * mut crate::src::lib::http2::curl_sockaddr,) -> i32>;
+pub type curl_opensocket_callback<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,_: u32,_: Option<&'a2 mut crate::src::lib::http2::curl_sockaddr>,) -> i32>;
 // #[derive(Copy, Clone)]
 
 pub type curl_sockaddr = crate::src::lib::http2::curl_sockaddr;
@@ -518,14 +518,14 @@ pub type curlsocktype = u32;
 pub const CURLSOCKTYPE_LAST: curlsocktype = 2;
 pub const CURLSOCKTYPE_ACCEPT: curlsocktype = 1;
 pub const CURLSOCKTYPE_IPCXN: curlsocktype = 0;
-pub type curl_sockopt_callback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: i32,_: u32,) -> i32>;
-pub type curl_ioctl_callback = Option<unsafe extern "C"  fn(_: * mut crate::src::lib::http2::Curl_easy,_: i32,_: * mut core::ffi::c_void,) -> u32>;
+pub type curl_sockopt_callback<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,_: i32,_: u32,) -> i32>;
+pub type curl_ioctl_callback<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut crate::src::lib::http2::Curl_easy>,_: i32,_: Option<&'a2 mut core::ffi::c_void>,) -> u32>;
 pub type curlioerr = u32;
 pub const CURLIOE_LAST: curlioerr = 3;
 pub const CURLIOE_FAILRESTART: curlioerr = 2;
 pub const CURLIOE_UNKNOWNCMD: curlioerr = 1;
 pub const CURLIOE_OK: curlioerr = 0;
-pub type curl_debug_callback = Option<unsafe extern "C"  fn(_: * mut crate::src::lib::http2::Curl_easy,_: u32,_: * mut i8,_: u64,_: * mut core::ffi::c_void,) -> i32>;
+pub type curl_debug_callback<'a1, 'a2, 'a3> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut crate::src::lib::http2::Curl_easy>,_: u32,_: Option<&'a2 mut i8>,_: u64,_: Option<&'a3 mut core::ffi::c_void>,) -> i32>;
 pub type curl_infotype = u32;
 pub const CURLINFO_END: curl_infotype = 7;
 pub const CURLINFO_SSL_DATA_OUT: curl_infotype = 6;
@@ -535,9 +535,9 @@ pub const CURLINFO_DATA_IN: curl_infotype = 3;
 pub const CURLINFO_HEADER_OUT: curl_infotype = 2;
 pub const CURLINFO_HEADER_IN: curl_infotype = 1;
 pub const CURLINFO_TEXT: curl_infotype = 0;
-pub type curl_xferinfo_callback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: i64,_: i64,_: i64,_: i64,) -> i32>;
-pub type curl_progress_callback = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: f64,_: f64,_: f64,_: f64,) -> i32>;
-pub type curl_write_callback = Option<unsafe extern "C"  fn(_: * mut i8,_: u64,_: u64,_: * mut core::ffi::c_void,) -> u64>;
+pub type curl_xferinfo_callback<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,_: i64,_: i64,_: i64,_: i64,) -> i32>;
+pub type curl_progress_callback<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,_: f64,_: f64,_: f64,_: f64,) -> i32>;
+pub type curl_write_callback<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut i8>,_: u64,_: u64,_: Option<&'a2 mut core::ffi::c_void>,) -> u64>;
 // #[derive(Copy, Clone, BitfieldStruct)]
 
 pub type SingleRequest = crate::src::lib::http2::SingleRequest;
@@ -611,10 +611,10 @@ pub type psl_ctx_t = crate::src::lib::urlapi::psl_ctx_st;
 // #[derive(Copy, Clone)]
 
 pub type Curl_multi = crate::src::lib::http2::Curl_multi;
-pub type curl_multi_timer_callback = Option<unsafe extern "C"  fn(_: * mut crate::src::lib::http2::Curl_multi,_: i64,_: * mut core::ffi::c_void,) -> i32>;
+pub type curl_multi_timer_callback<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut crate::src::lib::http2::Curl_multi>,_: i64,_: Option<&'a2 mut core::ffi::c_void>,) -> i32>;
 pub type CURLM = crate::src::lib::http2::Curl_multi;
-pub type curl_push_callback = Option<unsafe extern "C"  fn(_: * mut crate::src::lib::http2::Curl_easy,_: * mut crate::src::lib::http2::Curl_easy,_: u64,_: * mut crate::src::lib::http2::curl_pushheaders,_: * mut core::ffi::c_void,) -> i32>;
-pub type curl_socket_callback = Option<unsafe extern "C"  fn(_: * mut crate::src::lib::http2::Curl_easy,_: i32,_: i32,_: * mut core::ffi::c_void,_: * mut core::ffi::c_void,) -> i32>;
+pub type curl_push_callback<'a1, 'a2, 'a3, 'a4> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut crate::src::lib::http2::Curl_easy>,_: Option<&'a2 mut crate::src::lib::http2::Curl_easy>,_: u64,_: Option<&'a3 mut crate::src::lib::http2::curl_pushheaders>,_: Option<&'a4 mut core::ffi::c_void>,) -> i32>;
+pub type curl_socket_callback<'a1, 'a2, 'a3> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut crate::src::lib::http2::Curl_easy>,_: i32,_: i32,_: Option<&'a2 mut core::ffi::c_void>,_: Option<&'a3 mut core::ffi::c_void>,) -> i32>;
 // #[derive(Copy, Clone)]
 
 pub type Names = crate::src::lib::http2::Names;
@@ -844,8 +844,8 @@ pub type nghttp2_settings_entry = crate::src::lib::http2::nghttp2_settings_entry
 // #[derive(Copy, Clone)]
 
 pub type h2settings = crate::src::lib::http2::h2settings;
-pub type Curl_recv = unsafe extern "C"  fn(_: * mut crate::src::lib::http2::Curl_easy,_: i32,_: * mut i8,_: u64,_: * mut u32,) -> i64;
-pub type Curl_send = unsafe extern "C"  fn(_: * mut crate::src::lib::http2::Curl_easy,_: i32,_: * const core::ffi::c_void,_: u64,_: * mut u32,) -> i64;
+pub type Curl_recv<'a1, 'a2, 'a3> = unsafe extern "C"  fn(_: Option<&'a1 mut crate::src::lib::http2::Curl_easy>,_: i32,_: Option<&'a2 mut i8>,_: u64,_: Option<&'a3 mut u32>,) -> i64;
+pub type Curl_send<'a1, 'a2, 'a3> = unsafe extern "C"  fn(_: Option<&'a1 mut crate::src::lib::http2::Curl_easy>,_: i32,_: Option<&'a2 core::ffi::c_void>,_: u64,_: Option<&'a3 mut u32>,) -> i64;
 // #[derive(Copy, Clone)]
 
 pub type ftp_conn = crate::src::lib::http2::ftp_conn;

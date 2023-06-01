@@ -11,9 +11,9 @@ extern "C" {
 }
 pub use crate::src::lib::warnless::curlx_uztoui;
 pub type size_t = u64;
-pub type HMAC_hinit_func = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,) -> ()>;
-pub type HMAC_hupdate_func = Option<unsafe extern "C"  fn(_: * mut core::ffi::c_void,_: * const u8,_: u32,) -> ()>;
-pub type HMAC_hfinal_func = Option<unsafe extern "C"  fn(_: * mut u8,_: * mut core::ffi::c_void,) -> ()>;
+pub type HMAC_hinit_func<'a1> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,) -> ()>;
+pub type HMAC_hupdate_func<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut core::ffi::c_void>,_: Option<&'a2 u8>,_: u32,) -> ()>;
+pub type HMAC_hfinal_func<'a1, 'a2> = Option<unsafe extern "C"  fn(_: Option<&'a1 mut u8>,_: Option<&'a2 mut core::ffi::c_void>,) -> ()>;
 // #[derive(Copy, Clone)]
 
 pub type HMAC_params = crate::src::lib::curl_ntlm_core::HMAC_params;

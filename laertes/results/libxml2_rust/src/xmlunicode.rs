@@ -1,1575 +1,1204 @@
-use ::libc;
+
 extern "C" {
-    fn strcmp(_: * const i8, _: * const i8) -> i32;
-    fn xmlCharInRange(val: u32, group: * const crate::src::tree::_xmlChRangeGroup) -> i32;
+    fn strcmp(_: *const i8, _: *const i8) -> i32;
+    fn xmlCharInRange(val: u32, group: *const crate::src::tree::_xmlChRangeGroup) -> i32;
 }
-pub type xmlIntFunc = unsafe extern "C"  fn(_: i32,) -> i32;
+pub type xmlIntFunc = unsafe extern "C" fn(_: i32) -> i32;
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct xmlUnicodeNameTable {
-    pub table: * const crate::src::xmlunicode::xmlUnicodeRange,
+    pub table: *const crate::src::xmlunicode::xmlUnicodeRange,
     pub numentries: i32,
 }
 impl xmlUnicodeNameTable {
     pub const fn new() -> Self {
         xmlUnicodeNameTable {
-        table: (0 as * const crate::src::xmlunicode::xmlUnicodeRange),
-        numentries: 0
+            table: (0 as *const crate::src::xmlunicode::xmlUnicodeRange),
+            numentries: 0,
         }
     }
 }
-
 impl std::default::Default for xmlUnicodeNameTable {
-    fn default() -> Self { xmlUnicodeNameTable::new() }
+    fn default() -> Self {
+        xmlUnicodeNameTable::new()
+    }
 }
-
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct xmlUnicodeRange {
-    pub rangename: * const i8,
-    pub func: Option<unsafe extern "C"  fn(_: i32,) -> i32>,
+    pub rangename: *const i8,
+    pub func: Option<unsafe extern "C" fn(_: i32) -> i32>,
 }
 impl xmlUnicodeRange {
     pub const fn new() -> Self {
         xmlUnicodeRange {
-        rangename: (0 as * const i8),
-        func: None
+            rangename: (0 as *const i8),
+            func: None,
         }
     }
 }
-
 impl std::default::Default for xmlUnicodeRange {
-    fn default() -> Self { xmlUnicodeRange::new() }
+    fn default() -> Self {
+        xmlUnicodeRange::new()
+    }
 }
-
 pub type xmlChRangeGroup = crate::src::tree::_xmlChRangeGroup;
-// #[derive(Copy, Clone)]
-
 pub type _xmlChRangeGroup = crate::src::tree::_xmlChRangeGroup;
 pub type xmlChLRange = crate::src::tree::_xmlChLRange;
-// #[derive(Copy, Clone)]
-
 pub type _xmlChLRange = crate::src::tree::_xmlChLRange;
 pub type xmlChSRange = crate::src::tree::_xmlChSRange;
-// #[derive(Copy, Clone)]
-
 pub type _xmlChSRange = crate::src::tree::_xmlChSRange;
-static mut xmlUnicodeBlocks: [crate::src::xmlunicode::xmlUnicodeRange; 128] = unsafe {
+static mut xmlUnicodeBlocks: [crate::src::xmlunicode::xmlUnicodeRange; 128] =  {
     [
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"AegeanNumbers\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsAegeanNumbers,
-                ),
+                func: Some(xmlUCSIsAegeanNumbers),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"AlphabeticPresentationForms\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsAlphabeticPresentationForms,
-                ),
+                rangename: b"AlphabeticPresentationForms\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsAlphabeticPresentationForms),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Arabic\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsArabic,
-                ),
+                func: Some(xmlUCSIsArabic),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"ArabicPresentationForms-A\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsArabicPresentationFormsA,
-                ),
+                rangename: b"ArabicPresentationForms-A\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsArabicPresentationFormsA),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"ArabicPresentationForms-B\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsArabicPresentationFormsB,
-                ),
+                rangename: b"ArabicPresentationForms-B\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsArabicPresentationFormsB),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Armenian\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsArmenian,
-                ),
+                func: Some(xmlUCSIsArmenian),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Arrows\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsArrows,
-                ),
+                func: Some(xmlUCSIsArrows),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"BasicLatin\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsBasicLatin,
-                ),
+                func: Some(xmlUCSIsBasicLatin),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Bengali\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsBengali,
-                ),
+                func: Some(xmlUCSIsBengali),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"BlockElements\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsBlockElements,
-                ),
+                func: Some(xmlUCSIsBlockElements),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Bopomofo\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsBopomofo,
-                ),
+                func: Some(xmlUCSIsBopomofo),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"BopomofoExtended\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsBopomofoExtended,
-                ),
+                func: Some(xmlUCSIsBopomofoExtended),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"BoxDrawing\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsBoxDrawing,
-                ),
+                func: Some(xmlUCSIsBoxDrawing),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"BraillePatterns\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsBraillePatterns,
-                ),
+                func: Some(xmlUCSIsBraillePatterns),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Buhid\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsBuhid,
-                ),
+                func: Some(xmlUCSIsBuhid),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"ByzantineMusicalSymbols\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsByzantineMusicalSymbols,
-                ),
+                rangename: b"ByzantineMusicalSymbols\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsByzantineMusicalSymbols),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"CJKCompatibility\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCJKCompatibility,
-                ),
+                func: Some(xmlUCSIsCJKCompatibility),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"CJKCompatibilityForms\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsCJKCompatibilityForms,
-                ),
+                rangename: b"CJKCompatibilityForms\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsCJKCompatibilityForms),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"CJKCompatibilityIdeographs\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsCJKCompatibilityIdeographs,
-                ),
+                rangename: b"CJKCompatibilityIdeographs\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsCJKCompatibilityIdeographs),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"CJKCompatibilityIdeographsSupplement\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsCJKCompatibilityIdeographsSupplement,
-                ),
+                rangename: b"CJKCompatibilityIdeographsSupplement\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsCJKCompatibilityIdeographsSupplement),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"CJKRadicalsSupplement\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsCJKRadicalsSupplement,
-                ),
+                rangename: b"CJKRadicalsSupplement\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsCJKRadicalsSupplement),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"CJKSymbolsandPunctuation\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsCJKSymbolsandPunctuation,
-                ),
+                rangename: b"CJKSymbolsandPunctuation\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsCJKSymbolsandPunctuation),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"CJKUnifiedIdeographs\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCJKUnifiedIdeographs,
-                ),
+                func: Some(xmlUCSIsCJKUnifiedIdeographs),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"CJKUnifiedIdeographsExtensionA\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsCJKUnifiedIdeographsExtensionA,
-                ),
+                rangename: b"CJKUnifiedIdeographsExtensionA\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsCJKUnifiedIdeographsExtensionA),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"CJKUnifiedIdeographsExtensionB\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsCJKUnifiedIdeographsExtensionB,
-                ),
+                rangename: b"CJKUnifiedIdeographsExtensionB\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsCJKUnifiedIdeographsExtensionB),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Cherokee\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCherokee,
-                ),
+                func: Some(xmlUCSIsCherokee),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"CombiningDiacriticalMarks\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsCombiningDiacriticalMarks,
-                ),
+                rangename: b"CombiningDiacriticalMarks\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsCombiningDiacriticalMarks),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"CombiningDiacriticalMarksforSymbols\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsCombiningDiacriticalMarksforSymbols,
-                ),
+                rangename: b"CombiningDiacriticalMarksforSymbols\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsCombiningDiacriticalMarksforSymbols),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"CombiningHalfMarks\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCombiningHalfMarks,
-                ),
+                func: Some(xmlUCSIsCombiningHalfMarks),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"CombiningMarksforSymbols\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsCombiningMarksforSymbols,
-                ),
+                rangename: b"CombiningMarksforSymbols\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsCombiningMarksforSymbols),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"ControlPictures\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsControlPictures,
-                ),
+                func: Some(xmlUCSIsControlPictures),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"CurrencySymbols\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCurrencySymbols,
-                ),
+                func: Some(xmlUCSIsCurrencySymbols),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"CypriotSyllabary\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCypriotSyllabary,
-                ),
+                func: Some(xmlUCSIsCypriotSyllabary),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Cyrillic\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCyrillic,
-                ),
+                func: Some(xmlUCSIsCyrillic),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"CyrillicSupplement\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCyrillicSupplement,
-                ),
+                func: Some(xmlUCSIsCyrillicSupplement),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Deseret\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsDeseret,
-                ),
+                func: Some(xmlUCSIsDeseret),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Devanagari\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsDevanagari,
-                ),
+                func: Some(xmlUCSIsDevanagari),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Dingbats\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsDingbats,
-                ),
+                func: Some(xmlUCSIsDingbats),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"EnclosedAlphanumerics\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsEnclosedAlphanumerics,
-                ),
+                rangename: b"EnclosedAlphanumerics\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsEnclosedAlphanumerics),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"EnclosedCJKLettersandMonths\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsEnclosedCJKLettersandMonths,
-                ),
+                rangename: b"EnclosedCJKLettersandMonths\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsEnclosedCJKLettersandMonths),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Ethiopic\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsEthiopic,
-                ),
+                func: Some(xmlUCSIsEthiopic),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"GeneralPunctuation\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsGeneralPunctuation,
-                ),
+                func: Some(xmlUCSIsGeneralPunctuation),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"GeometricShapes\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsGeometricShapes,
-                ),
+                func: Some(xmlUCSIsGeometricShapes),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Georgian\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsGeorgian,
-                ),
+                func: Some(xmlUCSIsGeorgian),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Gothic\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsGothic,
-                ),
+                func: Some(xmlUCSIsGothic),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Greek\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsGreek,
-                ),
+                func: Some(xmlUCSIsGreek),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"GreekExtended\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsGreekExtended,
-                ),
+                func: Some(xmlUCSIsGreekExtended),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"GreekandCoptic\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsGreekandCoptic,
-                ),
+                func: Some(xmlUCSIsGreekandCoptic),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Gujarati\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsGujarati,
-                ),
+                func: Some(xmlUCSIsGujarati),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Gurmukhi\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsGurmukhi,
-                ),
+                func: Some(xmlUCSIsGurmukhi),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"HalfwidthandFullwidthForms\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsHalfwidthandFullwidthForms,
-                ),
+                rangename: b"HalfwidthandFullwidthForms\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsHalfwidthandFullwidthForms),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"HangulCompatibilityJamo\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsHangulCompatibilityJamo,
-                ),
+                rangename: b"HangulCompatibilityJamo\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsHangulCompatibilityJamo),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"HangulJamo\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsHangulJamo,
-                ),
+                func: Some(xmlUCSIsHangulJamo),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"HangulSyllables\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsHangulSyllables,
-                ),
+                func: Some(xmlUCSIsHangulSyllables),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Hanunoo\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsHanunoo,
-                ),
+                func: Some(xmlUCSIsHanunoo),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Hebrew\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsHebrew,
-                ),
+                func: Some(xmlUCSIsHebrew),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"HighPrivateUseSurrogates\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsHighPrivateUseSurrogates,
-                ),
+                rangename: b"HighPrivateUseSurrogates\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsHighPrivateUseSurrogates),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"HighSurrogates\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsHighSurrogates,
-                ),
+                func: Some(xmlUCSIsHighSurrogates),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Hiragana\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsHiragana,
-                ),
+                func: Some(xmlUCSIsHiragana),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"IPAExtensions\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsIPAExtensions,
-                ),
+                func: Some(xmlUCSIsIPAExtensions),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"IdeographicDescriptionCharacters\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsIdeographicDescriptionCharacters,
-                ),
+                rangename: b"IdeographicDescriptionCharacters\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsIdeographicDescriptionCharacters),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Kanbun\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsKanbun,
-                ),
+                func: Some(xmlUCSIsKanbun),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"KangxiRadicals\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsKangxiRadicals,
-                ),
+                func: Some(xmlUCSIsKangxiRadicals),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Kannada\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsKannada,
-                ),
+                func: Some(xmlUCSIsKannada),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Katakana\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsKatakana,
-                ),
+                func: Some(xmlUCSIsKatakana),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"KatakanaPhoneticExtensions\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsKatakanaPhoneticExtensions,
-                ),
+                rangename: b"KatakanaPhoneticExtensions\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsKatakanaPhoneticExtensions),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Khmer\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsKhmer,
-                ),
+                func: Some(xmlUCSIsKhmer),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"KhmerSymbols\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsKhmerSymbols,
-                ),
+                func: Some(xmlUCSIsKhmerSymbols),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Lao\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsLao,
-                ),
+                func: Some(xmlUCSIsLao),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Latin-1Supplement\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsLatin1Supplement,
-                ),
+                func: Some(xmlUCSIsLatin1Supplement),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"LatinExtended-A\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsLatinExtendedA,
-                ),
+                func: Some(xmlUCSIsLatinExtendedA),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"LatinExtended-B\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsLatinExtendedB,
-                ),
+                func: Some(xmlUCSIsLatinExtendedB),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"LatinExtendedAdditional\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsLatinExtendedAdditional,
-                ),
+                rangename: b"LatinExtendedAdditional\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsLatinExtendedAdditional),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"LetterlikeSymbols\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsLetterlikeSymbols,
-                ),
+                func: Some(xmlUCSIsLetterlikeSymbols),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Limbu\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsLimbu,
-                ),
+                func: Some(xmlUCSIsLimbu),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"LinearBIdeograms\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsLinearBIdeograms,
-                ),
+                func: Some(xmlUCSIsLinearBIdeograms),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"LinearBSyllabary\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsLinearBSyllabary,
-                ),
+                func: Some(xmlUCSIsLinearBSyllabary),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"LowSurrogates\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsLowSurrogates,
-                ),
+                func: Some(xmlUCSIsLowSurrogates),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Malayalam\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsMalayalam,
-                ),
+                func: Some(xmlUCSIsMalayalam),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"MathematicalAlphanumericSymbols\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsMathematicalAlphanumericSymbols,
-                ),
+                rangename: b"MathematicalAlphanumericSymbols\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsMathematicalAlphanumericSymbols),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"MathematicalOperators\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsMathematicalOperators,
-                ),
+                rangename: b"MathematicalOperators\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsMathematicalOperators),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"MiscellaneousMathematicalSymbols-A\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsMiscellaneousMathematicalSymbolsA,
-                ),
+                rangename: b"MiscellaneousMathematicalSymbols-A\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsMiscellaneousMathematicalSymbolsA),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"MiscellaneousMathematicalSymbols-B\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsMiscellaneousMathematicalSymbolsB,
-                ),
+                rangename: b"MiscellaneousMathematicalSymbols-B\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsMiscellaneousMathematicalSymbolsB),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"MiscellaneousSymbols\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsMiscellaneousSymbols,
-                ),
+                func: Some(xmlUCSIsMiscellaneousSymbols),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"MiscellaneousSymbolsandArrows\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsMiscellaneousSymbolsandArrows,
-                ),
+                rangename: b"MiscellaneousSymbolsandArrows\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsMiscellaneousSymbolsandArrows),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"MiscellaneousTechnical\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsMiscellaneousTechnical,
-                ),
+                rangename: b"MiscellaneousTechnical\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsMiscellaneousTechnical),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Mongolian\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsMongolian,
-                ),
+                func: Some(xmlUCSIsMongolian),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"MusicalSymbols\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsMusicalSymbols,
-                ),
+                func: Some(xmlUCSIsMusicalSymbols),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Myanmar\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsMyanmar,
-                ),
+                func: Some(xmlUCSIsMyanmar),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"NumberForms\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsNumberForms,
-                ),
+                func: Some(xmlUCSIsNumberForms),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Ogham\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsOgham,
-                ),
+                func: Some(xmlUCSIsOgham),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"OldItalic\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsOldItalic,
-                ),
+                func: Some(xmlUCSIsOldItalic),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"OpticalCharacterRecognition\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsOpticalCharacterRecognition,
-                ),
+                rangename: b"OpticalCharacterRecognition\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsOpticalCharacterRecognition),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Oriya\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsOriya,
-                ),
+                func: Some(xmlUCSIsOriya),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Osmanya\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsOsmanya,
-                ),
+                func: Some(xmlUCSIsOsmanya),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"PhoneticExtensions\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsPhoneticExtensions,
-                ),
+                func: Some(xmlUCSIsPhoneticExtensions),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"PrivateUse\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsPrivateUse,
-                ),
+                func: Some(xmlUCSIsPrivateUse),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"PrivateUseArea\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsPrivateUseArea,
-                ),
+                func: Some(xmlUCSIsPrivateUseArea),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Runic\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsRunic,
-                ),
+                func: Some(xmlUCSIsRunic),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Shavian\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsShavian,
-                ),
+                func: Some(xmlUCSIsShavian),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Sinhala\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsSinhala,
-                ),
+                func: Some(xmlUCSIsSinhala),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"SmallFormVariants\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsSmallFormVariants,
-                ),
+                func: Some(xmlUCSIsSmallFormVariants),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"SpacingModifierLetters\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsSpacingModifierLetters,
-                ),
+                rangename: b"SpacingModifierLetters\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsSpacingModifierLetters),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Specials\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsSpecials,
-                ),
+                func: Some(xmlUCSIsSpecials),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"SuperscriptsandSubscripts\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsSuperscriptsandSubscripts,
-                ),
+                rangename: b"SuperscriptsandSubscripts\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsSuperscriptsandSubscripts),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"SupplementalArrows-A\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsSupplementalArrowsA,
-                ),
+                func: Some(xmlUCSIsSupplementalArrowsA),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"SupplementalArrows-B\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsSupplementalArrowsB,
-                ),
+                func: Some(xmlUCSIsSupplementalArrowsB),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"SupplementalMathematicalOperators\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsSupplementalMathematicalOperators,
-                ),
+                rangename: b"SupplementalMathematicalOperators\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsSupplementalMathematicalOperators),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"SupplementaryPrivateUseArea-A\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsSupplementaryPrivateUseAreaA,
-                ),
+                rangename: b"SupplementaryPrivateUseArea-A\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsSupplementaryPrivateUseAreaA),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"SupplementaryPrivateUseArea-B\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsSupplementaryPrivateUseAreaB,
-                ),
+                rangename: b"SupplementaryPrivateUseArea-B\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsSupplementaryPrivateUseAreaB),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Syriac\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsSyriac,
-                ),
+                func: Some(xmlUCSIsSyriac),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Tagalog\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsTagalog,
-                ),
+                func: Some(xmlUCSIsTagalog),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Tagbanwa\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsTagbanwa,
-                ),
+                func: Some(xmlUCSIsTagbanwa),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Tags\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsTags,
-                ),
+                func: Some(xmlUCSIsTags),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"TaiLe\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsTaiLe,
-                ),
+                func: Some(xmlUCSIsTaiLe),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"TaiXuanJingSymbols\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsTaiXuanJingSymbols,
-                ),
+                func: Some(xmlUCSIsTaiXuanJingSymbols),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Tamil\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsTamil,
-                ),
+                func: Some(xmlUCSIsTamil),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Telugu\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsTelugu,
-                ),
+                func: Some(xmlUCSIsTelugu),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Thaana\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsThaana,
-                ),
+                func: Some(xmlUCSIsThaana),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Thai\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsThai,
-                ),
+                func: Some(xmlUCSIsThai),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Tibetan\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsTibetan,
-                ),
+                func: Some(xmlUCSIsTibetan),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Ugaritic\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsUgaritic,
-                ),
+                func: Some(xmlUCSIsUgaritic),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"UnifiedCanadianAboriginalSyllabics\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsUnifiedCanadianAboriginalSyllabics,
-                ),
+                rangename: b"UnifiedCanadianAboriginalSyllabics\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsUnifiedCanadianAboriginalSyllabics),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"VariationSelectors\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsVariationSelectors,
-                ),
+                func: Some(xmlUCSIsVariationSelectors),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"VariationSelectorsSupplement\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsVariationSelectorsSupplement,
-                ),
+                rangename: b"VariationSelectorsSupplement\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsVariationSelectorsSupplement),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"YiRadicals\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsYiRadicals,
-                ),
+                func: Some(xmlUCSIsYiRadicals),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"YiSyllables\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsYiSyllables,
-                ),
+                func: Some(xmlUCSIsYiSyllables),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
-                rangename: b"YijingHexagramSymbols\0" as *const u8
-                    as *const i8,
-                func: Some(
-                    xmlUCSIsYijingHexagramSymbols,
-                ),
+                rangename: b"YijingHexagramSymbols\0" as *const u8 as *const i8,
+                func: Some(xmlUCSIsYijingHexagramSymbols),
             };
             init
         },
     ]
 };
-static mut xmlUnicodeCats: [crate::src::xmlunicode::xmlUnicodeRange; 36] = unsafe {
+static mut xmlUnicodeCats: [crate::src::xmlunicode::xmlUnicodeRange; 36] =  {
     [
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"C\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatC,
-                ),
+                func: Some(xmlUCSIsCatC),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Cc\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatCc,
-                ),
+                func: Some(xmlUCSIsCatCc),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Cf\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatCf,
-                ),
+                func: Some(xmlUCSIsCatCf),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Co\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatCo,
-                ),
+                func: Some(xmlUCSIsCatCo),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Cs\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatCs,
-                ),
+                func: Some(xmlUCSIsCatCs),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"L\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatL,
-                ),
+                func: Some(xmlUCSIsCatL),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Ll\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatLl,
-                ),
+                func: Some(xmlUCSIsCatLl),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Lm\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatLm,
-                ),
+                func: Some(xmlUCSIsCatLm),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Lo\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatLo,
-                ),
+                func: Some(xmlUCSIsCatLo),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Lt\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatLt,
-                ),
+                func: Some(xmlUCSIsCatLt),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Lu\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatLu,
-                ),
+                func: Some(xmlUCSIsCatLu),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"M\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatM,
-                ),
+                func: Some(xmlUCSIsCatM),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Mc\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatMc,
-                ),
+                func: Some(xmlUCSIsCatMc),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Me\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatMe,
-                ),
+                func: Some(xmlUCSIsCatMe),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Mn\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatMn,
-                ),
+                func: Some(xmlUCSIsCatMn),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"N\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatN,
-                ),
+                func: Some(xmlUCSIsCatN),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Nd\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatNd,
-                ),
+                func: Some(xmlUCSIsCatNd),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Nl\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatNl,
-                ),
+                func: Some(xmlUCSIsCatNl),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"No\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatNo,
-                ),
+                func: Some(xmlUCSIsCatNo),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"P\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatP,
-                ),
+                func: Some(xmlUCSIsCatP),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Pc\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatPc,
-                ),
+                func: Some(xmlUCSIsCatPc),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Pd\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatPd,
-                ),
+                func: Some(xmlUCSIsCatPd),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Pe\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatPe,
-                ),
+                func: Some(xmlUCSIsCatPe),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Pf\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatPf,
-                ),
+                func: Some(xmlUCSIsCatPf),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Pi\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatPi,
-                ),
+                func: Some(xmlUCSIsCatPi),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Po\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatPo,
-                ),
+                func: Some(xmlUCSIsCatPo),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Ps\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatPs,
-                ),
+                func: Some(xmlUCSIsCatPs),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"S\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatS,
-                ),
+                func: Some(xmlUCSIsCatS),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Sc\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatSc,
-                ),
+                func: Some(xmlUCSIsCatSc),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Sk\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatSk,
-                ),
+                func: Some(xmlUCSIsCatSk),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Sm\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatSm,
-                ),
+                func: Some(xmlUCSIsCatSm),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"So\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatSo,
-                ),
+                func: Some(xmlUCSIsCatSo),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Z\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatZ,
-                ),
+                func: Some(xmlUCSIsCatZ),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Zl\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatZl,
-                ),
+                func: Some(xmlUCSIsCatZl),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Zp\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatZp,
-                ),
+                func: Some(xmlUCSIsCatZp),
             };
             init
         },
         {
             let mut init = xmlUnicodeRange {
                 rangename: b"Zs\0" as *const u8 as *const i8,
-                func: Some(
-                    xmlUCSIsCatZs,
-                ),
+                func: Some(xmlUCSIsCatZs),
             };
             init
         },
@@ -19606,15 +19235,16 @@ static mut xmlUnicodeCatTbl: crate::src::xmlunicode::xmlUnicodeNameTable = unsaf
         init
     }
 };
-unsafe extern "C" fn xmlUnicodeLookup<'a1>(
+extern "C" fn xmlUnicodeLookup<'a1>(
     mut tptr: Option<&'a1 crate::src::xmlunicode::xmlUnicodeNameTable>,
-    mut tname: * const i8,
-) -> Option<unsafe extern "C"  fn(_: i32,) -> i32> {
+    mut tname: *const i8,
+) -> Option<unsafe extern "C" fn(_: i32) -> i32> {
     let mut low: i32 = 0;
     let mut high: i32 = 0;
     let mut mid: i32 = 0;
     let mut cmp: i32 = 0;
-    let mut sptr: * const crate::src::xmlunicode::xmlUnicodeRange = (0 as * const crate::src::xmlunicode::xmlUnicodeRange);
+    let mut sptr: *const crate::src::xmlunicode::xmlUnicodeRange =
+        0 as *const crate::src::xmlunicode::xmlUnicodeRange;
     if (tptr).clone().is_none() || tname.is_null() {
         return None;
     }
@@ -19623,9 +19253,9 @@ unsafe extern "C" fn xmlUnicodeLookup<'a1>(
     sptr = (*((tptr).clone()).unwrap()).table;
     while low <= high {
         mid = (low + high) / 2 as i32;
-        cmp = strcmp(tname, (*sptr.offset(mid as isize)).rangename);
+        cmp = unsafe { strcmp(tname, (*sptr.offset(mid as isize)).rangename) };
         if cmp == 0 as i32 {
-            return (*sptr.offset(mid as isize)).func;
+            return unsafe { (*sptr.offset(mid as isize)).func };
         }
         if cmp < 0 as i32 {
             high = mid - 1 as i32;
@@ -19637,33 +19267,23 @@ unsafe extern "C" fn xmlUnicodeLookup<'a1>(
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsAegeanNumbers(mut code: i32) -> i32 {
-    return (code >= 0x10100 as i32 && code <= 0x1013f as i32)
-        as i32;
+    return (code >= 0x10100 as i32 && code <= 0x1013f as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsAlphabeticPresentationForms(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0xfb00 as i32 && code <= 0xfb4f as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsAlphabeticPresentationForms(mut code: i32) -> i32 {
+    return (code >= 0xfb00 as i32 && code <= 0xfb4f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsArabic(mut code: i32) -> i32 {
     return (code >= 0x600 as i32 && code <= 0x6ff as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsArabicPresentationFormsA(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0xfb50 as i32 && code <= 0xfdff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsArabicPresentationFormsA(mut code: i32) -> i32 {
+    return (code >= 0xfb50 as i32 && code <= 0xfdff as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsArabicPresentationFormsB(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0xfe70 as i32 && code <= 0xfeff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsArabicPresentationFormsB(mut code: i32) -> i32 {
+    return (code >= 0xfe70 as i32 && code <= 0xfeff as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsArmenian(mut code: i32) -> i32 {
@@ -19671,8 +19291,7 @@ pub extern "C" fn xmlUCSIsArmenian(mut code: i32) -> i32 {
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsArrows(mut code: i32) -> i32 {
-    return (code >= 0x2190 as i32 && code <= 0x21ff as i32)
-        as i32;
+    return (code >= 0x2190 as i32 && code <= 0x21ff as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsBasicLatin(mut code: i32) -> i32 {
@@ -19684,163 +19303,111 @@ pub extern "C" fn xmlUCSIsBengali(mut code: i32) -> i32 {
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsBlockElements(mut code: i32) -> i32 {
-    return (code >= 0x2580 as i32 && code <= 0x259f as i32)
-        as i32;
+    return (code >= 0x2580 as i32 && code <= 0x259f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsBopomofo(mut code: i32) -> i32 {
-    return (code >= 0x3100 as i32 && code <= 0x312f as i32)
-        as i32;
+    return (code >= 0x3100 as i32 && code <= 0x312f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsBopomofoExtended(mut code: i32) -> i32 {
-    return (code >= 0x31a0 as i32 && code <= 0x31bf as i32)
-        as i32;
+    return (code >= 0x31a0 as i32 && code <= 0x31bf as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsBoxDrawing(mut code: i32) -> i32 {
-    return (code >= 0x2500 as i32 && code <= 0x257f as i32)
-        as i32;
+    return (code >= 0x2500 as i32 && code <= 0x257f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsBraillePatterns(mut code: i32) -> i32 {
-    return (code >= 0x2800 as i32 && code <= 0x28ff as i32)
-        as i32;
+    return (code >= 0x2800 as i32 && code <= 0x28ff as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsBuhid(mut code: i32) -> i32 {
-    return (code >= 0x1740 as i32 && code <= 0x175f as i32)
-        as i32;
+    return (code >= 0x1740 as i32 && code <= 0x175f as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsByzantineMusicalSymbols(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x1d000 as i32 && code <= 0x1d0ff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsByzantineMusicalSymbols(mut code: i32) -> i32 {
+    return (code >= 0x1d000 as i32 && code <= 0x1d0ff as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsCJKCompatibility(mut code: i32) -> i32 {
-    return (code >= 0x3300 as i32 && code <= 0x33ff as i32)
-        as i32;
+    return (code >= 0x3300 as i32 && code <= 0x33ff as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsCJKCompatibilityForms(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0xfe30 as i32 && code <= 0xfe4f as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsCJKCompatibilityForms(mut code: i32) -> i32 {
+    return (code >= 0xfe30 as i32 && code <= 0xfe4f as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsCJKCompatibilityIdeographs(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0xf900 as i32 && code <= 0xfaff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsCJKCompatibilityIdeographs(mut code: i32) -> i32 {
+    return (code >= 0xf900 as i32 && code <= 0xfaff as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsCJKCompatibilityIdeographsSupplement(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x2f800 as i32 && code <= 0x2fa1f as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsCJKCompatibilityIdeographsSupplement(mut code: i32) -> i32 {
+    return (code >= 0x2f800 as i32 && code <= 0x2fa1f as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsCJKRadicalsSupplement(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x2e80 as i32 && code <= 0x2eff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsCJKRadicalsSupplement(mut code: i32) -> i32 {
+    return (code >= 0x2e80 as i32 && code <= 0x2eff as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsCJKSymbolsandPunctuation(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x3000 as i32 && code <= 0x303f as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsCJKSymbolsandPunctuation(mut code: i32) -> i32 {
+    return (code >= 0x3000 as i32 && code <= 0x303f as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsCJKUnifiedIdeographs(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x4e00 as i32 && code <= 0x9fff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsCJKUnifiedIdeographs(mut code: i32) -> i32 {
+    return (code >= 0x4e00 as i32 && code <= 0x9fff as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsCJKUnifiedIdeographsExtensionA(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x3400 as i32 && code <= 0x4dbf as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsCJKUnifiedIdeographsExtensionA(mut code: i32) -> i32 {
+    return (code >= 0x3400 as i32 && code <= 0x4dbf as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsCJKUnifiedIdeographsExtensionB(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x20000 as i32 && code <= 0x2a6df as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsCJKUnifiedIdeographsExtensionB(mut code: i32) -> i32 {
+    return (code >= 0x20000 as i32 && code <= 0x2a6df as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsCherokee(mut code: i32) -> i32 {
-    return (code >= 0x13a0 as i32 && code <= 0x13ff as i32)
-        as i32;
+    return (code >= 0x13a0 as i32 && code <= 0x13ff as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsCombiningDiacriticalMarks(
-    mut code: i32,
-) -> i32 {
+pub extern "C" fn xmlUCSIsCombiningDiacriticalMarks(mut code: i32) -> i32 {
     return (code >= 0x300 as i32 && code <= 0x36f as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsCombiningDiacriticalMarksforSymbols(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x20d0 as i32 && code <= 0x20ff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsCombiningDiacriticalMarksforSymbols(mut code: i32) -> i32 {
+    return (code >= 0x20d0 as i32 && code <= 0x20ff as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsCombiningHalfMarks(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0xfe20 as i32 && code <= 0xfe2f as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsCombiningHalfMarks(mut code: i32) -> i32 {
+    return (code >= 0xfe20 as i32 && code <= 0xfe2f as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsCombiningMarksforSymbols(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x20d0 as i32 && code <= 0x20ff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsCombiningMarksforSymbols(mut code: i32) -> i32 {
+    return (code >= 0x20d0 as i32 && code <= 0x20ff as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsControlPictures(mut code: i32) -> i32 {
-    return (code >= 0x2400 as i32 && code <= 0x243f as i32)
-        as i32;
+    return (code >= 0x2400 as i32 && code <= 0x243f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsCurrencySymbols(mut code: i32) -> i32 {
-    return (code >= 0x20a0 as i32 && code <= 0x20cf as i32)
-        as i32;
+    return (code >= 0x20a0 as i32 && code <= 0x20cf as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsCypriotSyllabary(mut code: i32) -> i32 {
-    return (code >= 0x10800 as i32 && code <= 0x1083f as i32)
-        as i32;
+    return (code >= 0x10800 as i32 && code <= 0x1083f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsCyrillic(mut code: i32) -> i32 {
     return (code >= 0x400 as i32 && code <= 0x4ff as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsCyrillicSupplement(
-    mut code: i32,
-) -> i32 {
+pub extern "C" fn xmlUCSIsCyrillicSupplement(mut code: i32) -> i32 {
     return (code >= 0x500 as i32 && code <= 0x52f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsDeseret(mut code: i32) -> i32 {
-    return (code >= 0x10400 as i32 && code <= 0x1044f as i32)
-        as i32;
+    return (code >= 0x10400 as i32 && code <= 0x1044f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsDevanagari(mut code: i32) -> i32 {
@@ -19848,49 +19415,35 @@ pub extern "C" fn xmlUCSIsDevanagari(mut code: i32) -> i32 {
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsDingbats(mut code: i32) -> i32 {
-    return (code >= 0x2700 as i32 && code <= 0x27bf as i32)
-        as i32;
+    return (code >= 0x2700 as i32 && code <= 0x27bf as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsEnclosedAlphanumerics(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x2460 as i32 && code <= 0x24ff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsEnclosedAlphanumerics(mut code: i32) -> i32 {
+    return (code >= 0x2460 as i32 && code <= 0x24ff as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsEnclosedCJKLettersandMonths(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x3200 as i32 && code <= 0x32ff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsEnclosedCJKLettersandMonths(mut code: i32) -> i32 {
+    return (code >= 0x3200 as i32 && code <= 0x32ff as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsEthiopic(mut code: i32) -> i32 {
-    return (code >= 0x1200 as i32 && code <= 0x137f as i32)
-        as i32;
+    return (code >= 0x1200 as i32 && code <= 0x137f as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsGeneralPunctuation(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x2000 as i32 && code <= 0x206f as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsGeneralPunctuation(mut code: i32) -> i32 {
+    return (code >= 0x2000 as i32 && code <= 0x206f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsGeometricShapes(mut code: i32) -> i32 {
-    return (code >= 0x25a0 as i32 && code <= 0x25ff as i32)
-        as i32;
+    return (code >= 0x25a0 as i32 && code <= 0x25ff as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsGeorgian(mut code: i32) -> i32 {
-    return (code >= 0x10a0 as i32 && code <= 0x10ff as i32)
-        as i32;
+    return (code >= 0x10a0 as i32 && code <= 0x10ff as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsGothic(mut code: i32) -> i32 {
-    return (code >= 0x10330 as i32 && code <= 0x1034f as i32)
-        as i32;
+    return (code >= 0x10330 as i32 && code <= 0x1034f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsGreek(mut code: i32) -> i32 {
@@ -19898,8 +19451,7 @@ pub extern "C" fn xmlUCSIsGreek(mut code: i32) -> i32 {
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsGreekExtended(mut code: i32) -> i32 {
-    return (code >= 0x1f00 as i32 && code <= 0x1fff as i32)
-        as i32;
+    return (code >= 0x1f00 as i32 && code <= 0x1fff as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsGreekandCoptic(mut code: i32) -> i32 {
@@ -19914,75 +19466,56 @@ pub extern "C" fn xmlUCSIsGurmukhi(mut code: i32) -> i32 {
     return (code >= 0xa00 as i32 && code <= 0xa7f as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsHalfwidthandFullwidthForms(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0xff00 as i32 && code <= 0xffef as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsHalfwidthandFullwidthForms(mut code: i32) -> i32 {
+    return (code >= 0xff00 as i32 && code <= 0xffef as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsHangulCompatibilityJamo(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x3130 as i32 && code <= 0x318f as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsHangulCompatibilityJamo(mut code: i32) -> i32 {
+    return (code >= 0x3130 as i32 && code <= 0x318f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsHangulJamo(mut code: i32) -> i32 {
-    return (code >= 0x1100 as i32 && code <= 0x11ff as i32)
-        as i32;
+    return (code >= 0x1100 as i32 && code <= 0x11ff as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsHangulSyllables(mut code: i32) -> i32 {
-    return (code >= 0xac00 as i32 && code <= 0xd7af as i32)
-        as i32;
+    return (code >= 0xac00 as i32 && code <= 0xd7af as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsHanunoo(mut code: i32) -> i32 {
-    return (code >= 0x1720 as i32 && code <= 0x173f as i32)
-        as i32;
+    return (code >= 0x1720 as i32 && code <= 0x173f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsHebrew(mut code: i32) -> i32 {
     return (code >= 0x590 as i32 && code <= 0x5ff as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsHighPrivateUseSurrogates(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0xdb80 as i32 && code <= 0xdbff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsHighPrivateUseSurrogates(mut code: i32) -> i32 {
+    return (code >= 0xdb80 as i32 && code <= 0xdbff as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsHighSurrogates(mut code: i32) -> i32 {
-    return (code >= 0xd800 as i32 && code <= 0xdb7f as i32)
-        as i32;
+    return (code >= 0xd800 as i32 && code <= 0xdb7f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsHiragana(mut code: i32) -> i32 {
-    return (code >= 0x3040 as i32 && code <= 0x309f as i32)
-        as i32;
+    return (code >= 0x3040 as i32 && code <= 0x309f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsIPAExtensions(mut code: i32) -> i32 {
     return (code >= 0x250 as i32 && code <= 0x2af as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsIdeographicDescriptionCharacters(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x2ff0 as i32 && code <= 0x2fff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsIdeographicDescriptionCharacters(mut code: i32) -> i32 {
+    return (code >= 0x2ff0 as i32 && code <= 0x2fff as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsKanbun(mut code: i32) -> i32 {
-    return (code >= 0x3190 as i32 && code <= 0x319f as i32)
-        as i32;
+    return (code >= 0x3190 as i32 && code <= 0x319f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsKangxiRadicals(mut code: i32) -> i32 {
-    return (code >= 0x2f00 as i32 && code <= 0x2fdf as i32)
-        as i32;
+    return (code >= 0x2f00 as i32 && code <= 0x2fdf as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsKannada(mut code: i32) -> i32 {
@@ -19990,25 +19523,19 @@ pub extern "C" fn xmlUCSIsKannada(mut code: i32) -> i32 {
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsKatakana(mut code: i32) -> i32 {
-    return (code >= 0x30a0 as i32 && code <= 0x30ff as i32)
-        as i32;
+    return (code >= 0x30a0 as i32 && code <= 0x30ff as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsKatakanaPhoneticExtensions(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x31f0 as i32 && code <= 0x31ff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsKatakanaPhoneticExtensions(mut code: i32) -> i32 {
+    return (code >= 0x31f0 as i32 && code <= 0x31ff as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsKhmer(mut code: i32) -> i32 {
-    return (code >= 0x1780 as i32 && code <= 0x17ff as i32)
-        as i32;
+    return (code >= 0x1780 as i32 && code <= 0x17ff as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsKhmerSymbols(mut code: i32) -> i32 {
-    return (code >= 0x19e0 as i32 && code <= 0x19ff as i32)
-        as i32;
+    return (code >= 0x19e0 as i32 && code <= 0x19ff as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsLao(mut code: i32) -> i32 {
@@ -20027,128 +19554,88 @@ pub extern "C" fn xmlUCSIsLatinExtendedB(mut code: i32) -> i32 {
     return (code >= 0x180 as i32 && code <= 0x24f as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsLatinExtendedAdditional(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x1e00 as i32 && code <= 0x1eff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsLatinExtendedAdditional(mut code: i32) -> i32 {
+    return (code >= 0x1e00 as i32 && code <= 0x1eff as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsLetterlikeSymbols(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x2100 as i32 && code <= 0x214f as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsLetterlikeSymbols(mut code: i32) -> i32 {
+    return (code >= 0x2100 as i32 && code <= 0x214f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsLimbu(mut code: i32) -> i32 {
-    return (code >= 0x1900 as i32 && code <= 0x194f as i32)
-        as i32;
+    return (code >= 0x1900 as i32 && code <= 0x194f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsLinearBIdeograms(mut code: i32) -> i32 {
-    return (code >= 0x10080 as i32 && code <= 0x100ff as i32)
-        as i32;
+    return (code >= 0x10080 as i32 && code <= 0x100ff as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsLinearBSyllabary(mut code: i32) -> i32 {
-    return (code >= 0x10000 as i32 && code <= 0x1007f as i32)
-        as i32;
+    return (code >= 0x10000 as i32 && code <= 0x1007f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsLowSurrogates(mut code: i32) -> i32 {
-    return (code >= 0xdc00 as i32 && code <= 0xdfff as i32)
-        as i32;
+    return (code >= 0xdc00 as i32 && code <= 0xdfff as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsMalayalam(mut code: i32) -> i32 {
     return (code >= 0xd00 as i32 && code <= 0xd7f as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsMathematicalAlphanumericSymbols(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x1d400 as i32 && code <= 0x1d7ff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsMathematicalAlphanumericSymbols(mut code: i32) -> i32 {
+    return (code >= 0x1d400 as i32 && code <= 0x1d7ff as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsMathematicalOperators(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x2200 as i32 && code <= 0x22ff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsMathematicalOperators(mut code: i32) -> i32 {
+    return (code >= 0x2200 as i32 && code <= 0x22ff as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsMiscellaneousMathematicalSymbolsA(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x27c0 as i32 && code <= 0x27ef as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsMiscellaneousMathematicalSymbolsA(mut code: i32) -> i32 {
+    return (code >= 0x27c0 as i32 && code <= 0x27ef as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsMiscellaneousMathematicalSymbolsB(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x2980 as i32 && code <= 0x29ff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsMiscellaneousMathematicalSymbolsB(mut code: i32) -> i32 {
+    return (code >= 0x2980 as i32 && code <= 0x29ff as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsMiscellaneousSymbols(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x2600 as i32 && code <= 0x26ff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsMiscellaneousSymbols(mut code: i32) -> i32 {
+    return (code >= 0x2600 as i32 && code <= 0x26ff as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsMiscellaneousSymbolsandArrows(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x2b00 as i32 && code <= 0x2bff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsMiscellaneousSymbolsandArrows(mut code: i32) -> i32 {
+    return (code >= 0x2b00 as i32 && code <= 0x2bff as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsMiscellaneousTechnical(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x2300 as i32 && code <= 0x23ff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsMiscellaneousTechnical(mut code: i32) -> i32 {
+    return (code >= 0x2300 as i32 && code <= 0x23ff as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsMongolian(mut code: i32) -> i32 {
-    return (code >= 0x1800 as i32 && code <= 0x18af as i32)
-        as i32;
+    return (code >= 0x1800 as i32 && code <= 0x18af as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsMusicalSymbols(mut code: i32) -> i32 {
-    return (code >= 0x1d100 as i32 && code <= 0x1d1ff as i32)
-        as i32;
+    return (code >= 0x1d100 as i32 && code <= 0x1d1ff as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsMyanmar(mut code: i32) -> i32 {
-    return (code >= 0x1000 as i32 && code <= 0x109f as i32)
-        as i32;
+    return (code >= 0x1000 as i32 && code <= 0x109f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsNumberForms(mut code: i32) -> i32 {
-    return (code >= 0x2150 as i32 && code <= 0x218f as i32)
-        as i32;
+    return (code >= 0x2150 as i32 && code <= 0x218f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsOgham(mut code: i32) -> i32 {
-    return (code >= 0x1680 as i32 && code <= 0x169f as i32)
-        as i32;
+    return (code >= 0x1680 as i32 && code <= 0x169f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsOldItalic(mut code: i32) -> i32 {
-    return (code >= 0x10300 as i32 && code <= 0x1032f as i32)
-        as i32;
+    return (code >= 0x10300 as i32 && code <= 0x1032f as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsOpticalCharacterRecognition(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x2440 as i32 && code <= 0x245f as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsOpticalCharacterRecognition(mut code: i32) -> i32 {
+    return (code >= 0x2440 as i32 && code <= 0x245f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsOriya(mut code: i32) -> i32 {
@@ -20156,101 +19643,69 @@ pub extern "C" fn xmlUCSIsOriya(mut code: i32) -> i32 {
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsOsmanya(mut code: i32) -> i32 {
-    return (code >= 0x10480 as i32 && code <= 0x104af as i32)
-        as i32;
+    return (code >= 0x10480 as i32 && code <= 0x104af as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsPhoneticExtensions(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x1d00 as i32 && code <= 0x1d7f as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsPhoneticExtensions(mut code: i32) -> i32 {
+    return (code >= 0x1d00 as i32 && code <= 0x1d7f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsPrivateUse(mut code: i32) -> i32 {
     return (code >= 0xe000 as i32 && code <= 0xf8ff as i32
         || code >= 0xf0000 as i32 && code <= 0xfffff as i32
-        || code >= 0x100000 as i32 && code <= 0x10ffff as i32)
-        as i32;
+        || code >= 0x100000 as i32 && code <= 0x10ffff as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsPrivateUseArea(mut code: i32) -> i32 {
-    return (code >= 0xe000 as i32 && code <= 0xf8ff as i32)
-        as i32;
+    return (code >= 0xe000 as i32 && code <= 0xf8ff as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsRunic(mut code: i32) -> i32 {
-    return (code >= 0x16a0 as i32 && code <= 0x16ff as i32)
-        as i32;
+    return (code >= 0x16a0 as i32 && code <= 0x16ff as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsShavian(mut code: i32) -> i32 {
-    return (code >= 0x10450 as i32 && code <= 0x1047f as i32)
-        as i32;
+    return (code >= 0x10450 as i32 && code <= 0x1047f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsSinhala(mut code: i32) -> i32 {
     return (code >= 0xd80 as i32 && code <= 0xdff as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsSmallFormVariants(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0xfe50 as i32 && code <= 0xfe6f as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsSmallFormVariants(mut code: i32) -> i32 {
+    return (code >= 0xfe50 as i32 && code <= 0xfe6f as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsSpacingModifierLetters(
-    mut code: i32,
-) -> i32 {
+pub extern "C" fn xmlUCSIsSpacingModifierLetters(mut code: i32) -> i32 {
     return (code >= 0x2b0 as i32 && code <= 0x2ff as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsSpecials(mut code: i32) -> i32 {
-    return (code >= 0xfff0 as i32 && code <= 0xffff as i32)
-        as i32;
+    return (code >= 0xfff0 as i32 && code <= 0xffff as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsSuperscriptsandSubscripts(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x2070 as i32 && code <= 0x209f as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsSuperscriptsandSubscripts(mut code: i32) -> i32 {
+    return (code >= 0x2070 as i32 && code <= 0x209f as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsSupplementalArrowsA(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x27f0 as i32 && code <= 0x27ff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsSupplementalArrowsA(mut code: i32) -> i32 {
+    return (code >= 0x27f0 as i32 && code <= 0x27ff as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsSupplementalArrowsB(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x2900 as i32 && code <= 0x297f as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsSupplementalArrowsB(mut code: i32) -> i32 {
+    return (code >= 0x2900 as i32 && code <= 0x297f as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsSupplementalMathematicalOperators(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x2a00 as i32 && code <= 0x2aff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsSupplementalMathematicalOperators(mut code: i32) -> i32 {
+    return (code >= 0x2a00 as i32 && code <= 0x2aff as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsSupplementaryPrivateUseAreaA(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0xf0000 as i32 && code <= 0xfffff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsSupplementaryPrivateUseAreaA(mut code: i32) -> i32 {
+    return (code >= 0xf0000 as i32 && code <= 0xfffff as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsSupplementaryPrivateUseAreaB(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x100000 as i32 && code <= 0x10ffff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsSupplementaryPrivateUseAreaB(mut code: i32) -> i32 {
+    return (code >= 0x100000 as i32 && code <= 0x10ffff as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsSyriac(mut code: i32) -> i32 {
@@ -20258,30 +19713,23 @@ pub extern "C" fn xmlUCSIsSyriac(mut code: i32) -> i32 {
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsTagalog(mut code: i32) -> i32 {
-    return (code >= 0x1700 as i32 && code <= 0x171f as i32)
-        as i32;
+    return (code >= 0x1700 as i32 && code <= 0x171f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsTagbanwa(mut code: i32) -> i32 {
-    return (code >= 0x1760 as i32 && code <= 0x177f as i32)
-        as i32;
+    return (code >= 0x1760 as i32 && code <= 0x177f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsTags(mut code: i32) -> i32 {
-    return (code >= 0xe0000 as i32 && code <= 0xe007f as i32)
-        as i32;
+    return (code >= 0xe0000 as i32 && code <= 0xe007f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsTaiLe(mut code: i32) -> i32 {
-    return (code >= 0x1950 as i32 && code <= 0x197f as i32)
-        as i32;
+    return (code >= 0x1950 as i32 && code <= 0x197f as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsTaiXuanJingSymbols(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x1d300 as i32 && code <= 0x1d35f as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsTaiXuanJingSymbols(mut code: i32) -> i32 {
+    return (code >= 0x1d300 as i32 && code <= 0x1d35f as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsTamil(mut code: i32) -> i32 {
@@ -20305,78 +19753,62 @@ pub extern "C" fn xmlUCSIsTibetan(mut code: i32) -> i32 {
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsUgaritic(mut code: i32) -> i32 {
-    return (code >= 0x10380 as i32 && code <= 0x1039f as i32)
-        as i32;
+    return (code >= 0x10380 as i32 && code <= 0x1039f as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsUnifiedCanadianAboriginalSyllabics(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x1400 as i32 && code <= 0x167f as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsUnifiedCanadianAboriginalSyllabics(mut code: i32) -> i32 {
+    return (code >= 0x1400 as i32 && code <= 0x167f as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsVariationSelectors(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0xfe00 as i32 && code <= 0xfe0f as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsVariationSelectors(mut code: i32) -> i32 {
+    return (code >= 0xfe00 as i32 && code <= 0xfe0f as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsVariationSelectorsSupplement(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0xe0100 as i32 && code <= 0xe01ef as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsVariationSelectorsSupplement(mut code: i32) -> i32 {
+    return (code >= 0xe0100 as i32 && code <= 0xe01ef as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsYiRadicals(mut code: i32) -> i32 {
-    return (code >= 0xa490 as i32 && code <= 0xa4cf as i32)
-        as i32;
+    return (code >= 0xa490 as i32 && code <= 0xa4cf as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsYiSyllables(mut code: i32) -> i32 {
-    return (code >= 0xa000 as i32 && code <= 0xa48f as i32)
-        as i32;
+    return (code >= 0xa000 as i32 && code <= 0xa48f as i32) as i32;
 }
 #[no_mangle]
-pub extern "C" fn xmlUCSIsYijingHexagramSymbols(
-    mut code: i32,
-) -> i32 {
-    return (code >= 0x4dc0 as i32 && code <= 0x4dff as i32)
-        as i32;
+pub extern "C" fn xmlUCSIsYijingHexagramSymbols(mut code: i32) -> i32 {
+    return (code >= 0x4dc0 as i32 && code <= 0x4dff as i32) as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsBlock(
-    mut code: i32,
-    mut block: * const i8,
-) -> i32 {
-    let mut func: Option<unsafe extern "C"  fn(_: i32,) -> i32> = None;
-    func = xmlUnicodeLookup((Some(&xmlUnicodeBlockTbl)).clone(), block);
+pub extern "C" fn xmlUCSIsBlock(mut code: i32, mut block: *const i8) -> i32 {
+    let mut func: Option<unsafe extern "C" fn(_: i32) -> i32> = None;
+    func = xmlUnicodeLookup((Some(unsafe { &xmlUnicodeBlockTbl })).clone(), block);
     if func.is_none() {
         return -(1 as i32);
     }
-    return func.expect("non-null function pointer")(code);
+    return unsafe { func.expect("non-null function pointer")(code) };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatC(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlCG);
+pub extern "C" fn xmlUCSIsCatC(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlCG) };
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsCatCc(mut code: i32) -> i32 {
-    return (code >= 0 as i32 && code <= 0x1f as i32
-        || code >= 0x7f as i32 && code <= 0x9f as i32) as i32;
+    return (code >= 0 as i32 && code <= 0x1f as i32 || code >= 0x7f as i32 && code <= 0x9f as i32)
+        as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatCf(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlCfG);
+pub extern "C" fn xmlUCSIsCatCf(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlCfG) };
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsCatCo(mut code: i32) -> i32 {
-    return (code == 0xe000 as i32 || code == 0xf8ff as i32
-        || code == 0xf0000 as i32 || code == 0xffffd as i32
-        || code == 0x100000 as i32 || code == 0x10fffd as i32)
-        as i32;
+    return (code == 0xe000 as i32
+        || code == 0xf8ff as i32
+        || code == 0xf0000 as i32
+        || code == 0xffffd as i32
+        || code == 0x100000 as i32
+        || code == 0x10fffd as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsCatCs(mut code: i32) -> i32 {
@@ -20386,56 +19818,55 @@ pub extern "C" fn xmlUCSIsCatCs(mut code: i32) -> i32 {
         || code == 0xdfff as i32) as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatL(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlLG);
+pub extern "C" fn xmlUCSIsCatL(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlLG) };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatLl(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlLlG);
+pub extern "C" fn xmlUCSIsCatLl(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlLlG) };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatLm(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlLmG);
+pub extern "C" fn xmlUCSIsCatLm(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlLmG) };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatLo(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlLoG);
+pub extern "C" fn xmlUCSIsCatLo(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlLoG) };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatLt(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlLtG);
+pub extern "C" fn xmlUCSIsCatLt(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlLtG) };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatLu(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlLuG);
+pub extern "C" fn xmlUCSIsCatLu(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlLuG) };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatM(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlMG);
+pub extern "C" fn xmlUCSIsCatM(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlMG) };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatMc(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlMcG);
+pub extern "C" fn xmlUCSIsCatMc(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlMcG) };
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsCatMe(mut code: i32) -> i32 {
     return (code >= 0x488 as i32 && code <= 0x489 as i32
         || code == 0x6de as i32
         || code >= 0x20dd as i32 && code <= 0x20e0 as i32
-        || code >= 0x20e2 as i32 && code <= 0x20e4 as i32)
-        as i32;
+        || code >= 0x20e2 as i32 && code <= 0x20e4 as i32) as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatMn(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlMnG);
+pub extern "C" fn xmlUCSIsCatMn(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlMnG) };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatN(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlNG);
+pub extern "C" fn xmlUCSIsCatN(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlNG) };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatNd(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlNdG);
+pub extern "C" fn xmlUCSIsCatNd(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlNdG) };
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsCatNl(mut code: i32) -> i32 {
@@ -20447,75 +19878,78 @@ pub extern "C" fn xmlUCSIsCatNl(mut code: i32) -> i32 {
         || code == 0x1034a as i32) as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatNo(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlNoG);
+pub extern "C" fn xmlUCSIsCatNo(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlNoG) };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatP(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlPG);
+pub extern "C" fn xmlUCSIsCatP(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlPG) };
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsCatPc(mut code: i32) -> i32 {
     return (code == 0x5f as i32
         || code >= 0x203f as i32 && code <= 0x2040 as i32
-        || code == 0x2054 as i32 || code == 0x30fb as i32
+        || code == 0x2054 as i32
+        || code == 0x30fb as i32
         || code >= 0xfe33 as i32 && code <= 0xfe34 as i32
         || code >= 0xfe4d as i32 && code <= 0xfe4f as i32
-        || code == 0xff3f as i32 || code == 0xff65 as i32)
-        as i32;
+        || code == 0xff3f as i32
+        || code == 0xff65 as i32) as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatPd(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlPdG);
+pub extern "C" fn xmlUCSIsCatPd(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlPdG) };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatPe(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlPeG);
+pub extern "C" fn xmlUCSIsCatPe(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlPeG) };
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsCatPf(mut code: i32) -> i32 {
-    return (code == 0xbb as i32 || code == 0x2019 as i32
-        || code == 0x201d as i32 || code == 0x203a as i32)
-        as i32;
+    return (code == 0xbb as i32
+        || code == 0x2019 as i32
+        || code == 0x201d as i32
+        || code == 0x203a as i32) as i32;
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsCatPi(mut code: i32) -> i32 {
-    return (code == 0xab as i32 || code == 0x2018 as i32
+    return (code == 0xab as i32
+        || code == 0x2018 as i32
         || code >= 0x201b as i32 && code <= 0x201c as i32
-        || code == 0x201f as i32 || code == 0x2039 as i32)
-        as i32;
+        || code == 0x201f as i32
+        || code == 0x2039 as i32) as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatPo(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlPoG);
+pub extern "C" fn xmlUCSIsCatPo(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlPoG) };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatPs(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlPsG);
+pub extern "C" fn xmlUCSIsCatPs(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlPsG) };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatS(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlSG);
+pub extern "C" fn xmlUCSIsCatS(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlSG) };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatSc(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlScG);
+pub extern "C" fn xmlUCSIsCatSc(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlScG) };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatSk(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlSkG);
+pub extern "C" fn xmlUCSIsCatSk(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlSkG) };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatSm(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlSmG);
+pub extern "C" fn xmlUCSIsCatSm(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlSmG) };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatSo(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlSoG);
+pub extern "C" fn xmlUCSIsCatSo(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlSoG) };
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCatZ(mut code: i32) -> i32 {
-    return xmlCharInRange(code as u32, &xmlZG);
+pub extern "C" fn xmlUCSIsCatZ(mut code: i32) -> i32 {
+    return unsafe { xmlCharInRange(code as u32, &xmlZG) };
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsCatZl(mut code: i32) -> i32 {
@@ -20527,22 +19961,22 @@ pub extern "C" fn xmlUCSIsCatZp(mut code: i32) -> i32 {
 }
 #[no_mangle]
 pub extern "C" fn xmlUCSIsCatZs(mut code: i32) -> i32 {
-    return (code == 0x20 as i32 || code == 0xa0 as i32
-        || code == 0x1680 as i32 || code == 0x180e as i32
+    return (code == 0x20 as i32
+        || code == 0xa0 as i32
+        || code == 0x1680 as i32
+        || code == 0x180e as i32
         || code >= 0x2000 as i32 && code <= 0x200a as i32
-        || code == 0x202f as i32 || code == 0x205f as i32
+        || code == 0x202f as i32
+        || code == 0x205f as i32
         || code == 0x3000 as i32) as i32;
 }
 #[no_mangle]
-pub unsafe extern "C" fn xmlUCSIsCat(
-    mut code: i32,
-    mut cat: * const i8,
-) -> i32 {
-    let mut func: Option<unsafe extern "C"  fn(_: i32,) -> i32> = None;
-    func = xmlUnicodeLookup((Some(&xmlUnicodeCatTbl)).clone(), cat);
+pub extern "C" fn xmlUCSIsCat(mut code: i32, mut cat: *const i8) -> i32 {
+    let mut func: Option<unsafe extern "C" fn(_: i32) -> i32> = None;
+    func = xmlUnicodeLookup((Some(unsafe { &xmlUnicodeCatTbl })).clone(), cat);
     if func.is_none() {
         return -(1 as i32);
     }
-    return func.expect("non-null function pointer")(code);
+    return unsafe { func.expect("non-null function pointer")(code) };
 }
-use crate::laertes_rt::*;
+

@@ -1,20 +1,27 @@
-use :: libc;
+use ::libc;
 extern "C" {
+    
     fn __assert_fail(
-        __assertion: *const i8,
-        __file: *const i8,
+        __assertion: * const i8,
+        __file: * const i8,
         __line: u32,
-        __function: *const i8,
+        __function: * const i8,
     ) -> !;
-    fn printf(_: *const i8, _: ...) -> i32;
+    fn printf(_: * const i8, _: ...) -> i32;
+    
+    
+    
+    
+    
 }
-pub use crate::src::{
-    debug::mc_set_debug,
-    json_object::json_object,
-    json_tokener::{
-        json_tokener_free, json_tokener_new, json_tokener_parse_ex, json_tokener_set_flags,
-    },
-};
+pub use crate::src::debug::mc_set_debug;
+pub use crate::src::json_tokener::json_tokener_free;
+pub use crate::src::json_tokener::json_tokener_new;
+pub use crate::src::json_tokener::json_tokener_parse_ex;
+pub use crate::src::json_tokener::json_tokener_set_flags;
+pub use crate::src::json_object::json_object;
+// #[derive(Copy, Clone)]
+
 pub type printbuf = crate::src::apps::json_parse::printbuf;
 pub type json_tokener_error = u32;
 pub const json_tokener_error_size: json_tokener_error = 15;
@@ -61,61 +68,74 @@ pub const json_tokener_state_null: json_tokener_state = 3;
 pub const json_tokener_state_finish: json_tokener_state = 2;
 pub const json_tokener_state_start: json_tokener_state = 1;
 pub const json_tokener_state_eatws: json_tokener_state = 0;
+// #[derive(Copy, Clone)]
+
 pub type json_tokener_srec<'a> = crate::src::apps::json_parse::json_tokener_srec<'a>;
+// #[derive(Copy, Clone)]
+
 pub type json_tokener<'a> = crate::src::apps::json_parse::json_tokener<'a>;
-fn main_0(mut argc: i32, mut argv: *mut *mut i8) -> i32 {
+unsafe fn main_0(
+    mut argc: i32,
+    mut argv: * mut * mut i8,
+) -> i32 {
     test_case_parse();
     return 0 as i32;
 }
-extern "C" fn test_case_parse() {
-    let mut tok: *mut crate::src::apps::json_parse::json_tokener<'_> = 0 as *mut json_tokener;
-    let mut new_obj: *mut crate::src::json_object::json_object = 0 as *mut json_object;
+unsafe extern "C" fn test_case_parse() {
+    let mut tok: * mut crate::src::apps::json_parse::json_tokener<'_> = 0 as *mut json_tokener;
+    let mut new_obj: * mut crate::src::json_object::json_object = 0 as *mut json_object;
     tok = json_tokener_new();
     json_tokener_set_flags(tok, 0x1 as i32);
-    new_obj = json_tokener_parse_ex(tok, b"True\0" as *const u8 as *const i8, 4 as i32);
-    if new_obj.is_null() {
-    } else {
-        (unsafe { __assert_fail(
+    new_obj = json_tokener_parse_ex(
+        tok,
+        b"True\0" as *const u8 as *const i8,
+        4 as i32,
+    );
+    if new_obj.is_null() {} else {
+        __assert_fail(
             b"new_obj == NULL\0" as *const u8 as *const i8,
-            b"/home/xial/json-c/tests/test_charcase.c\0" as *const u8 as *const i8,
+            b"/home/xial/json-c/tests/test_charcase.c\0" as *const u8
+                as *const i8,
             34 as i32 as u32,
-            (*core::intrinsics::transmute::<&'_ [u8; 27], &'_ [i8; 27]>(
-                b"void test_case_parse(void)\0",
-            ))
-            .as_ptr(),
-        ) });
+            (*core::intrinsics::transmute::<&'_ [u8; 27], &'_ [i8; 27]>(b"void test_case_parse(void)\0"))
+                .as_ptr(),
+        );
     }
-    new_obj = json_tokener_parse_ex(tok, b"False\0" as *const u8 as *const i8, 5 as i32);
-    if new_obj.is_null() {
-    } else {
-        (unsafe { __assert_fail(
+    new_obj = json_tokener_parse_ex(
+        tok,
+        b"False\0" as *const u8 as *const i8,
+        5 as i32,
+    );
+    if new_obj.is_null() {} else {
+        __assert_fail(
             b"new_obj == NULL\0" as *const u8 as *const i8,
-            b"/home/xial/json-c/tests/test_charcase.c\0" as *const u8 as *const i8,
+            b"/home/xial/json-c/tests/test_charcase.c\0" as *const u8
+                as *const i8,
             37 as i32 as u32,
-            (*core::intrinsics::transmute::<&'_ [u8; 27], &'_ [i8; 27]>(
-                b"void test_case_parse(void)\0",
-            ))
-            .as_ptr(),
-        ) });
+            (*core::intrinsics::transmute::<&'_ [u8; 27], &'_ [i8; 27]>(b"void test_case_parse(void)\0"))
+                .as_ptr(),
+        );
     }
-    new_obj = json_tokener_parse_ex(tok, b"Null\0" as *const u8 as *const i8, 4 as i32);
-    if new_obj.is_null() {
-    } else {
-        (unsafe { __assert_fail(
+    new_obj = json_tokener_parse_ex(
+        tok,
+        b"Null\0" as *const u8 as *const i8,
+        4 as i32,
+    );
+    if new_obj.is_null() {} else {
+        __assert_fail(
             b"new_obj == NULL\0" as *const u8 as *const i8,
-            b"/home/xial/json-c/tests/test_charcase.c\0" as *const u8 as *const i8,
+            b"/home/xial/json-c/tests/test_charcase.c\0" as *const u8
+                as *const i8,
             40 as i32 as u32,
-            (*core::intrinsics::transmute::<&'_ [u8; 27], &'_ [i8; 27]>(
-                b"void test_case_parse(void)\0",
-            ))
-            .as_ptr(),
-        ) });
+            (*core::intrinsics::transmute::<&'_ [u8; 27], &'_ [i8; 27]>(b"void test_case_parse(void)\0"))
+                .as_ptr(),
+        );
     }
-    (unsafe { printf(b"OK\n\0" as *const u8 as *const i8) });
+    printf(b"OK\n\0" as *const u8 as *const i8);
     json_tokener_free(tok);
 }
 pub fn main() {
-    let mut args: Vec<*mut i8> = Vec::new();
+    let mut args: Vec::<*mut i8> = Vec::new();
     for arg in ::std::env::args() {
         args.push(
             (::std::ffi::CString::new(arg))
@@ -126,7 +146,10 @@ pub fn main() {
     args.push(::std::ptr::null_mut());
     unsafe {
         ::std::process::exit(
-            main_0((args.len() - 1) as i32, args.as_mut_ptr() as *mut *mut i8) as i32,
+            main_0(
+                (args.len() - 1) as i32,
+                args.as_mut_ptr() as *mut *mut i8,
+            ) as i32,
         )
     }
 }
